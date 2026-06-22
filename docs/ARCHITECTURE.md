@@ -11,6 +11,12 @@ Everything reusable lives under `Plugins/WorldForge/`. Everything else (the
 `.uproject`, `Source/WorldForge/`, `Content/`) is a disposable host shell that
 exists only so the tooling can be developed, compiled, and tested in isolation.
 
+## Engine
+
+Targets **Unreal Engine 5.7** (`EngineAssociation "5.7"`). Build settings match a
+stock 5.7 project: `BuildSettingsVersion.V6` and
+`EngineIncludeOrderVersion.Unreal5_7`.
+
 ## Module boundaries
 
 ### `WorldForgeCore` (Runtime)
