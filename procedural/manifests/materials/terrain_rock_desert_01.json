@@ -1,0 +1,77 @@
+{
+  "recipe_id": "terrain_rock_desert_01",
+  "schema_version": "1.1",
+  "graph": "terrain_rock_strata.sbs",
+  "resolution": 2048,
+  "source_recipe": "procedural/substance/recipes/terrain_rock_desert_01.yaml",
+  "substance_graph_path": "procedural/substance/graphs/terrain_rock_strata.sbs",
+  "exports": {
+    "base_color": {
+      "name": "T_Terrain_Rock_Desert_01_BC",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_01/T_Terrain_Rock_Desert_01_BC.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_BC",
+      "srgb": true,
+      "compression": "Default",
+      "texture_group": "World"
+    },
+    "normal": {
+      "name": "T_Terrain_Rock_Desert_01_N",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_01/T_Terrain_Rock_Desert_01_N.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_N",
+      "srgb": false,
+      "compression": "Normalmap",
+      "texture_group": "World"
+    },
+    "roughness": {
+      "name": "T_Terrain_Rock_Desert_01_R",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_01/T_Terrain_Rock_Desert_01_R.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_R",
+      "srgb": false,
+      "compression": "Masks",
+      "texture_group": "World"
+    },
+    "ambient_occlusion": {
+      "name": "T_Terrain_Rock_Desert_01_AO",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_01/T_Terrain_Rock_Desert_01_AO.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_AO",
+      "srgb": false,
+      "compression": "Masks",
+      "texture_group": "World"
+    },
+    "height": {
+      "name": "T_Terrain_Rock_Desert_01_H",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_01/T_Terrain_Rock_Desert_01_H.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_H",
+      "srgb": false,
+      "compression": "Masks",
+      "texture_group": "World"
+    }
+  },
+  "ue": {
+    "parent_material": "/CoreTerrainMaterials/Materials/Masters/M_Terrain_Master",
+    "instance_path": "/Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+    "texture_folder": "/Game/Textures/Terrain",
+    "generate_data_asset": true,
+    "data_asset_class": "MaterialRecipeDataAsset"
+  },
+  "material_parameters": {
+    "textures": {
+      "BaseColorTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_BC",
+      "NormalTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_N",
+      "RoughnessTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_R",
+      "AOTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_AO",
+      "HeightTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_H"
+    },
+    "scalars": {
+      "base_hue": 0.08,
+      "saturation": 0.42,
+      "value": 0.58,
+      "crack_density": 0.72,
+      "crack_depth": 0.45,
+      "strata_angle": 18.0,
+      "erosion_strength": 0.63,
+      "sand_overlay": 0.28
+    },
+    "vectors": {}
+  }
+}
