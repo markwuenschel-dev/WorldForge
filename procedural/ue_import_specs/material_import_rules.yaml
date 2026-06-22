@@ -1,0 +1,23 @@
+# material_import_rules.yaml
+# Rules consumed by import_textures.py and other UE automation scripts
+
+texture_settings:
+  default_compression:
+    base_color: Default          # or BC7 for high quality
+    normal: Normalmap            # or BC5
+    masks: Masks
+    height: Displacementmap
+
+  texture_group: World           # Default texture group
+
+naming:
+  prefix: T_
+  category_folders:
+    terrain: Textures/Terrain
+    building: Textures/Building
+    prop: Textures/Props
+
+validation:
+  require_power_of_two: true
+  max_resolution: 4096
+  enforce_naming_convention: true
