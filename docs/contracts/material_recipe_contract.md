@@ -39,6 +39,7 @@ ue:
     masks: string
   generate_data_asset: bool         # Usually true
   data_asset_class: string          # e.g. MaterialRecipeDataAsset
+  data_asset_path: string           # Optional; defaults to MI path with MI_ -> DA_
 ```
 
 ## 2. Generation Target
@@ -75,11 +76,33 @@ Each master graph maintains its own allowed parameter list in `validate_recipe.p
 
 ## 5. Provenance
 
-Every generated Material Instance and Data Asset must embed or reference:
-- Source YAML path
-- Git commit hash at generation time
-- Exact parameter values
-- Build timestamp
+Provenance is stamped once, at manifest generation (`generate_manifest.py`), into a
+`provenance` block in the manifest, then copied **verbatim** into the Data Asset by
+`create_data_asset.py`. It is never re-derived at the UE step and never hidden.
+
+The manifest `provenance` block carries:
+- `generator_name` / `generator_version`
+- `generated_at_utc` (ISO-8601 UTC)
+- `source_commit` (git HEAD)
+- `source_tree_dirty` (true if the recipe/graph inputs were uncommitted; recorded, not hidden)
+- `inputs` — SHA-256 of each input (recipe YAML, master graph)
+
+Honesty rules: a dirty input tree is flagged, not blocked, by default; pass
+`--strict` (CI/agents) to hard-fail on dirty. Tier-3 validation compares the Data
+Asset's recorded `SourceRecipeHash` against the manifest's current input hash and
+rejects stale provenance.
+
+### `UMaterialRecipeDataAsset` is a provenance/linkage record, not a runtime registry
+
+It is a plain `UDataAsset` (in `WorldForgeCore`) whose only job is to answer "which
+recipe / params / commit / manifest produced this Material Instance and these
+textures?" — for tooling, validation, and audit. It holds hard references to the MI
+and textures plus the provenance fields above. It is **not** an AssetManager-tracked
+registry queried at runtime.
+
+**Upgrade trigger**: promote to `UPrimaryDataAsset` only when a runtime system must
+discover, enumerate, async-load, or bundle recipes by id/type/tag. Until then,
+`UPrimaryDataAsset` is YAGNI (see forge_design_decisions D3).
 
 This enables "which recipe produced this asset?" debugging.
 

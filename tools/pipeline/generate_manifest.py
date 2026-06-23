@@ -3,13 +3,27 @@
 generate_manifest.py
 Produces a stable JSON manifest from a validated material recipe.
 This is the contract handed to UE Python scripts.
+
+The manifest carries a provenance block (git commit, dirty flag, timestamp,
+generator identity, input hashes) stamped here at generation time. Provenance is
+recorded honestly: a dirty input tree is flagged, never hidden (see
+forge_design_decisions D4). Use --strict to hard-fail on dirty inputs (CI/agents).
 """
 
 import argparse
+import hashlib
 import json
+import subprocess
 import sys
-import yaml
+from datetime import datetime, timezone
 from pathlib import Path
+
+import yaml
+
+GENERATOR_NAME = "worldforge-generate-manifest"
+GENERATOR_VERSION = "1.0.0"
+
+REPO_ROOT = Path(__file__).parent.parent.parent
 
 # Explicit mapping to avoid bad names like Base_colorTexture
 TEXTURE_PARAMETER_NAMES = {
@@ -20,12 +34,87 @@ TEXTURE_PARAMETER_NAMES = {
     "height": "HeightTexture",
 }
 
+
+def _git(*args) -> str:
+    """Run a git command at the repo root; return stripped stdout, or '' on failure."""
+    try:
+        out = subprocess.run(
+            ["git", *args],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        return out.stdout.strip()
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return ""
+
+
+def _sha256(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def build_provenance(recipe_path: Path, graph_path: Path) -> dict:
+    """Stamp git + timestamp + generator + input-hash provenance.
+
+    'dirty' is scoped to the actual inputs (recipe + graph) so unrelated
+    working-tree churn does not falsely flag an asset's provenance.
+    """
+    rel_inputs = []
+    for p in (recipe_path, graph_path):
+        if p.exists():
+            rel_inputs.append(str(p.relative_to(REPO_ROOT)))
+
+    dirty_inputs = _git("status", "--porcelain", "--", *rel_inputs) if rel_inputs else ""
+
+    inputs = {}
+    for p in (recipe_path, graph_path):
+        if p.exists():
+            inputs[str(p.relative_to(REPO_ROOT))] = _sha256(p)
+
+    return {
+        "generator_name": GENERATOR_NAME,
+        "generator_version": GENERATOR_VERSION,
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "source_commit": _git("rev-parse", "HEAD") or "unknown",
+        "source_tree_dirty": bool(dirty_inputs),
+        "inputs": inputs,
+    }
+
+
+def derive_data_asset_path(ue: dict) -> str:
+    """Manifest owns the Data Asset output path (D5).
+
+    Use ue.data_asset_path if the recipe specifies it; otherwise derive it next
+    to the Material Instance by swapping the MI_ prefix for DA_.
+    """
+    explicit = ue.get("data_asset_path")
+    if explicit:
+        return explicit
+    instance_path = ue.get("instance_path", "")
+    package, name = instance_path.rsplit("/", 1)
+    if name.startswith("MI_"):
+        name = "DA_" + name[len("MI_"):]
+    else:
+        name = "DA_" + name
+    return f"{package}/{name}"
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--recipe", required=True)
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="Hard-fail if the source inputs are dirty (uncommitted). For CI/agents.",
+    )
     args = parser.parse_args()
 
-    recipes_dir = Path(__file__).parent.parent.parent / "procedural" / "substance" / "recipes"
+    recipes_dir = REPO_ROOT / "procedural" / "substance" / "recipes"
     recipe_path = recipes_dir / f"{args.recipe}.yaml"
 
     if not recipe_path.exists():
@@ -44,13 +133,27 @@ def main():
     outputs = recipe["outputs"]
     texture_folder = ue.get("texture_folder", "Textures/Terrain")
 
+    graph_path = REPO_ROOT / "procedural" / "substance" / "graphs" / recipe["graph"]
+    provenance = build_provenance(recipe_path, graph_path)
+
+    if provenance["source_tree_dirty"]:
+        msg = (
+            f"Source inputs are dirty (uncommitted) for recipe '{recipe['id']}'. "
+            "Provenance will record source_tree_dirty=true."
+        )
+        if args.strict:
+            print(f"ERROR (--strict): {msg}", file=sys.stderr)
+            sys.exit(2)
+        print(f"WARNING: {msg}", file=sys.stderr)
+
     manifest = {
         "recipe_id": recipe["id"],
         "schema_version": recipe["schema_version"],
         "graph": recipe["graph"],
         "resolution": recipe["resolution"],
-        "source_recipe": str(recipe_path.relative_to(Path(__file__).parent.parent.parent)),
+        "source_recipe": str(recipe_path.relative_to(REPO_ROOT)),
         "substance_graph_path": str(Path("procedural/substance/graphs") / recipe["graph"]),
+        "provenance": provenance,
         "exports": {},
         "ue": {
             "parent_material": ue.get("parent_material"),
@@ -58,6 +161,7 @@ def main():
             "texture_folder": f"/Game/{texture_folder}",
             "generate_data_asset": ue.get("generate_data_asset", False),
             "data_asset_class": ue.get("data_asset_class"),
+            "data_asset_path": derive_data_asset_path(ue),
         },
         "material_parameters": {
             "textures": {},
@@ -82,7 +186,7 @@ def main():
         param_name = TEXTURE_PARAMETER_NAMES.get(tex_type, f"{tex_type}Texture")
         manifest["material_parameters"]["textures"][param_name] = ue_asset_path
 
-    manifests_dir = Path(__file__).parent.parent.parent / "procedural" / "manifests" / "materials"
+    manifests_dir = REPO_ROOT / "procedural" / "manifests" / "materials"
     manifests_dir.mkdir(parents=True, exist_ok=True)
     output_path = manifests_dir / f"{args.recipe}.json"
 
@@ -90,6 +194,7 @@ def main():
         json.dump(manifest, f, indent=2)
 
     print(f"Generated manifest: {output_path}")
+
 
 if __name__ == "__main__":
     main()
