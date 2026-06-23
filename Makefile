@@ -4,8 +4,8 @@ PYTHON := python
 UE_PYTHON := python
 
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
-        import-textures create-master create-material validate-assets diagnose \
-        pre-ue-audit validate-and-manifest preview build clean
+        import-textures create-master create-world-state-mpc create-material create-data-asset \
+        validate-assets diagnose pre-ue-audit validate-and-manifest preview build clean
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -21,7 +21,9 @@ help:
 	@echo "UE-side steps (run inside UE Python):"
 	@echo "  make import-textures RECIPE=terrain_rock_desert_01"
 	@echo "  make create-master RECIPE=terrain_rock_desert_01    # one-time per master"
+	@echo "  make create-world-state-mpc                         # one-time: MPC_WorldState render mirror"
 	@echo "  make create-material RECIPE=terrain_rock_desert_01"
+	@echo "  make create-data-asset RECIPE=terrain_rock_desert_01  # provenance + linkage record"
 	@echo "  make validate-assets RECIPE=terrain_rock_desert_01"
 	@echo "  make diagnose RECIPE=terrain_rock_desert_01"
 	@echo ""
@@ -58,8 +60,14 @@ import-textures:
 create-master:
 	$(UE_PYTHON) tools/unreal/create_master_material.py --manifest procedural/manifests/materials/$(RECIPE).json --project-root .
 
+create-world-state-mpc:
+	$(UE_PYTHON) tools/unreal/create_world_state_mpc.py --project-root .
+
 create-material:
 	$(UE_PYTHON) tools/unreal/create_material_instances.py --manifest procedural/manifests/materials/$(RECIPE).json --project-root .
+
+create-data-asset:
+	$(UE_PYTHON) tools/unreal/create_data_asset.py --manifest procedural/manifests/materials/$(RECIPE).json --project-root .
 
 validate-assets:
 	$(UE_PYTHON) tools/unreal/validate_assets.py --manifest procedural/manifests/materials/$(RECIPE).json --project-root .
@@ -82,6 +90,7 @@ build:
 	@echo "Next steps (run inside UE Python):"
 	@echo "  make import-textures RECIPE=$(RECIPE)"
 	@echo "  make create-material RECIPE=$(RECIPE)"
+	@echo "  make create-data-asset RECIPE=$(RECIPE)"
 	@echo "  make validate-assets RECIPE=$(RECIPE)"
 
 clean:

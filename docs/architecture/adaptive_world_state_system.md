@@ -152,8 +152,49 @@ It must be hardened first because:
 - Every adaptive world needs believable visual feedback for state changes.
 - A trustworthy material pipeline makes later state-driven material swapping cheap and reliable.
 
-## 9. Scope Reminder
+## 9. Implemented Spine (v1)
 
-This document defines the **target vision**. Implementation of the full Adaptive World State runtime system comes **after** the Material Factory lane is strict and reliable.
+The **thin StateForge spine** is now built (forge_design_decisions D9–D11). This is the
+minimal tracer described below — **not** the full runtime system this document
+envisions. Accumulation, influence falloff, aggregation, persistence, and building
+emitters are still deferred and all resolve into `SetStateValue`.
 
-Do not start building GlobalState, RegionState, or LocalInfluenceFields code yet. Harden the foundation first.
+**`UWorldStateSubsystem`** (`UWorldSubsystem`, in `WorldForgeCore`) is the source of truth:
+
+- **Read (canonical pull-query):**
+  `float GetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Default = 0.f) const`
+  Every CPU consumer (PlacementForge, enemies, economy, quests…) binds to this. They
+  **never** read the MPC.
+- **Write (authoritative setter):**
+  `void SetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Value)`
+- **Address** = `Scope (Global/Region/Local/Settlement) + ContextId + Key`, float-valued.
+  In-memory store only (no persistence in the spine).
+- **Render mirror:** curated render-facing keys are pushed into `MPC_WorldState`
+  (created by `tools/unreal/create_world_state_mpc.py`, at
+  `/CoreTerrainMaterials/State/MPC_WorldState`). **Materials read only the MPC.**
+  Curated keys: `industrial_pressure`, `corruption_level`, `restoration_level`,
+  `wetness`, `ashfall` (→ `IndustrialPressure`, `CorruptionLevel`, `RestorationLevel`,
+  `Wetness`, `Ashfall`).
+- **Debug tracer:** console command
+  `WorldForge.SetState <Scope> <ContextId> <Key> <Value>`.
+
+**Acceptance tracer:** `WorldForge.SetState Region Desert_Valley_01 industrial_pressure 0.75`
+→ subsystem mirrors into `MPC_WorldState.IndustrialPressure` → terrain soot overlay
+visibly changes.
+
+### Required human Tier-2 edit (cannot be automated)
+
+The master material `M_Terrain_Master` (in `CoreTerrainMaterials`) must **sample**
+`MPC_WorldState.IndustrialPressure` and lerp a soot/industrial overlay by it. Without
+this edit there is no MPC sampler and no visible reaction. This is a human `.uasset`
+edit; an agent cannot do it. Steps: open `M_Terrain_Master` → add a
+`CollectionParameter` node referencing `MPC_WorldState` / `IndustrialPressure` → use it
+to lerp base color/roughness toward a sooted look → save.
+
+## 10. Scope Reminder
+
+This document defines the **target vision**. The thin spine in §9 is intentionally
+minimal; the **full** Adaptive World State runtime (RegionState simulation,
+LocalInfluenceFields, building emitters, persistence) still comes later, layered on
+top of the spine. Do not expand the spine into the full system without human review —
+harden each consumer (materials, then PlacementForge) first.
