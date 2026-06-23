@@ -5,6 +5,7 @@ Validates a material recipe YAML file against the material_recipe_contract.md
 
 Usage:
     python tools/substance/validate_recipe.py --recipe terrain_rock_desert_01
+    python tools/substance/validate_recipe.py --recipe-path tests/fixtures/invalid_recipes/missing_id.yaml
     python tools/substance/validate_recipe.py --all
 """
 
@@ -33,6 +34,13 @@ REQUIRED_OUTPUT_KEYS = ["base_color", "normal", "roughness", "ambient_occlusion"
 REQUIRED_UE_KEYS = [
     "parent_material", "instance_path", "texture_folder", "texture_group",
     "compression", "generate_data_asset", "data_asset_class"
+]
+
+# Optional ue keys: allowed but not required. data_asset_path lets a recipe
+# pin the Data Asset output path explicitly; generate_manifest.py otherwise
+# derives it (see forge_design_decisions D5).
+OPTIONAL_UE_KEYS = [
+    "data_asset_path",
 ]
 
 REQUIRED_COMPRESSION_KEYS = ["base_color", "normal", "masks"]
@@ -105,7 +113,7 @@ def validate_recipe(recipe: Dict[str, Any], recipe_name: str) -> List[str]:
     if missing_ue:
         errors.append(f"Missing required ue keys: {missing_ue}")
 
-    unknown_ue = set(ue.keys()) - set(REQUIRED_UE_KEYS)
+    unknown_ue = set(ue.keys()) - set(REQUIRED_UE_KEYS) - set(OPTIONAL_UE_KEYS)
     if unknown_ue:
         errors.append(f"Unknown ue keys: {unknown_ue}")
 
@@ -168,10 +176,32 @@ def validate_recipe(recipe: Dict[str, Any], recipe_name: str) -> List[str]:
 def main():
     parser = argparse.ArgumentParser(description="Validate material recipe YAML files")
     parser.add_argument("--recipe", help="Recipe name without .yaml (e.g. terrain_rock_desert_01)")
+    parser.add_argument(
+        "--recipe-path",
+        help="Path to an arbitrary recipe YAML to validate in place (e.g. a test fixture)",
+    )
     parser.add_argument("--all", action="store_true", help="Validate all recipes in the recipes folder")
     args = parser.parse_args()
 
     recipes_dir = Path(__file__).parent.parent.parent / "procedural" / "substance" / "recipes"
+
+    if args.recipe_path:
+        recipe_path = Path(args.recipe_path)
+        if not recipe_path.exists():
+            print(f"Recipe not found: {recipe_path}")
+            sys.exit(1)
+
+        recipe = load_recipe(recipe_path)
+        errors = validate_recipe(recipe, recipe_path.stem)
+
+        if errors:
+            print(f"❌ Validation failed for {recipe_path.name}")
+            for e in errors:
+                print(f"   - {e}")
+            sys.exit(1)
+        else:
+            print(f"✅ {recipe_path.name} is valid")
+            sys.exit(0)
 
     if args.all:
         recipe_files = list(recipes_dir.glob("*.yaml"))

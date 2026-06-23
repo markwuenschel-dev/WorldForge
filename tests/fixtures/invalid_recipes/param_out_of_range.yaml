@@ -1,0 +1,37 @@
+# INVALID FIXTURE — violates exactly one rule: 'base_hue' is out of its [0.0, 1.0] range.
+# Based on terrain_rock_desert_01.yaml. validate_recipe.py must REJECT this.
+
+schema_version: "1.1"
+id: terrain_rock_desert_01_oor
+graph: terrain_rock_strata.sbs
+resolution: 2048
+
+parameters:
+  base_hue: 1.8          # out of range (max 1.0)
+  saturation: 0.42
+  value: 0.58
+  crack_density: 0.72
+  crack_depth: 0.45
+  strata_angle: 18.0
+  erosion_strength: 0.63
+  sand_overlay: 0.28
+
+outputs:
+  base_color: T_Terrain_Rock_Desert_01_BC
+  normal: T_Terrain_Rock_Desert_01_N
+  roughness: T_Terrain_Rock_Desert_01_R
+  ambient_occlusion: T_Terrain_Rock_Desert_01_AO
+  height: T_Terrain_Rock_Desert_01_H
+
+ue:
+  parent_material: /Game/Materials/Masters/M_Terrain_Master
+  instance_path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01
+  data_asset_path: /Game/Materials/Terrain/DA_Terrain_Rock_Desert_01
+  texture_folder: Textures/Terrain
+  texture_group: World
+  compression:
+    base_color: Default
+    normal: Normalmap
+    masks: Masks
+  generate_data_asset: true
+  data_asset_class: MaterialRecipeDataAsset
