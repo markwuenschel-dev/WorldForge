@@ -1,14 +1,11 @@
-.vs/
-.vscode/.browse.VC.db*
-.vscode/ipch/
-
+# Unreal Engine
 Binaries/
 DerivedDataCache/
 Intermediate/
 Saved/
 Build/
-
-# Plugin build artifacts
+.vs/
+.vscode/
 Plugins/**/Binaries/
 Plugins/**/Intermediate/
 
@@ -19,25 +16,46 @@ Plugins/**/Intermediate/
 *.opendb
 *.sdf
 *.suo
+*.user
+*.userosscache
+*.sln.docstates
 *.xcodeproj
 *.xcworkspace
 
-# Optional local editor state
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+develop-eggs/
+dist/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+.installed.cfg
+
+# IDE / Editor
+.idea/
+*.swp
+*.swo
+*~
 *.tmp
 *.log
 
-# Environment secrets - API keys, tokens. NEVER commit.
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Secrets - NEVER commit
 .env
 .env.*
 !.env.example
-
-# Local agent settings - may hold secrets. NEVER commit.
 .claude/settings.local.json
 
-# Do NOT ignore these:
-# Config/
-# Content/
-# Plugins/
-# Source/
-# *.uproject
-# *.uplugin
+# Do NOT ignore: Config/ Content/ Plugins/ Source/ *.uproject *.uplugin
