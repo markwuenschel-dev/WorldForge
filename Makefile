@@ -4,7 +4,7 @@ PYTHON := python
 UE_PYTHON := python
 
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
-        import-textures create-master create-world-state-mpc create-material create-data-asset \
+        import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
         validate-assets diagnose pre-ue-audit validate-and-manifest preview build clean
 
 help:
@@ -22,6 +22,7 @@ help:
 	@echo "  make import-textures RECIPE=terrain_rock_desert_01"
 	@echo "  make create-master RECIPE=terrain_rock_desert_01    # one-time per master"
 	@echo "  make create-world-state-mpc                         # one-time: MPC_WorldState render mirror"
+	@echo "  make wire-terrain-soot                              # one-time: M_Terrain_Master soot reaction (Tier-2)"
 	@echo "  make create-material RECIPE=terrain_rock_desert_01"
 	@echo "  make create-data-asset RECIPE=terrain_rock_desert_01  # provenance + linkage record"
 	@echo "  make validate-assets RECIPE=terrain_rock_desert_01"
@@ -62,6 +63,9 @@ create-master:
 
 create-world-state-mpc:
 	$(UE_PYTHON) tools/unreal/create_world_state_mpc.py --project-root .
+
+wire-terrain-soot:
+	$(UE_PYTHON) tools/unreal/wire_terrain_soot.py --project-root .
 
 create-material:
 	$(UE_PYTHON) tools/unreal/create_material_instances.py --manifest procedural/manifests/materials/$(RECIPE).json --project-root .
