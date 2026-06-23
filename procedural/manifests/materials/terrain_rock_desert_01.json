@@ -5,6 +5,17 @@
   "resolution": 2048,
   "source_recipe": "procedural/substance/recipes/terrain_rock_desert_01.yaml",
   "substance_graph_path": "procedural/substance/graphs/terrain_rock_strata.sbs",
+  "provenance": {
+    "generator_name": "worldforge-generate-manifest",
+    "generator_version": "1.0.0",
+    "generated_at_utc": "2026-06-23T11:40:13.337904+00:00",
+    "source_commit": "3e8929aae75ccbe22813819afea2fd32cbc220e7",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/substance/recipes/terrain_rock_desert_01.yaml": "ce1f852824e81602420d96e5f25b2efffd79a67f9b540be9d11e41c9da4b5f3a",
+      "procedural/substance/graphs/terrain_rock_strata.sbs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
   "exports": {
     "base_color": {
       "name": "T_Terrain_Rock_Desert_01_BC",
@@ -48,11 +59,12 @@
     }
   },
   "ue": {
-    "parent_material": "/CoreTerrainMaterials/Materials/Masters/M_Terrain_Master",
+    "parent_material": "/Game/Materials/Masters/M_Terrain_Master",
     "instance_path": "/Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
     "texture_folder": "/Game/Textures/Terrain",
     "generate_data_asset": true,
-    "data_asset_class": "MaterialRecipeDataAsset"
+    "data_asset_class": "MaterialRecipeDataAsset",
+    "data_asset_path": "/Game/Materials/Terrain/DA_Terrain_Rock_Desert_01"
   },
   "material_parameters": {
     "textures": {
