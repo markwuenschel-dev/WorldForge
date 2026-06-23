@@ -8,7 +8,7 @@
 #include "WorldStateSubsystem.generated.h"
 
 class UMaterialParameterCollection;
-class IConsoleCommand;
+struct IConsoleCommand;
 
 /**
  * UWorldStateSubsystem - the thin StateForge spine (forge_design_decisions D9-D11).

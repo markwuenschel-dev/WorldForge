@@ -182,14 +182,21 @@ emitters are still deferred and all resolve into `SetStateValue`.
 → subsystem mirrors into `MPC_WorldState.IndustrialPressure` → terrain soot overlay
 visibly changes.
 
-### Required human Tier-2 edit (cannot be automated)
+### Required Tier-2 edit — scripted, human-run
 
 The master material `M_Terrain_Master` (in `CoreTerrainMaterials`) must **sample**
 `MPC_WorldState.IndustrialPressure` and lerp a soot/industrial overlay by it. Without
-this edit there is no MPC sampler and no visible reaction. This is a human `.uasset`
-edit; an agent cannot do it. Steps: open `M_Terrain_Master` → add a
-`CollectionParameter` node referencing `MPC_WorldState` / `IndustrialPressure` → use it
-to lerp base color/roughness toward a sooted look → save.
+this edit there is no MPC sampler and no visible reaction.
+
+This is scripted by `tools/unreal/wire_terrain_soot.py` (run in-editor via
+`make wire-terrain-soot`): it splices a `CollectionParameter`
+(`MPC_WorldState`/`IndustrialPressure`) → `Clamp` → `Lerp` into the master's base
+color and roughness, toward a sooted look, and saves. It is idempotent (`--force`
+rebuilds) and stamps its nodes with `WorldForge:SootReaction`.
+
+It mutates the master `.uasset`, so it is still a **Tier-2** change: human-run /
+reviewed, **not** an agent-safe Tier-0/1 step. Order: `make create-world-state-mpc`
+(once) → `make wire-terrain-soot` (once).
 
 ## 10. Scope Reminder
 
