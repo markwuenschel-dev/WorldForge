@@ -1,0 +1,60 @@
+# reclaimed_desert_foliage.yaml
+# FoliageSpawnRules for the reclaimed_desert biome.
+# This file is safe for agents to duplicate and modify (within allowed ranges).
+# Conforms to docs/contracts/placement_rules_contract.md v1.1 (forge_design_decisions D13).
+#
+# The generated PlacementRulesDataAsset is read by the human-owned PCG graph below.
+# The PCG graph pulls live world state per cell (WorldStateSubsystem.GetStateValue)
+# and modulates each species' density between density_at_state_zero and
+# density_at_state_one. State is read live; only the response is baked here.
+
+schema_version: "1.1"
+id: reclaimed_desert_foliage
+biome: reclaimed_desert
+pcg_graph: /Game/Procedural/PCG/PCG_FoliageScatter   # human-owned template (Tier 2)
+
+species:
+  # Dead scrub takes over as industrial pressure rises (sparse on clean ground).
+  - id: dead_scrub
+    mesh: /Game/Meshes/Foliage/SM_DeadScrub_01
+    base_density: 6.0
+    scale_min: 0.8
+    scale_max: 1.3
+    state_scope: Region
+    state_key: industrial_pressure
+    density_at_state_zero: 0.1
+    density_at_state_one: 1.0
+
+  # Healthy grass dominates clean desert and thins out as industry encroaches.
+  - id: reclaimed_grass
+    mesh: /Game/Meshes/Foliage/SM_ReclaimedGrass_01
+    base_density: 12.0
+    scale_min: 0.9
+    scale_max: 1.4
+    state_scope: Region
+    state_key: industrial_pressure
+    density_at_state_zero: 1.0
+    density_at_state_one: 0.05
+
+  # Young trees only hold on where industrial pressure is low.
+  - id: young_tree
+    mesh: /Game/Meshes/Foliage/SM_YoungTree_01
+    base_density: 1.5
+    scale_min: 0.7
+    scale_max: 1.1
+    state_scope: Region
+    state_key: industrial_pressure
+    density_at_state_zero: 1.0
+    density_at_state_one: 0.0
+
+ue:
+  data_asset_path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage
+  data_asset_class: PlacementRulesDataAsset
+  generate_data_asset: true
+
+# Notes for agents:
+# - Duplicate this file for new biomes/rulesets.
+# - Only change values under "species" and the data_asset_path.
+# - state_key must be on the allowed list (see contract); adding one needs a human update.
+# - Do NOT bake a resolved state value here — the PCG graph reads state live.
+# - After editing, run: make validate-placement DEF=reclaimed_desert_foliage

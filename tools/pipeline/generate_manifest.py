@@ -11,14 +11,13 @@ forge_design_decisions D4). Use --strict to hard-fail on dirty inputs (CI/agents
 """
 
 import argparse
-import hashlib
 import json
-import subprocess
 import sys
-from datetime import datetime, timezone
 from pathlib import Path
 
 import yaml
+
+from provenance import build_provenance
 
 GENERATOR_NAME = "worldforge-generate-manifest"
 GENERATOR_VERSION = "1.0.0"
@@ -33,57 +32,6 @@ TEXTURE_PARAMETER_NAMES = {
     "ambient_occlusion": "AOTexture",
     "height": "HeightTexture",
 }
-
-
-def _git(*args) -> str:
-    """Run a git command at the repo root; return stripped stdout, or '' on failure."""
-    try:
-        out = subprocess.run(
-            ["git", *args],
-            cwd=REPO_ROOT,
-            capture_output=True,
-            text=True,
-            check=True,
-        )
-        return out.stdout.strip()
-    except (subprocess.CalledProcessError, FileNotFoundError):
-        return ""
-
-
-def _sha256(path: Path) -> str:
-    h = hashlib.sha256()
-    with open(path, "rb") as f:
-        for chunk in iter(lambda: f.read(65536), b""):
-            h.update(chunk)
-    return h.hexdigest()
-
-
-def build_provenance(recipe_path: Path, graph_path: Path) -> dict:
-    """Stamp git + timestamp + generator + input-hash provenance.
-
-    'dirty' is scoped to the actual inputs (recipe + graph) so unrelated
-    working-tree churn does not falsely flag an asset's provenance.
-    """
-    rel_inputs = []
-    for p in (recipe_path, graph_path):
-        if p.exists():
-            rel_inputs.append(str(p.relative_to(REPO_ROOT)))
-
-    dirty_inputs = _git("status", "--porcelain", "--", *rel_inputs) if rel_inputs else ""
-
-    inputs = {}
-    for p in (recipe_path, graph_path):
-        if p.exists():
-            inputs[str(p.relative_to(REPO_ROOT))] = _sha256(p)
-
-    return {
-        "generator_name": GENERATOR_NAME,
-        "generator_version": GENERATOR_VERSION,
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
-        "source_commit": _git("rev-parse", "HEAD") or "unknown",
-        "source_tree_dirty": bool(dirty_inputs),
-        "inputs": inputs,
-    }
 
 
 def derive_data_asset_path(ue: dict) -> str:
@@ -134,7 +82,9 @@ def main():
     texture_folder = ue.get("texture_folder", "Textures/Terrain")
 
     graph_path = REPO_ROOT / "procedural" / "substance" / "graphs" / recipe["graph"]
-    provenance = build_provenance(recipe_path, graph_path)
+    provenance = build_provenance(
+        REPO_ROOT, [recipe_path, graph_path], GENERATOR_NAME, GENERATOR_VERSION
+    )
 
     if provenance["source_tree_dirty"]:
         msg = (
@@ -151,8 +101,8 @@ def main():
         "schema_version": recipe["schema_version"],
         "graph": recipe["graph"],
         "resolution": recipe["resolution"],
-        "source_recipe": str(recipe_path.relative_to(REPO_ROOT)),
-        "substance_graph_path": str(Path("procedural/substance/graphs") / recipe["graph"]),
+        "source_recipe": recipe_path.relative_to(REPO_ROOT).as_posix(),
+        "substance_graph_path": (Path("procedural/substance/graphs") / recipe["graph"]).as_posix(),
         "provenance": provenance,
         "exports": {},
         "ue": {

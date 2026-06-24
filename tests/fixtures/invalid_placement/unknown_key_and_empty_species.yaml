@@ -1,0 +1,10 @@
+# INVALID: unknown top-level key + empty species list + wrong data_asset_class
+schema_version: "1.1"
+id: unknown_key_and_empty_species
+biome: reclaimed_desert
+pcg_graph: /Game/Procedural/PCG/PCG_FoliageScatter
+density: 9000        # unknown top-level key
+species: []          # must be non-empty
+ue:
+  data_asset_class: MaterialRecipeDataAsset   # wrong class for placement
+  generate_data_asset: true
