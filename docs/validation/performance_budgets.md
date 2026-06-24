@@ -35,6 +35,21 @@
 - Spawn density caps per biome stage (enforced in FoliageSpawnRules)
 - Hierarchical culling and LOD rules must be present for dense layers
 
+### PlacementForge enforced caps (v1)
+
+`validate_placement.py` (Tier 1) and `validate_placement_assets.py` (Tier 3) hard-fail
+on these. Raising a cap is a human contract change (Tier 2), like raising a material budget:
+
+| Cap | Value | Field |
+|-----|-------|-------|
+| Max species per ruleset | 12 | `species[]` length |
+| Max base density | 50.0 (instances / 100 m²) | `base_density` |
+| Max state-response multiplier | 5.0 | `density_at_state_zero/one` |
+| Max instance scale | 100.0 | `scale_min` / `scale_max` |
+
+State values that drive density are **read live** from `WorldStateSubsystem` per cell;
+only the response endpoints are baked into the Data Asset (forge_design_decisions D13).
+
 ## 4. MassEntity Budgets
 
 - Max active entities per archetype (soft and hard caps)

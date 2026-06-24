@@ -1,55 +1,58 @@
 {
-  "FileVersion": 3,
-  "EngineAssociation": "5.7",
-  "Category": "Tooling",
-  "Description": "WorldForge - adaptive game tooling layer (procedural materials, manifest pipeline, UE import automation, world-state contracts, agent-safe generation rules). Not a game; the factory that builds games.",
-  "Modules": [
-    {
-      "Name": "WorldForge",
-      "Type": "Runtime",
-      "LoadingPhase": "Default"
-    }
-  ],
-  "Plugins": [
-    {
-      "Name": "WorldForge",
-      "Enabled": true
-    },
-    {
-      "Name": "PCG",
-      "Enabled": true
-    },
-    {
-      "Name": "EditorScriptingUtilities",
-      "Enabled": true
-    },
-    {
-      "Name": "PythonScriptPlugin",
-      "Enabled": true
-    },
-    {
-      "Name": "NeoStackAI",
-      "Enabled": true,
-      "SupportedTargetPlatforms": [
-        "Win64",
-        "Mac",
-        "Linux"
-      ]
-    },
-    {
-      "Name": "PCGExtendedToolkit",
-      "Enabled": true
-    },
-    {
-      "Name": "VisualStudioTools",
-      "Enabled": false,
-      "SupportedTargetPlatforms": [
-        "Win64"
-      ]
-    }
-  ],
-  "TargetPlatforms": [],
-  "AdditionalRootDirectories": [],
-  "AdditionalPluginDirectories": [],
-  "EpicSampleNameHash": ""
+	"FileVersion": 3,
+	"EngineAssociation": "{8ACD83BD-4755-DA2F-50F2-85B7DA21358F}",
+	"Category": "Tooling",
+	"Description": "WorldForge - adaptive game tooling layer (procedural materials, manifest pipeline, UE import automation, world-state contracts, agent-safe generation rules). Not a game; the factory that builds games.",
+	"Modules": [
+		{
+			"Name": "WorldForge",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "WorldForge",
+			"Enabled": true
+		},
+		{
+			"Name": "PCG",
+			"Enabled": true
+		},
+		{
+			"Name": "EditorScriptingUtilities",
+			"Enabled": true
+		},
+		{
+			"Name": "PythonScriptPlugin",
+			"Enabled": true
+		},
+		{
+			"Name": "VisualStudioTools",
+			"Enabled": false,
+			"SupportedTargetPlatforms": [
+				"Win64"
+			]
+		},
+		{
+			"Name": "PythonAutomationTest",
+			"Enabled": true
+		},
+		{
+			"Name": "PythonFoundationPackages",
+			"Enabled": true
+		},
+		{
+			"Name": "PythonMLPackages",
+			"Enabled": true
+		},
+		{
+			"Name": "MLflow",
+			"Enabled": true
+		},
+		{
+			"Name": "PCGPythonInterop",
+			"Enabled": true
+		}
+	]
 }

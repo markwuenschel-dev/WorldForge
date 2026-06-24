@@ -93,17 +93,58 @@ jobs:
           print("    ue.data_asset_path:", data_asset_path)
           PY
 
-      # --- Tier 1: every invalid fixture must be rejected ---
+      # --- Tier 1: every invalid recipe fixture must be rejected ---
       - name: Negative recipe tests
         run: |
           python tools/pipeline/test_negative_recipes.py
+
+      # --- Tier 1 (PlacementForge): the example definition must pass ---
+      - name: Validate placement definition (reclaimed_desert_foliage)
+        run: |
+          python tools/pipeline/validate_placement.py --definition reclaimed_desert_foliage
+
+      # --- Tier 1 (PlacementForge): manifest generates with provenance + data_asset_path ---
+      - name: Generate placement manifest
+        run: |
+          python tools/pipeline/generate_placement_manifest.py --definition reclaimed_desert_foliage
+
+      - name: Assert placement manifest validity + provenance block
+        run: |
+          python - <<'PY'
+          import json
+
+          path = "procedural/manifests/placement/reclaimed_desert_foliage.json"
+          with open(path, "r", encoding="utf-8") as f:
+              manifest = json.load(f)  # fails loudly if not valid JSON
+
+          prov = manifest.get("provenance")
+          assert isinstance(prov, dict), "manifest missing 'provenance' block"
+          required_prov = ["generator_name", "generated_at_utc", "source_commit",
+                           "source_tree_dirty", "inputs"]
+          missing = [k for k in required_prov if k not in prov]
+          assert not missing, f"provenance missing keys: {missing}"
+
+          assert manifest.get("species"), "manifest missing non-empty species[]"
+          data_asset_path = manifest.get("ue", {}).get("data_asset_path")
+          assert data_asset_path, "manifest missing ue.data_asset_path"
+
+          print("OK: placement manifest valid with complete provenance.")
+          print("    species:", [s["id"] for s in manifest["species"]])
+          print("    ue.data_asset_path:", data_asset_path)
+          PY
+
+      # --- Tier 1 (PlacementForge): every invalid fixture must be rejected ---
+      - name: Negative placement tests
+        run: |
+          python tools/pipeline/test_negative_placement.py
 
       # --- Tier 0: forbidden-path check on the PR diff (informational) ---
       - name: Agent permission check (PR diff)
         run: |
           python tools/pipeline/check_agent_permissions.py --changed-against origin/main
 
-      # --- Tier 1: Makefile build target dry-run parses ---
+      # --- Tier 1: Makefile build target dry-runs parse ---
       - name: Makefile build dry-run sanity
         run: |
           make -n build RECIPE=terrain_rock_desert_01
+          make -n placement-build DEF=reclaimed_desert_foliage

@@ -5,7 +5,9 @@ UE_PYTHON := python
 
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
-        validate-assets diagnose pre-ue-audit validate-and-manifest preview build clean
+        validate-assets diagnose pre-ue-audit validate-and-manifest preview build clean \
+        validate-placement generate-placement-manifest create-placement-data-asset \
+        validate-placement-assets placement-build
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -27,6 +29,14 @@ help:
 	@echo "  make create-data-asset RECIPE=terrain_rock_desert_01  # provenance + linkage record"
 	@echo "  make validate-assets RECIPE=terrain_rock_desert_01"
 	@echo "  make diagnose RECIPE=terrain_rock_desert_01"
+	@echo ""
+	@echo ""
+	@echo "PlacementForge (FoliageSpawnRules -> PCG-read PlacementRulesDataAsset):"
+	@echo "  make validate-placement DEF=reclaimed_desert_foliage"
+	@echo "  make generate-placement-manifest DEF=reclaimed_desert_foliage"
+	@echo "  make create-placement-data-asset DEF=reclaimed_desert_foliage  # UE-side"
+	@echo "  make validate-placement-assets DEF=reclaimed_desert_foliage    # UE-side"
+	@echo "  make placement-build DEF=reclaimed_desert_foliage              # authoring-side"
 	@echo ""
 	@echo "Other:"
 	@echo "  make preview     # Always fails until preview generation exists"
@@ -80,6 +90,28 @@ diagnose:
 	@echo "Run inside UE5 Python Console:"
 	@echo "import diagnose_material_lane"
 	@echo "diagnose_material_lane.run_diagnostics('$(RECIPE)')"
+
+# PlacementForge targets (FoliageSpawnRules -> PlacementRulesDataAsset, D13)
+validate-placement:
+	$(PYTHON) tools/pipeline/validate_placement.py --definition $(DEF)
+
+generate-placement-manifest:
+	$(PYTHON) tools/pipeline/generate_placement_manifest.py --definition $(DEF)
+
+create-placement-data-asset:
+	$(UE_PYTHON) tools/unreal/create_placement_data_asset.py --manifest procedural/manifests/placement/$(DEF).json --project-root .
+
+validate-placement-assets:
+	$(UE_PYTHON) tools/unreal/validate_placement_assets.py --manifest procedural/manifests/placement/$(DEF).json --project-root .
+
+placement-build:
+	@echo "Authoring-side placement build for $(DEF)..."
+	$(MAKE) validate-placement DEF=$(DEF)
+	$(MAKE) generate-placement-manifest DEF=$(DEF)
+	@echo ""
+	@echo "Next steps (run inside UE Python):"
+	@echo "  make create-placement-data-asset DEF=$(DEF)"
+	@echo "  make validate-placement-assets DEF=$(DEF)"
 
 preview:
 	@echo "Preview generation is not implemented yet."

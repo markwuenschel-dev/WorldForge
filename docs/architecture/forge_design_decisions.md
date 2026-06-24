@@ -90,12 +90,41 @@ Keep `tools/{substance,pipeline,unreal}` and `procedural/{manifests,reports,…}
 ## D16 — Converge to build; grill later forges just-in-time
 Stop up-front grilling of Terrain/POI/full-State. Build Milestone 1; grill remaining forges when their turn comes.
 
+## D17 — PlacementForge v1: mirror MaterialForge, make the Data Asset runtime-read
+Built the agent-operability + data spine of PlacementForge by copying the proven
+contract: `definition → validate_placement → generate_placement_manifest →
+create_placement_data_asset → validate_placement_assets`, with Tier-0/1 CI gates and
+negative fixtures. FoliageSpawnRules live in `procedural/definitions/placement/`.
+- **Key shape difference from MaterialForge**: `UPlacementRulesDataAsset` is NOT
+  provenance-only. It carries a **runtime-read payload** (`Species[]`: mesh, density,
+  scale, state-response endpoints) that the PCG graph consumes, *plus* the same
+  provenance block. `UMaterialRecipeDataAsset` only links + records provenance.
+- **State stays live (D13)**: only the density *response* (`density_at_state_zero/one`)
+  is baked. The PCG graph pulls the live value via `WorldStateSubsystem.GetStateValue`
+  per cell and lerps. Baking a resolved state value is forbidden by the contract.
+- **No new C++ read node needed**: `GetStateValue` is already `BlueprintCallable`/
+  `BlueprintPure`, so the PCG graph binds to it directly — the pull API is the seam (D10).
+- **Agent-safe surface**: `state_key` is whitelisted to the curated keys + `none`;
+  density/scale/species-count budgets are hard-enforced in Tier 1 and re-checked in Tier 3.
+- **Shared provenance**: factored `tools/pipeline/provenance.py`; `generate_manifest.py`
+  now uses it too (verified byte-identical output, modulo timestamp). Manifest paths
+  normalized to POSIX `/` for cross-OS-stable hashing and git-friendliness.
+- **One required human Tier-2 edit** (mirrors D11's `M_Terrain_Master` soot edit): author
+  the PCG graph `/Game/Procedural/PCG/PCG_FoliageScatter` so it (a) reads `Species[]`
+  from `DA_*`, and (b) per cell calls `GetStateValue(state_scope, region, state_key)` and
+  modulates density. An agent can't author the `.uasset` graph; it can't be deferred — no
+  graph → no scatter. The data spine + contract make that edit small and well-specified.
+- **Deferred (tracked)**: the PCG graph `.uasset` itself; resolving a cell→RegionId
+  context mapping; Tier-3 mesh-reference integrity is a warning (meshes live in the game
+  project, not this tooling repo); multi-biome rulesets beyond the example.
+
 ---
 
 ## Roadmap (locked order)
-1. **MaterialForge v1** — contract-complete (D1–D8).
-2. **Thin StateForge spine** — subsystem + read/write contract + one tracer reaction (D9–D11).
-3. **PlacementForge** — PCG placement driven by state, on placeholder/marketplace meshes.
+1. **MaterialForge v1** — contract-complete (D1–D8). ✅ **Done**.
+2. **Thin StateForge spine** — subsystem + read/write contract + one tracer reaction (D9–D11). ✅ **Done**.
+3. **PlacementForge** — PCG placement driven by state, on placeholder/marketplace meshes (D13, D17).
+   ✅ **Data spine + contract + Tier-0/1 gates done**. ⏳ Remaining: the human-owned PCG graph (Tier 2).
 4. **MeshForge** — Blender GN, reusing the proven pattern (D12).
 5. **TerrainForge / POIForge** — later.
 - Cross-cutting throughout: validation/provenance/enforcement (D6, D7). Full StateForge (accumulation, persistence, emitters) layers on after the spine.
