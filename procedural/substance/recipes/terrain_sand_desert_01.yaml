@@ -1,0 +1,40 @@
+# terrain_sand_desert_01.yaml
+# Desert-family variant: wind-settled sand. Clone of terrain_rock_desert_01.
+# Only `parameters`, `id`, output names and ue paths differ (contract unchanged).
+# Conforms to docs/contracts/material_recipe_contract.md v1.1
+
+schema_version: "1.1"
+id: terrain_sand_desert_01
+graph: terrain_rock_strata.sbs
+resolution: 2048
+
+parameters:
+  base_hue: 0.10        # Lighter, warmer sand tone
+  saturation: 0.30
+  value: 0.72
+
+  crack_density: 0.10   # Very few cracks in loose sand
+  crack_depth: 0.15
+  strata_angle: 4.0
+  erosion_strength: 0.40
+  sand_overlay: 0.85    # Sand pools heavily
+
+outputs:
+  base_color: T_Terrain_Sand_Desert_01_BC
+  normal: T_Terrain_Sand_Desert_01_N
+  roughness: T_Terrain_Sand_Desert_01_R
+  ambient_occlusion: T_Terrain_Sand_Desert_01_AO
+  height: T_Terrain_Sand_Desert_01_H
+
+ue:
+  parent_material: /CoreTerrainMaterials/Materials/Masters/M_Terrain_Master
+  instance_path: /Game/Materials/Terrain/MI_Terrain_Sand_Desert_01
+  data_asset_path: /Game/Materials/Terrain/DA_Terrain_Sand_Desert_01
+  texture_folder: Textures/Terrain
+  texture_group: World
+  compression:
+    base_color: Default
+    normal: Normalmap
+    masks: Masks
+  generate_data_asset: true
+  data_asset_class: MaterialRecipeDataAsset

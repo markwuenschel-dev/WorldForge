@@ -142,8 +142,13 @@ def validate_recipe(recipe: Dict[str, Any], recipe_name: str) -> List[str]:
                 errors.append(f"Parameter '{param_name}' out of range [{min_val}, {max_val}] (got {value})")
 
     # 13. UE path validation (basic)
-    if not ue.get("parent_material", "").startswith("/Game/"):
-        errors.append("ue.parent_material must start with /Game/")
+    # parent_material is a master that may live in project content (/Game/) or in a
+    # shared plugin content root (the terrain master was migrated to the
+    # CoreTerrainMaterials plugin -- see relocate_master_to_plugin.py). Instances and
+    # textures still live in /Game/.
+    PARENT_ROOTS = ("/Game/", "/CoreTerrainMaterials/")
+    if not ue.get("parent_material", "").startswith(PARENT_ROOTS):
+        errors.append("ue.parent_material must start with one of {}".format(PARENT_ROOTS))
     if not ue.get("instance_path", "").startswith("/Game/"):
         errors.append("ue.instance_path must start with /Game/")
     if ue.get("texture_folder", "").startswith("/Game/"):

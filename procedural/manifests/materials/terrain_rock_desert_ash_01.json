@@ -1,0 +1,89 @@
+{
+  "recipe_id": "terrain_rock_desert_ash_01",
+  "schema_version": "1.1",
+  "graph": "terrain_rock_strata.sbs",
+  "resolution": 2048,
+  "source_recipe": "procedural/substance/recipes/terrain_rock_desert_ash_01.yaml",
+  "substance_graph_path": "procedural/substance/graphs/terrain_rock_strata.sbs",
+  "provenance": {
+    "generator_name": "worldforge-generate-manifest",
+    "generator_version": "1.0.0",
+    "generated_at_utc": "2026-06-25T23:21:27.273225+00:00",
+    "source_commit": "709ed46fd6ae416b5d0499607a005e765502dfb3",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/substance/recipes/terrain_rock_desert_ash_01.yaml": "854f5265884d0a3a11cbb076dbe90d2e44f1b116221317e1dc5623850b76611c",
+      "procedural/substance/graphs/terrain_rock_strata.sbs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "exports": {
+    "base_color": {
+      "name": "T_Terrain_Rock_Desert_Ash_01_BC",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_ash_01/T_Terrain_Rock_Desert_Ash_01_BC.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_BC",
+      "srgb": true,
+      "compression": "Default",
+      "texture_group": "World"
+    },
+    "normal": {
+      "name": "T_Terrain_Rock_Desert_Ash_01_N",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_ash_01/T_Terrain_Rock_Desert_Ash_01_N.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_N",
+      "srgb": false,
+      "compression": "Normalmap",
+      "texture_group": "World"
+    },
+    "roughness": {
+      "name": "T_Terrain_Rock_Desert_Ash_01_R",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_ash_01/T_Terrain_Rock_Desert_Ash_01_R.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_R",
+      "srgb": false,
+      "compression": "Masks",
+      "texture_group": "World"
+    },
+    "ambient_occlusion": {
+      "name": "T_Terrain_Rock_Desert_Ash_01_AO",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_ash_01/T_Terrain_Rock_Desert_Ash_01_AO.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_AO",
+      "srgb": false,
+      "compression": "Masks",
+      "texture_group": "World"
+    },
+    "height": {
+      "name": "T_Terrain_Rock_Desert_Ash_01_H",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_ash_01/T_Terrain_Rock_Desert_Ash_01_H.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_H",
+      "srgb": false,
+      "compression": "Masks",
+      "texture_group": "World"
+    }
+  },
+  "ue": {
+    "parent_material": "/CoreTerrainMaterials/Materials/Masters/M_Terrain_Master",
+    "instance_path": "/Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01",
+    "texture_folder": "/Game/Textures/Terrain",
+    "generate_data_asset": true,
+    "data_asset_class": "MaterialRecipeDataAsset",
+    "data_asset_path": "/Game/Materials/Terrain/DA_Terrain_Rock_Desert_Ash_01"
+  },
+  "material_parameters": {
+    "textures": {
+      "BaseColorTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_BC",
+      "NormalTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_N",
+      "RoughnessTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_R",
+      "AOTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_AO",
+      "HeightTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_H"
+    },
+    "scalars": {
+      "base_hue": 0.06,
+      "saturation": 0.12,
+      "value": 0.3,
+      "crack_density": 0.55,
+      "crack_depth": 0.5,
+      "strata_angle": 18.0,
+      "erosion_strength": 0.7,
+      "sand_overlay": 0.15
+    },
+    "vectors": {}
+  }
+}

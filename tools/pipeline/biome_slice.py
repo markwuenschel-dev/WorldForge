@@ -76,6 +76,12 @@ def write_active_slice(cfg, slug):
         "resolution": render.get("resolution", [1600, 900]),
         "seed": render.get("seed", 424242),
     }
+    # Render-proof terrain look: an explicit per-variant base color (linear RGB)
+    # that the UE render script lerps toward soot via MPC. This bypasses the
+    # headless MIC texture-override bug so variants are visibly distinct. Optional
+    # -- absent => render script keeps its old MI-driven path.
+    if render.get("preview_base_color") is not None:
+        spec["preview_base_color"] = render["preview_base_color"]
     ACTIVE_SLICE.parent.mkdir(parents=True, exist_ok=True)
     ACTIVE_SLICE.write_text(json.dumps(spec, indent=2), encoding="utf-8")
     # Keep a copy alongside the proof for provenance.

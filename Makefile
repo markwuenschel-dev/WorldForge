@@ -7,7 +7,10 @@ UE_PYTHON := python
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
         validate-assets diagnose pre-ue-audit validate-and-manifest preview build clean \
         validate-placement generate-placement-manifest create-placement-data-asset \
-        validate-placement-assets placement-build biome-slice
+        validate-placement-assets placement-build biome-slice \
+        prepare-material render-desert-variants \
+        prepare-biome-slice render-biome-slice render-desert-pack \
+        create-slice-spec prepare-slice create-slice-map validate-slice create-slice
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -43,6 +46,22 @@ help:
 	@echo "  make biome-slice BIOME=desert VARIANT=light_industrial    # 0.00 -> 0.35"
 	@echo "  make biome-slice BIOME=desert VARIANT=ruined_industrial   # 0.00 -> 1.00"
 	@echo "  make biome-slice BIOME=desert VARIANT=industrialized RENDER=0  # authoring + spec only"
+	@echo ""
+	@echo "Batch orchestration (no per-variant hand-typing):"
+	@echo "  make prepare-biome-slice BIOME=desert VARIANT=sandy  # authoring prep only (validate+manifest each recipe)"
+	@echo "  make render-biome-slice BIOME=desert VARIANT=sandy   # prepare-biome-slice THEN biome-slice (render)"
+	@echo "  make render-desert-pack                              # render EVERY desert variant back to back + pack score"
+	@echo ""
+	@echo "Convenience batches:"
+	@echo "  make prepare-material RECIPE=terrain_sand_desert_01   # UE-side: import+MI+DA+validate (needs UE python)"
+	@echo "  make render-desert-variants                          # render desert_sandy + desert_ash (assets must exist)"
+	@echo ""
+	@echo "Slice factory (create a NEW named, state-aware UE slice from a preset):"
+	@echo "  make create-slice BIOME=desert VARIANT=ash NAME=Desert_Outpost_01   # spec->prepare->map->validate"
+	@echo "  make create-slice-spec BIOME=desert VARIANT=ash NAME=Desert_Outpost_01  # just emit the generated spec"
+	@echo "  make prepare-slice SPEC=procedural/slices/desert/generated/Desert_Outpost_01.json"
+	@echo "  make create-slice-map SPEC=...   # headless UE: build + save the map"
+	@echo "  make validate-slice SPEC=...     # headless UE: assert the slice is wired"
 	@echo ""
 	@echo "Other:"
 	@echo "  make preview     # Always fails until preview generation exists"
@@ -123,6 +142,62 @@ placement-build:
 # RENDER=0 stops before the headless UE launch (authoring + JSON spec only).
 biome-slice:
 	$(PYTHON) tools/pipeline/biome_slice.py --biome $(BIOME) --variant $(VARIANT) $(if $(filter 0,$(RENDER)),--no-render,)
+
+# Authoring-side prep for one variant: validate + manifest every recipe in the
+# slice. No headless UE launch (UE-side import/create steps are out of scope).
+prepare-biome-slice:
+	$(PYTHON) tools/pipeline/prepare_biome_slice.py --biome $(BIOME) --variant $(VARIANT)
+
+# Prepare (authoring) THEN render: the full single-variant chain in one command.
+render-biome-slice:
+	$(MAKE) prepare-biome-slice BIOME=$(BIOME) VARIANT=$(VARIANT)
+	$(MAKE) biome-slice BIOME=$(BIOME) VARIANT=$(VARIANT)
+
+# Generic UE-side material prep: one recipe -> textures + MI + DataAsset + validate.
+# UE-side steps `import unreal`, so UE_PYTHON must point at the editor's Python
+# (or run these from inside the editor). biome-slice is the headless render path.
+prepare-material:
+	$(MAKE) import-textures RECIPE=$(RECIPE)
+	$(MAKE) create-material RECIPE=$(RECIPE)
+	$(MAKE) create-data-asset RECIPE=$(RECIPE)
+	$(MAKE) validate-assets RECIPE=$(RECIPE)
+
+# Dumb batch: render both new desert presets back to back. The terrain MIs /
+# DataAssets must already exist (see prepare-material). Leaves the golden
+# desert_industrialized baseline untouched.
+render-desert-variants:
+	$(MAKE) biome-slice BIOME=desert VARIANT=sandy
+	$(MAKE) biome-slice BIOME=desert VARIANT=ash
+
+# One-command pack render: render EVERY desert variant back to back (continues
+# past a failing variant), then run pack_score.py if another agent has created
+# it. render_pack.py exits non-zero if any variant failed; the guarded scorer
+# line tolerates pack_score.py's absence.
+render-desert-pack:
+	$(PYTHON) tools/pipeline/render_pack.py --biome desert
+	@[ -f tools/pipeline/pack_score.py ] && $(PYTHON) tools/pipeline/pack_score.py || echo "[render-desert-pack] pack_score.py not present yet; skipping rich score."
+
+# Slice factory: create a NEW named, state-aware UE slice from a biome/variant preset.
+# create-slice chains: emit generated spec -> prepare assets -> build+save UE map -> validate.
+SLICE_SPEC = procedural/slices/$(BIOME)/generated/$(NAME).json
+
+create-slice-spec:
+	$(PYTHON) tools/pipeline/create_slice_spec.py --biome $(BIOME) --variant $(VARIANT) --name $(NAME)
+
+prepare-slice:
+	$(PYTHON) tools/pipeline/prepare_slice.py --spec $(SPEC)
+
+create-slice-map:
+	$(PYTHON) tools/pipeline/run_slice_ue.py --script create_slice_map.py --spec $(SPEC)
+
+validate-slice:
+	$(PYTHON) tools/pipeline/run_slice_ue.py --script validate_slice.py --spec $(SPEC)
+
+create-slice:
+	$(MAKE) create-slice-spec BIOME=$(BIOME) VARIANT=$(VARIANT) NAME=$(NAME)
+	$(MAKE) prepare-slice SPEC=$(SLICE_SPEC)
+	$(MAKE) create-slice-map SPEC=$(SLICE_SPEC)
+	$(MAKE) validate-slice SPEC=$(SLICE_SPEC)
 
 preview:
 	@echo "Preview generation is not implemented yet."

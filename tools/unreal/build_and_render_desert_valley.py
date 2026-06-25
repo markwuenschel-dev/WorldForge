@@ -47,6 +47,19 @@ CONTEXT_ID = "Desert_Valley_01"
 DRIVING_KEY = "industrial_pressure"
 STATES = [0.0, 0.75]
 
+# Render-proof terrain look. When the active slice provides preview_base_color
+# (linear RGB), the ground uses a self-built material whose base color is
+# lerp(PreviewBaseColor, SOOT, MPC.IndustrialPressure) -- a VECTOR parameter,
+# which (unlike MIC texture-parameter overrides) renders correctly in the
+# headless SceneCapture path. This makes variants visibly distinct (sand=tan,
+# ash=dark) and keeps state-driven soot darkening, bypassing the texture bug.
+# None => fall back to the original MI-driven terrain (standalone default).
+PREVIEW_BASE_COLOR = None
+SOOT_COLOR = (0.02, 0.02, 0.02)          # near-black the terrain lerps toward at pressure=1
+MPC_PATH = "/CoreTerrainMaterials/State/MPC_WorldState"
+MPC_PRESSURE_PARAM = "IndustrialPressure"
+PROOF_TERRAIN_DIR = "/Game/Maps/DesertValley"
+
 # Plane: engine Plane is 100uu; scale 40 -> 4000uu = 40 m square = 16 * (100 m^2).
 PLANE_SCALE = 40.0
 HALF = PLANE_SCALE * 100.0 / 2.0          # 2000 uu
@@ -93,9 +106,12 @@ def _load_active_slice(root):
 def _apply_slice(spec):
     """Override module-level constants from a slice spec (no-op if empty)."""
     global MAP_PATH, TERRAIN_MI, DA_PATH, SCOPE, CONTEXT_ID, DRIVING_KEY
-    global STATES, RES_X, RES_Y, SEED, SLUG
+    global STATES, RES_X, RES_Y, SEED, SLUG, PREVIEW_BASE_COLOR
     if not spec:
         return
+    pbc = spec.get("preview_base_color")
+    if pbc and len(pbc) >= 3:
+        PREVIEW_BASE_COLOR = (float(pbc[0]), float(pbc[1]), float(pbc[2]))
     MAP_PATH = spec.get("map", MAP_PATH)
     TERRAIN_MI = spec.get("terrain_mi", TERRAIN_MI)
     DA_PATH = spec.get("placement_data_asset", DA_PATH)
@@ -190,13 +206,77 @@ def build_lighting():
     return sky
 
 
+def build_proof_terrain_material():
+    """Render-proof terrain material: a lit material whose base color is
+    lerp(PreviewBaseColor, SOOT, MPC.IndustrialPressure). PreviewBaseColor is a
+    VECTOR parameter set on a MaterialInstanceConstant -- vector overrides render
+    correctly in the headless SceneCapture path (the texture-override bug only hits
+    texture params), so this gives a visibly distinct, state-darkening terrain
+    without touching the production MI pipeline. Returns the MIC, or None on
+    failure (caller falls back to the slice's TERRAIN_MI)."""
+    if PREVIEW_BASE_COLOR is None:
+        return None
+    at = unreal.AssetToolsHelpers.get_asset_tools()
+    mel = unreal.MaterialEditingLibrary
+    try:
+        base_path = PROOF_TERRAIN_DIR + "/M_WF_TerrainProof"
+        mic_path = PROOF_TERRAIN_DIR + "/MI_WF_TerrainProof"
+        # Always rebuild so a stale committed asset can't shadow the current wiring.
+        for p in (mic_path, base_path):
+            if unreal.EditorAssetLibrary.does_asset_exist(p):
+                unreal.EditorAssetLibrary.delete_asset(p)
+
+        mat = at.create_asset("M_WF_TerrainProof", PROOF_TERRAIN_DIR, unreal.Material,
+                              unreal.MaterialFactoryNew())
+        vp = mel.create_material_expression(mat, unreal.MaterialExpressionVectorParameter, -700, -120)
+        vp.set_editor_property("parameter_name", "PreviewBaseColor")
+        vp.set_editor_property("default_value", unreal.LinearColor(
+            PREVIEW_BASE_COLOR[0], PREVIEW_BASE_COLOR[1], PREVIEW_BASE_COLOR[2], 1.0))
+        soot = mel.create_material_expression(mat, unreal.MaterialExpressionConstant3Vector, -700, 120)
+        soot.set_editor_property("constant", unreal.LinearColor(SOOT_COLOR[0], SOOT_COLOR[1], SOOT_COLOR[2], 1.0))
+        cp = mel.create_material_expression(mat, unreal.MaterialExpressionCollectionParameter, -700, 320)
+        mpc = unreal.EditorAssetLibrary.load_asset(MPC_PATH)
+        if mpc:
+            cp.set_editor_property("collection", mpc)
+            cp.set_editor_property("parameter_name", MPC_PRESSURE_PARAM)
+        else:
+            log("proof terrain: MPC {} not found; terrain will not darken".format(MPC_PATH))
+        lerp = mel.create_material_expression(mat, unreal.MaterialExpressionLinearInterpolate, -350, 0)
+        mel.connect_material_expressions(vp, "", lerp, "A")
+        mel.connect_material_expressions(soot, "", lerp, "B")
+        if mpc:
+            mel.connect_material_expressions(cp, "", lerp, "Alpha")
+        mel.connect_material_property(lerp, "", unreal.MaterialProperty.MP_BASE_COLOR)
+        rough = mel.create_material_expression(mat, unreal.MaterialExpressionConstant, -350, 240)
+        rough.set_editor_property("r", 0.92)
+        mel.connect_material_property(rough, "", unreal.MaterialProperty.MP_ROUGHNESS)
+        mel.recompile_material(mat)
+        unreal.EditorAssetLibrary.save_loaded_asset(mat)
+
+        mic = at.create_asset("MI_WF_TerrainProof", PROOF_TERRAIN_DIR,
+                              unreal.MaterialInstanceConstant, unreal.MaterialInstanceConstantFactoryNew())
+        mic.set_editor_property("parent", mat)
+        mel.set_material_instance_vector_parameter_value(
+            mic, "PreviewBaseColor",
+            unreal.LinearColor(PREVIEW_BASE_COLOR[0], PREVIEW_BASE_COLOR[1], PREVIEW_BASE_COLOR[2], 1.0))
+        unreal.EditorAssetLibrary.save_loaded_asset(mic)
+        log("proof terrain material built: base={} -> soot via MPC.{}".format(
+            PREVIEW_BASE_COLOR, MPC_PRESSURE_PARAM))
+        return mic
+    except Exception as e:  # noqa: BLE001
+        log("proof terrain build failed ({}); falling back to MI {}".format(e, TERRAIN_MI))
+        return None
+
+
 def build_terrain():
     actor, _ = _spawn_mesh(PLANE, unreal.Vector(0, 0, 0))
     actor.set_actor_label("Ground")
     actor.set_actor_scale3d(unreal.Vector(PLANE_SCALE, PLANE_SCALE, 1.0))
-    mi = unreal.EditorAssetLibrary.load_asset(TERRAIN_MI)
     smc = actor.static_mesh_component
-    smc.set_material(0, mi)
+    mat = build_proof_terrain_material()
+    if mat is None:
+        mat = unreal.EditorAssetLibrary.load_asset(TERRAIN_MI)
+    smc.set_material(0, mat)
     return actor
 
 
@@ -392,6 +472,7 @@ def main():
         report["veg_materials"] = sorted(veg_mats.keys())
         world = _world()
         report["editor_world"] = world.get_name() if world else None
+        report["preview_base_color"] = list(PREVIEW_BASE_COLOR) if PREVIEW_BASE_COLOR else None
 
         # Prime the renderer: in a non-ticking commandlet the real-time skylight
         # cubemap starts black, so a single cold capture renders dark. Trigger the
