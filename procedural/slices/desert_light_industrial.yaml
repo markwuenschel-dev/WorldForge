@@ -1,0 +1,41 @@
+# desert_light_industrial.yaml
+# Variant of the proven desert_industrialized slice -- same assets, milder state.
+# A "light industrial" preset: industrial_pressure tops out at 0.35 instead of 0.75,
+# so soot is faint, clean foliage only partly retreats, and dead scrub is just starting.
+#   make biome-slice BIOME=desert VARIANT=light_industrial
+# See procedural/slices/desert_industrialized.yaml for the field documentation.
+
+schema_version: "1.0"
+id: desert_light_industrial
+biome: desert
+variant: light_industrial
+
+map: /Game/Maps/Desert_Valley_01
+
+recipes:
+  - terrain_rock_desert_01
+placement_definitions:
+  - reclaimed_desert_foliage
+
+state:
+  scope: Region
+  context_id: Desert_Valley_01
+  key: industrial_pressure
+  before: 0.0      # clean desert
+  after: 0.35      # light industrial pressure
+
+render:
+  terrain_mi: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01
+  placement_data_asset: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage
+  resolution: [1600, 900]
+  seed: 424242
+
+acceptance:
+  mpc_parameter: IndustrialPressure
+  foliage_increases:
+    - dead_scrub
+  foliage_decreases:
+    - reclaimed_grass
+    - young_tree
+
+output_dir: procedural/reports/slices/desert_light_industrial

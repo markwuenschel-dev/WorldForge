@@ -1,0 +1,83 @@
+{
+  "map": "/Game/Maps/Desert_Valley_01",
+  "states": [
+    0.0,
+    1.0
+  ],
+  "steps": [
+    {
+      "set_value": 0.0,
+      "mpc_readback": 0.0,
+      "mpc_matches_set": true,
+      "foliage": {
+        "dead_scrub": {
+          "effective_density": 0.6,
+          "instances": 10
+        },
+        "reclaimed_grass": {
+          "effective_density": 12.0,
+          "instances": 192
+        },
+        "young_tree": {
+          "effective_density": 1.5,
+          "instances": 24
+        }
+      },
+      "screenshot": "procedural/reports/slices/desert_ruined_industrial/screenshots\\state_0_00.png"
+    },
+    {
+      "set_value": 1.0,
+      "mpc_readback": 1.0,
+      "mpc_matches_set": true,
+      "foliage": {
+        "dead_scrub": {
+          "effective_density": 6.0,
+          "instances": 96
+        },
+        "reclaimed_grass": {
+          "effective_density": 0.6,
+          "instances": 10
+        },
+        "young_tree": {
+          "effective_density": 0.0,
+          "instances": 0
+        }
+      },
+      "screenshot": "procedural/reports/slices/desert_ruined_industrial/screenshots\\state_1_00.png"
+    }
+  ],
+  "errors": [],
+  "species_rules": [
+    {
+      "id": "dead_scrub",
+      "base": 6.0,
+      "d0": 0.10000000149011612,
+      "d1": 1.0,
+      "smin": 0.800000011920929,
+      "smax": 1.2999999523162842
+    },
+    {
+      "id": "reclaimed_grass",
+      "base": 12.0,
+      "d0": 1.0,
+      "d1": 0.05000000074505806,
+      "smin": 0.8999999761581421,
+      "smax": 1.399999976158142
+    },
+    {
+      "id": "young_tree",
+      "base": 1.5,
+      "d0": 1.0,
+      "d1": 0.0,
+      "smin": 0.699999988079071,
+      "smax": 1.100000023841858
+    }
+  ],
+  "veg_materials": [
+    "dead_scrub",
+    "reclaimed_grass",
+    "young_tree"
+  ],
+  "editor_world": "Desert_Valley_01",
+  "status": "ok"
+}

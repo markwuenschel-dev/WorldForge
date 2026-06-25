@@ -107,51 +107,81 @@ def launch_render(editor, uproject):
     started = time.time()
     proc = subprocess.run(cmd)
     print("[biome-slice] editor exited rc={} after {:.0f}s".format(proc.returncode, time.time() - started))
-    return " ".join(cmd)
+    return " ".join(cmd), proc.returncode
 
 
-def score(cfg, render_report_path):
-    """Compare render_report.json before/after steps against the acceptance block."""
+def _map_name(cfg):
+    """Basename of the slice map, e.g. '/Game/Maps/Desert_Valley_01' -> 'Desert_Valley_01'."""
+    return cfg["map"].rstrip("/").rsplit("/", 1)[-1]
+
+
+def score(cfg, render_report_path, editor_rc=0):
+    """Compare render_report.json against the acceptance block, accumulating HARD
+    failure reasons. `passed` is true only when `failures` is empty."""
     acc = cfg.get("acceptance", {})
     result = {"mpc_updates": False, "foliage_increases": {}, "foliage_decreases": {},
-              "screenshots_saved": False, "passed": False, "notes": []}
+              "screenshots_saved": False, "passed": False, "failures": []}
+    fail = result["failures"].append
+
+    if editor_rc != 0:
+        fail("editor exited non-zero (rc={})".format(editor_rc))
+
     if not render_report_path.is_file():
-        result["notes"].append("render_report.json missing -- did the editor run?")
+        fail("render_report.json missing at {} -- editor did not produce a report".format(render_report_path))
+        return result
+    try:
+        report = json.loads(render_report_path.read_text(encoding="utf-8"))
+    except Exception as e:  # noqa: BLE001
+        fail("render_report.json is not valid JSON: {}".format(e))
         return result
 
-    report = json.loads(render_report_path.read_text(encoding="utf-8"))
+    result["render_status"] = report.get("status")
+    if report.get("status") != "ok":
+        fail("render status={!r}; errors={}".format(report.get("status"), report.get("errors")))
+
+    # Regression guard: the render must run in the slice's actual map, not a
+    # transient 'Untitled' world (the new_level-on-existing-map bug).
+    expected_world = _map_name(cfg)
+    result["editor_world"] = report.get("editor_world")
+    if report.get("editor_world") != expected_world:
+        fail("editor_world={!r}, expected {!r} (map failed to load/save?)".format(
+            report.get("editor_world"), expected_world))
+
     steps = report.get("steps", [])
     if len(steps) < 2:
-        result["notes"].append("expected 2 render steps, got {}".format(len(steps)))
+        fail("expected 2 render steps, got {}".format(len(steps)))
         return result
     before, after = steps[0], steps[-1]
 
     result["mpc_updates"] = bool(before.get("mpc_matches_set")) and bool(after.get("mpc_matches_set"))
+    if not result["mpc_updates"]:
+        fail("MPC did not mirror state at both steps (mpc_matches_set false)")
 
     def count(step, species):
         return step.get("foliage", {}).get(species, {}).get("instances")
 
-    up_ok = True
     for sp in acc.get("foliage_increases", []):
         b, a = count(before, sp), count(after, sp)
         ok = b is not None and a is not None and a > b
-        up_ok = up_ok and ok
         result["foliage_increases"][sp] = {"before": b, "after": a, "ok": ok}
-    down_ok = True
+        if not ok:
+            fail("foliage '{}' expected to INCREASE: before={} after={}".format(sp, b, a))
     for sp in acc.get("foliage_decreases", []):
         b, a = count(before, sp), count(after, sp)
         ok = b is not None and a is not None and a < b
-        down_ok = down_ok and ok
         result["foliage_decreases"][sp] = {"before": b, "after": a, "ok": ok}
+        if not ok:
+            fail("foliage '{}' expected to DECREASE: before={} after={}".format(sp, b, a))
 
     # The UE script runs on Windows, so report paths may use backslash separators;
-    # normalize before resolving against the (POSIX) repo root.
+    # normalize before resolving against the (POSIX) repo root. Require non-empty files.
     shots = [REPO / s["screenshot"].replace("\\", "/") for s in steps if s.get("screenshot")]
-    result["screenshots_saved"] = len(shots) >= 2 and all(p.is_file() for p in shots)
+    missing = [str(p) for p in shots if not (p.is_file() and p.stat().st_size > 0)]
+    result["screenshots_saved"] = len(shots) >= 2 and not missing
+    if not result["screenshots_saved"]:
+        fail("screenshots missing/empty: {}".format(missing or "fewer than 2 captured"))
 
-    result["render_status"] = report.get("status")
-    result["passed"] = (result["mpc_updates"] and up_ok and down_ok
-                        and result["screenshots_saved"] and report.get("status") == "ok")
+    result["passed"] = not result["failures"]
     return result
 
 
@@ -173,7 +203,9 @@ def main():
     print("[biome-slice] slice '{}' (biome={} variant={})".format(slug, cfg.get("biome"), cfg.get("variant")))
 
     out_dir = REPO / cfg["output_dir"]
+    report_path = out_dir / "render_report.json"
     ue_cmd = None
+    editor_rc = 0
 
     run_authoring(cfg)
     write_active_slice(cfg, slug)
@@ -181,9 +213,15 @@ def main():
     if args.no_render:
         print("[biome-slice] --no-render: skipping headless UE launch.")
     else:
-        ue_cmd = launch_render(args.editor, args.uproject)
+        # Remove stale render outputs so a missing report after the run is an
+        # unambiguous failure rather than a previous run's data scoring as pass.
+        if report_path.is_file():
+            report_path.unlink()
+        for png in (out_dir / "screenshots").glob("*.png"):
+            png.unlink()
+        ue_cmd, editor_rc = launch_render(args.editor, args.uproject)
 
-    acceptance = score(cfg, out_dir / "render_report.json") if not args.no_render else None
+    acceptance = score(cfg, report_path, editor_rc) if not args.no_render else None
 
     result = {
         "biome": args.biome,
@@ -207,7 +245,10 @@ def main():
         verdict = "PASS" if acceptance["passed"] else "FAIL"
         print("[biome-slice] acceptance: {}".format(verdict))
         if not acceptance["passed"]:
-            raise SystemExit(1)
+            for reason in acceptance["failures"]:
+                print("[biome-slice]   - {}".format(reason))
+            raise SystemExit("[biome-slice] slice FAILED ({} check(s) failed)".format(
+                len(acceptance["failures"])))
     else:
         print("[biome-slice] authoring + spec ready; run without --no-render to render the proof.")
 

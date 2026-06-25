@@ -1,0 +1,41 @@
+# desert_ruined_industrial.yaml
+# Variant of the proven desert_industrialized slice -- same assets, extreme state.
+# A "ruined industrial" preset: industrial_pressure maxes at 1.0, so the terrain is
+# fully sooted, clean foliage all but gone, and dead scrub dominates.
+#   make biome-slice BIOME=desert VARIANT=ruined_industrial
+# See procedural/slices/desert_industrialized.yaml for the field documentation.
+
+schema_version: "1.0"
+id: desert_ruined_industrial
+biome: desert
+variant: ruined_industrial
+
+map: /Game/Maps/Desert_Valley_01
+
+recipes:
+  - terrain_rock_desert_01
+placement_definitions:
+  - reclaimed_desert_foliage
+
+state:
+  scope: Region
+  context_id: Desert_Valley_01
+  key: industrial_pressure
+  before: 0.0      # clean desert
+  after: 1.0       # fully ruined / maxed industrial pressure
+
+render:
+  terrain_mi: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01
+  placement_data_asset: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage
+  resolution: [1600, 900]
+  seed: 424242
+
+acceptance:
+  mpc_parameter: IndustrialPressure
+  foliage_increases:
+    - dead_scrub
+  foliage_decreases:
+    - reclaimed_grass
+    - young_tree
+
+output_dir: procedural/reports/slices/desert_ruined_industrial
