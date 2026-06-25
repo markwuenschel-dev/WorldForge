@@ -7,7 +7,7 @@ UE_PYTHON := python
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
         validate-assets diagnose pre-ue-audit validate-and-manifest preview build clean \
         validate-placement generate-placement-manifest create-placement-data-asset \
-        validate-placement-assets placement-build
+        validate-placement-assets placement-build biome-slice
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -37,6 +37,10 @@ help:
 	@echo "  make create-placement-data-asset DEF=reclaimed_desert_foliage  # UE-side"
 	@echo "  make validate-placement-assets DEF=reclaimed_desert_foliage    # UE-side"
 	@echo "  make placement-build DEF=reclaimed_desert_foliage              # authoring-side"
+	@echo ""
+	@echo "Biome slice (one-command before/after proof):"
+	@echo "  make biome-slice BIOME=desert VARIANT=industrialized"
+	@echo "  make biome-slice BIOME=desert VARIANT=industrialized RENDER=0  # authoring + spec only"
 	@echo ""
 	@echo "Other:"
 	@echo "  make preview     # Always fails until preview generation exists"
@@ -112,6 +116,11 @@ placement-build:
 	@echo "Next steps (run inside UE Python):"
 	@echo "  make create-placement-data-asset DEF=$(DEF)"
 	@echo "  make validate-placement-assets DEF=$(DEF)"
+
+# One-command biome slice: authoring chain -> headless render -> acceptance score.
+# RENDER=0 stops before the headless UE launch (authoring + JSON spec only).
+biome-slice:
+	$(PYTHON) tools/pipeline/biome_slice.py --biome $(BIOME) --variant $(VARIANT) $(if $(filter 0,$(RENDER)),--no-render,)
 
 preview:
 	@echo "Preview generation is not implemented yet."

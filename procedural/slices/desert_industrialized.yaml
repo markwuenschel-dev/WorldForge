@@ -1,0 +1,55 @@
+# desert_industrialized.yaml
+# A "biome slice": one map driven through one state toggle to produce a
+# before/after rendered proof. This is the agent-editable front door to
+#   make biome-slice BIOME=desert VARIANT=industrialized
+#
+# The orchestrator (tools/pipeline/biome_slice.py) reads this file, runs the
+# authoring-side validation/manifest steps for the referenced recipes and
+# placement definitions, emits a JSON spec the UE render script consumes
+# (procedural/reports/slices/_active_slice.json -- JSON, never YAML inside UE),
+# launches the headless editor, then scores the result against `acceptance`.
+#
+# Safe for agents to duplicate/modify to define new slices (Phase 3 preset
+# library). Keep `state.before`/`state.after` within [0.0, 1.0].
+
+schema_version: "1.0"
+id: desert_industrialized
+biome: desert
+variant: industrialized
+
+# The demo map rebuilt + rendered for the proof.
+map: /Game/Maps/Desert_Valley_01
+
+# Authoring-side inputs re-validated and re-manifested before rendering.
+recipes:
+  - terrain_rock_desert_01
+placement_definitions:
+  - reclaimed_desert_foliage
+
+# The single state axis this slice toggles to prove world reaction.
+state:
+  scope: Region
+  context_id: Desert_Valley_01
+  key: industrial_pressure
+  before: 0.0      # clean desert
+  after: 0.75      # industrialized
+
+# UE asset paths the render scene consumes.
+render:
+  terrain_mi: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01
+  placement_data_asset: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage
+  resolution: [1600, 900]
+  seed: 424242
+
+# Acceptance: the directional changes that must hold between before -> after
+# for the slice to count as proven. Species ids match the placement definition.
+acceptance:
+  mpc_parameter: IndustrialPressure          # MPC scalar that must mirror state
+  foliage_increases:                          # debris / dead growth takes over
+    - dead_scrub
+  foliage_decreases:                          # clean foliage retreats
+    - reclaimed_grass
+    - young_tree
+
+# Where the proof lands (screenshots, render_report.json, biome_slice_result.json).
+output_dir: procedural/reports/slices/desert_industrialized

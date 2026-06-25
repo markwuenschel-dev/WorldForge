@@ -63,9 +63,51 @@ SHAPES = {
 }
 VEG_DIR = "/Game/Maps/DesertValley"
 
+# When driven by `make biome-slice`, the orchestrator writes a resolved JSON
+# spec here (JSON only -- never YAML inside a UE script; see pre-ue-audit).
+# Standalone runs find no file and fall back to the proven desert defaults
+# above, preserving the original D13 behaviour.
+ACTIVE_SLICE_REL = "procedural/reports/slices/_active_slice.json"
+SLUG = "desert_industrialized"
+
 
 def log(m):
     unreal.log("[desert_valley] {}".format(m))
+
+
+def _load_active_slice(root):
+    """Return the resolved slice spec dict, or {} when run standalone."""
+    path = os.path.join(root, ACTIVE_SLICE_REL)
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            spec = json.load(f)
+        log("active slice: {} ({})".format(spec.get("slug"), path))
+        return spec
+    except Exception as e:  # noqa: BLE001
+        log("active slice load failed ({}); using defaults: {}".format(path, e))
+        return {}
+
+
+def _apply_slice(spec):
+    """Override module-level constants from a slice spec (no-op if empty)."""
+    global MAP_PATH, TERRAIN_MI, DA_PATH, SCOPE, CONTEXT_ID, DRIVING_KEY
+    global STATES, RES_X, RES_Y, SEED, SLUG
+    if not spec:
+        return
+    MAP_PATH = spec.get("map", MAP_PATH)
+    TERRAIN_MI = spec.get("terrain_mi", TERRAIN_MI)
+    DA_PATH = spec.get("placement_data_asset", DA_PATH)
+    st = spec.get("state", {})
+    SCOPE = st.get("scope", SCOPE)
+    CONTEXT_ID = st.get("context_id", CONTEXT_ID)
+    DRIVING_KEY = st.get("key", DRIVING_KEY)
+    STATES = spec.get("states", STATES)
+    res = spec.get("resolution") or [RES_X, RES_Y]
+    RES_X, RES_Y = int(res[0]), int(res[1])
+    SEED = int(spec.get("seed", SEED))
+    SLUG = spec.get("slug", SLUG)
 
 
 def _les():
@@ -103,17 +145,40 @@ def build_lighting():
                  unreal.Rotator(-55, -40, 0))
     try:
         sun.set_actor_label("Sun")
-        sun.light_component.set_intensity(10.0)
+        # Manual exposure ignores exposure bias here, so terrain tone is driven by
+        # light intensity. This lands the desert at tan (not blown white); the unlit
+        # foliage is independent of these lights.
+        sun.light_component.set_intensity(11.0)
         sun.light_component.set_editor_property("atmosphere_sun_light", True)
     except Exception as e:
         log("sun cfg warn: {}".format(e))
+
+    # Shadowless fill aligned with the camera view so the foliage faces we actually
+    # see read as green/brown instead of black -- headless capture has ~no skylight
+    # ambient to fill the sun-shadowed sides.
+    fill_rot = unreal.MathLibrary.find_look_at_rotation(
+        unreal.Vector(1700, -1700, 1150), unreal.Vector(0, 0, 0))
+    fill = _spawn(unreal.DirectionalLight, unreal.Vector(0, 0, 1000), fill_rot)
+    try:
+        fill.set_actor_label("Fill")
+        fill.light_component.set_intensity(4.0)
+        fill.light_component.set_editor_property("atmosphere_sun_light", False)
+        fill.light_component.set_editor_property("cast_shadows", False)
+    except Exception as e:
+        log("fill cfg warn: {}".format(e))
 
     _spawn(unreal.SkyAtmosphere, unreal.Vector(0, 0, 0))
 
     sky = _spawn(unreal.SkyLight, unreal.Vector(0, 0, 1200))
     try:
         sky.light_component.set_editor_property("real_time_capture", True)
-        sky.light_component.set_editor_property("intensity", 3.0)
+        sky.light_component.set_editor_property("intensity", 6.0)
+        # Lower hemisphere isn't solid black, so shadowed ground keeps some fill
+        # even when the real-time capture is weak in a headless commandlet.
+        try:
+            sky.light_component.set_editor_property("lower_hemisphere_is_black", False)
+        except Exception as e:
+            log("skylight lower-hemi warn: {}".format(e))
     except Exception as e:
         log("skylight cfg warn: {}".format(e))
 
@@ -158,27 +223,35 @@ def build_veg_materials():
     mats = {}
     try:
         base_path = VEG_DIR + "/M_WF_Veg"
-        base = unreal.EditorAssetLibrary.load_asset(base_path)
-        if not base:
-            base = at.create_asset("M_WF_Veg", VEG_DIR, unreal.Material, unreal.MaterialFactoryNew())
-            vp = unreal.MaterialEditingLibrary.create_material_expression(
-                base, unreal.MaterialExpressionVectorParameter, -400, 0)
-            vp.set_editor_property("parameter_name", "Color")
-            vp.set_editor_property("default_value", unreal.LinearColor(0.2, 0.2, 0.2, 1.0))
-            unreal.MaterialEditingLibrary.connect_material_property(vp, "", unreal.MaterialProperty.MP_BASE_COLOR)
-            # small emissive so colors read even in shadow
-            unreal.MaterialEditingLibrary.connect_material_property(vp, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR)
-            unreal.MaterialEditingLibrary.recompile_material(base)
-            unreal.EditorAssetLibrary.save_loaded_asset(base)
+        # Always rebuild from scratch: a committed/older asset may have unwired base
+        # color (renders black), and the existence-guard would skip re-wiring it.
+        # Delete the material AND its instances so parent links stay valid.
+        for p in [base_path] + [VEG_DIR + "/MI_WF_Veg_" + s for s in SHAPES]:
+            if unreal.EditorAssetLibrary.does_asset_exist(p):
+                unreal.EditorAssetLibrary.delete_asset(p)
+
+        base = at.create_asset("M_WF_Veg", VEG_DIR, unreal.Material, unreal.MaterialFactoryNew())
+        # Unlit so the flat species color always reads (green vs brown), independent
+        # of sun angle/shadowing -- these are placeholder proxies, not lit geometry.
+        try:
+            base.set_editor_property("shading_model", unreal.MaterialShadingModel.MSM_UNLIT)
+        except Exception as e:
+            log("veg shading_model warn: {}".format(e))
+        vp = unreal.MaterialEditingLibrary.create_material_expression(
+            base, unreal.MaterialExpressionVectorParameter, -400, 0)
+        vp.set_editor_property("parameter_name", "Color")
+        vp.set_editor_property("default_value", unreal.LinearColor(0.2, 0.2, 0.2, 1.0))
+        # Unlit reads emissive as the final color.
+        unreal.MaterialEditingLibrary.connect_material_property(vp, "", unreal.MaterialProperty.MP_EMISSIVE_COLOR)
+        unreal.MaterialEditingLibrary.recompile_material(base)
+        unreal.EditorAssetLibrary.save_loaded_asset(base)
+
         for sid, cfg in SHAPES.items():
             r, g, b = cfg[3]
             mic_name = "MI_WF_Veg_" + sid
-            mic_path = VEG_DIR + "/" + mic_name
-            mic = unreal.EditorAssetLibrary.load_asset(mic_path)
-            if not mic:
-                mic = at.create_asset(mic_name, VEG_DIR, unreal.MaterialInstanceConstant,
-                                      unreal.MaterialInstanceConstantFactoryNew())
-                mic.set_editor_property("parent", base)
+            mic = at.create_asset(mic_name, VEG_DIR, unreal.MaterialInstanceConstant,
+                                  unreal.MaterialInstanceConstantFactoryNew())
+            mic.set_editor_property("parent", base)
             unreal.MaterialEditingLibrary.set_material_instance_vector_parameter_value(
                 mic, "Color", unreal.LinearColor(r, g, b, 1.0))
             unreal.EditorAssetLibrary.save_loaded_asset(mic)
@@ -228,10 +301,14 @@ def _configure_exposure(comp):
     exposed regardless of adaptation."""
     pp = comp.get_editor_property("post_process_settings")
     fields = {
-        "auto_exposure_method": unreal.AutoExposureMethod.AEM_HISTOGRAM,
+        "auto_exposure_method": unreal.AutoExposureMethod.AEM_MANUAL,
         "auto_exposure_min_brightness": 1.0,
         "auto_exposure_max_brightness": 1.0,
-        "auto_exposure_bias": 0.0,
+        # Headless capture has no real-time skylight ambient, so the scene is lit
+        # almost entirely by the (boosted) directional sun. A moderate boost lands the
+        # terrain at desert-tan (not muddy, not blown white) so the soot lerp still
+        # reads; the unlit emissive foliage stays saturated at this level. +1 EV ~= 2x.
+        "auto_exposure_bias": 1.5,
         "override_auto_exposure_method": True,
         "override_auto_exposure_min_brightness": True,
         "override_auto_exposure_max_brightness": True,
@@ -273,16 +350,25 @@ def position_view(cap_actor, fov=65.0):
 
 
 def main():
+    root = os.path.normpath(unreal.Paths.project_dir())
+    _apply_slice(_load_active_slice(root))
     random.seed(SEED)
     rng = random.Random(SEED)
-    root = os.path.normpath(unreal.Paths.project_dir())
-    shot_dir = os.path.join(root, "procedural/reports/slices/desert_industrialized/screenshots")
+    rel_shot = "procedural/reports/slices/{}/screenshots".format(SLUG)
+    shot_dir = os.path.join(root, rel_shot)
     os.makedirs(shot_dir, exist_ok=True)
 
     report = {"map": MAP_PATH, "states": STATES, "steps": [], "errors": []}
     try:
-        # Fresh level every run for determinism.
-        _les().new_level(MAP_PATH)
+        # Fresh level every run for determinism. The proof map may already exist
+        # (committed from a prior run); delete it first so new_level can recreate it
+        # clean -- otherwise new_level silently refuses and we'd composite into the
+        # editor's startup world (wrong lighting) and can't save.
+        if unreal.EditorAssetLibrary.does_asset_exist(MAP_PATH):
+            unreal.EditorAssetLibrary.delete_asset(MAP_PATH)
+            log("removed existing map for fresh rebuild: {}".format(MAP_PATH))
+        if not _les().new_level(MAP_PATH):
+            raise RuntimeError("new_level failed for {} (asset still present?)".format(MAP_PATH))
         log("new level: {}".format(MAP_PATH))
 
         build_lighting()
@@ -307,6 +393,14 @@ def main():
         world = _world()
         report["editor_world"] = world.get_name() if world else None
 
+        # Prime the renderer: in a non-ticking commandlet the real-time skylight
+        # cubemap starts black, so a single cold capture renders dark. Trigger the
+        # skylight recapture and run several throwaway captures so ambient lighting
+        # (and material shaders) converge before any export.
+        unreal.SystemLibrary.execute_console_command(world, "r.SkyLight.RealTimeReflectionCapture 1")
+        for _ in range(6):
+            cap_comp.capture_scene()
+
         for state in STATES:
             cmd = "WorldForge.SetState {} {} {} {}".format(SCOPE, CONTEXT_ID, DRIVING_KEY, state)
             unreal.SystemLibrary.execute_console_command(world, cmd)
@@ -315,9 +409,12 @@ def main():
 
             counts = scatter(species, state, rng, veg_mats)
 
-            # Let the world tick a frame so transforms/lighting settle, then capture.
+            # Recapture skylight for this state's ground, then settle with a few
+            # captures so the real-time skylight + soot material fully converge
+            # before exporting the frame.
             unreal.SystemLibrary.execute_console_command(world, "r.SkyLight.RealTimeReflectionCapture 1")
-            cap_comp.capture_scene()
+            for _ in range(3):
+                cap_comp.capture_scene()
 
             fname = "state_{}.png".format("{:.2f}".format(state).replace(".", "_"))
             unreal.RenderingLibrary.export_render_target(world, rt, shot_dir, fname)
@@ -327,7 +424,7 @@ def main():
                 "mpc_readback": round(mpc_val, 4),
                 "mpc_matches_set": abs(mpc_val - state) < 1e-4,
                 "foliage": counts,
-                "screenshot": os.path.join("procedural/reports/slices/desert_industrialized/screenshots", fname),
+                "screenshot": os.path.join(rel_shot, fname),
             }
             report["steps"].append(step)
             log("state {} -> MPC {} -> {}".format(state, step["mpc_readback"], fname))
