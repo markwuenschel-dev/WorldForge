@@ -1,0 +1,41 @@
+# terrain_rock_desert_ash_01.yaml
+# Desert-family variant: ash-darkened rock (baked base look; runtime soot still
+# lives in M_Terrain_Master state, not here). Clone of terrain_rock_desert_01.
+# Only `parameters`, `id`, output names and ue paths differ (contract unchanged).
+# Conforms to docs/contracts/material_recipe_contract.md v1.1
+
+schema_version: "1.1"
+id: terrain_rock_desert_ash_01
+graph: terrain_rock_strata.sbs
+resolution: 2048
+
+parameters:
+  base_hue: 0.06        # Cooler, desaturated, dark
+  saturation: 0.12
+  value: 0.30
+
+  crack_density: 0.55
+  crack_depth: 0.50
+  strata_angle: 18.0
+  erosion_strength: 0.70
+  sand_overlay: 0.15
+
+outputs:
+  base_color: T_Terrain_Rock_Desert_Ash_01_BC
+  normal: T_Terrain_Rock_Desert_Ash_01_N
+  roughness: T_Terrain_Rock_Desert_Ash_01_R
+  ambient_occlusion: T_Terrain_Rock_Desert_Ash_01_AO
+  height: T_Terrain_Rock_Desert_Ash_01_H
+
+ue:
+  parent_material: /CoreTerrainMaterials/Materials/Masters/M_Terrain_Master
+  instance_path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01
+  data_asset_path: /Game/Materials/Terrain/DA_Terrain_Rock_Desert_Ash_01
+  texture_folder: Textures/Terrain
+  texture_group: World
+  compression:
+    base_color: Default
+    normal: Normalmap
+    masks: Masks
+  generate_data_asset: true
+  data_asset_class: MaterialRecipeDataAsset

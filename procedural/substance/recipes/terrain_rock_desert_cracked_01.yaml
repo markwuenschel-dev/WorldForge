@@ -1,0 +1,40 @@
+# terrain_rock_desert_cracked_01.yaml
+# Desert-family variant: heavily cracked, eroded hardpan. Clone of terrain_rock_desert_01.
+# Only `parameters`, `id`, output names and ue paths differ (contract unchanged).
+# Conforms to docs/contracts/material_recipe_contract.md v1.1
+
+schema_version: "1.1"
+id: terrain_rock_desert_cracked_01
+graph: terrain_rock_strata.sbs
+resolution: 2048
+
+parameters:
+  base_hue: 0.08
+  saturation: 0.45
+  value: 0.55
+
+  crack_density: 0.90   # Dense crack network
+  crack_depth: 0.70     # Deep crevices
+  strata_angle: 22.0
+  erosion_strength: 0.65
+  sand_overlay: 0.20
+
+outputs:
+  base_color: T_Terrain_Rock_Desert_Cracked_01_BC
+  normal: T_Terrain_Rock_Desert_Cracked_01_N
+  roughness: T_Terrain_Rock_Desert_Cracked_01_R
+  ambient_occlusion: T_Terrain_Rock_Desert_Cracked_01_AO
+  height: T_Terrain_Rock_Desert_Cracked_01_H
+
+ue:
+  parent_material: /CoreTerrainMaterials/Materials/Masters/M_Terrain_Master
+  instance_path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Cracked_01
+  data_asset_path: /Game/Materials/Terrain/DA_Terrain_Rock_Desert_Cracked_01
+  texture_folder: Textures/Terrain
+  texture_group: World
+  compression:
+    base_color: Default
+    normal: Normalmap
+    masks: Masks
+  generate_data_asset: true
+  data_asset_class: MaterialRecipeDataAsset
