@@ -1,0 +1,40 @@
+{
+  "biome": "desert",
+  "variant": "industrialized",
+  "slug": "desert_industrialized",
+  "authoring": "ok",
+  "rendered": true,
+  "acceptance": {
+    "mpc_updates": true,
+    "foliage_increases": {
+      "dead_scrub": {
+        "before": 10,
+        "after": 74,
+        "ok": true
+      }
+    },
+    "foliage_decreases": {
+      "reclaimed_grass": {
+        "before": 192,
+        "after": 55,
+        "ok": true
+      },
+      "young_tree": {
+        "before": 24,
+        "after": 6,
+        "ok": true
+      }
+    },
+    "screenshots_saved": true,
+    "passed": true,
+    "failures": [],
+    "render_status": "ok",
+    "editor_world": "Desert_Valley_01"
+  },
+  "ue_command": "/mnt/c/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-cmd.exe D:/Unreal Projects/WorldForge/WorldForge.uproject -ExecutePythonScript=D:/Unreal Projects/WorldForge/tools/unreal/build_and_render_desert_valley.py -unattended -nopause -nosplash -nosound -stdout",
+  "outputs": {
+    "slice_spec": "procedural/reports/slices/desert_industrialized/_slice_spec.json",
+    "render_report": "procedural/reports/slices/desert_industrialized/render_report.json",
+    "screenshots_dir": "procedural/reports/slices/desert_industrialized/screenshots"
+  }
+}
