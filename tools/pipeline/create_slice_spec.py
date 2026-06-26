@@ -80,6 +80,14 @@ def main(argv=None) -> int:
     parser.add_argument(
         "--region", default=None, help="region/context id (default: NAME)"
     )
+    parser.add_argument(
+        "--placement", default=None,
+        help="placement preset id, e.g. industrial_debris"
+    )
+    parser.add_argument(
+        "--state-preset", default=None,
+        help="state preset id, e.g. industrialized"
+    )
     args = parser.parse_args(argv)
 
     biome = args.biome
@@ -130,6 +138,44 @@ def main(argv=None) -> int:
 
     now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
 
+    # Resolve state values — state preset overrides template defaults.
+    state_before = get_required(state, "before", template_path)
+    state_after = get_required(state, "after", template_path)
+    state_preset_id = None
+    if args.state_preset:
+        state_preset_path = (
+            REPO_ROOT / "procedural" / "definitions" / "state" / biome / (args.state_preset + ".yaml")
+        )
+        if not state_preset_path.is_file():
+            sys.stderr.write(
+                f"WARNING: state preset not found: {state_preset_path} -- using template defaults\n"
+            )
+        else:
+            with state_preset_path.open("r", encoding="utf-8") as fh:
+                state_preset = yaml.safe_load(fh)
+            state_preset_id = state_preset.get("state_preset_id", args.state_preset)
+            values = state_preset.get("values", {})
+            first_vals = next(iter(values.values()), {})
+            state_before = first_vals.get("before", state_before)
+            state_after = first_vals.get("after", state_after)
+
+    # Resolve placement preset reference.
+    placement_preset_id = None
+    placement_preset_path_rel = None
+    if args.placement:
+        pp_path = (
+            REPO_ROOT / "procedural" / "definitions" / "placement" / biome / (args.placement + ".yaml")
+        )
+        if not pp_path.is_file():
+            sys.stderr.write(
+                f"WARNING: placement preset not found: {pp_path} -- continuing without it\n"
+            )
+        else:
+            placement_preset_id = args.placement
+            placement_preset_path_rel = (
+                f"procedural/definitions/placement/{biome}/{args.placement}.yaml"
+            )
+
     spec = {
         "slice_id": name,
         "biome": biome,
@@ -146,8 +192,8 @@ def main(argv=None) -> int:
             "scope": get_required(state, "scope", template_path),
             "context_id": context_id,
             "key": get_required(state, "key", template_path),
-            "before": get_required(state, "before", template_path),
-            "after": get_required(state, "after", template_path),
+            "before": state_before,
+            "after": state_after,
         },
         "placement": {
             "definition": placement_definitions[0],
@@ -164,6 +210,13 @@ def main(argv=None) -> int:
             "generator_version": GENERATOR_VERSION,
         },
     }
+
+    # Optional composition fields — only present when explicitly set.
+    if placement_preset_id is not None:
+        spec["placement_preset_id"] = placement_preset_id
+        spec["placement_preset_path"] = placement_preset_path_rel
+    if state_preset_id is not None:
+        spec["state_preset_id"] = state_preset_id
 
     out_dir = REPO_ROOT / "procedural" / "slices" / biome / "generated"
     out_dir.mkdir(parents=True, exist_ok=True)

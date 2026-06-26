@@ -1,0 +1,31 @@
+pack_id: desert_placement_matrix
+biome: desert
+description: "Desert placement x state matrix — 3 variants x 3 placements x 2 states = 18 maps"
+
+defaults:
+  pcg_template: PCG_Desert_BiomeSlice
+
+slices:
+  # --- sandy variant ---
+  - { name: Desert_Sandy_CleanScrub_Clean_01,             variant: sandy,          seed: 5001, placement: clean_scrub,       state_preset: clean          }
+  - { name: Desert_Sandy_CleanScrub_Industrialized_01,    variant: sandy,          seed: 5002, placement: clean_scrub,       state_preset: industrialized  }
+  - { name: Desert_Sandy_DeadScrub_Clean_01,              variant: sandy,          seed: 5003, placement: dead_scrub,        state_preset: clean          }
+  - { name: Desert_Sandy_DeadScrub_Industrialized_01,     variant: sandy,          seed: 5004, placement: dead_scrub,        state_preset: industrialized  }
+  - { name: Desert_Sandy_IndustrialDebris_Clean_01,       variant: sandy,          seed: 5005, placement: industrial_debris, state_preset: clean          }
+  - { name: Desert_Sandy_IndustrialDebris_Industrialized_01, variant: sandy,       seed: 5006, placement: industrial_debris, state_preset: industrialized  }
+
+  # --- ash variant ---
+  - { name: Desert_Ash_CleanScrub_Clean_01,               variant: ash,            seed: 5007, placement: clean_scrub,       state_preset: clean          }
+  - { name: Desert_Ash_CleanScrub_Industrialized_01,      variant: ash,            seed: 5008, placement: clean_scrub,       state_preset: industrialized  }
+  - { name: Desert_Ash_DeadScrub_Clean_01,                variant: ash,            seed: 5009, placement: dead_scrub,        state_preset: clean          }
+  - { name: Desert_Ash_DeadScrub_Industrialized_01,       variant: ash,            seed: 5010, placement: dead_scrub,        state_preset: industrialized  }
+  - { name: Desert_Ash_IndustrialDebris_Clean_01,         variant: ash,            seed: 5011, placement: industrial_debris, state_preset: clean          }
+  - { name: Desert_Ash_IndustrialDebris_Industrialized_01, variant: ash,           seed: 5012, placement: industrial_debris, state_preset: industrialized  }
+
+  # --- heavy_industrial variant ---
+  - { name: Desert_HeavyIndustrial_CleanScrub_Clean_01,          variant: heavy_industrial, seed: 5013, placement: clean_scrub,       state_preset: clean          }
+  - { name: Desert_HeavyIndustrial_CleanScrub_Industrialized_01, variant: heavy_industrial, seed: 5014, placement: clean_scrub,       state_preset: industrialized  }
+  - { name: Desert_HeavyIndustrial_DeadScrub_Clean_01,           variant: heavy_industrial, seed: 5015, placement: dead_scrub,        state_preset: clean          }
+  - { name: Desert_HeavyIndustrial_DeadScrub_Industrialized_01,  variant: heavy_industrial, seed: 5016, placement: dead_scrub,        state_preset: industrialized  }
+  - { name: Desert_HeavyIndustrial_IndustrialDebris_Clean_01,    variant: heavy_industrial, seed: 5017, placement: industrial_debris, state_preset: clean          }
+  - { name: Desert_HeavyIndustrial_IndustrialDebris_Industrialized_01, variant: heavy_industrial, seed: 5018, placement: industrial_debris, state_preset: industrialized }

@@ -32,12 +32,29 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 ACTIVE_SPEC = REPO / "procedural" / "reports" / "slices" / "_active_slice_spec.json"
 UE_DIR = REPO / "tools" / "unreal"
-DEFAULT_EDITOR = "/mnt/c/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-cmd.exe"
+DEFAULT_EDITOR_WSL = "/mnt/c/Program Files/Epic Games/UE_5.7/Engine/Binaries/Win64/UnrealEditor-cmd.exe"
+DEFAULT_EDITOR_WIN = r"C:\Program Files\Epic Games\UE_5.7\Engine\Binaries\Win64\UnrealEditor-Cmd.exe"
+
+
+def _is_wsl():
+    try:
+        with open("/proc/version", "r") as f:
+            return "microsoft" in f.read().lower()
+    except Exception:
+        return False
+
+
+_IN_WSL = _is_wsl()
+DEFAULT_EDITOR = DEFAULT_EDITOR_WSL if _IN_WSL else DEFAULT_EDITOR_WIN
 
 
 def _to_win(path):
-    win = subprocess.check_output(["wslpath", "-w", str(path)], text=True).strip()
-    return win.replace("\\", "/")
+    """Return a Windows-style path string suitable for passing to UnrealEditor-Cmd."""
+    if _IN_WSL:
+        win = subprocess.check_output(["wslpath", "-w", str(path)], text=True).strip()
+        return win.replace("\\", "/")
+    # Native Windows: pathlib already gives us a Windows path; forward slashes work fine in UE.
+    return str(path).replace("\\", "/")
 
 
 def main():
@@ -46,6 +63,7 @@ def main():
     ap.add_argument("--spec", required=True, help="Path to the generated slice spec JSON.")
     ap.add_argument("--editor", default=os.environ.get("UE_EDITOR_CMD", DEFAULT_EDITOR))
     ap.add_argument("--uproject", default=os.environ.get("WF_UPROJECT", str(REPO / "WorldForge.uproject")))
+    ap.add_argument("--deep", action="store_true", help="Enable deep validation (validate_slice.py only).")
     args = ap.parse_args()
 
     spec_path = Path(args.spec)
@@ -58,6 +76,12 @@ def main():
     ACTIVE_SPEC.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(str(spec_path), str(ACTIVE_SPEC))
     print("[run-slice-ue] staged spec '{}' -> {}".format(spec.get("slice_id"), ACTIVE_SPEC))
+
+    # Write validate config (controls deep mode in validate_slice.py).
+    _validate_config = REPO / "procedural" / "reports" / "slices" / "_validate_config.json"
+    _validate_config.parent.mkdir(parents=True, exist_ok=True)
+    with open(_validate_config, "w", encoding="utf-8") as _f:
+        json.dump({"deep": args.deep and args.script == "validate_slice.py"}, _f)
 
     script_path = UE_DIR / args.script
     if not script_path.is_file():
@@ -75,6 +99,13 @@ def main():
     started = time.time()
     proc = subprocess.run(cmd)
     print("[run-slice-ue] editor exited rc={} after {:.0f}s".format(proc.returncode, time.time() - started))
+
+    # Reset validate config to non-deep so stale deep=true doesn't leak into subsequent runs.
+    try:
+        with open(_validate_config, "w", encoding="utf-8") as _f:
+            json.dump({"deep": False}, _f)
+    except Exception:
+        pass
 
     # The editor process exits 0 even when the in-editor script's logic fails, so
     # score the report it wrote and propagate a real pass/fail to make.

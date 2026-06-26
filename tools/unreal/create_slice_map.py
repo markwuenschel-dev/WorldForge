@@ -192,6 +192,31 @@ def build_region_marker(slice_id, region_id, state, report):
     return marker
 
 
+def build_player_start(report):
+    """Spawn a PlayerStart so the map is immediately playable."""
+    try:
+        actor = _spawn(unreal.PlayerStart, unreal.Vector(0, 0, 300))
+        actor.set_actor_label("PlayerStart")
+        report["player_start"] = True
+        log("PlayerStart spawned")
+    except Exception as e:
+        report["warnings"].append("PlayerStart spawn failed: {}".format(e))
+        report["player_start"] = False
+
+
+def build_nav_bounds(report):
+    """Spawn a NavMeshBoundsVolume covering the terrain plane."""
+    try:
+        vol = _spawn(unreal.NavMeshBoundsVolume, unreal.Vector(0, 0, 500))
+        vol.set_actor_label("NavMesh")
+        vol.set_actor_scale3d(unreal.Vector(20.0, 20.0, 10.0))
+        report["nav_bounds"] = True
+        log("NavMeshBoundsVolume spawned")
+    except Exception as e:
+        report["warnings"].append("NavMeshBoundsVolume spawn failed: {}".format(e))
+        report["nav_bounds"] = False
+
+
 def prime_state(state, report):
     """Drive the runtime state to `before` and read the MPC back -- proves the
     SetState -> WorldStateSubsystem -> MPC bridge is alive for this slice."""
@@ -254,6 +279,8 @@ def main():
         report["terrain_mi"] = assigned_mi
         report["pcg_kind"] = build_pcg(pcg_path, da_path, report)
         build_region_marker(slice_id, region_id, state, report)
+        build_player_start(report)
+        build_nav_bounds(report)
         prime_state(state, report)
 
         world = _world()
