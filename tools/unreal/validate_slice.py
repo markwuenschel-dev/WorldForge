@@ -228,19 +228,10 @@ def main():
                   os.path.isfile(da_desc_path),
                   "path={}".format(da_desc_path))
 
-            # budget config readable
+            # budget config present (content validated by validate_budget.py on pipeline side)
             budget_path = os.path.join(root, "procedural", "definitions", "budgets", "desert_default.yaml")
-            if os.path.isfile(budget_path):
-                try:
-                    import yaml as _yaml
-                    with open(budget_path, "r", encoding="utf-8") as _f:
-                        _budget = _yaml.safe_load(_f)
-                    check("budget_config_loaded", isinstance(_budget, dict), "budget=desert_default")
-                except Exception as _e:
-                    check("budget_config_loaded", False, "load error: {}".format(_e))
-            else:
-                check("budget_config_loaded", False,
-                      "budget file missing: {}".format(budget_path))
+            check("budget_config_loaded", os.path.isfile(budget_path),
+                  "budget file missing: {}".format(budget_path))
 
         result["passed"] = not result["failures"]
         result["status"] = "ok"
