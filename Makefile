@@ -17,7 +17,8 @@ UE_PYTHON := python
         repair-slice list-orphans clean-orphans \
         compare-slice-determinism \
         create-world-pack validate-world-pack \
-        ue-doctor
+        ue-doctor \
+        create-terrain validate-terrain import-terrain
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -73,6 +74,12 @@ help:
 	@echo "  make validate-slice-pack PACK=desert_foundation        # aggregate validate reports for pack"
 	@echo "  make destroy-slice NAME=Desert_Ash_Outpost_01          # delete owned generated assets"
 	@echo "  make rebuild-slice BIOME=desert VARIANT=ash NAME=Desert_Ash_Outpost_01  # destroy + create"
+	@echo ""
+	@echo "TerrainForge Lite (v0.6 — deterministic terrain from data):"
+	@echo "  make create-terrain RECIPE=ash_flats NAME=Terrain_AshFlats_01"
+	@echo "  make validate-terrain NAME=Terrain_AshFlats_01"
+	@echo "  make import-terrain NAME=Terrain_AshFlats_01    # UE-side import (requires editor)"
+	@echo "  make create-slice BIOME=desert TERRAIN=ash_flats VARIANT=ash PLACEMENT=dead_scrub STATE=industrialized NAME=Desert_AshFlats_Industrialized_01"
 	@echo ""
 	@echo "Other:"
 	@echo "  make preview     # Always fails until preview generation exists"
@@ -201,11 +208,13 @@ CATALOG      ?= desert_asset_catalog
 PRESET       ?= industrial_debris
 STATE        ?= industrialized
 BUDGET       ?= procedural/definitions/budgets/desert_default.yaml
+TERRAIN      ?=
 
 create-slice-spec:
 	$(PYTHON) tools/pipeline/create_slice_spec.py --biome $(BIOME) --variant $(VARIANT) --name $(NAME) \
 	  $(if $(PLACEMENT),--placement $(PLACEMENT),) \
-	  $(if $(STATE_PRESET),--state-preset $(STATE_PRESET),)
+	  $(if $(STATE_PRESET),--state-preset $(STATE_PRESET),) \
+	  $(if $(TERRAIN),--terrain $(TERRAIN),)
 
 prepare-slice:
 	$(PYTHON) tools/pipeline/prepare_slice.py --spec $(SPEC)
@@ -219,9 +228,10 @@ validate-slice:
 
 create-slice:
 	$(MAKE) create-slice-spec BIOME=$(BIOME) VARIANT=$(VARIANT) NAME=$(NAME) \
-	  PLACEMENT=$(PLACEMENT) STATE_PRESET=$(STATE_PRESET)
+	  PLACEMENT=$(PLACEMENT) STATE_PRESET=$(STATE_PRESET) TERRAIN=$(TERRAIN)
 	$(MAKE) prepare-slice SPEC=$(SLICE_SPEC)
 	$(MAKE) create-slice-map SPEC=$(SLICE_SPEC)
+	$(PYTHON) tools/pipeline/generate_placement_da.py --spec $(SLICE_SPEC)
 	$(MAKE) validate-slice SPEC=$(SLICE_SPEC)
 
 PACK     ?= desert_foundation
@@ -287,6 +297,21 @@ validate-world-pack:
 # v0.5 — pre-flight
 ue-doctor:
 	$(PYTHON) tools/pipeline/ue_doctor.py
+
+# v0.6 — TerrainForge Lite
+# Generate deterministic terrain artifacts from a terrain recipe.
+#   RECIPE  terrain recipe id (procedural/definitions/terrain/<RECIPE>.yaml)
+#   NAME    output terrain name (e.g. Terrain_AshFlats_01)
+create-terrain:
+	$(PYTHON) tools/pipeline/create_terrain.py --recipe $(RECIPE) --name $(NAME)
+
+# Validate generated terrain artifacts (pure Python; no UE required).
+validate-terrain:
+	$(PYTHON) tools/pipeline/validate_terrain.py --name $(NAME)
+
+# Run UE-side terrain import (Stage C); requires editor.
+import-terrain:
+	$(PYTHON) tools/pipeline/run_terrain_ue.py --script import_terrain_heightmap.py --name $(NAME)
 
 preview:
 	@echo "Preview generation is not implemented yet."

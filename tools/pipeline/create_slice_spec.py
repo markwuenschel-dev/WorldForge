@@ -88,6 +88,10 @@ def main(argv=None) -> int:
         "--state-preset", default=None,
         help="state preset id, e.g. industrialized"
     )
+    parser.add_argument(
+        "--terrain", default=None,
+        help="terrain recipe id, e.g. ash_flats (wires TerrainForge Lite descriptor into the spec)"
+    )
     args = parser.parse_args(argv)
 
     biome = args.biome
@@ -176,6 +180,56 @@ def main(argv=None) -> int:
                 f"procedural/definitions/placement/{biome}/{args.placement}.yaml"
             )
 
+    # Resolve terrain_forge descriptor if --terrain was supplied.
+    terrain_forge = None
+    if args.terrain:
+        tf_desc_path = (
+            REPO_ROOT / "procedural" / "generated" / "terrain" / args.terrain
+        )
+        # Try to find the generated terrain dir by recipe id (recipe → first matching terrain dir).
+        # The conventional name is <recipe_id> but the user may have used a custom --name.
+        # We look for any descriptor whose recipe_id matches.
+        tf_desc_file = None
+        if tf_desc_path.is_dir():
+            # args.terrain is a terrain directory name, not a recipe id
+            tf_desc_file = tf_desc_path / "descriptor.json"
+        else:
+            # args.terrain is a recipe id — find any descriptor with that recipe_id
+            terrain_gen_root = REPO_ROOT / "procedural" / "generated" / "terrain"
+            if terrain_gen_root.is_dir():
+                for d in sorted(terrain_gen_root.iterdir()):
+                    candidate = d / "descriptor.json"
+                    if candidate.is_file():
+                        try:
+                            import json as _json
+                            desc = _json.loads(candidate.read_text(encoding="utf-8"))
+                            if desc.get("recipe_id") == args.terrain:
+                                tf_desc_file = candidate
+                                break
+                        except Exception:
+                            pass
+        if tf_desc_file is None or not tf_desc_file.is_file():
+            sys.stderr.write(
+                f"WARNING: terrain descriptor not found for '{args.terrain}' -- "
+                f"run 'make create-terrain RECIPE={args.terrain} NAME=...' first\n"
+            )
+        else:
+            try:
+                import json as _json
+                tf_desc = _json.loads(tf_desc_file.read_text(encoding="utf-8"))
+                outputs = tf_desc.get("outputs", {})
+                terrain_forge = {
+                    "terrain_name": tf_desc.get("terrain_name"),
+                    "recipe_id": tf_desc.get("recipe_id"),
+                    "descriptor_path": tf_desc_file.relative_to(REPO_ROOT).as_posix(),
+                    "heightmap": outputs.get("heightmap", ""),
+                    "slope_mask": outputs.get("slope_mask", ""),
+                    "placement_mask": outputs.get("placement_mask", ""),
+                    "nav_safe_mask": outputs.get("nav_safe_mask", ""),
+                }
+            except Exception as exc:
+                sys.stderr.write(f"WARNING: could not read terrain descriptor: {exc}\n")
+
     spec = {
         "slice_id": name,
         "biome": biome,
@@ -217,6 +271,8 @@ def main(argv=None) -> int:
         spec["placement_preset_path"] = placement_preset_path_rel
     if state_preset_id is not None:
         spec["state_preset_id"] = state_preset_id
+    if terrain_forge is not None:
+        spec["terrain_forge"] = terrain_forge
 
     out_dir = REPO_ROOT / "procedural" / "slices" / biome / "generated"
     out_dir.mkdir(parents=True, exist_ok=True)

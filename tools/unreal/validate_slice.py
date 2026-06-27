@@ -192,6 +192,36 @@ def main():
         nav = _find(actors, lambda a: isinstance(a, unreal.NavMeshBoundsVolume))
         check("nav_bounds", nav is not None, "NavMeshBoundsVolume actor", warn_only=True)
 
+        # terrain_forge checks — run when spec contains a terrain_forge block
+        terrain_forge = spec.get("terrain_forge")
+        if terrain_forge:
+            tf_desc_rel = terrain_forge.get("descriptor_path", "")
+            tf_desc_full = os.path.join(root, tf_desc_rel.replace("/", os.sep))
+            check("terrain_forge_descriptor_exists",
+                  bool(tf_desc_rel) and os.path.isfile(tf_desc_full),
+                  "descriptor_path={}".format(tf_desc_rel))
+            for artifact_key in ("heightmap", "slope_mask", "placement_mask", "nav_safe_mask"):
+                rel = terrain_forge.get(artifact_key, "")
+                full = os.path.join(root, rel.replace("/", os.sep)) if rel else ""
+                check("terrain_forge_{}_exists".format(artifact_key),
+                      bool(rel) and os.path.isfile(full),
+                      "path={}".format(rel))
+            # Verify the terrain actor carries the wf_terrain_forge tag.
+            terrain_forge_actor = _find(actors, lambda a: "wf_terrain_forge" in _tags(a))
+            check("terrain_forge_actor_tagged", terrain_forge_actor is not None,
+                  "no actor with wf_terrain_forge tag found in map")
+            if terrain_forge_actor is not None:
+                expected_tf_name = terrain_forge.get("terrain_name", "")
+                actual_tf_name = _tag_value(terrain_forge_actor, "wf_terrain_name")
+                check("terrain_forge_name_matches",
+                      actual_tf_name == expected_tf_name,
+                      "actor tag wf_terrain_name={} expected={}".format(actual_tf_name, expected_tf_name))
+                expected_pm = terrain_forge.get("placement_mask", "")
+                actual_pm = _tag_value(terrain_forge_actor, "wf_terrain_placement_mask")
+                check("terrain_forge_placement_mask_tagged",
+                      actual_pm == expected_pm,
+                      "tag wf_terrain_placement_mask={} expected={}".format(actual_pm, expected_pm))
+
         # DEEP checks — only run when _validate_config.json has {"deep": true}
         if deep:
             log("deep validation enabled")

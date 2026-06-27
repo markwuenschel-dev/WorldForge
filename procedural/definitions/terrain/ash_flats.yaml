@@ -1,0 +1,38 @@
+schema_version: "1.0"
+recipe_id: ash_flats
+display_name: "Ash Flats"
+biome: desert
+description: "Gently undulating ash-covered flats. Boring on purpose, but real."
+
+generation:
+  seed: 77777
+  width: 513   # power-of-2+1 for UE landscape compatibility
+  height: 513
+
+  heightmap:
+    algorithm: fbm_value_noise
+    octaves: 6
+    base_scale_px: 64      # wavelength (pixels) of lowest-frequency octave
+    persistence: 0.5
+    lacunarity: 2.0
+    height_min_cm: 0.0
+    height_max_cm: 2000.0  # 20 m — real undulation, still flat by desert standards
+
+  slope_mask:
+    # Steep = slope >= threshold. With fbm over 513px/2000cm,
+    # typical slopes range 3-25 deg; 12 deg gives ~40-55% steep coverage.
+    steep_threshold_degrees: 12.0
+
+  placement_mask:
+    # Objects can sit on gentle slopes. Invert of steep_mask at 10 deg.
+    slope_max_degrees: 10.0
+
+  nav_safe_mask:
+    # Navigation requires flatter ground than placement. Stricter threshold.
+    slope_max_degrees: 8.0
+
+ue_terrain:
+  landscape_material: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01
+  component_size: 63
+  sections_per_component: 1
+  quads_per_section: 63

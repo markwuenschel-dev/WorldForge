@@ -98,12 +98,20 @@ def build_lighting():
         pass
 
 
-def build_terrain(mi_path, report):
+def build_terrain(mi_path, report, terrain_forge=None):
     """Ground plane assigned the slice terrain MI. Returns (actor, assigned_path)."""
     actor, _ = _spawn_mesh(PLANE, unreal.Vector(0, 0, 0))
     actor.set_actor_label("Ground")
     actor.set_actor_scale3d(unreal.Vector(PLANE_SCALE, PLANE_SCALE, 1.0))
-    actor.tags = [TAG_TERRAIN]
+    tags = [TAG_TERRAIN]
+    # When the slice is terrain-backed, stamp TerrainForge metadata onto the actor.
+    if terrain_forge:
+        tags.append("wf_terrain_forge")
+        tags.append("wf_terrain_name:{}".format(terrain_forge.get("terrain_name", "")))
+        tags.append("wf_terrain_recipe:{}".format(terrain_forge.get("recipe_id", "")))
+        tags.append("wf_terrain_placement_mask:{}".format(terrain_forge.get("placement_mask", "")))
+        tags.append("wf_terrain_nav_mask:{}".format(terrain_forge.get("nav_safe_mask", "")))
+    actor.tags = tags
     mi = unreal.EditorAssetLibrary.load_asset(mi_path)
     if mi is None:
         report["errors"].append("terrain MI not found: {}".format(mi_path))
@@ -261,11 +269,14 @@ def main():
     placement = spec.get("placement", {})
     da_path = placement.get("data_asset")
     pcg_path = placement.get("pcg_graph")
+    terrain_forge = spec.get("terrain_forge")  # present only for terrain-backed slices
     out_dir = os.path.join(root, spec.get("output_dir", "procedural/reports/slices/_unsorted/" + slice_id))
     os.makedirs(out_dir, exist_ok=True)
 
     report = {"slice_id": slice_id, "map": map_path, "region_id": region_id,
               "errors": [], "warnings": []}
+    if terrain_forge:
+        report["terrain_forge"] = terrain_forge.get("terrain_name")
     try:
         if unreal.EditorAssetLibrary.does_asset_exist(map_path):
             unreal.EditorAssetLibrary.delete_asset(map_path)
@@ -275,7 +286,7 @@ def main():
         log("new level: {}".format(map_path))
 
         build_lighting()
-        _, assigned_mi = build_terrain(mi_path, report)
+        _, assigned_mi = build_terrain(mi_path, report, terrain_forge=terrain_forge)
         report["terrain_mi"] = assigned_mi
         report["pcg_kind"] = build_pcg(pcg_path, da_path, report)
         build_region_marker(slice_id, region_id, state, report)
