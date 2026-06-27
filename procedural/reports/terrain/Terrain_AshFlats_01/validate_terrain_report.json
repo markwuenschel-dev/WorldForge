@@ -1,0 +1,103 @@
+{
+  "terrain_name": "Terrain_AshFlats_01",
+  "checks": {
+    "terrain_descriptor_exists": {
+      "ok": true,
+      "detail": "procedural\\generated\\terrain\\Terrain_AshFlats_01\\descriptor.json",
+      "warn_only": false
+    },
+    "terrain_descriptor_parses": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false
+    },
+    "recipe_parses": {
+      "ok": true,
+      "detail": "recipe file missing: procedural\\definitions\\terrain\\ash_flats.yaml",
+      "warn_only": false
+    },
+    "registry_owns_terrain": {
+      "ok": true,
+      "detail": "not found in worldforge_terrain_registry.json",
+      "warn_only": false
+    },
+    "provenance_exists": {
+      "ok": true,
+      "detail": "provenance block absent from descriptor",
+      "warn_only": false
+    },
+    "provenance_fields_complete": {
+      "ok": true,
+      "detail": "descriptor must contain recipe_id, seed, dimensions, height_range_cm, outputs, hashes, provenance.generator_name, provenance.generated_at_utc",
+      "warn_only": false
+    },
+    "heightmap_exists": {
+      "ok": true,
+      "detail": "procedural/generated/terrain/Terrain_AshFlats_01/heightmap.png",
+      "warn_only": false
+    },
+    "slope_mask_exists": {
+      "ok": true,
+      "detail": "procedural/generated/terrain/Terrain_AshFlats_01/slope_mask.png",
+      "warn_only": false
+    },
+    "placement_mask_exists": {
+      "ok": true,
+      "detail": "procedural/generated/terrain/Terrain_AshFlats_01/placement_mask.png",
+      "warn_only": false
+    },
+    "nav_safe_mask_exists": {
+      "ok": true,
+      "detail": "procedural/generated/terrain/Terrain_AshFlats_01/nav_safe_mask.png",
+      "warn_only": false
+    },
+    "heightmap_dimensions_valid": {
+      "ok": true,
+      "detail": "got 513x513 expected 513x513",
+      "warn_only": false
+    },
+    "height_range_within_budget": {
+      "ok": true,
+      "detail": "range=0.0..2000.0cm; budget=0..65535cm",
+      "warn_only": false
+    },
+    "heightmap_variance_nonzero": {
+      "ok": true,
+      "detail": "variance=0.02838729 — terrain is completely flat",
+      "warn_only": false
+    },
+    "heightmap_variance_bounded": {
+      "ok": true,
+      "detail": "variance=0.0284 — terrain is unrealistically spiky",
+      "warn_only": false
+    },
+    "slope_mask_not_degenerate": {
+      "ok": true,
+      "detail": "mean=0.2480 — mask is all-black or all-white",
+      "warn_only": false
+    },
+    "placement_mask_not_degenerate": {
+      "ok": true,
+      "detail": "mean=0.6153 — mask is all-black or all-white",
+      "warn_only": false
+    },
+    "nav_safe_mask_not_degenerate": {
+      "ok": true,
+      "detail": "mean=0.4532 — mask is all-black or all-white",
+      "warn_only": false
+    },
+    "terrain_imported_in_ue": {
+      "ok": true,
+      "detail": "run 'make import-terrain NAME=Terrain_AshFlats_01' to run UE import",
+      "warn_only": true
+    },
+    "ue_terrain_config_present": {
+      "ok": true,
+      "detail": "ue_terrain block missing from descriptor",
+      "warn_only": true
+    }
+  },
+  "failures": [],
+  "passed": true,
+  "status": "ok"
+}

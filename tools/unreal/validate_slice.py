@@ -98,6 +98,16 @@ def main():
     with open(spec_path, "r", encoding="utf-8") as f:
         spec = json.load(f)
 
+    # Read deep-validation config written by run_slice_ue.py --deep.
+    config_path = os.path.join(root, "procedural", "reports", "slices", "_validate_config.json")
+    deep = False
+    if os.path.isfile(config_path):
+        try:
+            with open(config_path, "r", encoding="utf-8") as f:
+                deep = json.load(f).get("deep", False)
+        except Exception:
+            deep = False
+
     map_path = spec["map"]
     region_id = spec["region_id"]
     state = spec["state"]
@@ -112,9 +122,9 @@ def main():
     result = {"slice_id": spec["slice_id"], "map": map_path, "checks": {}, "failures": []}
     fail = result["failures"].append
 
-    def check(name, ok, detail=""):
+    def check(name, ok, detail="", warn_only=False):
         result["checks"][name] = {"ok": bool(ok), "detail": detail}
-        if not ok:
+        if not ok and not warn_only:
             fail("{}: {}".format(name, detail or "failed"))
         return ok
 
@@ -174,6 +184,84 @@ def main():
                   "readback={} expected={}".format(round(val, 4), after))
         except Exception as e:  # noqa: BLE001
             check("mpc_bridge", False, "exception: {}".format(e))
+
+        # player_start and nav_bounds are warn_only for backwards compat with pre-v0.4 maps
+        ps = _find(actors, lambda a: isinstance(a, unreal.PlayerStart))
+        check("player_start", ps is not None, "PlayerStart actor", warn_only=True)
+
+        nav = _find(actors, lambda a: isinstance(a, unreal.NavMeshBoundsVolume))
+        check("nav_bounds", nav is not None, "NavMeshBoundsVolume actor", warn_only=True)
+
+        # terrain_forge checks — run when spec contains a terrain_forge block
+        terrain_forge = spec.get("terrain_forge")
+        if terrain_forge:
+            tf_desc_rel = terrain_forge.get("descriptor_path", "")
+            tf_desc_full = os.path.join(root, tf_desc_rel.replace("/", os.sep))
+            check("terrain_forge_descriptor_exists",
+                  bool(tf_desc_rel) and os.path.isfile(tf_desc_full),
+                  "descriptor_path={}".format(tf_desc_rel))
+            for artifact_key in ("heightmap", "slope_mask", "placement_mask", "nav_safe_mask"):
+                rel = terrain_forge.get(artifact_key, "")
+                full = os.path.join(root, rel.replace("/", os.sep)) if rel else ""
+                check("terrain_forge_{}_exists".format(artifact_key),
+                      bool(rel) and os.path.isfile(full),
+                      "path={}".format(rel))
+            # Verify the terrain actor carries the wf_terrain_forge tag.
+            terrain_forge_actor = _find(actors, lambda a: "wf_terrain_forge" in _tags(a))
+            check("terrain_forge_actor_tagged", terrain_forge_actor is not None,
+                  "no actor with wf_terrain_forge tag found in map")
+            if terrain_forge_actor is not None:
+                expected_tf_name = terrain_forge.get("terrain_name", "")
+                actual_tf_name = _tag_value(terrain_forge_actor, "wf_terrain_name")
+                check("terrain_forge_name_matches",
+                      actual_tf_name == expected_tf_name,
+                      "actor tag wf_terrain_name={} expected={}".format(actual_tf_name, expected_tf_name))
+                expected_pm = terrain_forge.get("placement_mask", "")
+                actual_pm = _tag_value(terrain_forge_actor, "wf_terrain_placement_mask")
+                check("terrain_forge_placement_mask_tagged",
+                      actual_pm == expected_pm,
+                      "tag wf_terrain_placement_mask={} expected={}".format(actual_pm, expected_pm))
+
+        # DEEP checks — only run when _validate_config.json has {"deep": true}
+        if deep:
+            log("deep validation enabled")
+
+            # placement preset file must exist on disk
+            placement_preset_id = spec.get("placement_preset_id")
+            if placement_preset_id:
+                preset_biome = spec.get("biome", "desert")
+                preset_path = os.path.join(root, "procedural", "definitions", "placement",
+                                           preset_biome, placement_preset_id + ".yaml")
+                check("placement_preset_exists",
+                      os.path.isfile(preset_path),
+                      "preset={} path={}".format(placement_preset_id, preset_path))
+            else:
+                check("placement_preset_exists", False, "no placement_preset_id in spec", warn_only=True)
+
+            # state preset file must exist on disk (warn_only if omitted — v0.4 slices lack it)
+            state_preset_id = spec.get("state_preset_id")
+            if state_preset_id:
+                state_biome = spec.get("biome", "desert")
+                state_path = os.path.join(root, "procedural", "definitions", "state",
+                                          state_biome, state_preset_id + ".yaml")
+                check("state_preset_exists",
+                      os.path.isfile(state_path),
+                      "preset={} path={}".format(state_preset_id, state_path))
+            else:
+                check("state_preset_exists", False,
+                      "no state_preset_id in spec", warn_only=True)
+
+            # per-slice placement DA JSON descriptor
+            da_desc_path = os.path.join(root, "procedural", "generated", "placement",
+                                        spec["slice_id"] + "_da.json")
+            check("placement_da_exists",
+                  os.path.isfile(da_desc_path),
+                  "path={}".format(da_desc_path))
+
+            # budget config present (content validated by validate_budget.py on pipeline side)
+            budget_path = os.path.join(root, "procedural", "definitions", "budgets", "desert_default.yaml")
+            check("budget_config_loaded", os.path.isfile(budget_path),
+                  "budget file missing: {}".format(budget_path))
 
         result["passed"] = not result["failures"]
         result["status"] = "ok"

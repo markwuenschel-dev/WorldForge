@@ -10,7 +10,15 @@ UE_PYTHON := python
         validate-placement-assets placement-build biome-slice \
         prepare-material render-desert-variants \
         prepare-biome-slice render-biome-slice render-desert-pack \
-        create-slice-spec prepare-slice create-slice-map validate-slice create-slice
+        create-slice-spec prepare-slice create-slice-map validate-slice create-slice \
+        create-slice-pack validate-slice-pack destroy-slice rebuild-slice \
+        validate-asset-catalog validate-placement-preset validate-state-preset validate-budget \
+        generate-placement-da update-slice-placement \
+        repair-slice list-orphans clean-orphans \
+        compare-slice-determinism \
+        create-world-pack validate-world-pack \
+        ue-doctor \
+        create-terrain validate-terrain import-terrain
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -62,6 +70,16 @@ help:
 	@echo "  make prepare-slice SPEC=procedural/slices/desert/generated/Desert_Outpost_01.json"
 	@echo "  make create-slice-map SPEC=...   # headless UE: build + save the map"
 	@echo "  make validate-slice SPEC=...     # headless UE: assert the slice is wired"
+	@echo "  make create-slice-pack PACK=desert_foundation JOBS=4  # batch create all slices in a pack"
+	@echo "  make validate-slice-pack PACK=desert_foundation        # aggregate validate reports for pack"
+	@echo "  make destroy-slice NAME=Desert_Ash_Outpost_01          # delete owned generated assets"
+	@echo "  make rebuild-slice BIOME=desert VARIANT=ash NAME=Desert_Ash_Outpost_01  # destroy + create"
+	@echo ""
+	@echo "TerrainForge Lite (v0.6 — deterministic terrain from data):"
+	@echo "  make create-terrain RECIPE=ash_flats NAME=Terrain_AshFlats_01"
+	@echo "  make validate-terrain NAME=Terrain_AshFlats_01"
+	@echo "  make import-terrain NAME=Terrain_AshFlats_01    # UE-side import (requires editor)"
+	@echo "  make create-slice BIOME=desert TERRAIN=ash_flats VARIANT=ash PLACEMENT=dead_scrub STATE=industrialized NAME=Desert_AshFlats_Industrialized_01"
 	@echo ""
 	@echo "Other:"
 	@echo "  make preview     # Always fails until preview generation exists"
@@ -181,8 +199,22 @@ render-desert-pack:
 # create-slice chains: emit generated spec -> prepare assets -> build+save UE map -> validate.
 SLICE_SPEC = procedural/slices/$(BIOME)/generated/$(NAME).json
 
+# Optional composition args for create-slice / create-slice-pack
+PLACEMENT    ?=
+STATE_PRESET ?=
+DEEP         ?=
+CONFIRM      ?=
+CATALOG      ?= desert_asset_catalog
+PRESET       ?= industrial_debris
+STATE        ?= industrialized
+BUDGET       ?= procedural/definitions/budgets/desert_default.yaml
+TERRAIN      ?=
+
 create-slice-spec:
-	$(PYTHON) tools/pipeline/create_slice_spec.py --biome $(BIOME) --variant $(VARIANT) --name $(NAME)
+	$(PYTHON) tools/pipeline/create_slice_spec.py --biome $(BIOME) --variant $(VARIANT) --name $(NAME) \
+	  $(if $(PLACEMENT),--placement $(PLACEMENT),) \
+	  $(if $(STATE_PRESET),--state-preset $(STATE_PRESET),) \
+	  $(if $(TERRAIN),--terrain $(TERRAIN),)
 
 prepare-slice:
 	$(PYTHON) tools/pipeline/prepare_slice.py --spec $(SPEC)
@@ -191,13 +223,95 @@ create-slice-map:
 	$(PYTHON) tools/pipeline/run_slice_ue.py --script create_slice_map.py --spec $(SPEC)
 
 validate-slice:
-	$(PYTHON) tools/pipeline/run_slice_ue.py --script validate_slice.py --spec $(SPEC)
+	$(PYTHON) tools/pipeline/run_slice_ue.py --script validate_slice.py --spec $(SPEC) \
+	  $(if $(DEEP),--deep,)
 
 create-slice:
-	$(MAKE) create-slice-spec BIOME=$(BIOME) VARIANT=$(VARIANT) NAME=$(NAME)
+	$(MAKE) create-slice-spec BIOME=$(BIOME) VARIANT=$(VARIANT) NAME=$(NAME) \
+	  PLACEMENT=$(PLACEMENT) STATE_PRESET=$(STATE_PRESET) TERRAIN=$(TERRAIN)
 	$(MAKE) prepare-slice SPEC=$(SLICE_SPEC)
 	$(MAKE) create-slice-map SPEC=$(SLICE_SPEC)
+	$(PYTHON) tools/pipeline/generate_placement_da.py --spec $(SLICE_SPEC)
 	$(MAKE) validate-slice SPEC=$(SLICE_SPEC)
+
+PACK     ?= desert_foundation
+JOBS     ?= 1
+
+create-slice-pack:
+	$(PYTHON) tools/pipeline/create_slice_pack.py --pack procedural/slice_packs/$(PACK).yaml --jobs $(JOBS)
+
+validate-slice-pack:
+	$(PYTHON) tools/pipeline/validate_slice_pack.py --pack procedural/slice_packs/$(PACK).yaml \
+	  $(if $(DEEP),--deep,)
+
+destroy-slice:
+	$(PYTHON) tools/pipeline/destroy_slice.py --name $(NAME)
+
+rebuild-slice:
+	$(MAKE) destroy-slice NAME=$(NAME)
+	$(MAKE) create-slice BIOME=$(BIOME) VARIANT=$(VARIANT) NAME=$(NAME) \
+	  PLACEMENT=$(PLACEMENT) STATE_PRESET=$(STATE_PRESET)
+
+# v0.5 — definition validators
+validate-asset-catalog:
+	$(PYTHON) tools/pipeline/validate_asset_catalog.py --catalog procedural/definitions/assets/$(CATALOG).yaml
+
+validate-placement-preset:
+	$(PYTHON) tools/pipeline/validate_placement_preset.py --preset procedural/definitions/placement/$(BIOME)/$(PRESET).yaml
+
+validate-state-preset:
+	$(PYTHON) tools/pipeline/validate_state_preset.py --preset procedural/definitions/state/$(BIOME)/$(STATE).yaml
+
+validate-budget:
+	$(PYTHON) tools/pipeline/validate_budget.py --budget $(BUDGET)
+
+# v0.5 — per-slice placement DA
+generate-placement-da:
+	$(PYTHON) tools/pipeline/generate_placement_da.py --spec $(SPEC)
+
+update-slice-placement:
+	$(PYTHON) tools/pipeline/run_ue_update_placement.py --spec $(SPEC)
+
+# v0.5 — repair / orphan lifecycle
+repair-slice:
+	$(PYTHON) tools/pipeline/run_ue_repair.py --name $(NAME)
+
+list-orphans:
+	$(PYTHON) tools/pipeline/list_orphans.py
+
+clean-orphans:
+	$(PYTHON) tools/pipeline/clean_orphans.py $(if $(CONFIRM),--confirm,)
+
+# v0.5 — determinism
+compare-slice-determinism:
+	$(PYTHON) tools/pipeline/compare_slice_determinism.py --name $(NAME)
+
+# v0.5 — world packs
+create-world-pack:
+	$(PYTHON) tools/pipeline/create_world_pack.py --pack procedural/world_packs/$(PACK).yaml --jobs $(JOBS)
+
+validate-world-pack:
+	$(PYTHON) tools/pipeline/validate_world_pack.py --pack procedural/world_packs/$(PACK).yaml \
+	  $(if $(DEEP),--deep,)
+
+# v0.5 — pre-flight
+ue-doctor:
+	$(PYTHON) tools/pipeline/ue_doctor.py
+
+# v0.6 — TerrainForge Lite
+# Generate deterministic terrain artifacts from a terrain recipe.
+#   RECIPE  terrain recipe id (procedural/definitions/terrain/<RECIPE>.yaml)
+#   NAME    output terrain name (e.g. Terrain_AshFlats_01)
+create-terrain:
+	$(PYTHON) tools/pipeline/create_terrain.py --recipe $(RECIPE) --name $(NAME)
+
+# Validate generated terrain artifacts (pure Python; no UE required).
+validate-terrain:
+	$(PYTHON) tools/pipeline/validate_terrain.py --name $(NAME)
+
+# Run UE-side terrain import (Stage C); requires editor.
+import-terrain:
+	$(PYTHON) tools/pipeline/run_terrain_ue.py --script import_terrain_heightmap.py --name $(NAME)
 
 preview:
 	@echo "Preview generation is not implemented yet."
