@@ -1,0 +1,54 @@
+schema_version: "1.0"
+recipe_id: debris_checkpoint
+display_name: "Debris Checkpoint"
+biome: desert
+description: "Controlled passage / blockade — linear approach with debris cluster."
+
+compatible_terrain:
+  - ash_flats
+
+compatible_state:
+  - industrialized
+  - ruined_industrial
+
+compatible_placement:
+  - industrial_debris
+  - mixed_ruins
+
+footprint:
+  width_cm: 4000
+  depth_cm: 3000
+
+bounds:
+  id: primary_bounds
+  require_non_overlapping: true
+
+anchors:
+  - id: approach_a
+    role: approach
+    offset_cm: [0, -1500, 0]
+  - id: approach_b
+    role: approach
+    offset_cm: [0, 1500, 0]
+  - id: debris_cluster
+    role: prop_cluster
+    offset_cm: [500, 0, 0]
+  - id: overhead_cover
+    role: secondary
+    offset_cm: [0, 0, 200]
+
+markers:
+  - id: primary_poi_marker
+    role: objective_focus
+    anchor_ref: debris_cluster
+  - id: gate_marker
+    role: chokepoint
+    anchor_ref: approach_a
+
+budgets:
+  max_static_mesh_actors: 50
+  max_marker_count: 12
+  max_bounds_area_cm2: 20000000
+
+template_id: debris_checkpoint_template_v1
+seed: 42002

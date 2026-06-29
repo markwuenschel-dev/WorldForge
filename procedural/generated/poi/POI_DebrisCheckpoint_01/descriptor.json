@@ -1,0 +1,100 @@
+{
+  "poi_name": "POI_DebrisCheckpoint_01",
+  "poi_type": "debris_checkpoint",
+  "recipe_id": "debris_checkpoint",
+  "recipe_path": "procedural/definitions/poi/debris_checkpoint.yaml",
+  "seed": 42002,
+  "footprint": {
+    "width_cm": 4000,
+    "depth_cm": 3000
+  },
+  "bounds": {
+    "id": "primary_bounds",
+    "require_non_overlapping": true,
+    "width_cm": 4000,
+    "depth_cm": 3000,
+    "area_cm2": 12000000
+  },
+  "anchors": [
+    {
+      "id": "approach_a",
+      "role": "approach",
+      "offset_cm": [
+        0,
+        -1500,
+        0
+      ]
+    },
+    {
+      "id": "approach_b",
+      "role": "approach",
+      "offset_cm": [
+        0,
+        1500,
+        0
+      ]
+    },
+    {
+      "id": "debris_cluster",
+      "role": "prop_cluster",
+      "offset_cm": [
+        500,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "overhead_cover",
+      "role": "secondary",
+      "offset_cm": [
+        0,
+        0,
+        200
+      ]
+    }
+  ],
+  "markers": [
+    {
+      "id": "primary_poi_marker",
+      "role": "objective_focus",
+      "anchor_ref": "debris_cluster"
+    },
+    {
+      "id": "gate_marker",
+      "role": "chokepoint",
+      "anchor_ref": "approach_a"
+    }
+  ],
+  "budgets": {
+    "max_static_mesh_actors": 50,
+    "max_marker_count": 12,
+    "max_bounds_area_cm2": 20000000
+  },
+  "template_id": "debris_checkpoint_template_v1",
+  "compatible_terrain": [
+    "ash_flats"
+  ],
+  "compatible_state": [
+    "industrialized",
+    "ruined_industrial"
+  ],
+  "compatible_placement": [
+    "industrial_debris",
+    "mixed_ruins"
+  ],
+  "outputs": {
+    "descriptor": "procedural/generated/poi/POI_DebrisCheckpoint_01/descriptor.json"
+  },
+  "generated_at_utc": "2026-06-28T11:16:46.348010+00:00",
+  "provenance": {
+    "generator_name": "create_poi",
+    "generator_version": "0.7.0",
+    "generated_at_utc": "2026-06-28T11:16:46.336279+00:00",
+    "source_commit": "0f92a3414aefd74944877c149324496d180383a9",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/definitions/poi/debris_checkpoint.yaml": "ce019af60e0e9513131771ab9f52d6d44cd8c139e216704fb3468fd012754759"
+    }
+  },
+  "registry_owner": "worldforge_poi_registry"
+}

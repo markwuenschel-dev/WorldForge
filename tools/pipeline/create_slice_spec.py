@@ -92,6 +92,10 @@ def main(argv=None) -> int:
         "--terrain", default=None,
         help="terrain recipe id, e.g. ash_flats (wires TerrainForge Lite descriptor into the spec)"
     )
+    parser.add_argument(
+        "--poi", default=None,
+        help="POI type id, e.g. industrial_yard (wires POIForge descriptor into the spec)"
+    )
     args = parser.parse_args(argv)
 
     biome = args.biome
@@ -230,6 +234,45 @@ def main(argv=None) -> int:
             except Exception as exc:
                 sys.stderr.write(f"WARNING: could not read terrain descriptor: {exc}\n")
 
+    # Resolve poi_forge descriptor if --poi was supplied.
+    poi_forge = None
+    if args.poi:
+        poi_gen_root = REPO_ROOT / "procedural" / "generated" / "poi"
+        poi_desc_file = None
+        if poi_gen_root.is_dir():
+            for d in sorted(poi_gen_root.iterdir()):
+                candidate = d / "descriptor.json"
+                if candidate.is_file():
+                    try:
+                        import json as _json
+                        desc = _json.loads(candidate.read_text(encoding="utf-8"))
+                        if desc.get("poi_type") == args.poi:
+                            poi_desc_file = candidate
+                            break
+                    except Exception:
+                        pass
+        if poi_desc_file is None:
+            sys.stderr.write(
+                f"WARNING: POI descriptor not found for type '{args.poi}' -- "
+                f"run 'make create-poi POI_TYPE={args.poi} NAME=POI_<Type>_01' first\n"
+            )
+        else:
+            try:
+                import json as _json
+                poi_desc = _json.loads(poi_desc_file.read_text(encoding="utf-8"))
+                poi_forge = {
+                    "poi_type": poi_desc.get("poi_type"),
+                    "poi_name": poi_desc.get("poi_name"),
+                    "descriptor_path": poi_desc_file.relative_to(REPO_ROOT).as_posix(),
+                    "template_id": poi_desc.get("template_id"),
+                    "bounds_id": poi_desc.get("bounds", {}).get("id", "primary_bounds"),
+                    "primary_marker_id": "primary_poi_marker",
+                    "anchors": poi_desc.get("anchors", []),
+                    "markers": poi_desc.get("markers", []),
+                }
+            except Exception as exc:
+                sys.stderr.write(f"WARNING: could not read POI descriptor: {exc}\n")
+
     spec = {
         "slice_id": name,
         "biome": biome,
@@ -273,6 +316,8 @@ def main(argv=None) -> int:
         spec["state_preset_id"] = state_preset_id
     if terrain_forge is not None:
         spec["terrain_forge"] = terrain_forge
+    if poi_forge is not None:
+        spec["poi_forge"] = poi_forge
 
     out_dir = REPO_ROOT / "procedural" / "slices" / biome / "generated"
     out_dir.mkdir(parents=True, exist_ok=True)

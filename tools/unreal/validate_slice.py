@@ -194,6 +194,7 @@ def main():
 
         # terrain_forge checks — run when spec contains a terrain_forge block
         terrain_forge = spec.get("terrain_forge")
+        poi_forge = spec.get("poi_forge")
         if terrain_forge:
             tf_desc_rel = terrain_forge.get("descriptor_path", "")
             tf_desc_full = os.path.join(root, tf_desc_rel.replace("/", os.sep))
@@ -221,6 +222,26 @@ def main():
                 check("terrain_forge_placement_mask_tagged",
                       actual_pm == expected_pm,
                       "tag wf_terrain_placement_mask={} expected={}".format(actual_pm, expected_pm))
+
+        # poi_forge checks — run when spec contains a poi_forge block
+        if poi_forge:
+            poi_actor = _find(actors, lambda a: _has_tag(a, "wf_poi_forge"))
+            if check("poi_forge_actor", poi_actor is not None, "no actor with wf_poi_forge tag"):
+                expected_poi_type = poi_forge.get("poi_type", "")
+                actual_poi_type = _tag_value(poi_actor, "wf_poi_type")
+                check("poi_forge_type_matches",
+                      actual_poi_type == expected_poi_type,
+                      "actor tag wf_poi_type={} expected={}".format(actual_poi_type, expected_poi_type))
+                expected_poi_name = poi_forge.get("poi_name", "")
+                actual_poi_name = _tag_value(poi_actor, "wf_poi_name")
+                check("poi_forge_name_matches",
+                      actual_poi_name == expected_poi_name,
+                      "actor tag wf_poi_name={} expected={}".format(actual_poi_name, expected_poi_name))
+                expected_bounds_id = poi_forge.get("bounds_id", "primary_bounds")
+                actual_bounds_id = _tag_value(poi_actor, "wf_poi_bounds")
+                check("poi_forge_bounds_tagged",
+                      actual_bounds_id == expected_bounds_id,
+                      "tag wf_poi_bounds={} expected={}".format(actual_bounds_id, expected_bounds_id))
 
         # DEEP checks — only run when _validate_config.json has {"deep": true}
         if deep:
@@ -262,6 +283,20 @@ def main():
             budget_path = os.path.join(root, "procedural", "definitions", "budgets", "desert_default.yaml")
             check("budget_config_loaded", os.path.isfile(budget_path),
                   "budget file missing: {}".format(budget_path))
+
+            # poi_forge descriptor file must exist when poi_forge is in spec
+            if poi_forge:
+                poi_desc_rel = poi_forge.get("descriptor_path", "")
+                poi_desc_full = os.path.join(root, poi_desc_rel.replace("/", os.sep)) if poi_desc_rel else ""
+                check("poi_forge_descriptor_exists",
+                      bool(poi_desc_rel) and os.path.isfile(poi_desc_full),
+                      "descriptor_path={}".format(poi_desc_rel))
+                expected_anchor_count = len(poi_forge.get("anchors", []))
+                poi_anchors = [a for a in actors if _has_tag(a, "wf_poi_anchor") and
+                               _tag_value(a, "wf_poi_name") == poi_forge.get("poi_name", "")]
+                check("poi_forge_anchors_spawned",
+                      len(poi_anchors) == expected_anchor_count,
+                      "found {} anchor actors expected {}".format(len(poi_anchors), expected_anchor_count))
 
         result["passed"] = not result["failures"]
         result["status"] = "ok"

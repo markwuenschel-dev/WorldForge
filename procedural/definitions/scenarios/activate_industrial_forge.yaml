@@ -1,0 +1,61 @@
+schema_version: "1.0"
+scenario_id: activate_industrial_forge
+display_name: "Activate Industrial Forge"
+biome: desert
+description: >
+  Activating the industrial forge raises industrial_pressure across the region.
+  Terrain darkens through the MPC bridge, the industrial-yard POI registers
+  active-operation evidence, and the new state survives a save/load round-trip.
+
+# Targets this scenario is allowed to run against. run-state-sim resolves a
+# slice spec by NAME when one exists; otherwise NAME is treated as a Region
+# context_id directly. These lists are advisory compatibility hints.
+compatible_slices:
+  - Desert_Ash_IndustrialYard_01
+  - Desert_AshFlats_Industrialized_01
+compatible_poi:
+  - industrial_yard
+
+# State scope the scenario mutates. Region matches the slice/context model.
+scope: Region
+
+# Expected baseline before the scenario runs. The simulator prefers a resolved
+# slice spec's recorded "before" value and falls back to these when no spec
+# exists. Keys are data-defined — the validator must not hard-code them.
+initial_state:
+  industrial_pressure: 0.0
+
+# State mutation the scenario applies (additive, clamped to [0,1]). Bounded by
+# validation_thresholds.max_delta_per_key.
+state_deltas:
+  industrial_pressure: 0.75
+
+# Expected MPC render-mirror effect, expressed as curated-key -> MPC param name.
+# The simulator computes the expected scalar from the post-state; the UE bridge
+# (run_state_scenario.py) must reproduce it as a readback.
+expected_mpc:
+  industrial_pressure: IndustrialPressure
+
+# POI state evidence the scenario is expected to produce. Each POI type lists
+# the evidence fields it should carry post-scenario. driven_by_key ties the
+# evidence magnitude to a mutated state key.
+expected_poi_evidence:
+  industrial_yard:
+    operational_state: active
+    driven_by_key: industrial_pressure
+    evidence_fields:
+      - smoke_active
+      - floodlights_on
+      - activity_level
+
+# Persistence expectations: which keys must survive a save/load round-trip.
+save_load:
+  persist_keys:
+    - industrial_pressure
+  expect_roundtrip: true
+
+# Bounds the validator enforces against the simulated result.
+validation_thresholds:
+  state_min: 0.0
+  state_max: 1.0
+  max_delta_per_key: 1.0

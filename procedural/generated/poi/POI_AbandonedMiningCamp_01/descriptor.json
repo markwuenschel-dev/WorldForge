@@ -1,0 +1,100 @@
+{
+  "poi_name": "POI_AbandonedMiningCamp_01",
+  "poi_type": "abandoned_mining_camp",
+  "recipe_id": "abandoned_mining_camp",
+  "recipe_path": "procedural/definitions/poi/abandoned_mining_camp.yaml",
+  "seed": 42005,
+  "footprint": {
+    "width_cm": 5000,
+    "depth_cm": 4000
+  },
+  "bounds": {
+    "id": "primary_bounds",
+    "require_non_overlapping": true,
+    "width_cm": 5000,
+    "depth_cm": 4000,
+    "area_cm2": 20000000
+  },
+  "anchors": [
+    {
+      "id": "camp_center",
+      "role": "primary_interaction",
+      "offset_cm": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "equipment_yard",
+      "role": "prop_cluster",
+      "offset_cm": [
+        1500,
+        500,
+        0
+      ]
+    },
+    {
+      "id": "ruin_edge",
+      "role": "secondary",
+      "offset_cm": [
+        -1500,
+        -800,
+        0
+      ]
+    },
+    {
+      "id": "entry_road",
+      "role": "entry",
+      "offset_cm": [
+        0,
+        -2000,
+        0
+      ]
+    }
+  ],
+  "markers": [
+    {
+      "id": "primary_poi_marker",
+      "role": "objective_focus",
+      "anchor_ref": "camp_center"
+    },
+    {
+      "id": "debris_marker",
+      "role": "prop_cluster",
+      "anchor_ref": "equipment_yard"
+    }
+  ],
+  "budgets": {
+    "max_static_mesh_actors": 60,
+    "max_marker_count": 14,
+    "max_bounds_area_cm2": 30000000
+  },
+  "template_id": "abandoned_mining_camp_template_v1",
+  "compatible_terrain": [
+    "ash_flats"
+  ],
+  "compatible_state": [
+    "ruined_industrial",
+    "light_industrial"
+  ],
+  "compatible_placement": [
+    "mixed_ruins",
+    "industrial_debris"
+  ],
+  "outputs": {
+    "descriptor": "procedural/generated/poi/POI_AbandonedMiningCamp_01/descriptor.json"
+  },
+  "generated_at_utc": "2026-06-28T11:16:53.539979+00:00",
+  "provenance": {
+    "generator_name": "create_poi",
+    "generator_version": "0.7.0",
+    "generated_at_utc": "2026-06-28T11:16:53.528489+00:00",
+    "source_commit": "0f92a3414aefd74944877c149324496d180383a9",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/definitions/poi/abandoned_mining_camp.yaml": "e8524ebd093cd8a4950e676dcbb89093685da6899f4ede9429f03669cd3f9900"
+    }
+  },
+  "registry_owner": "worldforge_poi_registry"
+}

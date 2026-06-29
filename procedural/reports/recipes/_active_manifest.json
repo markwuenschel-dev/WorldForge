@@ -1,0 +1,89 @@
+{
+  "recipe_id": "terrain_rock_desert_cracked_01",
+  "schema_version": "1.1",
+  "graph": "terrain_rock_strata.sbs",
+  "resolution": 2048,
+  "source_recipe": "procedural/substance/recipes/terrain_rock_desert_cracked_01.yaml",
+  "substance_graph_path": "procedural/substance/graphs/terrain_rock_strata.sbs",
+  "provenance": {
+    "generator_name": "worldforge-generate-manifest",
+    "generator_version": "1.0.0",
+    "generated_at_utc": "2026-06-26T21:05:42.970441+00:00",
+    "source_commit": "e5b529e5824d7852904d817ae1097103b1ea256f",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/substance/recipes/terrain_rock_desert_cracked_01.yaml": "4b07f44013b1ba56e2a4abbf9ff559e9bff91bf028978514794acb1433efe375",
+      "procedural/substance/graphs/terrain_rock_strata.sbs": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "exports": {
+    "base_color": {
+      "name": "T_Terrain_Rock_Desert_Cracked_01_BC",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_cracked_01/T_Terrain_Rock_Desert_Cracked_01_BC.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Cracked_01_BC",
+      "srgb": true,
+      "compression": "Default",
+      "texture_group": "World"
+    },
+    "normal": {
+      "name": "T_Terrain_Rock_Desert_Cracked_01_N",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_cracked_01/T_Terrain_Rock_Desert_Cracked_01_N.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Cracked_01_N",
+      "srgb": false,
+      "compression": "Normalmap",
+      "texture_group": "World"
+    },
+    "roughness": {
+      "name": "T_Terrain_Rock_Desert_Cracked_01_R",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_cracked_01/T_Terrain_Rock_Desert_Cracked_01_R.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Cracked_01_R",
+      "srgb": false,
+      "compression": "Masks",
+      "texture_group": "World"
+    },
+    "ambient_occlusion": {
+      "name": "T_Terrain_Rock_Desert_Cracked_01_AO",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_cracked_01/T_Terrain_Rock_Desert_Cracked_01_AO.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Cracked_01_AO",
+      "srgb": false,
+      "compression": "Masks",
+      "texture_group": "World"
+    },
+    "height": {
+      "name": "T_Terrain_Rock_Desert_Cracked_01_H",
+      "source_file": "procedural/substance/exports/terrain_rock_desert_cracked_01/T_Terrain_Rock_Desert_Cracked_01_H.png",
+      "ue_asset_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Cracked_01_H",
+      "srgb": false,
+      "compression": "Masks",
+      "texture_group": "World"
+    }
+  },
+  "ue": {
+    "parent_material": "/CoreTerrainMaterials/Materials/Masters/M_Terrain_Master",
+    "instance_path": "/Game/Materials/Terrain/MI_Terrain_Rock_Desert_Cracked_01",
+    "texture_folder": "/Game/Textures/Terrain",
+    "generate_data_asset": true,
+    "data_asset_class": "MaterialRecipeDataAsset",
+    "data_asset_path": "/Game/Materials/Terrain/DA_Terrain_Rock_Desert_Cracked_01"
+  },
+  "material_parameters": {
+    "textures": {
+      "BaseColorTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Cracked_01_BC",
+      "NormalTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Cracked_01_N",
+      "RoughnessTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Cracked_01_R",
+      "AOTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Cracked_01_AO",
+      "HeightTexture": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Cracked_01_H"
+    },
+    "scalars": {
+      "base_hue": 0.08,
+      "saturation": 0.45,
+      "value": 0.55,
+      "crack_density": 0.9,
+      "crack_depth": 0.7,
+      "strata_angle": 22.0,
+      "erosion_strength": 0.65,
+      "sand_overlay": 0.2
+    },
+    "vectors": {}
+  }
+}

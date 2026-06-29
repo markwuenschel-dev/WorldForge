@@ -225,6 +225,43 @@ def build_nav_bounds(report):
         report["nav_bounds"] = False
 
 
+def build_poi_marker(poi_forge, report):
+    poi_type = poi_forge.get("poi_type", "")
+    poi_name = poi_forge.get("poi_name", "")
+    descriptor_path = poi_forge.get("descriptor_path", "")
+    bounds_id = poi_forge.get("bounds_id", "primary_bounds")
+    primary_marker_id = poi_forge.get("primary_marker_id", "primary_poi_marker")
+
+    actor = _spawn(unreal.TargetPoint, unreal.Vector(500, 0, 100))
+    actor.set_actor_label("WF_POI_{}".format(poi_name))
+    actor.tags = [
+        "wf_poi_forge",
+        "wf_poi_type:{}".format(poi_type),
+        "wf_poi_name:{}".format(poi_name),
+        "wf_poi_descriptor:{}".format(descriptor_path),
+        "wf_poi_bounds:{}".format(bounds_id),
+        "wf_poi_primary_marker:{}".format(primary_marker_id),
+    ]
+    anchors = poi_forge.get("anchors", [])
+    for i, anchor in enumerate(anchors):
+        anchor_id = anchor.get("id", "anchor_{}".format(i))
+        offset = anchor.get("offset_cm", [0, 0, 0])
+        a_actor = _spawn(unreal.TargetPoint, unreal.Vector(
+            500 + offset[0] * 0.01,
+            offset[1] * 0.01,
+            100 + offset[2] * 0.01,
+        ))
+        a_actor.set_actor_label("WF_POI_Anchor_{}".format(anchor_id))
+        a_actor.tags = [
+            "wf_poi_anchor",
+            "wf_poi_anchor_id:{}".format(anchor_id),
+            "wf_poi_anchor_role:{}".format(anchor.get("role", "")),
+            "wf_poi_name:{}".format(poi_name),
+        ]
+    report["poi_forge"] = {"poi_type": poi_type, "poi_name": poi_name, "anchors_spawned": len(anchors)}
+    log("POI marker spawned: type={} name={} anchors={}".format(poi_type, poi_name, len(anchors)))
+
+
 def prime_state(state, report):
     """Drive the runtime state to `before` and read the MPC back -- proves the
     SetState -> WorldStateSubsystem -> MPC bridge is alive for this slice."""
@@ -292,6 +329,9 @@ def main():
         build_region_marker(slice_id, region_id, state, report)
         build_player_start(report)
         build_nav_bounds(report)
+        poi_forge = spec.get("poi_forge")
+        if poi_forge:
+            build_poi_marker(poi_forge, report)
         prime_state(state, report)
 
         world = _world()

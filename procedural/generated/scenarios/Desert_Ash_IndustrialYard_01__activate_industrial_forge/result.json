@@ -1,0 +1,84 @@
+{
+  "run_id": "Desert_Ash_IndustrialYard_01__activate_industrial_forge",
+  "scenario_id": "activate_industrial_forge",
+  "target": "Desert_Ash_IndustrialYard_01",
+  "biome": "desert",
+  "scope": "Region",
+  "context_id": "Desert_Ash_IndustrialYard_01",
+  "slice_spec": "procedural/slices/desert/generated/Desert_Ash_IndustrialYard_01.json",
+  "state_keys": [
+    "industrial_pressure"
+  ],
+  "before_state": {
+    "industrial_pressure": 0.0
+  },
+  "after_state": {
+    "industrial_pressure": 0.75
+  },
+  "deltas_applied": {
+    "industrial_pressure": 0.75
+  },
+  "is_curated_key": {
+    "industrial_pressure": true
+  },
+  "aggregate": {
+    "keys": [
+      "industrial_pressure"
+    ],
+    "sum": 0.75,
+    "mean": 0.75,
+    "max": 0.75,
+    "dominant_key": "industrial_pressure",
+    "industrialization_index": 0.75
+  },
+  "expected_mpc": {
+    "IndustrialPressure": 0.75
+  },
+  "mpc_warnings": [],
+  "poi_evidence": {
+    "industrial_yard": {
+      "operational_state": "active",
+      "driven_by_key": "industrial_pressure",
+      "magnitude": 0.75,
+      "changed": true,
+      "smoke_active": true,
+      "floodlights_on": true,
+      "activity_level": 0.75
+    }
+  },
+  "save_load": {
+    "save_path": "procedural/generated/scenarios/Desert_Ash_IndustrialYard_01__activate_industrial_forge/state_save.json",
+    "persist_keys": [
+      "industrial_pressure"
+    ],
+    "saved_state": {
+      "industrial_pressure": 0.75
+    },
+    "restored_state": {
+      "industrial_pressure": 0.75
+    },
+    "roundtrip_ok": true,
+    "expect_roundtrip": true
+  },
+  "thresholds": {
+    "state_min": 0.0,
+    "state_max": 1.0,
+    "max_delta_per_key": 1.0
+  },
+  "outputs": {
+    "result": "procedural/generated/scenarios/Desert_Ash_IndustrialYard_01__activate_industrial_forge/result.json",
+    "state_save": "procedural/generated/scenarios/Desert_Ash_IndustrialYard_01__activate_industrial_forge/state_save.json"
+  },
+  "generated_at_utc": "2026-06-29T23:23:24.651471+00:00",
+  "provenance": {
+    "generator_name": "run_state_sim",
+    "generator_version": "0.8.0",
+    "generated_at_utc": "2026-06-29T23:23:24.637387+00:00",
+    "source_commit": "0f92a3414aefd74944877c149324496d180383a9",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/definitions/scenarios/activate_industrial_forge.yaml": "50ab03181a09610c67d35fe6f2ba14a58ea8207625638b270ae28fbe123de7fb"
+    }
+  },
+  "registry_owner": "worldforge_scenario_registry"
+}

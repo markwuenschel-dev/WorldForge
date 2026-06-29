@@ -1,0 +1,99 @@
+{
+  "poi_name": "POI_IndustrialYard_01",
+  "poi_type": "industrial_yard",
+  "recipe_id": "industrial_yard",
+  "recipe_path": "procedural/definitions/poi/industrial_yard.yaml",
+  "seed": 42001,
+  "footprint": {
+    "width_cm": 6000,
+    "depth_cm": 5000
+  },
+  "bounds": {
+    "id": "primary_bounds",
+    "require_non_overlapping": true,
+    "width_cm": 6000,
+    "depth_cm": 5000,
+    "area_cm2": 30000000
+  },
+  "anchors": [
+    {
+      "id": "entrance",
+      "role": "entry",
+      "offset_cm": [
+        0,
+        -2500,
+        0
+      ]
+    },
+    {
+      "id": "center",
+      "role": "primary_interaction",
+      "offset_cm": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "service_edge",
+      "role": "prop_cluster",
+      "offset_cm": [
+        2000,
+        500,
+        0
+      ]
+    },
+    {
+      "id": "lookout_edge",
+      "role": "secondary",
+      "offset_cm": [
+        -2000,
+        1500,
+        0
+      ]
+    }
+  ],
+  "markers": [
+    {
+      "id": "primary_poi_marker",
+      "role": "objective_focus",
+      "anchor_ref": "center"
+    },
+    {
+      "id": "entrance_marker",
+      "role": "entry_focus",
+      "anchor_ref": "entrance"
+    }
+  ],
+  "budgets": {
+    "max_static_mesh_actors": 80,
+    "max_marker_count": 16,
+    "max_bounds_area_cm2": 40000000
+  },
+  "template_id": "industrial_yard_template_v1",
+  "compatible_terrain": [
+    "ash_flats"
+  ],
+  "compatible_state": [
+    "industrialized",
+    "light_industrial"
+  ],
+  "compatible_placement": [
+    "industrial_debris"
+  ],
+  "outputs": {
+    "descriptor": "procedural/generated/poi/POI_IndustrialYard_01/descriptor.json"
+  },
+  "generated_at_utc": "2026-06-28T11:16:15.702257+00:00",
+  "provenance": {
+    "generator_name": "create_poi",
+    "generator_version": "0.7.0",
+    "generated_at_utc": "2026-06-28T11:16:15.690410+00:00",
+    "source_commit": "0f92a3414aefd74944877c149324496d180383a9",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/definitions/poi/industrial_yard.yaml": "c30ca09ce52c81f8d692874339c079a35db6f6bcea87ada6d9a2646253c36e5c"
+    }
+  },
+  "registry_owner": "worldforge_poi_registry"
+}

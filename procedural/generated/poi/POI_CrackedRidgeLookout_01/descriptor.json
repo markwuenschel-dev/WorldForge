@@ -1,0 +1,91 @@
+{
+  "poi_name": "POI_CrackedRidgeLookout_01",
+  "poi_type": "cracked_ridge_lookout",
+  "recipe_id": "cracked_ridge_lookout",
+  "recipe_path": "procedural/definitions/poi/cracked_ridge_lookout.yaml",
+  "seed": 42004,
+  "footprint": {
+    "width_cm": 2500,
+    "depth_cm": 2500
+  },
+  "bounds": {
+    "id": "primary_bounds",
+    "require_non_overlapping": true,
+    "width_cm": 2500,
+    "depth_cm": 2500,
+    "area_cm2": 6250000
+  },
+  "anchors": [
+    {
+      "id": "summit",
+      "role": "lookout",
+      "offset_cm": [
+        0,
+        0,
+        300
+      ]
+    },
+    {
+      "id": "approach_path",
+      "role": "approach",
+      "offset_cm": [
+        0,
+        -1200,
+        0
+      ]
+    },
+    {
+      "id": "fallback_cover",
+      "role": "secondary",
+      "offset_cm": [
+        -600,
+        400,
+        100
+      ]
+    }
+  ],
+  "markers": [
+    {
+      "id": "primary_poi_marker",
+      "role": "objective_focus",
+      "anchor_ref": "summit"
+    },
+    {
+      "id": "approach_marker",
+      "role": "entry_focus",
+      "anchor_ref": "approach_path"
+    }
+  ],
+  "budgets": {
+    "max_static_mesh_actors": 25,
+    "max_marker_count": 8,
+    "max_bounds_area_cm2": 10000000
+  },
+  "template_id": "cracked_ridge_lookout_template_v1",
+  "compatible_terrain": [
+    "ash_flats"
+  ],
+  "compatible_state": [
+    "clean",
+    "ruined_industrial"
+  ],
+  "compatible_placement": [
+    "rocky_basin",
+    "dead_scrub"
+  ],
+  "outputs": {
+    "descriptor": "procedural/generated/poi/POI_CrackedRidgeLookout_01/descriptor.json"
+  },
+  "generated_at_utc": "2026-06-28T11:16:53.416500+00:00",
+  "provenance": {
+    "generator_name": "create_poi",
+    "generator_version": "0.7.0",
+    "generated_at_utc": "2026-06-28T11:16:53.403760+00:00",
+    "source_commit": "0f92a3414aefd74944877c149324496d180383a9",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/definitions/poi/cracked_ridge_lookout.yaml": "87210a67f0f806787919e58b3c0f1ebe8d14cf369a798bc3ffad01c5b7bf0665"
+    }
+  },
+  "registry_owner": "worldforge_poi_registry"
+}
