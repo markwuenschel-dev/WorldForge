@@ -69,7 +69,8 @@ def _load_spec(path):
         return json.load(fh)
 
 
-def _preview_hash(pack_biome, variant, name, seed, defaults, placement=None, state_preset=None):
+def _preview_hash(pack_biome, variant, name, seed, defaults, placement=None, state_preset=None,
+                  terrain=None, poi=None):
     """Compute expected hash without actually running create_slice_spec.
     We do this by loading the variant template and building a minimal
     representative dict that matches the stable spec fields."""
@@ -88,13 +89,16 @@ def _preview_hash(pack_biome, variant, name, seed, defaults, placement=None, sta
             "map": "/Game/WorldForge/Maps/{}".format(name),
             "placement_preset_id": placement or "",
             "state_preset_id": state_preset or "",
+            "terrain_recipe_id": terrain or "",
+            "poi_type": poi or "",
         }
         return compute_input_hash(proxy)
     except Exception:
         return None
 
 
-def _phase1_slice(biome, name, variant, seed, placement=None, state_preset=None):
+def _phase1_slice(biome, name, variant, seed, placement=None, state_preset=None,
+                  terrain=None, poi=None):
     """Emit spec + prepare. Returns (name, ok, spec_path_or_None)."""
     spec_out = _spec_path(biome, name)
     cmd = [sys.executable, CREATE_SPEC_SCRIPT,
@@ -103,6 +107,10 @@ def _phase1_slice(biome, name, variant, seed, placement=None, state_preset=None)
         cmd += ["--placement", placement]
     if state_preset:
         cmd += ["--state-preset", state_preset]
+    if terrain:
+        cmd += ["--terrain", terrain]
+    if poi:
+        cmd += ["--poi", poi]
     rc_spec = _run(cmd, name)
     if rc_spec != 0:
         print("[{}] FAIL: create_slice_spec exited {}".format(name, rc_spec))
@@ -154,6 +162,8 @@ def main(argv=None):
         seed = sl.get("seed", 12345)
         placement = sl.get("placement")
         state_preset = sl.get("state_preset")
+        terrain = sl.get("terrain")
+        poi = sl.get("poi")
         if not args.force and name in registry:
             existing = registry[name]
             spec_p = _spec_path(biome, name)
@@ -167,7 +177,7 @@ def main(argv=None):
                         continue
                 except Exception:
                     pass
-        to_build.append((name, variant, seed, placement, state_preset))
+        to_build.append((name, variant, seed, placement, state_preset, terrain, poi))
 
     print("\nPack: {} | biome: {} | {} slices ({} to build, {} skipped)".format(
         pack_id, biome, len(slices), len(to_build), len(skipped)))
@@ -184,14 +194,16 @@ def main(argv=None):
         jobs = max(1, args.jobs)
         print("\n--- Phase 1: spec + prepare ({} workers) ---".format(jobs))
         if jobs == 1:
-            for name, variant, seed, placement, state_preset in to_build:
-                _, ok, sp = _phase1_slice(biome, name, variant, seed, placement, state_preset)
+            for name, variant, seed, placement, state_preset, terrain, poi in to_build:
+                _, ok, sp = _phase1_slice(biome, name, variant, seed, placement, state_preset,
+                                          terrain=terrain, poi=poi)
                 phase1_results[name] = (ok, sp)
         else:
             with ThreadPoolExecutor(max_workers=jobs) as pool:
                 futures = {
-                    pool.submit(_phase1_slice, biome, name, variant, seed, placement, state_preset): name
-                    for name, variant, seed, placement, state_preset in to_build
+                    pool.submit(_phase1_slice, biome, name, variant, seed, placement, state_preset,
+                                terrain, poi): name
+                    for name, variant, seed, placement, state_preset, terrain, poi in to_build
                 }
                 for fut in as_completed(futures):
                     nm, ok, sp = fut.result()
@@ -199,7 +211,7 @@ def main(argv=None):
 
         # Phase 2: serialised UE map creation.
         print("\n--- Phase 2: UE map creation (serialised) ---")
-        for name, variant, seed, placement, state_preset in to_build:
+        for name, variant, seed, placement, state_preset, terrain, poi in to_build:
             ok, spec_p = phase1_results.get(name, (False, None))
             if not ok or spec_p is None:
                 results[name] = "fail"
@@ -231,6 +243,8 @@ def main(argv=None):
                     "variant": variant,
                     "placement_preset_id": spec.get("placement_preset_id"),
                     "state_preset_id": spec.get("state_preset_id"),
+                    "terrain_recipe_id": spec.get("terrain_forge", {}).get("recipe_id"),
+                    "poi_type": spec.get("poi_forge", {}).get("poi_type"),
                     "map_path": spec["map"],
                     "spec_path": spec_p.relative_to(REPO_ROOT).as_posix(),
                     "owned_assets": ["Content/WorldForge/Maps/{}.umap".format(name)],

@@ -1,0 +1,51 @@
+schema_version: "1.0"
+recipe_id: scrubland_resource_node
+display_name: "Scrubland Resource Node"
+biome: desert
+description: "Harvestable or inspectable resource point in scrubland terrain."
+
+compatible_terrain:
+  - ash_flats
+
+compatible_state:
+  - clean
+  - light_industrial
+
+compatible_placement:
+  - clean_scrub
+  - dead_scrub
+
+footprint:
+  width_cm: 3000
+  depth_cm: 3000
+
+bounds:
+  id: primary_bounds
+  require_non_overlapping: true
+
+anchors:
+  - id: resource_core
+    role: resource_core
+    offset_cm: [0, 0, 0]
+  - id: approach
+    role: approach
+    offset_cm: [0, -1500, 0]
+  - id: scrub_cluster
+    role: prop_cluster
+    offset_cm: [800, 600, 0]
+
+markers:
+  - id: primary_poi_marker
+    role: objective_focus
+    anchor_ref: resource_core
+  - id: approach_marker
+    role: entry_focus
+    anchor_ref: approach
+
+budgets:
+  max_static_mesh_actors: 30
+  max_marker_count: 8
+  max_bounds_area_cm2: 12000000
+
+template_id: scrubland_resource_node_template_v1
+seed: 42003

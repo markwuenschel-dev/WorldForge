@@ -1,0 +1,63 @@
+{
+  "poi_name": "POI_CrackedRidgeLookout_01",
+  "checks": {
+    "poi_descriptor_exists": {
+      "ok": true,
+      "detail": "procedural\\generated\\poi\\POI_CrackedRidgeLookout_01\\descriptor.json",
+      "warn_only": false
+    },
+    "poi_descriptor_parses": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false
+    },
+    "recipe_parses": {
+      "ok": true,
+      "detail": "recipe file missing: procedural/definitions/poi/cracked_ridge_lookout.yaml",
+      "warn_only": false
+    },
+    "registry_owns_poi": {
+      "ok": true,
+      "detail": "not found in worldforge_poi_registry.json",
+      "warn_only": false
+    },
+    "provenance_exists": {
+      "ok": true,
+      "detail": "provenance block absent from descriptor",
+      "warn_only": false
+    },
+    "provenance_fields_complete": {
+      "ok": true,
+      "detail": "descriptor must contain poi_name, poi_type, recipe_id, seed, footprint, bounds, anchors, markers, budgets, template_id, provenance.generator_name, provenance.generated_at_utc",
+      "warn_only": false
+    },
+    "bounds_valid": {
+      "ok": true,
+      "detail": "bounds must have id, width_cm>0, depth_cm>0, area_cm2>0, area_cm2<=max_bounds_area_cm2 (got width=2500 depth=2500 area=6250000 max=10000000)",
+      "warn_only": false
+    },
+    "anchors_valid": {
+      "ok": true,
+      "detail": "anchors must be non-empty list, each with id and role (got 3 anchors)",
+      "warn_only": false
+    },
+    "markers_valid": {
+      "ok": true,
+      "detail": "markers must be non-empty list, each with id and role, anchor_ref must resolve",
+      "warn_only": false
+    },
+    "primary_marker_exists": {
+      "ok": true,
+      "detail": "no marker with id='primary_poi_marker' found",
+      "warn_only": false
+    },
+    "budget_limits_valid": {
+      "ok": true,
+      "detail": "budgets must have max_static_mesh_actors, max_marker_count, max_bounds_area_cm2 all > 0",
+      "warn_only": false
+    }
+  },
+  "failures": [],
+  "passed": true,
+  "status": "ok"
+}

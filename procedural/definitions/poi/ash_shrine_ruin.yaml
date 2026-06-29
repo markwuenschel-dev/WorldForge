@@ -1,0 +1,54 @@
+schema_version: "1.0"
+recipe_id: ash_shrine_ruin
+display_name: "Ash Shrine Ruin"
+biome: desert
+description: "Ancient ash-covered shrine ruin with a ceremonial focus point."
+
+compatible_terrain:
+  - ash_flats
+
+compatible_state:
+  - clean
+  - industrialized
+
+compatible_placement:
+  - dead_scrub
+  - clean_scrub
+
+footprint:
+  width_cm: 3500
+  depth_cm: 3000
+
+bounds:
+  id: primary_bounds
+  require_non_overlapping: true
+
+anchors:
+  - id: shrine_core
+    role: primary_interaction
+    offset_cm: [0, 0, 0]
+  - id: approach_path
+    role: approach
+    offset_cm: [0, -1500, 0]
+  - id: ruin_cluster
+    role: prop_cluster
+    offset_cm: [900, -200, 0]
+  - id: ash_field
+    role: secondary
+    offset_cm: [-600, 800, 0]
+
+markers:
+  - id: primary_poi_marker
+    role: objective_focus
+    anchor_ref: shrine_core
+  - id: approach_marker
+    role: entry_focus
+    anchor_ref: approach_path
+
+budgets:
+  max_static_mesh_actors: 35
+  max_marker_count: 10
+  max_bounds_area_cm2: 15000000
+
+template_id: ash_shrine_ruin_template_v1
+seed: 42006

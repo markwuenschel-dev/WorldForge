@@ -1,0 +1,54 @@
+schema_version: "1.0"
+recipe_id: abandoned_mining_camp
+display_name: "Abandoned Mining Camp"
+biome: desert
+description: "Derelict mining camp with ruins, equipment clusters, and shelter remnants."
+
+compatible_terrain:
+  - ash_flats
+
+compatible_state:
+  - ruined_industrial
+  - light_industrial
+
+compatible_placement:
+  - mixed_ruins
+  - industrial_debris
+
+footprint:
+  width_cm: 5000
+  depth_cm: 4000
+
+bounds:
+  id: primary_bounds
+  require_non_overlapping: true
+
+anchors:
+  - id: camp_center
+    role: primary_interaction
+    offset_cm: [0, 0, 0]
+  - id: equipment_yard
+    role: prop_cluster
+    offset_cm: [1500, 500, 0]
+  - id: ruin_edge
+    role: secondary
+    offset_cm: [-1500, -800, 0]
+  - id: entry_road
+    role: entry
+    offset_cm: [0, -2000, 0]
+
+markers:
+  - id: primary_poi_marker
+    role: objective_focus
+    anchor_ref: camp_center
+  - id: debris_marker
+    role: prop_cluster
+    anchor_ref: equipment_yard
+
+budgets:
+  max_static_mesh_actors: 60
+  max_marker_count: 14
+  max_bounds_area_cm2: 30000000
+
+template_id: abandoned_mining_camp_template_v1
+seed: 42005

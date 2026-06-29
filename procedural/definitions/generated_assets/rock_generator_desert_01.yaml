@@ -1,0 +1,41 @@
+schema_version: "1.0"
+
+# WorldForge generated-asset intake definition — ONE Houdini-baked rock.
+# This is the narrow asset-intake sidecar, NOT MeshForge. It registers a single
+# already-baked StaticMesh that has been relocated into the WorldForge-owned
+# content tree, and makes it eligible for desert PCG placement.
+
+asset_id: rock_generator_desert_01
+display_name: "Houdini Rock Generator — Desert 01"
+
+# Final WorldForge-OWNED Unreal path. MUST live under
+# /Game/WorldForge/Generated/Houdini/Rocks and MUST NOT be a Houdini Temp/Bake
+# path. Relocate the bake before registering (see relocate_houdini_asset.py).
+unreal_path: /Game/WorldForge/Generated/Houdini/Rocks/SM_RockGenerator_Desert_01
+
+# Provenance of where this generated mesh came from.
+source: houdini
+hda_name: rock_generator
+source_bake_path: /Game/HoudiniEngine/Bake/rock_generator_3_6_0_main_geo_C3C435B6
+
+asset_type: static_mesh
+
+# Role / classification tags used by placement + audits.
+role:
+  - rock
+  - generated
+  - desert-compatible
+biome:
+  - desert
+
+# PCG eligibility (machine-readable). When true, register_generated_asset.py
+# also asserts the asset is listed in the named asset catalog category so a
+# placement preset can actually scatter it.
+pcg_allowed: true
+placement_category: generated_rocks
+asset_catalog: desert_asset_catalog
+
+# Ownership flags — this asset is WorldForge-owned and permanent (not a scratch
+# temp/bake artifact).
+generated_owned: true
+temporary: false

@@ -1,0 +1,91 @@
+{
+  "asset_id": "rock_generator_desert_01",
+  "checks": {
+    "descriptor_exists": {
+      "ok": true,
+      "detail": "procedural\\generated\\generated_assets\\rock_generator_desert_01\\descriptor.json",
+      "warn_only": false
+    },
+    "descriptor_parses": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false
+    },
+    "registry_owns_asset": {
+      "ok": true,
+      "detail": "not found in worldforge_generated_asset_registry.json",
+      "warn_only": false
+    },
+    "asset_type_is_static_mesh": {
+      "ok": true,
+      "detail": "asset_type=static_mesh",
+      "warn_only": false
+    },
+    "source_is_houdini": {
+      "ok": true,
+      "detail": "source=houdini",
+      "warn_only": false
+    },
+    "hda_name_present": {
+      "ok": true,
+      "detail": "hda_name missing",
+      "warn_only": false
+    },
+    "path_under_worldforge_owned": {
+      "ok": true,
+      "detail": "must be under /Game/WorldForge/Generated/Houdini/Rocks — got /Game/WorldForge/Generated/Houdini/Rocks/SM_RockGenerator_Desert_01",
+      "warn_only": false
+    },
+    "path_not_houdini_temp_or_bake": {
+      "ok": true,
+      "detail": "registered path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Generated/Houdini/Rocks/SM_RockGenerator_Desert_01",
+      "warn_only": false
+    },
+    "generated_owned_true": {
+      "ok": true,
+      "detail": "generated_owned=True",
+      "warn_only": false
+    },
+    "not_temporary": {
+      "ok": true,
+      "detail": "temporary=False",
+      "warn_only": false
+    },
+    "pcg_allowed_true": {
+      "ok": true,
+      "detail": "pcg_allowed=True",
+      "warn_only": false
+    },
+    "desert_compatible": {
+      "ok": true,
+      "detail": "biome=['desert']",
+      "warn_only": false
+    },
+    "catalog_membership": {
+      "ok": true,
+      "detail": "PCG eligibility requires /Game/WorldForge/Generated/Houdini/Rocks/SM_RockGenerator_Desert_01 listed in desert_asset_catalog.generated_rocks",
+      "warn_only": false
+    },
+    "provenance_exists": {
+      "ok": true,
+      "detail": "provenance block absent from descriptor",
+      "warn_only": false
+    },
+    "asset_exists_in_ue_as_static_mesh": {
+      "ok": false,
+      "detail": "run 'make relocate-houdini-asset' (UE) to materialize + verify the StaticMesh",
+      "warn_only": true
+    }
+  },
+  "failures": [],
+  "warnings": [
+    "asset_exists_in_ue_as_static_mesh: run 'make relocate-houdini-asset' (UE) to materialize + verify the StaticMesh"
+  ],
+  "unreal_path": "/Game/WorldForge/Generated/Houdini/Rocks/SM_RockGenerator_Desert_01",
+  "pcg_allowed": true,
+  "biome": [
+    "desert"
+  ],
+  "passed": true,
+  "status": "ok"
+}

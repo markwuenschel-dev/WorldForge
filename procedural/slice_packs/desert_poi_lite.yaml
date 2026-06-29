@@ -1,0 +1,16 @@
+pack_id: desert_poi_lite
+biome: desert
+description: "Desert POI Lite Pack — 6 POI-backed terrain slices covering all v0.7 POI types"
+
+defaults:
+  state_key: industrial_pressure
+  state_before: 0.0
+  state_after: 0.75
+
+slices:
+  - { name: Desert_Ash_IndustrialYard_01,    variant: ash, seed: 7001, placement: industrial_debris, state_preset: industrialized, terrain: ash_flats, poi: industrial_yard }
+  - { name: Desert_Ash_DebrisCheckpoint_01,  variant: ash, seed: 7002, placement: industrial_debris, state_preset: industrialized, terrain: ash_flats, poi: debris_checkpoint }
+  - { name: Desert_Ash_ScrubNode_01,         variant: ash, seed: 7003, placement: dead_scrub,        state_preset: clean,          terrain: ash_flats, poi: scrubland_resource_node }
+  - { name: Desert_Ash_RidgeLookout_01,      variant: ash, seed: 7004, placement: rocky_basin,       state_preset: clean,          terrain: ash_flats, poi: cracked_ridge_lookout }
+  - { name: Desert_Ash_MiningCamp_01,        variant: ash, seed: 7005, placement: mixed_ruins,       state_preset: ruined_industrial, terrain: ash_flats, poi: abandoned_mining_camp }
+  - { name: Desert_Ash_ShrineRuin_01,        variant: ash, seed: 7006, placement: dead_scrub,        state_preset: clean,          terrain: ash_flats, poi: ash_shrine_ruin }

@@ -18,7 +18,10 @@ UE_PYTHON := python
         compare-slice-determinism \
         create-world-pack validate-world-pack \
         ue-doctor \
-        create-terrain validate-terrain import-terrain
+        create-terrain validate-terrain import-terrain \
+        create-poi validate-poi \
+        run-state-sim validate-runtime-state apply-state-scenario \
+        register-generated-asset validate-generated-asset relocate-houdini-asset
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -80,6 +83,16 @@ help:
 	@echo "  make validate-terrain NAME=Terrain_AshFlats_01"
 	@echo "  make import-terrain NAME=Terrain_AshFlats_01    # UE-side import (requires editor)"
 	@echo "  make create-slice BIOME=desert TERRAIN=ash_flats VARIANT=ash PLACEMENT=dead_scrub STATE=industrialized NAME=Desert_AshFlats_Industrialized_01"
+	@echo ""
+	@echo "Runtime StateForge (v0.8 — make generated worlds react and remember):"
+	@echo "  make run-state-sim NAME=Desert_Ash_IndustrialYard_01 SCENARIO=activate_industrial_forge"
+	@echo "  make validate-runtime-state NAME=Desert_Ash_IndustrialYard_01"
+	@echo "  make apply-state-scenario NAME=Desert_Ash_IndustrialYard_01 SCENARIO=activate_industrial_forge  # UE-side"
+	@echo ""
+	@echo "Houdini generated-asset intake (v0.8 sidecar — one owned StaticMesh, NOT MeshForge):"
+	@echo "  make register-generated-asset ASSET=rock_generator_desert_01"
+	@echo "  make validate-generated-asset ASSET=rock_generator_desert_01"
+	@echo "  make relocate-houdini-asset ASSET=rock_generator_desert_01   # UE-side: bake -> WorldForge-owned"
 	@echo ""
 	@echo "Other:"
 	@echo "  make preview     # Always fails until preview generation exists"
@@ -209,12 +222,17 @@ PRESET       ?= industrial_debris
 STATE        ?= industrialized
 BUDGET       ?= procedural/definitions/budgets/desert_default.yaml
 TERRAIN      ?=
+POI_TYPE     ?=
+POI          ?=
+SCENARIO     ?= activate_industrial_forge
+ASSET        ?= rock_generator_desert_01
 
 create-slice-spec:
 	$(PYTHON) tools/pipeline/create_slice_spec.py --biome $(BIOME) --variant $(VARIANT) --name $(NAME) \
 	  $(if $(PLACEMENT),--placement $(PLACEMENT),) \
 	  $(if $(STATE_PRESET),--state-preset $(STATE_PRESET),) \
-	  $(if $(TERRAIN),--terrain $(TERRAIN),)
+	  $(if $(TERRAIN),--terrain $(TERRAIN),) \
+	  $(if $(POI),--poi $(POI),)
 
 prepare-slice:
 	$(PYTHON) tools/pipeline/prepare_slice.py --spec $(SPEC)
@@ -228,7 +246,7 @@ validate-slice:
 
 create-slice:
 	$(MAKE) create-slice-spec BIOME=$(BIOME) VARIANT=$(VARIANT) NAME=$(NAME) \
-	  PLACEMENT=$(PLACEMENT) STATE_PRESET=$(STATE_PRESET) TERRAIN=$(TERRAIN)
+	  PLACEMENT=$(PLACEMENT) STATE_PRESET=$(STATE_PRESET) TERRAIN=$(TERRAIN) POI=$(POI)
 	$(MAKE) prepare-slice SPEC=$(SLICE_SPEC)
 	$(MAKE) create-slice-map SPEC=$(SLICE_SPEC)
 	$(PYTHON) tools/pipeline/generate_placement_da.py --spec $(SLICE_SPEC)
@@ -312,6 +330,50 @@ validate-terrain:
 # Run UE-side terrain import (Stage C); requires editor.
 import-terrain:
 	$(PYTHON) tools/pipeline/run_terrain_ue.py --script import_terrain_heightmap.py --name $(NAME)
+
+# v0.7 — POIForge Lite
+# Generate a POI descriptor from a recipe.
+#   POI_TYPE  poi type / recipe id (procedural/definitions/poi/<POI_TYPE>.yaml)
+#   NAME      output poi name (e.g. POI_IndustrialYard_01)
+create-poi:
+	$(PYTHON) tools/pipeline/create_poi.py --type $(POI_TYPE) --name $(NAME)
+
+# Validate generated POI artifacts (pure Python; no UE required).
+validate-poi:
+	$(PYTHON) tools/pipeline/validate_poi.py --name $(NAME)
+
+# v0.8 — Runtime StateForge (make generated worlds react and remember)
+# Authoring-side scenario simulation: mutate + aggregate state, expect the MPC
+# effect + POI evidence, and prove a save/load round-trip. Pure Python; no UE.
+#   NAME      target slice id / Region context_id
+#   SCENARIO  scenario id (procedural/definitions/scenarios/<SCENARIO>.yaml)
+run-state-sim:
+	$(PYTHON) tools/pipeline/run_state_sim.py --name $(NAME) --scenario $(SCENARIO) --force
+
+validate-runtime-state:
+	$(PYTHON) tools/pipeline/validate_runtime_state.py --name $(NAME) \
+	  $(if $(SCENARIO),--scenario $(SCENARIO),)
+
+# UE-side bridge: apply the scenario in-editor and read the MPC back (requires
+# the scenario's slice map open in the editor).
+apply-state-scenario:
+	$(UE_PYTHON) tools/unreal/run_state_scenario.py \
+	  --result procedural/generated/scenarios/$(NAME)__$(SCENARIO)/result.json --project-root .
+
+# v0.8 — Houdini generated-asset intake sidecar (ONE owned StaticMesh; NOT MeshForge)
+# Authoring-side registration + validation. Pure Python; no UE.
+#   ASSET   asset id (procedural/definitions/generated_assets/<ASSET>.yaml)
+register-generated-asset:
+	$(PYTHON) tools/pipeline/register_generated_asset.py --asset $(ASSET)
+
+validate-generated-asset:
+	$(PYTHON) tools/pipeline/validate_generated_asset.py --asset $(ASSET)
+
+# UE-side: duplicate the baked Houdini asset out of /Game/HoudiniEngine/Bake into
+# the WorldForge-owned tree and assert it is a StaticMesh (requires editor).
+relocate-houdini-asset:
+	$(UE_PYTHON) tools/unreal/relocate_houdini_asset.py \
+	  --descriptor procedural/generated/generated_assets/$(ASSET)/descriptor.json --project-root .
 
 preview:
 	@echo "Preview generation is not implemented yet."
