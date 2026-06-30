@@ -320,6 +320,11 @@ ue-doctor:
 worldforge-doctor:
 	$(PYTHON) tools/pipeline/worldforge_doctor.py $(if $(STRICT),--strict,)
 
+# v0.9 — repo-wide generated-content ownership/provenance/path audit (read-only).
+# STRICT=1 escalates soft warnings (e.g. missing provenance) to blocking.
+audit-generated-content:
+	$(PYTHON) tools/pipeline/audit_generated_content.py $(if $(STRICT),--strict,)
+
 # v0.6 — TerrainForge Lite
 # Generate deterministic terrain artifacts from a terrain recipe.
 #   RECIPE  terrain recipe id (procedural/definitions/terrain/<RECIPE>.yaml)
