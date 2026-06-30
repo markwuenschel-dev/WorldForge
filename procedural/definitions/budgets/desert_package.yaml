@@ -1,0 +1,61 @@
+# desert_package.yaml — WorldForge v0.9 package/ship budget profile (desert).
+#
+# Resolved by package-check (tools/pipeline/package_check.py) for any world pack
+# whose biome is `desert`. A package budget profile is distinguished from a plain
+# placement/instance budget (e.g. desert_default.yaml) by the presence of the
+# `package_budgets:` block below — that block carries the per-category caps a
+# packaged/ship-ready world pack must stay within.
+#
+# This file is ALSO a valid plain budget (budget_id / biome / limits.* with a
+# positive max_total_instances) so `make validate-budget BUDGET=...` accepts it
+# unchanged. The `limits` block mirrors the placement-instance ceiling the pack's
+# placement presets commit to; `package_budgets` adds the packaging caps.
+#
+# Caps are calibrated from the existing desert content (terrain 513x513,
+# height span 2000cm, POI bounds up to 30,000,000 cm^2, 6-30 maps per pack) with
+# deliberate headroom — raising a cap is a conscious human contract change, the
+# same way raising a material/placement budget is.
+
+budget_id: desert_package
+biome: desert
+description: "Desert package/ship budget profile — per-category caps enforced by package-check"
+
+# Plain-budget compatibility (validated by validate_budget.py). Mirrors the
+# placement instance ceiling a desert slice commits to (cf. desert_default.yaml).
+limits:
+  max_total_instances: 500
+  per_category:
+    clean_scrub: 250
+    dead_scrub: 250
+    industrial_debris: 150
+    rocks: 200
+
+# v0.9 package/ship caps. package-check resolves THIS block per pack and checks
+# every category below against the pack's observed value. A category that the
+# pack genuinely lacks (e.g. no forge-terrain in a placement-only pack) is
+# reported SKIP_NOT_APPLICABLE, not failed.
+package_budgets:
+  # how many maps a single world pack may ship
+  max_map_count: 64
+  # landscape heightmap edge (UE landscape sizes are 2^n+1; 513 is typical)
+  max_terrain_dimension: 4096
+  # vertical span of a terrain heightmap, in cm
+  max_height_range_cm: 65535
+  # generated mask edge (slope/placement/nav masks); perf doc caps masks at 2048
+  max_mask_dimension: 2048
+  # declared placement instance ceiling per slice (placement budget max_total_instances)
+  max_placement_instances: 2000
+  # declared static-mesh actors a single POI may place
+  max_static_mesh_actors: 200
+  # markers a single POI may carry
+  max_poi_markers: 32
+  # a single POI's footprint bounds area, in cm^2
+  max_poi_bounds_area_cm2: 50000000
+  # runtime state scenarios bound to the pack's slices
+  max_scenario_count: 64
+  # total repo-side generated owned files the pack materializes
+  max_generated_file_count: 5000
+  # estimated on-disk size of the pack's generated owned files, in MB
+  max_package_size_mb: 4096
+  # forbidden Houdini Temp/Bake references in the pack's final dependency set
+  max_forbidden_path_references: 0
