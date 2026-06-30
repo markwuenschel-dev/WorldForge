@@ -81,12 +81,21 @@ post-state aggregated · MPC bridge effect correctly expected (curated key → p
 → post-value) · POI state evidence updated · **save/load round-trip restored the
 persisted state** · provenance present.
 
-Two checks are `warn_only` until the editor is involved:
+Two checks depend on the editor. Under **v0.9** they are reclassified from
+`warn_only` to **`GATED_HUMAN_EDITOR`** (D7 — agents cannot materialize `Content/**`),
+so they never block in normal **or** strict mode and clear to `PASS` once the editor
+step runs:
 
 - `post_scenario_map_valid` — passes once `make validate-slice` has passed for the
   target slice.
-- `ue_state_applied` — passes once `make apply-state-scenario` has written a
-  passing `ue_state_scenario_report.json`.
+- `ue_state_applied` — passes once `make apply-state-scenario` has written a passing
+  `ue_state_scenario_report.json` (gated code `WF082_UE_STATE_NOT_APPLIED`).
+
+Run the v0.9 final gate with `make validate-runtime-state NAME=… SCENARIO=… STRICT=1`:
+strict escalates soft `WARN` checks to blocking while the two gated UE checks stay
+non-blocking. PASS is achievable from the authoring side alone. See
+[`production_hardening_v0_9.md`](production_hardening_v0_9.md) for the strict-mode and
+six-verdict vocabulary.
 
 The report surfaces a legible before/after summary, `affected_poi`, and
 `save_load` status for inspection.

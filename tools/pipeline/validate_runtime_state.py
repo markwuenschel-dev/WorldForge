@@ -1,28 +1,48 @@
 #!/usr/bin/env python3
-"""validate_runtime_state.py — WorldForge v0.8 Runtime StateForge validator.
+"""validate_runtime_state.py — WorldForge Runtime StateForge validator.
 
 Validates the result descriptor produced by run_state_sim.py for a target, and
 independently re-derives the scenario's expectations from its YAML so the
 descriptor cannot lie to us. Pure Python — no UE imports.
 
-Proves (all data-driven; no key is hard-coded):
+Migrated to the v0.9 shared validation contract
+(tools/pipeline/validation_report.py + tools/pipeline/failure_codes.py):
+  - one canonical report shape (superset of the legacy shape),
+  - the six-verdict vocabulary (PASS/WARN/WARN_ONLY/FAIL/GATED_HUMAN_EDITOR/SKIP),
+  - opt-in --strict / STRICT=1 that only ever ADDS blocking,
+  - stable WFnnn failure codes per check.
+
+Proves (all data-driven; no state key is hard-coded):
+  - scenario parses (WF070)
+  - target map resolves (WF071)
   - initial state was read
-  - state mutated by the scenario's bounded, clamped deltas
+  - state delta is bounded (WF072)
+  - each key the scenario mutates moves init -> clamp(init + scenario delta)
+    (driven by the scenario's own ``state_deltas`` — never hard-coded)
   - post-state is aggregated
-  - the MPC render-mirror effect is correctly expected (curated key -> param)
-  - POI state evidence updated
-  - save/load round-trip restored the persisted state
-  - post-scenario map validity (warn_only until UE slice validate is run)
-  - the UE bridge applied + read back the state (warn_only until UE run)
+  - the MPC render-mirror effect is correctly expected (curated key -> param),
+    expected scalar == simulated post-state (WF073)
+  - POI state evidence updated (WF074)
+  - save/load round-trip restored the persisted state (WF075)
+  - provenance present
+  - post-scenario map validity — D7-GATED on a UE validate-slice run
+  - the UE bridge applied + read back the MPC state — D7-GATED (WF082)
+
+The two UE-dependent checks are GATED_HUMAN_EDITOR: non-blocking in BOTH normal
+and strict mode, because agents cannot materialize / run the editor (D7). Strict
+PASS is therefore achievable from the authoring side alone; the gated checks
+clear to PASS once a human/editor runs the documented UE command and its report
+appears.
 
 Usage:
     python tools/pipeline/validate_runtime_state.py --name Desert_Ash_IndustrialYard_01
     python tools/pipeline/validate_runtime_state.py --name <target> --scenario <id>
+    python tools/pipeline/validate_runtime_state.py --name <target> --strict
 
 Writes:
     procedural/reports/scenarios/<run_id>/validate_runtime_state_report.json
 
-Exit 0 = PASS, 1 = FAIL.
+Exit 0 = PASS (no blocking failure), 1 = FAIL.
 
 Requires: PyYAML (pip install pyyaml)
 """
@@ -41,6 +61,8 @@ except ImportError:
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT / "tools" / "pipeline"))
 from scenario_registry import load_scenario_registry, make_run_id
+from validation_report import ValidationReport, strict_from_env
+from failure_codes import FailureCode
 
 CURATED_MPC_PARAMS = {
     "industrial_pressure": "IndustrialPressure",
@@ -66,50 +88,61 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="Validate a WorldForge runtime-state scenario result.")
     ap.add_argument("--name", required=True, help="Target name (slice id / Region context_id)")
     ap.add_argument("--scenario", help="Scenario id (disambiguates when a target has several runs)")
+    ap.add_argument("--strict", action="store_true",
+                    help="Strict mode: WARN checks become blocking (gated/UE checks stay non-blocking).")
     args = ap.parse_args(argv)
+
+    strict = args.strict or strict_from_env()
 
     registry = load_scenario_registry(REPO_ROOT)
     resolved = _resolve_run_id(args.name, args.scenario, registry)
+
+    # -- Ambiguous / unresolvable target -----------------------------------
     if isinstance(resolved, tuple):
-        run_id, matches = resolved
+        _run_id, matches = resolved
+        rep = ValidationReport("run_id", "{}__<unresolved>".format(args.name), strict=strict)
+        rep.check(
+            "target_map_resolved", False,
+            "{} runtime-state runs for target '{}'; pass --scenario. Candidates: {}".format(
+                len(matches), args.name, ", ".join(matches) or "(none)"),
+            code=FailureCode.TARGET_MAP_UNRESOLVED)
+        rep.error()
+        rep.finalize()
+        rep.print_summary("validate-runtime-state")
         sys.stderr.write(
-            "ERROR: {} runtime-state runs for target '{}'; pass --scenario. Candidates: {}\n".format(
-                len(matches), args.name, ", ".join(matches) or "(none)"))
-        sys.exit(1)
+            "ERROR: {} runtime-state runs for target '{}'; pass --scenario.\n".format(
+                len(matches), args.name))
+        sys.exit(rep.exit_code)
     run_id = resolved
 
     report_dir = REPO_ROOT / "procedural" / "reports" / "scenarios" / run_id
-    report_dir.mkdir(parents=True, exist_ok=True)
-    result = {"run_id": run_id, "target": args.name, "checks": {}, "failures": []}
-
-    def check(name, ok, detail="", warn_only=False):
-        result["checks"][name] = {"ok": bool(ok), "detail": str(detail), "warn_only": warn_only}
-        if not ok:
-            if warn_only:
-                result.setdefault("warnings", []).append("{}: {}".format(name, detail or "warn"))
-            else:
-                result["failures"].append("{}: {}".format(name, detail or "failed"))
-        return bool(ok)
+    rep = ValidationReport("run_id", run_id, strict=strict)
 
     # -- Result descriptor --------------------------------------------------
     desc_path = REPO_ROOT / "procedural" / "generated" / "scenarios" / run_id / "result.json"
     descriptor = None
-    if check("result_descriptor_exists", desc_path.is_file(), str(desc_path.relative_to(REPO_ROOT))):
+    if rep.check("result_descriptor_exists", desc_path.is_file(),
+                 str(desc_path.relative_to(REPO_ROOT)),
+                 code=FailureCode.DESCRIPTOR_MISSING):
         try:
             with desc_path.open("r", encoding="utf-8") as fh:
                 descriptor = json.load(fh)
-            check("result_descriptor_parses", True)
+            rep.check("result_descriptor_parses", True)
         except Exception as exc:
-            check("result_descriptor_parses", False, str(exc))
+            rep.check("result_descriptor_parses", False, str(exc),
+                      code=FailureCode.DESCRIPTOR_UNPARSEABLE)
 
     if descriptor is None:
-        result["passed"] = False
-        result["status"] = "error"
-        _write_report(report_dir, result)
+        rep.error("result descriptor missing or unparseable")
+        rep.finalize()
+        rep.write(report_dir, "validate_runtime_state_report.json")
+        rep.print_summary("validate-runtime-state")
         print("[validate-runtime-state] FAIL — result descriptor missing or unparseable")
-        sys.exit(1)
+        sys.exit(rep.exit_code)
 
-    check("registry_owns_run", run_id in registry, "not found in worldforge_scenario_registry.json")
+    rep.check("registry_owns_run", run_id in registry,
+              "not found in worldforge_scenario_registry.json",
+              code=FailureCode.REGISTRY_MISSING_ENTRY)
 
     scenario_id = descriptor.get("scenario_id", "")
     before = descriptor.get("before_state", {})
@@ -120,24 +153,36 @@ def main(argv=None):
     state_max = float(thresholds.get("state_max", 1.0))
     max_delta = float(thresholds.get("max_delta_per_key", 1.0))
 
+    # -- Target map resolves ------------------------------------------------
+    context_id = descriptor.get("context_id", "")
+    rep.check("target_map_resolved", bool(descriptor.get("target")) and bool(context_id),
+              "target='{}' context_id='{}'".format(descriptor.get("target"), context_id),
+              code=FailureCode.TARGET_MAP_UNRESOLVED)
+
     # -- Independently re-derive scenario expectations ----------------------
     scenario_path = REPO_ROOT / "procedural" / "definitions" / "scenarios" / (scenario_id + ".yaml")
     scenario = None
-    if check("scenario_definition_exists", scenario_path.is_file(),
-             str(scenario_path.relative_to(REPO_ROOT))):
+    if rep.check("scenario_definition_exists", scenario_path.is_file(),
+                 str(scenario_path.relative_to(REPO_ROOT)),
+                 code=FailureCode.RECIPE_MISSING):
         try:
             with scenario_path.open("r", encoding="utf-8") as fh:
                 scenario = yaml.safe_load(fh)
+            rep.check("scenario_definition_parses", True)
         except Exception as exc:
-            check("scenario_definition_parses", False, str(exc))
+            rep.check("scenario_definition_parses", False, str(exc),
+                      code=FailureCode.SCENARIO_UNPARSEABLE)
     scenario = scenario or {}
     declared_deltas = {k: float(v) for k, v in scenario.get("state_deltas", {}).items()}
+    mutated_keys = sorted(declared_deltas)
 
     # -- Initial state read -------------------------------------------------
-    check("initial_state_read", bool(before),
-          "before_state empty — no initial state was read")
+    rep.check("initial_state_read", bool(before),
+              "before_state empty — no initial state was read")
 
-    # -- State mutation (re-derived from the scenario deltas) ---------------
+    # -- State mutation (re-derived from the scenario's OWN deltas) ---------
+    # Data-driven: the asserted keys ARE whatever the scenario's state_deltas
+    # declares. Nothing here is hard-coded to industrial_pressure.
     mutation_ok = True
     mutation_detail = []
     changed_any = False
@@ -153,20 +198,26 @@ def main(argv=None):
             mutation_ok = False
             mutation_detail.append("{}: after={} expected={} (before {} + delta {})".format(
                 k, a, expected, b, d))
+        else:
+            mutation_detail.append("{}: {} -> {} == clamp({} + {})".format(k, b, a, b, d))
         if abs(a - b) > _EPS:
             changed_any = True
-    check("state_mutation_applied", mutation_ok and bool(declared_deltas),
-          "; ".join(mutation_detail) or "after == clamp(before + scenario delta)")
-    check("state_actually_changed", changed_any,
-          "no state key changed value — scenario had no effect")
+    rep.check("state_mutation_applied", mutation_ok and bool(declared_deltas),
+              "scenario keys {}: {}".format(
+                  mutated_keys, "; ".join(mutation_detail) or "no state_deltas declared"),
+              code=FailureCode.STATE_MUTATION_MISMATCH)
+    rep.check("state_actually_changed", changed_any,
+              "no state key changed value — scenario had no effect")
 
-    # -- Bounds -------------------------------------------------------------
+    # -- Bounds (state delta is bounded) ------------------------------------
     oob = [(k, v) for k, v in after.items() if v < state_min - _EPS or v > state_max + _EPS]
-    check("state_within_bounds", not oob,
-          "out-of-bounds [{},{}]: {}".format(state_min, state_max, oob))
+    rep.check("state_within_bounds", not oob,
+              "out-of-bounds [{},{}]: {}".format(state_min, state_max, oob),
+              code=FailureCode.STATE_DELTA_UNBOUNDED)
     big = [(k, d) for k, d in deltas.items() if abs(d) > max_delta + _EPS]
-    check("deltas_within_budget", not big,
-          "deltas exceeding max_delta_per_key={}: {}".format(max_delta, big))
+    rep.check("deltas_within_budget", not big,
+              "deltas exceeding max_delta_per_key={}: {}".format(max_delta, big),
+              code=FailureCode.STATE_DELTA_UNBOUNDED)
 
     # -- Aggregation --------------------------------------------------------
     agg = descriptor.get("aggregate", {})
@@ -176,9 +227,11 @@ def main(argv=None):
         if vals:
             expect_mean = round(sum(vals) / len(vals), 6)
             agg_ok = abs(float(agg.get("mean", -1)) - expect_mean) < 1e-4
-    check("state_aggregated", agg_ok, "aggregate block present and consistent with after_state")
+    rep.check("state_aggregated", agg_ok,
+              "aggregate block present and consistent with after_state",
+              code=FailureCode.AGGREGATE_INCONSISTENT)
 
-    # -- MPC bridge expectation --------------------------------------------
+    # -- MPC bridge expectation (expected scalar == simulated post-state) ---
     expected_mpc = descriptor.get("expected_mpc", {})
     mpc_ok = True
     mpc_detail = []
@@ -195,8 +248,9 @@ def main(argv=None):
             mpc_ok = False
             mpc_detail.append("{} expected_mpc={} != after={}".format(
                 param, expected_mpc.get(param), after.get(key)))
-    check("mpc_bridge_expectation", mpc_ok and bool(expected_mpc),
-          "; ".join(mpc_detail) or "curated keys map to MPC params with post-state values")
+    rep.check("mpc_bridge_expectation", mpc_ok and bool(expected_mpc),
+              "; ".join(mpc_detail) or "curated keys map to MPC params with post-state values",
+              code=FailureCode.MPC_VALUE_MISMATCH)
 
     # -- POI state evidence -------------------------------------------------
     poi_ev = descriptor.get("poi_evidence", {})
@@ -213,23 +267,32 @@ def main(argv=None):
             poi_ok = False
             poi_detail.append("{} magnitude {} != after[{}]={}".format(
                 poi_type, ev.get("magnitude"), driver, after.get(driver)))
-    check("poi_state_evidence_updated", poi_ok and bool(poi_ev),
-          "; ".join(poi_detail) or "POI evidence present and driven by post-state")
+    rep.check("poi_state_evidence_updated", poi_ok and bool(poi_ev),
+              "; ".join(poi_detail) or "POI evidence present and driven by post-state",
+              code=FailureCode.POI_EVIDENCE_MISSING)
 
     # -- Save / load restoration -------------------------------------------
     sl = descriptor.get("save_load", {})
     save_path = REPO_ROOT / sl.get("save_path", "")
-    check("state_save_file_exists", bool(sl.get("save_path")) and save_path.is_file(),
-          str(sl.get("save_path", "")))
+    rep.check("state_save_file_exists", bool(sl.get("save_path")) and save_path.is_file(),
+              str(sl.get("save_path", "")),
+              code=FailureCode.SAVE_LOAD_ROUNDTRIP_FAILED)
     restored = sl.get("restored_state", {})
     saved = sl.get("saved_state", {})
     persisted_after = {k: after[k] for k in sl.get("persist_keys", []) if k in after}
-    check("save_load_roundtrip", bool(sl.get("roundtrip_ok")) and restored == saved,
-          "restored_state must equal saved_state")
-    check("save_load_restores_poststate", restored == persisted_after,
-          "restored persisted keys must equal post-scenario state")
+    rep.check("save_load_roundtrip", bool(sl.get("roundtrip_ok")) and restored == saved,
+              "restored_state must equal saved_state",
+              code=FailureCode.SAVE_LOAD_ROUNDTRIP_FAILED)
+    rep.check("save_load_restores_poststate", restored == persisted_after,
+              "restored persisted keys must equal post-scenario state",
+              code=FailureCode.SAVE_LOAD_ROUNDTRIP_FAILED)
 
-    # -- Post-scenario map validity (UE; warn_only) -------------------------
+    # -- Provenance ---------------------------------------------------------
+    rep.check("provenance_exists", bool(descriptor.get("provenance")),
+              "provenance block absent from result descriptor",
+              code=FailureCode.PROVENANCE_MISSING)
+
+    # -- Post-scenario map validity (D7-GATED on a UE validate-slice run) ---
     slice_report = (REPO_ROOT / "procedural" / "reports" / "slices" / descriptor.get("biome", "desert")
                     / args.name / "validate_slice_report.json")
     map_ok = False
@@ -238,11 +301,13 @@ def main(argv=None):
             map_ok = bool(json.loads(slice_report.read_text(encoding="utf-8")).get("passed"))
         except Exception:
             map_ok = False
-    check("post_scenario_map_valid", map_ok,
-          "run 'make validate-slice' for {} (UE) to confirm map validity".format(args.name),
-          warn_only=True)
+    rep.gated("post_scenario_map_valid", map_ok,
+              "validate-slice PASS for {}".format(args.name) if map_ok else
+              "run 'make validate-slice' for {} (UE) to confirm post-scenario map validity".format(
+                  args.name),
+              code=FailureCode.UE_MATERIALIZATION_PENDING)
 
-    # -- UE bridge applied + readback (warn_only) ---------------------------
+    # -- UE bridge applied + readback (D7-GATED) ----------------------------
     ue_report = report_dir / "ue_state_scenario_report.json"
     ue_ok = False
     ue_detail = "run 'make apply-state-scenario' (UE) to apply + read back the MPC bridge"
@@ -253,44 +318,22 @@ def main(argv=None):
             ue_detail = "ue readback={}".format(ue_rpt.get("mpc_readback"))
         except Exception:
             ue_ok = False
-    check("ue_state_applied", ue_ok, ue_detail, warn_only=True)
+    rep.gated("ue_state_applied", ue_ok, ue_detail,
+              code=FailureCode.UE_STATE_NOT_APPLIED)
 
-    # -- Provenance ---------------------------------------------------------
-    check("provenance_exists", bool(descriptor.get("provenance")),
-          "provenance block absent from result descriptor")
+    # -- Finalize + write ---------------------------------------------------
+    rep.finalize()
+    rep.write(report_dir, "validate_runtime_state_report.json")
+    rep.print_summary("validate-runtime-state")
 
-    # -- Result -------------------------------------------------------------
-    result["before_state"] = before
-    result["after_state"] = after
-    result["mpc_readback_expected"] = expected_mpc
-    result["save_load_ok"] = bool(sl.get("roundtrip_ok"))
-    result["affected_poi"] = list(poi_ev.keys())
-    result["passed"] = len(result["failures"]) == 0
-    result["status"] = "ok" if result["passed"] else "fail"
-    _write_report(report_dir, result)
-
-    verdict = "PASS" if result["passed"] else "FAIL"
-    n_warn = len(result.get("warnings", []))
-    print("[validate-runtime-state] {} — {} ({} failure(s), {} warning(s))".format(
-        verdict, run_id, len(result["failures"]), n_warn))
-    # Legible before/after summary
+    # Legible before/after summary (preserves the v0.8 console UX).
     for k in descriptor.get("state_keys", []):
         print("[validate-runtime-state]   {}: {} -> {}".format(k, before.get(k), after.get(k)))
-    print("[validate-runtime-state]   scenario={} affected_poi={} save_load={}".format(
-        scenario_id, result["affected_poi"], "OK" if result["save_load_ok"] else "FAIL"))
-    for f in result["failures"]:
-        print("[validate-runtime-state]   FAIL: {}".format(f))
-    for w in result.get("warnings", []):
-        print("[validate-runtime-state]   WARN: {}".format(w))
-    sys.exit(0 if result["passed"] else 1)
+    print("[validate-runtime-state]   scenario={} mutated_keys={} affected_poi={} save_load={}".format(
+        scenario_id, mutated_keys, list(poi_ev.keys()),
+        "OK" if sl.get("roundtrip_ok") else "FAIL"))
 
-
-def _write_report(report_dir: Path, result: dict):
-    rpt_path = report_dir / "validate_runtime_state_report.json"
-    with rpt_path.open("w", encoding="utf-8") as fh:
-        json.dump(result, fh, indent=2, ensure_ascii=False)
-        fh.write("\n")
-    print("[validate-runtime-state] report -> {}".format(rpt_path.relative_to(REPO_ROOT)))
+    sys.exit(rep.exit_code)
 
 
 if __name__ == "__main__":

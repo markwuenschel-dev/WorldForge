@@ -3,6 +3,10 @@
 PYTHON := python
 UE_PYTHON := python
 
+# v0.9 — export STRICT so it reaches subprocesses (incl. UE-side validators that
+# resolve it via strict_from_env(); there is no reliable argv in -ExecutePythonScript).
+export STRICT
+
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
         validate-assets diagnose pre-ue-audit validate-and-manifest preview build clean \
@@ -21,7 +25,9 @@ UE_PYTHON := python
         create-terrain validate-terrain import-terrain \
         create-poi validate-poi \
         run-state-sim validate-runtime-state apply-state-scenario \
-        register-generated-asset validate-generated-asset relocate-houdini-asset
+        register-generated-asset validate-generated-asset relocate-houdini-asset \
+        worldforge-doctor audit-generated-content package-check \
+        repair-world-pack destroy-world-pack
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -93,6 +99,13 @@ help:
 	@echo "  make register-generated-asset ASSET=rock_generator_desert_01"
 	@echo "  make validate-generated-asset ASSET=rock_generator_desert_01"
 	@echo "  make relocate-houdini-asset ASSET=rock_generator_desert_01   # UE-side: bake -> WorldForge-owned"
+	@echo ""
+	@echo "Production Hardening (v0.9 — health, audit, packaging, lifecycle; STRICT=1 escalates WARN->blocking):"
+	@echo "  make worldforge-doctor                                  # local factory health (read-only)"
+	@echo "  make audit-generated-content                            # repo-wide ownership/provenance/path audit (read-only)"
+	@echo "  make package-check PACK=desert_production_seed          # world-pack ship-readiness gate (read-only)"
+	@echo "  make repair-world-pack PACK=desert_poi_lite_seed        # diagnose; APPLY=1 re-derives, APPLY=1 UE=1 runs editor repair"
+	@echo "  make destroy-world-pack PACK=desert_poi_lite_seed       # dry-run; CONFIRM=1 deletes registry-owned generated assets"
 	@echo ""
 	@echo "Other:"
 	@echo "  make preview     # Always fails until preview generation exists"
@@ -260,7 +273,7 @@ create-slice-pack:
 
 validate-slice-pack:
 	$(PYTHON) tools/pipeline/validate_slice_pack.py --pack procedural/slice_packs/$(PACK).yaml \
-	  $(if $(DEEP),--deep,)
+	  $(if $(DEEP),--deep,) $(if $(STRICT),--strict,)
 
 destroy-slice:
 	$(PYTHON) tools/pipeline/destroy_slice.py --name $(NAME)
@@ -310,11 +323,33 @@ create-world-pack:
 
 validate-world-pack:
 	$(PYTHON) tools/pipeline/validate_world_pack.py --pack procedural/world_packs/$(PACK).yaml \
-	  $(if $(DEEP),--deep,)
+	  $(if $(DEEP),--deep,) $(if $(STRICT),--strict,)
 
 # v0.5 — pre-flight
 ue-doctor:
 	$(PYTHON) tools/pipeline/ue_doctor.py
+
+# v0.9 — local factory health check (read-only). STRICT=1 escalates soft warnings.
+worldforge-doctor:
+	$(PYTHON) tools/pipeline/worldforge_doctor.py $(if $(STRICT),--strict,)
+
+# v0.9 — repo-wide generated-content ownership/provenance/path audit (read-only).
+# STRICT=1 escalates soft warnings (e.g. missing provenance) to blocking.
+audit-generated-content:
+	$(PYTHON) tools/pipeline/audit_generated_content.py $(if $(STRICT),--strict,)
+
+# v0.9 — world-pack package/ship readiness gate (read-only). STRICT=1 escalates warnings.
+package-check:
+	$(PYTHON) tools/pipeline/package_check.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# v0.9 — world-pack lifecycle. destroy requires CONFIRM=1; repair APPLY=1 (UE=1 for map gaps).
+repair-world-pack:
+	$(PYTHON) tools/pipeline/repair_world_pack.py --pack $(PACK) \
+	  $(if $(APPLY),--apply,) $(if $(UE),--ue,) $(if $(STRICT),--strict,)
+
+destroy-world-pack:
+	$(PYTHON) tools/pipeline/destroy_world_pack.py --pack $(PACK) \
+	  $(if $(CONFIRM),--confirm,) $(if $(STRICT),--strict,)
 
 # v0.6 — TerrainForge Lite
 # Generate deterministic terrain artifacts from a terrain recipe.
@@ -325,7 +360,7 @@ create-terrain:
 
 # Validate generated terrain artifacts (pure Python; no UE required).
 validate-terrain:
-	$(PYTHON) tools/pipeline/validate_terrain.py --name $(NAME)
+	$(PYTHON) tools/pipeline/validate_terrain.py --name $(NAME) $(if $(STRICT),--strict,)
 
 # Run UE-side terrain import (Stage C); requires editor.
 import-terrain:
@@ -340,7 +375,7 @@ create-poi:
 
 # Validate generated POI artifacts (pure Python; no UE required).
 validate-poi:
-	$(PYTHON) tools/pipeline/validate_poi.py --name $(NAME)
+	$(PYTHON) tools/pipeline/validate_poi.py --name $(NAME) $(if $(STRICT),--strict,)
 
 # v0.8 — Runtime StateForge (make generated worlds react and remember)
 # Authoring-side scenario simulation: mutate + aggregate state, expect the MPC
@@ -352,7 +387,7 @@ run-state-sim:
 
 validate-runtime-state:
 	$(PYTHON) tools/pipeline/validate_runtime_state.py --name $(NAME) \
-	  $(if $(SCENARIO),--scenario $(SCENARIO),)
+	  $(if $(SCENARIO),--scenario $(SCENARIO),) $(if $(STRICT),--strict,)
 
 # UE-side bridge: apply the scenario in-editor and read the MPC back (requires
 # the scenario's slice map open in the editor).
@@ -367,7 +402,7 @@ register-generated-asset:
 	$(PYTHON) tools/pipeline/register_generated_asset.py --asset $(ASSET)
 
 validate-generated-asset:
-	$(PYTHON) tools/pipeline/validate_generated_asset.py --asset $(ASSET)
+	$(PYTHON) tools/pipeline/validate_generated_asset.py --asset $(ASSET) $(if $(STRICT),--strict,)
 
 # UE-side: duplicate the baked Houdini asset out of /Game/HoudiniEngine/Bake into
 # the WorldForge-owned tree and assert it is a StaticMesh (requires editor).

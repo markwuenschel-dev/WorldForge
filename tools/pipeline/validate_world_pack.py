@@ -1,14 +1,28 @@
 #!/usr/bin/env python3
-"""validate_world_pack.py — WorldForge v0.5 world pack validator.
+"""validate_world_pack.py — WorldForge world pack validator.
 
-Runs validate_slice_pack.py for each referenced slice pack, aggregates results.
+Runs validate_slice_pack.py for each referenced slice pack, then aggregates the
+per-pack results.
+
+v0.9: migrated onto the shared ``ValidationReport`` helper (one report shape, one
+strict-mode semantics) and stable ``FailureCode``s. ``--strict`` / ``STRICT=1``
+threads through to each child slice-pack run (so a child's genuine WARN blocks),
+and into how this validator judges each child's report:
+
+  - child pack PASS                 -> PASS
+  - child pack WARN (soft)          -> WARN   (blocking under --strict)
+  - child pack WARN_ONLY / GATED    -> WARN_ONLY / gated (never blocking)
+  - child pack FAIL / non-zero exit -> FAIL   (parent fails)
+
+No UE is launched: the child slice-pack validator consumes cached per-slice UE
+reports (D7), and slices whose UE report is absent are GATED (non-blocking, even
+under --strict).
 
 Usage:
     python tools/pipeline/validate_world_pack.py \
-        --pack procedural/world_packs/desert_production_seed.yaml \
-        [--deep] [--read-only]
+        --pack procedural/world_packs/desert_production_seed.yaml [--deep] [--strict]
 
-Exit 0 if all packs pass, 1 if any fail.
+Exit 0 = PASS (status ok|warn), 1 = FAIL (status fail|error).
 """
 
 import argparse
@@ -25,28 +39,83 @@ except ImportError:
     sys.exit(2)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO_ROOT / "tools" / "pipeline"))
+from validation_report import ValidationReport, strict_from_env
+from failure_codes import FailureCode
+
 VALIDATE_PACK_SCRIPT = REPO_ROOT / "tools" / "pipeline" / "validate_slice_pack.py"
 
 
-def _run_validate_pack(slice_pack_path: Path, deep: bool, read_only: bool) -> tuple:
-    """Run validate_slice_pack.py and return (returncode, pass_count, total)."""
+def _run_validate_pack(slice_pack_path, deep, read_only, strict):
+    """Run validate_slice_pack.py for one pack and return its exit code."""
     env = os.environ.copy()
     env["PYTHONUTF8"] = "1"
+    if strict:
+        env["STRICT"] = "1"
     cmd = [sys.executable, str(VALIDATE_PACK_SCRIPT), "--pack", str(slice_pack_path)]
     if deep:
         cmd.append("--deep")
     if read_only:
         cmd.append("--read-only")
+    if strict:
+        cmd.append("--strict")
     result = subprocess.run(cmd, cwd=str(REPO_ROOT), env=env)
     return result.returncode
+
+
+def _judge_pack(rep, key, pack_id, rc, rpt_path, slice_count):
+    """Judge one child slice-pack report into a verdict; return a legacy row dict."""
+    child = {}
+    if rpt_path.is_file():
+        try:
+            child = json.loads(rpt_path.read_text(encoding="utf-8"))
+        except Exception:
+            child = {}
+
+    n_pass = int(child.get("pass", 0))
+    n_total = int(child.get("total", slice_count))
+    child_status = child.get("status")
+    counts = child.get("counts") or {}
+
+    if rc != 0:
+        rep.check(key, False,
+                  "child pack FAIL ({}/{}) status={}".format(n_pass, n_total, child_status or "fail"),
+                  code=FailureCode.CHILD_VALIDATION_FAILED)
+        status = "fail"
+    elif child_status == "warn" or child.get("warnings"):
+        real_warn = int(counts.get("WARN", 0)) > 0
+        only_gated = (int(counts.get("WARN", 0)) == 0
+                      and int(counts.get("WARN_ONLY", 0)) == 0
+                      and int(counts.get("GATED_HUMAN_EDITOR", 0)) > 0)
+        if real_warn:
+            rep.check(key, False, "child pack WARN ({}/{})".format(n_pass, n_total),
+                      warn_only=True, code=FailureCode.CHILD_VALIDATION_FAILED)
+            status = "warn"
+        elif only_gated:
+            rep.gated(key, False, "child pack has only gated UE checks ({}/{})".format(n_pass, n_total),
+                      code=FailureCode.UE_MATERIALIZATION_PENDING)
+            status = "gated"
+        else:
+            rep.warn_only(key, False, "child pack WARN_ONLY ({}/{})".format(n_pass, n_total))
+            status = "warn"
+    else:
+        rep.check(key, True, "PASS ({}/{})".format(n_pass, n_total))
+        status = "pass"
+
+    return {"pack_id": pack_id, "status": status, "pass": n_pass, "total": n_total}
 
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Validate all slice packs in a world pack.")
     ap.add_argument("--pack", required=True, help="Path to world pack YAML")
     ap.add_argument("--deep", action="store_true", help="Enable deep per-slice validation")
-    ap.add_argument("--read-only", action="store_true", help="Only read existing reports, skip UE runs")
+    ap.add_argument("--read-only", action="store_true",
+                    help="(retained for compatibility; aggregation never launches UE now)")
+    ap.add_argument("--strict", action="store_true",
+                    help="Treat genuine child WARNs as blocking (also via STRICT=1); threads to children.")
     args = ap.parse_args(argv)
+
+    strict = args.strict or strict_from_env()
 
     pack_path = Path(args.pack)
     if not pack_path.is_absolute():
@@ -61,25 +130,28 @@ def main(argv=None):
     world_pack_id = world_pack.get("world_pack_id", pack_path.stem)
     packs = world_pack.get("packs", [])
 
-    print("=== Validate World Pack: {} ({} slice packs) ===".format(world_pack_id, len(packs)))
+    print("=== Validate World Pack: {} ({} slice packs, strict={}) ===".format(
+        world_pack_id, len(packs), "on" if strict else "off"))
 
+    rep = ValidationReport("world_pack_id", world_pack_id, strict=strict)
     pack_results = []
     total_slices = 0
     total_pass = 0
-    any_fail = False
 
     for pack_entry in packs:
         pack_id = pack_entry.get("pack_id", "<unknown>")
         pack_rel = pack_entry.get("pack_path", "")
         slice_pack_path = REPO_ROOT / pack_rel if pack_rel else None
+        key = "pack:{}".format(pack_id)
 
         if not slice_pack_path or not slice_pack_path.is_file():
             print("[{}] ERROR: pack file not found: {}".format(pack_id, pack_rel))
+            rep.check(key, False, "pack file not found: {}".format(pack_rel),
+                      code=FailureCode.SPEC_INVALID)
             pack_results.append({"pack_id": pack_id, "status": "error", "pass": 0, "total": 0})
-            any_fail = True
             continue
 
-        # Count slices.
+        # Count slices for reporting.
         try:
             with slice_pack_path.open("r", encoding="utf-8") as fh:
                 sp = yaml.safe_load(fh)
@@ -88,49 +160,41 @@ def main(argv=None):
             slice_count = 0
 
         print("\n--- Validating pack: {} ({} slices) ---".format(pack_id, slice_count))
-        rc = _run_validate_pack(slice_pack_path, deep=args.deep, read_only=args.read_only)
-        passed = rc == 0
+        rc = _run_validate_pack(slice_pack_path, deep=args.deep,
+                                read_only=args.read_only, strict=strict)
 
-        # Read pack validate report if it exists.
         rpt_path = REPO_ROOT / "procedural" / "reports" / "packs" / pack_id / "validate_pack_report.json"
-        n_pass = 0
-        n_total = slice_count
-        if rpt_path.is_file():
-            try:
-                rpt = json.loads(rpt_path.read_text(encoding="utf-8"))
-                n_pass = rpt.get("pass", 0)
-                n_total = rpt.get("total", slice_count)
-            except Exception:
-                pass
+        row = _judge_pack(rep, key, pack_id, rc, rpt_path, slice_count)
+        total_slices += row["total"]
+        total_pass += row["pass"]
+        pack_results.append(row)
+        print("[{}] {} ({}/{})".format(pack_id, row["status"].upper(), row["pass"], row["total"]))
 
-        status = "pass" if passed else "fail"
-        if not passed:
-            any_fail = True
-        total_slices += n_total
-        total_pass += n_pass
-        pack_results.append({"pack_id": pack_id, "status": status, "pass": n_pass, "total": n_total})
-        print("[{}] {} ({}/{})".format(pack_id, status.upper(), n_pass, n_total))
-
-    # Summary.
     print("\n=== World Pack '{}': {}/{} total slices PASS ===".format(
         world_pack_id, total_pass, total_slices))
 
+    rep.finalize()
+
     report_dir = REPO_ROOT / "procedural" / "reports" / "world_packs" / world_pack_id
     report_dir.mkdir(parents=True, exist_ok=True)
-    report = {
+
+    out = rep.to_dict()
+    out.update({
         "world_pack_id": world_pack_id,
         "packs": pack_results,
         "total_slices": total_slices,
         "total_pass": total_pass,
-        "passed": not any_fail,
+        "passed": rep.passed,
         "deep": args.deep,
-    }
+    })
     out_path = report_dir / "validate_world_pack_report.json"
     with out_path.open("w", encoding="utf-8") as fh:
-        json.dump(report, fh, indent=2)
+        json.dump(out, fh, indent=2, ensure_ascii=False)
+        fh.write("\n")
     print("Report: procedural/reports/world_packs/{}/validate_world_pack_report.json".format(world_pack_id))
 
-    sys.exit(0 if not any_fail else 1)
+    rep.print_summary("validate-world-pack")
+    sys.exit(rep.exit_code)
 
 
 if __name__ == "__main__":
