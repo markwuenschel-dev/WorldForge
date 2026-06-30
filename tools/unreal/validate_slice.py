@@ -18,9 +18,21 @@ Spec resolution mirrors create_slice_map.py (--spec / $WF_SLICE_SPEC / fixed poi
 import argparse
 import json
 import os
+import sys
 import traceback
 
 import unreal
+
+# v0.9: import the shared validation contract helper. This script runs inside the
+# UE python interpreter, so resolve the repo's tools/pipeline dir from the project
+# directory (mirrors how the pipeline-side validators sys.path.insert their imports)
+# and resolve strict via strict_from_env() ONLY — there is no reliable argv/env CLI
+# parse here; the Makefile forwards STRICT=1 into the editor subprocess env.
+_PIPELINE_DIR = os.path.join(os.path.normpath(unreal.Paths.project_dir()), "tools", "pipeline")
+if _PIPELINE_DIR not in sys.path:
+    sys.path.insert(0, _PIPELINE_DIR)
+from validation_report import ValidationReport, strict_from_env  # noqa: E402
+from failure_codes import FailureCode  # noqa: E402
 
 TAG_REGION = "wf_region"
 TAG_STATE_KEY = "wf_state_key"
@@ -119,28 +131,39 @@ def main():
     os.makedirs(out_dir, exist_ok=True)
     expected_world = map_path.rstrip("/").rsplit("/", 1)[-1]
 
-    result = {"slice_id": spec["slice_id"], "map": map_path, "checks": {}, "failures": []}
-    fail = result["failures"].append
+    # v0.9: build a shared ValidationReport. Strict is resolved from the env only
+    # (the Makefile forwards STRICT=1 into the editor subprocess). This script runs
+    # *inside* UE, so it can directly observe materialized Content — none of these
+    # checks are D7-gated. The two historically warn_only checks (player_start,
+    # nav_bounds) and the "preset id omitted" cases are legacy back-compat warnings
+    # (pre-v0.4 maps lack them), so they map to WARN_ONLY (never blocking, even strict).
+    rep = ValidationReport("slice_id", spec["slice_id"], strict=strict_from_env())
+    mpc_readback = None
+    errors = []
+    traceback_str = None
 
-    def check(name, ok, detail="", warn_only=False):
-        result["checks"][name] = {"ok": bool(ok), "detail": detail}
-        if not ok and not warn_only:
-            fail("{}: {}".format(name, detail or "failed"))
-        return ok
+    def check(name, ok, detail="", warn_only=False, code=None):
+        # warn_only -> WARN_ONLY (legacy compat, never blocks); else PASS/FAIL.
+        if warn_only:
+            return rep.warn_only(name, ok, detail, code=code)
+        return rep.check(name, ok, detail, code=code)
 
     try:
-        if not check("map_exists", unreal.EditorAssetLibrary.does_asset_exist(map_path), map_path):
+        if not check("map_exists", unreal.EditorAssetLibrary.does_asset_exist(map_path), map_path,
+                     code=FailureCode.MAP_INVALID):
             raise SystemExit("map missing -- cannot continue")
         loaded = _les().load_level(map_path)
-        check("map_loads", bool(loaded), map_path)
+        check("map_loads", bool(loaded), map_path, code=FailureCode.MAP_INVALID)
         world = _world()
         wname = world.get_name() if world else None
-        check("world_matches", wname == expected_world, "world={} expected={}".format(wname, expected_world))
+        check("world_matches", wname == expected_world,
+              "world={} expected={}".format(wname, expected_world), code=FailureCode.MAP_INVALID)
 
         actors = _eas().get_all_level_actors()
 
         ground = _find(actors, lambda a: _has_tag(a, TAG_TERRAIN))
-        if check("terrain_actor", ground is not None, "tag {}".format(TAG_TERRAIN)):
+        if check("terrain_actor", ground is not None, "tag {}".format(TAG_TERRAIN),
+                 code=FailureCode.SPEC_INVALID):
             assigned = None
             try:
                 m = ground.static_mesh_component.get_material(0)
@@ -148,28 +171,33 @@ def main():
             except Exception as e:  # noqa: BLE001
                 assigned = "error: {}".format(e)
             check("terrain_material_matches", assigned == mi_path,
-                  "assigned={} expected={}".format(assigned, mi_path))
+                  "assigned={} expected={}".format(assigned, mi_path), code=FailureCode.SPEC_INVALID)
 
         pcg = _find(actors, lambda a: _has_tag(a, TAG_PCG))
-        if check("pcg_actor", pcg is not None, "tag {}".format(TAG_PCG)):
+        if check("pcg_actor", pcg is not None, "tag {}".format(TAG_PCG), code=FailureCode.SPEC_INVALID):
             check("pcg_graph_linked", _tag_value(pcg, TAG_PCG_GRAPH) == pcg_path,
-                  "graph={} expected={}".format(_tag_value(pcg, TAG_PCG_GRAPH), pcg_path))
+                  "graph={} expected={}".format(_tag_value(pcg, TAG_PCG_GRAPH), pcg_path),
+                  code=FailureCode.SPEC_INVALID)
             check("placement_da_linked", _tag_value(pcg, TAG_PLACEMENT_DA) == da_path,
-                  "da={} expected={}".format(_tag_value(pcg, TAG_PLACEMENT_DA), da_path))
+                  "da={} expected={}".format(_tag_value(pcg, TAG_PLACEMENT_DA), da_path),
+                  code=FailureCode.SPEC_INVALID)
 
         marker = _find(actors, lambda a: _tag_value(a, TAG_REGION) == region_id)
-        if check("region_marker", marker is not None, "wf_region:{}".format(region_id)):
+        if check("region_marker", marker is not None, "wf_region:{}".format(region_id),
+                 code=FailureCode.SPEC_INVALID):
             check("state_key_matches", _tag_value(marker, TAG_STATE_KEY) == state.get("key"),
-                  "key={} expected={}".format(_tag_value(marker, TAG_STATE_KEY), state.get("key")))
+                  "key={} expected={}".format(_tag_value(marker, TAG_STATE_KEY), state.get("key")),
+                  code=FailureCode.SPEC_INVALID)
             check("state_before_matches",
                   _tag_value(marker, TAG_STATE_BEFORE) == str(state.get("before")),
-                  "before={}".format(_tag_value(marker, TAG_STATE_BEFORE)))
+                  "before={}".format(_tag_value(marker, TAG_STATE_BEFORE)), code=FailureCode.SPEC_INVALID)
             check("state_after_matches",
                   _tag_value(marker, TAG_STATE_AFTER) == str(state.get("after")),
-                  "after={}".format(_tag_value(marker, TAG_STATE_AFTER)))
+                  "after={}".format(_tag_value(marker, TAG_STATE_AFTER)), code=FailureCode.SPEC_INVALID)
 
         check("placement_da_resolves",
-              da_path is not None and unreal.EditorAssetLibrary.load_asset(da_path) is not None, da_path)
+              da_path is not None and unreal.EditorAssetLibrary.load_asset(da_path) is not None, da_path,
+              code=FailureCode.SPEC_INVALID)
 
         # MPC bridge: drive to the slice's `after` state and confirm the MPC mirror.
         after = state.get("after", 0.75)
@@ -179,18 +207,21 @@ def main():
                     state.get("scope", "Region"), state.get("context_id"), state.get("key"), after))
             mpc = unreal.EditorAssetLibrary.load_asset(MPC_PATH)
             val = float(unreal.MaterialLibrary.get_scalar_parameter_value(world, mpc, MPC_PRESSURE_PARAM))
-            result["mpc_readback"] = round(val, 4)
+            mpc_readback = round(val, 4)
             check("mpc_bridge", abs(val - float(after)) < 1e-4,
-                  "readback={} expected={}".format(round(val, 4), after))
+                  "readback={} expected={}".format(round(val, 4), after), code=FailureCode.MPC_VALUE_MISMATCH)
         except Exception as e:  # noqa: BLE001
-            check("mpc_bridge", False, "exception: {}".format(e))
+            check("mpc_bridge", False, "exception: {}".format(e), code=FailureCode.MPC_VALUE_MISMATCH)
 
         # player_start and nav_bounds are warn_only for backwards compat with pre-v0.4 maps
+        # -> WARN_ONLY: intentionally non-blocking forever (legacy compat).
         ps = _find(actors, lambda a: isinstance(a, unreal.PlayerStart))
-        check("player_start", ps is not None, "PlayerStart actor", warn_only=True)
+        check("player_start", ps is not None, "PlayerStart actor (legacy compat: pre-v0.4 maps may lack one)",
+              warn_only=True)
 
         nav = _find(actors, lambda a: isinstance(a, unreal.NavMeshBoundsVolume))
-        check("nav_bounds", nav is not None, "NavMeshBoundsVolume actor", warn_only=True)
+        check("nav_bounds", nav is not None, "NavMeshBoundsVolume actor (legacy compat: pre-v0.4 maps may lack one)",
+              warn_only=True)
 
         # terrain_forge checks — run when spec contains a terrain_forge block
         terrain_forge = spec.get("terrain_forge")
@@ -200,48 +231,54 @@ def main():
             tf_desc_full = os.path.join(root, tf_desc_rel.replace("/", os.sep))
             check("terrain_forge_descriptor_exists",
                   bool(tf_desc_rel) and os.path.isfile(tf_desc_full),
-                  "descriptor_path={}".format(tf_desc_rel))
+                  "descriptor_path={}".format(tf_desc_rel), code=FailureCode.DESCRIPTOR_MISSING)
             for artifact_key in ("heightmap", "slope_mask", "placement_mask", "nav_safe_mask"):
                 rel = terrain_forge.get(artifact_key, "")
                 full = os.path.join(root, rel.replace("/", os.sep)) if rel else ""
                 check("terrain_forge_{}_exists".format(artifact_key),
                       bool(rel) and os.path.isfile(full),
-                      "path={}".format(rel))
+                      "path={}".format(rel), code=FailureCode.ARTIFACT_MISSING)
             # Verify the terrain actor carries the wf_terrain_forge tag.
             terrain_forge_actor = _find(actors, lambda a: "wf_terrain_forge" in _tags(a))
             check("terrain_forge_actor_tagged", terrain_forge_actor is not None,
-                  "no actor with wf_terrain_forge tag found in map")
+                  "no actor with wf_terrain_forge tag found in map", code=FailureCode.SPEC_INVALID)
             if terrain_forge_actor is not None:
                 expected_tf_name = terrain_forge.get("terrain_name", "")
                 actual_tf_name = _tag_value(terrain_forge_actor, "wf_terrain_name")
                 check("terrain_forge_name_matches",
                       actual_tf_name == expected_tf_name,
-                      "actor tag wf_terrain_name={} expected={}".format(actual_tf_name, expected_tf_name))
+                      "actor tag wf_terrain_name={} expected={}".format(actual_tf_name, expected_tf_name),
+                      code=FailureCode.SPEC_INVALID)
                 expected_pm = terrain_forge.get("placement_mask", "")
                 actual_pm = _tag_value(terrain_forge_actor, "wf_terrain_placement_mask")
                 check("terrain_forge_placement_mask_tagged",
                       actual_pm == expected_pm,
-                      "tag wf_terrain_placement_mask={} expected={}".format(actual_pm, expected_pm))
+                      "tag wf_terrain_placement_mask={} expected={}".format(actual_pm, expected_pm),
+                      code=FailureCode.SPEC_INVALID)
 
         # poi_forge checks — run when spec contains a poi_forge block
         if poi_forge:
             poi_actor = _find(actors, lambda a: _has_tag(a, "wf_poi_forge"))
-            if check("poi_forge_actor", poi_actor is not None, "no actor with wf_poi_forge tag"):
+            if check("poi_forge_actor", poi_actor is not None, "no actor with wf_poi_forge tag",
+                     code=FailureCode.SPEC_INVALID):
                 expected_poi_type = poi_forge.get("poi_type", "")
                 actual_poi_type = _tag_value(poi_actor, "wf_poi_type")
                 check("poi_forge_type_matches",
                       actual_poi_type == expected_poi_type,
-                      "actor tag wf_poi_type={} expected={}".format(actual_poi_type, expected_poi_type))
+                      "actor tag wf_poi_type={} expected={}".format(actual_poi_type, expected_poi_type),
+                      code=FailureCode.SPEC_INVALID)
                 expected_poi_name = poi_forge.get("poi_name", "")
                 actual_poi_name = _tag_value(poi_actor, "wf_poi_name")
                 check("poi_forge_name_matches",
                       actual_poi_name == expected_poi_name,
-                      "actor tag wf_poi_name={} expected={}".format(actual_poi_name, expected_poi_name))
+                      "actor tag wf_poi_name={} expected={}".format(actual_poi_name, expected_poi_name),
+                      code=FailureCode.SPEC_INVALID)
                 expected_bounds_id = poi_forge.get("bounds_id", "primary_bounds")
                 actual_bounds_id = _tag_value(poi_actor, "wf_poi_bounds")
                 check("poi_forge_bounds_tagged",
                       actual_bounds_id == expected_bounds_id,
-                      "tag wf_poi_bounds={} expected={}".format(actual_bounds_id, expected_bounds_id))
+                      "tag wf_poi_bounds={} expected={}".format(actual_bounds_id, expected_bounds_id),
+                      code=FailureCode.SPEC_INVALID)
 
         # DEEP checks — only run when _validate_config.json has {"deep": true}
         if deep:
@@ -255,9 +292,12 @@ def main():
                                            preset_biome, placement_preset_id + ".yaml")
                 check("placement_preset_exists",
                       os.path.isfile(preset_path),
-                      "preset={} path={}".format(placement_preset_id, preset_path))
+                      "preset={} path={}".format(placement_preset_id, preset_path),
+                      code=FailureCode.RECIPE_MISSING)
             else:
-                check("placement_preset_exists", False, "no placement_preset_id in spec", warn_only=True)
+                check("placement_preset_exists", False,
+                      "no placement_preset_id in spec (legacy compat: pre-v0.5 slices lack it)",
+                      warn_only=True)
 
             # state preset file must exist on disk (warn_only if omitted — v0.4 slices lack it)
             state_preset_id = spec.get("state_preset_id")
@@ -267,22 +307,24 @@ def main():
                                           state_biome, state_preset_id + ".yaml")
                 check("state_preset_exists",
                       os.path.isfile(state_path),
-                      "preset={} path={}".format(state_preset_id, state_path))
+                      "preset={} path={}".format(state_preset_id, state_path),
+                      code=FailureCode.RECIPE_MISSING)
             else:
                 check("state_preset_exists", False,
-                      "no state_preset_id in spec", warn_only=True)
+                      "no state_preset_id in spec (legacy compat: pre-v0.4 slices lack it)",
+                      warn_only=True)
 
             # per-slice placement DA JSON descriptor
             da_desc_path = os.path.join(root, "procedural", "generated", "placement",
                                         spec["slice_id"] + "_da.json")
             check("placement_da_exists",
                   os.path.isfile(da_desc_path),
-                  "path={}".format(da_desc_path))
+                  "path={}".format(da_desc_path), code=FailureCode.DESCRIPTOR_MISSING)
 
             # budget config present (content validated by validate_budget.py on pipeline side)
             budget_path = os.path.join(root, "procedural", "definitions", "budgets", "desert_default.yaml")
             check("budget_config_loaded", os.path.isfile(budget_path),
-                  "budget file missing: {}".format(budget_path))
+                  "budget file missing: {}".format(budget_path), code=FailureCode.BUDGET_PROFILE_MISSING)
 
             # poi_forge descriptor file must exist when poi_forge is in spec
             if poi_forge:
@@ -290,32 +332,41 @@ def main():
                 poi_desc_full = os.path.join(root, poi_desc_rel.replace("/", os.sep)) if poi_desc_rel else ""
                 check("poi_forge_descriptor_exists",
                       bool(poi_desc_rel) and os.path.isfile(poi_desc_full),
-                      "descriptor_path={}".format(poi_desc_rel))
+                      "descriptor_path={}".format(poi_desc_rel), code=FailureCode.DESCRIPTOR_MISSING)
                 expected_anchor_count = len(poi_forge.get("anchors", []))
                 poi_anchors = [a for a in actors if _has_tag(a, "wf_poi_anchor") and
                                _tag_value(a, "wf_poi_name") == poi_forge.get("poi_name", "")]
                 check("poi_forge_anchors_spawned",
                       len(poi_anchors) == expected_anchor_count,
-                      "found {} anchor actors expected {}".format(len(poi_anchors), expected_anchor_count))
+                      "found {} anchor actors expected {}".format(len(poi_anchors), expected_anchor_count),
+                      code=FailureCode.SPEC_INVALID)
 
-        result["passed"] = not result["failures"]
-        result["status"] = "ok"
+        rep.finalize()
     except SystemExit as se:
-        result["passed"] = False
-        result["status"] = "error"
-        result["errors"] = [str(se)]
+        rep.error(str(se))
+        errors = [str(se)]
     except Exception as exc:  # noqa: BLE001
-        result["passed"] = False
-        result["status"] = "error"
-        result["errors"] = [str(exc)]
-        result["traceback"] = traceback.format_exc()
+        rep.error(str(exc))
+        errors = [str(exc)]
+        traceback_str = traceback.format_exc()
         log("ERROR: {}".format(exc))
 
+    # Write the canonical v0.9 report, preserving legacy extras (map / mpc_readback /
+    # errors / traceback) so existing consumers (run_slice_ue.py, validate_slice_pack.py)
+    # keep working unchanged.
+    out = rep.to_dict()
+    out["map"] = map_path
+    if mpc_readback is not None:
+        out["mpc_readback"] = mpc_readback
+    if errors:
+        out["errors"] = errors
+    if traceback_str:
+        out["traceback"] = traceback_str
     with open(os.path.join(out_dir, "validate_slice_report.json"), "w", encoding="utf-8") as f:
-        json.dump(result, f, indent=2)
-    verdict = "PASS" if result.get("passed") else "FAIL"
-    log("validate_slice: {} ({} failure(s))".format(verdict, len(result["failures"])))
-    for r in result["failures"]:
+        json.dump(out, f, indent=2)
+    verdict = "PASS" if rep.passed else "FAIL"
+    log("validate_slice: {} ({} failure(s))".format(verdict, len(rep.failures)))
+    for r in rep.failures:
         log("  - {}".format(r))
 
 
