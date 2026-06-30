@@ -93,7 +93,9 @@ def main():
     else:
         for param, expected in expected_mpc.items():
             try:
-                got = unreal.MaterialParameterCollectionLibrary.get_scalar_parameter_value(
+                # MPC scalar get/set live on UKismetMaterialLibrary, exposed to
+                # Python as unreal.MaterialLibrary.
+                got = unreal.MaterialLibrary.get_scalar_parameter_value(
                     world, mpc, unreal.Name(param))
             except Exception as exc:
                 got = None
