@@ -65,7 +65,13 @@ This writes a descriptor + a registry entry in
 
 ```bash
 make validate-generated-asset ASSET=rock_generator_desert_01
+make validate-generated-asset ASSET=rock_generator_desert_01 STRICT=1   # v0.9 final gate
 ```
+
+`STRICT=1` (v0.9) escalates soft `WARN` checks to blocking; the gated UE check below
+stays non-blocking in both modes. See
+[`production_hardening_v0_9.md`](production_hardening_v0_9.md) for the strict-mode
+and six-verdict vocabulary.
 
 ## Asset definition fields
 
@@ -99,11 +105,36 @@ Rocks` · **not** a Houdini Temp/Bake path · `generated_owned == true`,
 `temporary == false` · `pcg_allowed == true` · `desert` in `biome` · catalog
 membership · provenance present.
 
-`asset_exists_in_ue_as_static_mesh` is `warn_only` until
-`make relocate-houdini-asset` has produced a passing
-`ue_generated_asset_report.json` — so the data-layer intake validates cleanly
-without touching v0.8 systems, and the UE presence check lights up once the
-editor step runs.
+### v0.9 — strict validation and the gated UE check
+
+Under v0.9 the UE StaticMesh presence check is reclassified from `warn_only` to
+**`GATED_HUMAN_EDITOR`** (D7): `asset_exists_in_ue_as_static_mesh` is gated until
+`make relocate-houdini-asset` has produced a passing `ue_generated_asset_report.json`.
+It never blocks — in normal **or** strict mode — and clears to `PASS` once the editor
+step runs. If the asset is materialized but is the wrong type, the gated check carries
+`WF081_UE_ASSET_NOT_STATIC_MESH`; otherwise `WF080_UE_MATERIALIZATION_PENDING`. So the
+data-layer intake validates cleanly (even under `STRICT=1`) without an editor, and the
+UE presence check lights up once `relocate-houdini-asset` runs.
+
+The data-layer guarantees stay **hard `FAIL`s** in both modes: forbidden Houdini
+Temp/Bake path (`WF040`), path not under the owned tree (`WF041`), missing
+`generated_owned` flag (`WF051`), missing catalog membership (`WF042`), missing
+provenance (`WF020`).
+
+### v0.9 — audit and package-check coverage
+
+This intake asset is swept by two repo-wide v0.9 commands (both read-only):
+
+- **`make audit-generated-content`** includes the `generated_assets` surface: it
+  asserts the registry entry exists, the descriptor resolves, `generated_owned` is
+  explicit, `temporary` is false, the `source_bake_path` is provenance-only (never the
+  final path), the final path is owned and not a Temp/Bake path, and catalog
+  membership holds.
+- **`make package-check PACK=…`** rejects any world pack whose final dependency set
+  reaches a forbidden Houdini Temp/Bake path (`WF090_PACKAGE_FORBIDDEN_DEPENDENCY`)
+  and verifies that generated-owned references resolve to a registry entry — so a
+  relocated, registered rock packages cleanly while an un-relocated bake path is
+  rejected.
 
 ## Output locations
 
