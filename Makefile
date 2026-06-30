@@ -316,6 +316,10 @@ validate-world-pack:
 ue-doctor:
 	$(PYTHON) tools/pipeline/ue_doctor.py
 
+# v0.9 — local factory health check (read-only). STRICT=1 escalates soft warnings.
+worldforge-doctor:
+	$(PYTHON) tools/pipeline/worldforge_doctor.py $(if $(STRICT),--strict,)
+
 # v0.6 — TerrainForge Lite
 # Generate deterministic terrain artifacts from a terrain recipe.
 #   RECIPE  terrain recipe id (procedural/definitions/terrain/<RECIPE>.yaml)
@@ -352,7 +356,7 @@ run-state-sim:
 
 validate-runtime-state:
 	$(PYTHON) tools/pipeline/validate_runtime_state.py --name $(NAME) \
-	  $(if $(SCENARIO),--scenario $(SCENARIO),)
+	  $(if $(SCENARIO),--scenario $(SCENARIO),) $(if $(STRICT),--strict,)
 
 # UE-side bridge: apply the scenario in-editor and read the MPC back (requires
 # the scenario's slice map open in the editor).
@@ -367,7 +371,7 @@ register-generated-asset:
 	$(PYTHON) tools/pipeline/register_generated_asset.py --asset $(ASSET)
 
 validate-generated-asset:
-	$(PYTHON) tools/pipeline/validate_generated_asset.py --asset $(ASSET)
+	$(PYTHON) tools/pipeline/validate_generated_asset.py --asset $(ASSET) $(if $(STRICT),--strict,)
 
 # UE-side: duplicate the baked Houdini asset out of /Game/HoudiniEngine/Bake into
 # the WorldForge-owned tree and assert it is a StaticMesh (requires editor).

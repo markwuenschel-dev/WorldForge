@@ -204,7 +204,8 @@ def main(argv=None):
             changed_any = True
     rep.check("state_mutation_applied", mutation_ok and bool(declared_deltas),
               "scenario keys {}: {}".format(
-                  mutated_keys, "; ".join(mutation_detail) or "no state_deltas declared"))
+                  mutated_keys, "; ".join(mutation_detail) or "no state_deltas declared"),
+              code=FailureCode.STATE_MUTATION_MISMATCH)
     rep.check("state_actually_changed", changed_any,
               "no state key changed value — scenario had no effect")
 
@@ -227,7 +228,8 @@ def main(argv=None):
             expect_mean = round(sum(vals) / len(vals), 6)
             agg_ok = abs(float(agg.get("mean", -1)) - expect_mean) < 1e-4
     rep.check("state_aggregated", agg_ok,
-              "aggregate block present and consistent with after_state")
+              "aggregate block present and consistent with after_state",
+              code=FailureCode.AGGREGATE_INCONSISTENT)
 
     # -- MPC bridge expectation (expected scalar == simulated post-state) ---
     expected_mpc = descriptor.get("expected_mpc", {})

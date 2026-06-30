@@ -85,6 +85,8 @@ is the stable bucket.
 | `WF073_MPC_VALUE_MISMATCH` | fail | Aggregated MPC value ≠ expected | Reconcile scenario expectation vs. simulation |
 | `WF074_POI_EVIDENCE_MISSING` | fail | Expected POI evidence not produced | Verify POI wiring; re-run the sim |
 | `WF075_SAVE_LOAD_ROUNDTRIP_FAILED` | fail | Save/load state did not round-trip | Fix persist keys; re-run the round-trip |
+| `WF076_STATE_MUTATION_MISMATCH` | fail | Simulated post-state ≠ `clamp(initial + scenario delta)` for a mutated key | Reconcile sim vs. the scenario's `state_deltas` |
+| `WF077_AGGREGATE_INCONSISTENT` | fail | Aggregate result missing or inconsistent with mutated state | Re-run the sim; verify aggregation logic |
 
 ## 080–089 · UE materialization (D7-gated)
 
