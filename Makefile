@@ -3,6 +3,10 @@
 PYTHON := python
 UE_PYTHON := python
 
+# v0.9 — export STRICT so it reaches subprocesses (incl. UE-side validators that
+# resolve it via strict_from_env(); there is no reliable argv in -ExecutePythonScript).
+export STRICT
+
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
         validate-assets diagnose pre-ue-audit validate-and-manifest preview build clean \
@@ -262,7 +266,7 @@ create-slice-pack:
 
 validate-slice-pack:
 	$(PYTHON) tools/pipeline/validate_slice_pack.py --pack procedural/slice_packs/$(PACK).yaml \
-	  $(if $(DEEP),--deep,)
+	  $(if $(DEEP),--deep,) $(if $(STRICT),--strict,)
 
 destroy-slice:
 	$(PYTHON) tools/pipeline/destroy_slice.py --name $(NAME)
@@ -312,7 +316,7 @@ create-world-pack:
 
 validate-world-pack:
 	$(PYTHON) tools/pipeline/validate_world_pack.py --pack procedural/world_packs/$(PACK).yaml \
-	  $(if $(DEEP),--deep,)
+	  $(if $(DEEP),--deep,) $(if $(STRICT),--strict,)
 
 # v0.5 — pre-flight
 ue-doctor:
@@ -349,7 +353,7 @@ create-terrain:
 
 # Validate generated terrain artifacts (pure Python; no UE required).
 validate-terrain:
-	$(PYTHON) tools/pipeline/validate_terrain.py --name $(NAME)
+	$(PYTHON) tools/pipeline/validate_terrain.py --name $(NAME) $(if $(STRICT),--strict,)
 
 # Run UE-side terrain import (Stage C); requires editor.
 import-terrain:
@@ -364,7 +368,7 @@ create-poi:
 
 # Validate generated POI artifacts (pure Python; no UE required).
 validate-poi:
-	$(PYTHON) tools/pipeline/validate_poi.py --name $(NAME)
+	$(PYTHON) tools/pipeline/validate_poi.py --name $(NAME) $(if $(STRICT),--strict,)
 
 # v0.8 — Runtime StateForge (make generated worlds react and remember)
 # Authoring-side scenario simulation: mutate + aggregate state, expect the MPC

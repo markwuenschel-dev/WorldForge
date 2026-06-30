@@ -103,6 +103,7 @@ is the stable bucket.
 | `WF090_PACKAGE_FORBIDDEN_DEPENDENCY` | fail | Final dependency on a forbidden path (e.g. HoudiniEngine/Temp,Bake) | Relocate the dependency into the owned tree |
 | `WF091_PACKAGE_UNRESOLVED_REFERENCE` | fail | A referenced asset cannot be resolved | Restore/re-import the missing asset |
 | `WF092_PACKAGE_MISSING_OWNED_ASSET` | fail | A registry-owned asset is missing from the package set | Re-materialize or re-register the owned asset |
+| `WF093_CHILD_VALIDATION_FAILED` | fail | An aggregator (world-pack/slice-pack) relayed a child report that failed/was inconsistent | Fix the failing child slice/pack, then re-validate |
 
 ---
 

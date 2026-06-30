@@ -81,7 +81,7 @@ def _judge_slice(rep, key, name, report_path):
         rep.check(
             key, False,
             "child FAIL ({}/{}): {}".format(n_ok, total, "; ".join(fails) or child.get("status", "fail")),
-            code=FailureCode.AGGREGATE_INCONSISTENT)
+            code=FailureCode.CHILD_VALIDATION_FAILED)
         return {"name": name, "status": "fail", "checks_passed": n_ok,
                 "checks_total": total, "failures": fails}
 
@@ -95,7 +95,7 @@ def _judge_slice(rep, key, name, report_path):
             # Genuine soft warning in the child -> blocks the parent under --strict.
             rep.check(key, False,
                       "child WARN ({}/{}): {}".format(n_ok, total, "; ".join(warns)),
-                      warn_only=True, code=FailureCode.AGGREGATE_INCONSISTENT)
+                      warn_only=True, code=FailureCode.CHILD_VALIDATION_FAILED)
             return {"name": name, "status": "warn", "checks_passed": n_ok, "checks_total": total}
         if only_gated:
             rep.gated(key, False,

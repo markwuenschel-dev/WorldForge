@@ -80,10 +80,11 @@ class FailureCode:
     UE_ASSET_NOT_STATIC_MESH = "WF081_UE_ASSET_NOT_STATIC_MESH"
     UE_STATE_NOT_APPLIED = "WF082_UE_STATE_NOT_APPLIED"
 
-    # -- packaging (090) -----------------------------------------------------
+    # -- packaging / aggregation rollup (090) --------------------------------
     PACKAGE_FORBIDDEN_DEPENDENCY = "WF090_PACKAGE_FORBIDDEN_DEPENDENCY"
     PACKAGE_UNRESOLVED_REFERENCE = "WF091_PACKAGE_UNRESOLVED_REFERENCE"
     PACKAGE_MISSING_OWNED_ASSET = "WF092_PACKAGE_MISSING_OWNED_ASSET"
+    CHILD_VALIDATION_FAILED = "WF093_CHILD_VALIDATION_FAILED"
 
 
 # severity hint per code: "fail" (blocking), "warn" (soft / strict-blocking),
@@ -126,6 +127,7 @@ SEVERITY = {
     FailureCode.PACKAGE_FORBIDDEN_DEPENDENCY: "fail",
     FailureCode.PACKAGE_UNRESOLVED_REFERENCE: "fail",
     FailureCode.PACKAGE_MISSING_OWNED_ASSET: "fail",
+    FailureCode.CHILD_VALIDATION_FAILED: "fail",
 }
 
 

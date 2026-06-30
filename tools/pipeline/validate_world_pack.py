@@ -80,7 +80,7 @@ def _judge_pack(rep, key, pack_id, rc, rpt_path, slice_count):
     if rc != 0:
         rep.check(key, False,
                   "child pack FAIL ({}/{}) status={}".format(n_pass, n_total, child_status or "fail"),
-                  code=FailureCode.AGGREGATE_INCONSISTENT)
+                  code=FailureCode.CHILD_VALIDATION_FAILED)
         status = "fail"
     elif child_status == "warn" or child.get("warnings"):
         real_warn = int(counts.get("WARN", 0)) > 0
@@ -89,7 +89,7 @@ def _judge_pack(rep, key, pack_id, rc, rpt_path, slice_count):
                       and int(counts.get("GATED_HUMAN_EDITOR", 0)) > 0)
         if real_warn:
             rep.check(key, False, "child pack WARN ({}/{})".format(n_pass, n_total),
-                      warn_only=True, code=FailureCode.AGGREGATE_INCONSISTENT)
+                      warn_only=True, code=FailureCode.CHILD_VALIDATION_FAILED)
             status = "warn"
         elif only_gated:
             rep.gated(key, False, "child pack has only gated UE checks ({}/{})".format(n_pass, n_total),
