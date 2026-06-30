@@ -21,7 +21,9 @@ UE_PYTHON := python
         create-terrain validate-terrain import-terrain \
         create-poi validate-poi \
         run-state-sim validate-runtime-state apply-state-scenario \
-        register-generated-asset validate-generated-asset relocate-houdini-asset
+        register-generated-asset validate-generated-asset relocate-houdini-asset \
+        worldforge-doctor audit-generated-content package-check \
+        repair-world-pack destroy-world-pack
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -324,6 +326,19 @@ worldforge-doctor:
 # STRICT=1 escalates soft warnings (e.g. missing provenance) to blocking.
 audit-generated-content:
 	$(PYTHON) tools/pipeline/audit_generated_content.py $(if $(STRICT),--strict,)
+
+# v0.9 — world-pack package/ship readiness gate (read-only). STRICT=1 escalates warnings.
+package-check:
+	$(PYTHON) tools/pipeline/package_check.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# v0.9 — world-pack lifecycle. destroy requires CONFIRM=1; repair APPLY=1 (UE=1 for map gaps).
+repair-world-pack:
+	$(PYTHON) tools/pipeline/repair_world_pack.py --pack $(PACK) \
+	  $(if $(APPLY),--apply,) $(if $(UE),--ue,) $(if $(STRICT),--strict,)
+
+destroy-world-pack:
+	$(PYTHON) tools/pipeline/destroy_world_pack.py --pack $(PACK) \
+	  $(if $(CONFIRM),--confirm,) $(if $(STRICT),--strict,)
 
 # v0.6 — TerrainForge Lite
 # Generate deterministic terrain artifacts from a terrain recipe.
