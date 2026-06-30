@@ -16,7 +16,12 @@ import json
 import sys
 from pathlib import Path
 
+from provenance import build_provenance
+
 REPO_ROOT = Path(__file__).resolve().parents[2]
+
+GENERATOR_NAME = "worldforge-generate-placement-da"
+GENERATOR_VERSION = "1.0.0"
 
 FALLBACK_PRESET_ID = "reclaimed_desert_foliage"
 FALLBACK_CATALOG_ID = "desert_asset_catalog"
@@ -76,6 +81,17 @@ def main(argv=None):
     da_id = "DA_Placement_{}".format(slice_id)
     now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
 
+    # Stamp provenance over the generator's real inputs: the slice spec and the
+    # placement preset/definition this DA derives from. build_provenance skips
+    # missing paths (e.g. when the preset is the in-code fallback) and scopes the
+    # dirty flag to just these inputs.
+    provenance = build_provenance(
+        REPO_ROOT,
+        [spec_path, preset_disk],
+        GENERATOR_NAME,
+        GENERATOR_VERSION,
+    )
+
     descriptor = {
         "da_id": da_id,
         "slice_id": slice_id,
@@ -87,6 +103,7 @@ def main(argv=None):
         "seed": seed,
         "map_path": map_path,
         "generated_at_utc": now_iso,
+        "provenance": provenance,
     }
     if using_fallback:
         descriptor["using_fallback"] = True
