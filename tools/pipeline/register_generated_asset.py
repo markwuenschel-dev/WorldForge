@@ -66,11 +66,19 @@ def _catalog_contains(catalog_id: str, category: str, unreal_path: str):
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Register a WorldForge-owned generated asset.")
-    ap.add_argument("--asset", required=True, help="Asset id (procedural/definitions/generated_assets/<id>.yaml)")
+    ap.add_argument("--asset", help="Asset id (procedural/definitions/generated_assets/<id>.yaml)")
+    ap.add_argument("--definition-path",
+                    help="Explicit path to a generated-asset definition YAML "
+                         "(overrides --asset; used by negative-fixture tests).")
     ap.add_argument("--force", action="store_true", help="Re-register even if descriptor exists")
     args = ap.parse_args(argv)
 
-    def_path = REPO_ROOT / "procedural" / "definitions" / "generated_assets" / (args.asset + ".yaml")
+    if args.definition_path:
+        def_path = Path(args.definition_path)
+    elif args.asset:
+        def_path = REPO_ROOT / "procedural" / "definitions" / "generated_assets" / (args.asset + ".yaml")
+    else:
+        ap.error("one of --asset or --definition-path is required")
     if not def_path.is_file():
         sys.stderr.write("ERROR: generated-asset definition not found: {}\n".format(def_path))
         return 1
