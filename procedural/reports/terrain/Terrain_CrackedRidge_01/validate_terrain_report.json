@@ -1,0 +1,173 @@
+{
+  "terrain_name": "Terrain_CrackedRidge_01",
+  "schema_version": "v0.9",
+  "strict": false,
+  "checks": {
+    "terrain_descriptor_exists": {
+      "ok": true,
+      "detail": "procedural\\generated\\terrain\\Terrain_CrackedRidge_01\\descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_descriptor_parses": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "recipe_parses": {
+      "ok": true,
+      "detail": "recipe file missing: procedural\\definitions\\terrain\\cracked_ridge.yaml",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry_owns_terrain": {
+      "ok": true,
+      "detail": "not found in worldforge_terrain_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance_exists": {
+      "ok": true,
+      "detail": "provenance block absent from descriptor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance_fields_complete": {
+      "ok": true,
+      "detail": "descriptor must contain recipe_id, seed, dimensions, height_range_cm, outputs, hashes, provenance.generator_name, provenance.generated_at_utc",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "heightmap_exists": {
+      "ok": true,
+      "detail": "procedural/generated/terrain/Terrain_CrackedRidge_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slope_mask_exists": {
+      "ok": true,
+      "detail": "procedural/generated/terrain/Terrain_CrackedRidge_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement_mask_exists": {
+      "ok": true,
+      "detail": "procedural/generated/terrain/Terrain_CrackedRidge_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nav_safe_mask_exists": {
+      "ok": true,
+      "detail": "procedural/generated/terrain/Terrain_CrackedRidge_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "heightmap_dimensions_valid": {
+      "ok": true,
+      "detail": "got 513x513 expected 513x513",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "height_range_within_budget": {
+      "ok": true,
+      "detail": "range=0.0..6000.0cm; budget=0..65535cm",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "heightmap_variance_nonzero": {
+      "ok": true,
+      "detail": "variance=0.02452198 — terrain is completely flat",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "heightmap_variance_bounded": {
+      "ok": true,
+      "detail": "variance=0.0245 — terrain is unrealistically spiky",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slope_mask_not_degenerate": {
+      "ok": true,
+      "detail": "mean=0.5338 — mask is all-black or all-white",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement_mask_not_degenerate": {
+      "ok": true,
+      "detail": "mean=0.3086 — mask is all-black or all-white",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nav_safe_mask_not_degenerate": {
+      "ok": true,
+      "detail": "mean=0.1678 — mask is all-black or all-white",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_imported_in_ue": {
+      "ok": false,
+      "detail": "run 'make import-terrain NAME=Terrain_CrackedRidge_01' (UE) to import the heightmap",
+      "warn_only": true,
+      "verdict": "GATED_HUMAN_EDITOR",
+      "code": "WF080_UE_MATERIALIZATION_PENDING",
+      "blocking": false
+    },
+    "ue_terrain_config_present": {
+      "ok": true,
+      "detail": "ue_terrain block missing from descriptor",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "warnings": [
+    "terrain_imported_in_ue: run 'make import-terrain NAME=Terrain_CrackedRidge_01' (UE) to import the heightmap"
+  ],
+  "counts": {
+    "PASS": 18,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "GATED_HUMAN_EDITOR": 1,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "warn"
+}

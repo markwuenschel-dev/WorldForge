@@ -1,0 +1,4106 @@
+{
+  "world_pack": "desert_mvp_world",
+  "schema_version": "v0.9",
+  "strict": false,
+  "checks": {
+    "resolution:desert_mvp_world:slice_pack_present": {
+      "ok": true,
+      "detail": "slice pack not found: procedural/slice_packs/desert_mvp_world.yaml",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "resolution:has_slices": {
+      "ok": true,
+      "detail": "world pack resolved no slices",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_IndustrialYard_Heavy_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_IndustrialYard_Heavy_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_IndustrialYard_Heavy_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_IndustrialYard_Heavy_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_IndustrialYard_Heavy_01:map_not_temp_bake[Desert_AshFlats_IndustrialYard_Heavy_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_IndustrialYard_Heavy_01:owned_asset_not_temp_bake[Desert_AshFlats_IndustrialYard_Heavy_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_IndustrialYard_Heavy_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_Ash_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_IndustrialYard_Heavy_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_IndustrialYard_Heavy_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_IndustrialYard_Heavy_01:owned_ue_materialized[Desert_AshFlats_IndustrialYard_Heavy_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_IndustrialYard_Heavy_01:human_ref_importable[MI_Terrain_Rock_Desert_Ash_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_IndustrialYard_Heavy_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_IndustrialYard_Heavy_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_IndustrialYard_Heavy_01:owned_not_referenced_dep[Desert_AshFlats_IndustrialYard_Heavy_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_DebrisCheckpoint_Ind_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_DebrisCheckpoint_Ind_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_DebrisCheckpoint_Ind_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_DebrisCheckpoint_Ind_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_DebrisCheckpoint_Ind_01:map_not_temp_bake[Desert_AshFlats_DebrisCheckpoint_Ind_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_DebrisCheckpoint_Ind_01:owned_asset_not_temp_bake[Desert_AshFlats_DebrisCheckpoint_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_DebrisCheckpoint_Ind_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_DebrisCheckpoint_Ind_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_DebrisCheckpoint_Ind_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_DebrisCheckpoint_Ind_01:owned_ue_materialized[Desert_AshFlats_DebrisCheckpoint_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_DebrisCheckpoint_Ind_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_DebrisCheckpoint_Ind_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_DebrisCheckpoint_Ind_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_DebrisCheckpoint_Ind_01:owned_not_referenced_dep[Desert_AshFlats_DebrisCheckpoint_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_MiningCamp_Ruined_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_MiningCamp_Ruined_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_MiningCamp_Ruined_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_MiningCamp_Ruined_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_MiningCamp_Ruined_01:map_not_temp_bake[Desert_AshFlats_MiningCamp_Ruined_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_MiningCamp_Ruined_01:owned_asset_not_temp_bake[Desert_AshFlats_MiningCamp_Ruined_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_MiningCamp_Ruined_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_MiningCamp_Ruined_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_MiningCamp_Ruined_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_MiningCamp_Ruined_01:owned_ue_materialized[Desert_AshFlats_MiningCamp_Ruined_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_MiningCamp_Ruined_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_MiningCamp_Ruined_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_MiningCamp_Ruined_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_MiningCamp_Ruined_01:owned_not_referenced_dep[Desert_AshFlats_MiningCamp_Ruined_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:map_not_temp_bake[Desert_CrackedRidge_DebrisCheckpoint_Heavy_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:owned_asset_not_temp_bake[Desert_CrackedRidge_DebrisCheckpoint_Heavy_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_Ash_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:owned_ue_materialized[Desert_CrackedRidge_DebrisCheckpoint_Heavy_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:human_ref_importable[MI_Terrain_Rock_Desert_Ash_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:owned_not_referenced_dep[Desert_CrackedRidge_DebrisCheckpoint_Heavy_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_IndustrialYard_Ruined_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_IndustrialYard_Ruined_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_IndustrialYard_Ruined_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_IndustrialYard_Ruined_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_IndustrialYard_Ruined_01:map_not_temp_bake[Desert_AshFlats_IndustrialYard_Ruined_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_IndustrialYard_Ruined_01:owned_asset_not_temp_bake[Desert_AshFlats_IndustrialYard_Ruined_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_IndustrialYard_Ruined_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_IndustrialYard_Ruined_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_IndustrialYard_Ruined_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_IndustrialYard_Ruined_01:owned_ue_materialized[Desert_AshFlats_IndustrialYard_Ruined_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_IndustrialYard_Ruined_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_IndustrialYard_Ruined_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_IndustrialYard_Ruined_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_IndustrialYard_Ruined_01:owned_not_referenced_dep[Desert_AshFlats_IndustrialYard_Ruined_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_SandyBasin_DebrisCheckpoint_Ind_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_DebrisCheckpoint_Ind_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_SandyBasin_DebrisCheckpoint_Ind_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_DebrisCheckpoint_Ind_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_DebrisCheckpoint_Ind_01:map_not_temp_bake[Desert_SandyBasin_DebrisCheckpoint_Ind_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_DebrisCheckpoint_Ind_01:owned_asset_not_temp_bake[Desert_SandyBasin_DebrisCheckpoint_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_DebrisCheckpoint_Ind_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_DebrisCheckpoint_Ind_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_DebrisCheckpoint_Ind_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_DebrisCheckpoint_Ind_01:owned_ue_materialized[Desert_SandyBasin_DebrisCheckpoint_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_DebrisCheckpoint_Ind_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_DebrisCheckpoint_Ind_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_DebrisCheckpoint_Ind_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_SandyBasin_DebrisCheckpoint_Ind_01:owned_not_referenced_dep[Desert_SandyBasin_DebrisCheckpoint_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_CrackedRidge_MiningCamp_Ruined_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_MiningCamp_Ruined_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_CrackedRidge_MiningCamp_Ruined_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_MiningCamp_Ruined_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_MiningCamp_Ruined_01:map_not_temp_bake[Desert_CrackedRidge_MiningCamp_Ruined_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_MiningCamp_Ruined_01:owned_asset_not_temp_bake[Desert_CrackedRidge_MiningCamp_Ruined_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_MiningCamp_Ruined_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_MiningCamp_Ruined_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_MiningCamp_Ruined_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_MiningCamp_Ruined_01:owned_ue_materialized[Desert_CrackedRidge_MiningCamp_Ruined_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_MiningCamp_Ruined_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_MiningCamp_Ruined_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_MiningCamp_Ruined_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_CrackedRidge_MiningCamp_Ruined_01:owned_not_referenced_dep[Desert_CrackedRidge_MiningCamp_Ruined_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_DebrisCheckpoint_Light_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_DebrisCheckpoint_Light_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_DebrisCheckpoint_Light_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_DebrisCheckpoint_Light_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_DebrisCheckpoint_Light_01:map_not_temp_bake[Desert_AshFlats_DebrisCheckpoint_Light_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_DebrisCheckpoint_Light_01:owned_asset_not_temp_bake[Desert_AshFlats_DebrisCheckpoint_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_DebrisCheckpoint_Light_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_DebrisCheckpoint_Light_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_DebrisCheckpoint_Light_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_DebrisCheckpoint_Light_01:owned_ue_materialized[Desert_AshFlats_DebrisCheckpoint_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_DebrisCheckpoint_Light_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_DebrisCheckpoint_Light_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_DebrisCheckpoint_Light_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_DebrisCheckpoint_Light_01:owned_not_referenced_dep[Desert_AshFlats_DebrisCheckpoint_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_SandyBasin_ScrubNode_Clean_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_ScrubNode_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_SandyBasin_ScrubNode_Clean_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_ScrubNode_Clean_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ScrubNode_Clean_01:map_not_temp_bake[Desert_SandyBasin_ScrubNode_Clean_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ScrubNode_Clean_01:owned_asset_not_temp_bake[Desert_SandyBasin_ScrubNode_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ScrubNode_Clean_01:referenced_asset_not_temp_bake[MI_Terrain_Sand_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Sand_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ScrubNode_Clean_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ScrubNode_Clean_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_ScrubNode_Clean_01:owned_ue_materialized[Desert_SandyBasin_ScrubNode_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_ScrubNode_Clean_01:human_ref_importable[MI_Terrain_Sand_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Sand_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_ScrubNode_Clean_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_ScrubNode_Clean_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_SandyBasin_ScrubNode_Clean_01:owned_not_referenced_dep[Desert_SandyBasin_ScrubNode_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_CrackedRidge_RidgeLookout_Clean_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_RidgeLookout_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_CrackedRidge_RidgeLookout_Clean_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_RidgeLookout_Clean_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_RidgeLookout_Clean_01:map_not_temp_bake[Desert_CrackedRidge_RidgeLookout_Clean_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_RidgeLookout_Clean_01:owned_asset_not_temp_bake[Desert_CrackedRidge_RidgeLookout_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_RidgeLookout_Clean_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_Cracked_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Cracked_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_RidgeLookout_Clean_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_RidgeLookout_Clean_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_RidgeLookout_Clean_01:owned_ue_materialized[Desert_CrackedRidge_RidgeLookout_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_RidgeLookout_Clean_01:human_ref_importable[MI_Terrain_Rock_Desert_Cracked_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Cracked_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_RidgeLookout_Clean_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_RidgeLookout_Clean_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_CrackedRidge_RidgeLookout_Clean_01:owned_not_referenced_dep[Desert_CrackedRidge_RidgeLookout_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_ShrineRuin_Clean_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_ShrineRuin_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_ShrineRuin_Clean_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_ShrineRuin_Clean_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ShrineRuin_Clean_01:map_not_temp_bake[Desert_AshFlats_ShrineRuin_Clean_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ShrineRuin_Clean_01:owned_asset_not_temp_bake[Desert_AshFlats_ShrineRuin_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ShrineRuin_Clean_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_Ash_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ShrineRuin_Clean_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ShrineRuin_Clean_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_ShrineRuin_Clean_01:owned_ue_materialized[Desert_AshFlats_ShrineRuin_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ShrineRuin_Clean_01:human_ref_importable[MI_Terrain_Rock_Desert_Ash_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ShrineRuin_Clean_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ShrineRuin_Clean_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_ShrineRuin_Clean_01:owned_not_referenced_dep[Desert_AshFlats_ShrineRuin_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_SandyBasin_ShrineRuin_Clean_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_ShrineRuin_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_SandyBasin_ShrineRuin_Clean_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_ShrineRuin_Clean_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ShrineRuin_Clean_01:map_not_temp_bake[Desert_SandyBasin_ShrineRuin_Clean_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ShrineRuin_Clean_01:owned_asset_not_temp_bake[Desert_SandyBasin_ShrineRuin_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ShrineRuin_Clean_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ShrineRuin_Clean_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ShrineRuin_Clean_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_ShrineRuin_Clean_01:owned_ue_materialized[Desert_SandyBasin_ShrineRuin_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_ShrineRuin_Clean_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_ShrineRuin_Clean_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_ShrineRuin_Clean_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_SandyBasin_ShrineRuin_Clean_01:owned_not_referenced_dep[Desert_SandyBasin_ShrineRuin_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_CrackedRidge_CleanScrub_Clean_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_CleanScrub_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_CrackedRidge_CleanScrub_Clean_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_CleanScrub_Clean_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_CleanScrub_Clean_01:map_not_temp_bake[Desert_CrackedRidge_CleanScrub_Clean_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_CleanScrub_Clean_01:owned_asset_not_temp_bake[Desert_CrackedRidge_CleanScrub_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_CleanScrub_Clean_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_CleanScrub_Clean_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_CleanScrub_Clean_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_CleanScrub_Clean_01:owned_ue_materialized[Desert_CrackedRidge_CleanScrub_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_CleanScrub_Clean_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_CleanScrub_Clean_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_CleanScrub_Clean_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_CrackedRidge_CleanScrub_Clean_01:owned_not_referenced_dep[Desert_CrackedRidge_CleanScrub_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_SandyBasin_RidgeLookout_Clean_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_RidgeLookout_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_SandyBasin_RidgeLookout_Clean_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_RidgeLookout_Clean_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_RidgeLookout_Clean_01:map_not_temp_bake[Desert_SandyBasin_RidgeLookout_Clean_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_RidgeLookout_Clean_01:owned_asset_not_temp_bake[Desert_SandyBasin_RidgeLookout_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_RidgeLookout_Clean_01:referenced_asset_not_temp_bake[MI_Terrain_Sand_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Sand_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_RidgeLookout_Clean_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_RidgeLookout_Clean_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_RidgeLookout_Clean_01:owned_ue_materialized[Desert_SandyBasin_RidgeLookout_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_RidgeLookout_Clean_01:human_ref_importable[MI_Terrain_Sand_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Sand_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_RidgeLookout_Clean_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_RidgeLookout_Clean_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_SandyBasin_RidgeLookout_Clean_01:owned_not_referenced_dep[Desert_SandyBasin_RidgeLookout_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_ScrubNode_Light_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_ScrubNode_Light_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_ScrubNode_Light_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_ScrubNode_Light_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Light_01:map_not_temp_bake[Desert_AshFlats_ScrubNode_Light_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Light_01:owned_asset_not_temp_bake[Desert_AshFlats_ScrubNode_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Light_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Light_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Light_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_ScrubNode_Light_01:owned_ue_materialized[Desert_AshFlats_ScrubNode_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ScrubNode_Light_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ScrubNode_Light_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ScrubNode_Light_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_ScrubNode_Light_01:owned_not_referenced_dep[Desert_AshFlats_ScrubNode_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_SandyBasin_ScrubNode_Survey_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_ScrubNode_Survey_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_SandyBasin_ScrubNode_Survey_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_ScrubNode_Survey_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ScrubNode_Survey_01:map_not_temp_bake[Desert_SandyBasin_ScrubNode_Survey_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ScrubNode_Survey_01:owned_asset_not_temp_bake[Desert_SandyBasin_ScrubNode_Survey_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ScrubNode_Survey_01:referenced_asset_not_temp_bake[MI_Terrain_Sand_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Sand_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ScrubNode_Survey_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_ScrubNode_Survey_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_ScrubNode_Survey_01:owned_ue_materialized[Desert_SandyBasin_ScrubNode_Survey_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_ScrubNode_Survey_01:human_ref_importable[MI_Terrain_Sand_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Sand_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_ScrubNode_Survey_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_ScrubNode_Survey_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_SandyBasin_ScrubNode_Survey_01:owned_not_referenced_dep[Desert_SandyBasin_ScrubNode_Survey_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_ScrubNode_Survey_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_ScrubNode_Survey_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_ScrubNode_Survey_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_ScrubNode_Survey_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Survey_01:map_not_temp_bake[Desert_AshFlats_ScrubNode_Survey_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Survey_01:owned_asset_not_temp_bake[Desert_AshFlats_ScrubNode_Survey_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Survey_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Survey_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Survey_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_ScrubNode_Survey_01:owned_ue_materialized[Desert_AshFlats_ScrubNode_Survey_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ScrubNode_Survey_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ScrubNode_Survey_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ScrubNode_Survey_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_ScrubNode_Survey_01:owned_not_referenced_dep[Desert_AshFlats_ScrubNode_Survey_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_CrackedRidge_ScrubNode_Clean_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_ScrubNode_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_CrackedRidge_ScrubNode_Clean_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_ScrubNode_Clean_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_ScrubNode_Clean_01:map_not_temp_bake[Desert_CrackedRidge_ScrubNode_Clean_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_ScrubNode_Clean_01:owned_asset_not_temp_bake[Desert_CrackedRidge_ScrubNode_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_ScrubNode_Clean_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_Cracked_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Cracked_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_ScrubNode_Clean_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_ScrubNode_Clean_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_ScrubNode_Clean_01:owned_ue_materialized[Desert_CrackedRidge_ScrubNode_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_ScrubNode_Clean_01:human_ref_importable[MI_Terrain_Rock_Desert_Cracked_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Cracked_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_ScrubNode_Clean_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_ScrubNode_Clean_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_CrackedRidge_ScrubNode_Clean_01:owned_not_referenced_dep[Desert_CrackedRidge_ScrubNode_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_SandyBasin_MiningCamp_Light_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_MiningCamp_Light_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_SandyBasin_MiningCamp_Light_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_MiningCamp_Light_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_MiningCamp_Light_01:map_not_temp_bake[Desert_SandyBasin_MiningCamp_Light_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_MiningCamp_Light_01:owned_asset_not_temp_bake[Desert_SandyBasin_MiningCamp_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_MiningCamp_Light_01:referenced_asset_not_temp_bake[MI_Terrain_Sand_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Sand_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_MiningCamp_Light_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_MiningCamp_Light_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_MiningCamp_Light_01:owned_ue_materialized[Desert_SandyBasin_MiningCamp_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_MiningCamp_Light_01:human_ref_importable[MI_Terrain_Sand_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Sand_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_MiningCamp_Light_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_MiningCamp_Light_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_SandyBasin_MiningCamp_Light_01:owned_not_referenced_dep[Desert_SandyBasin_MiningCamp_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_ScrubNode_Ind_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_ScrubNode_Ind_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_ScrubNode_Ind_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_ScrubNode_Ind_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Ind_01:map_not_temp_bake[Desert_AshFlats_ScrubNode_Ind_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Ind_01:owned_asset_not_temp_bake[Desert_AshFlats_ScrubNode_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Ind_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Ind_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_ScrubNode_Ind_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_ScrubNode_Ind_01:owned_ue_materialized[Desert_AshFlats_ScrubNode_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ScrubNode_Ind_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ScrubNode_Ind_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_ScrubNode_Ind_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_ScrubNode_Ind_01:owned_not_referenced_dep[Desert_AshFlats_ScrubNode_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_RidgeLookout_Heavy_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_RidgeLookout_Heavy_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_RidgeLookout_Heavy_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_RidgeLookout_Heavy_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_RidgeLookout_Heavy_01:map_not_temp_bake[Desert_AshFlats_RidgeLookout_Heavy_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_RidgeLookout_Heavy_01:owned_asset_not_temp_bake[Desert_AshFlats_RidgeLookout_Heavy_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_RidgeLookout_Heavy_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_Ash_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_RidgeLookout_Heavy_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_RidgeLookout_Heavy_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_RidgeLookout_Heavy_01:owned_ue_materialized[Desert_AshFlats_RidgeLookout_Heavy_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_RidgeLookout_Heavy_01:human_ref_importable[MI_Terrain_Rock_Desert_Ash_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_RidgeLookout_Heavy_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_RidgeLookout_Heavy_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_RidgeLookout_Heavy_01:owned_not_referenced_dep[Desert_AshFlats_RidgeLookout_Heavy_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_CrackedRidge_ShrineRuin_Light_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_ShrineRuin_Light_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_CrackedRidge_ShrineRuin_Light_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_ShrineRuin_Light_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_ShrineRuin_Light_01:map_not_temp_bake[Desert_CrackedRidge_ShrineRuin_Light_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_ShrineRuin_Light_01:owned_asset_not_temp_bake[Desert_CrackedRidge_ShrineRuin_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_ShrineRuin_Light_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_ShrineRuin_Light_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_ShrineRuin_Light_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_ShrineRuin_Light_01:owned_ue_materialized[Desert_CrackedRidge_ShrineRuin_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_ShrineRuin_Light_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_ShrineRuin_Light_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_ShrineRuin_Light_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_CrackedRidge_ShrineRuin_Light_01:owned_not_referenced_dep[Desert_CrackedRidge_ShrineRuin_Light_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_SandyBasin_IndustrialYard_Ind_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_IndustrialYard_Ind_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_SandyBasin_IndustrialYard_Ind_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_IndustrialYard_Ind_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_IndustrialYard_Ind_01:map_not_temp_bake[Desert_SandyBasin_IndustrialYard_Ind_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_IndustrialYard_Ind_01:owned_asset_not_temp_bake[Desert_SandyBasin_IndustrialYard_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_IndustrialYard_Ind_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_IndustrialYard_Ind_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_SandyBasin_IndustrialYard_Ind_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_IndustrialYard_Ind_01:owned_ue_materialized[Desert_SandyBasin_IndustrialYard_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_IndustrialYard_Ind_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_IndustrialYard_Ind_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_SandyBasin_IndustrialYard_Ind_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_SandyBasin_IndustrialYard_Ind_01:owned_not_referenced_dep[Desert_SandyBasin_IndustrialYard_Ind_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_CrackedRidge_MiningCamp_Clean_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_MiningCamp_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_CrackedRidge_MiningCamp_Clean_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_MiningCamp_Clean_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_MiningCamp_Clean_01:map_not_temp_bake[Desert_CrackedRidge_MiningCamp_Clean_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_MiningCamp_Clean_01:owned_asset_not_temp_bake[Desert_CrackedRidge_MiningCamp_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_MiningCamp_Clean_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_Cracked_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Cracked_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_MiningCamp_Clean_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_CrackedRidge_MiningCamp_Clean_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_MiningCamp_Clean_01:owned_ue_materialized[Desert_CrackedRidge_MiningCamp_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_MiningCamp_Clean_01:human_ref_importable[MI_Terrain_Rock_Desert_Cracked_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Cracked_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_MiningCamp_Clean_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_CrackedRidge_MiningCamp_Clean_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_CrackedRidge_MiningCamp_Clean_01:owned_not_referenced_dep[Desert_CrackedRidge_MiningCamp_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:Desert_AshFlats_CleanScrub_Clean_01:registered": {
+      "ok": true,
+      "detail": "slice not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_CleanScrub_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_CleanScrub_Clean_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_CleanScrub_Clean_01:provenance_stamped": {
+      "ok": true,
+      "detail": "slice spec has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_CleanScrub_Clean_01:map_not_temp_bake[Desert_AshFlats_CleanScrub_Clean_01]": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_CleanScrub_Clean_01:owned_asset_not_temp_bake[Desert_AshFlats_CleanScrub_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned_asset is a forbidden Houdini Temp/Bake path: Content/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_CleanScrub_Clean_01:referenced_asset_not_temp_bake[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_CleanScrub_Clean_01:referenced_asset_not_temp_bake[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:Desert_AshFlats_CleanScrub_Clean_01:referenced_asset_not_temp_bake[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "referenced_asset is a forbidden Houdini Temp/Bake path: /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_CleanScrub_Clean_01:owned_ue_materialized[Desert_AshFlats_CleanScrub_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned UE asset not present on disk (D7-gated materialization): Content/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01.umap",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_CleanScrub_Clean_01:human_ref_importable[MI_Terrain_Rock_Desert_01]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_CleanScrub_Clean_01:human_ref_importable[DA_ReclaimedDesert_Foliage]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "references:Desert_AshFlats_CleanScrub_Clean_01:human_ref_importable[PCG_FoliageScatter]": {
+      "ok": true,
+      "detail": "human-owned dependency not resolvable in this checkout (editor-side import, D7-gated): /Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_integrity:Desert_AshFlats_CleanScrub_Clean_01:owned_not_referenced_dep[Desert_AshFlats_CleanScrub_Clean_01.umap]": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:ash_flats:terrain_registered": {
+      "ok": true,
+      "detail": "no terrain registry entry for recipe 'ash_flats'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Terrain_AshFlats_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: procedural/generated/terrain/Terrain_AshFlats_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Terrain_AshFlats_01:provenance_stamped": {
+      "ok": true,
+      "detail": "descriptor has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_AshFlats_01:output_heightmap_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_AshFlats_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_AshFlats_01:output_nav_safe_mask_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_AshFlats_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_AshFlats_01:output_placement_mask_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_AshFlats_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_AshFlats_01:output_slope_mask_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_AshFlats_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_AshFlats_01:owned_output_present[heightmap.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_AshFlats_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_AshFlats_01:owned_output_present[slope_mask.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_AshFlats_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_AshFlats_01:owned_output_present[placement_mask.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_AshFlats_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_AshFlats_01:owned_output_present[nav_safe_mask.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_AshFlats_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:cracked_ridge:terrain_registered": {
+      "ok": true,
+      "detail": "no terrain registry entry for recipe 'cracked_ridge'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Terrain_CrackedRidge_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: procedural/generated/terrain/Terrain_CrackedRidge_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Terrain_CrackedRidge_01:provenance_stamped": {
+      "ok": true,
+      "detail": "descriptor has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_CrackedRidge_01:output_heightmap_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_CrackedRidge_01:output_nav_safe_mask_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_CrackedRidge_01:output_placement_mask_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_CrackedRidge_01:output_slope_mask_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_CrackedRidge_01:owned_output_present[heightmap.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_CrackedRidge_01:owned_output_present[slope_mask.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_CrackedRidge_01:owned_output_present[placement_mask.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_CrackedRidge_01:owned_output_present[nav_safe_mask.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:sandy_basin:terrain_registered": {
+      "ok": true,
+      "detail": "no terrain registry entry for recipe 'sandy_basin'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Terrain_SandyBasin_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: procedural/generated/terrain/Terrain_SandyBasin_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Terrain_SandyBasin_01:provenance_stamped": {
+      "ok": true,
+      "detail": "descriptor has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_SandyBasin_01:output_heightmap_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_SandyBasin_01:output_nav_safe_mask_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_SandyBasin_01:output_placement_mask_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_SandyBasin_01:output_slope_mask_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_SandyBasin_01:owned_output_present[heightmap.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_SandyBasin_01:owned_output_present[slope_mask.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_SandyBasin_01:owned_output_present[placement_mask.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Terrain_SandyBasin_01:owned_output_present[nav_safe_mask.png]": {
+      "ok": true,
+      "detail": "registry owned_output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:abandoned_mining_camp:poi_registered": {
+      "ok": true,
+      "detail": "no poi registry entry for recipe 'abandoned_mining_camp'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_AbandonedMiningCamp_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: procedural/generated/poi/POI_AbandonedMiningCamp_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_AbandonedMiningCamp_01:provenance_stamped": {
+      "ok": true,
+      "detail": "descriptor has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:POI_AbandonedMiningCamp_01:output_descriptor_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/poi/POI_AbandonedMiningCamp_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:ash_shrine_ruin:poi_registered": {
+      "ok": true,
+      "detail": "no poi registry entry for recipe 'ash_shrine_ruin'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_AshShrineRuin_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: procedural/generated/poi/POI_AshShrineRuin_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_AshShrineRuin_01:provenance_stamped": {
+      "ok": true,
+      "detail": "descriptor has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:POI_AshShrineRuin_01:output_descriptor_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/poi/POI_AshShrineRuin_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:cracked_ridge_lookout:poi_registered": {
+      "ok": true,
+      "detail": "no poi registry entry for recipe 'cracked_ridge_lookout'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_CrackedRidgeLookout_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: procedural/generated/poi/POI_CrackedRidgeLookout_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_CrackedRidgeLookout_01:provenance_stamped": {
+      "ok": true,
+      "detail": "descriptor has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:POI_CrackedRidgeLookout_01:output_descriptor_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/poi/POI_CrackedRidgeLookout_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:debris_checkpoint:poi_registered": {
+      "ok": true,
+      "detail": "no poi registry entry for recipe 'debris_checkpoint'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_DebrisCheckpoint_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: procedural/generated/poi/POI_DebrisCheckpoint_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_DebrisCheckpoint_01:provenance_stamped": {
+      "ok": true,
+      "detail": "descriptor has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:POI_DebrisCheckpoint_01:output_descriptor_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/poi/POI_DebrisCheckpoint_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:industrial_yard:poi_registered": {
+      "ok": true,
+      "detail": "no poi registry entry for recipe 'industrial_yard'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_IndustrialYard_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: procedural/generated/poi/POI_IndustrialYard_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_IndustrialYard_01:provenance_stamped": {
+      "ok": true,
+      "detail": "descriptor has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:POI_IndustrialYard_01:output_descriptor_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/poi/POI_IndustrialYard_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry:scrubland_resource_node:poi_registered": {
+      "ok": true,
+      "detail": "no poi registry entry for recipe 'scrubland_resource_node'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_ScrublandResourceNode_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: procedural/generated/poi/POI_ScrublandResourceNode_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:POI_ScrublandResourceNode_01:provenance_stamped": {
+      "ok": true,
+      "detail": "descriptor has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:POI_ScrublandResourceNode_01:output_descriptor_present": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/poi/POI_ScrublandResourceNode_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:scenario_result_present": {
+      "ok": true,
+      "detail": "scenario result.json missing/unparseable: procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:scenario_provenance_stamped": {
+      "ok": true,
+      "detail": "scenario result has no provenance block",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:scenario_output_result_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "owned_assets:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:scenario_output_state_save_present": {
+      "ok": true,
+      "detail": "scenario output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_CleanScrub_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_CleanScrub_Clean_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Ind_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Light_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_IndustrialYard_Heavy_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_IndustrialYard_Heavy_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_IndustrialYard_Ruined_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_IndustrialYard_Ruined_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_MiningCamp_Ruined_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_MiningCamp_Ruined_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_RidgeLookout_Heavy_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_RidgeLookout_Heavy_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_ScrubNode_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_ScrubNode_Ind_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_ScrubNode_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_ScrubNode_Light_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_ScrubNode_Survey_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_ScrubNode_Survey_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_AshFlats_ShrineRuin_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_AshFlats_ShrineRuin_Clean_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_CrackedRidge_CleanScrub_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_CrackedRidge_CleanScrub_Clean_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_CrackedRidge_MiningCamp_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_CrackedRidge_MiningCamp_Clean_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_CrackedRidge_MiningCamp_Ruined_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_CrackedRidge_MiningCamp_Ruined_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_CrackedRidge_RidgeLookout_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_CrackedRidge_RidgeLookout_Clean_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_CrackedRidge_ScrubNode_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_CrackedRidge_ScrubNode_Clean_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_CrackedRidge_ShrineRuin_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_CrackedRidge_ShrineRuin_Light_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_SandyBasin_DebrisCheckpoint_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_SandyBasin_DebrisCheckpoint_Ind_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_SandyBasin_IndustrialYard_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_SandyBasin_IndustrialYard_Ind_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_SandyBasin_MiningCamp_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_SandyBasin_MiningCamp_Light_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_SandyBasin_RidgeLookout_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_SandyBasin_RidgeLookout_Clean_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_SandyBasin_ScrubNode_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_SandyBasin_ScrubNode_Clean_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_SandyBasin_ScrubNode_Survey_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_SandyBasin_ScrubNode_Survey_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "paths:DA_Placement_Desert_SandyBasin_ShrineRuin_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "placement DA map_path is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance:DA_Placement_Desert_SandyBasin_ShrineRuin_Clean_01:placement_provenance_stamped": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_AbandonedMiningCamp_01:markers_within_declared": {
+      "ok": true,
+      "detail": "POI POI_AbandonedMiningCamp_01 has 2 markers (declared cap 14)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_AbandonedMiningCamp_01:bounds_within_declared": {
+      "ok": true,
+      "detail": "POI POI_AbandonedMiningCamp_01 bounds 20000000 cm^2 (declared cap 30000000)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_AshShrineRuin_01:markers_within_declared": {
+      "ok": true,
+      "detail": "POI POI_AshShrineRuin_01 has 2 markers (declared cap 10)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_AshShrineRuin_01:bounds_within_declared": {
+      "ok": true,
+      "detail": "POI POI_AshShrineRuin_01 bounds 10500000 cm^2 (declared cap 15000000)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_CrackedRidgeLookout_01:markers_within_declared": {
+      "ok": true,
+      "detail": "POI POI_CrackedRidgeLookout_01 has 2 markers (declared cap 8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_CrackedRidgeLookout_01:bounds_within_declared": {
+      "ok": true,
+      "detail": "POI POI_CrackedRidgeLookout_01 bounds 6250000 cm^2 (declared cap 10000000)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_DebrisCheckpoint_01:markers_within_declared": {
+      "ok": true,
+      "detail": "POI POI_DebrisCheckpoint_01 has 2 markers (declared cap 12)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_DebrisCheckpoint_01:bounds_within_declared": {
+      "ok": true,
+      "detail": "POI POI_DebrisCheckpoint_01 bounds 12000000 cm^2 (declared cap 20000000)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_IndustrialYard_01:markers_within_declared": {
+      "ok": true,
+      "detail": "POI POI_IndustrialYard_01 has 2 markers (declared cap 16)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_IndustrialYard_01:bounds_within_declared": {
+      "ok": true,
+      "detail": "POI POI_IndustrialYard_01 bounds 30000000 cm^2 (declared cap 40000000)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_ScrublandResourceNode_01:markers_within_declared": {
+      "ok": true,
+      "detail": "POI POI_ScrublandResourceNode_01 has 2 markers (declared cap 8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:POI_ScrublandResourceNode_01:bounds_within_declared": {
+      "ok": true,
+      "detail": "POI POI_ScrublandResourceNode_01 bounds 9000000 cm^2 (declared cap 12000000)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:profile_resolved": {
+      "ok": true,
+      "detail": "resolved package profile: desert_package (package=desert_package placement=desert_default)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:map_count": {
+      "ok": true,
+      "detail": "map_count = 25 maps (cap 64); 25 slice map(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:terrain_dimension": {
+      "ok": true,
+      "detail": "terrain_dimension = 513 px (cap 4096); max 513px (Terrain_AshFlats_01)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:height_range_cm": {
+      "ok": true,
+      "detail": "height_range_cm = 6000 cm (cap 65535); max span 6000cm (Terrain_CrackedRidge_01)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:mask_dimension": {
+      "ok": true,
+      "detail": "mask_dimension = 513 px (cap 2048); max 513px (Terrain_AshFlats_01:slope_mask)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:placement_instance_count": {
+      "ok": true,
+      "detail": "placement_instance_count = 500 instances (cap 2000); declared per-slice ceiling 500 (desert_default)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:static_mesh_actor_count": {
+      "ok": true,
+      "detail": "static_mesh_actor_count = 80 actors (cap 200); max declared 80 actors (POI_IndustrialYard_01)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:poi_marker_count": {
+      "ok": true,
+      "detail": "poi_marker_count = 2 markers (cap 32); max 2 markers (POI_AbandonedMiningCamp_01)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:poi_bounds_area_cm2": {
+      "ok": true,
+      "detail": "poi_bounds_area_cm2 = 30000000 cm^2 (cap 50000000); max 30000000 cm^2 (POI_IndustrialYard_01)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:scenario_count": {
+      "ok": true,
+      "detail": "scenario_count = 13 scenarios (cap 64); 13 runtime scenario(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:generated_file_count": {
+      "ok": true,
+      "detail": "generated_file_count = 97 files (cap 5000); 97 repo-side generated owned file(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:package_size_mb": {
+      "ok": true,
+      "detail": "package_size_mb = 1.878 MB (cap 4096); ~1.878 MB of generated owned files",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget:forbidden_path_references": {
+      "ok": true,
+      "detail": "forbidden_path_references = 0 refs (cap 0); 0 forbidden Temp/Bake reference(s) in final deps",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 511,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "GATED_HUMAN_EDITOR": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok"
+}

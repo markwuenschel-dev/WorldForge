@@ -1,0 +1,37 @@
+schema_version: "1.0"
+recipe_id: cracked_ridge
+display_name: "Cracked Ridge"
+biome: desert
+description: "Eroded cracked-rock ridgeline with real relief — steeper than the ash flats, used for lookouts and ruined camps."
+
+generation:
+  seed: 31313
+  width: 513   # power-of-2+1 for UE landscape compatibility
+  height: 513
+
+  heightmap:
+    algorithm: fbm_value_noise
+    octaves: 6
+    base_scale_px: 96      # longer wavelength than ash_flats -> broad ridgelines
+    persistence: 0.55
+    lacunarity: 2.0
+    height_min_cm: 0.0
+    height_max_cm: 6000.0  # 60 m — genuine ridge relief
+
+  slope_mask:
+    # Steeper terrain: a higher threshold still leaves real steep coverage.
+    steep_threshold_degrees: 18.0
+
+  placement_mask:
+    # Objects sit on the gentler shoulders, not the ridge faces.
+    slope_max_degrees: 14.0
+
+  nav_safe_mask:
+    # Navigation needs flatter saddle/shoulder ground.
+    slope_max_degrees: 10.0
+
+ue_terrain:
+  landscape_material: /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Cracked_01
+  component_size: 63
+  sections_per_component: 1
+  quads_per_section: 63

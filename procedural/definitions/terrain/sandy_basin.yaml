@@ -1,0 +1,36 @@
+schema_version: "1.0"
+recipe_id: sandy_basin
+display_name: "Sandy Basin"
+biome: desert
+description: "Low wind-scoured sandy basin: shallow, gentle relief, flatter than the ash flats — the calm/clean foil to the cracked ridge."
+
+generation:
+  seed: 24680
+  width: 513   # power-of-2+1 for UE landscape compatibility
+  height: 513
+
+  heightmap:
+    algorithm: fbm_value_noise
+    octaves: 6
+    base_scale_px: 64      # same wavelength as ash_flats — keeps slopes non-degenerate
+    persistence: 0.5
+    lacunarity: 2.0
+    height_min_cm: 0.0
+    height_max_cm: 1600.0  # 16 m — gentler than the ash flats (20 m) but real relief
+
+  slope_mask:
+    # Slightly lower threshold than ash_flats so the gentler basin still
+    # registers a healthy steep fraction (avoids an all-black mask).
+    steep_threshold_degrees: 10.0
+
+  placement_mask:
+    slope_max_degrees: 8.5
+
+  nav_safe_mask:
+    slope_max_degrees: 6.5
+
+ue_terrain:
+  landscape_material: /Game/Materials/Terrain/MI_Terrain_Sand_Desert_01
+  component_size: 63
+  sections_per_component: 1
+  quads_per_section: 63
