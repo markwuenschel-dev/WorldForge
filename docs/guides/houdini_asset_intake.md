@@ -68,8 +68,8 @@ make validate-generated-asset ASSET=rock_generator_desert_01
 make validate-generated-asset ASSET=rock_generator_desert_01 STRICT=1   # v0.9 final gate
 ```
 
-`STRICT=1` (v0.9) escalates soft `WARN` checks to blocking; the gated UE check below
-stays non-blocking in both modes. See
+`STRICT=1` (v0.9) escalates soft `WARN` checks to blocking; the optional UE check
+below is `SKIP_NOT_APPLICABLE` (non-blocking) until its editor report is present. See
 [`production_hardening_v0_9.md`](production_hardening_v0_9.md) for the strict-mode
 and six-verdict vocabulary.
 
@@ -105,16 +105,16 @@ Rocks` · **not** a Houdini Temp/Bake path · `generated_owned == true`,
 `temporary == false` · `pcg_allowed == true` · `desert` in `biome` · catalog
 membership · provenance present.
 
-### v0.9 — strict validation and the gated UE check
+### v0.9 — strict validation and the UE StaticMesh check
 
-Under v0.9 the UE StaticMesh presence check is reclassified from `warn_only` to
-**`GATED_HUMAN_EDITOR`** (D7): `asset_exists_in_ue_as_static_mesh` is gated until
-`make relocate-houdini-asset` has produced a passing `ue_generated_asset_report.json`.
-It never blocks — in normal **or** strict mode — and clears to `PASS` once the editor
-step runs. If the asset is materialized but is the wrong type, the gated check carries
-`WF081_UE_ASSET_NOT_STATIC_MESH`; otherwise `WF080_UE_MATERIALIZATION_PENDING`. So the
-data-layer intake validates cleanly (even under `STRICT=1`) without an editor, and the
-UE presence check lights up once `relocate-houdini-asset` runs.
+Under v0.9 the UE StaticMesh presence check, `asset_exists_in_ue_as_static_mesh`, is a
+real `ue_check` verified **when** `make relocate-houdini-asset` has produced a
+`ue_generated_asset_report.json`: present + a StaticMesh → `PASS`; present but the wrong
+type → `FAIL` (`WF081_UE_ASSET_NOT_STATIC_MESH`); the report absent means the artifact
+has not been materialized (`WF080_UE_ARTIFACT_MISSING`). While that editor report is not
+present, the check is recorded with `skip()` → `SKIP_NOT_APPLICABLE` (non-blocking), so
+the data-layer intake validates cleanly (even under `STRICT=1`) without an editor, and
+the UE presence check becomes a real `PASS`/`FAIL` once `relocate-houdini-asset` runs.
 
 The data-layer guarantees stay **hard `FAIL`s** in both modes: forbidden Houdini
 Temp/Bake path (`WF040`), path not under the owned tree (`WF041`), missing

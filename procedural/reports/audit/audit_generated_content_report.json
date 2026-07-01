@@ -69,7 +69,7 @@
     },
     "registries:worldforge_registry:entry_count": {
       "ok": false,
-      "detail": "36 entry(ies)",
+      "detail": "61 entry(ies)",
       "warn_only": true,
       "verdict": "SKIP_NOT_APPLICABLE",
       "code": null,
@@ -93,7 +93,7 @@
     },
     "registries:worldforge_scenario_registry:entry_count": {
       "ok": false,
-      "detail": "1 entry(ies)",
+      "detail": "14 entry(ies)",
       "warn_only": true,
       "verdict": "SKIP_NOT_APPLICABLE",
       "code": null,
@@ -117,7 +117,7 @@
     },
     "registries:worldforge_terrain_registry:entry_count": {
       "ok": false,
-      "detail": "1 entry(ies)",
+      "detail": "3 entry(ies)",
       "warn_only": true,
       "verdict": "SKIP_NOT_APPLICABLE",
       "code": null,
@@ -334,6 +334,246 @@
     "terrain:Terrain_AshFlats_01:output_slope_mask_exists": {
       "ok": true,
       "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_AshFlats_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_terrain_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/terrain/Terrain_CrackedRidge_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_terrain_registry (expected worldforge_terrain_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:human_template_integrity": {
+      "ok": false,
+      "detail": "item is not a human-owned template",
+      "warn_only": true,
+      "verdict": "SKIP_NOT_APPLICABLE",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:output_heightmap_owned": {
+      "ok": true,
+      "detail": "output_heightmap must be under procedural/generated/ — got procedural/generated/terrain/Terrain_CrackedRidge_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:output_heightmap_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:output_nav_safe_mask_owned": {
+      "ok": true,
+      "detail": "output_nav_safe_mask must be under procedural/generated/ — got procedural/generated/terrain/Terrain_CrackedRidge_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:output_nav_safe_mask_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:output_placement_mask_owned": {
+      "ok": true,
+      "detail": "output_placement_mask must be under procedural/generated/ — got procedural/generated/terrain/Terrain_CrackedRidge_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:output_placement_mask_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:output_slope_mask_owned": {
+      "ok": true,
+      "detail": "output_slope_mask must be under procedural/generated/ — got procedural/generated/terrain/Terrain_CrackedRidge_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_CrackedRidge_01:output_slope_mask_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_CrackedRidge_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_terrain_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:descriptor_present": {
+      "ok": true,
+      "detail": "descriptor.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/terrain/Terrain_SandyBasin_01/descriptor.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_terrain_registry (expected worldforge_terrain_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:human_template_integrity": {
+      "ok": false,
+      "detail": "item is not a human-owned template",
+      "warn_only": true,
+      "verdict": "SKIP_NOT_APPLICABLE",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:output_heightmap_owned": {
+      "ok": true,
+      "detail": "output_heightmap must be under procedural/generated/ — got procedural/generated/terrain/Terrain_SandyBasin_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:output_heightmap_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/heightmap.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:output_nav_safe_mask_owned": {
+      "ok": true,
+      "detail": "output_nav_safe_mask must be under procedural/generated/ — got procedural/generated/terrain/Terrain_SandyBasin_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:output_nav_safe_mask_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/nav_safe_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:output_placement_mask_owned": {
+      "ok": true,
+      "detail": "output_placement_mask must be under procedural/generated/ — got procedural/generated/terrain/Terrain_SandyBasin_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:output_placement_mask_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/placement_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:output_slope_mask_owned": {
+      "ok": true,
+      "detail": "output_slope_mask must be under procedural/generated/ — got procedural/generated/terrain/Terrain_SandyBasin_01/slope_mask.png",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain:Terrain_SandyBasin_01:output_slope_mask_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/terrain/Terrain_SandyBasin_01/slope_mask.png",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -672,6 +912,886 @@
       "detail": "item is not a human-owned template",
       "warn_only": true,
       "verdict": "SKIP_NOT_APPLICABLE",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_CleanScrub_Clean_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_CleanScrub_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_CleanScrub_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_CleanScrub_Clean_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_CleanScrub_Clean_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_CleanScrub_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_CleanScrub_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_CleanScrub_Clean_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_CleanScrub_Clean_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_CleanScrub_Clean_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Ind_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Ind_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Ind_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Ind_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Ind_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Ind_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Ind_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Ind_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Ind_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Light_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Light_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Light_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Light_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Light_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Light_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Light_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Light_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_DebrisCheckpoint_Light_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:map_not_temp_bake": {
+      "ok": false,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/HoudiniEngine/Temp/BROKEN_UNOWNED_PATH",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF040_FORBIDDEN_PATH",
+      "blocking": true
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:map_owned": {
+      "ok": false,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/HoudiniEngine/Temp/BROKEN_UNOWNED_PATH",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF041_PATH_NOT_OWNED",
+      "blocking": true
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Ruined_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Ruined_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Ruined_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Ruined_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Ruined_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Ruined_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Ruined_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Ruined_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Ruined_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_IndustrialYard_Ruined_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_MiningCamp_Ruined_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_MiningCamp_Ruined_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_MiningCamp_Ruined_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_MiningCamp_Ruined_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_MiningCamp_Ruined_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_MiningCamp_Ruined_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_MiningCamp_Ruined_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_MiningCamp_Ruined_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_MiningCamp_Ruined_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_MiningCamp_Ruined_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_RidgeLookout_Heavy_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_RidgeLookout_Heavy_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_RidgeLookout_Heavy_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_RidgeLookout_Heavy_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_RidgeLookout_Heavy_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_RidgeLookout_Heavy_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_RidgeLookout_Heavy_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_RidgeLookout_Heavy_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_RidgeLookout_Heavy_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_RidgeLookout_Heavy_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Ind_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Ind_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Ind_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Ind_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Ind_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Ind_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Ind_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Ind_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Ind_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Light_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Light_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Light_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Light_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Light_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Light_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Light_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Light_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Light_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Survey_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Survey_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Survey_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Survey_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Survey_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Survey_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Survey_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Survey_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Survey_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ScrubNode_Survey_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ShrineRuin_Clean_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ShrineRuin_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ShrineRuin_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ShrineRuin_Clean_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ShrineRuin_Clean_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ShrineRuin_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ShrineRuin_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ShrineRuin_Clean_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ShrineRuin_Clean_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_AshFlats_ShrineRuin_Clean_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
       "code": null,
       "blocking": false
     },
@@ -1875,6 +2995,566 @@
       "code": null,
       "blocking": false
     },
+    "slices:Desert_CrackedRidge_CleanScrub_Clean_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_CleanScrub_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_CleanScrub_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_CleanScrub_Clean_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_CleanScrub_Clean_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_CleanScrub_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_CleanScrub_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_CleanScrub_Clean_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_CleanScrub_Clean_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_CleanScrub_Clean_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Clean_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Clean_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Clean_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Clean_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Clean_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Clean_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Ruined_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Ruined_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Ruined_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Ruined_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Ruined_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Ruined_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Ruined_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Ruined_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Ruined_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_MiningCamp_Ruined_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_RidgeLookout_Clean_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_RidgeLookout_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_RidgeLookout_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_RidgeLookout_Clean_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_RidgeLookout_Clean_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_RidgeLookout_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_RidgeLookout_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_RidgeLookout_Clean_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_RidgeLookout_Clean_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_RidgeLookout_Clean_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ScrubNode_Clean_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ScrubNode_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ScrubNode_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ScrubNode_Clean_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ScrubNode_Clean_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ScrubNode_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ScrubNode_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ScrubNode_Clean_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ScrubNode_Clean_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ScrubNode_Clean_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ShrineRuin_Light_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ShrineRuin_Light_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ShrineRuin_Light_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ShrineRuin_Light_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ShrineRuin_Light_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ShrineRuin_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ShrineRuin_Light_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ShrineRuin_Light_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ShrineRuin_Light_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_CrackedRidge_ShrineRuin_Light_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "slices:Desert_Cracked_Ridge_01:registry_entry": {
       "ok": true,
       "detail": "slice spec on disk but not in worldforge_registry.json",
@@ -2830,6 +4510,566 @@
     "slices:Desert_HeavyIndustrial_Yard_03:owned_not_a_referenced_dep": {
       "ok": true,
       "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_HeavyIndustrial_Yard_03.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_DebrisCheckpoint_Ind_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_DebrisCheckpoint_Ind_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_DebrisCheckpoint_Ind_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_DebrisCheckpoint_Ind_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_DebrisCheckpoint_Ind_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_DebrisCheckpoint_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_DebrisCheckpoint_Ind_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_DebrisCheckpoint_Ind_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_DebrisCheckpoint_Ind_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_DebrisCheckpoint_Ind_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_IndustrialYard_Ind_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_IndustrialYard_Ind_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_IndustrialYard_Ind_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_IndustrialYard_Ind_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_IndustrialYard_Ind_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_IndustrialYard_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_IndustrialYard_Ind_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_IndustrialYard_Ind_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_IndustrialYard_Ind_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_IndustrialYard_Ind_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_MiningCamp_Light_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_MiningCamp_Light_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_MiningCamp_Light_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_MiningCamp_Light_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_MiningCamp_Light_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_MiningCamp_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_MiningCamp_Light_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_MiningCamp_Light_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_MiningCamp_Light_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_MiningCamp_Light_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_RidgeLookout_Clean_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_RidgeLookout_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_RidgeLookout_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_RidgeLookout_Clean_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_RidgeLookout_Clean_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_RidgeLookout_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_RidgeLookout_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_RidgeLookout_Clean_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_RidgeLookout_Clean_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_RidgeLookout_Clean_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Clean_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Clean_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Clean_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Clean_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Clean_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Clean_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Survey_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Survey_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Survey_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Survey_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Survey_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Survey_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Survey_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Survey_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Survey_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ScrubNode_Survey_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ShrineRuin_Clean_01:registry_entry": {
+      "ok": true,
+      "detail": "slice spec on disk but not in worldforge_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ShrineRuin_Clean_01:spec_present": {
+      "ok": true,
+      "detail": "slice spec missing/unparseable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ShrineRuin_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ShrineRuin_Clean_01:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator', 'generator_version']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ShrineRuin_Clean_01:owner_resolvable": {
+      "ok": true,
+      "detail": "registry entry has no pack_id (owning pack unresolved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ShrineRuin_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ShrineRuin_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ShrineRuin_Clean_01:has_owned_assets": {
+      "ok": true,
+      "detail": "registry entry lists no owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ShrineRuin_Clean_01:owned_asset_owned": {
+      "ok": true,
+      "detail": "owned_asset must be under Content/WorldForge/ — got Content/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01.umap",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices:Desert_SandyBasin_ShrineRuin_Clean_01:owned_not_a_referenced_dep": {
+      "ok": true,
+      "detail": "owned/destroyable list includes a human-owned referenced dependency: Content/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01.umap",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -4275,6 +6515,534 @@
       "code": null,
       "blocking": false
     },
+    "placement:Desert_AshFlats_CleanScrub_Clean_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_CleanScrub_Clean_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_CleanScrub_Clean_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_CleanScrub_Clean_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_CleanScrub_Clean_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_CleanScrub_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_CleanScrub_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_CleanScrub_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_AshFlats_DebrisCheckpoint_Ind_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Ind_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_DebrisCheckpoint_Ind_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Ind_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_DebrisCheckpoint_Ind_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Ind_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Ind_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_AshFlats_DebrisCheckpoint_Light_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Light_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_DebrisCheckpoint_Light_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Light_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_DebrisCheckpoint_Light_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Light_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_DebrisCheckpoint_Light_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_AshFlats_IndustrialYard_Heavy_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_IndustrialYard_Heavy_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_IndustrialYard_Heavy_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_IndustrialYard_Heavy_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_IndustrialYard_Heavy_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_IndustrialYard_Heavy_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_IndustrialYard_Heavy_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_IndustrialYard_Heavy_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_AshFlats_IndustrialYard_Ruined_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_IndustrialYard_Ruined_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_IndustrialYard_Ruined_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_IndustrialYard_Ruined_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_IndustrialYard_Ruined_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_IndustrialYard_Ruined_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_IndustrialYard_Ruined_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_IndustrialYard_Ruined_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_AshFlats_MiningCamp_Ruined_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_MiningCamp_Ruined_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_MiningCamp_Ruined_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_MiningCamp_Ruined_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_MiningCamp_Ruined_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_MiningCamp_Ruined_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_MiningCamp_Ruined_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_MiningCamp_Ruined_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_AshFlats_RidgeLookout_Heavy_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_RidgeLookout_Heavy_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_RidgeLookout_Heavy_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_RidgeLookout_Heavy_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_RidgeLookout_Heavy_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_RidgeLookout_Heavy_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_RidgeLookout_Heavy_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_RidgeLookout_Heavy_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_AshFlats_ScrubNode_Ind_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Ind_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_ScrubNode_Ind_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Ind_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_ScrubNode_Ind_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Ind_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Ind_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_AshFlats_ScrubNode_Light_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Light_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_ScrubNode_Light_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Light_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_ScrubNode_Light_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Light_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Light_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_AshFlats_ScrubNode_Survey_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Survey_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_ScrubNode_Survey_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Survey_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_ScrubNode_Survey_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Survey_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Survey_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ScrubNode_Survey_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_AshFlats_ShrineRuin_Clean_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ShrineRuin_Clean_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_AshFlats_ShrineRuin_Clean_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ShrineRuin_Clean_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_AshFlats_ShrineRuin_Clean_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ShrineRuin_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ShrineRuin_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_AshFlats_ShrineRuin_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "placement:Desert_Cracked_Ridge_01_da:parseable": {
       "ok": true,
       "detail": "placement DA unparseable: None",
@@ -4412,6 +7180,342 @@
       "blocking": false
     },
     "placement:DA_Placement_Desert_Cracked_Ridge_03:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_CrackedRidge_CleanScrub_Clean_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_CleanScrub_Clean_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_CrackedRidge_CleanScrub_Clean_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_CleanScrub_Clean_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_CrackedRidge_CleanScrub_Clean_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_CleanScrub_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_CleanScrub_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_CleanScrub_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_CrackedRidge_DebrisCheckpoint_Heavy_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_CrackedRidge_MiningCamp_Clean_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_MiningCamp_Clean_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_CrackedRidge_MiningCamp_Clean_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_MiningCamp_Clean_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_CrackedRidge_MiningCamp_Clean_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_MiningCamp_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_MiningCamp_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_MiningCamp_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_CrackedRidge_MiningCamp_Ruined_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_MiningCamp_Ruined_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_CrackedRidge_MiningCamp_Ruined_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_MiningCamp_Ruined_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_CrackedRidge_MiningCamp_Ruined_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_MiningCamp_Ruined_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_MiningCamp_Ruined_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_MiningCamp_Ruined_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_CrackedRidge_RidgeLookout_Clean_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_RidgeLookout_Clean_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_CrackedRidge_RidgeLookout_Clean_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_RidgeLookout_Clean_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_CrackedRidge_RidgeLookout_Clean_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_RidgeLookout_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_RidgeLookout_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_RidgeLookout_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_CrackedRidge_ScrubNode_Clean_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_ScrubNode_Clean_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_CrackedRidge_ScrubNode_Clean_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_ScrubNode_Clean_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_CrackedRidge_ScrubNode_Clean_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_ScrubNode_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_ScrubNode_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_ScrubNode_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_CrackedRidge_ShrineRuin_Light_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_ShrineRuin_Light_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_CrackedRidge_ShrineRuin_Light_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_ShrineRuin_Light_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_CrackedRidge_ShrineRuin_Light_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_ShrineRuin_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_ShrineRuin_Light_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_CrackedRidge_ShrineRuin_Light_01:provenance_present": {
       "ok": true,
       "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
       "warn_only": true,
@@ -5283,6 +8387,902 @@
       "code": null,
       "blocking": false
     },
+    "placement:Desert_SandyBasin_DebrisCheckpoint_Ind_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_DebrisCheckpoint_Ind_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_SandyBasin_DebrisCheckpoint_Ind_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_DebrisCheckpoint_Ind_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_SandyBasin_DebrisCheckpoint_Ind_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_DebrisCheckpoint_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_DebrisCheckpoint_Ind_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_DebrisCheckpoint_Ind_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_SandyBasin_IndustrialYard_Ind_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_IndustrialYard_Ind_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_SandyBasin_IndustrialYard_Ind_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_IndustrialYard_Ind_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_SandyBasin_IndustrialYard_Ind_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_IndustrialYard_Ind_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_IndustrialYard_Ind_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_IndustrialYard_Ind_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_SandyBasin_MiningCamp_Light_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_MiningCamp_Light_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_SandyBasin_MiningCamp_Light_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_MiningCamp_Light_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_SandyBasin_MiningCamp_Light_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_MiningCamp_Light_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_MiningCamp_Light_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_MiningCamp_Light_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_SandyBasin_RidgeLookout_Clean_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_RidgeLookout_Clean_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_SandyBasin_RidgeLookout_Clean_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_RidgeLookout_Clean_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_SandyBasin_RidgeLookout_Clean_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_RidgeLookout_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_RidgeLookout_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_RidgeLookout_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_SandyBasin_ScrubNode_Clean_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ScrubNode_Clean_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_SandyBasin_ScrubNode_Clean_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ScrubNode_Clean_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_SandyBasin_ScrubNode_Clean_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ScrubNode_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ScrubNode_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ScrubNode_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_SandyBasin_ScrubNode_Survey_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ScrubNode_Survey_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_SandyBasin_ScrubNode_Survey_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ScrubNode_Survey_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_SandyBasin_ScrubNode_Survey_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ScrubNode_Survey_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ScrubNode_Survey_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ScrubNode_Survey_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:Desert_SandyBasin_ShrineRuin_Clean_01_da:parseable": {
+      "ok": true,
+      "detail": "placement DA unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ShrineRuin_Clean_01:owning_slice_registered": {
+      "ok": true,
+      "detail": "placement DA references slice 'Desert_SandyBasin_ShrineRuin_Clean_01' that is not registered",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ShrineRuin_Clean_01:descriptor_owned": {
+      "ok": true,
+      "detail": "descriptor must be under procedural/generated/ — got procedural/generated/placement/Desert_SandyBasin_ShrineRuin_Clean_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ShrineRuin_Clean_01:map_not_temp_bake": {
+      "ok": true,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ShrineRuin_Clean_01:map_owned": {
+      "ok": true,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement:DA_Placement_Desert_SandyBasin_ShrineRuin_Clean_01:provenance_present": {
+      "ok": true,
+      "detail": "placement DataAsset has no provenance block (lightweight descriptor)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_DebrisCheckpoint_Light_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Ruined_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_MiningCamp_Ruined_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_RidgeLookout_Heavy_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_AshFlats_ScrubNode_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "scenarios:Desert_Ash_IndustrialYard_01__activate_industrial_forge:registry_entry": {
       "ok": true,
       "detail": "not in worldforge_scenario_registry.json",
@@ -5363,6 +9363,486 @@
       "code": null,
       "blocking": false
     },
+    "scenarios:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Clean_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_CrackedRidge_MiningCamp_Ruined_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_IndustrialYard_Ind_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:registry_entry": {
+      "ok": true,
+      "detail": "not in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:result_present": {
+      "ok": true,
+      "detail": "result.json missing/unparseable: None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:result_owned": {
+      "ok": true,
+      "detail": "result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:provenance_present": {
+      "ok": true,
+      "detail": "no provenance block on descriptor — regenerate to stamp it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:provenance_complete": {
+      "ok": true,
+      "detail": "provenance missing generator/timestamp fields: ['generated_at_utc', 'generator_name', 'generator_version', 'inputs', 'source_commit', 'source_tree_dirty']",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:owner_resolvable": {
+      "ok": true,
+      "detail": "registry_owner=worldforge_scenario_registry (expected worldforge_scenario_registry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:output_result_owned": {
+      "ok": true,
+      "detail": "output_result must be under procedural/generated/ — got procedural/generated/scenarios/Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:output_result_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover/result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:output_state_save_owned": {
+      "ok": true,
+      "detail": "output_state_save must be under procedural/generated/ — got procedural/generated/scenarios/Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios:Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover:output_state_save_exists": {
+      "ok": true,
+      "detail": "declared output missing on disk: procedural/generated/scenarios/Desert_SandyBasin_MiningCamp_Light_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "catalogs:desert_asset_catalog:parseable": {
       "ok": true,
       "detail": "procedural/definitions/assets/desert_asset_catalog.yaml",
@@ -5380,15 +9860,20 @@
       "blocking": false
     }
   },
-  "failures": [],
+  "failures": [
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:map_not_temp_bake: map is a forbidden Houdini Temp/Bake path: /Game/HoudiniEngine/Temp/BROKEN_UNOWNED_PATH",
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:map_owned: map must be under /Game/WorldForge/ — got /Game/HoudiniEngine/Temp/BROKEN_UNOWNED_PATH"
+  ],
   "warnings": [
     "registries:worldforge_generated_asset_registry:entry_count: 1 entry(ies)",
     "registries:worldforge_poi_registry:entry_count: 6 entry(ies)",
-    "registries:worldforge_registry:entry_count: 36 entry(ies)",
-    "registries:worldforge_scenario_registry:entry_count: 1 entry(ies)",
-    "registries:worldforge_terrain_registry:entry_count: 1 entry(ies)",
+    "registries:worldforge_registry:entry_count: 61 entry(ies)",
+    "registries:worldforge_scenario_registry:entry_count: 14 entry(ies)",
+    "registries:worldforge_terrain_registry:entry_count: 3 entry(ies)",
     "generated_assets:rock_generator_desert_01:human_template_integrity: item is not a human-owned template",
     "terrain:Terrain_AshFlats_01:human_template_integrity: item is not a human-owned template",
+    "terrain:Terrain_CrackedRidge_01:human_template_integrity: item is not a human-owned template",
+    "terrain:Terrain_SandyBasin_01:human_template_integrity: item is not a human-owned template",
     "poi:POI_AbandonedMiningCamp_01:human_template_integrity: item is not a human-owned template",
     "poi:POI_AshShrineRuin_01:human_template_integrity: item is not a human-owned template",
     "poi:POI_CrackedRidgeLookout_01:human_template_integrity: item is not a human-owned template",
@@ -5397,13 +9882,12 @@
     "poi:POI_ScrublandResourceNode_01:human_template_integrity: item is not a human-owned template"
   ],
   "counts": {
-    "PASS": 659,
+    "PASS": 1215,
     "WARN": 0,
     "WARN_ONLY": 0,
-    "FAIL": 0,
-    "GATED_HUMAN_EDITOR": 0,
-    "SKIP_NOT_APPLICABLE": 13
+    "FAIL": 2,
+    "SKIP_NOT_APPLICABLE": 15
   },
-  "passed": true,
-  "status": "warn"
+  "passed": false,
+  "status": "fail"
 }

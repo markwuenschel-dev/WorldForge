@@ -1,55 +1,15 @@
 {
   "world_pack_id": "desert_mvp_world",
   "schema_version": "v0.9",
-  "strict": false,
+  "strict": true,
   "checks": {
     "Desert_AshFlats_IndustrialYard_Heavy_01:registered": {
-      "ok": true,
-      "detail": "present in registry",
+      "ok": false,
+      "detail": "slice declared by world pack but missing from registry — run create-world-pack PACK=desert_mvp_world",
       "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "Desert_AshFlats_IndustrialYard_Heavy_01:spec_present": {
-      "ok": true,
-      "detail": "generated spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_IndustrialYard_Heavy_01.json",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "Desert_AshFlats_IndustrialYard_Heavy_01:registry_consistent": {
-      "ok": true,
-      "detail": "registry entry missing map_path/owned_assets",
-      "warn_only": true,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "Desert_AshFlats_IndustrialYard_Heavy_01:input_hash_fresh": {
-      "ok": true,
-      "detail": "registry input_hash is stale vs current spec — rebuild slice to re-stamp",
-      "warn_only": true,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "Desert_AshFlats_IndustrialYard_Heavy_01:placement_da": {
-      "ok": true,
-      "detail": "placement DA present",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "Desert_AshFlats_IndustrialYard_Heavy_01:ue_map_materialized": {
-      "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_IndustrialYard_Heavy_01` (editor)",
-      "warn_only": true,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
+      "verdict": "FAIL",
+      "code": "WF010_REGISTRY_MISSING_ENTRY",
+      "blocking": true
     },
     "Desert_AshFlats_DebrisCheckpoint_Ind_01:registered": {
       "ok": true,
@@ -93,8 +53,8 @@
     },
     "Desert_AshFlats_DebrisCheckpoint_Ind_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_DebrisCheckpoint_Ind_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_DebrisCheckpoint_Ind_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -141,8 +101,8 @@
     },
     "Desert_AshFlats_MiningCamp_Ruined_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_MiningCamp_Ruined_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_MiningCamp_Ruined_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -189,8 +149,8 @@
     },
     "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_DebrisCheckpoint_Heavy_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_DebrisCheckpoint_Heavy_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -237,8 +197,8 @@
     },
     "Desert_AshFlats_IndustrialYard_Ruined_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_IndustrialYard_Ruined_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_IndustrialYard_Ruined_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -285,8 +245,8 @@
     },
     "Desert_SandyBasin_DebrisCheckpoint_Ind_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_DebrisCheckpoint_Ind_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_DebrisCheckpoint_Ind_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -333,8 +293,8 @@
     },
     "Desert_CrackedRidge_MiningCamp_Ruined_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_MiningCamp_Ruined_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_MiningCamp_Ruined_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -381,8 +341,8 @@
     },
     "Desert_AshFlats_DebrisCheckpoint_Light_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_DebrisCheckpoint_Light_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_DebrisCheckpoint_Light_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -429,8 +389,8 @@
     },
     "Desert_SandyBasin_ScrubNode_Clean_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_ScrubNode_Clean_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_ScrubNode_Clean_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -477,8 +437,8 @@
     },
     "Desert_CrackedRidge_RidgeLookout_Clean_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_RidgeLookout_Clean_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_RidgeLookout_Clean_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -525,8 +485,8 @@
     },
     "Desert_AshFlats_ShrineRuin_Clean_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_ShrineRuin_Clean_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_ShrineRuin_Clean_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -573,8 +533,8 @@
     },
     "Desert_SandyBasin_ShrineRuin_Clean_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_ShrineRuin_Clean_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_ShrineRuin_Clean_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -621,8 +581,8 @@
     },
     "Desert_CrackedRidge_CleanScrub_Clean_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_CleanScrub_Clean_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_CleanScrub_Clean_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -669,8 +629,8 @@
     },
     "Desert_SandyBasin_RidgeLookout_Clean_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_RidgeLookout_Clean_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_RidgeLookout_Clean_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -717,8 +677,8 @@
     },
     "Desert_AshFlats_ScrubNode_Light_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_ScrubNode_Light_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_ScrubNode_Light_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -765,8 +725,8 @@
     },
     "Desert_SandyBasin_ScrubNode_Survey_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_ScrubNode_Survey_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_ScrubNode_Survey_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -813,8 +773,8 @@
     },
     "Desert_AshFlats_ScrubNode_Survey_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_ScrubNode_Survey_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_ScrubNode_Survey_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -861,8 +821,8 @@
     },
     "Desert_CrackedRidge_ScrubNode_Clean_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_ScrubNode_Clean_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_ScrubNode_Clean_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -909,8 +869,8 @@
     },
     "Desert_SandyBasin_MiningCamp_Light_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_MiningCamp_Light_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_MiningCamp_Light_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -957,8 +917,8 @@
     },
     "Desert_AshFlats_ScrubNode_Ind_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_ScrubNode_Ind_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_ScrubNode_Ind_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -1005,8 +965,8 @@
     },
     "Desert_AshFlats_RidgeLookout_Heavy_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_RidgeLookout_Heavy_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_RidgeLookout_Heavy_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -1053,8 +1013,8 @@
     },
     "Desert_CrackedRidge_ShrineRuin_Light_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_ShrineRuin_Light_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_ShrineRuin_Light_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -1101,8 +1061,8 @@
     },
     "Desert_SandyBasin_IndustrialYard_Ind_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_IndustrialYard_Ind_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_SandyBasin_IndustrialYard_Ind_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -1149,8 +1109,8 @@
     },
     "Desert_CrackedRidge_MiningCamp_Clean_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_MiningCamp_Clean_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_CrackedRidge_MiningCamp_Clean_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
@@ -1197,22 +1157,23 @@
     },
     "Desert_AshFlats_CleanScrub_Clean_01:ue_map_materialized": {
       "ok": true,
-      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_CleanScrub_Clean_01` (editor)",
-      "warn_only": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_CleanScrub_Clean_01` to rebuild it in the editor",
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     }
   },
-  "failures": [],
+  "failures": [
+    "Desert_AshFlats_IndustrialYard_Heavy_01:registered: slice declared by world pack but missing from registry — run create-world-pack PACK=desert_mvp_world"
+  ],
   "counts": {
-    "PASS": 150,
+    "PASS": 144,
     "WARN": 0,
     "WARN_ONLY": 0,
-    "FAIL": 0,
-    "GATED_HUMAN_EDITOR": 0,
+    "FAIL": 1,
     "SKIP_NOT_APPLICABLE": 0
   },
-  "passed": true,
-  "status": "ok"
+  "passed": false,
+  "status": "fail"
 }

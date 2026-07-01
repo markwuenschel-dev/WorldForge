@@ -5,19 +5,17 @@ v0.9: migrated onto the shared ``ValidationReport`` helper (one report shape, on
 strict-mode semantics) and stable ``FailureCode``s, and the aggregation is now a
 pure cached-report consumer.
 
-Per D7, agents cannot launch the editor to materialize/validate ``Content/**``.
-So this aggregator does NOT relaunch UE; it CONSUMES the per-slice
-``procedural/reports/slices/<biome>/<name>/validate_slice_report.json`` that a
-human/editor produced via ``make validate-slice``:
+This aggregator CONSUMES the per-slice
+``procedural/reports/slices/<biome>/<name>/validate_slice_report.json`` that the
+tooling produced by driving the editor via ``make validate-slice``:
 
   - cached report PASS              -> PASS
   - cached report PASS w/ real WARN -> WARN   (blocking under --strict)
-  - cached report PASS w/ WARN_ONLY -> WARN_ONLY / gated (never blocking)
+  - cached report PASS w/ WARN_ONLY -> WARN_ONLY (never blocking)
   - cached report FAIL              -> FAIL   (parent fails)
   - cached report unreadable        -> FAIL   (WF001)
-  - no cached report                -> GATED_HUMAN_EDITOR (never blocking, even
-                                       under --strict; clears once the editor runs
-                                       validate-slice for the slice)
+  - no cached report                -> FAIL   (WF080; run 'make validate-slice'
+                                       to drive the editor and produce it)
 
 Strict threads through: a child whose own report is blocking makes the parent
 block; a child with a genuine soft WARN makes the parent block under ``--strict``.
@@ -56,11 +54,11 @@ def _judge_slice(rep, key, name, report_path):
     Returns a legacy-shaped row dict for the aggregate report's ``slices`` list.
     """
     if not report_path.is_file():
-        rep.gated(
+        rep.ue_check(
             key, False,
             "no validate_slice_report.json — run 'make validate-slice' (UE) for {}".format(name),
-            code=FailureCode.UE_MATERIALIZATION_PENDING)
-        return {"name": name, "status": "gated"}
+            code=FailureCode.UE_ARTIFACT_MISSING)
+        return {"name": name, "status": "fail", "ue_missing": True}
 
     try:
         child = json.loads(report_path.read_text(encoding="utf-8"))
@@ -85,23 +83,15 @@ def _judge_slice(rep, key, name, report_path):
         return {"name": name, "status": "fail", "checks_passed": n_ok,
                 "checks_total": total, "failures": fails}
 
-    # Passed (no blocking failure). Reflect any soft/gated warnings upward.
+    # Passed (no blocking failure). Reflect any soft warnings upward.
     if warns or child.get("status") == "warn":
         real_warn = int(counts.get("WARN", 0)) > 0
-        only_gated = (int(counts.get("WARN", 0)) == 0
-                      and int(counts.get("WARN_ONLY", 0)) == 0
-                      and int(counts.get("GATED_HUMAN_EDITOR", 0)) > 0)
         if real_warn:
             # Genuine soft warning in the child -> blocks the parent under --strict.
             rep.check(key, False,
                       "child WARN ({}/{}): {}".format(n_ok, total, "; ".join(warns)),
                       warn_only=True, code=FailureCode.CHILD_VALIDATION_FAILED)
             return {"name": name, "status": "warn", "checks_passed": n_ok, "checks_total": total}
-        if only_gated:
-            rep.gated(key, False,
-                      "child has only gated UE checks ({}/{})".format(n_ok, total),
-                      code=FailureCode.UE_MATERIALIZATION_PENDING)
-            return {"name": name, "status": "gated", "checks_passed": n_ok, "checks_total": total}
         # Legacy report (no counts) or explicit WARN_ONLY -> never blocking.
         rep.warn_only(key, False,
                       "child WARN_ONLY ({}/{}): {}".format(n_ok, total, "; ".join(warns)))
@@ -160,7 +150,7 @@ def main(argv=None):
     n_pass = sum(1 for r in results if r["status"] == "pass")
     n_warn = sum(1 for r in results if r["status"] == "warn")
     n_fail = sum(1 for r in results if r["status"] == "fail")
-    n_gated = sum(1 for r in results if r["status"] == "gated")
+    n_missing = sum(1 for r in results if r.get("ue_missing"))
     n_error = sum(1 for r in results if r["status"] == "error")
     total = len(results)
 
@@ -169,8 +159,8 @@ def main(argv=None):
         summary_parts.append("{} WARN".format(n_warn))
     if n_fail:
         summary_parts.append("{} FAIL".format(n_fail))
-    if n_gated:
-        summary_parts.append("{} GATED".format(n_gated))
+    if n_missing:
+        summary_parts.append("{} UE-REPORT-MISSING".format(n_missing))
     if n_error:
         summary_parts.append("{} ERROR".format(n_error))
     print("RESULT: {}".format(", ".join(summary_parts)))
@@ -187,8 +177,7 @@ def main(argv=None):
         "pass": n_pass,
         "warn": n_warn,
         "fail": n_fail,
-        "gated": n_gated,
-        "missing": n_gated,  # legacy key: a "missing" per-slice report is now GATED
+        "missing": n_missing,  # slices whose UE validate report is absent (now a FAIL)
         "error": n_error,
         "slices": results,
     })

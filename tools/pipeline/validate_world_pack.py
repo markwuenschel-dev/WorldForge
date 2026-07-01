@@ -11,12 +11,13 @@ and into how this validator judges each child's report:
 
   - child pack PASS                 -> PASS
   - child pack WARN (soft)          -> WARN   (blocking under --strict)
-  - child pack WARN_ONLY / GATED    -> WARN_ONLY / gated (never blocking)
+  - child pack WARN_ONLY            -> WARN_ONLY (never blocking)
   - child pack FAIL / non-zero exit -> FAIL   (parent fails)
 
-No UE is launched: the child slice-pack validator consumes cached per-slice UE
-reports (D7), and slices whose UE report is absent are GATED (non-blocking, even
-under --strict).
+This aggregator does not launch UE itself: the child slice-pack validator
+consumes cached per-slice UE reports produced by driving the editor via
+``make validate-slice``. A slice whose UE report is absent is a FAIL (run the
+editor to produce it).
 
 Usage:
     python tools/pipeline/validate_world_pack.py \
@@ -84,17 +85,10 @@ def _judge_pack(rep, key, pack_id, rc, rpt_path, slice_count):
         status = "fail"
     elif child_status == "warn" or child.get("warnings"):
         real_warn = int(counts.get("WARN", 0)) > 0
-        only_gated = (int(counts.get("WARN", 0)) == 0
-                      and int(counts.get("WARN_ONLY", 0)) == 0
-                      and int(counts.get("GATED_HUMAN_EDITOR", 0)) > 0)
         if real_warn:
             rep.check(key, False, "child pack WARN ({}/{})".format(n_pass, n_total),
                       warn_only=True, code=FailureCode.CHILD_VALIDATION_FAILED)
             status = "warn"
-        elif only_gated:
-            rep.gated(key, False, "child pack has only gated UE checks ({}/{})".format(n_pass, n_total),
-                      code=FailureCode.UE_MATERIALIZATION_PENDING)
-            status = "gated"
         else:
             rep.warn_only(key, False, "child pack WARN_ONLY ({}/{})".format(n_pass, n_total))
             status = "warn"

@@ -150,31 +150,30 @@
     "post_scenario_map_valid": {
       "ok": true,
       "detail": "validate-slice PASS for Desert_CrackedRidge_MiningCamp_Ruined_01",
-      "warn_only": true,
+      "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
     "ue_state_applied": {
       "ok": false,
-      "detail": "run 'make apply-state-scenario' (UE) to apply + read back the MPC bridge",
+      "detail": "in-editor MPC bridge readback not run here; produce it with 'make apply-state-scenario'",
       "warn_only": true,
-      "verdict": "GATED_HUMAN_EDITOR",
-      "code": "WF082_UE_STATE_NOT_APPLIED",
+      "verdict": "SKIP_NOT_APPLICABLE",
+      "code": null,
       "blocking": false
     }
   },
   "failures": [],
   "warnings": [
-    "ue_state_applied: run 'make apply-state-scenario' (UE) to apply + read back the MPC bridge"
+    "ue_state_applied: in-editor MPC bridge readback not run here; produce it with 'make apply-state-scenario'"
   ],
   "counts": {
     "PASS": 19,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
-    "GATED_HUMAN_EDITOR": 1,
-    "SKIP_NOT_APPLICABLE": 0
+    "SKIP_NOT_APPLICABLE": 1
   },
   "passed": true,
   "status": "warn"

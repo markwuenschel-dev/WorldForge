@@ -1,0 +1,28 @@
+name: raytraced_ultra
+kind: rendering
+# --- required (frozen) contract fields ---
+rendering_mode: cinematic
+gi_method: path_traced
+ray_tracing: required
+shadow_quality: cinematic
+# --- pipeline detail ---
+reflection_method: raytraced
+anti_aliasing: TSR
+nanite: true
+lumen: true
+path_tracing: true
+# --- v1.0x rendering-budget enrichment (Agent 6) ---
+# Highest cost_class in the pack. Path tracing carries its own GI, so volumetric
+# fog is disabled to keep the RT frame within the high_end_pc budget.
+virtual_shadow_maps: true
+volumetric_fog: 'off'
+material_complexity_class: cinematic
+texture_budget_class: ultra
+mesh_density_class: ultra
+foliage_density_class: high
+post_process_cost_class: cinematic
+light_count_budget: 80
+fog_volume_budget: 4
+high_cost_material_budget: 56
+foliage_cluster_budget: 64
+cost_class: 7

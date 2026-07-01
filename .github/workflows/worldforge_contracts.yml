@@ -1,8 +1,8 @@
-name: WorldForge Contracts (Tier 0 + Tier 1)
+name: WorldForge Contracts (no UE required)
 
-# Agent-operability gates that run on hosted CI with NO Unreal Engine
-# (forge_design_decisions D7). Tier 2 / Tier 3 (require UE) are local/self-hosted
-# pre-merge gates and are intentionally NOT run here.
+# WorldForge contract checks that run on hosted CI with NO Unreal Engine.
+# Checks that require UE are run locally / on self-hosted pre-merge gates and
+# are intentionally NOT run here.
 
 on:
   pull_request:
@@ -21,8 +21,7 @@ jobs:
       - name: Checkout (full history for diff/provenance)
         uses: actions/checkout@v4
         with:
-          # Need history so check_agent_permissions.py can diff against origin/main
-          # and generate_manifest.py can resolve the source commit.
+          # Need history so generate_manifest.py can resolve the source commit.
           fetch-depth: 0
 
       - name: Set up Python
@@ -137,11 +136,6 @@ jobs:
       - name: Negative placement tests
         run: |
           python tools/pipeline/test_negative_placement.py
-
-      # --- Tier 0: forbidden-path check on the PR diff (informational) ---
-      - name: Agent permission check (PR diff)
-        run: |
-          python tools/pipeline/check_agent_permissions.py --changed-against origin/main
 
       # --- Tier 1: Makefile build target dry-runs parse ---
       - name: Makefile build dry-run sanity

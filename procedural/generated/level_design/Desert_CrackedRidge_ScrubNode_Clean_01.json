@@ -1,0 +1,713 @@
+{
+  "slice_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+  "schema_version": "wf-level-design-v1",
+  "world_pack_id": "desert_mvp_world",
+  "generated": true,
+  "registry_owner": "worldforge_level_design_overlay",
+  "seed": 9018,
+  "biome": "desert",
+  "variant": "cracked",
+  "state_key": "industrial_pressure",
+  "poi_type": "scrubland_resource_node",
+  "primary_class": "resource_site",
+  "budget_class": "light",
+  "terrain_bounds": {
+    "min": [
+      -25600.0,
+      -25600.0
+    ],
+    "max": [
+      25600.0,
+      25600.0
+    ],
+    "height_range_cm": [
+      0.0,
+      6000.0
+    ]
+  },
+  "player_start": {
+    "id": "player_start",
+    "world_position": [
+      6721.39,
+      -5117.78,
+      0.0
+    ],
+    "bounds": {
+      "min": [
+        5721.389599248575,
+        -6117.775479162121,
+        0.0
+      ],
+      "max": [
+        7721.389599248575,
+        -4117.775479162121,
+        300.0
+      ]
+    },
+    "facing_deg": 142.71,
+    "facing_vector": [
+      -0.7956,
+      0.6058,
+      0.0
+    ],
+    "orientation_cue": "face navigation_landmark bearing to orient",
+    "vista_cue": "primary objective visible on the horizon toward the landmark",
+    "provenance": {
+      "generator": "generate_level_design",
+      "generator_version": "1.0x",
+      "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+      "registry_owner": "worldforge_level_design_overlay"
+    }
+  },
+  "pois": [
+    {
+      "id": "primary_poi",
+      "class": "resource_site",
+      "role": "primary",
+      "world_position": [
+        -7128.75,
+        5427.94,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -10128.746544657577,
+          2927.9436900204346,
+          0.0
+        ],
+        "max": [
+          -4128.746544657577,
+          7927.943690020435,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.7956,
+        -0.6058,
+        0.0
+      ],
+      "exit_vector": [
+        -0.7956,
+        0.6058,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -7128.75,
+        5427.94,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "cracked",
+        "cracked_ridge",
+        "desert",
+        "terrain_rock_desert_cracked_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "navigation_landmark",
+        "notes": "resource_site (primary) derived from Desert_CrackedRidge_ScrubNode_Clean_01 seed 9018"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "secondary_poi",
+      "class": "objective_ready_anchor",
+      "role": "secondary",
+      "world_position": [
+        -5117.78,
+        -6721.39,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -6917.775479162121,
+          -8521.389599248574,
+          0.0
+        ],
+        "max": [
+          -3317.775479162121,
+          -4921.389599248575,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.6058,
+        0.7956,
+        0.0
+      ],
+      "exit_vector": [
+        -0.6058,
+        -0.7956,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -5117.78,
+        -6721.39,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "cracked",
+        "cracked_ridge",
+        "desert",
+        "terrain_rock_desert_cracked_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_support",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (secondary) derived from Desert_CrackedRidge_ScrubNode_Clean_01 seed 9018"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "navigation_landmark",
+      "class": "navigation_landmark",
+      "role": "landmark",
+      "world_position": [
+        -11068.26,
+        17231.48,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -12468.260000000002,
+          15831.48,
+          0.0
+        ],
+        "max": [
+          -9668.260000000002,
+          18631.48,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.5404,
+        -0.8414,
+        0.0
+      ],
+      "exit_vector": [
+        -0.5404,
+        0.8414,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -11068.26,
+        17231.48,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "cracked",
+        "cracked_ridge",
+        "desert",
+        "terrain_rock_desert_cracked_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "orientation",
+        "expected_state": "static",
+        "state_key": "industrial_pressure",
+        "sightline_target": "vista",
+        "notes": "navigation_landmark (landmark) derived from Desert_CrackedRidge_ScrubNode_Clean_01 seed 9018"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "resource_site",
+      "class": "resource_site",
+      "role": "resource",
+      "world_position": [
+        -3481.04,
+        -20181.99,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -5281.039999999999,
+          -21981.99,
+          0.0
+        ],
+        "max": [
+          -1681.0399999999986,
+          -18381.99,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.17,
+        0.9854,
+        0.0
+      ],
+      "exit_vector": [
+        -0.17,
+        -0.9854,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -3481.04,
+        -20181.99,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "cracked",
+        "cracked_ridge",
+        "desert",
+        "terrain_rock_desert_cracked_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "resource",
+        "expected_state": "before",
+        "state_key": "industrial_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "resource_site (resource) derived from Desert_CrackedRidge_ScrubNode_Clean_01 seed 9018"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "encounter_anchor",
+      "class": "encounter_ready_anchor",
+      "role": "encounter",
+      "world_position": [
+        15796.22,
+        12214.77,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          14196.217618553601,
+          10614.767003397847,
+          0.0
+        ],
+        "max": [
+          17396.2176185536,
+          13814.767003397847,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.7911,
+        -0.6117,
+        0.0
+      ],
+      "exit_vector": [
+        0.7911,
+        0.6117,
+        0.0
+      ],
+      "gameplay_anchor": [
+        15796.22,
+        12214.77,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "cracked",
+        "cracked_ridge",
+        "desert",
+        "terrain_rock_desert_cracked_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "encounter",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "danger_zone",
+        "notes": "encounter_ready_anchor (encounter) derived from Desert_CrackedRidge_ScrubNode_Clean_01 seed 9018"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "spawn_adjacent_anchor",
+      "class": "spawn_adjacent_anchor",
+      "role": "spawn_adjacent",
+      "world_position": [
+        2084.6,
+        -9239.76,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          584.6018212797389,
+          -10739.759956639535,
+          0.0
+        ],
+        "max": [
+          3584.601821279739,
+          -7739.759956639535,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.2201,
+        0.9755,
+        0.0
+      ],
+      "exit_vector": [
+        0.2201,
+        -0.9755,
+        0.0
+      ],
+      "gameplay_anchor": [
+        2084.6,
+        -9239.76,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "cracked",
+        "cracked_ridge",
+        "desert",
+        "terrain_rock_desert_cracked_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "spawn_support",
+        "expected_state": "before",
+        "state_key": "industrial_pressure",
+        "sightline_target": "player_start",
+        "notes": "spawn_adjacent_anchor (spawn_adjacent) derived from Desert_CrackedRidge_ScrubNode_Clean_01 seed 9018"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "objective_anchor",
+      "class": "objective_ready_anchor",
+      "role": "objective_ready",
+      "world_position": [
+        8919.33,
+        17291.08,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          7319.330000000002,
+          15691.080000000002,
+          0.0
+        ],
+        "max": [
+          10519.330000000002,
+          18891.08,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.4584,
+        -0.8887,
+        0.0
+      ],
+      "exit_vector": [
+        0.4584,
+        0.8887,
+        0.0
+      ],
+      "gameplay_anchor": [
+        8919.33,
+        17291.08,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "cracked",
+        "cracked_ridge",
+        "desert",
+        "terrain_rock_desert_cracked_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_ready",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (objective_ready) derived from Desert_CrackedRidge_ScrubNode_Clean_01 seed 9018"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "class": "safe_zone",
+      "role": "safe_zone",
+      "world_position": [
+        7491.7,
+        1690.22,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          3991.699473832424,
+          -1809.7813769281265,
+          0.0
+        ],
+        "max": [
+          10991.699473832425,
+          5190.2186230718735,
+          400.0
+        ]
+      },
+      "enemy_filled": false,
+      "rest_point": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "rest",
+        "notes": "safe rest zone"
+      }
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "danger_zone",
+      "class": "danger_zone",
+      "role": "danger_zone",
+      "world_position": [
+        -13952.59,
+        -1889.88,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -17952.58985088528,
+          -5889.877364532711,
+          0.0
+        ],
+        "max": [
+          -9952.58985088528,
+          2110.122635467289,
+          1200.0
+        ]
+      },
+      "enemy_filled": true,
+      "avoidable": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "hazard",
+        "notes": "avoidable hazard zone"
+      }
+    }
+  ],
+  "orientation_cues": [
+    {
+      "id": "orient_landmark",
+      "kind": "landmark_bearing",
+      "target": "navigation_landmark",
+      "from": "player_start",
+      "detail": "distant landmark gives a stable heading"
+    }
+  ],
+  "vista_cues": [
+    {
+      "id": "vista_primary",
+      "kind": "sightline",
+      "from": "player_start",
+      "target": "primary_poi",
+      "detail": "line of sight from spawn to the primary objective"
+    },
+    {
+      "id": "vista_point",
+      "kind": "overlook",
+      "from": "navigation_landmark",
+      "target": "resource_site",
+      "detail": "elevated overlook reveals the resource site"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "player_start",
+        "role": "player_start",
+        "type": "player_start",
+        "position": [
+          6721.39,
+          -5117.78
+        ]
+      },
+      {
+        "id": "primary_poi",
+        "role": "primary_poi",
+        "type": "primary_poi",
+        "position": [
+          -7128.75,
+          5427.94
+        ]
+      },
+      {
+        "id": "secondary_poi",
+        "role": "secondary_poi",
+        "type": "secondary_poi",
+        "position": [
+          -5117.78,
+          -6721.39
+        ]
+      },
+      {
+        "id": "safe_zone",
+        "role": "safe_zone",
+        "type": "safe_zone",
+        "position": [
+          7491.7,
+          1690.22
+        ]
+      },
+      {
+        "id": "danger_zone",
+        "role": "danger_zone",
+        "type": "danger_zone",
+        "position": [
+          -13952.59,
+          -1889.88
+        ]
+      },
+      {
+        "id": "resource_site",
+        "role": "resource_site",
+        "type": "resource_site",
+        "position": [
+          -3481.04,
+          -20181.99
+        ]
+      },
+      {
+        "id": "exit_route",
+        "role": "exit_or_edge_route",
+        "type": "exit_or_edge_route",
+        "position": [
+          -20511.21,
+          4467.01
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "player_start",
+        "to": "primary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "safe_zone",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "secondary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "primary_poi",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "danger_zone",
+        "kind": "risky"
+      },
+      {
+        "from": "danger_zone",
+        "to": "resource_site",
+        "kind": "risky"
+      },
+      {
+        "from": "secondary_poi",
+        "to": "exit_route",
+        "kind": "reachable"
+      }
+    ]
+  },
+  "provenance": {
+    "generator_name": "generate_level_design",
+    "generator_version": "1.0x",
+    "generated_at_utc": "2026-07-01T22:06:07.689997+00:00",
+    "source_commit": "unknown",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/slices/desert/generated/Desert_CrackedRidge_ScrubNode_Clean_01.json": "2ab2f3ae37faaba870a626e5890a0ead31aa0d4f821324c2a7850316a495db2a"
+    },
+    "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+    "source_spec_path": "procedural/slices/desert/generated/Desert_CrackedRidge_ScrubNode_Clean_01.json",
+    "terrain_extent_source": "procedural/generated/terrain/Terrain_CrackedRidge_01/descriptor.json"
+  },
+  "content_hash": "333dcb07c42f06af8fab1807e1271d58825ef7f67ed5250c5b76b8e6c83390cd"
+}

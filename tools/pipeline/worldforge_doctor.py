@@ -6,8 +6,7 @@ to *build and validate* WorldForge content. It is the superset companion to
 ``ue_doctor.py`` (which focuses on booting UE): worldforge-doctor checks the
 whole authoring-side toolchain — Python, hard dependencies, repo layout,
 definition/pack/registry readability, report writability — and surfaces the
-UE/editor surface as a non-blocking environment warning plus the canonical
-D7-gated Content-materialization note.
+UE/editor surface as a non-blocking environment warning.
 
 NON-MUTATING: it never writes into project ``Content/**`` or any registry. The
 only thing it writes is its own report under
@@ -43,12 +42,10 @@ if str(_THIS_DIR) not in sys.path:
 from validation_report import (  # noqa: E402  (sibling contract module)
     ValidationReport,
     strict_from_env,
-    GATED_HUMAN_EDITOR_NOTE,
     PASS,
     WARN,
     WARN_ONLY,
     FAIL,
-    GATED_HUMAN_EDITOR,
     SKIP_NOT_APPLICABLE,
 )
 from failure_codes import FailureCode  # noqa: E402
@@ -308,12 +305,6 @@ def check_report_writable(rep, report_dir):
                   "cannot write report dir {}: {} — check permissions".format(report_dir, exc))
 
 
-def add_d7_materialization_note(rep):
-    """Informational, always-present, never-blocking D7 line (canonical wording)."""
-    rep.gated("content_materialization_d7", False, GATED_HUMAN_EDITOR_NOTE,
-              code=FailureCode.UE_MATERIALIZATION_PENDING)
-
-
 # ---------------------------------------------------------------------------
 # Console rendering
 # ---------------------------------------------------------------------------
@@ -323,7 +314,6 @@ _TAG = {
     WARN: "[WARN ]",
     WARN_ONLY: "[WARN ]",
     FAIL: "[FAIL ]",
-    GATED_HUMAN_EDITOR: "[GATED]",
     SKIP_NOT_APPLICABLE: "[SKIP ]",
 }
 
@@ -371,9 +361,6 @@ def main(argv=None):
 
     # Doctor's own output surface.
     check_report_writable(rep, report_dir)
-
-    # D7-gated Content materialization (informational, canonical wording).
-    add_d7_materialization_note(rep)
 
     rep.finalize()
 

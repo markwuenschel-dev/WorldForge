@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 test_negative_recipes.py
-Negative-fixture gate (forge_design_decisions D7, Tier 1).
+Negative-fixture gate.
 
 For every invalid recipe under tests/fixtures/invalid_recipes/, run
 validate_recipe.py against it (via --recipe-path) and assert it is REJECTED

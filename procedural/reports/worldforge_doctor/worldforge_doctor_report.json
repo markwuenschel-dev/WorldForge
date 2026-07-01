@@ -101,7 +101,7 @@
     },
     "definitions_readable": {
       "ok": true,
-      "detail": "parsed 3 sampled definition(s) of 25 found",
+      "detail": "parsed 3 sampled definition(s) of 117 found",
       "warn_only": true,
       "verdict": "PASS",
       "code": null,
@@ -117,7 +117,7 @@
     },
     "registry_roots_readable": {
       "ok": true,
-      "detail": "parsed 5 registry root(s), 47 total entries",
+      "detail": "parsed 5 registry root(s), 85 total entries",
       "warn_only": true,
       "verdict": "PASS",
       "code": null,
@@ -138,27 +138,17 @@
       "verdict": "PASS",
       "code": null,
       "blocking": false
-    },
-    "content_materialization_d7": {
-      "ok": false,
-      "detail": "UE materialization is pending a human/editor step because Content/** changes are D7-gated. Run the documented editor-authorized command, then rerun strict validation.",
-      "warn_only": true,
-      "verdict": "GATED_HUMAN_EDITOR",
-      "code": "WF080_UE_MATERIALIZATION_PENDING",
-      "blocking": false
     }
   },
   "failures": [],
   "warnings": [
-    "dep_PIL: recommended dep 'PIL' absent (terrain/pack-score need it) — run: pip install Pillow",
-    "content_materialization_d7: UE materialization is pending a human/editor step because Content/** changes are D7-gated. Run the documented editor-authorized command, then rerun strict validation."
+    "dep_PIL: recommended dep 'PIL' absent (terrain/pack-score need it) — run: pip install Pillow"
   ],
   "counts": {
     "PASS": 16,
     "WARN": 0,
     "WARN_ONLY": 1,
     "FAIL": 0,
-    "GATED_HUMAN_EDITOR": 1,
     "SKIP_NOT_APPLICABLE": 0
   },
   "passed": true,

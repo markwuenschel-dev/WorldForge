@@ -10,7 +10,7 @@ that makes every validator's output mean the same thing.
 This runbook is the operator's entry point. The behavior it documents is governed
 by two frozen contracts — quote them, do not contradict them:
 
-- [`docs/contracts/v0_9_validation_contract.md`](../contracts/v0_9_validation_contract.md) — report shape, the six verdicts, strict semantics, D7 wording.
+- [`docs/contracts/v0_9_validation_contract.md`](../contracts/v0_9_validation_contract.md) — report shape, the five verdicts, strict semantics, UE-check wording.
 - [`docs/contracts/v0_9_failure_taxonomy.md`](../contracts/v0_9_failure_taxonomy.md) — the `WFnnn` failure codes and how to clear each one.
 
 ---
@@ -36,7 +36,7 @@ soft checks onto the shared six-verdict contract.
 
 - No new biome, terrain recipe, POI recipe, placement preset, or state preset.
 - No MeshForge / procedural-mesh framework, no new HDA authoring.
-- No new UE-side materialization. v0.9 never writes `Content/**` (D7 — see §4).
+- No new UE-side materialization. v0.9 never writes `Content/**` on its own (see §4).
 
 If you want new content, that is a forge release (v0.6 TerrainForge, v0.7 POIForge,
 v0.8 Runtime StateForge / Houdini intake). v0.9 only makes what already exists
@@ -44,10 +44,10 @@ v0.8 Runtime StateForge / Houdini intake). v0.9 only makes what already exists
 
 ---
 
-## 2. Strict mode and the six-verdict vocabulary
+## 2. Strict mode and the five-verdict vocabulary
 
 Every v0.9 validator writes one JSON report and prints a console summary using the
-**same** status vocabulary. There are exactly **six per-check verdicts** and four
+**same** status vocabulary. There are exactly **five per-check verdicts** and four
 overall statuses — no synonyms (contract §2, §7):
 
 | Verdict | Meaning | Blocks normally | Blocks under `STRICT=1` |
@@ -56,8 +56,7 @@ overall statuses — no synonyms (contract §2, §7):
 | `WARN` | Soft failure a hardened build should catch | no | **yes** |
 | `WARN_ONLY` | Intentionally non-blocking forever (legacy / explicitly allowed) | no | no |
 | `FAIL` | Blocking failure | **yes** | **yes** |
-| `GATED_HUMAN_EDITOR` | Non-failing because D7 blocks agent `Content/**` materialization | no | no |
-| `SKIP_NOT_APPLICABLE` | The spec genuinely lacks this surface | no | no |
+| `SKIP_NOT_APPLICABLE` | Spec genuinely lacks this surface (or an optional in-editor cross-check whose report is absent) | no | no |
 
 Overall `status` is one of `ok` / `warn` / `fail` / `error`; `passed == (status in {ok, warn})`,
 and the process exit code is `0` iff `passed`. `make` / CI gate on that exit code.
@@ -78,9 +77,8 @@ byte-for-byte the legacy behavior. The only thing strict changes:
 ```
 FAIL                 always blocking
 WARN                 becomes blocking      <- the entire point of strict mode
-WARN_ONLY            stays non-blocking     (explicitly allowed / legacy compat)
-GATED_HUMAN_EDITOR   stays non-blocking     (D7 human/editor step)
-SKIP_NOT_APPLICABLE  stays non-blocking     (surface genuinely absent)
+WARN_ONLY            stays non-blocking          (explicitly allowed / legacy compat)
+SKIP_NOT_APPLICABLE  stays non-blocking          (surface absent / optional cross-check not run)
 ```
 
 **WARN vs FAIL, in operator terms:** a `FAIL` is a real, mode-independent defect —
@@ -95,9 +93,9 @@ if strict surfaces a real problem, fix the artifact, not the validator
 ## 3. Reading a report
 
 The shared helper writes both a JSON report (under `procedural/reports/...`) and a
-console summary. Console tags map to verdicts: `[OK ]`→PASS, `[WARN ]`→WARN/WARN_ONLY,
-`[FAIL ]`→FAIL, `[GATED]`→GATED_HUMAN_EDITOR, `[SKIP ]`→SKIP_NOT_APPLICABLE. A
-`(blocks)` suffix marks a check that blocks in the current mode.
+console summary. Console tags map to verdicts: `[OK   ]`→PASS, `[WARN ]`→WARN/WARN_ONLY,
+`[FAIL ]`→FAIL, `[SKIP ]`→SKIP_NOT_APPLICABLE. A `(blocks)` suffix marks a check that
+blocks in the current mode.
 
 Each non-`PASS` check carries a stable `WFnnn` `code` from the
 [failure taxonomy](../contracts/v0_9_failure_taxonomy.md); the free-text `detail`
@@ -105,33 +103,28 @@ carries the specifics, and the code is the stable bucket for triage.
 
 ---
 
-## 4. D7-gated Content materialization
+## 4. UE checks
 
-Per locked decision **D7**, agents cannot materialize `Content/**` (`.uasset` /
-`.umap`) — that is CODEOWNERS / human-review territory, enforced by
-`check_agent_permissions.py` and CI. Any check that depends on a UE-side
-materialization an agent cannot perform is **`GATED_HUMAN_EDITOR`**: non-failing in
-**both** normal and strict mode, and reported with this exact canonical wording
-(`validation_report.GATED_HUMAN_EDITOR_NOTE`):
+Some checks assert a UE-side artifact under `Content/**` (`.uasset` / `.umap`) that
+the tooling materializes by driving the editor. These use `ue_check(...)`, a
+**normal blocking check**: artifact present and valid → `PASS`, missing → `FAIL`.
+There is no deferred verdict — the UE work is run, not postponed. Human-authored
+master assets stay owner-owned and are protected from repair/destroy by the
+ownership/provenance model.
 
-> UE materialization is pending a human/editor step because Content/** changes are
-> D7-gated. Run the documented editor-authorized command, then rerun strict
-> validation.
+The commands that materialize these artifacts (so their `ue_check` reports `PASS`):
 
-`GATED_HUMAN_EDITOR` means "the artifact-side work is done; what remains is a
-human/editor UE step." A gated check clears to `PASS` once the editor runs the
-documented command and the corresponding UE report appears. The three
-editor-authorized commands that clear gated checks:
-
-| Editor command | Clears | Failure code |
+| Editor command | Materializes | Failure code if missing |
 |---|---|---|
 | `make relocate-houdini-asset ASSET=…` | `asset_exists_in_ue_as_static_mesh` (generated-asset intake) | `WF080` / `WF081` |
 | `make apply-state-scenario NAME=… SCENARIO=…` | `ue_state_applied` (runtime scenario) | `WF082` |
 | `make import-terrain NAME=…` | terrain UE-import presence | `WF080` |
 
 These run inside UE editor Python (`UE_PYTHON`), with the relevant slice map open
-where required. After running one, re-run the validator with `STRICT=1` to confirm
-the gated check has cleared.
+where required. Where a UE cross-check is **optional**, the validator asserts it with
+`ue_check(...)` when its editor report is present and records `skip(...)` →
+`SKIP_NOT_APPLICABLE` (non-blocking) otherwise, so the pure-Python data layer
+validates cleanly — even under `STRICT=1` — without an editor.
 
 ---
 
@@ -154,11 +147,12 @@ make package-check PACK=desert_production_seed STRICT=1
 
 A green run means: the toolchain is healthy, nothing in the tree has slipped its
 ownership/provenance/path guarantees, the canonical intake asset and runtime
-scenario pass strict (gated UE checks aside), both seed world packs validate deeply
-under strict, and both packs are package/ship-ready (the production seed under
-strict). The only non-blocking residue you should see is `GATED_HUMAN_EDITOR` lines
-for UE-side materialization (§4) — those clear when the editor runs the documented
-commands.
+scenario pass strict (optional UE cross-checks aside), both seed world packs validate
+deeply under strict, and both packs are package/ship-ready (the production seed under
+strict). The only non-blocking residue you should see is `SKIP_NOT_APPLICABLE` lines
+for optional UE cross-checks whose editor reports are not yet present (§4) — those
+become real `PASS`/`FAIL` `ue_check`s once the tooling runs the documented commands
+in-editor.
 
 > On Windows, prefix the underlying Python invocations with `PYTHONUTF8=1` (or set
 > it in the environment) so emoji/Unicode in tool output does not crash cp1252.
@@ -175,7 +169,7 @@ make repair-world-pack PACK=desert_poi_lite_seed
 # REPAIR — re-derive missing pure-Python artifacts (placement DataAssets)
 make repair-world-pack PACK=desert_poi_lite_seed APPLY=1
 
-# REPAIR — additionally run per-slice UE repair for D7-gated map gaps (needs editor)
+# REPAIR — additionally run per-slice UE repair for UE-materialization map gaps (needs editor)
 make repair-world-pack PACK=desert_poi_lite_seed APPLY=1 UE=1
 
 # DESTROY — dry-run: lists what WOULD be removed, deletes nothing, registry untouched
@@ -194,8 +188,8 @@ make create-world-pack  PACK=desert_poi_lite_seed JOBS=4
 - `repair-world-pack` default = **diagnose** (report only). `APPLY=1` re-derives any
   *missing* placement DataAsset via `generate_placement_da.py` (pure Python, no UE).
   `APPLY=1 UE=1` additionally runs `run_ue_repair.py` per registered slice — that
-  needs an editor; without it the UE map gap stays `GATED_HUMAN_EDITOR` and never
-  blocks. `STRICT=1` escalates soft gaps (e.g. a stale registry `input_hash`).
+  needs an editor and materializes the UE map so its `ue_check` reports `PASS`.
+  `STRICT=1` escalates soft gaps (e.g. a stale registry `input_hash`).
 - `destroy-world-pack` default = **dry-run**. `CONFIRM=1` performs deletion and
   writes the registry. `STRICT=1` only affects reporting.
 
@@ -214,8 +208,10 @@ taxonomy's flow ([`v0_9_failure_taxonomy.md` §Triage flow](../contracts/v0_9_fa
    forbidden path → relocate into the owned tree; `WF060` budget exceeded → reduce
    counts/dimensions or justify a budget change; `WF090` forbidden dependency →
    relocate the dependency).
-3. **`GATED_HUMAN_EDITOR` only** → the artifact-side work is done; a D7 editor step
-   remains. Run the documented command (§4), then re-validate with `STRICT=1`.
+3. **UE `FAIL` (`WF080`–`WF082`)** → the UE artifact was absent when its `ue_check`
+   ran. Have the tooling drive the editor to materialize it (§4), then re-validate
+   with `STRICT=1`. (An optional UE cross-check whose report is not yet present is
+   `SKIP_NOT_APPLICABLE`, not a failure.)
 4. **`WARN` under non-strict** → not blocking today, but `STRICT=1` will fail on it.
    Resolve before declaring production-ready, or consciously downgrade to
    `WARN_ONLY` with a recorded justification (contract §4 migration rule).
@@ -252,13 +248,13 @@ The lifecycle tools are deliberately conservative — they only ever touch the
 
 ## 8. Known limitations (be honest)
 
-- **Orphan `Content/WorldForge/Maps/*.umap` left for a human.** This checkout
+- **Unregistered orphan `Content/WorldForge/Maps/*.umap`.** This checkout
   carries **3** unregistered, tracked orphan maps that `make list-orphans` flags:
   `Desert_Test_Ash_01.umap`, `Desert_Test_HeavyIndustrial_01.umap`,
-  `Desert_Test_Sandy_01.umap`. They are intentionally **not** deleted by any agent:
-  `Content/**` is D7-gated and CI blocks agent-authored `.umap` changes, so
-  `make clean-orphans --confirm` (which mutates `Content/**`) is a **human/editor**
-  step. To remove them, a human runs from the repo root:
+  `Desert_Test_Sandy_01.umap`. They are not removed automatically because they are
+  unregistered — outside any pack's owned set, so the lifecycle tools leave them
+  alone. To remove them, the tooling drives the editor via
+  `make clean-orphans CONFIRM=1`, or run from the repo root:
 
   ```bash
   git rm Content/WorldForge/Maps/Desert_Test_Ash_01.umap \
@@ -267,11 +263,13 @@ The lifecycle tools are deliberately conservative — they only ever touch the
   # or, in-editor: make clean-orphans CONFIRM=1
   ```
 
-- **UE-gated checks need the editor.** Every `GATED_HUMAN_EDITOR` line (generated-
-  asset StaticMesh presence, runtime `ue_state_applied`, terrain UE-import, world-
-  pack owned-`.umap` / human-`/Game` dependency presence) stays non-blocking until a
-  human/editor runs the documented command (§4). The full data layer validates
-  green *without* an editor; the UE surface lights up afterward.
+- **UE checks need the editor.** UE artifacts (generated-asset StaticMesh presence,
+  runtime `ue_state_applied`, terrain UE-import, world-pack owned-`.umap` /
+  human-`/Game` dependency presence) are real `ue_check`s: present+valid → `PASS`,
+  missing → `FAIL`. Where the cross-check is optional, it is `SKIP_NOT_APPLICABLE`
+  (non-blocking) until its editor report is present, then a real `PASS`/`FAIL`. The
+  tooling drives the editor to materialize the artifact (§4). The full data layer
+  validates green *without* an editor; the UE surface lights up afterward.
 - **Headless MIC texture-override bug (TICKET-001).** Headless `SceneCapture` does
   not apply Material Instance texture-parameter overrides, so headless renders of a
   master-material-driven terrain can come back grey. This is worked around elsewhere
@@ -306,28 +304,26 @@ WORLDFORGE DOCTOR — local factory health (strict=off)
   [OK   ] registry_roots_readable — parsed 5 registry root(s), 45 total entries
   [OK   ] houdini_generated_asset_registry — generated-asset registry readable — 1 asset(s) tracked
   [OK   ] report_dir_writable — .../procedural/reports/worldforge_doctor
-  [GATED] content_materialization_d7 — UE materialization is pending a human/editor step because Content/** changes are D7-gated. Run the documented editor-authorized command, then rerun strict validation.
-COUNTS: PASS=16, WARN_ONLY=1, GATED_HUMAN_EDITOR=1
-[worldforge-doctor] PASS — worldforge_local_factory (0 failure(s), 2 warning(s), strict=off)
+COUNTS: PASS=16, WARN_ONLY=1
+[worldforge-doctor] PASS — worldforge_local_factory (0 failure(s), 1 warning(s), strict=off)
 ```
 
 The `dep_PIL` line is `WARN_ONLY` (Pillow is needed only by terrain/pack-score), so
-it does **not** block even under `STRICT=1`. The `content_materialization_d7` line
-is the always-present, never-blocking D7 note. `unreal_editor_path` is also
-non-blocking in both modes — pure-Python build/validate works without an editor.
+it does **not** block even under `STRICT=1`. `unreal_editor_path` is also non-blocking
+in both modes — pure-Python build/validate works without an editor.
 
 ### `make audit-generated-content`
 
 ```text
 WORLDFORGE AUDIT — generated content ownership/provenance/path (strict=off)
-  [PASS] registries       PASS=10 WARN=0 FAIL=0 GATED=0 SKIP=5
-  [PASS] generated_assets PASS=11 WARN=0 FAIL=0 GATED=0 SKIP=1
-  [PASS] terrain          PASS=14 WARN=0 FAIL=0 GATED=0 SKIP=1
-  [PASS] poi              PASS=36 WARN=0 FAIL=0 GATED=0 SKIP=6
-  [PASS] slices           PASS=360 WARN=0 FAIL=0 GATED=0 SKIP=0
-  [PASS] placement        PASS=216 WARN=0 FAIL=0 GATED=0 SKIP=0
-  [PASS] scenarios        PASS=10 WARN=0 FAIL=0 GATED=0 SKIP=0
-  [PASS] catalogs         PASS=2 WARN=0 FAIL=0 GATED=0 SKIP=0
+  [PASS] registries       PASS=10 WARN=0 FAIL=0 SKIP=5
+  [PASS] generated_assets PASS=11 WARN=0 FAIL=0 SKIP=1
+  [PASS] terrain          PASS=14 WARN=0 FAIL=0 SKIP=1
+  [PASS] poi              PASS=36 WARN=0 FAIL=0 SKIP=6
+  [PASS] slices           PASS=360 WARN=0 FAIL=0 SKIP=0
+  [PASS] placement        PASS=216 WARN=0 FAIL=0 SKIP=0
+  [PASS] scenarios        PASS=10 WARN=0 FAIL=0 SKIP=0
+  [PASS] catalogs         PASS=2 WARN=0 FAIL=0 SKIP=0
 
 AUDITED 87 item(s) across 8 surface(s)
 COUNTS: PASS=659, SKIP_NOT_APPLICABLE=13
@@ -343,8 +339,8 @@ running the per-pack `package-check`.
 
 ## 10. See also
 
-- [`docs/guides/houdini_asset_intake.md`](houdini_asset_intake.md) — generated-asset intake; v0.9 strict + gated UE StaticMesh check.
-- [`docs/guides/runtime_stateforge_v0_8.md`](runtime_stateforge_v0_8.md) — runtime scenarios; v0.9 strict + gated `ue_state_applied`.
+- [`docs/guides/houdini_asset_intake.md`](houdini_asset_intake.md) — generated-asset intake; v0.9 strict + UE StaticMesh `ue_check`.
+- [`docs/guides/runtime_stateforge_v0_8.md`](runtime_stateforge_v0_8.md) — runtime scenarios; v0.9 strict + `ue_state_applied` `ue_check`.
 - [`docs/contracts/v0_9_validation_contract.md`](../contracts/v0_9_validation_contract.md) · [`docs/contracts/v0_9_failure_taxonomy.md`](../contracts/v0_9_failure_taxonomy.md).
 </content>
 </invoke>

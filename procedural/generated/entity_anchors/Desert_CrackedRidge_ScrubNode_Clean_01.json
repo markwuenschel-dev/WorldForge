@@ -1,0 +1,516 @@
+{
+  "schema_version": "wf.entity_anchors.v1",
+  "slice_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+  "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+  "world_pack_map": "/Game/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01",
+  "biome": "desert",
+  "variant": "cracked",
+  "seed": 9018,
+  "poi": {
+    "name": "POI_ScrublandResourceNode_01",
+    "type": "scrubland_resource_node"
+  },
+  "owned_by": "generated",
+  "destroyable": true,
+  "level_design_consumed": true,
+  "level_design_ref": {
+    "source": "generate_level_design",
+    "consumed": true,
+    "player_start_world": [
+      6721.39,
+      -5117.78,
+      0.0
+    ],
+    "poi_origin_world": [
+      -7128.75,
+      5427.94,
+      0.0
+    ],
+    "safe_zones_world": [
+      {
+        "center_world": [
+          7491.7,
+          1690.22,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "safe_zone"
+      }
+    ],
+    "danger_zones_world": [
+      {
+        "center_world": [
+          -13952.59,
+          -1889.88,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "danger_zone"
+      }
+    ],
+    "level_design_content_hash": "333dcb07c42f06af8fab1807e1271d58825ef7f67ed5250c5b76b8e6c83390cd",
+    "slice_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+    "approach_bearing_xy": [
+      0.7956190922917354,
+      -0.6057972102782211
+    ]
+  },
+  "density_budget": {
+    "max_anchors_per_map": 40,
+    "max_spawn_zones_per_map": 12,
+    "max_enemy_spawn_zones_per_map": 4,
+    "max_capacity_per_zone": 8,
+    "max_total_spawn_capacity": 30
+  },
+  "world_model": {
+    "ground_z": 0,
+    "player_start": [
+      2785,
+      -2120,
+      0
+    ],
+    "player_start_radius_cm": 500,
+    "poi_origin": [
+      0,
+      0,
+      0
+    ],
+    "poi_origin_world": [
+      -7128.75,
+      5427.94,
+      0.0
+    ],
+    "critical_route": [
+      [
+        2785,
+        -2120,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "route_corridor_radius_cm": 800,
+    "safe_zones": [
+      {
+        "center": [
+          2785,
+          -2120,
+          0
+        ],
+        "radius_cm": 2500
+      }
+    ],
+    "danger_zones": [
+      {
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "radius_cm": 2000
+      }
+    ],
+    "blocking_volumes": [],
+    "max_slope_deg": 35,
+    "float_tolerance_cm": 50,
+    "bury_tolerance_cm": 50,
+    "edge_max_dist_cm": 4000
+  },
+  "anchors": [
+    {
+      "id": "safe_zone_center",
+      "type": "safe_zone_anchor",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        2785,
+        -2120,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2500
+      },
+      "ground_z": 0,
+      "slope_deg": 0,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      }
+    },
+    {
+      "id": "danger_zone_core",
+      "type": "danger_zone_anchor",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2000
+      },
+      "ground_z": 0,
+      "slope_deg": 9,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "difficulty_tag": "standard"
+    },
+    {
+      "id": "entity_marker_entry",
+      "type": "entity_anchor",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        0,
+        -1500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 3,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "interaction_entry",
+      "type": "interaction_anchor",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        0,
+        -1500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 0,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "npc_spawn_entry",
+      "type": "npc_spawn_zone",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        0,
+        -1500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 11,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "faction_tag": "neutral_traders",
+      "archetypes": [
+        "neutral_trader_placeholder",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "interaction_center",
+      "type": "interaction_anchor",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 7,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "role": "primary"
+    },
+    {
+      "id": "encounter_core",
+      "type": "encounter_anchor",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 1,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "scavenge_contested"
+    },
+    {
+      "id": "enemy_spawn_core",
+      "type": "enemy_spawn_zone",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 11,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "scavenge_contested",
+      "archetypes": [
+        "raider",
+        "guard"
+      ],
+      "capacity": 4,
+      "allow_in_safe_zone": false
+    },
+    {
+      "id": "faction_ownership_core",
+      "type": "faction_ownership_anchor",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 8,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "faction_tag": "raiders"
+    },
+    {
+      "id": "neutral_spawn_support",
+      "type": "neutral_spawn_zone",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        800,
+        600,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 0,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "faction_tag": "scavengers",
+      "archetypes": [
+        "scavenger",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "idle_support",
+      "type": "idle_anchor",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        800,
+        600,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 8,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "faction_tag": "ambient",
+      "archetypes": [
+        "ambient_creature_placeholder"
+      ]
+    },
+    {
+      "id": "patrol_0",
+      "type": "patrol_anchor",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        800,
+        600,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 8,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    },
+    {
+      "id": "patrol_1",
+      "type": "patrol_anchor",
+      "map_id": "Desert_CrackedRidge_ScrubNode_Clean_01",
+      "position": [
+        -1500,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 0,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    }
+  ],
+  "provenance": {
+    "generator": "generate_entity_anchors",
+    "generator_version": "1.0.0",
+    "generated_at_utc": "2026-07-01T22:06:07.824096+00:00",
+    "source_spec_hash": "76e6d042204783a8e9bde88c324679296f71670089988319aa9eac73bd380fcb",
+    "source_spec_path": "D:\\Unreal Projects\\WorldForge\\procedural\\slices\\desert\\generated\\Desert_CrackedRidge_ScrubNode_Clean_01.json",
+    "seed": 9018,
+    "owned_by": "generated",
+    "destroyable": true
+  },
+  "content_hash": "11a68f696db2b20c265e9ad4bc3def406db51d3a8e8937449f03f189dacf361d"
+}

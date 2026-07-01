@@ -57,7 +57,6 @@ from validation_report import (  # noqa: E402  (sibling contract module)
     WARN,
     WARN_ONLY,
     FAIL,
-    GATED_HUMAN_EDITOR,
     SKIP_NOT_APPLICABLE,
 )
 from failure_codes import FailureCode  # noqa: E402
@@ -629,14 +628,13 @@ _TAG = {
     WARN: "[WARN ]",
     WARN_ONLY: "[WARN ]",
     FAIL: "[FAIL ]",
-    GATED_HUMAN_EDITOR: "[GATED]",
     SKIP_NOT_APPLICABLE: "[SKIP ]",
 }
 
 
 def _surface_counts(a):
     counts = {s: {PASS: 0, WARN: 0, WARN_ONLY: 0, FAIL: 0,
-                  GATED_HUMAN_EDITOR: 0, SKIP_NOT_APPLICABLE: 0} for s in SURFACES}
+                  SKIP_NOT_APPLICABLE: 0} for s in SURFACES}
     for name, c in a.rep.checks.items():
         surface = a.surface_of.get(name)
         if surface is None:
@@ -650,7 +648,7 @@ def _surface_verdict(c):
         return "FAIL"
     if c[WARN]:
         return "WARN"
-    if c[WARN_ONLY] or c[GATED_HUMAN_EDITOR]:
+    if c[WARN_ONLY]:
         return "WARN"
     return "PASS"
 
@@ -675,10 +673,10 @@ def print_report(a, strict, quiet):
                 block = " (blocks)" if chk.get("blocking") else ""
                 print("    {} {}{} — {}".format(tag, name, block, chk.get("detail", "")))
         # per-surface roll-up line
-        print("  [{}] {:<16} PASS={} WARN={} FAIL={} GATED={} SKIP={}".format(
+        print("  [{}] {:<16} PASS={} WARN={} FAIL={} SKIP={}".format(
             _surface_verdict(c), surface,
             c[PASS], c[WARN] + c[WARN_ONLY], c[FAIL],
-            c[GATED_HUMAN_EDITOR], c[SKIP_NOT_APPLICABLE]))
+            c[SKIP_NOT_APPLICABLE]))
 
 
 def main(argv=None):

@@ -18,11 +18,10 @@ whole tree has slipped its ownership guarantees; package-check asks the narrower
 ship-time question — "is THIS world pack safe to cook/package?" — and resolves a
 per-pack budget profile to enforce performance caps the audit does not.
 
-D7 gating (v0.9 contract §5): an agent cannot materialize ``Content/**``. A check
-that depends on a UE-side materialization (an owned ``.umap`` on disk, a human-owned
-``/Game`` dependency being importable) is therefore GATED_HUMAN_EDITOR — non-blocking,
-clears to PASS once the editor materializes it. Only artifact-side, repo-checkable
-guarantees FAIL.
+UE materialization: the tooling drives the editor to materialize ``Content/**``
+(owned ``.umap`` on disk, importable ``/Game`` dependencies). A check that depends
+on a UE-side artifact PASSes when the artifact is present and FAILs when it is
+absent (run the editor to produce it). Repo-checkable guarantees FAIL directly.
 
 NON-MUTATING: never writes into ``Content/**`` or any registry. The only thing it
 writes is its own report under ``procedural/reports/package_check/<pack>/``.
@@ -58,7 +57,6 @@ from validation_report import (  # noqa: E402  (sibling contract module)
     WARN,
     WARN_ONLY,
     FAIL,
-    GATED_HUMAN_EDITOR,
     SKIP_NOT_APPLICABLE,
 )
 from failure_codes import FailureCode  # noqa: E402
@@ -74,6 +72,21 @@ from generated_asset_registry import (  # noqa: E402
 )
 
 DEFAULT_REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
+def _ue_asset_on_disk(repo_root, ref):
+    """True if a /Game or Content UE asset reference is materialized on disk."""
+    if ref.startswith("Content/"):
+        return (repo_root / ref).is_file()
+    if ref.startswith("/Game/"):
+        rest = ref[len("/Game/"):]
+    elif ref.endswith((".umap", ".uasset")):
+        return (repo_root / ref).is_file()
+    else:
+        rest = ref
+    return ((repo_root / ("Content/" + rest + ".uasset")).is_file()
+            or (repo_root / ("Content/" + rest + ".umap")).is_file())
+
 
 REPORT_DIR_REL = "procedural/reports/package_check"
 REPORT_FILENAME = "package_check_report.json"
@@ -182,11 +195,12 @@ class PackChecker:
     def warn(self, category, item, name, ok, detail="", code=None):
         return self.chk(category, item, name, ok, detail, code=code, warn_only=True)
 
-    def gated(self, category, item, name, ok, detail="", code=None):
+    def ue_check(self, category, item, name, ok, detail="", code=None):
+        """A UE-artifact presence check: present -> PASS, absent -> FAIL."""
         full = self._full(category, item, name)
         self.category_of[full] = category
         self.seen(category, item)
-        return self.rep.gated(full, ok, detail, code=code)
+        return self.rep.ue_check(full, ok, detail, code=code)
 
     def skip(self, category, item, name, detail=""):
         full = self._full(category, item, name)
@@ -370,14 +384,14 @@ def check_slices(c, rp, slice_registry, spec_dir):
                   "{} is a forbidden Houdini Temp/Bake path: {}".format(label, dep),
                   code=FailureCode.PACKAGE_FORBIDDEN_DEPENDENCY)
 
-        # -- owned-asset presence: repo-side hard, UE Content D7-gated --
+        # -- owned-asset presence: repo-side hard, UE Content materialized by the editor --
         for oa in entry.get("owned_assets", []) or []:
             if oa.startswith("/Game/") or oa.startswith("Content/") or oa.endswith((".umap", ".uasset")):
-                # UE Content materialization is D7-gated for agents.
-                c.gated("owned_assets", sid, "owned_ue_materialized[{}]".format(_slug(oa)),
-                        (c.repo_root / oa).is_file() if oa.startswith("Content/") else False,
-                        "owned UE asset not present on disk (D7-gated materialization): {}".format(oa),
-                        code=FailureCode.UE_MATERIALIZATION_PENDING)
+                # UE Content is materialized on disk by driving the editor; check it.
+                c.ue_check("owned_assets", sid, "owned_ue_materialized[{}]".format(_slug(oa)),
+                        _ue_asset_on_disk(c.repo_root, oa),
+                        "owned UE asset not materialized on disk (run the editor build): {}".format(oa),
+                        code=FailureCode.UE_ARTIFACT_MISSING)
             else:
                 c.chk("owned_assets", sid, "owned_repo_present[{}]".format(_slug(oa)),
                       (c.repo_root / oa).is_file(),
@@ -396,14 +410,11 @@ def check_slices(c, rp, slice_registry, spec_dir):
                       "generated-owned reference resolves to no registry entry: {}".format(ra),
                       code=FailureCode.PACKAGE_UNRESOLVED_REFERENCE)
             else:
-                # human-owned /Game dependency: on-disk/import presence is editor-side (D7)
-                rest = ra[len("/Game/"):] if ra.startswith("/Game/") else ra
-                on_disk = ((c.repo_root / ("Content/" + rest + ".uasset")).is_file() or
-                           (c.repo_root / ("Content/" + rest + ".umap")).is_file())
-                c.gated("references", sid, "human_ref_importable[{}]".format(_slug(ra)), on_disk,
-                        "human-owned dependency not resolvable in this checkout "
-                        "(editor-side import, D7-gated): {}".format(ra),
-                        code=FailureCode.UE_MATERIALIZATION_PENDING)
+                # human-owned /Game dependency: check it is materialized on disk.
+                on_disk = _ue_asset_on_disk(c.repo_root, ra)
+                c.ue_check("references", sid, "human_ref_importable[{}]".format(_slug(ra)), on_disk,
+                        "human-owned dependency not present on disk in this checkout: {}".format(ra),
+                        code=FailureCode.UE_ARTIFACT_MISSING)
 
         # -- ownership integrity: owned/destroyable set must not include a
         #    human-owned referenced dependency --
@@ -735,14 +746,13 @@ _TAG = {
     WARN: "[WARN ]",
     WARN_ONLY: "[WARN ]",
     FAIL: "[FAIL ]",
-    GATED_HUMAN_EDITOR: "[GATED]",
     SKIP_NOT_APPLICABLE: "[SKIP ]",
 }
 
 
 def _category_counts(c):
     counts = {cat: {PASS: 0, WARN: 0, WARN_ONLY: 0, FAIL: 0,
-                    GATED_HUMAN_EDITOR: 0, SKIP_NOT_APPLICABLE: 0} for cat in CATEGORIES}
+                    SKIP_NOT_APPLICABLE: 0} for cat in CATEGORIES}
     for name, chk in c.rep.checks.items():
         cat = c.category_of.get(name)
         if cat is None:
@@ -756,7 +766,7 @@ def _category_verdict(cc):
         return "FAIL"
     if cc[WARN]:
         return "WARN"
-    if cc[WARN_ONLY] or cc[GATED_HUMAN_EDITOR]:
+    if cc[WARN_ONLY]:
         return "WARN"
     return "PASS"
 
@@ -781,10 +791,10 @@ def print_report(c, rp, budget_rows, strict, quiet):
                     tag = _TAG.get(ch.get("verdict"), "[????]")
                     block = " (blocks)" if ch.get("blocking") else ""
                     print("    {} {}{} — {}".format(tag, name, block, ch.get("detail", "")))
-        print("  [{}] {:<20} PASS={} WARN={} FAIL={} GATED={} SKIP={}".format(
+        print("  [{}] {:<20} PASS={} WARN={} FAIL={} SKIP={}".format(
             _category_verdict(cnt), cat,
             cnt[PASS], cnt[WARN] + cnt[WARN_ONLY], cnt[FAIL],
-            cnt[GATED_HUMAN_EDITOR], cnt[SKIP_NOT_APPLICABLE]))
+            cnt[SKIP_NOT_APPLICABLE]))
 
     if budget_rows:
         print("")

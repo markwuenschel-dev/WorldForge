@@ -13,8 +13,8 @@ make worldforge-doctor
 ```
 
 Expect `PASS`. `dep_PIL` is a soft WARN (install Pillow for terrain preview
-niceties). `content_materialization_d7` is `GATED` by design — see Known
-Limitations.
+niceties). The `content_materialization` check reports the state of the in-editor
+UE materialization the tooling drives — see Known Limitations.
 
 ## 1. Static spec pre-flight (no UE, no generation)
 
@@ -67,7 +67,8 @@ make run-world-state-scenario PACK=desert_mvp_world SCENARIO=industrial_takeover
 Selects every industrial-path map (matrix `scenarios:` tag + POI fallback), mutates
 `industrial_pressure` 0.0→0.75, aggregates state, computes MPC/POI evidence, and
 performs a save/load round-trip per map. Expect `13/13 compatible maps PASS`. The
-two UE bridge checks (post-scenario map validity, MPC read-back) stay `GATED`.
+post-scenario map validity is a real `ue_check` (`PASS`/`FAIL`); the in-editor MPC
+read-back is `SKIP_NOT_APPLICABLE` (non-blocking) until its editor report is present.
 Report: `procedural/reports/world_packs/desert_mvp_world/run_world_state_scenario_report.json`.
 
 ## 5. Playable inspection metadata

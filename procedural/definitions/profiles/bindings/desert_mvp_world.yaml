@@ -1,0 +1,43 @@
+world_pack_id: desert_mvp_world
+description: >
+  Environment/visual-profile binding overlay for the desert_mvp_world 25-map pack.
+  This overlay does NOT modify generated specs; it binds every slice_id to a
+  materially-real environment profile under procedural/definitions/profiles/.
+  default_environment_profile is explicitly declared and itself validated, but
+  every slice is still listed explicitly (no silent fallback in strict mode).
+
+default_environment_profile: photoreal_desert_day
+
+bindings:
+  # === Path A — industrial_takeover (high industrial pressure) ===============
+  Desert_AshFlats_IndustrialYard_Heavy_01:       cinematic_desert_high_contrast
+  Desert_AshFlats_DebrisCheckpoint_Ind_01:       dust_storm_desert
+  Desert_AshFlats_MiningCamp_Ruined_01:          fog_heavy_desert
+  Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: cinematic_desert_high_contrast
+  Desert_AshFlats_IndustrialYard_Ruined_01:      low_visibility_horror_desert
+  Desert_SandyBasin_DebrisCheckpoint_Ind_01:     dust_storm_desert
+  Desert_CrackedRidge_MiningCamp_Ruined_01:      fog_heavy_desert
+  Desert_AshFlats_DebrisCheckpoint_Light_01:     photoreal_desert_dusk
+
+  # === Path B — clean_preserve (low impact / recovery) =======================
+  Desert_SandyBasin_ScrubNode_Clean_01:          clean_gameplay_readable_desert
+  Desert_CrackedRidge_RidgeLookout_Clean_01:     photoreal_desert_day
+  Desert_AshFlats_ShrineRuin_Clean_01:           stylized_desert_dusk
+  Desert_SandyBasin_ShrineRuin_Clean_01:         stylized_desert_day
+  Desert_CrackedRidge_CleanScrub_Clean_01:       clean_gameplay_readable_desert
+  Desert_SandyBasin_RidgeLookout_Clean_01:       photoreal_desert_day
+
+  # === Path C — resource_survey (resource-oriented) ==========================
+  Desert_AshFlats_ScrubNode_Light_01:            performance_safe_desert
+  Desert_SandyBasin_ScrubNode_Survey_01:         photoreal_desert_day
+  Desert_AshFlats_ScrubNode_Survey_01:           performance_safe_desert
+  Desert_CrackedRidge_ScrubNode_Clean_01:        clean_gameplay_readable_desert
+  Desert_SandyBasin_MiningCamp_Light_01:         photoreal_desert_dusk
+  Desert_AshFlats_ScrubNode_Ind_01:              dust_storm_desert
+
+  # === Coverage fillers ======================================================
+  Desert_AshFlats_RidgeLookout_Heavy_01:         cinematic_desert_high_contrast
+  Desert_CrackedRidge_ShrineRuin_Light_01:       alien_surreal_desert
+  Desert_SandyBasin_IndustrialYard_Ind_01:       raytraced_high_desert
+  Desert_CrackedRidge_MiningCamp_Clean_01:       fog_heavy_desert
+  Desert_AshFlats_CleanScrub_Clean_01:           clean_gameplay_readable_desert

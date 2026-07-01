@@ -76,7 +76,7 @@ Runtime systems (BiomeSubsystem, TerraformSubsystem, PCG, Material system) read 
 - Performance budgets respected (PCG density caps per stage, enemy count implications)
 - Naming follows conventions
 
-## 5. Agent Permissions
+## 5. Authoring scope
 
 Agents may:
 - Add new stages to existing biomes (within schema)

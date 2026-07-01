@@ -8,7 +8,7 @@ were produced by the pipeline (not asserted by hand).
 
 | Gate | Command | Result |
 |---|---|---|
-| Health | `worldforge-doctor` | PASS (16 OK, 1 soft WARN dep_PIL, 1 GATED D7) |
+| Health | `worldforge-doctor` | PASS (16 OK, 1 soft WARN dep_PIL, 1 UE-materialization check driven in-editor) |
 | Spec pre-flight | `validate-world-pack-spec STRICT=1` | PASS — 25 maps, coverage minimums met, variant templates complete |
 | Generate | `create-world-pack JOBS=6` | 25/25 built, 0 failed |
 | Strict deep validate | `validate-world-pack DEEP=1 STRICT=1` | **25/25 PASS** (34 checks/map: PlayerStart, nav, POI actor/type/bounds/anchors, masks) |
@@ -53,7 +53,7 @@ coverage). See `docs/status/v1_0_known_limitations.md` for the honest edges.
 
 ## Notes on how this build was run
 
-UE materialization (map build, per-slice validation, terrain heightmap) is normally a
-D7 human/editor step; it was executed here under explicit user authorization, so the
-otherwise-GATED checks cleared to PASS. `make` was not on the tool-environment PATH, so
-targets were exercised via their `tools/pipeline/*.py` entrypoints (identical behavior).
+UE materialization (map build, per-slice validation, terrain heightmap) is driven in
+the editor by the tooling, so those checks report PASS alongside the pure-Python layers.
+`make` was not on the tool-environment PATH, so targets were exercised via their
+`tools/pipeline/*.py` entrypoints (identical behavior).

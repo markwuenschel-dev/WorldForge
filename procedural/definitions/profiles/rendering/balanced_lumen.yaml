@@ -1,0 +1,25 @@
+name: balanced_lumen
+kind: rendering
+# --- required (frozen) contract fields ---
+rendering_mode: balanced
+gi_method: lumen
+ray_tracing: optional
+shadow_quality: high
+# --- pipeline detail ---
+reflection_method: lumen
+anti_aliasing: TSR
+nanite: true
+lumen: true
+# --- v1.0x rendering-budget enrichment (Agent 6) ---
+virtual_shadow_maps: true
+volumetric_fog: moderate
+material_complexity_class: high
+texture_budget_class: high
+mesh_density_class: high
+foliage_density_class: high
+post_process_cost_class: high
+light_count_budget: 24
+fog_volume_budget: 3
+high_cost_material_budget: 12
+foliage_cluster_budget: 24
+cost_class: 4

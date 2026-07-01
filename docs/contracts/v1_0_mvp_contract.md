@@ -58,7 +58,7 @@ make destroy-world-pack      PACK=desert_mvp_world CONFIRM=1
 ```
 Pass 0  freeze v0.9 ............................. DONE (tag v0.9-production-hardening)
 Pass 1  contract + matrix + spec gate ........... DONE (validate-world-pack-spec PASS, strict)
-Pass 2  10-map smoke (orchestration + validate) . headless prep proves path; UE map gen is D7-gated
+Pass 2  10-map smoke (orchestration + validate) . headless prep proves path; UE map gen driven in-editor by the tooling
 Pass 3  25-map MVP + DEEP STRICT validate
 Pass 4  run-world-state-scenario industrial_takeover  (+ save/load round trip)
 Pass 5  playable inspection layer + inspection-metadata validation
@@ -85,9 +85,9 @@ make validate-world-pack      PACK=desert_mvp_world DEEP=1 STRICT=1
 
 all pass, AND the v0.5–v0.9 regression packs (`desert_poi_lite_seed`, `desert_production_seed`) remain green.
 
-## Known environment gates (not regressions)
+## Known environment notes (not regressions)
 
-- **D7 / Content\*\*\* gate:** generated maps + materials live under `Content/**` and are CODEOWNERS/CI-gated against agent authorship. UE materialization (map build, terrain heightmap import, material overrides) is therefore a **human/editor step**; validators record those checks as `GATED_HUMAN_EDITOR` (non-blocking even under `--strict`) until the editor-authorized command runs. The data/spec/prep/coverage/lifecycle layers are fully agent-runnable and strictly validated.
+- **UE materialization:** generated maps + materials live under `Content/**`. The tooling drives the editor to materialize them (map build, terrain heightmap import, material overrides) and validates the result. The data/spec/prep/coverage/lifecycle layers are pure-Python and strictly validated independently. Human-authored (`.uasset`/`.umap`/`.sbs`) assets remain owner-owned and protected from repair/destroy by the ownership/provenance model.
 - **Master base-color render bug:** deferred to TICKET-001; not a v1.0 blocker.
 
 ## Explicitly out of scope for v1.0

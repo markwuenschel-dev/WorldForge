@@ -35,9 +35,9 @@ reading `rep["passed"]` and `checks[*].ok`) keep working unchanged.
     }
   },
   "failures": [ "name: detail" ],      // LEGACY — BLOCKING failures only
-  "warnings": [ "name: detail" ],      // LEGACY — non-blocking soft/gated (present only if any)
+  "warnings": [ "name: detail" ],      // LEGACY — non-blocking soft warnings (present only if any)
   "counts": { "PASS": 5, "WARN": 0, "WARN_ONLY": 0, "FAIL": 0,
-              "GATED_HUMAN_EDITOR": 1, "SKIP_NOT_APPLICABLE": 0 },
+              "SKIP_NOT_APPLICABLE": 1 },
   "passed": true,                      // LEGACY — true iff no blocking failure
   "status": "ok"                       // LEGACY — ok | warn | fail | error
 }
@@ -56,10 +56,9 @@ Reports are written with `ValidationReport.write(report_dir, filename)` under
 | `WARN` | Soft failure a hardened build should catch | no | **yes** (unless allowed) |
 | `WARN_ONLY` | Intentionally non-blocking (legacy / explicitly allowed) | no | no |
 | `FAIL` | Blocking failure | **yes** | **yes** |
-| `GATED_HUMAN_EDITOR` | Non-failing because D7 blocks agent Content/** materialization | no | no |
-| `SKIP_NOT_APPLICABLE` | Spec genuinely lacks this surface | no | no |
+| `SKIP_NOT_APPLICABLE` | Spec genuinely lacks this surface (or an optional in-editor cross-check whose report is absent) | no | no |
 
-These six names are the **only** allowed per-check verdicts. Do not introduce
+These five names are the **only** allowed per-check verdicts. Do not introduce
 synonyms.
 
 ### How a verdict is chosen (API)
@@ -74,10 +73,11 @@ rep.check("descriptor_exists", path.is_file(), str(path),
           code=FailureCode.DESCRIPTOR_MISSING)          # -> PASS or FAIL
 rep.check("terrain_imported_in_ue", imported, "...",
           warn_only=True)                                # -> PASS or WARN
-rep.gated("asset_exists_in_ue_as_static_mesh", ue_ok, detail,
-          code=FailureCode.UE_MATERIALIZATION_PENDING)   # -> PASS or GATED_HUMAN_EDITOR
+rep.ue_check("asset_exists_in_ue_as_static_mesh", ue_ok, detail,
+             code=FailureCode.UE_ARTIFACT_MISSING)       # -> PASS or FAIL
 rep.warn_only("legacy_thing", ok, "...")                 # -> PASS or WARN_ONLY (never blocks)
 rep.skip("water_table", "spec has no water surface")     # -> SKIP_NOT_APPLICABLE
+# optional in-editor cross-check: ue_check when its editor report is present, else skip()
 rep.finalize()
 rep.write(report_dir, "validate_terrain_report.json")
 rep.print_summary("validate-terrain")
@@ -87,7 +87,7 @@ sys.exit(rep.exit_code)
 - `check(..., warn_only=False)` → `PASS` / `FAIL`. **Identical to the legacy closure.**
 - `check(..., warn_only=True)` → `PASS` / `WARN`. Non-blocking normally, **blocking under strict**.
 - `check(..., warn_only=True, allow_in_strict=True)` (or `warn_only(...)`) → `WARN_ONLY`. Never blocks.
-- `gated(...)` → `PASS` / `GATED_HUMAN_EDITOR`. Never blocks; clears to PASS once the editor command runs.
+- `ue_check(...)` → `PASS` / `FAIL`. A **normal blocking check** for a UE artifact the tooling materializes by driving the editor: present+valid → PASS, missing → FAIL. There is no deferred state. Optional in-editor cross-checks use `ue_check(...)` when their editor report is present and `skip(...)` otherwise.
 - `skip(...)` → `SKIP_NOT_APPLICABLE`. Never blocks.
 - `error(detail)` → forces `status="error"`, `passed=False` (inputs missing/unparseable).
 
@@ -98,7 +98,7 @@ sys.exit(rep.exit_code)
 | `status` | When | `passed` |
 |---|---|---|
 | `ok` | No blocking failures, no unresolved warnings | `true` |
-| `warn` | No blocking failures, but `WARN`/`WARN_ONLY`/`GATED` present | `true` |
+| `warn` | No blocking failures, but `WARN`/`WARN_ONLY` present | `true` |
 | `fail` | One or more blocking failures | `false` |
 | `error` | Validation could not run (missing/unparseable inputs) | `false` |
 
@@ -118,14 +118,13 @@ behavior.
 FAIL                 always blocking
 WARN                 becomes blocking            (this is the point of strict mode)
 WARN_ONLY            stays non-blocking          (explicitly allowed / legacy compat)
-GATED_HUMAN_EDITOR   stays non-blocking          (D7 human/editor step)
-SKIP_NOT_APPLICABLE  stays non-blocking          (surface genuinely absent)
+SKIP_NOT_APPLICABLE  stays non-blocking          (surface absent / optional cross-check not run)
 ```
 
 **Migration rule for validator owners (Agents 1/6/7):** when you adopt the shared
 helper, every existing `warn_only=True` check must be *consciously classified*:
 
-- Is it a **UE/Content materialization** step blocked by D7? → use `gated(...)`.
+- Is it a **UE/Content artifact** the tooling materializes by driving the editor? → use `ue_check(...)` (a real `PASS`/`FAIL` check). If it is an *optional* in-editor cross-check, use `ue_check(...)` when its editor report is present and `skip(...)` otherwise.
 - Is it a **genuine soft warning** a production build should not ship with? → keep
   `check(..., warn_only=True)` so strict catches it (`WARN`).
 - Is it **intentionally non-blocking forever** (legacy compatibility)? → use
@@ -136,23 +135,24 @@ fix the artifact, not the validator.
 
 ---
 
-## 5. D7-gated Content materialization
+## 5. UE checks
 
-Per locked decision **D7** (see `docs/architecture/forge_design_decisions.md`),
-agents cannot materialize `Content/**` (`.uasset`/`.umap`) — that is CODEOWNERS /
-human-review territory, enforced by `check_agent_permissions.py` and CI. Any check
-that depends on a UE-side materialization an agent cannot perform is
-`GATED_HUMAN_EDITOR`, and reports it with this exact canonical wording
-(`validation_report.GATED_HUMAN_EDITOR_NOTE`):
-
-> UE materialization is pending a human/editor step because Content/** changes are
-> D7-gated. Run the documented editor-authorized command, then rerun strict
-> validation.
-
-A `GATED_HUMAN_EDITOR` check is non-failing in both normal and strict mode. It
-clears to `PASS` once the human/editor runs the documented command (e.g.
+Some checks assert a UE-side artifact under `Content/**` (`.uasset`/`.umap`) that
+the tooling materializes by driving the editor. These use `ue_check(name, ok,
+detail, code=...)`, a **normal blocking check**: the artifact present and valid →
+`PASS`; missing → `FAIL`. There is no deferred verdict — the UE work is run, not
+postponed. The tooling drives the editor to produce the artifact (e.g.
 `make relocate-houdini-asset ...`, `make apply-state-scenario ...`,
-`make import-terrain ...`) and the corresponding UE report appears.
+`make import-terrain ...`), then re-validation reports `PASS`. Human-authored master
+assets stay owner-owned and are protected from repair/destroy by the
+ownership/provenance model.
+
+Some UE cross-checks are **optional** (e.g. the runtime-state MPC bridge readback,
+a terrain heightmap import, a generated-asset StaticMesh relocate). These are
+verified with `ue_check(...)` **when their editor report is present**, and otherwise
+recorded with `skip(...)` → `SKIP_NOT_APPLICABLE` — non-blocking and neutral, so the
+authoring-side data layer validates cleanly (even under `STRICT=1`) without an
+editor, and the UE cross-check lights up once its report appears.
 
 ---
 
@@ -169,12 +169,12 @@ audit grouping, and the runbook. Full table with remediation:
 ## 7. Shared-status names (use these literals everywhere)
 
 ```
-verdicts : PASS  WARN  WARN_ONLY  FAIL  GATED_HUMAN_EDITOR  SKIP_NOT_APPLICABLE
+verdicts : PASS  WARN  WARN_ONLY  FAIL  SKIP_NOT_APPLICABLE
 status   : ok  warn  fail  error
 ```
 
 Console summaries use `print_summary(tag)` and render `PASS`/`FAIL` headline plus
-per-line `FAIL:` / `WARN:` / `WARN_ONLY:` / `GATED_HUMAN_EDITOR:` prefixes.
+per-line `FAIL:` / `WARN:` / `WARN_ONLY:` prefixes.
 
 ---
 

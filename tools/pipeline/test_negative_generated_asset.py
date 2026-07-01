@@ -2,7 +2,7 @@
 """
 test_negative_generated_asset.py
 Negative-fixture gate for the Houdini generated-asset intake sidecar
-(forge_design_decisions D7 / Risk 2).
+(generated-asset intake negative fixtures).
 
 For every invalid definition under tests/fixtures/invalid_generated_assets/, run
 register_generated_asset.py (via --definition-path) and assert it is REJECTED

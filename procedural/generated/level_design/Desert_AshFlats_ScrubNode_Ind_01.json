@@ -1,0 +1,713 @@
+{
+  "slice_id": "Desert_AshFlats_ScrubNode_Ind_01",
+  "schema_version": "wf-level-design-v1",
+  "world_pack_id": "desert_mvp_world",
+  "generated": true,
+  "registry_owner": "worldforge_level_design_overlay",
+  "seed": 9020,
+  "biome": "desert",
+  "variant": "industrialized",
+  "state_key": "industrial_pressure",
+  "poi_type": "scrubland_resource_node",
+  "primary_class": "resource_site",
+  "budget_class": "light",
+  "terrain_bounds": {
+    "min": [
+      -25600.0,
+      -25600.0
+    ],
+    "max": [
+      25600.0,
+      25600.0
+    ],
+    "height_range_cm": [
+      0.0,
+      2000.0
+    ]
+  },
+  "player_start": {
+    "id": "player_start",
+    "world_position": [
+      3474.24,
+      7700.54,
+      0.0
+    ],
+    "bounds": {
+      "min": [
+        2474.2392644301563,
+        6700.5431973005525,
+        0.0
+      ],
+      "max": [
+        4474.239264430156,
+        8700.543197300552,
+        300.0
+      ]
+    },
+    "facing_deg": 245.72,
+    "facing_vector": [
+      -0.4112,
+      -0.9115,
+      0.0
+    ],
+    "orientation_cue": "face navigation_landmark bearing to orient",
+    "vista_cue": "primary objective visible on the horizon toward the landmark",
+    "provenance": {
+      "generator": "generate_level_design",
+      "generator_version": "1.0x",
+      "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+      "registry_owner": "worldforge_level_design_overlay"
+    }
+  },
+  "pois": [
+    {
+      "id": "primary_poi",
+      "class": "resource_site",
+      "role": "primary",
+      "world_position": [
+        -3684.8,
+        -8167.24,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -6684.799219850165,
+          -10667.242785015736,
+          0.0
+        ],
+        "max": [
+          -684.7992198501647,
+          -5667.242785015737,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.4112,
+        0.9115,
+        0.0
+      ],
+      "exit_vector": [
+        -0.4112,
+        -0.9115,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -3684.8,
+        -8167.24,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "ash_flats",
+        "desert",
+        "industrialized",
+        "terrain_rock_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "navigation_landmark",
+        "notes": "resource_site (primary) derived from Desert_AshFlats_ScrubNode_Ind_01 seed 9020"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "secondary_poi",
+      "class": "objective_ready_anchor",
+      "role": "secondary",
+      "world_position": [
+        7700.54,
+        -3474.24,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          5900.5431973005525,
+          -5274.239264430156,
+          0.0
+        ],
+        "max": [
+          9500.543197300552,
+          -1674.2392644301558,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.9115,
+        0.4112,
+        0.0
+      ],
+      "exit_vector": [
+        0.9115,
+        -0.4112,
+        0.0
+      ],
+      "gameplay_anchor": [
+        7700.54,
+        -3474.24,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "ash_flats",
+        "desert",
+        "industrialized",
+        "terrain_rock_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_support",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (secondary) derived from Desert_AshFlats_ScrubNode_Ind_01 seed 9020"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "navigation_landmark",
+      "class": "navigation_landmark",
+      "role": "landmark",
+      "world_position": [
+        -14299.29,
+        -14661.54,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -15699.290000000012,
+          -16061.53999999999,
+          0.0
+        ],
+        "max": [
+          -12899.290000000012,
+          -13261.53999999999,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.6982,
+        0.7159,
+        0.0
+      ],
+      "exit_vector": [
+        -0.6982,
+        -0.7159,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -14299.29,
+        -14661.54,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "ash_flats",
+        "desert",
+        "industrialized",
+        "terrain_rock_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "orientation",
+        "expected_state": "static",
+        "state_key": "industrial_pressure",
+        "sightline_target": "vista",
+        "notes": "navigation_landmark (landmark) derived from Desert_AshFlats_ScrubNode_Ind_01 seed 9020"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "resource_site",
+      "class": "resource_site",
+      "role": "resource",
+      "world_position": [
+        20447.73,
+        1149.16,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          18647.729999999996,
+          -650.8400000000001,
+          0.0
+        ],
+        "max": [
+          22247.729999999996,
+          2949.16,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.9984,
+        -0.0561,
+        0.0
+      ],
+      "exit_vector": [
+        0.9984,
+        0.0561,
+        0.0
+      ],
+      "gameplay_anchor": [
+        20447.73,
+        1149.16,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "ash_flats",
+        "desert",
+        "industrialized",
+        "terrain_rock_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "resource",
+        "expected_state": "before",
+        "state_key": "industrial_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "resource_site (resource) derived from Desert_AshFlats_ScrubNode_Ind_01 seed 9020"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "encounter_anchor",
+      "class": "encounter_ready_anchor",
+      "role": "encounter",
+      "world_position": [
+        -15455.71,
+        12642.87,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -17055.71,
+          11042.870000000004,
+          0.0
+        ],
+        "max": [
+          -13855.71,
+          14242.870000000004,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.774,
+        -0.6332,
+        0.0
+      ],
+      "exit_vector": [
+        -0.774,
+        0.6332,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -15455.71,
+        12642.87,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "ash_flats",
+        "desert",
+        "industrialized",
+        "terrain_rock_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "encounter",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "danger_zone",
+        "notes": "encounter_ready_anchor (encounter) derived from Desert_AshFlats_ScrubNode_Ind_01 seed 9020"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "spawn_adjacent_anchor",
+      "class": "spawn_adjacent_anchor",
+      "role": "spawn_adjacent",
+      "world_position": [
+        8533.81,
+        4110.09,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          7033.8106507066495,
+          2610.090618323017,
+          0.0
+        ],
+        "max": [
+          10033.81065070665,
+          5610.090618323017,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.901,
+        -0.4339,
+        0.0
+      ],
+      "exit_vector": [
+        0.901,
+        0.4339,
+        0.0
+      ],
+      "gameplay_anchor": [
+        8533.81,
+        4110.09,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "ash_flats",
+        "desert",
+        "industrialized",
+        "terrain_rock_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "spawn_support",
+        "expected_state": "before",
+        "state_key": "industrial_pressure",
+        "sightline_target": "player_start",
+        "notes": "spawn_adjacent_anchor (spawn_adjacent) derived from Desert_AshFlats_ScrubNode_Ind_01 seed 9020"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "objective_anchor",
+      "class": "objective_ready_anchor",
+      "role": "objective_ready",
+      "world_position": [
+        -18854.56,
+        4800.14,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -20454.56,
+          3200.139999999995,
+          0.0
+        ],
+        "max": [
+          -17254.56,
+          6400.139999999995,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.9691,
+        -0.2467,
+        0.0
+      ],
+      "exit_vector": [
+        -0.9691,
+        0.2467,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -18854.56,
+        4800.14,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "ash_flats",
+        "desert",
+        "industrialized",
+        "terrain_rock_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_ready",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (objective_ready) derived from Desert_AshFlats_ScrubNode_Ind_01 seed 9020"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "class": "safe_zone",
+      "role": "safe_zone",
+      "world_position": [
+        -3332.51,
+        6919.3,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -6832.509430025049,
+          3419.3049433302276,
+          0.0
+        ],
+        "max": [
+          167.4905699749511,
+          10419.304943330228,
+          400.0
+        ]
+      },
+      "enemy_filled": false,
+      "rest_point": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "rest",
+        "notes": "safe rest zone"
+      }
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "danger_zone",
+      "class": "danger_zone",
+      "role": "danger_zone",
+      "world_position": [
+        4980.75,
+        -13169.61,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          980.7469504800556,
+          -17169.607428290474,
+          0.0
+        ],
+        "max": [
+          8980.746950480056,
+          -9169.607428290476,
+          1200.0
+        ]
+      },
+      "enemy_filled": true,
+      "avoidable": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "hazard",
+        "notes": "avoidable hazard zone"
+      }
+    }
+  ],
+  "orientation_cues": [
+    {
+      "id": "orient_landmark",
+      "kind": "landmark_bearing",
+      "target": "navigation_landmark",
+      "from": "player_start",
+      "detail": "distant landmark gives a stable heading"
+    }
+  ],
+  "vista_cues": [
+    {
+      "id": "vista_primary",
+      "kind": "sightline",
+      "from": "player_start",
+      "target": "primary_poi",
+      "detail": "line of sight from spawn to the primary objective"
+    },
+    {
+      "id": "vista_point",
+      "kind": "overlook",
+      "from": "navigation_landmark",
+      "target": "resource_site",
+      "detail": "elevated overlook reveals the resource site"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "player_start",
+        "role": "player_start",
+        "type": "player_start",
+        "position": [
+          3474.24,
+          7700.54
+        ]
+      },
+      {
+        "id": "primary_poi",
+        "role": "primary_poi",
+        "type": "primary_poi",
+        "position": [
+          -3684.8,
+          -8167.24
+        ]
+      },
+      {
+        "id": "secondary_poi",
+        "role": "secondary_poi",
+        "type": "secondary_poi",
+        "position": [
+          7700.54,
+          -3474.24
+        ]
+      },
+      {
+        "id": "safe_zone",
+        "role": "safe_zone",
+        "type": "safe_zone",
+        "position": [
+          -3332.51,
+          6919.3
+        ]
+      },
+      {
+        "id": "danger_zone",
+        "role": "danger_zone",
+        "type": "danger_zone",
+        "position": [
+          4980.75,
+          -13169.61
+        ]
+      },
+      {
+        "id": "resource_site",
+        "role": "resource_site",
+        "type": "resource_site",
+        "position": [
+          20447.73,
+          1149.16
+        ]
+      },
+      {
+        "id": "exit_route",
+        "role": "exit_or_edge_route",
+        "type": "exit_or_edge_route",
+        "position": [
+          262.55,
+          -20990.36
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "player_start",
+        "to": "primary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "safe_zone",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "secondary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "primary_poi",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "danger_zone",
+        "kind": "risky"
+      },
+      {
+        "from": "danger_zone",
+        "to": "resource_site",
+        "kind": "risky"
+      },
+      {
+        "from": "secondary_poi",
+        "to": "exit_route",
+        "kind": "reachable"
+      }
+    ]
+  },
+  "provenance": {
+    "generator_name": "generate_level_design",
+    "generator_version": "1.0x",
+    "generated_at_utc": "2026-07-01T22:06:07.693982+00:00",
+    "source_commit": "unknown",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/slices/desert/generated/Desert_AshFlats_ScrubNode_Ind_01.json": "521a23103c45c62d21d9c2d2541dbffee87dcd4999fa5934e566a4b0295038ff"
+    },
+    "source_spec_hash": "606274d500b0830084f2fd5d216ad767b87299c0d8ec2e91d9da3d86a3eef29d",
+    "source_spec_path": "procedural/slices/desert/generated/Desert_AshFlats_ScrubNode_Ind_01.json",
+    "terrain_extent_source": "procedural/generated/terrain/Terrain_AshFlats_01/descriptor.json"
+  },
+  "content_hash": "35fc8a44a0ddd9b81c8d46b8dc2074343955e3617650e6f40a0156d0f7e88c7e"
+}

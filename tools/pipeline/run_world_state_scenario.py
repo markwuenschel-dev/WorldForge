@@ -14,7 +14,7 @@ For each compatible slice it runs the proven v0.8 pair as subprocesses:
 
 then aggregates a pack-level scenario report (per-slice roundtrip + POI evidence +
 validation verdict). No new simulation framework is introduced and no UE is
-launched here — the post-scenario map-validity check stays D7-gated inside
+launched here — the post-scenario map-validity check is verified in-editor via
 validate_runtime_state.
 
 Usage:
