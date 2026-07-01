@@ -1,0 +1,169 @@
+{
+  "world_pack_id": "desert_poi_lite_seed",
+  "schema_version": "v0.9",
+  "strict": false,
+  "checks": {
+    "world_pack_has_packs": {
+      "ok": true,
+      "detail": "1 slice pack(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slice_pack_exists:desert_poi_lite": {
+      "ok": true,
+      "detail": "procedural/slice_packs/desert_poi_lite.yaml",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slices_have_full_intent": {
+      "ok": true,
+      "detail": "all slices carry name/variant/seed/placement/state/terrain/poi",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "slice_names_unique": {
+      "ok": true,
+      "detail": "no duplicate names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "variant_refs_resolve": {
+      "ok": true,
+      "detail": "all variant references resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_refs_resolve": {
+      "ok": true,
+      "detail": "all terrain references resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "poi_refs_resolve": {
+      "ok": true,
+      "detail": "all poi references resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_preset_refs_resolve": {
+      "ok": true,
+      "detail": "all state_preset references resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement_refs_resolve": {
+      "ok": true,
+      "detail": "all placement references resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "variant_templates_complete": {
+      "ok": true,
+      "detail": "all variant templates carry required render/state fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "map_count_nonzero": {
+      "ok": true,
+      "detail": "6 maps",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "map_count_meets_min": {
+      "ok": false,
+      "detail": "below MVP minimum (have 6, need 25)",
+      "warn_only": true,
+      "verdict": "WARN",
+      "code": "WF003_SPEC_INVALID",
+      "blocking": false
+    },
+    "terrain_coverage": {
+      "ok": false,
+      "detail": "below MVP minimum (have 1, need 3)",
+      "warn_only": true,
+      "verdict": "WARN",
+      "code": "WF003_SPEC_INVALID",
+      "blocking": false
+    },
+    "material_variant_coverage": {
+      "ok": false,
+      "detail": "below MVP minimum (have 1, need 8)",
+      "warn_only": true,
+      "verdict": "WARN",
+      "code": "WF003_SPEC_INVALID",
+      "blocking": false
+    },
+    "placement_coverage": {
+      "ok": false,
+      "detail": "below MVP minimum (have 4, need 6)",
+      "warn_only": true,
+      "verdict": "WARN",
+      "code": "WF003_SPEC_INVALID",
+      "blocking": false
+    },
+    "poi_coverage": {
+      "ok": true,
+      "detail": "ok (have 6, need 5)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_coverage": {
+      "ok": true,
+      "detail": "ok (have 3, need 2)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenario_path_coverage": {
+      "ok": false,
+      "detail": "below MVP minimum (have 0, need 2)",
+      "warn_only": true,
+      "verdict": "WARN",
+      "code": "WF003_SPEC_INVALID",
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "warnings": [
+    "map_count_meets_min: below MVP minimum (have 6, need 25)",
+    "terrain_coverage: below MVP minimum (have 1, need 3)",
+    "material_variant_coverage: below MVP minimum (have 1, need 8)",
+    "placement_coverage: below MVP minimum (have 4, need 6)",
+    "scenario_path_coverage: below MVP minimum (have 0, need 2)"
+  ],
+  "counts": {
+    "PASS": 13,
+    "WARN": 5,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "GATED_HUMAN_EDITOR": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "warn"
+}

@@ -1,0 +1,28 @@
+name: cinematic_rt
+kind: rendering
+# --- required (frozen) contract fields ---
+rendering_mode: cinematic
+gi_method: lumen_hw_rt
+ray_tracing: required
+shadow_quality: cinematic
+# --- pipeline detail ---
+reflection_method: raytraced
+anti_aliasing: TSR
+nanite: true
+lumen: true
+path_tracing: false
+# --- v1.0x rendering-budget enrichment (Agent 6) ---
+# High cost, but only ever bound to a high_end_pc / cinematic scalability tier.
+# volumetric_fog stays moderate (not heavy) so RT + fog does not blow the frame.
+virtual_shadow_maps: true
+volumetric_fog: moderate
+material_complexity_class: cinematic
+texture_budget_class: ultra
+mesh_density_class: high
+foliage_density_class: high
+post_process_cost_class: cinematic
+light_count_budget: 64
+fog_volume_budget: 6
+high_cost_material_budget: 40
+foliage_cluster_budget: 48
+cost_class: 6

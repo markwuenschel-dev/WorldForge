@@ -41,12 +41,12 @@ Keep Python / UE-Python validators for v1; add native `UEditorValidatorBase` lat
 - **Tier 3** — generated-asset correctness (texture limits ≤2048 + sRGB + compression + mips + group; reference integrity; provenance copied; naming).
 - **Key insight**: Material Instances inherit the master's shader cost, so heavy material-stat budgets belong to Tier 2 (master), not per-recipe.
 
-## D7 — Agent-operability enforcement: in scope now, split by where it can run
-- **Tier 0 (GitHub CI, no UE)** — repo/permission: CODEOWNERS, branch protection, forbidden-path checks (`check_agent_permissions.py`). Agent-editable: `procedural/substance/recipes/`, `procedural/definitions/`, `tools/`, `docs/`, `tests/`. Human-review: master content/`.uasset`/`.umap`/`.sbs`, `Source/WorldForge*`.
-- **Tier 1 (GitHub CI, no UE)** — text-contract: `validate_recipe.py`, `generate_manifest.py`, negative fixtures, manifest JSON validity, "no YAML in `tools/unreal/`", Makefile `-n` sanity, provenance/staleness.
-- **Tier 2 / Tier 3 (require UE)** — local pre-merge gate now; self-hosted UE runner later. **Not** required in hosted CI.
-- **Principle**: enforce what's cheap and deterministic now; don't make hosted CI run Unreal (perfect gate → no gate).
-- **New files**: `.github/CODEOWNERS`, `.github/workflows/worldforge_contracts.yml`, `tools/pipeline/check_agent_permissions.py`, `tests/fixtures/invalid_recipes/`, `tools/pipeline/test_negative_recipes.py`.
+## D-EDIT — Agents drive the editor directly; ownership/provenance protects human-authored assets
+Agents materialize generated assets by driving the Unreal editor directly. There is no deferral to a separate manual editor step. What still protects hand-authored work is the **ownership/provenance model**, not an agent gate.
+- **CI contract checks (GitHub, no UE)** — text-contract: `validate_recipe.py`, `generate_manifest.py`, negative fixtures, manifest JSON validity, "no YAML in `tools/unreal/`", Makefile `-n` sanity, provenance/staleness. CODEOWNERS requests code-owner review on binary/authoring assets.
+- **Ownership/provenance** — human-authored master sources (`.uasset` / `.umap` / `.sbs`, `Source/WorldForge*`, master materials) stay owner-owned and are protected from repair/destroy by provenance ownership tags. Generated assets are agent-owned and freely rebuilt.
+- **UE-requiring checks** run locally / on a self-hosted UE runner, **not** in hosted CI (don't make hosted CI run Unreal: perfect gate → no gate).
+- **New files**: `.github/CODEOWNERS`, `.github/workflows/worldforge_contracts.yml`, `tests/fixtures/invalid_recipes/`, `tools/pipeline/test_negative_recipes.py`.
 
 ## D8 — MaterialForge v1 done-line
 - **In**: `create_data_asset.py` + `UMaterialRecipeDataAsset`; provenance + input-hash + staleness guard; `validate_assets.py` extended to full Tier-3; Tier 0 + Tier 1 CI; docs updated.
@@ -127,7 +127,7 @@ negative fixtures. FoliageSpawnRules live in `procedural/definitions/placement/`
    ✅ **Data spine + contract + Tier-0/1 gates done**. ⏳ Remaining: the human-owned PCG graph (Tier 2).
 4. **MeshForge** — Blender GN, reusing the proven pattern (D12).
 5. **TerrainForge / POIForge** — later.
-- Cross-cutting throughout: validation/provenance/enforcement (D6, D7). Full StateForge (accumulation, persistence, emitters) layers on after the spine.
+- Cross-cutting throughout: validation/provenance/ownership (D6, D-EDIT). Full StateForge (accumulation, persistence, emitters) layers on after the spine.
 
 ---
 
@@ -140,8 +140,8 @@ negative fixtures. FoliageSpawnRules live in `procedural/definitions/placement/`
 4. `validate_assets.py` → full Tier-3 (texture budgets, reference integrity, Data Asset linkage + provenance match, naming).
 5. Preview deferred (keep `make preview` failing-by-design).
 
-**Milestone 2 — Agent-operability gates** — refs D7
-- `.github/CODEOWNERS`, `.github/workflows/worldforge_contracts.yml`, `tools/pipeline/check_agent_permissions.py`, `tests/fixtures/invalid_recipes/` + `tools/pipeline/test_negative_recipes.py`. Tier 0/1 enforced in GitHub CI (no UE).
+**Milestone 2 — CI contract gates** — refs D-EDIT
+- `.github/CODEOWNERS`, `.github/workflows/worldforge_contracts.yml`, `tests/fixtures/invalid_recipes/` + `tools/pipeline/test_negative_recipes.py`. Text-contract checks enforced in GitHub CI (no UE).
 
 **Milestone 3 — Thin StateForge spine** — refs D9–D11
 - `WorldStateSubsystem` (`UWorldSubsystem`, `WorldForgeCore`): `GetStateValue` / `SetStateValue`, `MPC_WorldState` push bridge, Tier-2 edit to `M_Terrain_Master` (sample `IndustrialPressure`), `industrial_pressure → soot` tracer + debug command.
@@ -154,4 +154,3 @@ negative fixtures. FoliageSpawnRules live in `procedural/definitions/placement/`
 ### Cross-references to update when implemented
 - `material_recipe_contract.md` — add the "MaterialRecipeDataAsset is a provenance/linkage `UDataAsset`, not a runtime registry" clause + upgrade trigger.
 - `performance_budgets.md` — note the Tier-1/2/3 split and that per-recipe validation excludes shader-cost budgets.
-- `agent_permission_model.md` — reconcile path lists with D7 Tier 0.

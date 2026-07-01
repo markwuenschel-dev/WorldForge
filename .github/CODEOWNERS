@@ -1,16 +1,16 @@
-# CODEOWNERS — human-review-required surfaces (forge_design_decisions D7, Tier 0)
+# CODEOWNERS — review owners for binary / authoring assets
 #
-# These globs require a human reviewer before merge. Everything NOT listed here
-# (procedural/substance/recipes/, procedural/definitions/, tools/, docs/, tests/)
-# is agent-editable and needs no special owner.
+# These globs request a code-owner review before merge so that changes to
+# binary Unreal assets, master authoring sources, and C++/content modules get
+# a second set of eyes.
 #
 # NOTE: CODEOWNERS only requests review. It does NOT block merge on its own —
 # you must enable "Require review from Code Owners" in the branch protection
-# rule for the default branch (GitHub Settings → Branches). See report.
+# rule for the default branch (GitHub Settings → Branches).
 #
 # Owner: repo owner. Adjust the @owner handle/team to your org as needed.
 
-# --- Master content / binary Unreal assets (Tier 3 forbidden for agents) ---
+# --- Binary Unreal assets ---
 *.uasset    @markwuenschel-dev
 *.umap      @markwuenschel-dev
 

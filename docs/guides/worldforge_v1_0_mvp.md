@@ -66,8 +66,8 @@ and coverage contract: `docs/contracts/v1_0_mvp_contract.md`.
 
 - **Coverage** (`reports/coverage/desert_mvp_world_coverage.json`) — matrix breadth
   vs MVP minimums.
-- **Validation** — per-map 34-check strict result; `PASS/WARN/FAIL/GATED`. `GATED`
-  means a D7 human/editor UE step is pending, never a failure.
+- **Validation** — per-map 34-check strict result; `PASS/WARN/FAIL`. UE-side checks
+  are materialized in-editor by the tooling and reported alongside the rest.
 - **Scenario** (`reports/world_packs/.../run_world_state_scenario_report.json`) —
   per-map state delta, POI evidence, save/load round-trip.
 - **Package** (`reports/package_check/.../package_check_report.json`) — budgets +

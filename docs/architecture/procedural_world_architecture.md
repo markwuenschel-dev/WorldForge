@@ -86,10 +86,10 @@ Runtime Systems (Never Python)
 - Maintaining validation rules and build scripts
 - Running the full build pipeline and reporting
 
-**Forbidden for agents (initially)**:
-- Editing Substance graphs or PCG graph structure
-- Directly editing `.uasset` files or Blueprints
-- Making final visual or balance decisions without data
+**Owner-owned authoring surfaces** (protected by the ownership/provenance model — agents drive the editor but do not overwrite these):
+- Master Substance graphs and PCG graph structure
+- Hand-authored master `.uasset` files and Blueprints
+- Final visual or balance decisions without data
 
 ## 4. Provenance Model
 

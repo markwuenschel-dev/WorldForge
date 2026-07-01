@@ -1,0 +1,4635 @@
+{
+  "world_pack_id": "desert_mvp_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "Desert_AshFlats_IndustrialYard_Heavy_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: overlay_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: anchors_nonempty": {
+      "ok": true,
+      "detail": "13 anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: world_model_present": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: anchor_fields_complete": {
+      "ok": true,
+      "detail": "anchors missing required fields: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: anchor_types_known": {
+      "ok": true,
+      "detail": "unknown anchor types: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: anchor_provenance_owned": {
+      "ok": true,
+      "detail": "anchors without generated-owned provenance: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: anchor_budget_class_valid": {
+      "ok": true,
+      "detail": "invalid budget_class: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: no_floating_anchors": {
+      "ok": true,
+      "detail": "floating anchors (z above ground+tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: no_buried_anchors": {
+      "ok": true,
+      "detail": "buried anchors (z below ground-tol): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: no_invalid_slope": {
+      "ok": true,
+      "detail": "anchors on invalid slope (> 35 deg): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: no_anchor_inside_geometry": {
+      "ok": true,
+      "detail": "anchors inside blocking geometry: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: spawn_zones_reachable": {
+      "ok": true,
+      "detail": "spawn zones not reachable from player_start: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: reachable_flags_honest": {
+      "ok": true,
+      "detail": "stored reachable flag disagrees with recomputed graph: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: no_anchor_in_player_start": {
+      "ok": true,
+      "detail": "anchors inside player_start radius: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: enemy_not_in_safe_zone": {
+      "ok": true,
+      "detail": "enemy spawn zones inside a safe zone (not allowed): ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: patrol_anchors_connected": {
+      "ok": true,
+      "detail": "patrol anchors isolated / unreachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: interaction_anchors_accessible": {
+      "ok": true,
+      "detail": "interaction anchors not reachable: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: idle_not_blocking_route": {
+      "ok": true,
+      "detail": "idle anchors blocking the critical route: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: faction_tags_valid": {
+      "ok": true,
+      "detail": "invalid faction tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: encounter_tags_valid": {
+      "ok": true,
+      "detail": "invalid encounter tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: difficulty_tags_valid": {
+      "ok": true,
+      "detail": "invalid difficulty tags: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: archetype_tags_valid": {
+      "ok": true,
+      "detail": "anchors with archetypes outside the allowed set: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01: entity_density_within_budget": {
+      "ok": true,
+      "detail": "density over budget: anchors=13/40 spawn_zones=3/12 enemy_zones=1/4 total_capacity=10/30 over_zone=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 575,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-entity-anchors",
+    "pack": "desert_mvp_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "unknown",
+    "timestamp": "2026-07-01T22:06:08.628073+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 25
+  }
+}

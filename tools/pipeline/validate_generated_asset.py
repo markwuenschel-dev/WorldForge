@@ -7,9 +7,9 @@ Houdini Temp/Bake paths rejected. Pure Python — no UE imports.
 
 v0.9: migrated onto the shared ``ValidationReport`` helper (one report shape,
 one strict-mode semantics) and stable ``FailureCode``s. The hard intake
-guarantees stay hard FAILs; the UE StaticMesh-at-path check is the D7-gated
-materialization step — it reads a UE report when present and otherwise reports
-``GATED_HUMAN_EDITOR`` (never blocking, even under ``--strict``).
+guarantees stay hard FAILs; the UE StaticMesh-at-path check reads a UE report
+when present (verified PASS/FAIL) and is skipped otherwise — run
+``make relocate-houdini-asset`` to drive the editor materialization.
 
 Usage:
     python tools/pipeline/validate_generated_asset.py --asset rock_generator_desert_01
@@ -143,15 +143,12 @@ def main(argv=None):
               "provenance block absent from descriptor",
               code=FailureCode.PROVENANCE_MISSING)
 
-    # -- UE presence (D7-gated materialization; never blocks) ---------------
-    # Reading a UE report does NOT materialize Content/** — it only observes a
-    # human/editor-run relocate. Absent => GATED_HUMAN_EDITOR (pending). Present
-    # but wrong type => GATED with UE_ASSET_NOT_STATIC_MESH. Present & ok => PASS.
+    # -- UE presence: verified when the editor relocate has produced its report;
+    #    otherwise skipped (run 'make relocate-houdini-asset' to drive the editor).
     ue_report = report_dir / "ue_generated_asset_report.json"
-    ue_ok = False
-    ue_code = FailureCode.UE_MATERIALIZATION_PENDING
-    ue_detail = "run 'make relocate-houdini-asset' (UE) to materialize + verify the StaticMesh"
     if ue_report.is_file():
+        ue_ok = False
+        ue_code = FailureCode.UE_ARTIFACT_MISSING
         try:
             ue_rpt = json.loads(ue_report.read_text(encoding="utf-8"))
             is_sm = ue_rpt.get("is_static_mesh") is True
@@ -162,9 +159,11 @@ def main(argv=None):
                 # UE report exists but the materialized asset is not a StaticMesh.
                 ue_code = FailureCode.UE_ASSET_NOT_STATIC_MESH
         except Exception as exc:
-            ue_ok = False
             ue_detail = "ue report unreadable: {}".format(exc)
-    rep.gated("asset_exists_in_ue_as_static_mesh", ue_ok, ue_detail, code=ue_code)
+        rep.ue_check("asset_exists_in_ue_as_static_mesh", ue_ok, ue_detail, code=ue_code)
+    else:
+        rep.skip("asset_exists_in_ue_as_static_mesh",
+                 "no ue_generated_asset_report yet; run 'make relocate-houdini-asset' to materialize + verify the StaticMesh")
 
     # -- Result -------------------------------------------------------------
     rep.finalize()

@@ -10,21 +10,21 @@ Resolution: ``--pack <id>`` -> ``procedural/world_packs/<id>.yaml`` -> its slice
 packs -> every slice ``name``.
 
 For each slice it diagnoses, and (only with ``--apply``) repairs, the artifacts
-the factory can re-derive deterministically without a human/editor step:
+the factory can re-derive deterministically:
   * registry entry present + internally consistent      (REGISTRY_MISSING_ENTRY / _INCONSISTENT)
   * generated slice spec present + parseable            (SPEC_INVALID)
   * placement DataAsset present                         (ARTIFACT_MISSING — re-derivable)
-  * UE slice map materialized (owned .umap on disk)     (D7-GATED — needs editor)
+  * UE slice map materialized (owned .umap on disk)     (rebuilt by driving the editor)
 
 Repair actions:
   * default               : report-only diagnosis (mutates nothing).
   * ``--apply``           : re-derive any MISSING placement DataAsset via
                             ``generate_placement_da.py`` (pure Python, no UE).
   * ``--apply --ue``      : additionally run ``run_ue_repair.py`` per registered
-                            slice (D7 — needs an editor; otherwise stays gated).
+                            slice (drives the editor to rebuild the map).
 
-A D7-gated UE map gap never blocks; it clears once a human/editor materializes the
-map (``make repair-slice NAME=<slice>``). Exit 0 unless a blocking failure
+A missing UE map is re-materialized by driving the editor
+(``make repair-slice NAME=<slice>``). Exit 0 unless a blocking failure
 (missing registry/spec) is found, or ``STRICT=1`` escalates a soft gap.
 
 Usage:
@@ -194,13 +194,17 @@ def main(argv=None):
                           da_path.relative_to(REPO_ROOT).as_posix()),
                       code=FailureCode.ARTIFACT_MISSING)
 
-        # 5. UE slice map materialization (D7-gated)
+        # 5. UE slice map materialization (rebuilt by driving the editor).
         owned_umaps = [a for a in entry.get("owned_assets", []) or [] if str(a).endswith(".umap")]
-        map_on_disk = all((REPO_ROOT / a).is_file() for a in owned_umaps) if owned_umaps else False
-        rep.gated("{}:ue_map_materialized".format(name), map_on_disk,
-                  "slice map not materialized on disk — run "
-                  "`make repair-slice NAME={}` (editor)".format(name),
-                  code=FailureCode.UE_MATERIALIZATION_PENDING)
+        if owned_umaps:
+            map_on_disk = all((REPO_ROOT / a).is_file() for a in owned_umaps)
+            rep.ue_check("{}:ue_map_materialized".format(name), map_on_disk,
+                      "slice map not materialized on disk — run "
+                      "`make repair-slice NAME={}` to rebuild it in the editor".format(name),
+                      code=FailureCode.UE_ARTIFACT_MISSING)
+        else:
+            rep.skip("{}:ue_map_materialized".format(name),
+                     "no owned .umap listed for {} in the registry".format(name))
         if args.apply and args.ue and not map_on_disk:
             rc = _run([sys.executable, RUN_UE_REPAIR, "--name", name])
             print("  [UE-REPAIR] {} rc={}".format(name, rc))

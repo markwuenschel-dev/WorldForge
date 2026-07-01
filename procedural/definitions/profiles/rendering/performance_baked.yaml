@@ -1,0 +1,27 @@
+name: performance_baked
+kind: rendering
+# --- required (frozen) contract fields ---
+rendering_mode: performance
+gi_method: baked
+ray_tracing: 'off'
+shadow_quality: medium
+# --- pipeline detail ---
+reflection_method: ssr
+anti_aliasing: TAA
+nanite: false
+lumen: false
+# --- v1.0x rendering-budget enrichment (Agent 6) ---
+# performance_baked is the frame-safe baseline: LOWEST cost_class in the pack and
+# strictly the cheapest on every budget axis. This is a contract, not a hint.
+virtual_shadow_maps: false
+volumetric_fog: 'off'
+material_complexity_class: low
+texture_budget_class: low
+mesh_density_class: low
+foliage_density_class: low
+post_process_cost_class: low
+light_count_budget: 8
+fog_volume_budget: 1
+high_cost_material_budget: 3
+foliage_cluster_budget: 6
+cost_class: 1

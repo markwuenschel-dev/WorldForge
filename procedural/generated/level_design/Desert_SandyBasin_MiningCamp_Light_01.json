@@ -1,0 +1,713 @@
+{
+  "slice_id": "Desert_SandyBasin_MiningCamp_Light_01",
+  "schema_version": "wf-level-design-v1",
+  "world_pack_id": "desert_mvp_world",
+  "generated": true,
+  "registry_owner": "worldforge_level_design_overlay",
+  "seed": 9019,
+  "biome": "desert",
+  "variant": "sandy",
+  "state_key": "industrial_pressure",
+  "poi_type": "abandoned_mining_camp",
+  "primary_class": "abandoned_outpost",
+  "budget_class": "light",
+  "terrain_bounds": {
+    "min": [
+      -25600.0,
+      -25600.0
+    ],
+    "max": [
+      25600.0,
+      25600.0
+    ],
+    "height_range_cm": [
+      0.0,
+      1600.0
+    ]
+  },
+  "player_start": {
+    "id": "player_start",
+    "world_position": [
+      8005.5,
+      2698.26,
+      0.0
+    ],
+    "bounds": {
+      "min": [
+        7005.504825422936,
+        1698.2580473576072,
+        0.0
+      ],
+      "max": [
+        9005.504825422937,
+        3698.258047357607,
+        300.0
+      ]
+    },
+    "facing_deg": 198.63,
+    "facing_vector": [
+      -0.9476,
+      -0.3194,
+      0.0
+    ],
+    "orientation_cue": "face navigation_landmark bearing to orient",
+    "vista_cue": "primary objective visible on the horizon toward the landmark",
+    "provenance": {
+      "generator": "generate_level_design",
+      "generator_version": "1.0x",
+      "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+      "registry_owner": "worldforge_level_design_overlay"
+    }
+  },
+  "pois": [
+    {
+      "id": "primary_poi",
+      "class": "abandoned_outpost",
+      "role": "primary",
+      "world_position": [
+        -8490.69,
+        -2861.79,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -11490.686936054626,
+          -5361.788838106561,
+          0.0
+        ],
+        "max": [
+          -5490.686936054626,
+          -361.78883810656134,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.9476,
+        0.3194,
+        0.0
+      ],
+      "exit_vector": [
+        -0.9476,
+        -0.3194,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -8490.69,
+        -2861.79,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "desert",
+        "sandy",
+        "sandy_basin",
+        "terrain_sand_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "navigation_landmark",
+        "notes": "abandoned_outpost (primary) derived from Desert_SandyBasin_MiningCamp_Light_01 seed 9019"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "secondary_poi",
+      "class": "objective_ready_anchor",
+      "role": "secondary",
+      "world_position": [
+        2698.26,
+        -8005.5,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          898.2580473576077,
+          -9805.504825422937,
+          0.0
+        ],
+        "max": [
+          4498.258047357607,
+          -6205.504825422936,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.3194,
+        0.9476,
+        0.0
+      ],
+      "exit_vector": [
+        0.3194,
+        -0.9476,
+        0.0
+      ],
+      "gameplay_anchor": [
+        2698.26,
+        -8005.5,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "desert",
+        "sandy",
+        "sandy_basin",
+        "terrain_sand_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_support",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (secondary) derived from Desert_SandyBasin_MiningCamp_Light_01 seed 9019"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "navigation_landmark",
+      "class": "navigation_landmark",
+      "role": "landmark",
+      "world_position": [
+        -20474.11,
+        490.94,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -21874.11,
+          -909.060000000003,
+          0.0
+        ],
+        "max": [
+          -19074.11,
+          1890.9399999999969,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.9997,
+        -0.024,
+        0.0
+      ],
+      "exit_vector": [
+        -0.9997,
+        0.024,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -20474.11,
+        490.94,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "desert",
+        "sandy",
+        "sandy_basin",
+        "terrain_sand_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "orientation",
+        "expected_state": "static",
+        "state_key": "industrial_pressure",
+        "sightline_target": "vista",
+        "notes": "navigation_landmark (landmark) derived from Desert_SandyBasin_MiningCamp_Light_01 seed 9019"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "resource_site",
+      "class": "resource_site",
+      "role": "resource",
+      "world_position": [
+        14763.43,
+        -14194.07,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          12963.429988125885,
+          -15994.066893801273,
+          0.0
+        ],
+        "max": [
+          16563.429988125885,
+          -12394.066893801273,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.7209,
+        0.6931,
+        0.0
+      ],
+      "exit_vector": [
+        0.7209,
+        -0.6931,
+        0.0
+      ],
+      "gameplay_anchor": [
+        14763.43,
+        -14194.07,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "desert",
+        "sandy",
+        "sandy_basin",
+        "terrain_sand_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "resource",
+        "expected_state": "before",
+        "state_key": "industrial_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "resource_site (resource) derived from Desert_SandyBasin_MiningCamp_Light_01 seed 9019"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "encounter_anchor",
+      "class": "encounter_ready_anchor",
+      "role": "encounter",
+      "world_position": [
+        -1262.99,
+        19928.02,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -2862.990000000001,
+          18328.02,
+          0.0
+        ],
+        "max": [
+          337.00999999999885,
+          21528.02,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.0633,
+        -0.998,
+        0.0
+      ],
+      "exit_vector": [
+        -0.0633,
+        0.998,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -1262.99,
+        19928.02,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "desert",
+        "sandy",
+        "sandy_basin",
+        "terrain_sand_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "encounter",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "danger_zone",
+        "notes": "encounter_ready_anchor (encounter) derived from Desert_SandyBasin_MiningCamp_Light_01 seed 9019"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "spawn_adjacent_anchor",
+      "class": "spawn_adjacent_anchor",
+      "role": "spawn_adjacent",
+      "world_position": [
+        8820.55,
+        -3452.05,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          7320.549977477531,
+          -4952.045694527869,
+          0.0
+        ],
+        "max": [
+          10320.54997747753,
+          -1952.0456945278693,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.9312,
+        0.3644,
+        0.0
+      ],
+      "exit_vector": [
+        0.9312,
+        -0.3644,
+        0.0
+      ],
+      "gameplay_anchor": [
+        8820.55,
+        -3452.05,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "desert",
+        "sandy",
+        "sandy_basin",
+        "terrain_sand_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "spawn_support",
+        "expected_state": "before",
+        "state_key": "industrial_pressure",
+        "sightline_target": "player_start",
+        "notes": "spawn_adjacent_anchor (spawn_adjacent) derived from Desert_SandyBasin_MiningCamp_Light_01 seed 9019"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "objective_anchor",
+      "class": "objective_ready_anchor",
+      "role": "objective_ready",
+      "world_position": [
+        -9321.3,
+        17077.74,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -10921.300000000001,
+          15477.739999999998,
+          0.0
+        ],
+        "max": [
+          -7721.300000000001,
+          18677.739999999998,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.4791,
+        -0.8778,
+        0.0
+      ],
+      "exit_vector": [
+        -0.4791,
+        0.8778,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -9321.3,
+        17077.74,
+        90.0
+      ],
+      "biome_compat": [
+        "desert"
+      ],
+      "style_compat": [
+        "desert",
+        "sandy",
+        "sandy_basin",
+        "terrain_sand_desert_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_ready",
+        "expected_state": "after",
+        "state_key": "industrial_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (objective_ready) derived from Desert_SandyBasin_MiningCamp_Light_01 seed 9019"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "class": "safe_zone",
+      "role": "safe_zone",
+      "world_position": [
+        2798.96,
+        7151.8,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -701.0420656469937,
+          3651.7993876871533,
+          0.0
+        ],
+        "max": [
+          6298.957934353006,
+          10651.799387687153,
+          400.0
+        ]
+      },
+      "enemy_filled": false,
+      "rest_point": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "rest",
+        "notes": "safe rest zone"
+      }
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "danger_zone",
+      "class": "danger_zone",
+      "role": "danger_zone",
+      "world_position": [
+        -6254.65,
+        -12614.51,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -10254.650310334073,
+          -16614.50551925988,
+          0.0
+        ],
+        "max": [
+          -2254.650310334072,
+          -8614.50551925988,
+          1200.0
+        ]
+      },
+      "enemy_filled": true,
+      "avoidable": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "hazard",
+        "notes": "avoidable hazard zone"
+      }
+    }
+  ],
+  "orientation_cues": [
+    {
+      "id": "orient_landmark",
+      "kind": "landmark_bearing",
+      "target": "navigation_landmark",
+      "from": "player_start",
+      "detail": "distant landmark gives a stable heading"
+    }
+  ],
+  "vista_cues": [
+    {
+      "id": "vista_primary",
+      "kind": "sightline",
+      "from": "player_start",
+      "target": "primary_poi",
+      "detail": "line of sight from spawn to the primary objective"
+    },
+    {
+      "id": "vista_point",
+      "kind": "overlook",
+      "from": "navigation_landmark",
+      "target": "resource_site",
+      "detail": "elevated overlook reveals the resource site"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "player_start",
+        "role": "player_start",
+        "type": "player_start",
+        "position": [
+          8005.5,
+          2698.26
+        ]
+      },
+      {
+        "id": "primary_poi",
+        "role": "primary_poi",
+        "type": "primary_poi",
+        "position": [
+          -8490.69,
+          -2861.79
+        ]
+      },
+      {
+        "id": "secondary_poi",
+        "role": "secondary_poi",
+        "type": "secondary_poi",
+        "position": [
+          2698.26,
+          -8005.5
+        ]
+      },
+      {
+        "id": "safe_zone",
+        "role": "safe_zone",
+        "type": "safe_zone",
+        "position": [
+          2798.96,
+          7151.8
+        ]
+      },
+      {
+        "id": "danger_zone",
+        "role": "danger_zone",
+        "type": "danger_zone",
+        "position": [
+          -6254.65,
+          -12614.51
+        ]
+      },
+      {
+        "id": "resource_site",
+        "role": "resource_site",
+        "type": "resource_site",
+        "position": [
+          14763.43,
+          -14194.07
+        ]
+      },
+      {
+        "id": "exit_route",
+        "role": "exit_or_edge_route",
+        "type": "exit_or_edge_route",
+        "position": [
+          -15195.14,
+          -14483.5
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "player_start",
+        "to": "primary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "safe_zone",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "secondary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "primary_poi",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "danger_zone",
+        "kind": "risky"
+      },
+      {
+        "from": "danger_zone",
+        "to": "resource_site",
+        "kind": "risky"
+      },
+      {
+        "from": "secondary_poi",
+        "to": "exit_route",
+        "kind": "reachable"
+      }
+    ]
+  },
+  "provenance": {
+    "generator_name": "generate_level_design",
+    "generator_version": "1.0x",
+    "generated_at_utc": "2026-07-01T22:06:07.692005+00:00",
+    "source_commit": "unknown",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/slices/desert/generated/Desert_SandyBasin_MiningCamp_Light_01.json": "e79b5529ef4ec492a494bd4bb39569e58ff9bffd7e4364fc599ffc2adef802a9"
+    },
+    "source_spec_hash": "66a709c982b2c3ceeecc2a02d1cf78f685136eff73b7449db0f9c355d1710d13",
+    "source_spec_path": "procedural/slices/desert/generated/Desert_SandyBasin_MiningCamp_Light_01.json",
+    "terrain_extent_source": "procedural/generated/terrain/Terrain_SandyBasin_01/descriptor.json"
+  },
+  "content_hash": "de12dc141298ad7f687fa4667192f157c716a1b220dfca621ce9aa4a7a8233d0"
+}

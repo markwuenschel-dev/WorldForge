@@ -134,7 +134,7 @@ def main():
     # v0.9: build a shared ValidationReport. Strict is resolved from the env only
     # (the Makefile forwards STRICT=1 into the editor subprocess). This script runs
     # *inside* UE, so it can directly observe materialized Content — none of these
-    # checks are D7-gated. The two historically warn_only checks (player_start,
+    # The two historically warn_only checks (player_start,
     # nav_bounds) and the "preset id omitted" cases are legacy back-compat warnings
     # (pre-v0.4 maps lack them), so they map to WARN_ONLY (never blocking, even strict).
     rep = ValidationReport("slice_id", spec["slice_id"], strict=strict_from_env())

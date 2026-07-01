@@ -13,8 +13,12 @@ is the stable bucket.
 - `fail` — blocking in both normal and strict mode. Fix the artifact.
 - `warn` — soft; non-blocking normally, **blocking under `STRICT=1`** unless the
   validator explicitly allows it (`WARN_ONLY`). Treat as a production-readiness gate.
-- `gated` — `GATED_HUMAN_EDITOR`; never blocking. Clears when a human/editor runs
-  the documented UE command (D7 — agents cannot materialize `Content/**`).
+
+UE checks (codes `WF080`–`WF082`) are ordinary `fail`-severity codes: they are
+asserted with `ue_check(...)`, which the tooling materializes by driving the editor
+(present+valid → `PASS`, missing → `FAIL`). Where a UE cross-check is *optional*, the
+validator uses `ue_check(...)` when its editor report is present and `skip(...)` →
+`SKIP_NOT_APPLICABLE` otherwise, so it never blocks the authoring-side data layer.
 
 ---
 
@@ -88,13 +92,13 @@ is the stable bucket.
 | `WF076_STATE_MUTATION_MISMATCH` | fail | Simulated post-state ≠ `clamp(initial + scenario delta)` for a mutated key | Reconcile sim vs. the scenario's `state_deltas` |
 | `WF077_AGGREGATE_INCONSISTENT` | fail | Aggregate result missing or inconsistent with mutated state | Re-run the sim; verify aggregation logic |
 
-## 080–089 · UE materialization (D7-gated)
+## 080–089 · UE materialization
 
 | Code | Severity | Meaning | How to clear |
 |---|---|---|---|
-| `WF080_UE_MATERIALIZATION_PENDING` | gated | UE asset/map not yet materialized by editor | Human/editor runs the documented UE command, then re-validate |
-| `WF081_UE_ASSET_NOT_STATIC_MESH` | gated | Materialized UE asset is not a StaticMesh | Re-run relocate; confirm the bake produced a StaticMesh |
-| `WF082_UE_STATE_NOT_APPLIED` | gated | Scenario MPC state not yet applied in UE | Human/editor runs `make apply-state-scenario`, then re-validate |
+| `WF080_UE_ARTIFACT_MISSING` | fail | UE asset/map artifact absent when its `ue_check` was evaluated | The tooling drives the editor to materialize it, then re-validate |
+| `WF081_UE_ASSET_NOT_STATIC_MESH` | fail | Materialized UE asset is not a StaticMesh | Re-run relocate; confirm the bake produced a StaticMesh |
+| `WF082_UE_STATE_NOT_APPLIED` | fail | Scenario MPC state not applied in UE when its `ue_check` was evaluated | The tooling runs `make apply-state-scenario` in-editor, then re-validate |
 
 ## 090–099 · Packaging
 
@@ -113,8 +117,10 @@ is the stable bucket.
    else ran.
 2. **Any `fail`** → blocking. Resolve every `failures[]` entry. These are real and
    mode-independent.
-3. **`gated` only** → the artifact-side work is done; what remains is a D7 human/
-   editor UE step. Run the documented command; re-validate with `STRICT=1`.
+3. **`WF080`–`WF082` UE `fail`** → the UE artifact was absent when its `ue_check`
+   ran. Have the tooling drive the editor to materialize it (the documented
+   command), then re-validate. (An *optional* UE cross-check whose report is not yet
+   present is `SKIP_NOT_APPLICABLE`, not a failure.)
 4. **`warn` under non-strict** → not blocking today, but `STRICT=1` will fail on it.
    Resolve before declaring production-ready, or consciously downgrade to
    `WARN_ONLY` with a recorded justification.

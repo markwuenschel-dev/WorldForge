@@ -20,7 +20,7 @@ Code shape: ``WFnnn_SHORT_NAME``.  Numbers are grouped by surface:
     050–059  ownership integrity (human templates, destroyable flags)
     060–069  budget
     070–079  runtime state / scenarios
-    080–089  UE materialization (D7-gated)
+    080–089  UE materialization (tooling drives the editor)
     090–099  packaging
 
 The taxonomy doc (docs/contracts/v0_9_failure_taxonomy.md) is the human-facing
@@ -75,8 +75,8 @@ class FailureCode:
     STATE_MUTATION_MISMATCH = "WF076_STATE_MUTATION_MISMATCH"
     AGGREGATE_INCONSISTENT = "WF077_AGGREGATE_INCONSISTENT"
 
-    # -- UE materialization, D7-gated (080) ---------------------------------
-    UE_MATERIALIZATION_PENDING = "WF080_UE_MATERIALIZATION_PENDING"
+    # -- UE materialization (080) — tooling drives the editor to produce these
+    UE_ARTIFACT_MISSING = "WF080_UE_ARTIFACT_MISSING"
     UE_ASSET_NOT_STATIC_MESH = "WF081_UE_ASSET_NOT_STATIC_MESH"
     UE_STATE_NOT_APPLIED = "WF082_UE_STATE_NOT_APPLIED"
 
@@ -86,10 +86,86 @@ class FailureCode:
     PACKAGE_MISSING_OWNED_ASSET = "WF092_PACKAGE_MISSING_OWNED_ASSET"
     CHILD_VALIDATION_FAILED = "WF093_CHILD_VALIDATION_FAILED"
 
+    # ======================================================================
+    # v1.0x hardening — gate-level failure taxonomy (100–260)
+    # ----------------------------------------------------------------------
+    # These are COARSER than the WF0xx codes above: one per full-shield gate
+    # class, so the shared failure taxonomy in the v1.0x brief maps 1:1 to a
+    # stable code. Fine-grained WF0xx codes still describe the specific defect;
+    # a gate code buckets which lane owns it. Every v1.0x validator SHOULD tag
+    # its blocking failures with the matching gate code so full-shield can roll
+    # failures up by lane.
+    # ======================================================================
 
-# severity hint per code: "fail" (blocking), "warn" (soft / strict-blocking),
-# or "gated" (D7 human/editor — never blocking).  This is the *default* nature
-# of the code; a validator may still choose a stricter verdict for context.
+    # -- report integrity / no-fake-green (100) -----------------------------
+    REPORT_INTEGRITY_FAILURE = "WF100_REPORT_INTEGRITY_FAILURE"
+    REPORT_MISSING = "WF101_REPORT_MISSING"
+    REPORT_EMPTY = "WF102_REPORT_EMPTY"
+    REPORT_STALE = "WF103_REPORT_STALE"
+    REPORT_ZERO_RECORD = "WF104_REPORT_ZERO_RECORD"
+    RECORD_COUNT_MISMATCH = "WF105_RECORD_COUNT_MISMATCH"
+    VALIDATOR_SKIPPED = "WF106_VALIDATOR_SKIPPED"
+    UNKNOWN_SCHEMA_FIELD = "WF107_UNKNOWN_SCHEMA_FIELD"
+    IMPLICIT_FALLBACK_DEFAULT = "WF108_IMPLICIT_FALLBACK_DEFAULT"
+    PARTIAL_SUCCESS_AS_SUCCESS = "WF109_PARTIAL_SUCCESS_AS_SUCCESS"
+
+    # -- contract / generation (110) ----------------------------------------
+    CONTRACT_FAILURE = "WF110_CONTRACT_FAILURE"
+    GENERATION_FAILURE = "WF111_GENERATION_FAILURE"
+    ASSET_REFERENCE_FAILURE = "WF112_ASSET_REFERENCE_FAILURE"
+    OWNERSHIP_FAILURE = "WF113_OWNERSHIP_FAILURE"
+
+    # -- environment / visual profiles (120) --------------------------------
+    ENVIRONMENT_PROFILE_FAILURE = "WF120_ENVIRONMENT_PROFILE_FAILURE"
+    VISUAL_STYLE_FAILURE = "WF121_VISUAL_STYLE_FAILURE"
+    PROFILE_NOT_MATERIAL = "WF122_PROFILE_NOT_MATERIAL"
+    PROFILE_INCOMPATIBLE = "WF123_PROFILE_INCOMPATIBLE"
+    PROFILE_MISSING_BINDING = "WF124_PROFILE_MISSING_BINDING"
+
+    # -- sky / lighting / fog / atmosphere (130) ----------------------------
+    SKY_PROFILE_FAILURE = "WF130_SKY_PROFILE_FAILURE"
+    LIGHTING_PROFILE_FAILURE = "WF131_LIGHTING_PROFILE_FAILURE"
+    FOG_PROFILE_FAILURE = "WF132_FOG_PROFILE_FAILURE"
+    ATMOSPHERE_PROFILE_FAILURE = "WF133_ATMOSPHERE_PROFILE_FAILURE"
+    VISIBILITY_MINIMUM_VIOLATED = "WF134_VISIBILITY_MINIMUM_VIOLATED"
+    EXPOSURE_OUT_OF_RANGE = "WF135_EXPOSURE_OUT_OF_RANGE"
+
+    # -- POI / level design / reachability (140) ----------------------------
+    POI_USABILITY_FAILURE = "WF140_POI_USABILITY_FAILURE"
+    LEVEL_DESIGN_FAILURE = "WF141_LEVEL_DESIGN_FAILURE"
+    REACHABILITY_FAILURE = "WF142_REACHABILITY_FAILURE"
+    POI_GRAPH_FAILURE = "WF143_POI_GRAPH_FAILURE"
+    POI_PLACEMENT_INVALID = "WF144_POI_PLACEMENT_INVALID"
+
+    # -- entity anchors / encounter substrate (150) -------------------------
+    ENTITY_ANCHOR_FAILURE = "WF150_ENTITY_ANCHOR_FAILURE"
+    NPC_SPAWN_FAILURE = "WF151_NPC_SPAWN_FAILURE"
+    ENCOUNTER_READINESS_FAILURE = "WF152_ENCOUNTER_READINESS_FAILURE"
+    ENTITY_DENSITY_EXCEEDED = "WF153_ENTITY_DENSITY_EXCEEDED"
+
+    # -- rendering / scalability / ray tracing / budgets (160) --------------
+    RENDERING_PROFILE_FAILURE = "WF160_RENDERING_PROFILE_FAILURE"
+    SCALABILITY_FAILURE = "WF161_SCALABILITY_FAILURE"
+    RAYTRACING_FAILURE = "WF162_RAYTRACING_FAILURE"
+    BUDGET_FAILURE = "WF163_BUDGET_FAILURE"
+    FRAME_RISK_EXCEEDED = "WF164_FRAME_RISK_EXCEEDED"
+
+    # -- scenario / package (170) -------------------------------------------
+    SCENARIO_FAILURE = "WF170_SCENARIO_FAILURE"
+    PACKAGE_FAILURE = "WF171_PACKAGE_FAILURE"
+
+    # -- lifecycle / determinism / fuzz / regression (180) ------------------
+    LIFECYCLE_FAILURE = "WF180_LIFECYCLE_FAILURE"
+    DETERMINISM_FAILURE = "WF181_DETERMINISM_FAILURE"
+    REGRESSION_FAILURE = "WF182_REGRESSION_FAILURE"
+    FUZZ_FAILURE = "WF183_FUZZ_FAILURE"
+    CORRUPTION_UNDETECTED = "WF184_CORRUPTION_UNDETECTED"
+    REPAIR_TOUCHED_HUMAN_OWNED = "WF185_REPAIR_TOUCHED_HUMAN_OWNED"
+
+
+# severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
+# This is the *default* nature of the code; a validator may still choose a
+# stricter verdict for context.
 SEVERITY = {
     FailureCode.DESCRIPTOR_MISSING: "fail",
     FailureCode.DESCRIPTOR_UNPARSEABLE: "fail",
@@ -121,13 +197,91 @@ SEVERITY = {
     FailureCode.SAVE_LOAD_ROUNDTRIP_FAILED: "fail",
     FailureCode.STATE_MUTATION_MISMATCH: "fail",
     FailureCode.AGGREGATE_INCONSISTENT: "fail",
-    FailureCode.UE_MATERIALIZATION_PENDING: "gated",
-    FailureCode.UE_ASSET_NOT_STATIC_MESH: "gated",
-    FailureCode.UE_STATE_NOT_APPLIED: "gated",
+    FailureCode.UE_ARTIFACT_MISSING: "fail",
+    FailureCode.UE_ASSET_NOT_STATIC_MESH: "fail",
+    FailureCode.UE_STATE_NOT_APPLIED: "fail",
     FailureCode.PACKAGE_FORBIDDEN_DEPENDENCY: "fail",
     FailureCode.PACKAGE_UNRESOLVED_REFERENCE: "fail",
     FailureCode.PACKAGE_MISSING_OWNED_ASSET: "fail",
     FailureCode.CHILD_VALIDATION_FAILED: "fail",
+    # v1.0x gate-level codes — every gate failure is blocking by nature.
+    FailureCode.REPORT_INTEGRITY_FAILURE: "fail",
+    FailureCode.REPORT_MISSING: "fail",
+    FailureCode.REPORT_EMPTY: "fail",
+    FailureCode.REPORT_STALE: "fail",
+    FailureCode.REPORT_ZERO_RECORD: "fail",
+    FailureCode.RECORD_COUNT_MISMATCH: "fail",
+    FailureCode.VALIDATOR_SKIPPED: "fail",
+    FailureCode.UNKNOWN_SCHEMA_FIELD: "fail",
+    FailureCode.IMPLICIT_FALLBACK_DEFAULT: "fail",
+    FailureCode.PARTIAL_SUCCESS_AS_SUCCESS: "fail",
+    FailureCode.CONTRACT_FAILURE: "fail",
+    FailureCode.GENERATION_FAILURE: "fail",
+    FailureCode.ASSET_REFERENCE_FAILURE: "fail",
+    FailureCode.OWNERSHIP_FAILURE: "fail",
+    FailureCode.ENVIRONMENT_PROFILE_FAILURE: "fail",
+    FailureCode.VISUAL_STYLE_FAILURE: "fail",
+    FailureCode.PROFILE_NOT_MATERIAL: "fail",
+    FailureCode.PROFILE_INCOMPATIBLE: "fail",
+    FailureCode.PROFILE_MISSING_BINDING: "fail",
+    FailureCode.SKY_PROFILE_FAILURE: "fail",
+    FailureCode.LIGHTING_PROFILE_FAILURE: "fail",
+    FailureCode.FOG_PROFILE_FAILURE: "fail",
+    FailureCode.ATMOSPHERE_PROFILE_FAILURE: "fail",
+    FailureCode.VISIBILITY_MINIMUM_VIOLATED: "fail",
+    FailureCode.EXPOSURE_OUT_OF_RANGE: "fail",
+    FailureCode.POI_USABILITY_FAILURE: "fail",
+    FailureCode.LEVEL_DESIGN_FAILURE: "fail",
+    FailureCode.REACHABILITY_FAILURE: "fail",
+    FailureCode.POI_GRAPH_FAILURE: "fail",
+    FailureCode.POI_PLACEMENT_INVALID: "fail",
+    FailureCode.ENTITY_ANCHOR_FAILURE: "fail",
+    FailureCode.NPC_SPAWN_FAILURE: "fail",
+    FailureCode.ENCOUNTER_READINESS_FAILURE: "fail",
+    FailureCode.ENTITY_DENSITY_EXCEEDED: "fail",
+    FailureCode.RENDERING_PROFILE_FAILURE: "fail",
+    FailureCode.SCALABILITY_FAILURE: "fail",
+    FailureCode.RAYTRACING_FAILURE: "fail",
+    FailureCode.BUDGET_FAILURE: "fail",
+    FailureCode.FRAME_RISK_EXCEEDED: "fail",
+    FailureCode.SCENARIO_FAILURE: "fail",
+    FailureCode.PACKAGE_FAILURE: "fail",
+    FailureCode.LIFECYCLE_FAILURE: "fail",
+    FailureCode.DETERMINISM_FAILURE: "fail",
+    FailureCode.REGRESSION_FAILURE: "fail",
+    FailureCode.FUZZ_FAILURE: "fail",
+    FailureCode.CORRUPTION_UNDETECTED: "fail",
+    FailureCode.REPAIR_TOUCHED_HUMAN_OWNED: "fail",
+}
+
+# The v1.0x gate-level failure taxonomy (brief §"shared failure taxonomy"):
+# one code per full-shield gate class, used by full-shield to roll failures up
+# by lane. Keyed by the human name in the brief -> stable code.
+GATE_TAXONOMY = {
+    "CONTRACT_FAILURE": FailureCode.CONTRACT_FAILURE,
+    "GENERATION_FAILURE": FailureCode.GENERATION_FAILURE,
+    "ASSET_REFERENCE_FAILURE": FailureCode.ASSET_REFERENCE_FAILURE,
+    "OWNERSHIP_FAILURE": FailureCode.OWNERSHIP_FAILURE,
+    "ENVIRONMENT_PROFILE_FAILURE": FailureCode.ENVIRONMENT_PROFILE_FAILURE,
+    "SKY_PROFILE_FAILURE": FailureCode.SKY_PROFILE_FAILURE,
+    "LIGHTING_PROFILE_FAILURE": FailureCode.LIGHTING_PROFILE_FAILURE,
+    "FOG_PROFILE_FAILURE": FailureCode.FOG_PROFILE_FAILURE,
+    "ATMOSPHERE_PROFILE_FAILURE": FailureCode.ATMOSPHERE_PROFILE_FAILURE,
+    "POI_USABILITY_FAILURE": FailureCode.POI_USABILITY_FAILURE,
+    "LEVEL_DESIGN_FAILURE": FailureCode.LEVEL_DESIGN_FAILURE,
+    "REACHABILITY_FAILURE": FailureCode.REACHABILITY_FAILURE,
+    "ENTITY_ANCHOR_FAILURE": FailureCode.ENTITY_ANCHOR_FAILURE,
+    "RENDERING_PROFILE_FAILURE": FailureCode.RENDERING_PROFILE_FAILURE,
+    "SCALABILITY_FAILURE": FailureCode.SCALABILITY_FAILURE,
+    "RAYTRACING_FAILURE": FailureCode.RAYTRACING_FAILURE,
+    "BUDGET_FAILURE": FailureCode.BUDGET_FAILURE,
+    "SCENARIO_FAILURE": FailureCode.SCENARIO_FAILURE,
+    "PACKAGE_FAILURE": FailureCode.PACKAGE_FAILURE,
+    "LIFECYCLE_FAILURE": FailureCode.LIFECYCLE_FAILURE,
+    "DETERMINISM_FAILURE": FailureCode.DETERMINISM_FAILURE,
+    "REPORT_INTEGRITY_FAILURE": FailureCode.REPORT_INTEGRITY_FAILURE,
+    "REGRESSION_FAILURE": FailureCode.REGRESSION_FAILURE,
+    "FUZZ_FAILURE": FailureCode.FUZZ_FAILURE,
 }
 
 

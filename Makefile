@@ -28,7 +28,15 @@ export STRICT
         run-state-sim validate-runtime-state apply-state-scenario \
         register-generated-asset validate-generated-asset relocate-houdini-asset \
         worldforge-doctor audit-generated-content package-check \
-        repair-world-pack destroy-world-pack
+        repair-world-pack destroy-world-pack \
+        full-shield revalidate-world-pack validate-report-integrity test-negative-validators \
+        validate-environment-contract \
+        validate-sky validate-lighting validate-fog validate-atmosphere \
+        generate-level-design validate-pois validate-level-design validate-reachability validate-poi-graph \
+        generate-entity-anchors validate-entity-anchors validate-npc-spawns validate-encounter-readiness \
+        validate-rendering-profiles validate-scalability validate-raytracing validate-performance-budgets \
+        corrupt-world-pack lifecycle-torture seed-matrix fuzz-world-pack validate-determinism validate-regression-matrix \
+        inspect-pack inspect-map diagnose-world-pack
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -433,6 +441,102 @@ validate-generated-asset:
 relocate-houdini-asset:
 	$(UE_PYTHON) tools/unreal/relocate_houdini_asset.py \
 	  --descriptor procedural/generated/generated_assets/$(ASSET)/descriptor.json --project-root .
+
+# ======================================================================
+# v1.0x hardening — hostile validation platform (Agent 0 aggregation)
+# ----------------------------------------------------------------------
+# `make` may be absent in some environments; every target below maps 1:1 to a
+# `python tools/pipeline/<script>.py` entrypoint so the Python calls are the
+# equivalent interface. STRICT/DEEP/TORTURE/SEEDS thread through as flags.
+# ======================================================================
+SEEDS   ?= 5
+CASES   ?= 25
+
+# --- Agent 0: integration + full-shield -------------------------------
+full-shield:
+	$(PYTHON) tools/pipeline/full_shield.py --pack $(PACK) --jobs $(JOBS) \
+	  --seeds $(SEEDS) --cases $(CASES) \
+	  $(if $(STRICT),--strict,) $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,)
+
+revalidate-world-pack:
+	$(PYTHON) tools/pipeline/revalidate_world_pack.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Agent 1: no-fake-green / report integrity ------------------------
+validate-report-integrity:
+	$(PYTHON) tools/pipeline/validate_report_integrity.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+test-negative-validators:
+	$(PYTHON) tools/pipeline/test_negative_validators.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Agent 2: environment contracts / visual profiles -----------------
+validate-environment-contract:
+	$(PYTHON) tools/pipeline/validate_environment_contract.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Agent 3: sky / lighting / fog / atmosphere -----------------------
+validate-sky:
+	$(PYTHON) tools/pipeline/validate_sky.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-lighting:
+	$(PYTHON) tools/pipeline/validate_lighting.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-fog:
+	$(PYTHON) tools/pipeline/validate_fog.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-atmosphere:
+	$(PYTHON) tools/pipeline/validate_atmosphere.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Agent 4: POI / level design / reachability -----------------------
+generate-level-design:
+	$(PYTHON) tools/pipeline/generate_level_design.py --pack $(PACK)
+validate-pois:
+	$(PYTHON) tools/pipeline/validate_pois.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-level-design:
+	$(PYTHON) tools/pipeline/validate_level_design.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-reachability:
+	$(PYTHON) tools/pipeline/validate_reachability.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-poi-graph:
+	$(PYTHON) tools/pipeline/validate_poi_graph.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Agent 5: entity anchors / encounter substrate --------------------
+generate-entity-anchors:
+	$(PYTHON) tools/pipeline/generate_entity_anchors.py --pack $(PACK)
+validate-entity-anchors:
+	$(PYTHON) tools/pipeline/validate_entity_anchors.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-spawns:
+	$(PYTHON) tools/pipeline/validate_npc_spawns.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-readiness:
+	$(PYTHON) tools/pipeline/validate_encounter_readiness.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Agent 6: rendering / scalability / raytracing / budgets ----------
+validate-rendering-profiles:
+	$(PYTHON) tools/pipeline/validate_rendering_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-scalability:
+	$(PYTHON) tools/pipeline/validate_scalability.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-raytracing:
+	$(PYTHON) tools/pipeline/validate_raytracing.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-performance-budgets:
+	$(PYTHON) tools/pipeline/validate_performance_budgets.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Agent 7: lifecycle torture / fuzz / determinism / regression -----
+corrupt-world-pack:
+	$(PYTHON) tools/pipeline/corrupt_world_pack.py --pack $(PACK) --mode $(MODE)
+lifecycle-torture:
+	$(PYTHON) tools/pipeline/lifecycle_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+seed-matrix:
+	$(PYTHON) tools/pipeline/seed_matrix.py --pack $(PACK) --seeds $(SEEDS) $(if $(STRICT),--strict,)
+fuzz-world-pack:
+	$(PYTHON) tools/pipeline/fuzz_world_pack.py --pack $(PACK) --cases $(CASES) $(if $(STRICT),--strict,)
+validate-determinism:
+	$(PYTHON) tools/pipeline/validate_determinism.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-regression-matrix:
+	$(PYTHON) tools/pipeline/validate_regression_matrix.py $(if $(STRICT),--strict,)
+
+# --- Optional operator tools ------------------------------------------
+# NOTE: `inspect-world-pack` already exists above (inspection-metadata generator
+# feeding validate-inspection); the v1.0x operator pack-overview is `inspect-pack`.
+inspect-pack:
+	$(PYTHON) tools/pipeline/inspect_world_pack.py --pack $(PACK)
+inspect-map:
+	$(PYTHON) tools/pipeline/inspect_world_pack.py --pack $(PACK) --map $(MAP)
+diagnose-world-pack:
+	$(PYTHON) tools/pipeline/diagnose_world_pack.py --pack $(PACK) $(if $(STRICT),--strict,)
 
 preview:
 	@echo "Preview generation is not implemented yet."

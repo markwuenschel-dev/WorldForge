@@ -1,0 +1,364 @@
+{
+  "world_pack_id": "desert_mvp_world",
+  "meta": {
+    "command": "full-shield",
+    "pack": "desert_mvp_world",
+    "strict": true,
+    "deep": true,
+    "torture": true,
+    "seeds": 100,
+    "git_sha": "unknown",
+    "timestamp": "2026-07-01T22:06:09.387962+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 33
+  },
+  "passed": true,
+  "status": "ok",
+  "totals": {
+    "gates": 33,
+    "pass": 33,
+    "fail": 0,
+    "missing": 0,
+    "skipped": 0
+  },
+  "blocking_gates": [],
+  "failure_taxonomy": {},
+  "gates": [
+    {
+      "id": "validate-world-pack-spec",
+      "label": "Validate world-pack spec",
+      "phase": "spec",
+      "code": "WF110_CONTRACT_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_world_pack_spec_report.json | Coverage: procedural/reports/coverage/desert_mvp_world_coverage.json | [validate-world-pack-spec] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-environment-contract",
+      "label": "Validate environment contract",
+      "phase": "environment",
+      "code": "WF120_ENVIRONMENT_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_environment_contract_report.json | [validate-environment-contract] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [validate-environment-contract] records=25 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "create-world-pack",
+      "label": "Create world pack",
+      "phase": "generate",
+      "code": "WF111_GENERATION_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": " | === World Pack 'desert_mvp_world' done: 1/1 packs OK, 0 failed === | Report: procedural/reports/world_packs/desert_mvp_world/create_world_pack_report.json"
+    },
+    {
+      "id": "validate-world-pack",
+      "label": "Validate world pack (deep)",
+      "phase": "generate",
+      "code": "WF110_CONTRACT_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "=== World Pack 'desert_mvp_world': 25/25 total slices PASS === | Report: procedural/reports/world_packs/desert_mvp_world/validate_world_pack_report.json | [validate-world-pack] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-report-integrity",
+      "label": "Validate report integrity",
+      "phase": "generate",
+      "code": "WF100_REPORT_INTEGRITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_report_integrity_report.json | [validate-report-integrity] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-inspection",
+      "label": "Validate inspection metadata",
+      "phase": "generate",
+      "code": "WF110_CONTRACT_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[validate-inspection] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "run-world-state-scenario",
+      "label": "Run world-state scenario",
+      "phase": "scenario-package",
+      "code": "WF170_SCENARIO_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "=== Scenario 'industrial_takeover': 13/13 compatible maps PASS === | Report: procedural/reports/world_packs/desert_mvp_world/run_world_state_scenario_report.json | [run-world-state-scenario] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-sky",
+      "label": "Validate sky",
+      "phase": "sky-lighting-fog",
+      "code": "WF130_SKY_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_sky_report.json | [validate-sky] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [validate-sky] records=25 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-lighting",
+      "label": "Validate lighting",
+      "phase": "sky-lighting-fog",
+      "code": "WF131_LIGHTING_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_lighting_report.json | [validate-lighting] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [validate-lighting] records=25 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-fog",
+      "label": "Validate fog",
+      "phase": "sky-lighting-fog",
+      "code": "WF132_FOG_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_fog_report.json | [validate-fog] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [validate-fog] records=25 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-atmosphere",
+      "label": "Validate atmosphere",
+      "phase": "sky-lighting-fog",
+      "code": "WF133_ATMOSPHERE_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_atmosphere_report.json | [validate-atmosphere] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [validate-atmosphere] records=25 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-rendering-profiles",
+      "label": "Validate rendering-profiles",
+      "phase": "rendering",
+      "code": "WF160_RENDERING_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_rendering_profiles_report.json | [validate-rendering-profiles] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [validate-rendering-profiles] records=25 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-scalability",
+      "label": "Validate scalability",
+      "phase": "rendering",
+      "code": "WF161_SCALABILITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_scalability_report.json | [validate-scalability] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [validate-scalability] records=25 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-raytracing",
+      "label": "Validate raytracing",
+      "phase": "rendering",
+      "code": "WF162_RAYTRACING_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_raytracing_report.json | [validate-raytracing] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [validate-raytracing] records=25 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-performance-budgets",
+      "label": "Validate performance-budgets",
+      "phase": "rendering",
+      "code": "WF163_BUDGET_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_performance_budgets_report.json | [validate-performance-budgets] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [validate-performance-budgets] records=25 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "generate-level-design",
+      "label": "Generate level-design overlays",
+      "phase": "poi",
+      "code": "WF111_GENERATION_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[generate-level-design] pack=desert_mvp_world overlays=25/25 -> D:\\Unreal Projects\\WorldForge\\procedural\\generated\\level_design | [generate-level-design] DONE — 25 deterministic overlays"
+    },
+    {
+      "id": "validate-pois",
+      "label": "Validate pois",
+      "phase": "poi",
+      "code": "WF140_POI_USABILITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_pois_report.json | [validate-pois] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-level-design",
+      "label": "Validate level-design",
+      "phase": "poi",
+      "code": "WF141_LEVEL_DESIGN_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_level_design_report.json | [validate-level-design] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-reachability",
+      "label": "Validate reachability",
+      "phase": "poi",
+      "code": "WF142_REACHABILITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_reachability_report.json | [validate-reachability] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-poi-graph",
+      "label": "Validate poi-graph",
+      "phase": "poi",
+      "code": "WF143_POI_GRAPH_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_poi_graph_report.json | [validate-poi-graph] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "generate-entity-anchors",
+      "label": "Generate entity-anchor overlays",
+      "phase": "entity",
+      "code": "WF111_GENERATION_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[generate-entity-anchors] pack=desert_mvp_world maps_written=25 anchors=325 level_design_consumed=25/25 missing_specs=0 | [generate-entity-anchors] output -> procedural/generated/entity_anchors"
+    },
+    {
+      "id": "validate-entity-anchors",
+      "label": "Validate entity-anchors",
+      "phase": "entity",
+      "code": "WF150_ENTITY_ANCHOR_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_entity_anchors_report.json | [validate-entity-anchors] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-npc-spawns",
+      "label": "Validate npc-spawns",
+      "phase": "entity",
+      "code": "WF151_NPC_SPAWN_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_npc_spawns_report.json | [validate-npc-spawns] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-encounter-readiness",
+      "label": "Validate encounter-readiness",
+      "phase": "entity",
+      "code": "WF152_ENCOUNTER_READINESS_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_encounter_readiness_report.json | [validate-encounter-readiness] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "package-check",
+      "label": "Package check",
+      "phase": "scenario-package",
+      "code": "WF171_PACKAGE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "COUNTS: PASS=511 | [world_pack] report -> procedural\\reports\\package_check\\desert_mvp_world\\package_check_report.json | [package-check] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-determinism",
+      "label": "Validate determinism",
+      "phase": "determinism-fuzz",
+      "code": "WF181_DETERMINISM_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_determinism_report.json | [validate-determinism] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "seed-matrix",
+      "label": "Seed matrix",
+      "phase": "determinism-fuzz",
+      "code": "WF181_DETERMINISM_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\seed_matrix_report.json | [seed-matrix] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [seed-matrix] seeds_run=100 record_count=100"
+    },
+    {
+      "id": "fuzz-world-pack",
+      "label": "Fuzz world pack",
+      "phase": "determinism-fuzz",
+      "code": "WF183_FUZZ_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[fuzz] cases=25 valid=11 cleanly_rejected=14 crashes=0 | [world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\fuzz_world_pack_report.json | [fuzz-world-pack] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "lifecycle-torture",
+      "label": "Lifecycle torture",
+      "phase": "lifecycle",
+      "code": "WF180_LIFECYCLE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\lifecycle_torture_report.json | [lifecycle-torture] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [lifecycle-torture] target=Desert_AshFlats_IndustrialYard_Heavy_01 modes=16 destroy->rebuild->revalidate cycle run"
+    },
+    {
+      "id": "repair-world-pack",
+      "label": "Repair world pack",
+      "phase": "lifecycle",
+      "code": "WF180_LIFECYCLE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "  repaired:       0 | [world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\repair_world_pack_report.json | [repair-world-pack] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "revalidate-world-pack",
+      "label": "Revalidate world pack",
+      "phase": "lifecycle",
+      "code": "WF180_LIFECYCLE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\revalidate_world_pack_report.json | [revalidate-world-pack] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-regression-matrix",
+      "label": "Validate regression matrix",
+      "phase": "regression",
+      "code": "WF182_REGRESSION_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[regression_matrix] report -> procedural\\reports\\world_packs\\validate_regression_matrix_report.json | [validate-regression-matrix] PASS — regression_matrix (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "final-report-integrity",
+      "label": "Final report integrity check",
+      "phase": "final",
+      "code": "WF100_REPORT_INTEGRITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\validate_report_integrity_report.json | [validate-report-integrity --final] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
+    }
+  ],
+  "map_count": 25
+}

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 test_negative_placement.py
-Negative-fixture gate for PlacementForge (forge_design_decisions D7, Tier 1).
+Negative-fixture gate for PlacementForge.
 
 For every invalid definition under tests/fixtures/invalid_placement/, run
 validate_placement.py (via --definition-path) and assert it is REJECTED (non-zero

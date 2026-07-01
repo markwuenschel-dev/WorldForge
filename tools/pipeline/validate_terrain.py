@@ -6,9 +6,9 @@ the terrain recipe and descriptor.  Pure Python — no UE imports.
 
 v0.9: migrated onto the shared ``ValidationReport`` helper (one report shape,
 one strict-mode semantics) and stable ``FailureCode``s. The artifact-side
-guarantees stay hard FAILs; the UE heightmap-import check is the D7-gated
-materialization step — it reads ``ue_terrain_report.json`` when present and
-otherwise reports ``GATED_HUMAN_EDITOR`` (never blocking, even under ``--strict``).
+guarantees stay hard FAILs; the UE heightmap-import check reads
+``ue_terrain_report.json`` when present (verified PASS/FAIL) and is skipped
+otherwise — run ``make import-terrain`` to drive the editor import.
 
 Usage:
     python tools/pipeline/validate_terrain.py --name Terrain_AshFlats_01
@@ -244,22 +244,20 @@ def main(argv=None):
     _check_mask_nondegenerate(placement_path, "placement_mask")
     _check_mask_nondegenerate(nav_path, "nav_safe_mask")
 
-    # -- UE-side check (D7-gated materialization; never blocks) -------------
-    # Passes if import_terrain_heightmap.py has already been run for this terrain
-    # and produced ue_terrain_report.json. Reading the report does NOT materialize
-    # Content/** — it only observes a human/editor-run UE import. Absent => GATED.
+    # -- UE-side check: verified when the editor import has produced its report;
+    #    otherwise skipped (run 'make import-terrain' to drive the editor import).
     ue_report_path = report_dir / "ue_terrain_report.json"
-    ue_imported = False
     if ue_report_path.is_file():
         try:
-            ue_rpt = json.loads(ue_report_path.read_text(encoding="utf-8"))
-            ue_imported = bool(ue_rpt.get("passed"))
+            ue_imported = bool(json.loads(ue_report_path.read_text(encoding="utf-8")).get("passed"))
         except Exception:
             ue_imported = False
-    rep.gated("terrain_imported_in_ue", ue_imported,
-              "ue_terrain_report PASS" if ue_imported else
-              "run 'make import-terrain NAME={}' (UE) to import the heightmap".format(terrain_name),
-              code=FailureCode.UE_MATERIALIZATION_PENDING)
+        rep.ue_check("terrain_imported_in_ue", ue_imported,
+                  "ue_terrain_report PASS" if ue_imported else "ue_terrain_report FAIL",
+                  code=FailureCode.UE_ARTIFACT_MISSING)
+    else:
+        rep.skip("terrain_imported_in_ue",
+                 "no ue_terrain_report yet; run 'make import-terrain NAME={}' to import the heightmap".format(terrain_name))
 
     # -- ue_terrain config present (genuine soft warning -> WARN under strict)
     # This is an authoring-side descriptor block (not Content materialization),

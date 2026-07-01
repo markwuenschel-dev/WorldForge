@@ -1,0 +1,26 @@
+name: stylized_render
+kind: rendering
+# --- required (frozen) contract fields ---
+rendering_mode: balanced
+gi_method: lumen
+ray_tracing: optional
+shadow_quality: medium
+# --- pipeline detail ---
+reflection_method: ssr
+anti_aliasing: TSR
+nanite: true
+lumen: true
+cel_shading: true
+# --- v1.0x rendering-budget enrichment (Agent 6) ---
+virtual_shadow_maps: true
+volumetric_fog: light
+material_complexity_class: medium
+texture_budget_class: medium
+mesh_density_class: medium
+foliage_density_class: medium
+post_process_cost_class: medium
+light_count_budget: 14
+fog_volume_budget: 2
+high_cost_material_budget: 8
+foliage_cluster_budget: 16
+cost_class: 3

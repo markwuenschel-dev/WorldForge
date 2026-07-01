@@ -1,0 +1,56 @@
+{
+  "world_pack_id": "desert_mvp_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "report::validate_pois_report.json::nonzero_records": {
+      "ok": false,
+      "detail": "record_count=0 (a zero-record report claiming success is a lie)",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF104_REPORT_ZERO_RECORD",
+      "blocking": true
+    },
+    "report::validate_pois_report.json::record_count_matches": {
+      "ok": false,
+      "detail": "meta.record_count=0 but report carries 350 check(s)",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF105_RECORD_COUNT_MISMATCH",
+      "blocking": true
+    }
+  },
+  "failures": [
+    "report::validate_pois_report.json::nonzero_records: record_count=0 (a zero-record report claiming success is a lie)",
+    "report::validate_pois_report.json::record_count_matches: meta.record_count=0 but report carries 350 check(s)"
+  ],
+  "counts": {
+    "PASS": 0,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 2,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail",
+  "meta": {
+    "command": "validate-report-integrity",
+    "pack": "desert_mvp_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "756b05b377fb5d149ca778935a15116e9c55d979",
+    "timestamp": "2026-07-01T22:06:28.023487+00:00",
+    "input_spec_hash": "230481bf99534bce1bb7738611dc0a2864b1be75475c186919475044d7b7c5ca",
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "fail",
+    "failure_count": 2,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 28,
+    "final": false,
+    "reports_scanned": 28
+  }
+}

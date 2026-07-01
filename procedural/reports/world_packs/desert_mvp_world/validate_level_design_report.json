@@ -1,0 +1,2235 @@
+{
+  "world_pack_id": "desert_mvp_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "Desert_AshFlats_IndustrialYard_Heavy_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Ind_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_MiningCamp_Ruined_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Ruined_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_DebrisCheckpoint_Ind_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Ruined_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_DebrisCheckpoint_Light_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Clean_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_RidgeLookout_Clean_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ShrineRuin_Clean_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ShrineRuin_Clean_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_CleanScrub_Clean_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_RidgeLookout_Clean_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Light_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_ScrubNode_Survey_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Survey_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ScrubNode_Clean_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_MiningCamp_Light_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_ScrubNode_Ind_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_RidgeLookout_Heavy_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_ShrineRuin_Light_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_SandyBasin_IndustrialYard_Ind_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_CrackedRidge_MiningCamp_Clean_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_CleanScrub_Clean_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 275,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-level-design",
+    "pack": "desert_mvp_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "unknown",
+    "timestamp": "2026-07-01T22:05:58.546120+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 25
+  }
+}

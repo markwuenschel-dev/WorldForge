@@ -8,7 +8,7 @@ descriptor cannot lie to us. Pure Python — no UE imports.
 Migrated to the v0.9 shared validation contract
 (tools/pipeline/validation_report.py + tools/pipeline/failure_codes.py):
   - one canonical report shape (superset of the legacy shape),
-  - the six-verdict vocabulary (PASS/WARN/WARN_ONLY/FAIL/GATED_HUMAN_EDITOR/SKIP),
+  - the verdict vocabulary (PASS/WARN/WARN_ONLY/FAIL/SKIP),
   - opt-in --strict / STRICT=1 that only ever ADDS blocking,
   - stable WFnnn failure codes per check.
 
@@ -25,14 +25,13 @@ Proves (all data-driven; no state key is hard-coded):
   - POI state evidence updated (WF074)
   - save/load round-trip restored the persisted state (WF075)
   - provenance present
-  - post-scenario map validity — D7-GATED on a UE validate-slice run
-  - the UE bridge applied + read back the MPC state — D7-GATED (WF082)
+  - post-scenario map validity — verified from the per-slice UE validate report
+  - the in-editor MPC bridge readback — an optional cross-check (WF082)
 
-The two UE-dependent checks are GATED_HUMAN_EDITOR: non-blocking in BOTH normal
-and strict mode, because agents cannot materialize / run the editor (D7). Strict
-PASS is therefore achievable from the authoring side alone; the gated checks
-clear to PASS once a human/editor runs the documented UE command and its report
-appears.
+The in-editor MPC bridge readback is produced by 'make apply-state-scenario';
+when its report is absent that check is skipped (non-blocking), because the
+authoring-side scenario validation already proves the state logic. Run the
+editor step to add the cross-check.
 
 Usage:
     python tools/pipeline/validate_runtime_state.py --name Desert_Ash_IndustrialYard_01
@@ -89,7 +88,7 @@ def main(argv=None):
     ap.add_argument("--name", required=True, help="Target name (slice id / Region context_id)")
     ap.add_argument("--scenario", help="Scenario id (disambiguates when a target has several runs)")
     ap.add_argument("--strict", action="store_true",
-                    help="Strict mode: WARN checks become blocking (gated/UE checks stay non-blocking).")
+                    help="Strict mode: WARN checks become blocking (optional UE checks stay non-blocking).")
     args = ap.parse_args(argv)
 
     strict = args.strict or strict_from_env()
@@ -292,7 +291,7 @@ def main(argv=None):
               "provenance block absent from result descriptor",
               code=FailureCode.PROVENANCE_MISSING)
 
-    # -- Post-scenario map validity (D7-GATED on a UE validate-slice run) ---
+    # -- Post-scenario map validity (verified from the per-slice UE report) --
     slice_report = (REPO_ROOT / "procedural" / "reports" / "slices" / descriptor.get("biome", "desert")
                     / args.name / "validate_slice_report.json")
     map_ok = False
@@ -301,25 +300,28 @@ def main(argv=None):
             map_ok = bool(json.loads(slice_report.read_text(encoding="utf-8")).get("passed"))
         except Exception:
             map_ok = False
-    rep.gated("post_scenario_map_valid", map_ok,
+    rep.ue_check("post_scenario_map_valid", map_ok,
               "validate-slice PASS for {}".format(args.name) if map_ok else
-              "run 'make validate-slice' for {} (UE) to confirm post-scenario map validity".format(
+              "run 'make validate-slice' for {} to confirm post-scenario map validity".format(
                   args.name),
-              code=FailureCode.UE_MATERIALIZATION_PENDING)
+              code=FailureCode.UE_ARTIFACT_MISSING)
 
-    # -- UE bridge applied + readback (D7-GATED) ----------------------------
+    # -- In-editor MPC bridge readback: an optional cross-check produced by
+    #    'make apply-state-scenario'. Verified when present; otherwise skipped
+    #    (the authoring-side scenario validation already proves the state logic).
     ue_report = report_dir / "ue_state_scenario_report.json"
-    ue_ok = False
-    ue_detail = "run 'make apply-state-scenario' (UE) to apply + read back the MPC bridge"
     if ue_report.is_file():
         try:
             ue_rpt = json.loads(ue_report.read_text(encoding="utf-8"))
             ue_ok = bool(ue_rpt.get("passed"))
             ue_detail = "ue readback={}".format(ue_rpt.get("mpc_readback"))
         except Exception:
-            ue_ok = False
-    rep.gated("ue_state_applied", ue_ok, ue_detail,
-              code=FailureCode.UE_STATE_NOT_APPLIED)
+            ue_ok, ue_detail = False, "ue_state_scenario_report.json unreadable"
+        rep.ue_check("ue_state_applied", ue_ok, ue_detail,
+                  code=FailureCode.UE_STATE_NOT_APPLIED)
+    else:
+        rep.skip("ue_state_applied",
+                 "in-editor MPC bridge readback not run here; produce it with 'make apply-state-scenario'")
 
     # -- Finalize + write ---------------------------------------------------
     rep.finalize()

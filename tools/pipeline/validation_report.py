@@ -4,7 +4,7 @@
 Canonical, dependency-free helper that formalizes the check/report pattern every
 WorldForge validator already uses and extends it with v0.9 strict-mode semantics
 and the v0.9 status vocabulary.  This is a *thin shared helper, NOT a framework*:
-it exists only so that strict / warn / fail / gated semantics are identical across
+it exists only so that strict / warn / fail semantics are identical across
 every validator and so reports share one machine-readable shape.
 
 It is a strict SUPERSET of the legacy inline pattern:
@@ -29,10 +29,6 @@ Per-check verdict vocabulary
     WARN_ONLY             intentionally non-blocking in BOTH modes (legacy
                           compatibility or an explicitly-allowed warning)
     FAIL                  blocking failure in BOTH modes
-    GATED_HUMAN_EDITOR    non-blocking in BOTH modes because D7 / CODEOWNERS
-                          blocks an agent from materializing Content/** — clears
-                          to PASS once the documented editor-authorized command
-                          has been run
     SKIP_NOT_APPLICABLE   not evaluated because the spec genuinely lacks this
                           surface; non-blocking
 
@@ -40,7 +36,7 @@ Per-check verdict vocabulary
 Overall report status
 ------------------------------------------------------------------------------
     ok      no blocking failures and no unresolved soft warnings
-    warn    no blocking failures, but unresolved WARN/WARN_ONLY/GATED present
+    warn    no blocking failures, but unresolved WARN/WARN_ONLY present
     fail    one or more blocking failures
     error   validation could not run (missing / unparseable inputs)
 
@@ -53,11 +49,19 @@ Strict mode (STRICT=1)
     FAIL                  always blocking
     WARN                  becomes blocking unless allow_in_strict=True
     WARN_ONLY             stays non-blocking (explicitly allowed / legacy)
-    GATED_HUMAN_EDITOR    stays non-blocking (D7 human/editor step)
     SKIP_NOT_APPLICABLE   stays non-blocking
 
 Because nothing set STRICT before v0.9, non-strict behavior is byte-for-byte the
 legacy behavior; strict only ever ADDS blocking, never removes it.
+
+------------------------------------------------------------------------------
+UE checks
+------------------------------------------------------------------------------
+``ue_check(name, ok, detail)`` is a normal blocking check for an artifact that
+the tooling materializes by driving the Unreal editor (a generated map, a
+heightmap import, an MI parameter override). If the artifact is present and
+valid it PASSes; if it is missing it FAILs — the tooling runs the editor to
+produce it. There is no "deferred" state: UE work is done, not postponed.
 """
 
 import json
@@ -70,10 +74,9 @@ PASS = "PASS"
 WARN = "WARN"
 WARN_ONLY = "WARN_ONLY"
 FAIL = "FAIL"
-GATED_HUMAN_EDITOR = "GATED_HUMAN_EDITOR"
 SKIP_NOT_APPLICABLE = "SKIP_NOT_APPLICABLE"
 
-VERDICTS = (PASS, WARN, WARN_ONLY, FAIL, GATED_HUMAN_EDITOR, SKIP_NOT_APPLICABLE)
+VERDICTS = (PASS, WARN, WARN_ONLY, FAIL, SKIP_NOT_APPLICABLE)
 
 # -- Overall report status ----------------------------------------------------
 STATUS_OK = "ok"
@@ -82,13 +85,6 @@ STATUS_FAIL = "fail"
 STATUS_ERROR = "error"
 
 SCHEMA_VERSION = "v0.9"
-
-# Canonical wording for D7-gated UE materialization, referenced by docs + tools.
-GATED_HUMAN_EDITOR_NOTE = (
-    "UE materialization is pending a human/editor step because Content/** changes "
-    "are D7-gated. Run the documented editor-authorized command, then rerun strict "
-    "validation."
-)
 
 
 def strict_from_env(default=False):
@@ -108,7 +104,7 @@ class ValidationReport:
         rep.check("descriptor_exists", path.is_file(), str(path))
         rep.check("terrain_imported_in_ue", imported,
                   "run 'make import-terrain ...'", warn_only=True)   # -> WARN
-        rep.gated("asset_exists_in_ue_as_static_mesh", ue_ok, detail)  # -> GATED
+        rep.ue_check("asset_exists_in_ue_as_static_mesh", ue_ok, detail)  # -> PASS/FAIL
         rep.finalize()
         rep.write(report_dir, "validate_terrain_report.json")
         rep.print_summary("validate-terrain")
@@ -124,6 +120,18 @@ class ValidationReport:
         self.warnings = []   # non-blocking soft/gated, "name: detail"
         self._status = None  # set by finalize(); "error" may be forced earlier
         self._passed = None
+        self._meta = None    # optional v1.0x report-metadata block (see report_meta.py)
+
+    # -- v1.0x metadata ------------------------------------------------------
+    def set_meta(self, meta):
+        """Attach a v1.0x report-metadata block; emitted under ``meta`` in to_dict().
+
+        Counts (status/failure_count/warning_count/skipped_count) are refreshed
+        from the finalized report at write time so the meta block cannot drift
+        from the actual check results.
+        """
+        self._meta = dict(meta) if meta else None
+        return self
 
     # -- recording -----------------------------------------------------------
     def _record(self, name, verdict, detail, code, warn_only_legacy):
@@ -150,7 +158,7 @@ class ValidationReport:
             return True
         if verdict == WARN:
             return self.strict
-        # PASS, WARN_ONLY, GATED_HUMAN_EDITOR, SKIP_NOT_APPLICABLE
+        # PASS, WARN_ONLY, SKIP_NOT_APPLICABLE
         return False
 
     # -- public check API ----------------------------------------------------
@@ -170,15 +178,13 @@ class ValidationReport:
         verdict = WARN_ONLY if allow_in_strict else WARN
         return self._record(name, verdict, detail, code, True)
 
-    def gated(self, name, ok, detail="", code=None):
-        """A check whose failure is D7-gated (human/editor materialization).
+    def ue_check(self, name, ok, detail="", code=None):
+        """A check for an artifact the tooling materializes by driving the editor.
 
-        Non-blocking in both modes; clears to PASS once the editor command runs.
+        Normal blocking check: present+valid -> PASS, missing -> FAIL. There is no
+        deferred state — UE work is run, not postponed.
         """
-        if ok:
-            return self._record(name, PASS, detail, None, True)
-        full = detail or GATED_HUMAN_EDITOR_NOTE
-        return self._record(name, GATED_HUMAN_EDITOR, full, code, True)
+        return self.check(name, ok, detail, code=code)
 
     def warn_only(self, name, ok, detail="", code=None):
         """Explicitly non-blocking warning in both modes (legacy compatibility)."""
@@ -234,6 +240,15 @@ class ValidationReport:
         d["counts"] = self._counts()
         d["passed"] = self._passed
         d["status"] = self._status
+        if self._meta is not None:
+            # Keep the meta block's derived counters honest with the real report.
+            meta = dict(self._meta)
+            meta["status"] = self._status
+            meta["failure_count"] = len(self.failures)
+            meta["warning_count"] = len(self.warnings)
+            counts = self._counts()
+            meta["skipped_count"] = counts.get(SKIP_NOT_APPLICABLE, 0)
+            d["meta"] = meta
         return d
 
     @property
@@ -277,6 +292,6 @@ class ValidationReport:
         for f in self.failures:
             stream.write("[{}]   FAIL: {}\n".format(tag, f))
         for name, c in self.checks.items():
-            if c.get("verdict") in (WARN, WARN_ONLY, GATED_HUMAN_EDITOR) and not c["ok"]:
+            if c.get("verdict") in (WARN, WARN_ONLY) and not c["ok"]:
                 stream.write("[{}]   {}: {}: {}\n".format(
                     tag, c["verdict"], name, c.get("detail", "")))

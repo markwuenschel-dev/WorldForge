@@ -1,0 +1,516 @@
+{
+  "schema_version": "wf.entity_anchors.v1",
+  "slice_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+  "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+  "world_pack_map": "/Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01",
+  "biome": "desert",
+  "variant": "sandy",
+  "seed": 9009,
+  "poi": {
+    "name": "POI_ScrublandResourceNode_01",
+    "type": "scrubland_resource_node"
+  },
+  "owned_by": "generated",
+  "destroyable": true,
+  "level_design_consumed": true,
+  "level_design_ref": {
+    "source": "generate_level_design",
+    "consumed": true,
+    "player_start_world": [
+      -1458.26,
+      -8321.19,
+      0.0
+    ],
+    "poi_origin_world": [
+      1546.64,
+      8825.5,
+      0.0
+    ],
+    "safe_zones_world": [
+      {
+        "center_world": [
+          4942.77,
+          -5878.04,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "safe_zone"
+      }
+    ],
+    "danger_zones_world": [
+      {
+        "center_world": [
+          -8088.04,
+          11525.19,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "danger_zone"
+      }
+    ],
+    "level_design_content_hash": "4b49d80ad9239d345e4da92894a3625ddc3f906ed84ef3c4177f7e979b47a627",
+    "slice_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+    "approach_bearing_xy": [
+      -0.17261605627074406,
+      -0.9849891862947202
+    ]
+  },
+  "density_budget": {
+    "max_anchors_per_map": 40,
+    "max_spawn_zones_per_map": 12,
+    "max_enemy_spawn_zones_per_map": 4,
+    "max_capacity_per_zone": 8,
+    "max_total_spawn_capacity": 30
+  },
+  "world_model": {
+    "ground_z": 0,
+    "player_start": [
+      -604,
+      -3447,
+      0
+    ],
+    "player_start_radius_cm": 500,
+    "poi_origin": [
+      0,
+      0,
+      0
+    ],
+    "poi_origin_world": [
+      1546.64,
+      8825.5,
+      0.0
+    ],
+    "critical_route": [
+      [
+        -604,
+        -3447,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "route_corridor_radius_cm": 800,
+    "safe_zones": [
+      {
+        "center": [
+          -604,
+          -3447,
+          0
+        ],
+        "radius_cm": 2500
+      }
+    ],
+    "danger_zones": [
+      {
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "radius_cm": 2000
+      }
+    ],
+    "blocking_volumes": [],
+    "max_slope_deg": 35,
+    "float_tolerance_cm": 50,
+    "bury_tolerance_cm": 50,
+    "edge_max_dist_cm": 4000
+  },
+  "anchors": [
+    {
+      "id": "safe_zone_center",
+      "type": "safe_zone_anchor",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        -604,
+        -3447,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2500
+      },
+      "ground_z": 0,
+      "slope_deg": 12,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      }
+    },
+    {
+      "id": "danger_zone_core",
+      "type": "danger_zone_anchor",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2000
+      },
+      "ground_z": 0,
+      "slope_deg": 7,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "difficulty_tag": "standard"
+    },
+    {
+      "id": "entity_marker_entry",
+      "type": "entity_anchor",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        0,
+        -1500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 9,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "interaction_entry",
+      "type": "interaction_anchor",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        0,
+        -1500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 6,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "npc_spawn_entry",
+      "type": "npc_spawn_zone",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        0,
+        -1500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 12,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "faction_tag": "neutral_traders",
+      "archetypes": [
+        "neutral_trader_placeholder",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "interaction_center",
+      "type": "interaction_anchor",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 4,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "role": "primary"
+    },
+    {
+      "id": "encounter_core",
+      "type": "encounter_anchor",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 3,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "scavenge_contested"
+    },
+    {
+      "id": "enemy_spawn_core",
+      "type": "enemy_spawn_zone",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 10,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "scavenge_contested",
+      "archetypes": [
+        "raider",
+        "guard"
+      ],
+      "capacity": 4,
+      "allow_in_safe_zone": false
+    },
+    {
+      "id": "faction_ownership_core",
+      "type": "faction_ownership_anchor",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 7,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "faction_tag": "raiders"
+    },
+    {
+      "id": "neutral_spawn_support",
+      "type": "neutral_spawn_zone",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        800,
+        600,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 11,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "faction_tag": "scavengers",
+      "archetypes": [
+        "scavenger",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "idle_support",
+      "type": "idle_anchor",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        800,
+        600,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 4,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "faction_tag": "ambient",
+      "archetypes": [
+        "ambient_creature_placeholder"
+      ]
+    },
+    {
+      "id": "patrol_0",
+      "type": "patrol_anchor",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        800,
+        600,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 1,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    },
+    {
+      "id": "patrol_1",
+      "type": "patrol_anchor",
+      "map_id": "Desert_SandyBasin_ScrubNode_Clean_01",
+      "position": [
+        -1500,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 11,
+      "owning_poi": "POI_ScrublandResourceNode_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    }
+  ],
+  "provenance": {
+    "generator": "generate_entity_anchors",
+    "generator_version": "1.0.0",
+    "generated_at_utc": "2026-07-01T22:06:07.816225+00:00",
+    "source_spec_hash": "1d9b53b05687fc2476aa46257ecd85e108e16307705547f2f49585de7ad8cf52",
+    "source_spec_path": "D:\\Unreal Projects\\WorldForge\\procedural\\slices\\desert\\generated\\Desert_SandyBasin_ScrubNode_Clean_01.json",
+    "seed": 9009,
+    "owned_by": "generated",
+    "destroyable": true
+  },
+  "content_hash": "bce765cd88379793cc0bdf1b0c77ca19c7292f18c9af5d65ee033b49f99acc76"
+}

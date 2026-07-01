@@ -1,0 +1,516 @@
+{
+  "schema_version": "wf.entity_anchors.v1",
+  "slice_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+  "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+  "world_pack_map": "/Game/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01",
+  "biome": "desert",
+  "variant": "industrialized",
+  "seed": 9023,
+  "poi": {
+    "name": "POI_IndustrialYard_01",
+    "type": "industrial_yard"
+  },
+  "owned_by": "generated",
+  "destroyable": true,
+  "level_design_consumed": true,
+  "level_design_ref": {
+    "source": "generate_level_design",
+    "consumed": true,
+    "player_start_world": [
+      -7492.61,
+      -3902.5,
+      0.0
+    ],
+    "poi_origin_world": [
+      7946.7,
+      4139.02,
+      0.0
+    ],
+    "safe_zones_world": [
+      {
+        "center_world": [
+          -1660.6,
+          -7498.32,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "safe_zone"
+      }
+    ],
+    "danger_zones_world": [
+      {
+        "center_world": [
+          4230.98,
+          13429.27,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "danger_zone"
+      }
+    ],
+    "level_design_content_hash": "c20a2c13eb31702f3a10b79224856d9ed64e9857b1889cb10d39bfcffbc043a6",
+    "slice_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+    "approach_bearing_xy": [
+      -0.8869090780371301,
+      -0.46194403047915633
+    ]
+  },
+  "density_budget": {
+    "max_anchors_per_map": 40,
+    "max_spawn_zones_per_map": 12,
+    "max_enemy_spawn_zones_per_map": 4,
+    "max_capacity_per_zone": 8,
+    "max_total_spawn_capacity": 30
+  },
+  "world_model": {
+    "ground_z": 0,
+    "player_start": [
+      -3104,
+      -1617,
+      0
+    ],
+    "player_start_radius_cm": 500,
+    "poi_origin": [
+      0,
+      0,
+      0
+    ],
+    "poi_origin_world": [
+      7946.7,
+      4139.02,
+      0.0
+    ],
+    "critical_route": [
+      [
+        -3104,
+        -1617,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "route_corridor_radius_cm": 800,
+    "safe_zones": [
+      {
+        "center": [
+          -3104,
+          -1617,
+          0
+        ],
+        "radius_cm": 2500
+      }
+    ],
+    "danger_zones": [
+      {
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "radius_cm": 2000
+      }
+    ],
+    "blocking_volumes": [],
+    "max_slope_deg": 35,
+    "float_tolerance_cm": 50,
+    "bury_tolerance_cm": 50,
+    "edge_max_dist_cm": 4000
+  },
+  "anchors": [
+    {
+      "id": "safe_zone_center",
+      "type": "safe_zone_anchor",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        -3104,
+        -1617,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2500
+      },
+      "ground_z": 0,
+      "slope_deg": 11,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      }
+    },
+    {
+      "id": "danger_zone_core",
+      "type": "danger_zone_anchor",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2000
+      },
+      "ground_z": 0,
+      "slope_deg": 5,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "difficulty_tag": "standard"
+    },
+    {
+      "id": "entity_marker_entry",
+      "type": "entity_anchor",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        0,
+        -2500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 11,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "interaction_entry",
+      "type": "interaction_anchor",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        0,
+        -2500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 3,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "npc_spawn_entry",
+      "type": "npc_spawn_zone",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        0,
+        -2500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 2,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "faction_tag": "neutral_traders",
+      "archetypes": [
+        "neutral_trader_placeholder",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "interaction_center",
+      "type": "interaction_anchor",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 11,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "role": "primary"
+    },
+    {
+      "id": "encounter_core",
+      "type": "encounter_anchor",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 6,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "defensive_hold"
+    },
+    {
+      "id": "enemy_spawn_core",
+      "type": "enemy_spawn_zone",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 8,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "defensive_hold",
+      "archetypes": [
+        "raider",
+        "guard"
+      ],
+      "capacity": 4,
+      "allow_in_safe_zone": false
+    },
+    {
+      "id": "faction_ownership_core",
+      "type": "faction_ownership_anchor",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 11,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "faction_tag": "raiders"
+    },
+    {
+      "id": "neutral_spawn_support",
+      "type": "neutral_spawn_zone",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        2000,
+        500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 3,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "faction_tag": "scavengers",
+      "archetypes": [
+        "scavenger",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "idle_support",
+      "type": "idle_anchor",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        2000,
+        500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 2,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "faction_tag": "ambient",
+      "archetypes": [
+        "ambient_creature_placeholder"
+      ]
+    },
+    {
+      "id": "patrol_0",
+      "type": "patrol_anchor",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        2000,
+        500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 3,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    },
+    {
+      "id": "patrol_1",
+      "type": "patrol_anchor",
+      "map_id": "Desert_SandyBasin_IndustrialYard_Ind_01",
+      "position": [
+        -2000,
+        1500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 1,
+      "owning_poi": "POI_IndustrialYard_01",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    }
+  ],
+  "provenance": {
+    "generator": "generate_entity_anchors",
+    "generator_version": "1.0.0",
+    "generated_at_utc": "2026-07-01T22:06:07.828480+00:00",
+    "source_spec_hash": "e1221ca3dc3e40c2ec0c31d28d56eca69e021604f81494a58be6f3cafd36c44a",
+    "source_spec_path": "D:\\Unreal Projects\\WorldForge\\procedural\\slices\\desert\\generated\\Desert_SandyBasin_IndustrialYard_Ind_01.json",
+    "seed": 9023,
+    "owned_by": "generated",
+    "destroyable": true
+  },
+  "content_hash": "25b5af15d159d86f5710b0a68aae4e2f33a8b45e38544edac3ac4237fab50ff9"
+}

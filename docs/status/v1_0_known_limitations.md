@@ -4,15 +4,6 @@ v1.0 proves the factory can generate **a small playable adaptive world pack from
 data** (`desert_mvp_world`, 25 maps). It is deliberately not a general game
 generator. These are the real edges.
 
-## UE materialization is normally a human/editor step
-Generated maps, terrain heightmap imports, and material-parameter overrides live
-under `Content/**`, which is CODEOWNERS/CI-gated against agent authorship (D7). In
-the standard flow the pure-Python layers (spec, prepare, coverage, scenario sim,
-package, lifecycle) are agent-runnable and strictly validated, while the in-editor
-steps are `GATED_HUMAN_EDITOR` (non-blocking) until a human runs them. In the v1.0
-build these UE steps were executed under explicit user authorization; the gated
-checks clear to PASS once their reports exist.
-
 ## `make` may not be on every environment's PATH
 The canonical command surface is the Makefile, but `make` is not installed in every
 shell. Every target is a one-line wrapper over `tools/pipeline/<script>.py`; run the
@@ -42,9 +33,9 @@ are a convenience summary, not the gate.
 ## Runtime scenario POI evidence is data-simulated
 `run-world-state-scenario` runs the authoring-side v0.8 simulation (bounded state
 mutation, aggregation, MPC expectation, POI evidence, real save/load round-trip). The
-in-editor MPC bridge read-back and post-scenario map re-validation are `GATED` UE
-steps. No quest/economy/faction/NPC state exists — scenarios only move curated world-
-state keys.
+in-editor MPC bridge read-back and post-scenario map re-validation are editor steps
+the tooling drives directly. No quest/economy/faction/NPC state exists — scenarios
+only move curated world-state keys.
 
 ## Map count is at the MVP floor
 The pack ships 25 maps (the v1.0 minimum). Expansion toward 50 is intentionally

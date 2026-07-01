@@ -1,0 +1,557 @@
+{
+  "world_pack_id": "desert_mvp_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "binding_overlay_loads": {
+      "ok": true,
+      "detail": "25 explicit binding(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_IndustrialYard_Heavy_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='required', ray_tracing.mode='full'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_IndustrialYard_Heavy_01::rt_required_supported": {
+      "ok": true,
+      "detail": "rendering requires RT but env cinematic_desert_high_contrast ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_IndustrialYard_Heavy_01::rt_not_excessive": {
+      "ok": true,
+      "detail": "RT-on env cinematic_desert_high_contrast paired with rendering volumetric_fog='moderate' (excessive)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_IndustrialYard_Heavy_01::rt_effective": {
+      "ok": true,
+      "detail": "env cinematic_desert_high_contrast ray_tracing.mode=full but no rt_* feature enabled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_DebrisCheckpoint_Ind_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_DebrisCheckpoint_Ind_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env dust_storm_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_MiningCamp_Ruined_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_MiningCamp_Ruined_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env fog_heavy_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='required', ray_tracing.mode='full'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::rt_required_supported": {
+      "ok": true,
+      "detail": "rendering requires RT but env cinematic_desert_high_contrast ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::rt_not_excessive": {
+      "ok": true,
+      "detail": "RT-on env cinematic_desert_high_contrast paired with rendering volumetric_fog='moderate' (excessive)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_DebrisCheckpoint_Heavy_01::rt_effective": {
+      "ok": true,
+      "detail": "env cinematic_desert_high_contrast ray_tracing.mode=full but no rt_* feature enabled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_IndustrialYard_Ruined_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_IndustrialYard_Ruined_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env low_visibility_horror_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_DebrisCheckpoint_Ind_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_DebrisCheckpoint_Ind_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env dust_storm_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_MiningCamp_Ruined_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_MiningCamp_Ruined_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env fog_heavy_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_DebrisCheckpoint_Light_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='optional', ray_tracing.mode='selective'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_DebrisCheckpoint_Light_01::rt_not_excessive": {
+      "ok": true,
+      "detail": "RT-on env photoreal_desert_dusk paired with rendering volumetric_fog='moderate' (excessive)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_DebrisCheckpoint_Light_01::rt_effective": {
+      "ok": true,
+      "detail": "env photoreal_desert_dusk ray_tracing.mode=selective but no rt_* feature enabled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_ScrubNode_Clean_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_ScrubNode_Clean_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env clean_gameplay_readable_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_RidgeLookout_Clean_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='optional', ray_tracing.mode='selective'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_RidgeLookout_Clean_01::rt_not_excessive": {
+      "ok": true,
+      "detail": "RT-on env photoreal_desert_day paired with rendering volumetric_fog='moderate' (excessive)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_RidgeLookout_Clean_01::rt_effective": {
+      "ok": true,
+      "detail": "env photoreal_desert_day ray_tracing.mode=selective but no rt_* feature enabled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_ShrineRuin_Clean_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='optional', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_ShrineRuin_Clean_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='optional', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_CleanScrub_Clean_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_CleanScrub_Clean_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env clean_gameplay_readable_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_RidgeLookout_Clean_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='optional', ray_tracing.mode='selective'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_RidgeLookout_Clean_01::rt_not_excessive": {
+      "ok": true,
+      "detail": "RT-on env photoreal_desert_day paired with rendering volumetric_fog='moderate' (excessive)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_RidgeLookout_Clean_01::rt_effective": {
+      "ok": true,
+      "detail": "env photoreal_desert_day ray_tracing.mode=selective but no rt_* feature enabled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_ScrubNode_Light_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_ScrubNode_Light_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env performance_safe_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_ScrubNode_Survey_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='optional', ray_tracing.mode='selective'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_ScrubNode_Survey_01::rt_not_excessive": {
+      "ok": true,
+      "detail": "RT-on env photoreal_desert_day paired with rendering volumetric_fog='moderate' (excessive)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_ScrubNode_Survey_01::rt_effective": {
+      "ok": true,
+      "detail": "env photoreal_desert_day ray_tracing.mode=selective but no rt_* feature enabled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_ScrubNode_Survey_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_ScrubNode_Survey_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env performance_safe_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_ScrubNode_Clean_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_ScrubNode_Clean_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env clean_gameplay_readable_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_MiningCamp_Light_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='optional', ray_tracing.mode='selective'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_MiningCamp_Light_01::rt_not_excessive": {
+      "ok": true,
+      "detail": "RT-on env photoreal_desert_dusk paired with rendering volumetric_fog='moderate' (excessive)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_MiningCamp_Light_01::rt_effective": {
+      "ok": true,
+      "detail": "env photoreal_desert_dusk ray_tracing.mode=selective but no rt_* feature enabled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_ScrubNode_Ind_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_ScrubNode_Ind_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env dust_storm_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_RidgeLookout_Heavy_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='required', ray_tracing.mode='full'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_RidgeLookout_Heavy_01::rt_required_supported": {
+      "ok": true,
+      "detail": "rendering requires RT but env cinematic_desert_high_contrast ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_RidgeLookout_Heavy_01::rt_not_excessive": {
+      "ok": true,
+      "detail": "RT-on env cinematic_desert_high_contrast paired with rendering volumetric_fog='moderate' (excessive)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_RidgeLookout_Heavy_01::rt_effective": {
+      "ok": true,
+      "detail": "env cinematic_desert_high_contrast ray_tracing.mode=full but no rt_* feature enabled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_ShrineRuin_Light_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='optional', ray_tracing.mode='selective'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_ShrineRuin_Light_01::rt_not_excessive": {
+      "ok": true,
+      "detail": "RT-on env alien_surreal_desert paired with rendering volumetric_fog='light' (excessive)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_ShrineRuin_Light_01::rt_effective": {
+      "ok": true,
+      "detail": "env alien_surreal_desert ray_tracing.mode=selective but no rt_* feature enabled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_IndustrialYard_Ind_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='required', ray_tracing.mode='full'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_IndustrialYard_Ind_01::rt_required_supported": {
+      "ok": true,
+      "detail": "rendering requires RT but env raytraced_high_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_IndustrialYard_Ind_01::rt_not_excessive": {
+      "ok": true,
+      "detail": "RT-on env raytraced_high_desert paired with rendering volumetric_fog='off' (excessive)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_SandyBasin_IndustrialYard_Ind_01::rt_effective": {
+      "ok": true,
+      "detail": "env raytraced_high_desert ray_tracing.mode=full but no rt_* feature enabled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_MiningCamp_Clean_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_CrackedRidge_MiningCamp_Clean_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env fog_heavy_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_CleanScrub_Clean_01::rt_explicit": {
+      "ok": true,
+      "detail": "RT posture not explicit: rendering.ray_tracing='off', ray_tracing.mode='off'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::Desert_AshFlats_CleanScrub_Clean_01::rt_off_consistent": {
+      "ok": true,
+      "detail": "rendering declares ray_tracing=off but env clean_gameplay_readable_desert ray_tracing.mode=off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::coverage_rt_on": {
+      "ok": true,
+      "detail": "no valid RT-on map in the pack (RT-on path unproven)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "raytracing::coverage_rt_off": {
+      "ok": true,
+      "detail": "no valid RT-off map in the pack (RT-off path unproven)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 65,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-raytracing",
+    "pack": "desert_mvp_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "unknown",
+    "timestamp": "2026-07-01T22:05:57.947476+00:00",
+    "input_spec_hash": "c0298c9798c71d4f1c8c9f0de4c5e43b6d5b4ac4a514377137752f53ebab0f8a",
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 25,
+    "rt_on_maps": 10,
+    "rt_off_maps": 15
+  }
+}

@@ -1,0 +1,61 @@
+# desert_frame_budget.yaml — WorldForge v1.0x rendering/frame-cost budget (Agent 6).
+#
+# Owned by the rendering/scalability/ray-tracing lane. Consumed by
+# tools/pipeline/validate_performance_budgets.py to enforce static frame-risk:
+# each map's bound rendering profile declares a per-axis consumption
+# (light_count_budget / fog_volume_budget / high_cost_material_budget /
+# foliage_cluster_budget) and must stay within the cap for the PLATFORM its bound
+# scalability profile targets. Caps rise with platform capability so a cinematic
+# rendering profile is legal on high_end_pc but blows the console budget — which
+# is exactly the frame-risk we want to catch when a heavy profile lands on a
+# weak tier.
+#
+# This file is ALSO a valid plain budget (budget_id / biome / limits with a
+# positive max_total_instances) so `make validate-budget BUDGET=...` accepts it
+# unchanged. Raising a cap is a conscious human contract change.
+
+budget_id: desert_frame_budget
+biome: desert
+kind: frame_budget
+description: "Desert per-platform rendering/frame-cost caps — enforced by validate_performance_budgets"
+
+# Plain-budget compatibility (validated by validate_budget.py).
+limits:
+  max_total_instances: 500
+  per_category:
+    dynamic_lights: 96
+    fog_volumes: 16
+    high_cost_materials: 64
+    dense_foliage_clusters: 96
+
+# Per-platform static frame-cost caps. The platform is resolved from the bound
+# scalability profile's target_platform. A rendering profile's declared budget on
+# any axis above the cap for its platform is a BUDGET_FAILURE.
+frame_caps:
+  console:
+    max_dynamic_lights: 24
+    max_fog_volumes: 4
+    max_high_cost_materials: 12
+    max_dense_foliage_clusters: 24
+  pc:
+    max_dynamic_lights: 48
+    max_fog_volumes: 8
+    max_high_cost_materials: 32
+    max_dense_foliage_clusters: 48
+  high_end_pc:
+    max_dynamic_lights: 96
+    max_fog_volumes: 16
+    max_high_cost_materials: 64
+    max_dense_foliage_clusters: 96
+
+# Composite static frame-risk rules (tagged FRAME_RISK_EXCEEDED), independent of
+# the raw per-axis caps above:
+#   - an RT-on environment (ray_tracing.mode != off) whose rendering profile
+#     declares volumetric_fog == 'heavy'  (RT + heavy volumetrics blows frame)
+#   - a cinematic rendering profile (rendering_mode == cinematic) bound to a
+#     performance scalability tier (tier == low)
+#   - a scalability tier that exceeds its target platform's capability ceiling
+frame_risk_rules:
+  rt_heavy_fog_forbidden: true
+  cinematic_on_performance_tier_forbidden: true
+  tier_over_platform_forbidden: true
