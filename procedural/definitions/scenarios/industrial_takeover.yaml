@@ -1,0 +1,61 @@
+schema_version: "1.0"
+scenario_id: industrial_takeover
+display_name: "Industrial Takeover"
+biome: desert
+description: >
+  Pack-level industrial takeover for desert_mvp_world: industrial_pressure surges
+  across every industrial-path map. Terrain darkens through the MPC bridge,
+  industrial POIs (yards, checkpoints, reopened camps) register active-operation
+  evidence, and the elevated state survives a save/load round-trip. Reuses the
+  v0.8 Runtime StateForge mechanics verbatim — no new simulation framework.
+
+# Pack-level resolution: run_world_state_scenario selects every slice whose
+# matrix 'scenarios' metadata includes this scenario_id. The advisory lists below
+# remain as a fallback compatibility hint (by POI type) and as documentation.
+compatible_scenarios_tag: industrial_takeover
+compatible_poi:
+  - industrial_yard
+  - debris_checkpoint
+  - abandoned_mining_camp
+
+scope: Region
+
+initial_state:
+  industrial_pressure: 0.0
+
+state_deltas:
+  industrial_pressure: 0.75
+
+expected_mpc:
+  industrial_pressure: IndustrialPressure
+
+expected_poi_evidence:
+  industrial_yard:
+    operational_state: active
+    driven_by_key: industrial_pressure
+    evidence_fields:
+      - smoke_active
+      - floodlights_on
+      - activity_level
+  debris_checkpoint:
+    operational_state: active
+    driven_by_key: industrial_pressure
+    evidence_fields:
+      - barrier_active
+      - activity_level
+  abandoned_mining_camp:
+    operational_state: active
+    driven_by_key: industrial_pressure
+    evidence_fields:
+      - reopened
+      - activity_level
+
+save_load:
+  persist_keys:
+    - industrial_pressure
+  expect_roundtrip: true
+
+validation_thresholds:
+  state_min: 0.0
+  state_max: 1.0
+  max_delta_per_key: 1.0

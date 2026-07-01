@@ -1,0 +1,166 @@
+{
+  "doctor": "worldforge_local_factory",
+  "schema_version": "v0.9",
+  "strict": false,
+  "checks": {
+    "python_version": {
+      "ok": true,
+      "detail": "Python 3.14.6 OK (>= 3.8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dep_numpy": {
+      "ok": true,
+      "detail": "numpy importable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dep_yaml": {
+      "ok": true,
+      "detail": "yaml importable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dep_PIL": {
+      "ok": false,
+      "detail": "recommended dep 'PIL' absent (terrain/pack-score need it) — run: pip install Pillow",
+      "warn_only": true,
+      "verdict": "WARN_ONLY",
+      "code": null,
+      "blocking": false
+    },
+    "dir_procedural_definitions": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\procedural\\definitions",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dir_procedural_generated": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\procedural\\generated",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dir_procedural_reports": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\procedural\\reports",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dir_tools_pipeline": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\tools\\pipeline",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dir_tools_unreal": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\tools\\unreal",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unreal_editor_path": {
+      "ok": true,
+      "detail": "UE editor found: C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ue_headless_runner": {
+      "ok": true,
+      "detail": "headless UE runner present (5 runner script(s), tools/unreal present)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "python_utf8": {
+      "ok": true,
+      "detail": "UTF-8 output forced (PYTHONUTF8=1 or utf-8 stdout)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "definitions_readable": {
+      "ok": true,
+      "detail": "parsed 3 sampled definition(s) of 25 found",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pack_definitions_readable": {
+      "ok": true,
+      "detail": "parsed 7 pack definition(s)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry_roots_readable": {
+      "ok": true,
+      "detail": "parsed 5 registry root(s), 47 total entries",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "houdini_generated_asset_registry": {
+      "ok": true,
+      "detail": "generated-asset registry readable — 1 asset(s) tracked",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "report_dir_writable": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\worldforge_doctor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "content_materialization_d7": {
+      "ok": false,
+      "detail": "UE materialization is pending a human/editor step because Content/** changes are D7-gated. Run the documented editor-authorized command, then rerun strict validation.",
+      "warn_only": true,
+      "verdict": "GATED_HUMAN_EDITOR",
+      "code": "WF080_UE_MATERIALIZATION_PENDING",
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "warnings": [
+    "dep_PIL: recommended dep 'PIL' absent (terrain/pack-score need it) — run: pip install Pillow",
+    "content_materialization_d7: UE materialization is pending a human/editor step because Content/** changes are D7-gated. Run the documented editor-authorized command, then rerun strict validation."
+  ],
+  "counts": {
+    "PASS": 16,
+    "WARN": 0,
+    "WARN_ONLY": 1,
+    "FAIL": 0,
+    "GATED_HUMAN_EDITOR": 1,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "warn"
+}

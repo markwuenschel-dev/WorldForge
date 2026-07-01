@@ -1,0 +1,52 @@
+pack_id: desert_mvp_world
+biome: desert
+description: >
+  WorldForge v1.0 MVP slice matrix — 25 meaningful desert maps proving broad
+  coverage across 8 material variants, 3 terrain forms, 6 placement presets,
+  6 POI templates and 4 state presets, organised into three runtime-scenario
+  paths: industrial_takeover (high pressure), clean_preserve (low impact) and
+  resource_survey. Every row earns its place by contrast, not seed-noise.
+
+  The optional per-slice 'scenarios' and 'intent' keys are MVP metadata consumed
+  by the spec validator / coverage report / runtime scenario resolver; the slice
+  generator ignores unknown keys (it reads only name/variant/seed/placement/
+  state_preset/terrain/poi).
+
+defaults:
+  state_key: industrial_pressure
+  state_before: 0.0
+  state_after: 0.75
+
+slices:
+  # === Path A — industrial_takeover (high industrial pressure) ===============
+  - { name: Desert_AshFlats_IndustrialYard_Heavy_01,       variant: heavy_industrial,  seed: 9001, placement: industrial_debris, state_preset: industrialized,    terrain: ash_flats,     poi: industrial_yard,          scenarios: [industrial_takeover], intent: "heavy industrial yard on ash flats, full pressure" }
+  - { name: Desert_AshFlats_DebrisCheckpoint_Ind_01,       variant: industrialized,    seed: 9002, placement: industrial_debris, state_preset: industrialized,    terrain: ash_flats,     poi: debris_checkpoint,        scenarios: [industrial_takeover], intent: "industrialized checkpoint, ash flats" }
+  - { name: Desert_AshFlats_MiningCamp_Ruined_01,          variant: ruined_industrial, seed: 9003, placement: mixed_ruins,       state_preset: ruined_industrial, terrain: ash_flats,     poi: abandoned_mining_camp,    scenarios: [industrial_takeover], intent: "ruined mining camp, post-collapse" }
+  - { name: Desert_CrackedRidge_DebrisCheckpoint_Heavy_01, variant: heavy_industrial,  seed: 9004, placement: industrial_debris, state_preset: industrialized,    terrain: cracked_ridge, poi: debris_checkpoint,        scenarios: [industrial_takeover], intent: "checkpoint dug into the cracked ridge" }
+  - { name: Desert_AshFlats_IndustrialYard_Ruined_01,      variant: ruined_industrial, seed: 9005, placement: mixed_ruins,       state_preset: ruined_industrial, terrain: ash_flats,     poi: industrial_yard,          scenarios: [industrial_takeover], intent: "abandoned industrial yard going to ruin" }
+  - { name: Desert_SandyBasin_DebrisCheckpoint_Ind_01,     variant: industrialized,    seed: 9006, placement: industrial_debris, state_preset: industrialized,    terrain: sandy_basin,   poi: debris_checkpoint,        scenarios: [industrial_takeover], intent: "checkpoint pushed into the sandy basin" }
+  - { name: Desert_CrackedRidge_MiningCamp_Ruined_01,      variant: ruined_industrial, seed: 9007, placement: mixed_ruins,       state_preset: ruined_industrial, terrain: cracked_ridge, poi: abandoned_mining_camp,    scenarios: [industrial_takeover], intent: "ruined ridge mining camp" }
+  - { name: Desert_AshFlats_DebrisCheckpoint_Light_01,     variant: light_industrial,  seed: 9008, placement: industrial_debris, state_preset: light_industrial,  terrain: ash_flats,     poi: debris_checkpoint,        scenarios: [industrial_takeover], intent: "early-pressure checkpoint, light industrial" }
+
+  # === Path B — clean_preserve (low impact / recovery) =======================
+  - { name: Desert_SandyBasin_ScrubNode_Clean_01,          variant: sandy,             seed: 9009, placement: clean_scrub,       state_preset: clean,             terrain: sandy_basin,   poi: scrubland_resource_node,  scenarios: [clean_preserve, resource_survey], intent: "pristine sandy basin resource node" }
+  - { name: Desert_CrackedRidge_RidgeLookout_Clean_01,     variant: cracked,           seed: 9010, placement: rocky_basin,       state_preset: clean,             terrain: cracked_ridge, poi: cracked_ridge_lookout,    scenarios: [clean_preserve], intent: "the signature clean ridge lookout" }
+  - { name: Desert_AshFlats_ShrineRuin_Clean_01,           variant: ash,               seed: 9011, placement: reclaimed_scrub,   state_preset: clean,             terrain: ash_flats,     poi: ash_shrine_ruin,          scenarios: [clean_preserve], intent: "shrine ruin reclaimed by clean scrub" }
+  - { name: Desert_SandyBasin_ShrineRuin_Clean_01,         variant: clean,             seed: 9012, placement: reclaimed_scrub,   state_preset: clean,             terrain: sandy_basin,   poi: ash_shrine_ruin,          scenarios: [clean_preserve], intent: "basin shrine, fully reclaimed" }
+  - { name: Desert_CrackedRidge_CleanScrub_Clean_01,       variant: clean,             seed: 9013, placement: clean_scrub,       state_preset: clean,             terrain: cracked_ridge, poi: cracked_ridge_lookout,    scenarios: [clean_preserve], intent: "clean ridge with scrub cover" }
+  - { name: Desert_SandyBasin_RidgeLookout_Clean_01,       variant: sandy,             seed: 9014, placement: rocky_basin,       state_preset: clean,             terrain: sandy_basin,   poi: cracked_ridge_lookout,    scenarios: [clean_preserve], intent: "lookout over the open sandy basin" }
+
+  # === Path C — resource_survey (resource-oriented) ==========================
+  - { name: Desert_AshFlats_ScrubNode_Light_01,            variant: light_industrial,  seed: 9015, placement: clean_scrub,       state_preset: light_industrial,  terrain: ash_flats,     poi: scrubland_resource_node,  scenarios: [resource_survey], intent: "resource node under early extraction pressure" }
+  - { name: Desert_SandyBasin_ScrubNode_Survey_01,         variant: sandy,             seed: 9016, placement: dead_scrub,        state_preset: clean,             terrain: sandy_basin,   poi: scrubland_resource_node,  scenarios: [resource_survey], intent: "dead-scrub survey site, basin" }
+  - { name: Desert_AshFlats_ScrubNode_Survey_01,           variant: light_industrial,  seed: 9017, placement: dead_scrub,        state_preset: light_industrial,  terrain: ash_flats,     poi: scrubland_resource_node,  scenarios: [resource_survey], intent: "ash-flats survey site, light pressure" }
+  - { name: Desert_CrackedRidge_ScrubNode_Clean_01,        variant: cracked,           seed: 9018, placement: dead_scrub,        state_preset: clean,             terrain: cracked_ridge, poi: scrubland_resource_node,  scenarios: [resource_survey], intent: "ridge-flank resource node" }
+  - { name: Desert_SandyBasin_MiningCamp_Light_01,         variant: sandy,             seed: 9019, placement: mixed_ruins,       state_preset: light_industrial,  terrain: sandy_basin,   poi: abandoned_mining_camp,    scenarios: [resource_survey], intent: "reopened basin mining camp" }
+  - { name: Desert_AshFlats_ScrubNode_Ind_01,             variant: industrialized,    seed: 9020, placement: dead_scrub,        state_preset: industrialized,    terrain: ash_flats,     poi: scrubland_resource_node,  scenarios: [industrial_takeover, resource_survey], intent: "resource node overrun by industry" }
+
+  # === Coverage fillers (every variant/placement/POI contrast represented) ===
+  - { name: Desert_AshFlats_RidgeLookout_Heavy_01,         variant: heavy_industrial,  seed: 9021, placement: rocky_basin,       state_preset: light_industrial,  terrain: ash_flats,     poi: cracked_ridge_lookout,    scenarios: [industrial_takeover], intent: "industrial watch-lookout on the flats" }
+  - { name: Desert_CrackedRidge_ShrineRuin_Light_01,       variant: light_industrial,  seed: 9022, placement: reclaimed_scrub,   state_preset: light_industrial,  terrain: cracked_ridge, poi: ash_shrine_ruin,          scenarios: [clean_preserve], intent: "contested shrine, light pressure" }
+  - { name: Desert_SandyBasin_IndustrialYard_Ind_01,       variant: industrialized,    seed: 9023, placement: industrial_debris, state_preset: industrialized,    terrain: sandy_basin,   poi: industrial_yard,          scenarios: [industrial_takeover], intent: "industrial yard in the open basin" }
+  - { name: Desert_CrackedRidge_MiningCamp_Clean_01,       variant: cracked,           seed: 9024, placement: rocky_basin,       state_preset: clean,             terrain: cracked_ridge, poi: abandoned_mining_camp,    scenarios: [clean_preserve], intent: "long-abandoned ridge camp, no pressure" }
+  - { name: Desert_AshFlats_CleanScrub_Clean_01,           variant: clean,             seed: 9025, placement: clean_scrub,       state_preset: clean,             terrain: ash_flats,     poi: scrubland_resource_node,  scenarios: [clean_preserve], intent: "baseline clean ash-flats reference map" }

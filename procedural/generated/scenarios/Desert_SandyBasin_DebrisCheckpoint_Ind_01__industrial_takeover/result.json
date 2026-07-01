@@ -1,0 +1,100 @@
+{
+  "run_id": "Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover",
+  "scenario_id": "industrial_takeover",
+  "target": "Desert_SandyBasin_DebrisCheckpoint_Ind_01",
+  "biome": "desert",
+  "scope": "Region",
+  "context_id": "Desert_SandyBasin_DebrisCheckpoint_Ind_01",
+  "slice_spec": "procedural/slices/desert/generated/Desert_SandyBasin_DebrisCheckpoint_Ind_01.json",
+  "state_keys": [
+    "industrial_pressure"
+  ],
+  "before_state": {
+    "industrial_pressure": 0.0
+  },
+  "after_state": {
+    "industrial_pressure": 0.75
+  },
+  "deltas_applied": {
+    "industrial_pressure": 0.75
+  },
+  "is_curated_key": {
+    "industrial_pressure": true
+  },
+  "aggregate": {
+    "keys": [
+      "industrial_pressure"
+    ],
+    "sum": 0.75,
+    "mean": 0.75,
+    "max": 0.75,
+    "dominant_key": "industrial_pressure",
+    "industrialization_index": 0.75
+  },
+  "expected_mpc": {
+    "IndustrialPressure": 0.75
+  },
+  "mpc_warnings": [],
+  "poi_evidence": {
+    "industrial_yard": {
+      "operational_state": "active",
+      "driven_by_key": "industrial_pressure",
+      "magnitude": 0.75,
+      "changed": true,
+      "smoke_active": true,
+      "floodlights_on": true,
+      "activity_level": 0.75
+    },
+    "debris_checkpoint": {
+      "operational_state": "active",
+      "driven_by_key": "industrial_pressure",
+      "magnitude": 0.75,
+      "changed": true,
+      "barrier_active": true,
+      "activity_level": 0.75
+    },
+    "abandoned_mining_camp": {
+      "operational_state": "active",
+      "driven_by_key": "industrial_pressure",
+      "magnitude": 0.75,
+      "changed": true,
+      "reopened": true,
+      "activity_level": 0.75
+    }
+  },
+  "save_load": {
+    "save_path": "procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/state_save.json",
+    "persist_keys": [
+      "industrial_pressure"
+    ],
+    "saved_state": {
+      "industrial_pressure": 0.75
+    },
+    "restored_state": {
+      "industrial_pressure": 0.75
+    },
+    "roundtrip_ok": true,
+    "expect_roundtrip": true
+  },
+  "thresholds": {
+    "state_min": 0.0,
+    "state_max": 1.0,
+    "max_delta_per_key": 1.0
+  },
+  "outputs": {
+    "result": "procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/result.json",
+    "state_save": "procedural/generated/scenarios/Desert_SandyBasin_DebrisCheckpoint_Ind_01__industrial_takeover/state_save.json"
+  },
+  "generated_at_utc": "2026-07-01T00:12:26.042109+00:00",
+  "provenance": {
+    "generator_name": "run_state_sim",
+    "generator_version": "0.8.0",
+    "generated_at_utc": "2026-07-01T00:12:26.025718+00:00",
+    "source_commit": "56eb0f54300b6f106c37a39a652f12d6f4039752",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/definitions/scenarios/industrial_takeover.yaml": "939ac00a2b627a91efc6d6b2bccc25709f6221baf25187171a7cc624b8fc6574"
+    }
+  },
+  "registry_owner": "worldforge_scenario_registry"
+}

@@ -20,7 +20,8 @@ export STRICT
         generate-placement-da update-slice-placement \
         repair-slice list-orphans clean-orphans \
         compare-slice-determinism \
-        create-world-pack validate-world-pack \
+        create-world-pack validate-world-pack validate-world-pack-spec \
+        run-world-state-scenario inspect-world-pack validate-inspection \
         ue-doctor \
         create-terrain validate-terrain import-terrain \
         create-poi validate-poi \
@@ -320,6 +321,29 @@ compare-slice-determinism:
 # v0.5 — world packs
 create-world-pack:
 	$(PYTHON) tools/pipeline/create_world_pack.py --pack procedural/world_packs/$(PACK).yaml --jobs $(JOBS)
+
+# v1.0 — static world-pack SPEC pre-flight (no UE, no generation). Resolves every
+# referenced surface + reports MVP coverage. STRICT=1 makes coverage shortfalls block.
+validate-world-pack-spec:
+	$(PYTHON) tools/pipeline/validate_world_pack_spec.py --pack procedural/world_packs/$(PACK).yaml \
+	  $(if $(STRICT),--strict,)
+
+# v1.0 — run a Runtime StateForge scenario across a world pack's compatible maps.
+# SCENARIO selects the scenario id; STRICT=1 threads strict into per-map validation;
+# FORCE=1 reruns sims; LIMIT caps the number of maps. No UE is launched.
+run-world-state-scenario:
+	$(PYTHON) tools/pipeline/run_world_state_scenario.py --pack procedural/world_packs/$(PACK).yaml \
+	  --scenario $(SCENARIO) $(if $(STRICT),--strict,) $(if $(FORCE),--force,) \
+	  $(if $(LIMIT),--limit $(LIMIT),)
+
+# v1.0 — playable-inspection metadata for every map in a world pack (no UE).
+inspect-world-pack:
+	$(PYTHON) tools/pipeline/generate_inspection_metadata.py --pack procedural/world_packs/$(PACK).yaml
+
+# v1.0 — assert complete inspection metadata exists for every generated map.
+validate-inspection:
+	$(PYTHON) tools/pipeline/generate_inspection_metadata.py --pack procedural/world_packs/$(PACK).yaml \
+	  --validate $(if $(STRICT),--strict,)
 
 validate-world-pack:
 	$(PYTHON) tools/pipeline/validate_world_pack.py --pack procedural/world_packs/$(PACK).yaml \

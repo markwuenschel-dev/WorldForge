@@ -1,0 +1,106 @@
+{
+  "slice_id": "Desert_SandyBasin_ShrineRuin_Clean_01",
+  "biome": "desert",
+  "variant": "clean",
+  "region_id": "Desert_SandyBasin_ShrineRuin_Clean_01",
+  "seed": 9012,
+  "map": "/Game/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01",
+  "terrain": {
+    "material_recipe": "terrain_rock_desert_01",
+    "material_mi": "/Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+    "preview_base_color": [
+      0.46,
+      0.4,
+      0.3
+    ]
+  },
+  "state": {
+    "scope": "Region",
+    "context_id": "Desert_SandyBasin_ShrineRuin_Clean_01",
+    "key": "industrial_pressure",
+    "before": 0.0,
+    "after": 0.0
+  },
+  "placement": {
+    "definition": "reclaimed_desert_foliage",
+    "data_asset": "/Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+    "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter"
+  },
+  "output_dir": "procedural/reports/slices/desert/Desert_SandyBasin_ShrineRuin_Clean_01",
+  "source_template": "procedural/slices/desert_clean.yaml",
+  "provenance": {
+    "generated_at_utc": "2026-07-01T00:01:51.381646+00:00",
+    "generator": "create_slice_spec",
+    "generator_version": "1.0.0"
+  },
+  "placement_preset_id": "reclaimed_scrub",
+  "placement_preset_path": "procedural/definitions/placement/desert/reclaimed_scrub.yaml",
+  "state_preset_id": "clean",
+  "terrain_forge": {
+    "terrain_name": "Terrain_SandyBasin_01",
+    "recipe_id": "sandy_basin",
+    "descriptor_path": "procedural/generated/terrain/Terrain_SandyBasin_01/descriptor.json",
+    "heightmap": "procedural/generated/terrain/Terrain_SandyBasin_01/heightmap.png",
+    "slope_mask": "procedural/generated/terrain/Terrain_SandyBasin_01/slope_mask.png",
+    "placement_mask": "procedural/generated/terrain/Terrain_SandyBasin_01/placement_mask.png",
+    "nav_safe_mask": "procedural/generated/terrain/Terrain_SandyBasin_01/nav_safe_mask.png"
+  },
+  "poi_forge": {
+    "poi_type": "ash_shrine_ruin",
+    "poi_name": "POI_AshShrineRuin_01",
+    "descriptor_path": "procedural/generated/poi/POI_AshShrineRuin_01/descriptor.json",
+    "template_id": "ash_shrine_ruin_template_v1",
+    "bounds_id": "primary_bounds",
+    "primary_marker_id": "primary_poi_marker",
+    "anchors": [
+      {
+        "id": "shrine_core",
+        "role": "primary_interaction",
+        "offset_cm": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "approach_path",
+        "role": "approach",
+        "offset_cm": [
+          0,
+          -1500,
+          0
+        ]
+      },
+      {
+        "id": "ruin_cluster",
+        "role": "prop_cluster",
+        "offset_cm": [
+          900,
+          -200,
+          0
+        ]
+      },
+      {
+        "id": "ash_field",
+        "role": "secondary",
+        "offset_cm": [
+          -600,
+          800,
+          0
+        ]
+      }
+    ],
+    "markers": [
+      {
+        "id": "primary_poi_marker",
+        "role": "objective_focus",
+        "anchor_ref": "shrine_core"
+      },
+      {
+        "id": "approach_marker",
+        "role": "entry_focus",
+        "anchor_ref": "approach_path"
+      }
+    ]
+  }
+}

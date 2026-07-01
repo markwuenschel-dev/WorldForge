@@ -1,0 +1,106 @@
+{
+  "slice_id": "Desert_AshFlats_MiningCamp_Ruined_01",
+  "biome": "desert",
+  "variant": "ruined_industrial",
+  "region_id": "Desert_AshFlats_MiningCamp_Ruined_01",
+  "seed": 9003,
+  "map": "/Game/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01",
+  "terrain": {
+    "material_recipe": "terrain_rock_desert_01",
+    "material_mi": "/Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+    "preview_base_color": [
+      0.14,
+      0.12,
+      0.1
+    ]
+  },
+  "state": {
+    "scope": "Region",
+    "context_id": "Desert_AshFlats_MiningCamp_Ruined_01",
+    "key": "industrial_pressure",
+    "before": 0.0,
+    "after": 1.0
+  },
+  "placement": {
+    "definition": "reclaimed_desert_foliage",
+    "data_asset": "/Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+    "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter"
+  },
+  "output_dir": "procedural/reports/slices/desert/Desert_AshFlats_MiningCamp_Ruined_01",
+  "source_template": "procedural/slices/desert_ruined_industrial.yaml",
+  "provenance": {
+    "generated_at_utc": "2026-07-01T00:01:50.550291+00:00",
+    "generator": "create_slice_spec",
+    "generator_version": "1.0.0"
+  },
+  "placement_preset_id": "mixed_ruins",
+  "placement_preset_path": "procedural/definitions/placement/desert/mixed_ruins.yaml",
+  "state_preset_id": "ruined_industrial",
+  "terrain_forge": {
+    "terrain_name": "Terrain_AshFlats_01",
+    "recipe_id": "ash_flats",
+    "descriptor_path": "procedural/generated/terrain/Terrain_AshFlats_01/descriptor.json",
+    "heightmap": "procedural/generated/terrain/Terrain_AshFlats_01/heightmap.png",
+    "slope_mask": "procedural/generated/terrain/Terrain_AshFlats_01/slope_mask.png",
+    "placement_mask": "procedural/generated/terrain/Terrain_AshFlats_01/placement_mask.png",
+    "nav_safe_mask": "procedural/generated/terrain/Terrain_AshFlats_01/nav_safe_mask.png"
+  },
+  "poi_forge": {
+    "poi_type": "abandoned_mining_camp",
+    "poi_name": "POI_AbandonedMiningCamp_01",
+    "descriptor_path": "procedural/generated/poi/POI_AbandonedMiningCamp_01/descriptor.json",
+    "template_id": "abandoned_mining_camp_template_v1",
+    "bounds_id": "primary_bounds",
+    "primary_marker_id": "primary_poi_marker",
+    "anchors": [
+      {
+        "id": "camp_center",
+        "role": "primary_interaction",
+        "offset_cm": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "equipment_yard",
+        "role": "prop_cluster",
+        "offset_cm": [
+          1500,
+          500,
+          0
+        ]
+      },
+      {
+        "id": "ruin_edge",
+        "role": "secondary",
+        "offset_cm": [
+          -1500,
+          -800,
+          0
+        ]
+      },
+      {
+        "id": "entry_road",
+        "role": "entry",
+        "offset_cm": [
+          0,
+          -2000,
+          0
+        ]
+      }
+    ],
+    "markers": [
+      {
+        "id": "primary_poi_marker",
+        "role": "objective_focus",
+        "anchor_ref": "camp_center"
+      },
+      {
+        "id": "debris_marker",
+        "role": "prop_cluster",
+        "anchor_ref": "equipment_yard"
+      }
+    ]
+  }
+}

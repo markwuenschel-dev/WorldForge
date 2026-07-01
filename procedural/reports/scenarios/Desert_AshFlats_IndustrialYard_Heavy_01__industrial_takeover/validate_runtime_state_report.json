@@ -1,0 +1,181 @@
+{
+  "run_id": "Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "result_descriptor_exists": {
+      "ok": true,
+      "detail": "procedural\\generated\\scenarios\\Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover\\result.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "result_descriptor_parses": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "registry_owns_run": {
+      "ok": true,
+      "detail": "not found in worldforge_scenario_registry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "target_map_resolved": {
+      "ok": true,
+      "detail": "target='Desert_AshFlats_IndustrialYard_Heavy_01' context_id='Desert_AshFlats_IndustrialYard_Heavy_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenario_definition_exists": {
+      "ok": true,
+      "detail": "procedural\\definitions\\scenarios\\industrial_takeover.yaml",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenario_definition_parses": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "initial_state_read": {
+      "ok": true,
+      "detail": "before_state empty — no initial state was read",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_mutation_applied": {
+      "ok": true,
+      "detail": "scenario keys ['industrial_pressure']: industrial_pressure: 0.0 -> 0.75 == clamp(0.0 + 0.75)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_actually_changed": {
+      "ok": true,
+      "detail": "no state key changed value — scenario had no effect",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_within_bounds": {
+      "ok": true,
+      "detail": "out-of-bounds [0.0,1.0]: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "deltas_within_budget": {
+      "ok": true,
+      "detail": "deltas exceeding max_delta_per_key=1.0: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_aggregated": {
+      "ok": true,
+      "detail": "aggregate block present and consistent with after_state",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mpc_bridge_expectation": {
+      "ok": true,
+      "detail": "curated keys map to MPC params with post-state values",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "poi_state_evidence_updated": {
+      "ok": true,
+      "detail": "POI evidence present and driven by post-state",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_save_file_exists": {
+      "ok": true,
+      "detail": "procedural/generated/scenarios/Desert_AshFlats_IndustrialYard_Heavy_01__industrial_takeover/state_save.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "save_load_roundtrip": {
+      "ok": true,
+      "detail": "restored_state must equal saved_state",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "save_load_restores_poststate": {
+      "ok": true,
+      "detail": "restored persisted keys must equal post-scenario state",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "provenance_exists": {
+      "ok": true,
+      "detail": "provenance block absent from result descriptor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "post_scenario_map_valid": {
+      "ok": true,
+      "detail": "validate-slice PASS for Desert_AshFlats_IndustrialYard_Heavy_01",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ue_state_applied": {
+      "ok": false,
+      "detail": "run 'make apply-state-scenario' (UE) to apply + read back the MPC bridge",
+      "warn_only": true,
+      "verdict": "GATED_HUMAN_EDITOR",
+      "code": "WF082_UE_STATE_NOT_APPLIED",
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "warnings": [
+    "ue_state_applied: run 'make apply-state-scenario' (UE) to apply + read back the MPC bridge"
+  ],
+  "counts": {
+    "PASS": 19,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "GATED_HUMAN_EDITOR": 1,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "warn"
+}

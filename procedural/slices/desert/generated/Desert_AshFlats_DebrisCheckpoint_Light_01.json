@@ -1,0 +1,106 @@
+{
+  "slice_id": "Desert_AshFlats_DebrisCheckpoint_Light_01",
+  "biome": "desert",
+  "variant": "light_industrial",
+  "region_id": "Desert_AshFlats_DebrisCheckpoint_Light_01",
+  "seed": 9008,
+  "map": "/Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01",
+  "terrain": {
+    "material_recipe": "terrain_rock_desert_01",
+    "material_mi": "/Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+    "preview_base_color": [
+      0.3,
+      0.27,
+      0.24
+    ]
+  },
+  "state": {
+    "scope": "Region",
+    "context_id": "Desert_AshFlats_DebrisCheckpoint_Light_01",
+    "key": "industrial_pressure",
+    "before": 0.0,
+    "after": 0.35
+  },
+  "placement": {
+    "definition": "reclaimed_desert_foliage",
+    "data_asset": "/Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+    "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter"
+  },
+  "output_dir": "procedural/reports/slices/desert/Desert_AshFlats_DebrisCheckpoint_Light_01",
+  "source_template": "procedural/slices/desert_light_industrial.yaml",
+  "provenance": {
+    "generated_at_utc": "2026-07-01T00:01:51.330811+00:00",
+    "generator": "create_slice_spec",
+    "generator_version": "1.0.0"
+  },
+  "placement_preset_id": "industrial_debris",
+  "placement_preset_path": "procedural/definitions/placement/desert/industrial_debris.yaml",
+  "state_preset_id": "light_industrial",
+  "terrain_forge": {
+    "terrain_name": "Terrain_AshFlats_01",
+    "recipe_id": "ash_flats",
+    "descriptor_path": "procedural/generated/terrain/Terrain_AshFlats_01/descriptor.json",
+    "heightmap": "procedural/generated/terrain/Terrain_AshFlats_01/heightmap.png",
+    "slope_mask": "procedural/generated/terrain/Terrain_AshFlats_01/slope_mask.png",
+    "placement_mask": "procedural/generated/terrain/Terrain_AshFlats_01/placement_mask.png",
+    "nav_safe_mask": "procedural/generated/terrain/Terrain_AshFlats_01/nav_safe_mask.png"
+  },
+  "poi_forge": {
+    "poi_type": "debris_checkpoint",
+    "poi_name": "POI_DebrisCheckpoint_01",
+    "descriptor_path": "procedural/generated/poi/POI_DebrisCheckpoint_01/descriptor.json",
+    "template_id": "debris_checkpoint_template_v1",
+    "bounds_id": "primary_bounds",
+    "primary_marker_id": "primary_poi_marker",
+    "anchors": [
+      {
+        "id": "approach_a",
+        "role": "approach",
+        "offset_cm": [
+          0,
+          -1500,
+          0
+        ]
+      },
+      {
+        "id": "approach_b",
+        "role": "approach",
+        "offset_cm": [
+          0,
+          1500,
+          0
+        ]
+      },
+      {
+        "id": "debris_cluster",
+        "role": "prop_cluster",
+        "offset_cm": [
+          500,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "overhead_cover",
+        "role": "secondary",
+        "offset_cm": [
+          0,
+          0,
+          200
+        ]
+      }
+    ],
+    "markers": [
+      {
+        "id": "primary_poi_marker",
+        "role": "objective_focus",
+        "anchor_ref": "debris_cluster"
+      },
+      {
+        "id": "gate_marker",
+        "role": "chokepoint",
+        "anchor_ref": "approach_a"
+      }
+    ]
+  }
+}
