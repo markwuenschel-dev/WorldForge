@@ -1,0 +1,48 @@
+{
+  "slice_id": "Alpine_GlacialBasin_Scatter_Stylized_01",
+  "biome": "alpine_snow",
+  "variant": "stylized",
+  "region_id": "Alpine_GlacialBasin_Scatter_Stylized_01",
+  "seed": 12008,
+  "map": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Scatter_Stylized_01",
+  "terrain": {
+    "material_recipe": "terrain_alpine_snow_01",
+    "material_mi": "/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Alpine_01",
+    "preview_base_color": [
+      0.68,
+      0.8,
+      0.88
+    ]
+  },
+  "state": {
+    "scope": "Region",
+    "context_id": "Alpine_GlacialBasin_Scatter_Stylized_01",
+    "key": "snow_accumulation",
+    "before": 0.0,
+    "after": 0.5
+  },
+  "placement": {
+    "definition": "ridge_scatter",
+    "data_asset": "/Game/WorldForge/Generated/Placement/DA_Alpine_Scatter",
+    "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter"
+  },
+  "output_dir": "procedural/reports/slices/alpine_snow/Alpine_GlacialBasin_Scatter_Stylized_01",
+  "source_template": "procedural/slices/alpine_snow_stylized.yaml",
+  "provenance": {
+    "generated_at_utc": "1970-01-01T00:00:00+00:00",
+    "generator": "create_slice_spec",
+    "generator_version": "1.0.0"
+  },
+  "placement_preset_id": "ridge_scatter",
+  "placement_preset_path": "procedural/definitions/placement/biomes/alpine_snow/ridge_scatter.yaml",
+  "terrain_forge": {
+    "terrain_name": "Glacial Basin",
+    "recipe_id": "glacial_basin",
+    "descriptor_path": "procedural/definitions/terrain/biomes/alpine_snow/glacial_basin.yaml",
+    "definition_only": true,
+    "heightmap": "",
+    "slope_mask": "",
+    "placement_mask": "",
+    "nav_safe_mask": ""
+  }
+}

@@ -1,0 +1,44 @@
+# wetland_mire_photoreal.yaml
+# BiomeForge v1.1 variant template — wetland_mire, photoreal env mode.
+# Mirrors temperate_forest_photoreal.yaml shape. References Agent 2's
+# wetland_mire surface families (wet_mud). Env profile is assigned per-slice by
+# the binding overlay; this template records the surface only.
+#
+# Safe for agents to duplicate/modify. Keep state.before/after within [0.0, 1.0].
+
+schema_version: "1.0"
+id: wetland_mire_photoreal
+biome: wetland_mire
+variant: photoreal
+
+map: /Game/WorldForge/Maps/Wetland_Mire_Photoreal_01
+
+recipes:
+  - terrain_wetland_mire_01
+placement_definitions:
+  - marsh_scatter
+
+state:
+  scope: Region
+  context_id: Wetland_Mire_Photoreal_01
+  key: water_level
+  before: 0.0
+  after: 0.5
+
+render:
+  # wet_mud family (procedural/definitions/materials/biomes/wetland_mire/wet_mud.yaml)
+  terrain_mi: /Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Wetland_01
+  preview_base_color: [0.20, 0.16, 0.11]   # linear 0-1 saturated wet mud
+  placement_data_asset: /Game/WorldForge/Generated/Placement/DA_Wetland_Foliage
+  resolution: [1600, 900]
+  seed: 514101
+
+acceptance:
+  mpc_parameter: WaterLevel
+  foliage_increases:
+    - reeds
+    - low_marsh_grass
+  foliage_decreases:
+    - dry_tussock
+
+output_dir: procedural/reports/slices/wetland_mire_photoreal

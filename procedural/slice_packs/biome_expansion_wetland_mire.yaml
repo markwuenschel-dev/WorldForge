@@ -1,0 +1,34 @@
+pack_id: biome_expansion_wetland_mire
+biome: wetland_mire
+description: >
+  Wetland mire BiomeForge matrix — 12 maps: 2 terrain forms
+  (mud_flat, reed_marsh) × 2 placement profiles
+  (marsh_scatter, mire_debris) × 3 environment profiles
+  (photoreal_wetland_day, stylized_wetland_day, performance_safe_wetland). The
+  environment profile is assigned per slice by the binding overlay
+  (procedural/definitions/profiles/bindings/biome_expansion_world.yaml); the
+  variant tag below records which env mode each row targets so the matrix reads
+  cleanly. Rows earn their place by covering the full terrain×placement×env grid.
+
+defaults:
+  state_key: water_level
+  state_before: 0.0
+  state_after: 0.5
+
+slices:
+  # --- mud_flat × marsh_scatter ----------------------------------------------
+  - { name: Wetland_MudFlat_Scatter_Photoreal_01,  variant: photoreal,   seed: 14001, placement: marsh_scatter, state_preset: clean, terrain: mud_flat,   poi: navigation_landmark,     env_mode: photoreal_wetland_day,    intent: "photoreal mud flat, scattered reeds" }
+  - { name: Wetland_MudFlat_Scatter_Stylized_01,   variant: stylized,    seed: 14002, placement: marsh_scatter, state_preset: clean, terrain: mud_flat,   poi: resource_site,           env_mode: stylized_wetland_day,     intent: "stylized mud flat resource site" }
+  - { name: Wetland_MudFlat_Scatter_Perf_01,       variant: performance, seed: 14003, placement: marsh_scatter, state_preset: clean, terrain: mud_flat,   poi: safe_zone,               env_mode: performance_safe_wetland, intent: "performance-safe mud flat" }
+  # --- mud_flat × mire_debris ------------------------------------------------
+  - { name: Wetland_MudFlat_Debris_Photoreal_01,   variant: photoreal,   seed: 14004, placement: mire_debris,   state_preset: clean, terrain: mud_flat,   poi: ruin_cluster,            env_mode: photoreal_wetland_day,    intent: "photoreal mud flat ruin cluster" }
+  - { name: Wetland_MudFlat_Debris_Stylized_01,    variant: stylized,    seed: 14005, placement: mire_debris,   state_preset: clean, terrain: mud_flat,   poi: danger_zone,             env_mode: stylized_wetland_day,     intent: "stylized mud flat danger pocket" }
+  - { name: Wetland_MudFlat_Debris_Perf_01,        variant: performance, seed: 14006, placement: mire_debris,   state_preset: clean, terrain: mud_flat,   poi: objective_ready_anchor,  env_mode: performance_safe_wetland, intent: "performance-safe mud flat objective" }
+  # --- reed_marsh × marsh_scatter --------------------------------------------
+  - { name: Wetland_ReedMarsh_Scatter_Photoreal_01, variant: photoreal,   seed: 14007, placement: marsh_scatter, state_preset: clean, terrain: reed_marsh, poi: resource_site,           env_mode: photoreal_wetland_day,    intent: "photoreal reed marsh resource site" }
+  - { name: Wetland_ReedMarsh_Scatter_Stylized_01,  variant: stylized,    seed: 14008, placement: marsh_scatter, state_preset: clean, terrain: reed_marsh, poi: navigation_landmark,     env_mode: stylized_wetland_day,     intent: "stylized reed marsh landmark" }
+  - { name: Wetland_ReedMarsh_Scatter_Perf_01,      variant: performance, seed: 14009, placement: marsh_scatter, state_preset: clean, terrain: reed_marsh, poi: safe_zone,               env_mode: performance_safe_wetland, intent: "performance-safe reed marsh" }
+  # --- reed_marsh × mire_debris ----------------------------------------------
+  - { name: Wetland_ReedMarsh_Debris_Photoreal_01,  variant: photoreal,   seed: 14010, placement: mire_debris,   state_preset: clean, terrain: reed_marsh, poi: ruin_cluster,            env_mode: photoreal_wetland_day,    intent: "photoreal reed marsh ruin cluster" }
+  - { name: Wetland_ReedMarsh_Debris_Stylized_01,   variant: stylized,    seed: 14011, placement: mire_debris,   state_preset: clean, terrain: reed_marsh, poi: danger_zone,             env_mode: stylized_wetland_day,     intent: "stylized reed marsh danger zone" }
+  - { name: Wetland_ReedMarsh_Debris_Perf_01,       variant: performance, seed: 14012, placement: mire_debris,   state_preset: clean, terrain: reed_marsh, poi: objective_ready_anchor,  env_mode: performance_safe_wetland, intent: "performance-safe reed marsh objective" }

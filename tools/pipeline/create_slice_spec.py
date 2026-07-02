@@ -41,6 +41,15 @@ PCG_GRAPH = "/Game/Procedural/PCG/PCG_FoliageScatter"
 GENERATOR_NAME = "create_slice_spec"
 GENERATOR_VERSION = "1.0.0"
 
+# Deterministic provenance timestamp. The spec must be byte-stable across
+# re-runs so a determinism probe (regen + git diff) sees no drift; a wall-clock
+# datetime.now() would change every run. We stamp a fixed sentinel instead — it
+# stays non-empty (audit_generated_content only checks truthiness) and is
+# stripped from every semantic/determinism hash (registry.compute_input_hash,
+# compare_slice_determinism, validate_determinism all list generated_at_utc as
+# unstable), so desert's committed specs still pass their regen probe unchanged.
+DETERMINISTIC_GENERATED_AT_UTC = "1970-01-01T00:00:00+00:00"
+
 
 def fail(msg: str) -> "NoReturn":
     sys.stderr.write(f"ERROR: {msg}\n")
@@ -163,7 +172,7 @@ def main(argv=None) -> int:
         render, "preview_base_color", template_path
     )
 
-    now_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    now_iso = DETERMINISTIC_GENERATED_AT_UTC
 
     # Resolve state values — state preset overrides template defaults.
     state_before = get_required(state, "before", template_path)

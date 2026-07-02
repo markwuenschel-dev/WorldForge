@@ -368,6 +368,10 @@ def main(argv=None):
     # does not declare biomes, so its 33-gate v1.0x contract is unchanged.
     ctx["biomeforge"] = pack_declares_biomes(args.pack)
     if ctx["biomeforge"]:
+        # Biome packs are not desert/industrial; use the biome-neutral runtime
+        # scenario unless the operator explicitly overrode --scenario.
+        if args.scenario == "industrial_takeover":
+            ctx["scenario"] = "biome_site_activation"
         bf = build_biomeforge_gates()
         fuzz_gate = [g for g in bf if g["id"] == "fuzz-biome-matrix"]
         data_gates = [g for g in bf if g["id"] != "fuzz-biome-matrix"]

@@ -1,0 +1,34 @@
+pack_id: biome_expansion_alpine_snow
+biome: alpine_snow
+description: >
+  Alpine snow BiomeForge matrix — 12 maps: 2 terrain forms
+  (snowy_ridge, glacial_basin) × 2 placement profiles
+  (ridge_scatter, glacial_debris) × 3 environment profiles
+  (photoreal_alpine_day, stylized_alpine_day, performance_safe_alpine). The
+  environment profile is assigned per slice by the binding overlay
+  (procedural/definitions/profiles/bindings/biome_expansion_world.yaml); the
+  variant tag below records which env mode each row targets so the matrix reads
+  cleanly. Rows earn their place by covering the full terrain×placement×env grid.
+
+defaults:
+  state_key: snow_accumulation
+  state_before: 0.0
+  state_after: 0.5
+
+slices:
+  # --- snowy_ridge × ridge_scatter -------------------------------------------
+  - { name: Alpine_SnowyRidge_Scatter_Photoreal_01,  variant: photoreal,   seed: 12001, placement: ridge_scatter,  state_preset: clean, terrain: snowy_ridge,   poi: navigation_landmark, env_mode: photoreal_alpine_day,    intent: "photoreal snowy ridge, scattered scrub" }
+  - { name: Alpine_SnowyRidge_Scatter_Stylized_01,   variant: stylized,    seed: 12002, placement: ridge_scatter,  state_preset: clean, terrain: snowy_ridge,   poi: resource_site,       env_mode: stylized_alpine_day,     intent: "stylized snowy ridge" }
+  - { name: Alpine_SnowyRidge_Scatter_Perf_01,       variant: performance, seed: 12003, placement: ridge_scatter,  state_preset: clean, terrain: snowy_ridge,   poi: safe_zone,           env_mode: performance_safe_alpine, intent: "performance-safe snowy ridge" }
+  # --- snowy_ridge × glacial_debris ------------------------------------------
+  - { name: Alpine_SnowyRidge_Debris_Photoreal_01,   variant: photoreal,   seed: 12004, placement: glacial_debris, state_preset: clean, terrain: snowy_ridge,   poi: abandoned_outpost,   env_mode: photoreal_alpine_day,    intent: "photoreal ridge abandoned outpost" }
+  - { name: Alpine_SnowyRidge_Debris_Stylized_01,    variant: stylized,    seed: 12005, placement: glacial_debris, state_preset: clean, terrain: snowy_ridge,   poi: danger_zone,         env_mode: stylized_alpine_day,     intent: "stylized ridge danger pocket" }
+  - { name: Alpine_SnowyRidge_Debris_Perf_01,        variant: performance, seed: 12006, placement: glacial_debris, state_preset: clean, terrain: snowy_ridge,   poi: vista_point,         env_mode: performance_safe_alpine, intent: "performance-safe ridge vista" }
+  # --- glacial_basin × ridge_scatter -----------------------------------------
+  - { name: Alpine_GlacialBasin_Scatter_Photoreal_01, variant: photoreal,   seed: 12007, placement: ridge_scatter,  state_preset: clean, terrain: glacial_basin, poi: resource_site,       env_mode: photoreal_alpine_day,    intent: "photoreal glacial basin resource site" }
+  - { name: Alpine_GlacialBasin_Scatter_Stylized_01,  variant: stylized,    seed: 12008, placement: ridge_scatter,  state_preset: clean, terrain: glacial_basin, poi: navigation_landmark, env_mode: stylized_alpine_day,     intent: "stylized glacial basin landmark" }
+  - { name: Alpine_GlacialBasin_Scatter_Perf_01,      variant: performance, seed: 12009, placement: ridge_scatter,  state_preset: clean, terrain: glacial_basin, poi: safe_zone,           env_mode: performance_safe_alpine, intent: "performance-safe glacial basin" }
+  # --- glacial_basin × glacial_debris ----------------------------------------
+  - { name: Alpine_GlacialBasin_Debris_Photoreal_01,  variant: photoreal,   seed: 12010, placement: glacial_debris, state_preset: clean, terrain: glacial_basin, poi: abandoned_outpost,   env_mode: photoreal_alpine_day,    intent: "photoreal basin abandoned outpost" }
+  - { name: Alpine_GlacialBasin_Debris_Stylized_01,   variant: stylized,    seed: 12011, placement: glacial_debris, state_preset: clean, terrain: glacial_basin, poi: danger_zone,         env_mode: stylized_alpine_day,     intent: "stylized basin danger zone" }
+  - { name: Alpine_GlacialBasin_Debris_Perf_01,       variant: performance, seed: 12012, placement: glacial_debris, state_preset: clean, terrain: glacial_basin, poi: vista_point,         env_mode: performance_safe_alpine, intent: "performance-safe basin vista" }

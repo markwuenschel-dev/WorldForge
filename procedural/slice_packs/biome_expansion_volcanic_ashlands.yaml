@@ -1,0 +1,34 @@
+pack_id: biome_expansion_volcanic_ashlands
+biome: volcanic_ashlands
+description: >
+  Volcanic ashlands BiomeForge matrix — 12 maps: 2 terrain forms
+  (basalt_flats, ash_ravine) × 2 placement profiles
+  (industrial_scar, ravine_debris) × 3 environment profiles
+  (photoreal_ashlands_day, stylized_ashlands_day, performance_safe_ashlands). The
+  environment profile is assigned per slice by the binding overlay
+  (procedural/definitions/profiles/bindings/biome_expansion_world.yaml); the
+  variant tag below records which env mode each row targets so the matrix reads
+  cleanly. Rows earn their place by covering the full terrain×placement×env grid.
+
+defaults:
+  state_key: ashfall_pressure
+  state_before: 0.0
+  state_after: 0.5
+
+slices:
+  # --- basalt_flats × industrial_scar ----------------------------------------
+  - { name: Ashlands_BasaltFlats_Scar_Photoreal_01,  variant: photoreal,   seed: 13001, placement: industrial_scar, state_preset: clean, terrain: basalt_flats, poi: industrial_yard,     env_mode: photoreal_ashlands_day,    intent: "photoreal basalt flats industrial yard" }
+  - { name: Ashlands_BasaltFlats_Scar_Stylized_01,   variant: stylized,    seed: 13002, placement: industrial_scar, state_preset: clean, terrain: basalt_flats, poi: resource_site,       env_mode: stylized_ashlands_day,     intent: "stylized basalt flats resource site" }
+  - { name: Ashlands_BasaltFlats_Scar_Perf_01,       variant: performance, seed: 13003, placement: industrial_scar, state_preset: clean, terrain: basalt_flats, poi: navigation_landmark, env_mode: performance_safe_ashlands, intent: "performance-safe basalt flats" }
+  # --- basalt_flats × ravine_debris ------------------------------------------
+  - { name: Ashlands_BasaltFlats_Debris_Photoreal_01, variant: photoreal,   seed: 13004, placement: ravine_debris,   state_preset: clean, terrain: basalt_flats, poi: ruin_cluster,        env_mode: photoreal_ashlands_day,    intent: "photoreal basalt ruin cluster" }
+  - { name: Ashlands_BasaltFlats_Debris_Stylized_01,  variant: stylized,    seed: 13005, placement: ravine_debris,   state_preset: clean, terrain: basalt_flats, poi: danger_zone,         env_mode: stylized_ashlands_day,     intent: "stylized basalt danger pocket" }
+  - { name: Ashlands_BasaltFlats_Debris_Perf_01,      variant: performance, seed: 13006, placement: ravine_debris,   state_preset: clean, terrain: basalt_flats, poi: traversal_choke,     env_mode: performance_safe_ashlands, intent: "performance-safe basalt choke" }
+  # --- ash_ravine × industrial_scar ------------------------------------------
+  - { name: Ashlands_AshRavine_Scar_Photoreal_01,    variant: photoreal,   seed: 13007, placement: industrial_scar, state_preset: clean, terrain: ash_ravine,   poi: industrial_yard,     env_mode: photoreal_ashlands_day,    intent: "photoreal ash ravine industrial yard" }
+  - { name: Ashlands_AshRavine_Scar_Stylized_01,     variant: stylized,    seed: 13008, placement: industrial_scar, state_preset: clean, terrain: ash_ravine,   poi: navigation_landmark, env_mode: stylized_ashlands_day,     intent: "stylized ash ravine landmark" }
+  - { name: Ashlands_AshRavine_Scar_Perf_01,         variant: performance, seed: 13009, placement: industrial_scar, state_preset: clean, terrain: ash_ravine,   poi: resource_site,       env_mode: performance_safe_ashlands, intent: "performance-safe ash ravine" }
+  # --- ash_ravine × ravine_debris --------------------------------------------
+  - { name: Ashlands_AshRavine_Debris_Photoreal_01,  variant: photoreal,   seed: 13010, placement: ravine_debris,   state_preset: clean, terrain: ash_ravine,   poi: ruin_cluster,        env_mode: photoreal_ashlands_day,    intent: "photoreal ravine ruin cluster" }
+  - { name: Ashlands_AshRavine_Debris_Stylized_01,   variant: stylized,    seed: 13011, placement: ravine_debris,   state_preset: clean, terrain: ash_ravine,   poi: danger_zone,         env_mode: stylized_ashlands_day,     intent: "stylized ravine danger zone" }
+  - { name: Ashlands_AshRavine_Debris_Perf_01,       variant: performance, seed: 13012, placement: ravine_debris,   state_preset: clean, terrain: ash_ravine,   poi: traversal_choke,     env_mode: performance_safe_ashlands, intent: "performance-safe ravine choke" }

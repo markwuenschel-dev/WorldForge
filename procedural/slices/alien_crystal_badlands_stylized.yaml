@@ -1,0 +1,44 @@
+# alien_crystal_badlands_stylized.yaml
+# BiomeForge v1.1 variant template — alien_crystal_badlands, stylized env mode.
+# Mirrors temperate_forest_stylized.yaml shape. References Agent 2's
+# alien_crystal_badlands surface families (crystal_growth). Env profile is
+# assigned per-slice by the binding overlay; this template records the surface.
+#
+# Safe for agents to duplicate/modify. Keep state.before/after within [0.0, 1.0].
+
+schema_version: "1.0"
+id: alien_crystal_badlands_stylized
+biome: alien_crystal_badlands
+variant: stylized
+
+map: /Game/WorldForge/Maps/Alien_Crystal_Badlands_Stylized_01
+
+recipes:
+  - terrain_alien_crystal_badlands_01
+placement_definitions:
+  - crystal_scatter
+
+state:
+  scope: Region
+  context_id: Alien_Crystal_Badlands_Stylized_01
+  key: crystal_growth
+  before: 0.0
+  after: 0.5
+
+render:
+  # crystal_growth family (procedural/definitions/materials/biomes/alien_crystal_badlands/crystal_growth.yaml)
+  terrain_mi: /Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_AlienCrystal_01
+  preview_base_color: [0.25, 0.60, 0.75]   # linear 0-1 luminous cyan crystal
+  placement_data_asset: /Game/WorldForge/Generated/Placement/DA_AlienCrystal_Scatter
+  resolution: [1600, 900]
+  seed: 515102
+
+acceptance:
+  mpc_parameter: CrystalGrowth
+  foliage_increases:
+    - crystal_clusters
+    - alien_fungal_sparse
+  foliage_decreases:
+    - bare_plateau
+
+output_dir: procedural/reports/slices/alien_crystal_badlands_stylized

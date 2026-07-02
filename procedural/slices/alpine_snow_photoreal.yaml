@@ -1,0 +1,46 @@
+# alpine_snow_photoreal.yaml
+# BiomeForge v1.1 variant template — alpine_snow, photoreal env mode.
+# Mirrors temperate_forest_photoreal.yaml shape (recipes / placement_definitions
+# / state / render). References Agent 2's alpine_snow surface families. The env
+# profile itself is assigned per-slice by the binding overlay
+# (procedural/definitions/profiles/bindings/biome_expansion_world.yaml); this
+# template only records the biome-appropriate terrain/placement/state surface.
+#
+# Safe for agents to duplicate/modify. Keep state.before/after within [0.0, 1.0].
+
+schema_version: "1.0"
+id: alpine_snow_photoreal
+biome: alpine_snow
+variant: photoreal
+
+map: /Game/WorldForge/Maps/Alpine_Snow_Photoreal_01
+
+recipes:
+  - terrain_alpine_snow_01
+placement_definitions:
+  - ridge_scatter
+
+state:
+  scope: Region
+  context_id: Alpine_Snow_Photoreal_01
+  key: snow_accumulation
+  before: 0.0
+  after: 0.5
+
+render:
+  # packed_snow family (procedural/definitions/materials/biomes/alpine_snow/packed_snow.yaml)
+  terrain_mi: /Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Alpine_01
+  preview_base_color: [0.90, 0.93, 0.97]   # linear 0-1 wind-packed snow (near-white)
+  placement_data_asset: /Game/WorldForge/Generated/Placement/DA_Alpine_Scatter
+  resolution: [1600, 900]
+  seed: 512101
+
+acceptance:
+  mpc_parameter: SnowAccumulation
+  foliage_increases:
+    - sparse_pine
+    - dead_scrub
+  foliage_decreases:
+    - exposed_scrub
+
+output_dir: procedural/reports/slices/alpine_snow_photoreal

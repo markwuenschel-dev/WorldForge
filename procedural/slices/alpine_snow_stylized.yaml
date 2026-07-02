@@ -1,0 +1,44 @@
+# alpine_snow_stylized.yaml
+# BiomeForge v1.1 variant template — alpine_snow, stylized env mode.
+# Mirrors temperate_forest_stylized.yaml shape. References Agent 2's alpine_snow
+# surface families (ice_sheet). Env profile is assigned per-slice by the binding
+# overlay; this template records the biome-appropriate surface.
+#
+# Safe for agents to duplicate/modify. Keep state.before/after within [0.0, 1.0].
+
+schema_version: "1.0"
+id: alpine_snow_stylized
+biome: alpine_snow
+variant: stylized
+
+map: /Game/WorldForge/Maps/Alpine_Snow_Stylized_01
+
+recipes:
+  - terrain_alpine_snow_01
+placement_definitions:
+  - ridge_scatter
+
+state:
+  scope: Region
+  context_id: Alpine_Snow_Stylized_01
+  key: snow_accumulation
+  before: 0.0
+  after: 0.5
+
+render:
+  # ice_sheet family (procedural/definitions/materials/biomes/alpine_snow/ice_sheet.yaml)
+  terrain_mi: /Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Alpine_01
+  preview_base_color: [0.68, 0.80, 0.88]   # linear 0-1 cold glacial ice
+  placement_data_asset: /Game/WorldForge/Generated/Placement/DA_Alpine_Scatter
+  resolution: [1600, 900]
+  seed: 512102
+
+acceptance:
+  mpc_parameter: SnowAccumulation
+  foliage_increases:
+    - sparse_pine
+    - dead_scrub
+  foliage_decreases:
+    - exposed_scrub
+
+output_dir: procedural/reports/slices/alpine_snow_stylized
