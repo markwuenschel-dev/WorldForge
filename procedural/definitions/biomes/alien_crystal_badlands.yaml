@@ -1,0 +1,97 @@
+id: alien_crystal_badlands
+kind: biome_family
+display_name: Alien Crystal Badlands
+description: >
+  Stylized/surreal non-Earth biome with emissive crystal profiles. Proves the
+  platform supports a surreal palette and emissive/ray-traced rendering without
+  hardcoding desert assumptions. The surreal profile must MATERIALLY change
+  settings (not just names), the emissive budget is capped, ray tracing is either
+  explicitly compatible or explicitly rejected, and POIs stay readable despite
+  the styling.
+
+terrain_forms:      [crystal_field, fractured_alien_plateau]
+material_families:  [iridescent_stone, crystal_growth, dark_sand, glowing_vein, alien_dust]
+vegetation_profiles: [crystal_clusters, alien_fungal_sparse, none_exposed_plateau]
+placement_profiles: [crystal_scatter, plateau_debris]
+
+environment_profiles:
+  - surreal_alien_badlands
+  - stylized_alien_badlands
+  - performance_safe_alien
+  - raytraced_high_alien
+visual_style_profiles: [alien_surreal, stylized, performance_flat, cinematic]
+sky_profiles:        [alien_sky, stylized_sky, night_sky]
+lighting_profiles:   [alien_dual, stylized_key, alien_emissive_key]
+fog_profiles:        [alien_fog, clear_thin_fog, performance_fog, heavy_fog]
+atmosphere_profiles: [alien_atmo, stylized_atmo, thick_atmo, clear_atmo]
+weather_profiles:    [light_haze, eerie_still, clear, overcast]
+rendering_profiles:  [stylized_render, raytraced_ultra, performance_baked, cinematic_rt]
+scalability_profiles: [balanced, high, cinematic_tier, ultra]
+raytracing_profiles: ["off", selective, full, path_traced]
+
+poi_compatibility:
+  - navigation_landmark
+  - danger_zone
+  - resource_site
+  - ruin_cluster
+  - encounter_ready_anchor
+  - vista_point
+
+entity_anchor_types: [spawn_zone, patrol_anchor, idle_anchor, interaction_anchor, encounter_ready_anchor]
+ecology_tags: [alien_crystal_sentinel, alien_fungal_ambient, neutral_trader_placeholder, ambient_creature_placeholder]
+
+level_design_rules:
+  player_start_required: true
+  primary_poi_reachable: true
+  min_landmarks: 1
+  max_poi_per_map: 8
+  pois_readable_despite_styling: true
+
+traversal_rules:
+  slope_max_walkable_deg: 36
+  water_rule: none
+  hazard_rule: danger_zones_avoidable
+  crystal_clusters_block_all_approaches: false
+  safe_route_required: true
+  danger_blocks_all_progression: false
+
+entity_anchor_rules:
+  spawn_in_player_start: forbidden
+  hostile_blocks_player_start: forbidden
+  sentinel_respects_route_clearance: true
+  emissive_cluster_overlaps_interaction: forbidden
+  patrol_requires_connected_route: true
+  max_entity_density_per_map: 22
+
+budget_caps:
+  material_complexity: 280
+  vegetation_density: 0.4
+  poi_count: 8
+  entity_anchor_count: 22
+  dynamic_light_count: 8
+  fog_volume_count: 2
+  emissive_material_count: 12
+  crystal_density: 0.5
+  raytracing_compatible: true
+  volumetric_effect_class: medium
+  package_footprint_class: standard
+
+package_rules:
+  content_root: /Game/WorldForge
+  forbid_plugin_writes: true
+  generated_content_registered: true
+
+ownership_rules:
+  ownership_root: /Game/WorldForge/Generated
+  registry_required: true
+  provenance_required: true
+
+negative_fixture_rules:
+  must_reject:
+    - unknown_terrain_form
+    - photoreal_profile_without_material_compat
+    - emissive_material_over_budget
+    - crystal_blocks_all_routes
+    - raytracing_incompatible_with_scalability
+    - profile_only_changes_name
+    - generated_asset_outside_ownership_root
