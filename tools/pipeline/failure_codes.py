@@ -162,6 +162,30 @@ class FailureCode:
     CORRUPTION_UNDETECTED = "WF184_CORRUPTION_UNDETECTED"
     REPAIR_TOUCHED_HUMAN_OWNED = "WF185_REPAIR_TOUCHED_HUMAN_OWNED"
 
+    # ======================================================================
+    # v1.1 BiomeForge — multi-environment expansion taxonomy (190–219)
+    # ----------------------------------------------------------------------
+    # ADDITIVE to the v1.0x taxonomy: one code per BiomeForge gate class so the
+    # biome_expansion_world full-shield can roll biome failures up by lane the
+    # same way v1.0x rolls up by gate. Fine-grained WF0xx codes still describe
+    # the specific defect; these bucket which biome lane owns it. Do NOT reuse
+    # or renumber a v1.0x code — extend cleanly here.
+    # ======================================================================
+    BIOME_CONTRACT_FAILURE = "WF190_BIOME_CONTRACT_FAILURE"
+    BIOME_MATRIX_FAILURE = "WF191_BIOME_MATRIX_FAILURE"
+    BIOME_PROFILE_BINDING_FAILURE = "WF192_BIOME_PROFILE_BINDING_FAILURE"
+    BIOME_ENVIRONMENT_COMPATIBILITY_FAILURE = "WF193_BIOME_ENVIRONMENT_COMPATIBILITY_FAILURE"
+    TERRAIN_FORM_FAILURE = "WF194_TERRAIN_FORM_FAILURE"
+    MATERIAL_FAMILY_FAILURE = "WF195_MATERIAL_FAMILY_FAILURE"
+    VEGETATION_PROFILE_FAILURE = "WF196_VEGETATION_PROFILE_FAILURE"
+    PLACEMENT_PROFILE_FAILURE = "WF197_PLACEMENT_PROFILE_FAILURE"
+    BIOME_POI_COMPATIBILITY_FAILURE = "WF198_BIOME_POI_COMPATIBILITY_FAILURE"
+    BIOME_TRAVERSAL_FAILURE = "WF199_BIOME_TRAVERSAL_FAILURE"
+    BIOME_ECOLOGY_FAILURE = "WF200_BIOME_ECOLOGY_FAILURE"
+    BIOME_BUDGET_FAILURE = "WF201_BIOME_BUDGET_FAILURE"
+    BIOME_PACKAGE_FAILURE = "WF202_BIOME_PACKAGE_FAILURE"
+    BIOME_FUZZ_FAILURE = "WF203_BIOME_FUZZ_FAILURE"
+
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
 # This is the *default* nature of the code; a validator may still choose a
@@ -252,6 +276,21 @@ SEVERITY = {
     FailureCode.FUZZ_FAILURE: "fail",
     FailureCode.CORRUPTION_UNDETECTED: "fail",
     FailureCode.REPAIR_TOUCHED_HUMAN_OWNED: "fail",
+    # v1.1 BiomeForge gate-level codes — every gate failure is blocking.
+    FailureCode.BIOME_CONTRACT_FAILURE: "fail",
+    FailureCode.BIOME_MATRIX_FAILURE: "fail",
+    FailureCode.BIOME_PROFILE_BINDING_FAILURE: "fail",
+    FailureCode.BIOME_ENVIRONMENT_COMPATIBILITY_FAILURE: "fail",
+    FailureCode.TERRAIN_FORM_FAILURE: "fail",
+    FailureCode.MATERIAL_FAMILY_FAILURE: "fail",
+    FailureCode.VEGETATION_PROFILE_FAILURE: "fail",
+    FailureCode.PLACEMENT_PROFILE_FAILURE: "fail",
+    FailureCode.BIOME_POI_COMPATIBILITY_FAILURE: "fail",
+    FailureCode.BIOME_TRAVERSAL_FAILURE: "fail",
+    FailureCode.BIOME_ECOLOGY_FAILURE: "fail",
+    FailureCode.BIOME_BUDGET_FAILURE: "fail",
+    FailureCode.BIOME_PACKAGE_FAILURE: "fail",
+    FailureCode.BIOME_FUZZ_FAILURE: "fail",
 }
 
 # The v1.0x gate-level failure taxonomy (brief §"shared failure taxonomy"):
@@ -282,6 +321,21 @@ GATE_TAXONOMY = {
     "REPORT_INTEGRITY_FAILURE": FailureCode.REPORT_INTEGRITY_FAILURE,
     "REGRESSION_FAILURE": FailureCode.REGRESSION_FAILURE,
     "FUZZ_FAILURE": FailureCode.FUZZ_FAILURE,
+    # v1.1 BiomeForge lane codes.
+    "BIOME_CONTRACT_FAILURE": FailureCode.BIOME_CONTRACT_FAILURE,
+    "BIOME_MATRIX_FAILURE": FailureCode.BIOME_MATRIX_FAILURE,
+    "BIOME_PROFILE_BINDING_FAILURE": FailureCode.BIOME_PROFILE_BINDING_FAILURE,
+    "BIOME_ENVIRONMENT_COMPATIBILITY_FAILURE": FailureCode.BIOME_ENVIRONMENT_COMPATIBILITY_FAILURE,
+    "TERRAIN_FORM_FAILURE": FailureCode.TERRAIN_FORM_FAILURE,
+    "MATERIAL_FAMILY_FAILURE": FailureCode.MATERIAL_FAMILY_FAILURE,
+    "VEGETATION_PROFILE_FAILURE": FailureCode.VEGETATION_PROFILE_FAILURE,
+    "PLACEMENT_PROFILE_FAILURE": FailureCode.PLACEMENT_PROFILE_FAILURE,
+    "BIOME_POI_COMPATIBILITY_FAILURE": FailureCode.BIOME_POI_COMPATIBILITY_FAILURE,
+    "BIOME_TRAVERSAL_FAILURE": FailureCode.BIOME_TRAVERSAL_FAILURE,
+    "BIOME_ECOLOGY_FAILURE": FailureCode.BIOME_ECOLOGY_FAILURE,
+    "BIOME_BUDGET_FAILURE": FailureCode.BIOME_BUDGET_FAILURE,
+    "BIOME_PACKAGE_FAILURE": FailureCode.BIOME_PACKAGE_FAILURE,
+    "BIOME_FUZZ_FAILURE": FailureCode.BIOME_FUZZ_FAILURE,
 }
 
 

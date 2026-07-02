@@ -1,0 +1,31 @@
+world_pack_id: biome_expansion_world
+description: >
+  WorldForge v1.1 BiomeForge world pack — proves the hardened generation platform
+  generalizes beyond desert to five distinct non-desert biome families through
+  the same factory without weakening validation. Target matrix: 5 non-desert
+  biome families × 2 terrain forms × 2 placement profiles × 3 environment
+  profiles = 60 generated maps. desert_mvp_world remains the separate locked
+  regression baseline.
+
+# v1.1 BiomeForge marker — activates the biome gate block in full_shield.py.
+biomeforge: true
+biome_families:
+  - temperate_forest
+  - alpine_snow
+  - volcanic_ashlands
+  - wetland_mire
+  - alien_crystal_badlands
+
+global_defaults: {}
+
+packs:
+  - pack_id: biome_expansion_temperate_forest
+    pack_path: procedural/slice_packs/biome_expansion_temperate_forest.yaml
+  - pack_id: biome_expansion_alpine_snow
+    pack_path: procedural/slice_packs/biome_expansion_alpine_snow.yaml
+  - pack_id: biome_expansion_volcanic_ashlands
+    pack_path: procedural/slice_packs/biome_expansion_volcanic_ashlands.yaml
+  - pack_id: biome_expansion_wetland_mire
+    pack_path: procedural/slice_packs/biome_expansion_wetland_mire.yaml
+  - pack_id: biome_expansion_alien_crystal_badlands
+    pack_path: procedural/slice_packs/biome_expansion_alien_crystal_badlands.yaml

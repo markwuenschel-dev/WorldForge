@@ -1,0 +1,34 @@
+pack_id: biome_expansion_temperate_forest
+biome: temperate_forest
+description: >
+  Temperate forest BiomeForge matrix — 12 maps: 2 terrain forms
+  (rolling_woodland, eroded_forest_gully) × 2 placement profiles
+  (woodland_scatter, gully_debris) × 3 environment profiles
+  (photoreal_forest_day, stylized_forest_day, performance_safe_forest). The
+  environment profile is assigned per slice by the binding overlay
+  (procedural/definitions/profiles/bindings/biome_expansion_world.yaml); the
+  variant tag below records which env mode each row targets so the matrix reads
+  cleanly. Rows earn their place by covering the full terrain×placement×env grid.
+
+defaults:
+  state_key: canopy_growth
+  state_before: 0.0
+  state_after: 0.5
+
+slices:
+  # --- rolling_woodland × woodland_scatter -----------------------------------
+  - { name: Forest_RollingWoodland_Scatter_Photoreal_01,   variant: photoreal,   seed: 11001, placement: woodland_scatter, state_preset: clean, terrain: rolling_woodland,    poi: navigation_landmark, env_mode: photoreal_forest_day,    intent: "photoreal rolling woodland, scattered trees" }
+  - { name: Forest_RollingWoodland_Scatter_Stylized_01,    variant: stylized,    seed: 11002, placement: woodland_scatter, state_preset: clean, terrain: rolling_woodland,    poi: resource_site,       env_mode: stylized_forest_day,     intent: "stylized rolling woodland" }
+  - { name: Forest_RollingWoodland_Scatter_Perf_01,        variant: performance, seed: 11003, placement: woodland_scatter, state_preset: clean, terrain: rolling_woodland,    poi: safe_zone,           env_mode: performance_safe_forest, intent: "performance-safe rolling woodland" }
+  # --- rolling_woodland × gully_debris ---------------------------------------
+  - { name: Forest_RollingWoodland_Debris_Photoreal_01,    variant: photoreal,   seed: 11004, placement: gully_debris,     state_preset: clean, terrain: rolling_woodland,    poi: ruin_cluster,        env_mode: photoreal_forest_day,    intent: "photoreal woodland ruin cluster" }
+  - { name: Forest_RollingWoodland_Debris_Stylized_01,     variant: stylized,    seed: 11005, placement: gully_debris,     state_preset: clean, terrain: rolling_woodland,    poi: danger_zone,         env_mode: stylized_forest_day,     intent: "stylized woodland danger pocket" }
+  - { name: Forest_RollingWoodland_Debris_Perf_01,         variant: performance, seed: 11006, placement: gully_debris,     state_preset: clean, terrain: rolling_woodland,    poi: traversal_choke,     env_mode: performance_safe_forest, intent: "performance-safe woodland choke" }
+  # --- eroded_forest_gully × woodland_scatter --------------------------------
+  - { name: Forest_ErodedGully_Scatter_Photoreal_01,       variant: photoreal,   seed: 11007, placement: woodland_scatter, state_preset: clean, terrain: eroded_forest_gully, poi: resource_site,       env_mode: photoreal_forest_day,    intent: "photoreal eroded gully resource site" }
+  - { name: Forest_ErodedGully_Scatter_Stylized_01,        variant: stylized,    seed: 11008, placement: woodland_scatter, state_preset: clean, terrain: eroded_forest_gully, poi: navigation_landmark, env_mode: stylized_forest_day,     intent: "stylized eroded gully landmark" }
+  - { name: Forest_ErodedGully_Scatter_Perf_01,            variant: performance, seed: 11009, placement: woodland_scatter, state_preset: clean, terrain: eroded_forest_gully, poi: safe_zone,           env_mode: performance_safe_forest, intent: "performance-safe eroded gully" }
+  # --- eroded_forest_gully × gully_debris ------------------------------------
+  - { name: Forest_ErodedGully_Debris_Photoreal_01,        variant: photoreal,   seed: 11010, placement: gully_debris,     state_preset: clean, terrain: eroded_forest_gully, poi: ruin_cluster,        env_mode: photoreal_forest_day,    intent: "photoreal gully ruin cluster" }
+  - { name: Forest_ErodedGully_Debris_Stylized_01,         variant: stylized,    seed: 11011, placement: gully_debris,     state_preset: clean, terrain: eroded_forest_gully, poi: danger_zone,         env_mode: stylized_forest_day,     intent: "stylized gully danger zone" }
+  - { name: Forest_ErodedGully_Debris_Perf_01,             variant: performance, seed: 11012, placement: gully_debris,     state_preset: clean, terrain: eroded_forest_gully, poi: traversal_choke,     env_mode: performance_safe_forest, intent: "performance-safe gully choke" }
