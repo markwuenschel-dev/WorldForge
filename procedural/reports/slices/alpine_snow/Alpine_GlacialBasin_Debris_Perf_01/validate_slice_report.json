@@ -1,0 +1,250 @@
+{
+  "slice_id": "Alpine_GlacialBasin_Debris_Perf_01",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "map_exists": {
+      "ok": true,
+      "detail": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Debris_Perf_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "map_loads": {
+      "ok": true,
+      "detail": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Debris_Perf_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "world_matches": {
+      "ok": true,
+      "detail": "world=Alpine_GlacialBasin_Debris_Perf_01 expected=Alpine_GlacialBasin_Debris_Perf_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_actor": {
+      "ok": true,
+      "detail": "tag wf_terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_material_matches": {
+      "ok": true,
+      "detail": "assigned=/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Alpine_01 expected=/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Alpine_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pcg_actor": {
+      "ok": true,
+      "detail": "tag wf_pcg",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pcg_graph_linked": {
+      "ok": true,
+      "detail": "graph=/Game/Procedural/PCG/PCG_FoliageScatter expected=/Game/Procedural/PCG/PCG_FoliageScatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement_da_linked": {
+      "ok": true,
+      "detail": "da=/Game/WorldForge/Generated/Placement/DA_Alpine_Scatter expected=/Game/WorldForge/Generated/Placement/DA_Alpine_Scatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "region_marker": {
+      "ok": true,
+      "detail": "wf_region:Alpine_GlacialBasin_Debris_Perf_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_key_matches": {
+      "ok": true,
+      "detail": "key=snow_accumulation expected=snow_accumulation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_before_matches": {
+      "ok": true,
+      "detail": "before=0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_after_matches": {
+      "ok": true,
+      "detail": "after=0.5",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement_da_resolves": {
+      "ok": true,
+      "detail": "/Game/WorldForge/Generated/Placement/DA_Alpine_Scatter",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mpc_bridge": {
+      "ok": false,
+      "detail": "state key 'snow_accumulation' is off the curated MPC render spine by design; canonical round-trip validated by runtime-state scenario",
+      "warn_only": true,
+      "verdict": "SKIP_NOT_APPLICABLE",
+      "code": null,
+      "blocking": false
+    },
+    "player_start": {
+      "ok": true,
+      "detail": "PlayerStart actor (legacy compat: pre-v0.4 maps may lack one)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nav_bounds": {
+      "ok": true,
+      "detail": "NavMeshBoundsVolume actor (legacy compat: pre-v0.4 maps may lack one)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_forge_descriptor_exists": {
+      "ok": true,
+      "detail": "descriptor_path=procedural/definitions/terrain/biomes/alpine_snow/glacial_basin.yaml",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_forge_heightmap_exists": {
+      "ok": false,
+      "detail": "definition_only terrain declares no heightmap raster (definition is the artifact)",
+      "warn_only": true,
+      "verdict": "SKIP_NOT_APPLICABLE",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_forge_slope_mask_exists": {
+      "ok": false,
+      "detail": "definition_only terrain declares no slope_mask raster (definition is the artifact)",
+      "warn_only": true,
+      "verdict": "SKIP_NOT_APPLICABLE",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_forge_placement_mask_exists": {
+      "ok": false,
+      "detail": "definition_only terrain declares no placement_mask raster (definition is the artifact)",
+      "warn_only": true,
+      "verdict": "SKIP_NOT_APPLICABLE",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_forge_nav_safe_mask_exists": {
+      "ok": false,
+      "detail": "definition_only terrain declares no nav_safe_mask raster (definition is the artifact)",
+      "warn_only": true,
+      "verdict": "SKIP_NOT_APPLICABLE",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_forge_actor_tagged": {
+      "ok": true,
+      "detail": "no actor with wf_terrain_forge tag found in map",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_forge_name_matches": {
+      "ok": true,
+      "detail": "actor tag wf_terrain_name=Glacial Basin expected=Glacial Basin",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_forge_placement_mask_tagged": {
+      "ok": true,
+      "detail": "tag wf_terrain_placement_mask= expected=",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement_preset_exists": {
+      "ok": true,
+      "detail": "preset=glacial_debris path=D:\\Unreal Projects\\WorldForge\\procedural\\definitions\\placement\\biomes\\alpine_snow\\glacial_debris.yaml",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "state_preset_exists": {
+      "ok": false,
+      "detail": "no state_preset_id in spec (legacy compat: pre-v0.4 slices lack it)",
+      "warn_only": true,
+      "verdict": "WARN_ONLY",
+      "code": null,
+      "blocking": false
+    },
+    "placement_da_exists": {
+      "ok": true,
+      "detail": "path=D:\\Unreal Projects\\WorldForge\\procedural\\generated\\placement\\Alpine_GlacialBasin_Debris_Perf_01_da.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "budget_config_loaded": {
+      "ok": true,
+      "detail": "budget file missing: D:\\Unreal Projects\\WorldForge\\procedural\\definitions\\budgets\\desert_default.yaml",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "warnings": [
+    "mpc_bridge: state key 'snow_accumulation' is off the curated MPC render spine by design; canonical round-trip validated by runtime-state scenario",
+    "terrain_forge_heightmap_exists: definition_only terrain declares no heightmap raster (definition is the artifact)",
+    "terrain_forge_slope_mask_exists: definition_only terrain declares no slope_mask raster (definition is the artifact)",
+    "terrain_forge_placement_mask_exists: definition_only terrain declares no placement_mask raster (definition is the artifact)",
+    "terrain_forge_nav_safe_mask_exists: definition_only terrain declares no nav_safe_mask raster (definition is the artifact)",
+    "state_preset_exists: no state_preset_id in spec (legacy compat: pre-v0.4 slices lack it)"
+  ],
+  "counts": {
+    "PASS": 22,
+    "WARN": 0,
+    "WARN_ONLY": 1,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 5
+  },
+  "passed": true,
+  "status": "warn",
+  "map": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Debris_Perf_01"
+}

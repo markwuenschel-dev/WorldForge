@@ -1,0 +1,2931 @@
+{
+  "world_pack_id": "biome_expansion_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "binding_overlay_loads": {
+      "ok": true,
+      "detail": "60 explicit binding(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Scatter_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_RollingWoodland_Debris_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Scatter_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Forest_ErodedGully_Debris_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Scatter_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_SnowyRidge_Debris_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Scatter_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alpine_GlacialBasin_Debris_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Scar_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_BasaltFlats_Debris_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Scar_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Ashlands_AshRavine_Debris_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Scatter_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_MudFlat_Debris_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Scatter_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'balanced_lumen' is cost_class=4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'low' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'low' allows rendering cost_class<=2 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Wetland_ReedMarsh_Debris_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'low' (rank 1) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'medium' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'medium' allows rendering cost_class<=4 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Scatter_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'medium' (rank 2) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'medium' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'medium' allows rendering cost_class<=4 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_CrystalField_Debris_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'medium' (rank 2) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'medium' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'medium' allows rendering cost_class<=4 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Scatter_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'medium' (rank 2) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Photoreal_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Photoreal_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Photoreal_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Photoreal_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Photoreal_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Photoreal_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Stylized_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Stylized_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'high' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Stylized_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Stylized_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'pc' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Stylized_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'high' allows rendering cost_class<=5 but bound rendering 'stylized_render' is cost_class=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Stylized_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'high' (rank 3) exceeds platform 'pc' ceiling 'ultra' (rank 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Perf_01::fields_present": {
+      "ok": true,
+      "detail": "all scalability fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Perf_01::tier_valid": {
+      "ok": true,
+      "detail": "unknown scalability tier 'medium' (allowed ['cinematic', 'high', 'low', 'medium', 'ultra'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Perf_01::fps_valid": {
+      "ok": true,
+      "detail": "target_fps must be a positive number (got 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Perf_01::platform_valid": {
+      "ok": true,
+      "detail": "unknown target_platform 'console' (allowed ['console', 'high_end_pc', 'pc'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Perf_01::tier_rendering_consistent": {
+      "ok": true,
+      "detail": "tier 'medium' allows rendering cost_class<=4 but bound rendering 'performance_baked' is cost_class=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::Alien_Plateau_Debris_Perf_01::tier_within_platform": {
+      "ok": true,
+      "detail": "tier 'medium' (rank 2) exceeds platform 'console' ceiling 'high' (rank 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scalability::tier_spread": {
+      "ok": true,
+      "detail": "pack uses only tiers ['high', 'low', 'medium'] (expected a spread across the pack)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 362,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-scalability",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "49c6122b2a4afe612008ee7e34554a1d77316a90",
+    "timestamp": "2026-07-02T20:42:20.378491+00:00",
+    "input_spec_hash": "452f93ddb617bcbea83c21af4d40b75741d3ccf11144a31b0173568fa3020223",
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 60
+  }
+}

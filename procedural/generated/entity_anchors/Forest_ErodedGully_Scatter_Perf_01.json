@@ -1,0 +1,516 @@
+{
+  "schema_version": "wf.entity_anchors.v1",
+  "slice_id": "Forest_ErodedGully_Scatter_Perf_01",
+  "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+  "world_pack_map": "/Game/WorldForge/Maps/Forest_ErodedGully_Scatter_Perf_01",
+  "biome": "temperate_forest",
+  "variant": "performance",
+  "seed": 11009,
+  "poi": {
+    "name": "Forest_ErodedGully_Scatter_Perf_01_poi",
+    "type": "unknown"
+  },
+  "owned_by": "generated",
+  "destroyable": true,
+  "level_design_consumed": true,
+  "level_design_ref": {
+    "source": "generate_level_design",
+    "consumed": true,
+    "player_start_world": [
+      3922.19,
+      -7482.32,
+      0.0
+    ],
+    "poi_origin_world": [
+      -4159.9,
+      7935.79,
+      0.0
+    ],
+    "safe_zones_world": [
+      {
+        "center_world": [
+          7502.66,
+          -1640.88,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "safe_zone"
+      }
+    ],
+    "danger_zones_world": [
+      {
+        "center_world": [
+          -13440.35,
+          4195.65,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "danger_zone"
+      }
+    ],
+    "level_design_content_hash": "a329c3954202689fe4b82b068fa70f9b3ca41ef02faba8c2a164f14a2f2dd948",
+    "slice_id": "Forest_ErodedGully_Scatter_Perf_01",
+    "approach_bearing_xy": [
+      0.46427460116587227,
+      -0.8856913089289462
+    ]
+  },
+  "density_budget": {
+    "max_anchors_per_map": 40,
+    "max_spawn_zones_per_map": 12,
+    "max_enemy_spawn_zones_per_map": 4,
+    "max_capacity_per_zone": 8,
+    "max_total_spawn_capacity": 30
+  },
+  "world_model": {
+    "ground_z": 0,
+    "player_start": [
+      1625,
+      -3100,
+      0
+    ],
+    "player_start_radius_cm": 500,
+    "poi_origin": [
+      0,
+      0,
+      0
+    ],
+    "poi_origin_world": [
+      -4159.9,
+      7935.79,
+      0.0
+    ],
+    "critical_route": [
+      [
+        1625,
+        -3100,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "route_corridor_radius_cm": 800,
+    "safe_zones": [
+      {
+        "center": [
+          1625,
+          -3100,
+          0
+        ],
+        "radius_cm": 2500
+      }
+    ],
+    "danger_zones": [
+      {
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "radius_cm": 2000
+      }
+    ],
+    "blocking_volumes": [],
+    "max_slope_deg": 35,
+    "float_tolerance_cm": 50,
+    "bury_tolerance_cm": 50,
+    "edge_max_dist_cm": 4000
+  },
+  "anchors": [
+    {
+      "id": "safe_zone_center",
+      "type": "safe_zone_anchor",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        1625,
+        -3100,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2500
+      },
+      "ground_z": 0,
+      "slope_deg": 4,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      }
+    },
+    {
+      "id": "danger_zone_core",
+      "type": "danger_zone_anchor",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2000
+      },
+      "ground_z": 0,
+      "slope_deg": 1,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "difficulty_tag": "standard"
+    },
+    {
+      "id": "entity_marker_entry",
+      "type": "entity_anchor",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 5,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "interaction_entry",
+      "type": "interaction_anchor",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 9,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "npc_spawn_entry",
+      "type": "npc_spawn_zone",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 3,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "faction_tag": "neutral_traders",
+      "archetypes": [
+        "neutral_trader_placeholder",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "interaction_center",
+      "type": "interaction_anchor",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 4,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "role": "primary"
+    },
+    {
+      "id": "encounter_core",
+      "type": "encounter_anchor",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 3,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "raider_assault"
+    },
+    {
+      "id": "enemy_spawn_core",
+      "type": "enemy_spawn_zone",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 5,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "raider_assault",
+      "archetypes": [
+        "raider",
+        "guard"
+      ],
+      "capacity": 4,
+      "allow_in_safe_zone": false
+    },
+    {
+      "id": "faction_ownership_core",
+      "type": "faction_ownership_anchor",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 10,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "faction_tag": "raiders"
+    },
+    {
+      "id": "neutral_spawn_support",
+      "type": "neutral_spawn_zone",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        1992,
+        -785,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 0,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "faction_tag": "scavengers",
+      "archetypes": [
+        "scavenger",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "idle_support",
+      "type": "idle_anchor",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        -1200,
+        -1200,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 2,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "faction_tag": "ambient",
+      "archetypes": [
+        "ambient_creature_placeholder"
+      ]
+    },
+    {
+      "id": "patrol_0",
+      "type": "patrol_anchor",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        0,
+        1500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 8,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    },
+    {
+      "id": "patrol_1",
+      "type": "patrol_anchor",
+      "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+      "position": [
+        -1500,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 5,
+      "owning_poi": "Forest_ErodedGully_Scatter_Perf_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    }
+  ],
+  "provenance": {
+    "generator": "generate_entity_anchors",
+    "generator_version": "1.0.0",
+    "generated_at_utc": "2026-07-02T20:42:23.535227+00:00",
+    "source_spec_hash": "f50d86b711f5c6f419eee463f92b83335265aaa6955500b93d62d023d0742f7a",
+    "source_spec_path": "D:\\Unreal Projects\\WorldForge\\procedural\\slices\\temperate_forest\\generated\\Forest_ErodedGully_Scatter_Perf_01.json",
+    "seed": 11009,
+    "owned_by": "generated",
+    "destroyable": true
+  },
+  "content_hash": "bd5d6b6573e6f2eadfcbc1879efee8cbc350285daff1ed3e1236db67159727dd"
+}

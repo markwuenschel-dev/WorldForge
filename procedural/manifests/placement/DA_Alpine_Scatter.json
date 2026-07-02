@@ -1,0 +1,102 @@
+{
+  "definition_id": "DA_Alpine_Scatter",
+  "schema_version": "1.1",
+  "biome": "alpine_snow",
+  "source_definition": "procedural/definitions/placement/biomes/alpine_snow",
+  "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter",
+  "ue": {
+    "data_asset_path": "/Game/WorldForge/Generated/Placement/DA_Alpine_Scatter",
+    "data_asset_class": "PlacementRulesDataAsset",
+    "generate_data_asset": true
+  },
+  "species": [
+    {
+      "id": "glacial_erratics",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.4,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "melt_pressure",
+      "density_at_state_zero": 0.4,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "moraine_gravel",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.5,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "melt_pressure",
+      "density_at_state_zero": 0.5,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "ice_blocks",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "melt_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.2
+    },
+    {
+      "id": "scree",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "melt_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "boulders",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.5,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "exposure_pressure",
+      "density_at_state_zero": 0.5,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "wind_snags",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "exposure_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.2
+    },
+    {
+      "id": "ice_chunks",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.2,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "exposure_pressure",
+      "density_at_state_zero": 0.2,
+      "density_at_state_one": 0.3
+    }
+  ],
+  "provenance": {
+    "generator_name": "worldforge-prepare-biome-materialization",
+    "generator_version": "1.1.0",
+    "generated_at_utc": "2026-07-02T20:32:03.247994+00:00",
+    "source_commit": "49c6122b2a4afe612008ee7e34554a1d77316a90",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/definitions/placement/biomes/alpine_snow/glacial_debris.yaml": "6f67735ac518cde791eed91889df17e4cdc8be11fc4d1e67310c78818ec7ebbb",
+      "procedural/definitions/placement/biomes/alpine_snow/ridge_scatter.yaml": "c38fe607d0e1263de003ccd5123505d33cf9b98602c84dd10ea97873b149dd9f"
+    }
+  }
+}

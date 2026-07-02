@@ -1,0 +1,96 @@
+{
+  "run_id": "Alien_Plateau_Scatter_Stylized_01__biome_site_activation",
+  "scenario_id": "biome_site_activation",
+  "target": "Alien_Plateau_Scatter_Stylized_01",
+  "biome": "any",
+  "scope": "Region",
+  "context_id": "Alien_Plateau_Scatter_Stylized_01",
+  "slice_spec": null,
+  "state_keys": [
+    "restoration_level"
+  ],
+  "before_state": {
+    "restoration_level": 0.0
+  },
+  "after_state": {
+    "restoration_level": 0.5
+  },
+  "deltas_applied": {
+    "restoration_level": 0.5
+  },
+  "is_curated_key": {
+    "restoration_level": true
+  },
+  "aggregate": {
+    "keys": [
+      "restoration_level"
+    ],
+    "sum": 0.5,
+    "mean": 0.5,
+    "max": 0.5,
+    "dominant_key": "restoration_level",
+    "industrialization_index": 0.0
+  },
+  "expected_mpc": {
+    "RestorationLevel": 0.5
+  },
+  "mpc_warnings": [],
+  "poi_evidence": {
+    "navigation_landmark": {
+      "operational_state": "active",
+      "driven_by_key": "restoration_level",
+      "magnitude": 0.5,
+      "changed": true,
+      "activity_level": 0.5
+    },
+    "resource_site": {
+      "operational_state": "active",
+      "driven_by_key": "restoration_level",
+      "magnitude": 0.5,
+      "changed": true,
+      "activity_level": 0.5
+    },
+    "danger_zone": {
+      "operational_state": "active",
+      "driven_by_key": "restoration_level",
+      "magnitude": 0.5,
+      "changed": true,
+      "activity_level": 0.5
+    }
+  },
+  "save_load": {
+    "save_path": "procedural/generated/scenarios/Alien_Plateau_Scatter_Stylized_01__biome_site_activation/state_save.json",
+    "persist_keys": [
+      "restoration_level"
+    ],
+    "saved_state": {
+      "restoration_level": 0.5
+    },
+    "restored_state": {
+      "restoration_level": 0.5
+    },
+    "roundtrip_ok": true,
+    "expect_roundtrip": true
+  },
+  "thresholds": {
+    "state_min": 0.0,
+    "state_max": 1.0,
+    "max_delta_per_key": 1.0
+  },
+  "outputs": {
+    "result": "procedural/generated/scenarios/Alien_Plateau_Scatter_Stylized_01__biome_site_activation/result.json",
+    "state_save": "procedural/generated/scenarios/Alien_Plateau_Scatter_Stylized_01__biome_site_activation/state_save.json"
+  },
+  "generated_at_utc": "2026-07-02T11:29:52.454637+00:00",
+  "provenance": {
+    "generator_name": "run_state_sim",
+    "generator_version": "0.8.0",
+    "generated_at_utc": "2026-07-02T11:29:52.441950+00:00",
+    "source_commit": "1eb620eaee91de9da9f891197377709312b0b526",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/definitions/scenarios/biome_site_activation.yaml": "a0521512b26a40cc05bcf1b8e29c7ff3ee4ace5824e5fa2548e1146a08aee540"
+    }
+  },
+  "registry_owner": "worldforge_scenario_registry"
+}

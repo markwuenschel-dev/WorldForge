@@ -292,8 +292,16 @@ def main(argv=None):
               code=FailureCode.PROVENANCE_MISSING)
 
     # -- Post-scenario map validity (verified from the per-slice UE report) --
-    slice_report = (REPO_ROOT / "procedural" / "reports" / "slices" / descriptor.get("biome", "desert")
-                    / args.name / "validate_slice_report.json")
+    # A scenario's own biome may be biome-agnostic ("any"), so the per-slice UE report
+    # lives under the SLICE's materialization biome, not the scenario's. Try the
+    # scenario-biome path first (desert path unchanged), then fall back to locating the
+    # report by slice name across the biome report dirs.
+    slices_root = REPO_ROOT / "procedural" / "reports" / "slices"
+    slice_report = slices_root / descriptor.get("biome", "desert") / args.name / "validate_slice_report.json"
+    if not slice_report.is_file():
+        for cand in slices_root.glob("*/{}/validate_slice_report.json".format(args.name)):
+            slice_report = cand
+            break
     map_ok = False
     if slice_report.is_file():
         try:
