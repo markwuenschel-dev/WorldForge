@@ -1,0 +1,113 @@
+{
+  "definition_id": "DA_Woodland_Foliage",
+  "schema_version": "1.1",
+  "biome": "temperate_forest",
+  "source_definition": "procedural/definitions/placement/biomes/temperate_forest",
+  "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter",
+  "ue": {
+    "data_asset_path": "/Game/WorldForge/Generated/Placement/DA_Woodland_Foliage",
+    "data_asset_class": "PlacementRulesDataAsset",
+    "generate_data_asset": true
+  },
+  "species": [
+    {
+      "id": "eroded_rocks",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.4,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "erosion_pressure",
+      "density_at_state_zero": 0.4,
+      "density_at_state_one": 0.6
+    },
+    {
+      "id": "root_tangles",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "erosion_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.2
+    },
+    {
+      "id": "silt_mounds",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.2,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "erosion_pressure",
+      "density_at_state_zero": 0.2,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "branches",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "erosion_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.3
+    },
+    {
+      "id": "trees",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.7,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "canopy_pressure",
+      "density_at_state_zero": 0.7,
+      "density_at_state_one": 0.3
+    },
+    {
+      "id": "ferns",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.5,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "canopy_pressure",
+      "density_at_state_zero": 0.5,
+      "density_at_state_one": 0.2
+    },
+    {
+      "id": "fallen_logs",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "canopy_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "rocks",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "canopy_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.3
+    }
+  ],
+  "provenance": {
+    "generator_name": "worldforge-prepare-biome-materialization",
+    "generator_version": "1.1.0",
+    "generated_at_utc": "2026-07-02T20:32:02.003077+00:00",
+    "source_commit": "49c6122b2a4afe612008ee7e34554a1d77316a90",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/definitions/placement/biomes/temperate_forest/gully_debris.yaml": "040c3658dcd752b7e569dc0430a77d928d12c4141159fe61c0646225e4d166b6",
+      "procedural/definitions/placement/biomes/temperate_forest/woodland_scatter.yaml": "4025d46cc562ca7621302cdf62d553c5143d27faa0669a22bef9032066e703af"
+    }
+  }
+}

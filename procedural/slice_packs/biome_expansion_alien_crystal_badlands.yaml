@@ -1,0 +1,36 @@
+pack_id: biome_expansion_alien_crystal_badlands
+biome: alien_crystal_badlands
+description: >
+  Alien crystal badlands BiomeForge matrix — 12 maps: 2 terrain forms
+  (crystal_field, fractured_alien_plateau) × 2 placement profiles
+  (crystal_scatter, plateau_debris) × 3 environment profiles. This biome has no
+  photoreal_*_day profile; the photoreal SLOT binds to surreal_alien_badlands
+  (its primary high-fidelity look), stylized → stylized_alien_badlands,
+  performance → performance_safe_alien. The environment profile is assigned per
+  slice by the binding overlay
+  (procedural/definitions/profiles/bindings/biome_expansion_world.yaml); the
+  variant tag below records which env mode each row targets so the matrix reads
+  cleanly. Rows earn their place by covering the full terrain×placement×env grid.
+
+defaults:
+  state_key: crystal_growth
+  state_before: 0.0
+  state_after: 0.5
+
+slices:
+  # --- crystal_field × crystal_scatter ---------------------------------------
+  - { name: Alien_CrystalField_Scatter_Photoreal_01,  variant: photoreal,   seed: 15001, placement: crystal_scatter, state_preset: clean, terrain: crystal_field,           poi: navigation_landmark,    env_mode: surreal_alien_badlands,  intent: "surreal crystal field, scattered clusters" }
+  - { name: Alien_CrystalField_Scatter_Stylized_01,   variant: stylized,    seed: 15002, placement: crystal_scatter, state_preset: clean, terrain: crystal_field,           poi: resource_site,          env_mode: stylized_alien_badlands, intent: "stylized crystal field resource site" }
+  - { name: Alien_CrystalField_Scatter_Perf_01,       variant: performance, seed: 15003, placement: crystal_scatter, state_preset: clean, terrain: crystal_field,           poi: vista_point,            env_mode: performance_safe_alien,  intent: "performance-safe crystal field vista" }
+  # --- crystal_field × plateau_debris ----------------------------------------
+  - { name: Alien_CrystalField_Debris_Photoreal_01,   variant: photoreal,   seed: 15004, placement: plateau_debris,  state_preset: clean, terrain: crystal_field,           poi: ruin_cluster,           env_mode: surreal_alien_badlands,  intent: "surreal crystal field ruin cluster" }
+  - { name: Alien_CrystalField_Debris_Stylized_01,    variant: stylized,    seed: 15005, placement: plateau_debris,  state_preset: clean, terrain: crystal_field,           poi: danger_zone,            env_mode: stylized_alien_badlands, intent: "stylized crystal field danger pocket" }
+  - { name: Alien_CrystalField_Debris_Perf_01,        variant: performance, seed: 15006, placement: plateau_debris,  state_preset: clean, terrain: crystal_field,           poi: encounter_ready_anchor, env_mode: performance_safe_alien,  intent: "performance-safe crystal field encounter" }
+  # --- fractured_alien_plateau × crystal_scatter -----------------------------
+  - { name: Alien_Plateau_Scatter_Photoreal_01,       variant: photoreal,   seed: 15007, placement: crystal_scatter, state_preset: clean, terrain: fractured_alien_plateau, poi: resource_site,          env_mode: surreal_alien_badlands,  intent: "surreal fractured plateau resource site" }
+  - { name: Alien_Plateau_Scatter_Stylized_01,        variant: stylized,    seed: 15008, placement: crystal_scatter, state_preset: clean, terrain: fractured_alien_plateau, poi: navigation_landmark,    env_mode: stylized_alien_badlands, intent: "stylized fractured plateau landmark" }
+  - { name: Alien_Plateau_Scatter_Perf_01,            variant: performance, seed: 15009, placement: crystal_scatter, state_preset: clean, terrain: fractured_alien_plateau, poi: vista_point,            env_mode: performance_safe_alien,  intent: "performance-safe fractured plateau vista" }
+  # --- fractured_alien_plateau × plateau_debris ------------------------------
+  - { name: Alien_Plateau_Debris_Photoreal_01,        variant: photoreal,   seed: 15010, placement: plateau_debris,  state_preset: clean, terrain: fractured_alien_plateau, poi: ruin_cluster,           env_mode: surreal_alien_badlands,  intent: "surreal fractured plateau ruin cluster" }
+  - { name: Alien_Plateau_Debris_Stylized_01,         variant: stylized,    seed: 15011, placement: plateau_debris,  state_preset: clean, terrain: fractured_alien_plateau, poi: danger_zone,            env_mode: stylized_alien_badlands, intent: "stylized fractured plateau danger zone" }
+  - { name: Alien_Plateau_Debris_Perf_01,             variant: performance, seed: 15012, placement: plateau_debris,  state_preset: clean, terrain: fractured_alien_plateau, poi: encounter_ready_anchor, env_mode: performance_safe_alien,  intent: "performance-safe fractured plateau encounter" }

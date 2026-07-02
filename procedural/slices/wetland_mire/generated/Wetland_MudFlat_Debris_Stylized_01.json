@@ -1,0 +1,48 @@
+{
+  "slice_id": "Wetland_MudFlat_Debris_Stylized_01",
+  "biome": "wetland_mire",
+  "variant": "stylized",
+  "region_id": "Wetland_MudFlat_Debris_Stylized_01",
+  "seed": 14005,
+  "map": "/Game/WorldForge/Maps/Wetland_MudFlat_Debris_Stylized_01",
+  "terrain": {
+    "material_recipe": "terrain_wetland_mire_01",
+    "material_mi": "/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Wetland_01",
+    "preview_base_color": [
+      0.2,
+      0.3,
+      0.14
+    ]
+  },
+  "state": {
+    "scope": "Region",
+    "context_id": "Wetland_MudFlat_Debris_Stylized_01",
+    "key": "water_level",
+    "before": 0.0,
+    "after": 0.5
+  },
+  "placement": {
+    "definition": "marsh_scatter",
+    "data_asset": "/Game/WorldForge/Generated/Placement/DA_Wetland_Foliage",
+    "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter"
+  },
+  "output_dir": "procedural/reports/slices/wetland_mire/Wetland_MudFlat_Debris_Stylized_01",
+  "source_template": "procedural/slices/wetland_mire_stylized.yaml",
+  "provenance": {
+    "generated_at_utc": "1970-01-01T00:00:00+00:00",
+    "generator": "create_slice_spec",
+    "generator_version": "1.0.0"
+  },
+  "placement_preset_id": "mire_debris",
+  "placement_preset_path": "procedural/definitions/placement/biomes/wetland_mire/mire_debris.yaml",
+  "terrain_forge": {
+    "terrain_name": "Mud Flat",
+    "recipe_id": "mud_flat",
+    "descriptor_path": "procedural/definitions/terrain/biomes/wetland_mire/mud_flat.yaml",
+    "definition_only": true,
+    "heightmap": "",
+    "slope_mask": "",
+    "placement_mask": "",
+    "nav_safe_mask": ""
+  }
+}

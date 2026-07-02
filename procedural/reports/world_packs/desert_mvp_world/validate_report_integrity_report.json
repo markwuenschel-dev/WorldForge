@@ -3,36 +3,161 @@
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
-    "report::validate_pois_report.json::nonzero_records": {
-      "ok": false,
-      "detail": "record_count=0 (a zero-record report claiming success is a lie)",
+    "required::validate_environment_contract": {
+      "ok": true,
+      "detail": "required gate report present",
       "warn_only": false,
-      "verdict": "FAIL",
-      "code": "WF104_REPORT_ZERO_RECORD",
-      "blocking": true
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
-    "report::validate_pois_report.json::record_count_matches": {
-      "ok": false,
-      "detail": "meta.record_count=0 but report carries 350 check(s)",
+    "required::validate_sky": {
+      "ok": true,
+      "detail": "required gate report present",
       "warn_only": false,
-      "verdict": "FAIL",
-      "code": "WF105_RECORD_COUNT_MISMATCH",
-      "blocking": true
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_lighting": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_fog": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_atmosphere": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_pois": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_level_design": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_reachability": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_poi_graph": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_entity_anchors": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_npc_spawns": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_encounter_readiness": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_rendering_profiles": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_scalability": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_raytracing": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_performance_budgets": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_inspection": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "required::validate_world_pack": {
+      "ok": true,
+      "detail": "required gate report present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     }
   },
-  "failures": [
-    "report::validate_pois_report.json::nonzero_records: record_count=0 (a zero-record report claiming success is a lie)",
-    "report::validate_pois_report.json::record_count_matches: meta.record_count=0 but report carries 350 check(s)"
-  ],
+  "failures": [],
   "counts": {
-    "PASS": 0,
+    "PASS": 18,
     "WARN": 0,
     "WARN_ONLY": 0,
-    "FAIL": 2,
+    "FAIL": 0,
     "SKIP_NOT_APPLICABLE": 0
   },
-  "passed": false,
-  "status": "fail",
+  "passed": true,
+  "status": "ok",
   "meta": {
     "command": "validate-report-integrity",
     "pack": "desert_mvp_world",
@@ -40,17 +165,17 @@
     "deep": false,
     "torture": false,
     "seeds": null,
-    "git_sha": "756b05b377fb5d149ca778935a15116e9c55d979",
-    "timestamp": "2026-07-01T22:06:28.023487+00:00",
+    "git_sha": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "timestamp": "2026-07-02T20:55:59.647243+00:00",
     "input_spec_hash": "230481bf99534bce1bb7738611dc0a2864b1be75475c186919475044d7b7c5ca",
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
-    "status": "fail",
-    "failure_count": 2,
+    "status": "ok",
+    "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 28,
-    "final": false,
-    "reports_scanned": 28
+    "record_count": 27,
+    "final": true,
+    "reports_scanned": 27
   }
 }

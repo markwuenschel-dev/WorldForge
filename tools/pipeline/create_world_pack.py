@@ -43,6 +43,11 @@ def main(argv=None):
     ap.add_argument("--pack", required=True, help="Path to world pack YAML")
     ap.add_argument("--jobs", type=int, default=1, help="Parallel jobs for non-UE prep (default: 1)")
     ap.add_argument("--force", action="store_true", help="Force rebuild of all slices")
+    ap.add_argument(
+        "--specs-only", action="store_true",
+        help="Headless: generate slice spec JSONs only, skipping all UE .umap creation "
+             "(threads --specs-only through to create_slice_pack.py). Missing sibling "
+             "slice packs are reported but do not abort generation of the packs present.")
     args = ap.parse_args(argv)
 
     pack_path = Path(args.pack)
@@ -89,6 +94,8 @@ def main(argv=None):
                       "--jobs", str(args.jobs)]
         if args.force:
             argv_inner.append("--force")
+        if args.specs_only:
+            argv_inner.append("--specs-only")
 
         print("\n--- Pack: {} ---".format(pack_id))
         rc = _run(argv_inner, pack_id)

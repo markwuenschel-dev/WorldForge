@@ -1,0 +1,44 @@
+# alien_crystal_badlands_performance.yaml
+# BiomeForge v1.1 variant template — alien_crystal_badlands, performance-safe env.
+# Mirrors temperate_forest_performance.yaml shape. References Agent 2's
+# alien_crystal_badlands surface families (dark_sand). Env profile is assigned
+# per-slice by the binding overlay; this template records the surface.
+#
+# Safe for agents to duplicate/modify. Keep state.before/after within [0.0, 1.0].
+
+schema_version: "1.0"
+id: alien_crystal_badlands_performance
+biome: alien_crystal_badlands
+variant: performance
+
+map: /Game/WorldForge/Maps/Alien_Crystal_Badlands_Performance_01
+
+recipes:
+  - terrain_alien_crystal_badlands_01
+placement_definitions:
+  - crystal_scatter
+
+state:
+  scope: Region
+  context_id: Alien_Crystal_Badlands_Performance_01
+  key: crystal_growth
+  before: 0.0
+  after: 0.5
+
+render:
+  # dark_sand family (procedural/definitions/materials/biomes/alien_crystal_badlands/dark_sand.yaml)
+  terrain_mi: /Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_AlienCrystal_01
+  preview_base_color: [0.10, 0.09, 0.11]   # linear 0-1 dark alien sand
+  placement_data_asset: /Game/WorldForge/Generated/Placement/DA_AlienCrystal_Scatter
+  resolution: [1600, 900]
+  seed: 515103
+
+acceptance:
+  mpc_parameter: CrystalGrowth
+  foliage_increases:
+    - crystal_clusters
+    - alien_fungal_sparse
+  foliage_decreases:
+    - bare_plateau
+
+output_dir: procedural/reports/slices/alien_crystal_badlands_performance

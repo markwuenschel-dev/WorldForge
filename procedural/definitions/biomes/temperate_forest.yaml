@@ -1,0 +1,95 @@
+id: temperate_forest
+kind: biome_family
+display_name: Temperate Forest
+description: >
+  Foliage-heavy, canopy-aware, visibility-variable biome. Proves the world
+  factory can produce a green/brown mid-visibility surface with dense vegetation
+  budgets without hardcoding desert assumptions. Reference worked example for the
+  five non-desert BiomeForge families.
+
+terrain_forms:      [rolling_woodland, eroded_forest_gully]
+material_families:  [mossy_soil, leaf_litter, wet_rock, tree_bark, forest_path]
+vegetation_profiles: [sparse_woodland, dense_canopy, clearing_pockets]
+placement_profiles: [woodland_scatter, gully_debris]
+
+# Environment composites — created by Agent 3 under
+# procedural/definitions/profiles/environment/. Three required modes
+# (photoreal/stylized/performance_safe) plus fog_heavy (canopy mist).
+environment_profiles:
+  - photoreal_forest_day
+  - stylized_forest_day
+  - performance_safe_forest
+  - fog_heavy_forest
+visual_style_profiles: [photoreal, stylized, performance_flat, painterly_fog]
+sky_profiles:        [clear_day_sky, overcast_sky, stylized_sky]
+lighting_profiles:   [forest_canopy_dappled, overcast_diffuse, stylized_key]
+fog_profiles:        [clear_thin_fog, forest_mist_fog, heavy_fog, performance_fog]
+atmosphere_profiles: [clear_atmo, humid_atmo, thick_atmo, stylized_atmo]
+weather_profiles:    [clear, overcast, light_haze, heavy_fog]
+rendering_profiles:  [performance_baked, balanced_lumen, stylized_render, cinematic_rt]
+scalability_profiles: [performance, balanced, high, cinematic_tier]
+raytracing_profiles: ["off", selective, full]
+
+poi_compatibility:
+  - ruin_cluster
+  - resource_site
+  - navigation_landmark
+  - safe_zone
+  - danger_zone
+  - traversal_choke
+
+entity_anchor_types: [spawn_zone, patrol_anchor, idle_anchor, interaction_anchor, encounter_ready_anchor]
+ecology_tags: [forest_scavenger, forest_guard, neutral_trader_placeholder, ambient_creature_placeholder]
+
+level_design_rules:
+  player_start_required: true
+  primary_poi_reachable: true
+  min_landmarks: 1
+  max_poi_per_map: 8
+  landmarks_not_occluded_by_canopy: true
+
+traversal_rules:
+  slope_max_walkable_deg: 38
+  water_rule: shallow_only
+  hazard_rule: danger_zones_avoidable
+  safe_route_required: true
+  danger_blocks_all_progression: false
+  routes_readable_under_canopy: true
+
+entity_anchor_rules:
+  spawn_in_player_start: forbidden
+  hostile_blocks_player_start: forbidden
+  patrol_requires_connected_route: true
+  interaction_not_fully_occluded_by_foliage: true
+  max_entity_density_per_map: 28
+
+budget_caps:
+  material_complexity: 260
+  vegetation_density: 0.85         # canopy-heavy; performance_safe must clamp below this
+  vegetation_density_performance_safe: 0.45
+  poi_count: 8
+  entity_anchor_count: 28
+  dynamic_light_count: 8
+  fog_volume_count: 3
+  emissive_material_count: 3
+  volumetric_effect_class: medium
+  package_footprint_class: standard
+
+package_rules:
+  content_root: /Game/WorldForge
+  forbid_plugin_writes: true
+  generated_content_registered: true
+
+ownership_rules:
+  ownership_root: /Game/WorldForge/Generated
+  registry_required: true
+  provenance_required: true
+
+negative_fixture_rules:
+  must_reject:
+    - unknown_terrain_form
+    - dense_canopy_over_performance_budget
+    - poi_buried_by_foliage
+    - landmark_fully_occluded
+    - profile_only_changes_name
+    - generated_asset_outside_ownership_root

@@ -1,0 +1,95 @@
+id: alpine_snow
+kind: biome_family
+display_name: Alpine Snow
+description: >
+  High-contrast, slope-sensitive snow/ice biome. Proves cold lighting, whiteout
+  fog, steep-slope traversal and high-reflectance material budgets generalize
+  through the same factory. Whiteout profiles are legal only when they declare
+  low_visibility=true and still preserve route visibility where marked playable.
+
+terrain_forms:      [snowy_ridge, glacial_basin]
+material_families:  [packed_snow, ice_sheet, exposed_granite, wind_scoured_slope, frozen_path]
+vegetation_profiles: [sparse_pine, dead_scrub, none_high_altitude]
+placement_profiles: [ridge_scatter, glacial_debris]
+
+environment_profiles:
+  - photoreal_alpine_day
+  - stylized_alpine_day
+  - performance_safe_alpine
+  - whiteout_alpine
+visual_style_profiles: [photoreal, stylized, performance_flat, painterly_fog]
+sky_profiles:        [clear_day_sky, overcast_sky, stylized_sky]
+lighting_profiles:   [alpine_cold_key, overcast_diffuse, stylized_key]
+fog_profiles:        [clear_thin_fog, whiteout_fog, heavy_fog, performance_fog]
+atmosphere_profiles: [clear_atmo, alpine_thin_atmo, thick_atmo, stylized_atmo]
+weather_profiles:    [clear, overcast, snow_squall, heavy_fog]
+rendering_profiles:  [performance_baked, balanced_lumen, stylized_render, cinematic_rt]
+scalability_profiles: [performance, balanced, high, cinematic_tier]
+raytracing_profiles: ["off", selective, full]
+
+poi_compatibility:
+  - abandoned_outpost
+  - navigation_landmark
+  - resource_site
+  - danger_zone
+  - vista_point
+  - safe_zone
+
+entity_anchor_types: [spawn_zone, patrol_anchor, idle_anchor, interaction_anchor, encounter_ready_anchor]
+ecology_tags: [alpine_survivor, alpine_drone, neutral_trader_placeholder, ambient_creature_placeholder]
+
+level_design_rules:
+  player_start_required: true
+  primary_poi_reachable: true
+  min_landmarks: 1
+  max_poi_per_map: 8
+  vista_points_have_sightline: true
+
+traversal_rules:
+  slope_max_walkable_deg: 34
+  steep_slope_rule: risky_or_blocked
+  ice_hazard_tag_required: true
+  water_rule: frozen_solid
+  hazard_rule: danger_zones_avoidable
+  safe_route_required: true
+  danger_blocks_all_progression: false
+  whiteout_preserves_route_when_playable: true
+
+entity_anchor_rules:
+  spawn_in_player_start: forbidden
+  hostile_blocks_player_start: forbidden
+  spawn_on_invalid_slope: forbidden
+  patrol_requires_connected_route: true
+  max_entity_density_per_map: 22
+
+budget_caps:
+  material_complexity: 240
+  vegetation_density: 0.25
+  poi_count: 8
+  entity_anchor_count: 22
+  dynamic_light_count: 6
+  fog_volume_count: 3
+  emissive_material_count: 2
+  high_reflectance_material_count: 6
+  volumetric_effect_class: medium
+  package_footprint_class: standard
+
+package_rules:
+  content_root: /Game/WorldForge
+  forbid_plugin_writes: true
+  generated_content_registered: true
+
+ownership_rules:
+  ownership_root: /Game/WorldForge/Generated
+  registry_required: true
+  provenance_required: true
+
+negative_fixture_rules:
+  must_reject:
+    - unknown_terrain_form
+    - snow_material_in_non_snow_biome
+    - poi_buried_by_snow
+    - spawn_on_invalid_slope
+    - whiteout_without_low_visibility
+    - profile_only_changes_name
+    - generated_asset_outside_ownership_root

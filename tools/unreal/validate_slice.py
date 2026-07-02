@@ -97,29 +97,21 @@ def _find(actors, predicate):
     return None
 
 
-def main():
-    ap = argparse.ArgumentParser(description="Validate a generated WorldForge slice map.")
-    ap.add_argument("--spec", default=None)
-    ap.add_argument("--project-root", default=".")
-    args = ap.parse_args()
+# v1.1 — the curated MPC render-mirror scalar spine. Keep in sync with
+# UWorldStateSubsystem::GetCuratedMpcParams() (WorldStateSubsystem.cpp): only these
+# state keys push into MPC_WorldState. All other keys (biome state keys such as
+# canopy_growth) are canonical in-memory state but intentionally OFF the render
+# mirror, so the MPC readback check is NOT applicable to them (validated instead by
+# the runtime-state scenario save/load round-trip).
+CURATED_MPC_KEYS = {"industrial_pressure"}
 
-    root = os.path.normpath(unreal.Paths.project_dir())
-    DEFAULT_SPEC_REL = "procedural/reports/slices/_active_slice_spec.json"
-    chosen = args.spec or os.environ.get("WF_SLICE_SPEC") or os.path.join(root, DEFAULT_SPEC_REL)
-    spec_path = chosen if os.path.isabs(chosen) else os.path.join(root, chosen)
-    with open(spec_path, "r", encoding="utf-8") as f:
-        spec = json.load(f)
 
-    # Read deep-validation config written by run_slice_ue.py --deep.
-    config_path = os.path.join(root, "procedural", "reports", "slices", "_validate_config.json")
-    deep = False
-    if os.path.isfile(config_path):
-        try:
-            with open(config_path, "r", encoding="utf-8") as f:
-                deep = json.load(f).get("deep", False)
-        except Exception:
-            deep = False
+def validate_spec(spec, root, deep=False):
+    """Validate one materialized slice against its spec. Returns the ValidationReport.
 
+    Factored out of main() so a single-session batch driver can validate many slices
+    without re-booting the editor per slice.
+    """
     map_path = spec["map"]
     region_id = spec["region_id"]
     state = spec["state"]
@@ -199,17 +191,31 @@ def main():
               da_path is not None and unreal.EditorAssetLibrary.load_asset(da_path) is not None, da_path,
               code=FailureCode.SPEC_INVALID)
 
-        # MPC bridge: drive to the slice's `after` state and confirm the MPC mirror.
+        # MPC bridge: drive to the slice's `after` state. The MPC render mirror is a
+        # CURATED scalar spine (WorldStateSubsystem::GetCuratedMpcParams): only curated
+        # keys (industrial_pressure) push into MPC_WorldState. For a curated key we
+        # assert the readback mirrors `after`; for an off-spine biome key (canopy_growth,
+        # etc.) the MPC mirror is not applicable by design — the canonical state
+        # round-trip is proven by the runtime-state scenario save/load — so we SKIP the
+        # mirror check while still exercising SetState to prove the bridge is callable.
         after = state.get("after", 0.75)
+        state_key = str(state.get("key", ""))
+        curated = state_key in CURATED_MPC_KEYS
         try:
             unreal.SystemLibrary.execute_console_command(
                 world, "WorldForge.SetState {} {} {} {}".format(
                     state.get("scope", "Region"), state.get("context_id"), state.get("key"), after))
-            mpc = unreal.EditorAssetLibrary.load_asset(MPC_PATH)
-            val = float(unreal.MaterialLibrary.get_scalar_parameter_value(world, mpc, MPC_PRESSURE_PARAM))
-            mpc_readback = round(val, 4)
-            check("mpc_bridge", abs(val - float(after)) < 1e-4,
-                  "readback={} expected={}".format(round(val, 4), after), code=FailureCode.MPC_VALUE_MISMATCH)
+            if curated:
+                mpc = unreal.EditorAssetLibrary.load_asset(MPC_PATH)
+                val = float(unreal.MaterialLibrary.get_scalar_parameter_value(world, mpc, MPC_PRESSURE_PARAM))
+                mpc_readback = round(val, 4)
+                check("mpc_bridge", abs(val - float(after)) < 1e-4,
+                      "readback={} expected={}".format(round(val, 4), after),
+                      code=FailureCode.MPC_VALUE_MISMATCH)
+            else:
+                rep.skip("mpc_bridge",
+                         "state key '{}' is off the curated MPC render spine by design; "
+                         "canonical round-trip validated by runtime-state scenario".format(state_key))
         except Exception as e:  # noqa: BLE001
             check("mpc_bridge", False, "exception: {}".format(e), code=FailureCode.MPC_VALUE_MISMATCH)
 
@@ -232,9 +238,18 @@ def main():
             check("terrain_forge_descriptor_exists",
                   bool(tf_desc_rel) and os.path.isfile(tf_desc_full),
                   "descriptor_path={}".format(tf_desc_rel), code=FailureCode.DESCRIPTOR_MISSING)
+            # v1.1 — a definition_only terrain form (biome tier) declares no raster
+            # artifacts (heightmap/masks are empty by design); the descriptor above IS
+            # the artifact. Requiring raster files would check the wrong thing, so mark
+            # those checks NOT_APPLICABLE. Raster-backed terrain (desert) is unaffected.
+            definition_only = bool(terrain_forge.get("definition_only"))
             for artifact_key in ("heightmap", "slope_mask", "placement_mask", "nav_safe_mask"):
                 rel = terrain_forge.get(artifact_key, "")
                 full = os.path.join(root, rel.replace("/", os.sep)) if rel else ""
+                if definition_only and not rel:
+                    rep.skip("terrain_forge_{}_exists".format(artifact_key),
+                             "definition_only terrain declares no {} raster (definition is the artifact)".format(artifact_key))
+                    continue
                 check("terrain_forge_{}_exists".format(artifact_key),
                       bool(rel) and os.path.isfile(full),
                       "path={}".format(rel), code=FailureCode.ARTIFACT_MISSING)
@@ -284,12 +299,18 @@ def main():
         if deep:
             log("deep validation enabled")
 
-            # placement preset file must exist on disk
+            # placement preset file must exist on disk. Prefer the spec's own
+            # placement_preset_path (biome slices live under placement/biomes/<biome>/);
+            # fall back to the legacy placement/<biome>/ reconstruction for older specs.
             placement_preset_id = spec.get("placement_preset_id")
             if placement_preset_id:
-                preset_biome = spec.get("biome", "desert")
-                preset_path = os.path.join(root, "procedural", "definitions", "placement",
-                                           preset_biome, placement_preset_id + ".yaml")
+                preset_rel = spec.get("placement_preset_path")
+                if preset_rel:
+                    preset_path = os.path.join(root, preset_rel.replace("/", os.sep))
+                else:
+                    preset_biome = spec.get("biome", "desert")
+                    preset_path = os.path.join(root, "procedural", "definitions", "placement",
+                                               preset_biome, placement_preset_id + ".yaml")
                 check("placement_preset_exists",
                       os.path.isfile(preset_path),
                       "preset={} path={}".format(placement_preset_id, preset_path),
@@ -368,6 +389,33 @@ def main():
     log("validate_slice: {} ({} failure(s))".format(verdict, len(rep.failures)))
     for r in rep.failures:
         log("  - {}".format(r))
+    return rep
+
+
+def _read_deep(root):
+    config_path = os.path.join(root, "procedural", "reports", "slices", "_validate_config.json")
+    if os.path.isfile(config_path):
+        try:
+            with open(config_path, "r", encoding="utf-8") as f:
+                return json.load(f).get("deep", False)
+        except Exception:
+            return False
+    return False
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Validate a generated WorldForge slice map.")
+    ap.add_argument("--spec", default=None)
+    ap.add_argument("--project-root", default=".")
+    args = ap.parse_args()
+
+    root = os.path.normpath(unreal.Paths.project_dir())
+    DEFAULT_SPEC_REL = "procedural/reports/slices/_active_slice_spec.json"
+    chosen = args.spec or os.environ.get("WF_SLICE_SPEC") or os.path.join(root, DEFAULT_SPEC_REL)
+    spec_path = chosen if os.path.isabs(chosen) else os.path.join(root, chosen)
+    with open(spec_path, "r", encoding="utf-8") as f:
+        spec = json.load(f)
+    validate_spec(spec, root, deep=_read_deep(root))
 
 
 if __name__ == "__main__":

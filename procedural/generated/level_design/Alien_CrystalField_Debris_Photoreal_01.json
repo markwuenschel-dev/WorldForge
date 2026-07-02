@@ -1,0 +1,713 @@
+{
+  "slice_id": "Alien_CrystalField_Debris_Photoreal_01",
+  "schema_version": "wf-level-design-v1",
+  "world_pack_id": "biome_expansion_world",
+  "generated": true,
+  "registry_owner": "worldforge_level_design_overlay",
+  "seed": 15004,
+  "biome": "alien_crystal_badlands",
+  "variant": "photoreal",
+  "state_key": "crystal_growth",
+  "poi_type": null,
+  "primary_class": "navigation_landmark",
+  "budget_class": "light",
+  "terrain_bounds": {
+    "min": [
+      -25600.0,
+      -25600.0
+    ],
+    "max": [
+      25600.0,
+      25600.0
+    ],
+    "height_range_cm": [
+      0.0,
+      2000.0
+    ]
+  },
+  "player_start": {
+    "id": "player_start",
+    "world_position": [
+      -6667.95,
+      5187.21,
+      0.0
+    ],
+    "bounds": {
+      "min": [
+        -7667.950301844796,
+        4187.209536169509,
+        0.0
+      ],
+      "max": [
+        -5667.950301844796,
+        6187.209536169509,
+        300.0
+      ]
+    },
+    "facing_deg": 322.12,
+    "facing_vector": [
+      0.7893,
+      -0.614,
+      0.0
+    ],
+    "orientation_cue": "face navigation_landmark bearing to orient",
+    "vista_cue": "primary objective visible on the horizon toward the landmark",
+    "provenance": {
+      "generator": "generate_level_design",
+      "generator_version": "1.0x",
+      "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+      "registry_owner": "worldforge_level_design_overlay"
+    }
+  },
+  "pois": [
+    {
+      "id": "primary_poi",
+      "class": "navigation_landmark",
+      "role": "primary",
+      "world_position": [
+        7072.07,
+        -5501.59,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          4072.068501956607,
+          -8001.585871694927,
+          0.0
+        ],
+        "max": [
+          10072.068501956608,
+          -3001.585871694927,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.7893,
+        0.614,
+        0.0
+      ],
+      "exit_vector": [
+        0.7893,
+        -0.614,
+        0.0
+      ],
+      "gameplay_anchor": [
+        7072.07,
+        -5501.59,
+        90.0
+      ],
+      "biome_compat": [
+        "alien_crystal_badlands"
+      ],
+      "style_compat": [
+        "alien_crystal_badlands",
+        "crystal_field",
+        "photoreal",
+        "terrain_alien_crystal_badlands_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective",
+        "expected_state": "after",
+        "state_key": "crystal_growth",
+        "sightline_target": "navigation_landmark",
+        "notes": "navigation_landmark (primary) derived from Alien_CrystalField_Debris_Photoreal_01 seed 15004"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "secondary_poi",
+      "class": "objective_ready_anchor",
+      "role": "secondary",
+      "world_position": [
+        5187.21,
+        6667.95,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          3387.209536169503,
+          4867.950301844801,
+          0.0
+        ],
+        "max": [
+          6987.209536169503,
+          8467.950301844801,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.614,
+        -0.7893,
+        0.0
+      ],
+      "exit_vector": [
+        0.614,
+        0.7893,
+        0.0
+      ],
+      "gameplay_anchor": [
+        5187.21,
+        6667.95,
+        90.0
+      ],
+      "biome_compat": [
+        "alien_crystal_badlands"
+      ],
+      "style_compat": [
+        "alien_crystal_badlands",
+        "crystal_field",
+        "photoreal",
+        "terrain_alien_crystal_badlands_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_support",
+        "expected_state": "after",
+        "state_key": "crystal_growth",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (secondary) derived from Alien_CrystalField_Debris_Photoreal_01 seed 15004"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "navigation_landmark",
+      "class": "navigation_landmark",
+      "role": "landmark",
+      "world_position": [
+        10888.95,
+        -17345.35,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          9488.954049429714,
+          -18745.3474946283,
+          0.0
+        ],
+        "max": [
+          12288.954049429714,
+          -15945.347494628299,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.5317,
+        0.8469,
+        0.0
+      ],
+      "exit_vector": [
+        0.5317,
+        -0.8469,
+        0.0
+      ],
+      "gameplay_anchor": [
+        10888.95,
+        -17345.35,
+        90.0
+      ],
+      "biome_compat": [
+        "alien_crystal_badlands"
+      ],
+      "style_compat": [
+        "alien_crystal_badlands",
+        "crystal_field",
+        "photoreal",
+        "terrain_alien_crystal_badlands_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "orientation",
+        "expected_state": "static",
+        "state_key": "crystal_growth",
+        "sightline_target": "vista",
+        "notes": "navigation_landmark (landmark) derived from Alien_CrystalField_Debris_Photoreal_01 seed 15004"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "resource_site",
+      "class": "resource_site",
+      "role": "resource",
+      "world_position": [
+        3690.17,
+        20144.8,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          1890.1699999999987,
+          18344.800000000003,
+          0.0
+        ],
+        "max": [
+          5490.169999999998,
+          21944.800000000003,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.1802,
+        -0.9836,
+        0.0
+      ],
+      "exit_vector": [
+        0.1802,
+        0.9836,
+        0.0
+      ],
+      "gameplay_anchor": [
+        3690.17,
+        20144.8,
+        90.0
+      ],
+      "biome_compat": [
+        "alien_crystal_badlands"
+      ],
+      "style_compat": [
+        "alien_crystal_badlands",
+        "crystal_field",
+        "photoreal",
+        "terrain_alien_crystal_badlands_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "resource",
+        "expected_state": "before",
+        "state_key": "crystal_growth",
+        "sightline_target": "primary_poi",
+        "notes": "resource_site (resource) derived from Alien_CrystalField_Debris_Photoreal_01 seed 15004"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "encounter_anchor",
+      "class": "encounter_ready_anchor",
+      "role": "encounter",
+      "world_position": [
+        -15922.05,
+        -12050.28,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -17522.05000000001,
+          -13650.279999999993,
+          0.0
+        ],
+        "max": [
+          -14322.050000000007,
+          -10450.279999999993,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.7974,
+        0.6035,
+        0.0
+      ],
+      "exit_vector": [
+        -0.7974,
+        -0.6035,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -15922.05,
+        -12050.28,
+        90.0
+      ],
+      "biome_compat": [
+        "alien_crystal_badlands"
+      ],
+      "style_compat": [
+        "alien_crystal_badlands",
+        "crystal_field",
+        "photoreal",
+        "terrain_alien_crystal_badlands_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "encounter",
+        "expected_state": "after",
+        "state_key": "crystal_growth",
+        "sightline_target": "danger_zone",
+        "notes": "encounter_ready_anchor (encounter) derived from Alien_CrystalField_Debris_Photoreal_01 seed 15004"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "spawn_adjacent_anchor",
+      "class": "spawn_adjacent_anchor",
+      "role": "spawn_adjacent",
+      "world_position": [
+        -1988.66,
+        9260.88,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -3488.6629966664023,
+          7760.88261134883,
+          0.0
+        ],
+        "max": [
+          -488.66299666640225,
+          10760.88261134883,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.21,
+        -0.9777,
+        0.0
+      ],
+      "exit_vector": [
+        -0.21,
+        0.9777,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -1988.66,
+        9260.88,
+        90.0
+      ],
+      "biome_compat": [
+        "alien_crystal_badlands"
+      ],
+      "style_compat": [
+        "alien_crystal_badlands",
+        "crystal_field",
+        "photoreal",
+        "terrain_alien_crystal_badlands_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "spawn_support",
+        "expected_state": "before",
+        "state_key": "crystal_growth",
+        "sightline_target": "player_start",
+        "notes": "spawn_adjacent_anchor (spawn_adjacent) derived from Alien_CrystalField_Debris_Photoreal_01 seed 15004"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "objective_anchor",
+      "class": "objective_ready_anchor",
+      "role": "objective_ready",
+      "world_position": [
+        -9098.18,
+        -17197.65,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -10698.179999999998,
+          -18797.65,
+          0.0
+        ],
+        "max": [
+          -7498.1799999999985,
+          -15597.650000000001,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.4676,
+        0.8839,
+        0.0
+      ],
+      "exit_vector": [
+        -0.4676,
+        -0.8839,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -9098.18,
+        -17197.65,
+        90.0
+      ],
+      "biome_compat": [
+        "alien_crystal_badlands"
+      ],
+      "style_compat": [
+        "alien_crystal_badlands",
+        "crystal_field",
+        "photoreal",
+        "terrain_alien_crystal_badlands_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_ready",
+        "expected_state": "after",
+        "state_key": "crystal_growth",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (objective_ready) derived from Alien_CrystalField_Debris_Photoreal_01 seed 15004"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "class": "safe_zone",
+      "role": "safe_zone",
+      "world_position": [
+        -7508.83,
+        -1612.43,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -11008.826251370798,
+          -5112.429324567366,
+          0.0
+        ],
+        "max": [
+          -4008.8262513707978,
+          1887.5706754326336,
+          400.0
+        ]
+      },
+      "enemy_filled": false,
+      "rest_point": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "rest",
+        "notes": "safe rest zone"
+      }
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "danger_zone",
+      "class": "danger_zone",
+      "role": "danger_zone",
+      "world_position": [
+        13971.44,
+        1745.07,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          9971.439855850547,
+          -2254.930272352726,
+          0.0
+        ],
+        "max": [
+          17971.43985585055,
+          5745.069727647274,
+          1200.0
+        ]
+      },
+      "enemy_filled": true,
+      "avoidable": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "hazard",
+        "notes": "avoidable hazard zone"
+      }
+    }
+  ],
+  "orientation_cues": [
+    {
+      "id": "orient_landmark",
+      "kind": "landmark_bearing",
+      "target": "navigation_landmark",
+      "from": "player_start",
+      "detail": "distant landmark gives a stable heading"
+    }
+  ],
+  "vista_cues": [
+    {
+      "id": "vista_primary",
+      "kind": "sightline",
+      "from": "player_start",
+      "target": "primary_poi",
+      "detail": "line of sight from spawn to the primary objective"
+    },
+    {
+      "id": "vista_point",
+      "kind": "overlook",
+      "from": "navigation_landmark",
+      "target": "resource_site",
+      "detail": "elevated overlook reveals the resource site"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "player_start",
+        "role": "player_start",
+        "type": "player_start",
+        "position": [
+          -6667.95,
+          5187.21
+        ]
+      },
+      {
+        "id": "primary_poi",
+        "role": "primary_poi",
+        "type": "primary_poi",
+        "position": [
+          7072.07,
+          -5501.59
+        ]
+      },
+      {
+        "id": "secondary_poi",
+        "role": "secondary_poi",
+        "type": "secondary_poi",
+        "position": [
+          5187.21,
+          6667.95
+        ]
+      },
+      {
+        "id": "safe_zone",
+        "role": "safe_zone",
+        "type": "safe_zone",
+        "position": [
+          -7508.83,
+          -1612.43
+        ]
+      },
+      {
+        "id": "danger_zone",
+        "role": "danger_zone",
+        "type": "danger_zone",
+        "position": [
+          13971.44,
+          1745.07
+        ]
+      },
+      {
+        "id": "resource_site",
+        "role": "resource_site",
+        "type": "resource_site",
+        "position": [
+          3690.17,
+          20144.8
+        ]
+      },
+      {
+        "id": "exit_route",
+        "role": "exit_or_edge_route",
+        "type": "exit_or_edge_route",
+        "position": [
+          20463.78,
+          -4679.49
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "player_start",
+        "to": "primary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "safe_zone",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "secondary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "primary_poi",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "danger_zone",
+        "kind": "risky"
+      },
+      {
+        "from": "danger_zone",
+        "to": "resource_site",
+        "kind": "risky"
+      },
+      {
+        "from": "secondary_poi",
+        "to": "exit_route",
+        "kind": "reachable"
+      }
+    ]
+  },
+  "provenance": {
+    "generator_name": "generate_level_design",
+    "generator_version": "1.0x",
+    "generated_at_utc": "2026-07-02T20:54:19.281207+00:00",
+    "source_commit": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/slices/alien_crystal_badlands/generated/Alien_CrystalField_Debris_Photoreal_01.json": "eb007a6d3026182fcb73900d25537fd6db3b67a85f63527f9b60fa40737ddc9d"
+    },
+    "source_spec_hash": "60fa78b0b754b73587d1832fdbdf0262e0b5a3c0f88826b4af6021fcaeba50fc",
+    "source_spec_path": "procedural/slices/alien_crystal_badlands/generated/Alien_CrystalField_Debris_Photoreal_01.json",
+    "terrain_extent_source": "default(descriptor_unreadable)"
+  },
+  "content_hash": "d2506eae3ba60ec75660f0bbf959cbbac64802603f966e2b2c981810f3dbe1f0"
+}

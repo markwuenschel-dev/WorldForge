@@ -1,0 +1,95 @@
+id: desert_borderlands
+kind: biome_family
+display_name: Desert Borderlands
+description: >
+  Locked regression biome. Represents the proven desert_mvp_world surface family
+  inside the BiomeForge contract. Must remain compatible with desert conventions
+  and must NOT require compatibility wrappers — it is the anchor that proves
+  BiomeForge generalization did not break the baseline. The 60-map
+  biome_expansion_world matrix is the five NON-desert families; desert is present
+  here only as the contract-level regression declaration.
+
+# --- axis allow-lists (authoritative; the compat matrix ranges over these) ----
+terrain_forms:      [cracked_ridge, sandy_basin, ash_flats]
+material_families:  [sand_dune, cracked_hardpan, ash_crust, reclaimed_scrub_soil, industrial_scar_rock]
+vegetation_profiles: [dead_scrub, reclaimed_sparse, none_open_flats]
+placement_profiles: [reclaimed_scrub, industrial_scar]
+
+# Environment composites (existing v1.0x desert profiles — reused, not renamed).
+environment_profiles:
+  - photoreal_desert_day
+  - stylized_desert_day
+  - performance_safe_desert
+  - cinematic_desert_high_contrast
+  - fog_heavy_desert
+  - raytraced_high_desert
+visual_style_profiles: [photoreal, stylized, performance_flat, cinematic, gritty_dust]
+sky_profiles:        [clear_day_sky, dusk_sky, dust_sky, stylized_sky]
+lighting_profiles:   [desert_noon, desert_dusk, dust_filtered, stylized_key]
+fog_profiles:        [clear_thin_fog, dust_fog, heavy_fog, performance_fog]
+atmosphere_profiles: [clear_atmo, dusty_atmo, thick_atmo, stylized_atmo]
+weather_profiles:    [clear, breezy_clear, dust_storm, heavy_fog]
+rendering_profiles:  [performance_baked, balanced_lumen, cinematic_rt, raytraced_ultra, stylized_render]
+scalability_profiles: [performance, balanced, high, cinematic_tier, ultra]
+raytracing_profiles: ["off", selective, full]
+
+poi_compatibility:
+  - ruin_cluster
+  - resource_site
+  - navigation_landmark
+  - safe_zone
+  - danger_zone
+  - traversal_choke
+  - industrial_yard
+
+entity_anchor_types: [spawn_zone, patrol_anchor, idle_anchor, interaction_anchor, encounter_ready_anchor]
+ecology_tags: [desert_scavenger, desert_raider, neutral_trader_placeholder, ambient_creature_placeholder]
+
+# --- rule blocks --------------------------------------------------------------
+level_design_rules:
+  player_start_required: true
+  primary_poi_reachable: true
+  min_landmarks: 1
+  max_poi_per_map: 8
+
+traversal_rules:
+  slope_max_walkable_deg: 40
+  water_rule: none
+  hazard_rule: danger_zones_avoidable
+  safe_route_required: true
+  danger_blocks_all_progression: false
+
+entity_anchor_rules:
+  spawn_in_player_start: forbidden
+  hostile_blocks_player_start: forbidden
+  patrol_requires_connected_route: true
+  max_entity_density_per_map: 24
+
+budget_caps:
+  material_complexity: 220
+  vegetation_density: 0.35
+  poi_count: 8
+  entity_anchor_count: 24
+  dynamic_light_count: 6
+  fog_volume_count: 2
+  emissive_material_count: 4
+  volumetric_effect_class: low
+  package_footprint_class: standard
+
+package_rules:
+  content_root: /Game/WorldForge
+  forbid_plugin_writes: true
+  generated_content_registered: true
+
+ownership_rules:
+  ownership_root: /Game/WorldForge/Generated
+  registry_required: true
+  provenance_required: true
+
+negative_fixture_rules:
+  must_reject:
+    - unknown_terrain_form
+    - material_family_not_listed
+    - poi_incompatible_with_biome
+    - profile_only_changes_name
+    - generated_asset_outside_ownership_root

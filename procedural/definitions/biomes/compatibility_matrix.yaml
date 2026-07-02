@@ -1,0 +1,34 @@
+version: 1
+description: >
+  BiomeForge cross-axis compatibility matrix. The per-biome allow-lists in each
+  biome_family file are authoritative for single-axis membership (is this
+  terrain form / material / POI class permitted for this biome?). THIS file holds
+  only the cross-cutting rules that a single allow-list cannot express: global
+  forbidden pairs that must never co-occur on one map, and axis pairs that
+  require a co-declared rule to be legal. Implicit compatibility is never allowed
+  — a combination is legal only if it survives BOTH the biome allow-lists and
+  these rules.
+
+# Pairs that are forbidden regardless of biome. combination_allowed() rejects a
+# map whose bindings match both a.axis==a.value AND b.axis==b.value.
+forbidden_combinations:
+  - a: {axis: environment_profile, value: performance_safe_forest}
+    b: {axis: raytracing_profile, value: full}
+    reason: "performance_safe cannot pair with full ray tracing (budget conflict)"
+  - a: {axis: rendering_profile, value: performance_baked}
+    b: {axis: raytracing_profile, value: full}
+    reason: "baked performance rendering forbids full ray tracing"
+  - a: {axis: rendering_profile, value: performance_baked}
+    b: {axis: scalability_profile, value: cinematic_tier}
+    reason: "performance rendering forbids cinematic scalability tier"
+
+# Axis:value bindings that are legal only when the map also carries a declared
+# rule/flag. Validated by the environment-compat lane; recorded here so
+# report rollups and the matrix validator share one source of truth.
+requires_declaration:
+  - when: {axis: environment_profile_class, value: fog_heavy}
+    requires: low_visibility
+    reason: "a fog-heavy environment must explicitly declare low_visibility=true"
+  - when: {axis: environment_profile_class, value: whiteout}
+    requires: low_visibility
+    reason: "an alpine whiteout profile must declare low_visibility=true"

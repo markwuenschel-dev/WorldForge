@@ -1,0 +1,95 @@
+id: volcanic_ashlands
+kind: biome_family
+display_name: Volcanic Ashlands
+description: >
+  Hostile biome: ash, basalt, lava-adjacent danger, smoke/haze and dark
+  materials under high-contrast lighting. Proves danger-zone-heavy generation
+  where hazards are intentional but never block all progression, smoke never
+  fully occludes the player start, and dark-material lighting never black-frames.
+
+terrain_forms:      [basalt_flats, ash_ravine]
+material_families:  [black_basalt, ash_dust, charred_ground, heated_rock, sulfur_stain]
+vegetation_profiles: [burnt_scrub, dead_sparse, none_lava_adjacent]
+placement_profiles: [industrial_scar, ravine_debris]
+
+environment_profiles:
+  - photoreal_ashlands_day
+  - stylized_ashlands_day
+  - performance_safe_ashlands
+  - smoke_haze_ashlands
+  - cinematic_ashlands_high_contrast
+visual_style_profiles: [photoreal, stylized, performance_flat, cinematic]
+sky_profiles:        [ash_overcast_sky, dust_sky, stylized_sky]
+lighting_profiles:   [volcanic_ember_key, dust_filtered, cinematic_hard_key, stylized_key]
+fog_profiles:        [smoke_haze_fog, dust_fog, heavy_fog, performance_fog]
+atmosphere_profiles: [ashen_atmo, dusty_atmo, thick_atmo, stylized_atmo]
+weather_profiles:    [ashfall, dust_storm, heavy_fog, eerie_still]
+rendering_profiles:  [performance_baked, balanced_lumen, cinematic_rt, stylized_render]
+scalability_profiles: [performance, balanced, high, cinematic_tier]
+raytracing_profiles: ["off", selective, full]
+
+poi_compatibility:
+  - industrial_yard
+  - danger_zone
+  - resource_site
+  - navigation_landmark
+  - traversal_choke
+  - ruin_cluster
+
+entity_anchor_types: [spawn_zone, patrol_anchor, idle_anchor, interaction_anchor, encounter_ready_anchor]
+ecology_tags: [ashland_raider, ashland_worker, neutral_trader_placeholder, ambient_creature_placeholder]
+
+level_design_rules:
+  player_start_required: true
+  primary_poi_reachable: true
+  min_landmarks: 1
+  max_poi_per_map: 8
+  smoke_not_occluding_player_start: true
+
+traversal_rules:
+  slope_max_walkable_deg: 38
+  water_rule: none
+  hazard_rule: heat_lava_adjacent_danger
+  lava_adjacent_blocks_all_progression: false
+  safe_route_required: true
+  danger_blocks_all_progression: false
+
+entity_anchor_rules:
+  spawn_in_player_start: forbidden
+  hostile_blocks_player_start: forbidden
+  hostile_in_danger_zone: allowed
+  patrol_requires_connected_route: true
+  max_entity_density_per_map: 26
+
+budget_caps:
+  material_complexity: 250
+  vegetation_density: 0.15
+  poi_count: 8
+  entity_anchor_count: 26
+  dynamic_light_count: 10
+  fog_volume_count: 4
+  emissive_material_count: 8
+  smoke_volume_count: 4
+  volumetric_effect_class: high
+  package_footprint_class: standard
+
+package_rules:
+  content_root: /Game/WorldForge
+  forbid_plugin_writes: true
+  generated_content_registered: true
+
+ownership_rules:
+  ownership_root: /Game/WorldForge/Generated
+  registry_required: true
+  provenance_required: true
+
+negative_fixture_rules:
+  must_reject:
+    - unknown_terrain_form
+    - green_forest_vegetation_in_volcanic
+    - danger_zone_blocks_all_progression
+    - smoke_occludes_player_start
+    - lighting_black_frame_risk
+    - emissive_material_over_budget
+    - profile_only_changes_name
+    - generated_asset_outside_ownership_root

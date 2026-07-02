@@ -1,0 +1,713 @@
+{
+  "slice_id": "Alpine_GlacialBasin_Debris_Stylized_01",
+  "schema_version": "wf-level-design-v1",
+  "world_pack_id": "biome_expansion_world",
+  "generated": true,
+  "registry_owner": "worldforge_level_design_overlay",
+  "seed": 12011,
+  "biome": "alpine_snow",
+  "variant": "stylized",
+  "state_key": "snow_accumulation",
+  "poi_type": null,
+  "primary_class": "navigation_landmark",
+  "budget_class": "light",
+  "terrain_bounds": {
+    "min": [
+      -25600.0,
+      -25600.0
+    ],
+    "max": [
+      25600.0,
+      25600.0
+    ],
+    "height_range_cm": [
+      0.0,
+      2000.0
+    ]
+  },
+  "player_start": {
+    "id": "player_start",
+    "world_position": [
+      -4089.05,
+      -7392.45,
+      0.0
+    ],
+    "bounds": {
+      "min": [
+        -5089.04991715607,
+        -8392.453907533407,
+        0.0
+      ],
+      "max": [
+        -3089.049917156069,
+        -6392.453907533408,
+        300.0
+      ]
+    },
+    "facing_deg": 61.05,
+    "facing_vector": [
+      0.484,
+      0.8751,
+      0.0
+    ],
+    "orientation_cue": "face navigation_landmark bearing to orient",
+    "vista_cue": "primary objective visible on the horizon toward the landmark",
+    "provenance": {
+      "generator": "generate_level_design",
+      "generator_version": "1.0x",
+      "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+      "registry_owner": "worldforge_level_design_overlay"
+    }
+  },
+  "pois": [
+    {
+      "id": "primary_poi",
+      "class": "navigation_landmark",
+      "role": "primary",
+      "world_position": [
+        4336.87,
+        7840.48,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          1336.8711242564368,
+          5340.481417080886,
+          0.0
+        ],
+        "max": [
+          7336.871124256437,
+          10340.481417080886,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.484,
+        -0.8751,
+        0.0
+      ],
+      "exit_vector": [
+        0.484,
+        0.8751,
+        0.0
+      ],
+      "gameplay_anchor": [
+        4336.87,
+        7840.48,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "glacial_basin",
+        "stylized",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective",
+        "expected_state": "after",
+        "state_key": "snow_accumulation",
+        "sightline_target": "navigation_landmark",
+        "notes": "navigation_landmark (primary) derived from Alpine_GlacialBasin_Debris_Stylized_01 seed 12011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "secondary_poi",
+      "class": "objective_ready_anchor",
+      "role": "secondary",
+      "world_position": [
+        -7392.45,
+        4089.05,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -9192.453907533407,
+          2289.049917156072,
+          0.0
+        ],
+        "max": [
+          -5592.453907533406,
+          5889.049917156071,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.8751,
+        -0.484,
+        0.0
+      ],
+      "exit_vector": [
+        -0.8751,
+        0.484,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -7392.45,
+        4089.05,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "glacial_basin",
+        "stylized",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_support",
+        "expected_state": "after",
+        "state_key": "snow_accumulation",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (secondary) derived from Alpine_GlacialBasin_Debris_Stylized_01 seed 12011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "navigation_landmark",
+      "class": "navigation_landmark",
+      "role": "landmark",
+      "world_position": [
+        15444.41,
+        13449.93,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          14044.41,
+          12049.930000000002,
+          0.0
+        ],
+        "max": [
+          16844.41,
+          14849.930000000002,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.7541,
+        -0.6567,
+        0.0
+      ],
+      "exit_vector": [
+        0.7541,
+        0.6567,
+        0.0
+      ],
+      "gameplay_anchor": [
+        15444.41,
+        13449.93,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "glacial_basin",
+        "stylized",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "orientation",
+        "expected_state": "static",
+        "state_key": "snow_accumulation",
+        "sightline_target": "vista",
+        "notes": "navigation_landmark (landmark) derived from Alpine_GlacialBasin_Debris_Stylized_01 seed 12011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "resource_site",
+      "class": "resource_site",
+      "role": "resource",
+      "world_position": [
+        -20473.45,
+        517.76,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -22273.45,
+          -1282.240000000002,
+          0.0
+        ],
+        "max": [
+          -18673.45,
+          2317.759999999998,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.9997,
+        -0.0253,
+        0.0
+      ],
+      "exit_vector": [
+        -0.9997,
+        0.0253,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -20473.45,
+        517.76,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "glacial_basin",
+        "stylized",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "resource",
+        "expected_state": "before",
+        "state_key": "snow_accumulation",
+        "sightline_target": "primary_poi",
+        "notes": "resource_site (resource) derived from Alpine_GlacialBasin_Debris_Stylized_01 seed 12011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "encounter_anchor",
+      "class": "encounter_ready_anchor",
+      "role": "encounter",
+      "world_position": [
+        14376.2,
+        -13858.06,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          12776.199273098435,
+          -15458.063301203529,
+          0.0
+        ],
+        "max": [
+          15976.199273098435,
+          -12258.063301203529,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.72,
+        0.694,
+        0.0
+      ],
+      "exit_vector": [
+        0.72,
+        -0.694,
+        0.0
+      ],
+      "gameplay_anchor": [
+        14376.2,
+        -13858.06,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "glacial_basin",
+        "stylized",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "encounter",
+        "expected_state": "after",
+        "state_key": "snow_accumulation",
+        "sightline_target": "danger_zone",
+        "notes": "encounter_ready_anchor (encounter) derived from Alpine_GlacialBasin_Debris_Stylized_01 seed 12011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "spawn_adjacent_anchor",
+      "class": "spawn_adjacent_anchor",
+      "role": "spawn_adjacent",
+      "world_position": [
+        -8839.83,
+        -3402.38,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -10339.833046418715,
+          -4902.378456715189,
+          0.0
+        ],
+        "max": [
+          -7339.833046418715,
+          -1902.3784567151883,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.9333,
+        0.3592,
+        0.0
+      ],
+      "exit_vector": [
+        -0.9333,
+        -0.3592,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -8839.83,
+        -3402.38,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "glacial_basin",
+        "stylized",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "spawn_support",
+        "expected_state": "before",
+        "state_key": "snow_accumulation",
+        "sightline_target": "player_start",
+        "notes": "spawn_adjacent_anchor (spawn_adjacent) derived from Alpine_GlacialBasin_Debris_Stylized_01 seed 12011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "objective_anchor",
+      "class": "objective_ready_anchor",
+      "role": "objective_ready",
+      "world_position": [
+        18401.68,
+        -6317.77,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          16801.68,
+          -7917.770000000001,
+          0.0
+        ],
+        "max": [
+          20001.68,
+          -4717.770000000001,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.9458,
+        0.3247,
+        0.0
+      ],
+      "exit_vector": [
+        0.9458,
+        -0.3247,
+        0.0
+      ],
+      "gameplay_anchor": [
+        18401.68,
+        -6317.77,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "glacial_basin",
+        "stylized",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_ready",
+        "expected_state": "after",
+        "state_key": "snow_accumulation",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (objective_ready) derived from Alpine_GlacialBasin_Debris_Stylized_01 seed 12011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "class": "safe_zone",
+      "role": "safe_zone",
+      "world_position": [
+        2758.69,
+        -7167.43,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -741.3112593259543,
+          -10667.428857831674,
+          0.0
+        ],
+        "max": [
+          6258.688740674046,
+          -3667.4288578316737,
+          400.0
+        ]
+      },
+      "enemy_filled": false,
+      "rest_point": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "rest",
+        "notes": "safe rest zone"
+      }
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "danger_zone",
+      "class": "danger_zone",
+      "role": "danger_zone",
+      "world_position": [
+        -3893.1,
+        13531.08,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -7893.098937657527,
+          9531.082021095352,
+          0.0
+        ],
+        "max": [
+          106.90106234247332,
+          17531.082021095353,
+          1200.0
+        ]
+      },
+      "enemy_filled": true,
+      "avoidable": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "hazard",
+        "notes": "avoidable hazard zone"
+      }
+    }
+  ],
+  "orientation_cues": [
+    {
+      "id": "orient_landmark",
+      "kind": "landmark_bearing",
+      "target": "navigation_landmark",
+      "from": "player_start",
+      "detail": "distant landmark gives a stable heading"
+    }
+  ],
+  "vista_cues": [
+    {
+      "id": "vista_primary",
+      "kind": "sightline",
+      "from": "player_start",
+      "target": "primary_poi",
+      "detail": "line of sight from spawn to the primary objective"
+    },
+    {
+      "id": "vista_point",
+      "kind": "overlook",
+      "from": "navigation_landmark",
+      "target": "resource_site",
+      "detail": "elevated overlook reveals the resource site"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "player_start",
+        "role": "player_start",
+        "type": "player_start",
+        "position": [
+          -4089.05,
+          -7392.45
+        ]
+      },
+      {
+        "id": "primary_poi",
+        "role": "primary_poi",
+        "type": "primary_poi",
+        "position": [
+          4336.87,
+          7840.48
+        ]
+      },
+      {
+        "id": "secondary_poi",
+        "role": "secondary_poi",
+        "type": "secondary_poi",
+        "position": [
+          -7392.45,
+          4089.05
+        ]
+      },
+      {
+        "id": "safe_zone",
+        "role": "safe_zone",
+        "type": "safe_zone",
+        "position": [
+          2758.69,
+          -7167.43
+        ]
+      },
+      {
+        "id": "danger_zone",
+        "role": "danger_zone",
+        "type": "danger_zone",
+        "position": [
+          -3893.1,
+          13531.08
+        ]
+      },
+      {
+        "id": "resource_site",
+        "role": "resource_site",
+        "type": "resource_site",
+        "position": [
+          -20473.45,
+          517.76
+        ]
+      },
+      {
+        "id": "exit_route",
+        "role": "exit_or_edge_route",
+        "type": "exit_or_edge_route",
+        "position": [
+          1445.56,
+          20942.17
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "player_start",
+        "to": "primary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "safe_zone",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "secondary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "primary_poi",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "danger_zone",
+        "kind": "risky"
+      },
+      {
+        "from": "danger_zone",
+        "to": "resource_site",
+        "kind": "risky"
+      },
+      {
+        "from": "secondary_poi",
+        "to": "exit_route",
+        "kind": "reachable"
+      }
+    ]
+  },
+  "provenance": {
+    "generator_name": "generate_level_design",
+    "generator_version": "1.0x",
+    "generated_at_utc": "2026-07-02T20:54:18.509950+00:00",
+    "source_commit": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/slices/alpine_snow/generated/Alpine_GlacialBasin_Debris_Stylized_01.json": "880da76d700ce5709be9d2599e0e8e8fbb747f09565c6036c4df471d7181a94e"
+    },
+    "source_spec_hash": "b3f8a2d4237c446783a1bf56350300eab0afa0167ae670206215e4d3fbb82d0a",
+    "source_spec_path": "procedural/slices/alpine_snow/generated/Alpine_GlacialBasin_Debris_Stylized_01.json",
+    "terrain_extent_source": "default(descriptor_unreadable)"
+  },
+  "content_hash": "819983e47c65501e3fa861d5f23c889a772a50eea3c0e0402f2701333894e6da"
+}

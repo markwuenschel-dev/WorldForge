@@ -1,0 +1,505 @@
+{
+  "world_pack_id": "biome_expansion_world",
+  "meta": {
+    "command": "full-shield",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": true,
+    "torture": true,
+    "seeds": 200,
+    "git_sha": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "timestamp": "2026-07-02T20:54:22.035757+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 46
+  },
+  "passed": true,
+  "status": "ok",
+  "totals": {
+    "gates": 46,
+    "pass": 46,
+    "fail": 0,
+    "missing": 0,
+    "skipped": 0
+  },
+  "blocking_gates": [],
+  "failure_taxonomy": {},
+  "gates": [
+    {
+      "id": "validate-world-pack-spec",
+      "label": "Validate world-pack spec",
+      "phase": "spec",
+      "code": "WF110_CONTRACT_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_world_pack_spec_report.json | Coverage: procedural/reports/coverage/biome_expansion_world_coverage.json | [validate-world-pack-spec] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-environment-contract",
+      "label": "Validate environment contract",
+      "phase": "environment",
+      "code": "WF120_ENVIRONMENT_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_environment_contract_report.json | [validate-environment-contract] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-environment-contract] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "create-world-pack",
+      "label": "Create world pack",
+      "phase": "generate",
+      "code": "WF111_GENERATION_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": " | === World Pack 'biome_expansion_world' done: 5/5 packs OK, 0 failed === | Report: procedural/reports/world_packs/biome_expansion_world/create_world_pack_report.json"
+    },
+    {
+      "id": "validate-world-pack",
+      "label": "Validate world pack (deep)",
+      "phase": "generate",
+      "code": "WF110_CONTRACT_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[validate-world-pack]   WARN_ONLY: pack:biome_expansion_volcanic_ashlands: child pack WARN_ONLY (0/12) | [validate-world-pack]   WARN_ONLY: pack:biome_expansion_wetland_mire: child pack WARN_ONLY (0/12) | [validate-world-pack]   WARN_ONLY: pack:biome_expansion_alien_crystal_badlands: child pack WARN_ONLY (0/12)"
+    },
+    {
+      "id": "validate-biome-contract",
+      "label": "Validate biome contract",
+      "phase": "biome",
+      "code": "WF190_BIOME_CONTRACT_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_biome_contract_report.json | [validate-biome-contract] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-biome-contract] records=5 (biome families in pack)",
+      "report_status": "ok",
+      "record_count": 5
+    },
+    {
+      "id": "validate-biome-matrix",
+      "label": "Validate biome matrix",
+      "phase": "biome",
+      "code": "WF191_BIOME_MATRIX_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_biome_matrix_report.json | [validate-biome-matrix] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-biome-matrix] records=5 (biome families in pack)",
+      "report_status": "ok",
+      "record_count": 5
+    },
+    {
+      "id": "validate-biome-profile-bindings",
+      "label": "Validate biome profile bindings",
+      "phase": "biome",
+      "code": "WF192_BIOME_PROFILE_BINDING_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_biome_profile_bindings_report.json | [validate-biome-profile-bindings] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-biome-profile-bindings] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-biome-environment-compatibility",
+      "label": "Validate biome/environment compatibility",
+      "phase": "biome",
+      "code": "WF193_BIOME_ENVIRONMENT_COMPATIBILITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_biome_environment_compatibility_report.json | [validate-biome-environment-compatibility] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-biome-environment-compatibility] records=5 (biome families in pack)",
+      "report_status": "ok",
+      "record_count": 5
+    },
+    {
+      "id": "validate-biome-inspection",
+      "label": "Validate biome inspection",
+      "phase": "biome",
+      "code": "WF190_BIOME_CONTRACT_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_biome_inspection_report.json | [validate-biome-inspection] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-biome-inspection] records=5 (biome families in pack)",
+      "report_status": "ok",
+      "record_count": 5
+    },
+    {
+      "id": "validate-terrain-forms",
+      "label": "Validate terrain forms",
+      "phase": "biome",
+      "code": "WF194_TERRAIN_FORM_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_terrain_forms_report.json | [validate-terrain-forms] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-terrain-forms] records=10 (biome x terrain_form pairs)",
+      "report_status": "ok",
+      "record_count": 10
+    },
+    {
+      "id": "validate-material-families",
+      "label": "Validate material families",
+      "phase": "biome",
+      "code": "WF195_MATERIAL_FAMILY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_material_families_report.json | [validate-material-families] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-material-families] records=25 (biome x material_family pairs)",
+      "report_status": "ok",
+      "record_count": 25
+    },
+    {
+      "id": "validate-vegetation-profiles",
+      "label": "Validate vegetation profiles",
+      "phase": "biome",
+      "code": "WF196_VEGETATION_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_vegetation_profiles_report.json | [validate-vegetation-profiles] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-vegetation-profiles] records=15 (biome x vegetation_profile pairs)",
+      "report_status": "ok",
+      "record_count": 15
+    },
+    {
+      "id": "validate-placement-profiles",
+      "label": "Validate placement profiles",
+      "phase": "biome",
+      "code": "WF197_PLACEMENT_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_placement_profiles_report.json | [validate-placement-profiles] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-placement-profiles] records=10 (biome x placement_profile pairs)",
+      "report_status": "ok",
+      "record_count": 10
+    },
+    {
+      "id": "validate-biome-poi-compatibility",
+      "label": "Validate biome/POI compatibility",
+      "phase": "biome",
+      "code": "WF198_BIOME_POI_COMPATIBILITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_biome_poi_compatibility_report.json | [validate-biome-poi-compatibility] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-biome-poi-compatibility] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-biome-traversal",
+      "label": "Validate biome traversal",
+      "phase": "biome",
+      "code": "WF199_BIOME_TRAVERSAL_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_biome_traversal_report.json | [validate-biome-traversal] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-biome-traversal] records=65 (5 biomes + 60 maps)",
+      "report_status": "ok",
+      "record_count": 65
+    },
+    {
+      "id": "validate-biome-ecology-tags",
+      "label": "Validate biome ecology tags",
+      "phase": "biome",
+      "code": "WF200_BIOME_ECOLOGY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_biome_ecology_tags_report.json | [validate-biome-ecology-tags] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-biome-ecology-tags] records=5 (biome families)",
+      "report_status": "ok",
+      "record_count": 5
+    },
+    {
+      "id": "validate-report-integrity",
+      "label": "Validate report integrity",
+      "phase": "generate",
+      "code": "WF100_REPORT_INTEGRITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_report_integrity_report.json | [validate-report-integrity] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-inspection",
+      "label": "Validate inspection metadata",
+      "phase": "generate",
+      "code": "WF110_CONTRACT_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[validate-inspection] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "run-world-state-scenario",
+      "label": "Run world-state scenario",
+      "phase": "scenario-package",
+      "code": "WF170_SCENARIO_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "=== Scenario 'biome_site_activation': 30/30 compatible maps PASS === | Report: procedural/reports/world_packs/biome_expansion_world/run_world_state_scenario_report.json | [run-world-state-scenario] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-sky",
+      "label": "Validate sky",
+      "phase": "sky-lighting-fog",
+      "code": "WF130_SKY_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_sky_report.json | [validate-sky] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-sky] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-lighting",
+      "label": "Validate lighting",
+      "phase": "sky-lighting-fog",
+      "code": "WF131_LIGHTING_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_lighting_report.json | [validate-lighting] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-lighting] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-fog",
+      "label": "Validate fog",
+      "phase": "sky-lighting-fog",
+      "code": "WF132_FOG_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_fog_report.json | [validate-fog] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-fog] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-atmosphere",
+      "label": "Validate atmosphere",
+      "phase": "sky-lighting-fog",
+      "code": "WF133_ATMOSPHERE_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_atmosphere_report.json | [validate-atmosphere] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-atmosphere] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-rendering-profiles",
+      "label": "Validate rendering-profiles",
+      "phase": "rendering",
+      "code": "WF160_RENDERING_PROFILE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_rendering_profiles_report.json | [validate-rendering-profiles] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-rendering-profiles] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-scalability",
+      "label": "Validate scalability",
+      "phase": "rendering",
+      "code": "WF161_SCALABILITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_scalability_report.json | [validate-scalability] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-scalability] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-raytracing",
+      "label": "Validate raytracing",
+      "phase": "rendering",
+      "code": "WF162_RAYTRACING_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_raytracing_report.json | [validate-raytracing] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-raytracing] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-performance-budgets",
+      "label": "Validate performance-budgets",
+      "phase": "rendering",
+      "code": "WF163_BUDGET_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_performance_budgets_report.json | [validate-performance-budgets] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [validate-performance-budgets] records=60 (maps in pack)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "generate-level-design",
+      "label": "Generate level-design overlays",
+      "phase": "poi",
+      "code": "WF111_GENERATION_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[generate-level-design] pack=biome_expansion_world overlays=60/60 -> D:\\Unreal Projects\\WorldForge\\procedural\\generated\\level_design | [generate-level-design] DONE — 60 deterministic overlays"
+    },
+    {
+      "id": "validate-pois",
+      "label": "Validate pois",
+      "phase": "poi",
+      "code": "WF140_POI_USABILITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_pois_report.json | [validate-pois] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-level-design",
+      "label": "Validate level-design",
+      "phase": "poi",
+      "code": "WF141_LEVEL_DESIGN_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_level_design_report.json | [validate-level-design] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-reachability",
+      "label": "Validate reachability",
+      "phase": "poi",
+      "code": "WF142_REACHABILITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_reachability_report.json | [validate-reachability] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-poi-graph",
+      "label": "Validate poi-graph",
+      "phase": "poi",
+      "code": "WF143_POI_GRAPH_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_poi_graph_report.json | [validate-poi-graph] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "generate-entity-anchors",
+      "label": "Generate entity-anchor overlays",
+      "phase": "entity",
+      "code": "WF111_GENERATION_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[generate-entity-anchors] pack=biome_expansion_world maps_written=60 anchors=780 level_design_consumed=60/60 missing_specs=0 | [generate-entity-anchors] output -> procedural/generated/entity_anchors"
+    },
+    {
+      "id": "validate-entity-anchors",
+      "label": "Validate entity-anchors",
+      "phase": "entity",
+      "code": "WF150_ENTITY_ANCHOR_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_entity_anchors_report.json | [validate-entity-anchors] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-npc-spawns",
+      "label": "Validate npc-spawns",
+      "phase": "entity",
+      "code": "WF151_NPC_SPAWN_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_npc_spawns_report.json | [validate-npc-spawns] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "validate-encounter-readiness",
+      "label": "Validate encounter-readiness",
+      "phase": "entity",
+      "code": "WF152_ENCOUNTER_READINESS_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_encounter_readiness_report.json | [validate-encounter-readiness] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)",
+      "report_status": "ok",
+      "record_count": 60
+    },
+    {
+      "id": "package-check",
+      "label": "Package check",
+      "phase": "scenario-package",
+      "code": "WF171_PACKAGE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "COUNTS: PASS=1105 | [world_pack] report -> procedural\\reports\\package_check\\biome_expansion_world\\package_check_report.json | [package-check] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-determinism",
+      "label": "Validate determinism",
+      "phase": "determinism-fuzz",
+      "code": "WF181_DETERMINISM_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_determinism_report.json | [validate-determinism] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "seed-matrix",
+      "label": "Seed matrix",
+      "phase": "determinism-fuzz",
+      "code": "WF181_DETERMINISM_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\seed_matrix_report.json | [seed-matrix] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [seed-matrix] seeds_run=200 record_count=200"
+    },
+    {
+      "id": "fuzz-world-pack",
+      "label": "Fuzz world pack",
+      "phase": "determinism-fuzz",
+      "code": "WF183_FUZZ_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[fuzz] cases=40 valid=15 cleanly_rejected=25 crashes=0 | [world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\fuzz_world_pack_report.json | [fuzz-world-pack] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "fuzz-biome-matrix",
+      "label": "Fuzz biome matrix",
+      "phase": "determinism-fuzz",
+      "code": "WF203_BIOME_FUZZ_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[fuzz] cases=40 valid=8 cleanly_rejected=32 crashes=0 | [world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\fuzz_biome_matrix_report.json | [fuzz-biome-matrix] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "lifecycle-torture",
+      "label": "Lifecycle torture",
+      "phase": "lifecycle",
+      "code": "WF180_LIFECYCLE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\lifecycle_torture_report.json | [lifecycle-torture] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [lifecycle-torture] target=Forest_RollingWoodland_Scatter_Photoreal_01 modes=16 destroy->rebuild->revalidate cycle run"
+    },
+    {
+      "id": "repair-world-pack",
+      "label": "Repair world pack",
+      "phase": "lifecycle",
+      "code": "WF180_LIFECYCLE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "  repaired:       0 | [world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\repair_world_pack_report.json | [repair-world-pack] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "revalidate-world-pack",
+      "label": "Revalidate world pack",
+      "phase": "lifecycle",
+      "code": "WF180_LIFECYCLE_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\revalidate_world_pack_report.json | [revalidate-world-pack] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "validate-regression-matrix",
+      "label": "Validate regression matrix",
+      "phase": "regression",
+      "code": "WF182_REGRESSION_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[regression_matrix] report -> procedural\\reports\\world_packs\\validate_regression_matrix_report.json | [validate-regression-matrix] PASS — regression_matrix (0 failure(s), 0 warning(s), strict=on)"
+    },
+    {
+      "id": "final-report-integrity",
+      "label": "Final report integrity check",
+      "phase": "final",
+      "code": "WF100_REPORT_INTEGRITY_FAILURE",
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\validate_report_integrity_report.json | [validate-report-integrity --final] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
+    }
+  ],
+  "map_count": 60
+}

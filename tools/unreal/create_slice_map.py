@@ -282,22 +282,12 @@ def prime_state(state, report):
         report["mpc_bridge_ok"] = False
 
 
-def main():
-    ap = argparse.ArgumentParser(description="Build a saved, state-aware UE map from a slice spec.")
-    ap.add_argument("--spec", default=None)
-    ap.add_argument("--project-root", default=".")
-    args = ap.parse_args()
+def build_map_for_spec(spec, root):
+    """Build + save one slice map from its spec dict. Returns the report dict.
 
-    # Spec resolution (UE -ExecutePythonScript can't reliably pass a path with spaces):
-    #   --spec arg  ->  $WF_SLICE_SPEC  ->  fixed pointer file written by the launcher.
-    root = os.path.normpath(unreal.Paths.project_dir())
-    DEFAULT_SPEC_REL = "procedural/reports/slices/_active_slice_spec.json"
-    chosen = args.spec or os.environ.get("WF_SLICE_SPEC") or os.path.join(root, DEFAULT_SPEC_REL)
-    spec_path = chosen if os.path.isabs(chosen) else os.path.join(root, chosen)
-    log("reading slice spec: {}".format(spec_path))
-    with open(spec_path, "r", encoding="utf-8") as f:
-        spec = json.load(f)
-
+    Factored out of main() so a single-session batch driver can materialize many
+    slices without re-booting the editor per slice.
+    """
     map_path = spec["map"]
     slice_id = spec["slice_id"]
     region_id = spec["region_id"]
@@ -348,6 +338,25 @@ def main():
     with open(os.path.join(out_dir, "create_map_report.json"), "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2)
     log("create_map_report written; status={}".format(report.get("status")))
+    return report
+
+
+def main():
+    ap = argparse.ArgumentParser(description="Build a saved, state-aware UE map from a slice spec.")
+    ap.add_argument("--spec", default=None)
+    ap.add_argument("--project-root", default=".")
+    args = ap.parse_args()
+
+    # Spec resolution (UE -ExecutePythonScript can't reliably pass a path with spaces):
+    #   --spec arg  ->  $WF_SLICE_SPEC  ->  fixed pointer file written by the launcher.
+    root = os.path.normpath(unreal.Paths.project_dir())
+    DEFAULT_SPEC_REL = "procedural/reports/slices/_active_slice_spec.json"
+    chosen = args.spec or os.environ.get("WF_SLICE_SPEC") or os.path.join(root, DEFAULT_SPEC_REL)
+    spec_path = chosen if os.path.isabs(chosen) else os.path.join(root, chosen)
+    log("reading slice spec: {}".format(spec_path))
+    with open(spec_path, "r", encoding="utf-8") as f:
+        spec = json.load(f)
+    build_map_for_spec(spec, root)
 
 
 if __name__ == "__main__":

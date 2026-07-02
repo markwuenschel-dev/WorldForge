@@ -1,0 +1,113 @@
+{
+  "definition_id": "DA_AlienCrystal_Scatter",
+  "schema_version": "1.1",
+  "biome": "alien_crystal_badlands",
+  "source_definition": "procedural/definitions/placement/biomes/alien_crystal_badlands",
+  "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter",
+  "ue": {
+    "data_asset_path": "/Game/WorldForge/Generated/Placement/DA_AlienCrystal_Scatter",
+    "data_asset_class": "PlacementRulesDataAsset",
+    "generate_data_asset": true
+  },
+  "species": [
+    {
+      "id": "crystal_shards",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.4,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "resonance_pressure",
+      "density_at_state_zero": 0.4,
+      "density_at_state_one": 0.6
+    },
+    {
+      "id": "glow_pods",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.2,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "resonance_pressure",
+      "density_at_state_zero": 0.2,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "alien_rocks",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.4,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "resonance_pressure",
+      "density_at_state_zero": 0.4,
+      "density_at_state_one": 0.3
+    },
+    {
+      "id": "dust_mounds",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "resonance_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.3
+    },
+    {
+      "id": "fractured_slabs",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.5,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "fracture_pressure",
+      "density_at_state_zero": 0.5,
+      "density_at_state_one": 0.5
+    },
+    {
+      "id": "crystal_rubble",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "fracture_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "dark_sand_drifts",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.4,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "fracture_pressure",
+      "density_at_state_zero": 0.4,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "monoliths",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.2,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "fracture_pressure",
+      "density_at_state_zero": 0.2,
+      "density_at_state_one": 0.2
+    }
+  ],
+  "provenance": {
+    "generator_name": "worldforge-prepare-biome-materialization",
+    "generator_version": "1.1.0",
+    "generated_at_utc": "2026-07-02T20:32:07.023176+00:00",
+    "source_commit": "49c6122b2a4afe612008ee7e34554a1d77316a90",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/definitions/placement/biomes/alien_crystal_badlands/crystal_scatter.yaml": "d84c8fae8fe10ede065c284b714868155e3e0e42ac49b0dbcd3a3f6d22468e85",
+      "procedural/definitions/placement/biomes/alien_crystal_badlands/plateau_debris.yaml": "88decea412b02d85b0b2d613d14753a36b09af2479e879278e3eaa203254bc54"
+    }
+  }
+}

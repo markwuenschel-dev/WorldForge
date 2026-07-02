@@ -1,0 +1,713 @@
+{
+  "slice_id": "Wetland_MudFlat_Scatter_Photoreal_01",
+  "schema_version": "wf-level-design-v1",
+  "world_pack_id": "biome_expansion_world",
+  "generated": true,
+  "registry_owner": "worldforge_level_design_overlay",
+  "seed": 14001,
+  "biome": "wetland_mire",
+  "variant": "photoreal",
+  "state_key": "water_level",
+  "poi_type": null,
+  "primary_class": "navigation_landmark",
+  "budget_class": "light",
+  "terrain_bounds": {
+    "min": [
+      -25600.0,
+      -25600.0
+    ],
+    "max": [
+      25600.0,
+      25600.0
+    ],
+    "height_range_cm": [
+      0.0,
+      2000.0
+    ]
+  },
+  "player_start": {
+    "id": "player_start",
+    "world_position": [
+      -8331.64,
+      1397.32,
+      0.0
+    ],
+    "bounds": {
+      "min": [
+        -9331.637782720525,
+        397.3245355119966,
+        0.0
+      ],
+      "max": [
+        -7331.637782720525,
+        2397.3245355119966,
+        300.0
+      ]
+    },
+    "facing_deg": 350.48,
+    "facing_vector": [
+      0.9862,
+      -0.1654,
+      0.0
+    ],
+    "orientation_cue": "face navigation_landmark bearing to orient",
+    "vista_cue": "primary objective visible on the horizon toward the landmark",
+    "provenance": {
+      "generator": "generate_level_design",
+      "generator_version": "1.0x",
+      "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+      "registry_owner": "worldforge_level_design_overlay"
+    }
+  },
+  "pois": [
+    {
+      "id": "primary_poi",
+      "class": "navigation_landmark",
+      "role": "primary",
+      "world_position": [
+        8836.59,
+        -1482.01,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          5836.585527127832,
+          -3982.0108709975557,
+          0.0
+        ],
+        "max": [
+          11836.585527127832,
+          1017.9891290024445,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.9862,
+        0.1654,
+        0.0
+      ],
+      "exit_vector": [
+        0.9862,
+        -0.1654,
+        0.0
+      ],
+      "gameplay_anchor": [
+        8836.59,
+        -1482.01,
+        90.0
+      ],
+      "biome_compat": [
+        "wetland_mire"
+      ],
+      "style_compat": [
+        "mud_flat",
+        "photoreal",
+        "terrain_wetland_mire_01",
+        "wetland_mire"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective",
+        "expected_state": "after",
+        "state_key": "water_level",
+        "sightline_target": "navigation_landmark",
+        "notes": "navigation_landmark (primary) derived from Wetland_MudFlat_Scatter_Photoreal_01 seed 14001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "secondary_poi",
+      "class": "objective_ready_anchor",
+      "role": "secondary",
+      "world_position": [
+        1397.32,
+        8331.64,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -402.67546448801863,
+          6531.637782720527,
+          0.0
+        ],
+        "max": [
+          3197.3245355119816,
+          10131.637782720527,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.1654,
+        -0.9862,
+        0.0
+      ],
+      "exit_vector": [
+        0.1654,
+        0.9862,
+        0.0
+      ],
+      "gameplay_anchor": [
+        1397.32,
+        8331.64,
+        90.0
+      ],
+      "biome_compat": [
+        "wetland_mire"
+      ],
+      "style_compat": [
+        "mud_flat",
+        "photoreal",
+        "terrain_wetland_mire_01",
+        "wetland_mire"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_support",
+        "expected_state": "after",
+        "state_key": "water_level",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (secondary) derived from Wetland_MudFlat_Scatter_Photoreal_01 seed 14001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "navigation_landmark",
+      "class": "navigation_landmark",
+      "role": "landmark",
+      "world_position": [
+        17821.25,
+        -10091.26,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          16421.25,
+          -11491.259999999998,
+          0.0
+        ],
+        "max": [
+          19221.25,
+          -8691.259999999998,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.8702,
+        0.4927,
+        0.0
+      ],
+      "exit_vector": [
+        0.8702,
+        -0.4927,
+        0.0
+      ],
+      "gameplay_anchor": [
+        17821.25,
+        -10091.26,
+        90.0
+      ],
+      "biome_compat": [
+        "wetland_mire"
+      ],
+      "style_compat": [
+        "mud_flat",
+        "photoreal",
+        "terrain_wetland_mire_01",
+        "wetland_mire"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "orientation",
+        "expected_state": "static",
+        "state_key": "water_level",
+        "sightline_target": "vista",
+        "notes": "navigation_landmark (landmark) derived from Wetland_MudFlat_Scatter_Photoreal_01 seed 14001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "resource_site",
+      "class": "resource_site",
+      "role": "resource",
+      "world_position": [
+        -6321.65,
+        19479.92,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -8121.650000000002,
+          17679.92,
+          0.0
+        ],
+        "max": [
+          -4521.650000000002,
+          21279.92,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.3087,
+        -0.9512,
+        0.0
+      ],
+      "exit_vector": [
+        -0.3087,
+        0.9512,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -6321.65,
+        19479.92,
+        90.0
+      ],
+      "biome_compat": [
+        "wetland_mire"
+      ],
+      "style_compat": [
+        "mud_flat",
+        "photoreal",
+        "terrain_wetland_mire_01",
+        "wetland_mire"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "resource",
+        "expected_state": "before",
+        "state_key": "water_level",
+        "sightline_target": "primary_poi",
+        "notes": "resource_site (resource) derived from Wetland_MudFlat_Scatter_Photoreal_01 seed 14001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "encounter_anchor",
+      "class": "encounter_ready_anchor",
+      "role": "encounter",
+      "world_position": [
+        -8287.14,
+        -18167.12,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -9887.140000000003,
+          -19767.12,
+          0.0
+        ],
+        "max": [
+          -6687.140000000003,
+          -16567.12,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.415,
+        0.9098,
+        0.0
+      ],
+      "exit_vector": [
+        -0.415,
+        -0.9098,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -8287.14,
+        -18167.12,
+        90.0
+      ],
+      "biome_compat": [
+        "wetland_mire"
+      ],
+      "style_compat": [
+        "mud_flat",
+        "photoreal",
+        "terrain_wetland_mire_01",
+        "wetland_mire"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "encounter",
+        "expected_state": "after",
+        "state_key": "water_level",
+        "sightline_target": "danger_zone",
+        "notes": "encounter_ready_anchor (encounter) derived from Wetland_MudFlat_Scatter_Photoreal_01 seed 14001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "spawn_adjacent_anchor",
+      "class": "spawn_adjacent_anchor",
+      "role": "spawn_adjacent",
+      "world_position": [
+        -6148.98,
+        7204.78,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -7648.975608174731,
+          5704.781493951356,
+          0.0
+        ],
+        "max": [
+          -4648.975608174731,
+          8704.781493951356,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.6492,
+        -0.7606,
+        0.0
+      ],
+      "exit_vector": [
+        -0.6492,
+        0.7606,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -6148.98,
+        7204.78,
+        90.0
+      ],
+      "biome_compat": [
+        "wetland_mire"
+      ],
+      "style_compat": [
+        "mud_flat",
+        "photoreal",
+        "terrain_wetland_mire_01",
+        "wetland_mire"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "spawn_support",
+        "expected_state": "before",
+        "state_key": "water_level",
+        "sightline_target": "player_start",
+        "notes": "spawn_adjacent_anchor (spawn_adjacent) derived from Wetland_MudFlat_Scatter_Photoreal_01 seed 14001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "objective_anchor",
+      "class": "objective_ready_anchor",
+      "role": "objective_ready",
+      "world_position": [
+        162.77,
+        -19455.32,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -1437.229999999998,
+          -21055.32,
+          0.0
+        ],
+        "max": [
+          1762.770000000002,
+          -17855.32,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.0084,
+        1.0,
+        0.0
+      ],
+      "exit_vector": [
+        0.0084,
+        -1.0,
+        0.0
+      ],
+      "gameplay_anchor": [
+        162.77,
+        -19455.32,
+        90.0
+      ],
+      "biome_compat": [
+        "wetland_mire"
+      ],
+      "style_compat": [
+        "mud_flat",
+        "photoreal",
+        "terrain_wetland_mire_01",
+        "wetland_mire"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_ready",
+        "expected_state": "after",
+        "state_key": "water_level",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (objective_ready) derived from Wetland_MudFlat_Scatter_Photoreal_01 seed 14001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "class": "safe_zone",
+      "role": "safe_zone",
+      "world_position": [
+        -5841.71,
+        -4985.66,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -9341.71475526523,
+          -8485.656297631887,
+          0.0
+        ],
+        "max": [
+          -2341.7147552652295,
+          -1485.6562976318874,
+          400.0
+        ]
+      },
+      "enemy_filled": false,
+      "rest_point": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "rest",
+        "notes": "safe rest zone"
+      }
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "danger_zone",
+      "class": "danger_zone",
+      "role": "danger_zone",
+      "world_position": [
+        11465.69,
+        8172.17,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          7465.692048551004,
+          4172.16653328812,
+          0.0
+        ],
+        "max": [
+          15465.692048551004,
+          12172.16653328812,
+          1200.0
+        ]
+      },
+      "enemy_filled": true,
+      "avoidable": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "hazard",
+        "notes": "avoidable hazard zone"
+      }
+    }
+  ],
+  "orientation_cues": [
+    {
+      "id": "orient_landmark",
+      "kind": "landmark_bearing",
+      "target": "navigation_landmark",
+      "from": "player_start",
+      "detail": "distant landmark gives a stable heading"
+    }
+  ],
+  "vista_cues": [
+    {
+      "id": "vista_primary",
+      "kind": "sightline",
+      "from": "player_start",
+      "target": "primary_poi",
+      "detail": "line of sight from spawn to the primary objective"
+    },
+    {
+      "id": "vista_point",
+      "kind": "overlook",
+      "from": "navigation_landmark",
+      "target": "resource_site",
+      "detail": "elevated overlook reveals the resource site"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "player_start",
+        "role": "player_start",
+        "type": "player_start",
+        "position": [
+          -8331.64,
+          1397.32
+        ]
+      },
+      {
+        "id": "primary_poi",
+        "role": "primary_poi",
+        "type": "primary_poi",
+        "position": [
+          8836.59,
+          -1482.01
+        ]
+      },
+      {
+        "id": "secondary_poi",
+        "role": "secondary_poi",
+        "type": "secondary_poi",
+        "position": [
+          1397.32,
+          8331.64
+        ]
+      },
+      {
+        "id": "safe_zone",
+        "role": "safe_zone",
+        "type": "safe_zone",
+        "position": [
+          -5841.71,
+          -4985.66
+        ]
+      },
+      {
+        "id": "danger_zone",
+        "role": "danger_zone",
+        "type": "danger_zone",
+        "position": [
+          11465.69,
+          8172.17
+        ]
+      },
+      {
+        "id": "resource_site",
+        "role": "resource_site",
+        "type": "resource_site",
+        "position": [
+          -6321.65,
+          19479.92
+        ]
+      },
+      {
+        "id": "exit_route",
+        "role": "exit_or_edge_route",
+        "type": "exit_or_edge_route",
+        "position": [
+          20230.55,
+          5602.58
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "player_start",
+        "to": "primary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "safe_zone",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "secondary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "primary_poi",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "danger_zone",
+        "kind": "risky"
+      },
+      {
+        "from": "danger_zone",
+        "to": "resource_site",
+        "kind": "risky"
+      },
+      {
+        "from": "secondary_poi",
+        "to": "exit_route",
+        "kind": "reachable"
+      }
+    ]
+  },
+  "provenance": {
+    "generator_name": "generate_level_design",
+    "generator_version": "1.0x",
+    "generated_at_utc": "2026-07-02T20:54:18.904829+00:00",
+    "source_commit": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/slices/wetland_mire/generated/Wetland_MudFlat_Scatter_Photoreal_01.json": "a3609ac8e858e85b27e7c48e58160549e2b49a76b106073531561320e55b9447"
+    },
+    "source_spec_hash": "dadf0c96a0bc7f6f797eaa8ba5ccee006c45c4e4df4699560e1f06f615ec4571",
+    "source_spec_path": "procedural/slices/wetland_mire/generated/Wetland_MudFlat_Scatter_Photoreal_01.json",
+    "terrain_extent_source": "default(descriptor_unreadable)"
+  },
+  "content_hash": "281bfac3bb60dcf9cc76589b0394ef4db4ff1651cb74921b7fdb89acbf44ae48"
+}

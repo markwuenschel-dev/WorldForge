@@ -1,0 +1,65 @@
+schema_version: "1.0"
+scenario_id: biome_site_activation
+display_name: "Biome Site Activation"
+biome: any
+description: >
+  Pack-level, biome-neutral Runtime StateForge scenario for biome_expansion_world.
+  Where industrial_takeover is desert/industrial-themed (its compatible_poi —
+  industrial_yard / debris_checkpoint / abandoned_mining_camp — matches almost no
+  non-desert biome map), this scenario is keyed to POI classes every BiomeForge
+  family shares (navigation_landmark, resource_site, danger_zone) so at least one
+  map in each biome is compatible and the runtime-state lane is NOT vacuously
+  skipped. It drives a single CURATED state key (restoration_level ->
+  RestorationLevel), which is the biome-neutral "site activation / restoration"
+  signal; the maps' own neutral authoring key (e.g. temperate canopy_growth) is
+  left untouched because it is not an MPC-curated key and would fail the MPC
+  render-mirror check. Reuses the v0.8 Runtime StateForge mechanics verbatim — no
+  new simulation framework, no UE launched here.
+
+# Pack-level resolution: run_world_state_scenario selects every slice whose
+# matrix 'scenarios' metadata includes this scenario_id, OR whose 'poi' is in the
+# compatible_poi list below. BiomeForge slice packs do not tag scenarios yet, so
+# the POI fallback is the active selector.
+compatible_scenarios_tag: biome_site_activation
+compatible_poi:
+  - navigation_landmark
+  - resource_site
+  - danger_zone
+
+scope: Region
+
+initial_state:
+  restoration_level: 0.0
+
+state_deltas:
+  restoration_level: 0.5
+
+expected_mpc:
+  restoration_level: RestorationLevel
+
+expected_poi_evidence:
+  navigation_landmark:
+    operational_state: active
+    driven_by_key: restoration_level
+    evidence_fields:
+      - activity_level
+  resource_site:
+    operational_state: active
+    driven_by_key: restoration_level
+    evidence_fields:
+      - activity_level
+  danger_zone:
+    operational_state: active
+    driven_by_key: restoration_level
+    evidence_fields:
+      - activity_level
+
+save_load:
+  persist_keys:
+    - restoration_level
+  expect_roundtrip: true
+
+validation_thresholds:
+  state_min: 0.0
+  state_max: 1.0
+  max_delta_per_key: 1.0

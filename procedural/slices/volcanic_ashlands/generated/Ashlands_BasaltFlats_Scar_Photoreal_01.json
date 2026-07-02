@@ -1,0 +1,106 @@
+{
+  "slice_id": "Ashlands_BasaltFlats_Scar_Photoreal_01",
+  "biome": "volcanic_ashlands",
+  "variant": "photoreal",
+  "region_id": "Ashlands_BasaltFlats_Scar_Photoreal_01",
+  "seed": 13001,
+  "map": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Scar_Photoreal_01",
+  "terrain": {
+    "material_recipe": "terrain_volcanic_ashlands_01",
+    "material_mi": "/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Ashlands_01",
+    "preview_base_color": [
+      0.06,
+      0.06,
+      0.07
+    ]
+  },
+  "state": {
+    "scope": "Region",
+    "context_id": "Ashlands_BasaltFlats_Scar_Photoreal_01",
+    "key": "ashfall_pressure",
+    "before": 0.0,
+    "after": 0.5
+  },
+  "placement": {
+    "definition": "industrial_scar",
+    "data_asset": "/Game/WorldForge/Generated/Placement/DA_Ashlands_Scatter",
+    "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter"
+  },
+  "output_dir": "procedural/reports/slices/volcanic_ashlands/Ashlands_BasaltFlats_Scar_Photoreal_01",
+  "source_template": "procedural/slices/volcanic_ashlands_photoreal.yaml",
+  "provenance": {
+    "generated_at_utc": "1970-01-01T00:00:00+00:00",
+    "generator": "create_slice_spec",
+    "generator_version": "1.0.0"
+  },
+  "placement_preset_id": "industrial_scar",
+  "placement_preset_path": "procedural/definitions/placement/biomes/volcanic_ashlands/industrial_scar.yaml",
+  "terrain_forge": {
+    "terrain_name": "Basalt Flats",
+    "recipe_id": "basalt_flats",
+    "descriptor_path": "procedural/definitions/terrain/biomes/volcanic_ashlands/basalt_flats.yaml",
+    "definition_only": true,
+    "heightmap": "",
+    "slope_mask": "",
+    "placement_mask": "",
+    "nav_safe_mask": ""
+  },
+  "poi_forge": {
+    "poi_type": "industrial_yard",
+    "poi_name": "POI_IndustrialYard_01",
+    "descriptor_path": "procedural/generated/poi/POI_IndustrialYard_01/descriptor.json",
+    "template_id": "industrial_yard_template_v1",
+    "bounds_id": "primary_bounds",
+    "primary_marker_id": "primary_poi_marker",
+    "anchors": [
+      {
+        "id": "entrance",
+        "role": "entry",
+        "offset_cm": [
+          0,
+          -2500,
+          0
+        ]
+      },
+      {
+        "id": "center",
+        "role": "primary_interaction",
+        "offset_cm": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "id": "service_edge",
+        "role": "prop_cluster",
+        "offset_cm": [
+          2000,
+          500,
+          0
+        ]
+      },
+      {
+        "id": "lookout_edge",
+        "role": "secondary",
+        "offset_cm": [
+          -2000,
+          1500,
+          0
+        ]
+      }
+    ],
+    "markers": [
+      {
+        "id": "primary_poi_marker",
+        "role": "objective_focus",
+        "anchor_ref": "center"
+      },
+      {
+        "id": "entrance_marker",
+        "role": "entry_focus",
+        "anchor_ref": "entrance"
+      }
+    ]
+  }
+}

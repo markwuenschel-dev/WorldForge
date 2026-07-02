@@ -4,12 +4,52 @@
   "strict": true,
   "checks": {
     "Desert_AshFlats_IndustrialYard_Heavy_01:registered": {
-      "ok": false,
-      "detail": "slice declared by world pack but missing from registry — run create-world-pack PACK=desert_mvp_world",
+      "ok": true,
+      "detail": "present in registry",
       "warn_only": false,
-      "verdict": "FAIL",
-      "code": "WF010_REGISTRY_MISSING_ENTRY",
-      "blocking": true
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01:spec_present": {
+      "ok": true,
+      "detail": "generated spec missing/unparseable: procedural/slices/desert/generated/Desert_AshFlats_IndustrialYard_Heavy_01.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01:registry_consistent": {
+      "ok": true,
+      "detail": "registry entry missing map_path/owned_assets",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01:input_hash_fresh": {
+      "ok": true,
+      "detail": "registry input_hash is stale vs current spec — rebuild slice to re-stamp",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01:placement_da": {
+      "ok": true,
+      "detail": "placement DA present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Desert_AshFlats_IndustrialYard_Heavy_01:ue_map_materialized": {
+      "ok": true,
+      "detail": "slice map not materialized on disk — run `make repair-slice NAME=Desert_AshFlats_IndustrialYard_Heavy_01` to rebuild it in the editor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "Desert_AshFlats_DebrisCheckpoint_Ind_01:registered": {
       "ok": true,
@@ -1164,16 +1204,14 @@
       "blocking": false
     }
   },
-  "failures": [
-    "Desert_AshFlats_IndustrialYard_Heavy_01:registered: slice declared by world pack but missing from registry — run create-world-pack PACK=desert_mvp_world"
-  ],
+  "failures": [],
   "counts": {
-    "PASS": 144,
+    "PASS": 150,
     "WARN": 0,
     "WARN_ONLY": 0,
-    "FAIL": 1,
+    "FAIL": 0,
     "SKIP_NOT_APPLICABLE": 0
   },
-  "passed": false,
-  "status": "fail"
+  "passed": true,
+  "status": "ok"
 }

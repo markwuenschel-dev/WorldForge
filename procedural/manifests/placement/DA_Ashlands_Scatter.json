@@ -1,0 +1,102 @@
+{
+  "definition_id": "DA_Ashlands_Scatter",
+  "schema_version": "1.1",
+  "biome": "volcanic_ashlands",
+  "source_definition": "procedural/definitions/placement/biomes/volcanic_ashlands",
+  "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter",
+  "ue": {
+    "data_asset_path": "/Game/WorldForge/Generated/Placement/DA_Ashlands_Scatter",
+    "data_asset_class": "PlacementRulesDataAsset",
+    "generate_data_asset": true
+  },
+  "species": [
+    {
+      "id": "slag_heaps",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.2,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "industrial_pressure",
+      "density_at_state_zero": 0.2,
+      "density_at_state_one": 0.6
+    },
+    {
+      "id": "twisted_metal",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.1,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "industrial_pressure",
+      "density_at_state_zero": 0.1,
+      "density_at_state_one": 0.5
+    },
+    {
+      "id": "ash_drifts",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.5,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "industrial_pressure",
+      "density_at_state_zero": 0.5,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "basalt_chunks",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.4,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "industrial_pressure",
+      "density_at_state_zero": 0.4,
+      "density_at_state_one": 0.3
+    },
+    {
+      "id": "basalt_rubble",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.5,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "collapse_pressure",
+      "density_at_state_zero": 0.5,
+      "density_at_state_one": 0.5
+    },
+    {
+      "id": "cinder_cones",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.2,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "collapse_pressure",
+      "density_at_state_zero": 0.2,
+      "density_at_state_one": 0.3
+    },
+    {
+      "id": "cracked_slabs",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "collapse_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.4
+    }
+  ],
+  "provenance": {
+    "generator_name": "worldforge-prepare-biome-materialization",
+    "generator_version": "1.1.0",
+    "generated_at_utc": "2026-07-02T20:32:04.495334+00:00",
+    "source_commit": "49c6122b2a4afe612008ee7e34554a1d77316a90",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/definitions/placement/biomes/volcanic_ashlands/industrial_scar.yaml": "8f712641f618f9487a6416ede54e3d2a3e74aa1ce6f8b8fbb878c658a31fe9e3",
+      "procedural/definitions/placement/biomes/volcanic_ashlands/ravine_debris.yaml": "3114eec60224677161d45f6dfd5a8b5e718373cea637829087e9ec110f4462e5"
+    }
+  }
+}

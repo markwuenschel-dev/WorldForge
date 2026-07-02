@@ -92,7 +92,8 @@ def build_registry():
     # can skip rebuild via BUILD=0.
     G.append(gate("create-world-pack", "Create world pack", "generate",
                   FailureCode.GENERATION_FAILURE, "create_world_pack.py",
-                  lambda c: ["--pack", yaml_arg(c), "--jobs", str(c["jobs"])],
+                  lambda c: ["--pack", yaml_arg(c), "--jobs", str(c["jobs"])]
+                            + (["--specs-only"] if c.get("biomeforge") else []),
                   required=True))
     # 4 — deep world-pack validation
     G.append(gate("validate-world-pack", "Validate world pack (deep)", "generate",
@@ -201,6 +202,73 @@ def build_registry():
     return G
 
 
+def build_biomeforge_gates():
+    """v1.1 BiomeForge gates. Appended to the registry ONLY for biome packs
+    (a world pack that declares ``biome_families:`` / ``biomeforge: true``).
+    desert_mvp_world does not declare biomes, so these never run for it and the
+    v1.0x regression contract is untouched. Until each validator SCRIPT exists it
+    registers as a blocking failure (status=missing) — no fake green.
+    """
+    id_arg = lambda c: c["pack_id"]
+    reports = "procedural/reports/world_packs/{pack}"
+
+    def r(name):
+        return lambda c: reports.format(pack=c["world_pack_id"]) + "/" + name
+
+    G = []
+    biome_gates = [
+        ("validate-biome-contract", "Validate biome contract",
+         FailureCode.BIOME_CONTRACT_FAILURE, "validate_biome_contract.py"),
+        ("validate-biome-matrix", "Validate biome matrix",
+         FailureCode.BIOME_MATRIX_FAILURE, "validate_biome_matrix.py"),
+        ("validate-biome-profile-bindings", "Validate biome profile bindings",
+         FailureCode.BIOME_PROFILE_BINDING_FAILURE, "validate_biome_profile_bindings.py"),
+        ("validate-biome-environment-compatibility", "Validate biome/environment compatibility",
+         FailureCode.BIOME_ENVIRONMENT_COMPATIBILITY_FAILURE,
+         "validate_biome_environment_compatibility.py"),
+        ("validate-biome-inspection", "Validate biome inspection",
+         FailureCode.BIOME_CONTRACT_FAILURE, "validate_biome_inspection.py"),
+        ("validate-terrain-forms", "Validate terrain forms",
+         FailureCode.TERRAIN_FORM_FAILURE, "validate_terrain_forms.py"),
+        ("validate-material-families", "Validate material families",
+         FailureCode.MATERIAL_FAMILY_FAILURE, "validate_material_families.py"),
+        ("validate-vegetation-profiles", "Validate vegetation profiles",
+         FailureCode.VEGETATION_PROFILE_FAILURE, "validate_vegetation_profiles.py"),
+        ("validate-placement-profiles", "Validate placement profiles",
+         FailureCode.PLACEMENT_PROFILE_FAILURE, "validate_placement_profiles.py"),
+        ("validate-biome-poi-compatibility", "Validate biome/POI compatibility",
+         FailureCode.BIOME_POI_COMPATIBILITY_FAILURE, "validate_biome_poi_compatibility.py"),
+        ("validate-biome-traversal", "Validate biome traversal",
+         FailureCode.BIOME_TRAVERSAL_FAILURE, "validate_biome_traversal.py"),
+        ("validate-biome-ecology-tags", "Validate biome ecology tags",
+         FailureCode.BIOME_ECOLOGY_FAILURE, "validate_biome_ecology_tags.py"),
+    ]
+    for gid, label, code, script in biome_gates:
+        G.append(gate(gid, label, "biome", code, script,
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=r(script.replace(".py", "_report.json"))))
+    # Biome fuzz matrix (Agent 7) — combinatorial biome/profile fuzzing.
+    G.append(gate("fuzz-biome-matrix", "Fuzz biome matrix", "determinism-fuzz",
+                  FailureCode.BIOME_FUZZ_FAILURE, "fuzz_biome_matrix.py",
+                  lambda c: ["--pack", id_arg(c), "--cases", str(c["cases"])] + _s(c["strict"])))
+    return G
+
+
+def pack_declares_biomes(pack):
+    """True if a world pack yaml declares BiomeForge (``biome_families:`` list or
+    ``biomeforge: true``). Used to conditionally include the v1.1 gates."""
+    import yaml as _yaml
+    from world_pack_maps import resolve_world_pack_path
+    wp_path = resolve_world_pack_path(pack)
+    if not wp_path.is_file():
+        return False
+    try:
+        data = _yaml.safe_load(wp_path.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return False
+    return bool(data.get("biomeforge")) or bool(data.get("biome_families"))
+
+
 def run_gate(g, ctx):
     """Run one gate; return a result row."""
     script_path = PIPELINE / g["script"]
@@ -295,6 +363,27 @@ def main(argv=None):
     print("=" * 70)
 
     registry = build_registry()
+
+    # v1.1 — splice in BiomeForge gates for biome packs only. desert_mvp_world
+    # does not declare biomes, so its 33-gate v1.0x contract is unchanged.
+    ctx["biomeforge"] = pack_declares_biomes(args.pack)
+    if ctx["biomeforge"]:
+        # Biome packs are not desert/industrial; use the biome-neutral runtime
+        # scenario unless the operator explicitly overrode --scenario.
+        if args.scenario == "industrial_takeover":
+            ctx["scenario"] = "biome_site_activation"
+        bf = build_biomeforge_gates()
+        fuzz_gate = [g for g in bf if g["id"] == "fuzz-biome-matrix"]
+        data_gates = [g for g in bf if g["id"] != "fuzz-biome-matrix"]
+        ids = [g["id"] for g in registry]
+        # biome data validators run after deep world-pack validation.
+        anchor = ids.index("validate-world-pack") + 1 if "validate-world-pack" in ids else len(registry)
+        registry[anchor:anchor] = data_gates
+        ids = [g["id"] for g in registry]
+        fanchor = ids.index("fuzz-world-pack") + 1 if "fuzz-world-pack" in ids else len(registry)
+        registry[fanchor:fanchor] = fuzz_gate
+        print("BiomeForge pack detected — %d v1.1 gate(s) active." % len(bf))
+
     if args.no_build or flag_from_env("NO_BUILD"):
         registry = [g for g in registry if g["id"] != "create-world-pack"]
     if args.only:

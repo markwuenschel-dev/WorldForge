@@ -1,0 +1,713 @@
+{
+  "slice_id": "Ashlands_BasaltFlats_Scar_Photoreal_01",
+  "schema_version": "wf-level-design-v1",
+  "world_pack_id": "biome_expansion_world",
+  "generated": true,
+  "registry_owner": "worldforge_level_design_overlay",
+  "seed": 13001,
+  "biome": "volcanic_ashlands",
+  "variant": "photoreal",
+  "state_key": "ashfall_pressure",
+  "poi_type": "industrial_yard",
+  "primary_class": "industrial_yard",
+  "budget_class": "light",
+  "terrain_bounds": {
+    "min": [
+      -25600.0,
+      -25600.0
+    ],
+    "max": [
+      25600.0,
+      25600.0
+    ],
+    "height_range_cm": [
+      0.0,
+      2000.0
+    ]
+  },
+  "player_start": {
+    "id": "player_start",
+    "world_position": [
+      7139.95,
+      -4515.51,
+      0.0
+    ],
+    "bounds": {
+      "min": [
+        6139.949037380256,
+        -5515.510131049729,
+        0.0
+      ],
+      "max": [
+        8139.949037380256,
+        -3515.5101310497294,
+        300.0
+      ]
+    },
+    "facing_deg": 147.69,
+    "facing_vector": [
+      -0.8452,
+      0.5345,
+      0.0
+    ],
+    "orientation_cue": "face navigation_landmark bearing to orient",
+    "vista_cue": "primary objective visible on the horizon toward the landmark",
+    "provenance": {
+      "generator": "generate_level_design",
+      "generator_version": "1.0x",
+      "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+      "registry_owner": "worldforge_level_design_overlay"
+    }
+  },
+  "pois": [
+    {
+      "id": "primary_poi",
+      "class": "industrial_yard",
+      "role": "primary",
+      "world_position": [
+        -7572.67,
+        4789.18,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -10572.673221463909,
+          2289.177411719409,
+          0.0
+        ],
+        "max": [
+          -4572.673221463909,
+          7289.177411719409,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.8452,
+        -0.5345,
+        0.0
+      ],
+      "exit_vector": [
+        -0.8452,
+        0.5345,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -7572.67,
+        4789.18,
+        90.0
+      ],
+      "biome_compat": [
+        "volcanic_ashlands"
+      ],
+      "style_compat": [
+        "basalt_flats",
+        "photoreal",
+        "terrain_volcanic_ashlands_01",
+        "volcanic_ashlands"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective",
+        "expected_state": "after",
+        "state_key": "ashfall_pressure",
+        "sightline_target": "navigation_landmark",
+        "notes": "industrial_yard (primary) derived from Ashlands_BasaltFlats_Scar_Photoreal_01 seed 13001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "secondary_poi",
+      "class": "objective_ready_anchor",
+      "role": "secondary",
+      "world_position": [
+        -4515.51,
+        -7139.95,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -6315.510131049729,
+          -8939.949037380258,
+          0.0
+        ],
+        "max": [
+          -2715.5101310497294,
+          -5339.949037380257,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.5345,
+        0.8452,
+        0.0
+      ],
+      "exit_vector": [
+        -0.5345,
+        -0.8452,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -4515.51,
+        -7139.95,
+        90.0
+      ],
+      "biome_compat": [
+        "volcanic_ashlands"
+      ],
+      "style_compat": [
+        "basalt_flats",
+        "photoreal",
+        "terrain_volcanic_ashlands_01",
+        "volcanic_ashlands"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_support",
+        "expected_state": "after",
+        "state_key": "ashfall_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (secondary) derived from Ashlands_BasaltFlats_Scar_Photoreal_01 seed 13001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "navigation_landmark",
+      "class": "navigation_landmark",
+      "role": "landmark",
+      "world_position": [
+        -12521.12,
+        16206.54,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -13921.120000000003,
+          14806.539999999999,
+          0.0
+        ],
+        "max": [
+          -11121.120000000003,
+          17606.54,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.6114,
+        -0.7913,
+        0.0
+      ],
+      "exit_vector": [
+        -0.6114,
+        0.7913,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -12521.12,
+        16206.54,
+        90.0
+      ],
+      "biome_compat": [
+        "volcanic_ashlands"
+      ],
+      "style_compat": [
+        "basalt_flats",
+        "photoreal",
+        "terrain_volcanic_ashlands_01",
+        "volcanic_ashlands"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "orientation",
+        "expected_state": "static",
+        "state_key": "ashfall_pressure",
+        "sightline_target": "vista",
+        "notes": "navigation_landmark (landmark) derived from Ashlands_BasaltFlats_Scar_Photoreal_01 seed 13001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "resource_site",
+      "class": "resource_site",
+      "role": "resource",
+      "world_position": [
+        -1717.44,
+        -20407.86,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -3517.4420290617445,
+          -22207.861055897367,
+          0.0
+        ],
+        "max": [
+          82.5579709382555,
+          -18607.861055897367,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.0839,
+        0.9965,
+        0.0
+      ],
+      "exit_vector": [
+        -0.0839,
+        -0.9965,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -1717.44,
+        -20407.86,
+        90.0
+      ],
+      "biome_compat": [
+        "volcanic_ashlands"
+      ],
+      "style_compat": [
+        "basalt_flats",
+        "photoreal",
+        "terrain_volcanic_ashlands_01",
+        "volcanic_ashlands"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "resource",
+        "expected_state": "before",
+        "state_key": "ashfall_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "resource_site (resource) derived from Ashlands_BasaltFlats_Scar_Photoreal_01 seed 13001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "encounter_anchor",
+      "class": "encounter_ready_anchor",
+      "role": "encounter",
+      "world_position": [
+        14677.24,
+        13538.82,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          13077.239999999998,
+          11938.82,
+          0.0
+        ],
+        "max": [
+          16277.239999999998,
+          15138.82,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.735,
+        -0.678,
+        0.0
+      ],
+      "exit_vector": [
+        0.735,
+        0.678,
+        0.0
+      ],
+      "gameplay_anchor": [
+        14677.24,
+        13538.82,
+        90.0
+      ],
+      "biome_compat": [
+        "volcanic_ashlands"
+      ],
+      "style_compat": [
+        "basalt_flats",
+        "photoreal",
+        "terrain_volcanic_ashlands_01",
+        "volcanic_ashlands"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "encounter",
+        "expected_state": "after",
+        "state_key": "ashfall_pressure",
+        "sightline_target": "danger_zone",
+        "notes": "encounter_ready_anchor (encounter) derived from Ashlands_BasaltFlats_Scar_Photoreal_01 seed 13001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "spawn_adjacent_anchor",
+      "class": "spawn_adjacent_anchor",
+      "role": "spawn_adjacent",
+      "world_position": [
+        2878.15,
+        -9024.14,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          1378.153784799639,
+          -10524.136643272917,
+          0.0
+        ],
+        "max": [
+          4378.153784799639,
+          -7524.136643272917,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.3039,
+        0.9527,
+        0.0
+      ],
+      "exit_vector": [
+        0.3039,
+        -0.9527,
+        0.0
+      ],
+      "gameplay_anchor": [
+        2878.15,
+        -9024.14,
+        90.0
+      ],
+      "biome_compat": [
+        "volcanic_ashlands"
+      ],
+      "style_compat": [
+        "basalt_flats",
+        "photoreal",
+        "terrain_volcanic_ashlands_01",
+        "volcanic_ashlands"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "spawn_support",
+        "expected_state": "before",
+        "state_key": "ashfall_pressure",
+        "sightline_target": "player_start",
+        "notes": "spawn_adjacent_anchor (spawn_adjacent) derived from Ashlands_BasaltFlats_Scar_Photoreal_01 seed 13001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "objective_anchor",
+      "class": "objective_ready_anchor",
+      "role": "objective_ready",
+      "world_position": [
+        7385.98,
+        17999.53,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          5785.979999999998,
+          16399.53,
+          0.0
+        ],
+        "max": [
+          8985.979999999998,
+          19599.53,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.3796,
+        -0.9251,
+        0.0
+      ],
+      "exit_vector": [
+        0.3796,
+        0.9251,
+        0.0
+      ],
+      "gameplay_anchor": [
+        7385.98,
+        17999.53,
+        90.0
+      ],
+      "biome_compat": [
+        "volcanic_ashlands"
+      ],
+      "style_compat": [
+        "basalt_flats",
+        "photoreal",
+        "terrain_volcanic_ashlands_01",
+        "volcanic_ashlands"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_ready",
+        "expected_state": "after",
+        "state_key": "ashfall_pressure",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (objective_ready) derived from Ashlands_BasaltFlats_Scar_Photoreal_01 seed 13001"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "class": "safe_zone",
+      "role": "safe_zone",
+      "world_position": [
+        7316.87,
+        2333.64,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          3816.865653417688,
+          -1166.359708559061,
+          0.0
+        ],
+        "max": [
+          10816.865653417688,
+          5833.640291440939,
+          400.0
+        ]
+      },
+      "enemy_filled": false,
+      "rest_point": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "rest",
+        "notes": "safe rest zone"
+      }
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "danger_zone",
+      "class": "danger_zone",
+      "role": "danger_zone",
+      "world_position": [
+        -13736.09,
+        -3092.93,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -17736.090359732938,
+          -7092.930912460205,
+          0.0
+        ],
+        "max": [
+          -9736.090359732938,
+          907.069087539795,
+          1200.0
+        ]
+      },
+      "enemy_filled": true,
+      "avoidable": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "hazard",
+        "notes": "avoidable hazard zone"
+      }
+    }
+  ],
+  "orientation_cues": [
+    {
+      "id": "orient_landmark",
+      "kind": "landmark_bearing",
+      "target": "navigation_landmark",
+      "from": "player_start",
+      "detail": "distant landmark gives a stable heading"
+    }
+  ],
+  "vista_cues": [
+    {
+      "id": "vista_primary",
+      "kind": "sightline",
+      "from": "player_start",
+      "target": "primary_poi",
+      "detail": "line of sight from spawn to the primary objective"
+    },
+    {
+      "id": "vista_point",
+      "kind": "overlook",
+      "from": "navigation_landmark",
+      "target": "resource_site",
+      "detail": "elevated overlook reveals the resource site"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "player_start",
+        "role": "player_start",
+        "type": "player_start",
+        "position": [
+          7139.95,
+          -4515.51
+        ]
+      },
+      {
+        "id": "primary_poi",
+        "role": "primary_poi",
+        "type": "primary_poi",
+        "position": [
+          -7572.67,
+          4789.18
+        ]
+      },
+      {
+        "id": "secondary_poi",
+        "role": "secondary_poi",
+        "type": "secondary_poi",
+        "position": [
+          -4515.51,
+          -7139.95
+        ]
+      },
+      {
+        "id": "safe_zone",
+        "role": "safe_zone",
+        "type": "safe_zone",
+        "position": [
+          7316.87,
+          2333.64
+        ]
+      },
+      {
+        "id": "danger_zone",
+        "role": "danger_zone",
+        "type": "danger_zone",
+        "position": [
+          -13736.09,
+          -3092.93
+        ]
+      },
+      {
+        "id": "resource_site",
+        "role": "resource_site",
+        "type": "resource_site",
+        "position": [
+          -1717.44,
+          -20407.86
+        ]
+      },
+      {
+        "id": "exit_route",
+        "role": "exit_or_edge_route",
+        "type": "exit_or_edge_route",
+        "position": [
+          -20821.36,
+          2671.14
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "player_start",
+        "to": "primary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "safe_zone",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "secondary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "primary_poi",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "danger_zone",
+        "kind": "risky"
+      },
+      {
+        "from": "danger_zone",
+        "to": "resource_site",
+        "kind": "risky"
+      },
+      {
+        "from": "secondary_poi",
+        "to": "exit_route",
+        "kind": "reachable"
+      }
+    ]
+  },
+  "provenance": {
+    "generator_name": "generate_level_design",
+    "generator_version": "1.0x",
+    "generated_at_utc": "2026-07-02T20:54:18.560241+00:00",
+    "source_commit": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/slices/volcanic_ashlands/generated/Ashlands_BasaltFlats_Scar_Photoreal_01.json": "8eae1019a2253398deff366d6b6356b1a54da0edc143fb8e643d2ec19f598286"
+    },
+    "source_spec_hash": "eb8a4908e38c1d09a7ea375baa17426e2a809d2f350160ce42b29550ae82115a",
+    "source_spec_path": "procedural/slices/volcanic_ashlands/generated/Ashlands_BasaltFlats_Scar_Photoreal_01.json",
+    "terrain_extent_source": "default(descriptor_unreadable)"
+  },
+  "content_hash": "70bebd729ce750f191e82cfcae118b5f86adea9e15337cd5e04108412c8eff6d"
+}

@@ -1,0 +1,43 @@
+# volcanic_ashlands_photoreal.yaml
+# BiomeForge v1.1 variant template — volcanic_ashlands, photoreal env mode.
+# Mirrors temperate_forest_photoreal.yaml shape. References Agent 2's
+# volcanic_ashlands surface families (black_basalt). Env profile is assigned
+# per-slice by the binding overlay; this template records the surface only.
+#
+# Safe for agents to duplicate/modify. Keep state.before/after within [0.0, 1.0].
+
+schema_version: "1.0"
+id: volcanic_ashlands_photoreal
+biome: volcanic_ashlands
+variant: photoreal
+
+map: /Game/WorldForge/Maps/Volcanic_Ashlands_Photoreal_01
+
+recipes:
+  - terrain_volcanic_ashlands_01
+placement_definitions:
+  - industrial_scar
+
+state:
+  scope: Region
+  context_id: Volcanic_Ashlands_Photoreal_01
+  key: ashfall_pressure
+  before: 0.0
+  after: 0.5
+
+render:
+  # black_basalt family (procedural/definitions/materials/biomes/volcanic_ashlands/black_basalt.yaml)
+  terrain_mi: /Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Ashlands_01
+  preview_base_color: [0.06, 0.06, 0.07]   # linear 0-1 dark cooled basalt
+  placement_data_asset: /Game/WorldForge/Generated/Placement/DA_Ashlands_Scatter
+  resolution: [1600, 900]
+  seed: 513101
+
+acceptance:
+  mpc_parameter: AshfallPressure
+  foliage_increases:
+    - burnt_scrub
+  foliage_decreases:
+    - dead_sparse
+
+output_dir: procedural/reports/slices/volcanic_ashlands_photoreal

@@ -1,0 +1,713 @@
+{
+  "slice_id": "Forest_RollingWoodland_Scatter_Stylized_01",
+  "schema_version": "wf-level-design-v1",
+  "world_pack_id": "biome_expansion_world",
+  "generated": true,
+  "registry_owner": "worldforge_level_design_overlay",
+  "seed": 11002,
+  "biome": "temperate_forest",
+  "variant": "stylized",
+  "state_key": "canopy_growth",
+  "poi_type": null,
+  "primary_class": "navigation_landmark",
+  "budget_class": "light",
+  "terrain_bounds": {
+    "min": [
+      -25600.0,
+      -25600.0
+    ],
+    "max": [
+      25600.0,
+      25600.0
+    ],
+    "height_range_cm": [
+      0.0,
+      2000.0
+    ]
+  },
+  "player_start": {
+    "id": "player_start",
+    "world_position": [
+      7882.33,
+      -3039.34,
+      0.0
+    ],
+    "bounds": {
+      "min": [
+        6882.329884436631,
+        -4039.338676902791,
+        0.0
+      ],
+      "max": [
+        8882.32988443663,
+        -2039.3386769027911,
+        300.0
+      ]
+    },
+    "facing_deg": 158.91,
+    "facing_vector": [
+      -0.933,
+      0.3598,
+      0.0
+    ],
+    "orientation_cue": "face navigation_landmark bearing to orient",
+    "vista_cue": "primary objective visible on the horizon toward the landmark",
+    "provenance": {
+      "generator": "generate_level_design",
+      "generator_version": "1.0x",
+      "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+      "registry_owner": "worldforge_level_design_overlay"
+    }
+  },
+  "pois": [
+    {
+      "id": "primary_poi",
+      "class": "navigation_landmark",
+      "role": "primary",
+      "world_position": [
+        -8360.05,
+        3223.54,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -11360.04684712976,
+          723.5410209575011,
+          0.0
+        ],
+        "max": [
+          -5360.046847129761,
+          5723.541020957501,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.933,
+        -0.3598,
+        0.0
+      ],
+      "exit_vector": [
+        -0.933,
+        0.3598,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -8360.05,
+        3223.54,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "rolling_woodland",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective",
+        "expected_state": "after",
+        "state_key": "canopy_growth",
+        "sightline_target": "navigation_landmark",
+        "notes": "navigation_landmark (primary) derived from Forest_RollingWoodland_Scatter_Stylized_01 seed 11002"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "secondary_poi",
+      "class": "objective_ready_anchor",
+      "role": "secondary",
+      "world_position": [
+        -3039.34,
+        -7882.33,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -4839.338676902791,
+          -9682.329884436633,
+          0.0
+        ],
+        "max": [
+          -1239.3386769027907,
+          -6082.329884436632,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.3598,
+        0.933,
+        0.0
+      ],
+      "exit_vector": [
+        -0.3598,
+        -0.933,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -3039.34,
+        -7882.33,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "rolling_woodland",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_support",
+        "expected_state": "after",
+        "state_key": "canopy_growth",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (secondary) derived from Forest_RollingWoodland_Scatter_Stylized_01 seed 11002"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "navigation_landmark",
+      "class": "navigation_landmark",
+      "role": "landmark",
+      "world_position": [
+        -15436.25,
+        13459.3,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -16836.250000000007,
+          12059.299999999992,
+          0.0
+        ],
+        "max": [
+          -14036.250000000005,
+          14859.299999999992,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.7537,
+        -0.6572,
+        0.0
+      ],
+      "exit_vector": [
+        -0.7537,
+        0.6572,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -15436.25,
+        13459.3,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "rolling_woodland",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "orientation",
+        "expected_state": "static",
+        "state_key": "canopy_growth",
+        "sightline_target": "vista",
+        "notes": "navigation_landmark (landmark) derived from Forest_RollingWoodland_Scatter_Stylized_01 seed 11002"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "resource_site",
+      "class": "resource_site",
+      "role": "resource",
+      "world_position": [
+        2287.83,
+        -20351.81,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          487.83000000000084,
+          -22151.81,
+          0.0
+        ],
+        "max": [
+          4087.830000000001,
+          -18551.81,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.1117,
+        0.9937,
+        0.0
+      ],
+      "exit_vector": [
+        0.1117,
+        -0.9937,
+        0.0
+      ],
+      "gameplay_anchor": [
+        2287.83,
+        -20351.81,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "rolling_woodland",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "resource",
+        "expected_state": "before",
+        "state_key": "canopy_growth",
+        "sightline_target": "primary_poi",
+        "notes": "resource_site (resource) derived from Forest_RollingWoodland_Scatter_Stylized_01 seed 11002"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "encounter_anchor",
+      "class": "encounter_ready_anchor",
+      "role": "encounter",
+      "world_position": [
+        11761.15,
+        16136.8,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          10161.149999999998,
+          14536.8,
+          0.0
+        ],
+        "max": [
+          13361.149999999998,
+          17736.799999999996,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.589,
+        -0.8081,
+        0.0
+      ],
+      "exit_vector": [
+        0.589,
+        0.8081,
+        0.0
+      ],
+      "gameplay_anchor": [
+        11761.15,
+        16136.8,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "rolling_woodland",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "encounter",
+        "expected_state": "after",
+        "state_key": "canopy_growth",
+        "sightline_target": "danger_zone",
+        "notes": "encounter_ready_anchor (encounter) derived from Forest_RollingWoodland_Scatter_Stylized_01 seed 11002"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "spawn_adjacent_anchor",
+      "class": "spawn_adjacent_anchor",
+      "role": "spawn_adjacent",
+      "world_position": [
+        4579.66,
+        -8291.29,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          3079.664178139491,
+          -9791.286580107202,
+          0.0
+        ],
+        "max": [
+          6079.664178139491,
+          -6791.286580107202,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.4835,
+        0.8753,
+        0.0
+      ],
+      "exit_vector": [
+        0.4835,
+        -0.8753,
+        0.0
+      ],
+      "gameplay_anchor": [
+        4579.66,
+        -8291.29,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "rolling_woodland",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "spawn_support",
+        "expected_state": "before",
+        "state_key": "canopy_growth",
+        "sightline_target": "player_start",
+        "notes": "spawn_adjacent_anchor (spawn_adjacent) derived from Forest_RollingWoodland_Scatter_Stylized_01 seed 11002"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "objective_anchor",
+      "class": "objective_ready_anchor",
+      "role": "objective_ready",
+      "world_position": [
+        3741.07,
+        19092.94,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          2141.0700000000024,
+          17492.94,
+          0.0
+        ],
+        "max": [
+          5341.070000000002,
+          20692.94,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.1923,
+        -0.9813,
+        0.0
+      ],
+      "exit_vector": [
+        0.1923,
+        0.9813,
+        0.0
+      ],
+      "gameplay_anchor": [
+        3741.07,
+        19092.94,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "rolling_woodland",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_ready",
+        "expected_state": "after",
+        "state_key": "canopy_growth",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (objective_ready) derived from Forest_RollingWoodland_Scatter_Stylized_01 seed 11002"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "class": "safe_zone",
+      "role": "safe_zone",
+      "world_position": [
+        6722.67,
+        3713.24,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          3222.665899432517,
+          213.24160331740177,
+          0.0
+        ],
+        "max": [
+          10222.665899432517,
+          7213.241603317401,
+          400.0
+        ]
+      },
+      "enemy_filled": false,
+      "rest_point": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "rest",
+        "notes": "safe rest zone"
+      }
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "danger_zone",
+      "class": "danger_zone",
+      "role": "danger_zone",
+      "world_position": [
+        -12871.31,
+        -5707.52,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -16871.309835991713,
+          -9707.51987345668,
+          0.0
+        ],
+        "max": [
+          -8871.309835991715,
+          -1707.5198734566811,
+          1200.0
+        ]
+      },
+      "enemy_filled": true,
+      "avoidable": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "hazard",
+        "notes": "avoidable hazard zone"
+      }
+    }
+  ],
+  "orientation_cues": [
+    {
+      "id": "orient_landmark",
+      "kind": "landmark_bearing",
+      "target": "navigation_landmark",
+      "from": "player_start",
+      "detail": "distant landmark gives a stable heading"
+    }
+  ],
+  "vista_cues": [
+    {
+      "id": "vista_primary",
+      "kind": "sightline",
+      "from": "player_start",
+      "target": "primary_poi",
+      "detail": "line of sight from spawn to the primary objective"
+    },
+    {
+      "id": "vista_point",
+      "kind": "overlook",
+      "from": "navigation_landmark",
+      "target": "resource_site",
+      "detail": "elevated overlook reveals the resource site"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "player_start",
+        "role": "player_start",
+        "type": "player_start",
+        "position": [
+          7882.33,
+          -3039.34
+        ]
+      },
+      {
+        "id": "primary_poi",
+        "role": "primary_poi",
+        "type": "primary_poi",
+        "position": [
+          -8360.05,
+          3223.54
+        ]
+      },
+      {
+        "id": "secondary_poi",
+        "role": "secondary_poi",
+        "type": "secondary_poi",
+        "position": [
+          -3039.34,
+          -7882.33
+        ]
+      },
+      {
+        "id": "safe_zone",
+        "role": "safe_zone",
+        "type": "safe_zone",
+        "position": [
+          6722.67,
+          3713.24
+        ]
+      },
+      {
+        "id": "danger_zone",
+        "role": "danger_zone",
+        "type": "danger_zone",
+        "position": [
+          -12871.31,
+          -5707.52
+        ]
+      },
+      {
+        "id": "resource_site",
+        "role": "resource_site",
+        "type": "resource_site",
+        "position": [
+          2287.83,
+          -20351.81
+        ]
+      },
+      {
+        "id": "exit_route",
+        "role": "exit_or_edge_route",
+        "type": "exit_or_edge_route",
+        "position": [
+          -20943.04,
+          -1432.86
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "player_start",
+        "to": "primary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "safe_zone",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "secondary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "primary_poi",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "danger_zone",
+        "kind": "risky"
+      },
+      {
+        "from": "danger_zone",
+        "to": "resource_site",
+        "kind": "risky"
+      },
+      {
+        "from": "secondary_poi",
+        "to": "exit_route",
+        "kind": "reachable"
+      }
+    ]
+  },
+  "provenance": {
+    "generator_name": "generate_level_design",
+    "generator_version": "1.0x",
+    "generated_at_utc": "2026-07-02T20:54:17.927738+00:00",
+    "source_commit": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/slices/temperate_forest/generated/Forest_RollingWoodland_Scatter_Stylized_01.json": "4c7a6b31c240854a973375120fb004b004dc3e14dba4d84200d25231e4949c1c"
+    },
+    "source_spec_hash": "2e3e05cdb73bbe2006579d5e2b7c87083c958a4400f77cbddb74f34b0c75973e",
+    "source_spec_path": "procedural/slices/temperate_forest/generated/Forest_RollingWoodland_Scatter_Stylized_01.json",
+    "terrain_extent_source": "default(descriptor_unreadable)"
+  },
+  "content_hash": "88d5bf109fb829ce3b03368d247cd3fcc028a71d1c9267cdfbfcefd83f378f94"
+}

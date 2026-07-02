@@ -1,0 +1,93 @@
+{
+  "world_pack_id": "biome_expansion_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "spec::same_seed_same_hash": {
+      "ok": true,
+      "detail": "regen1=be017de9220482a8e612 regen2=be017de9220482a8e612 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "spec::diff_seed_diff_hash": {
+      "ok": true,
+      "detail": "seed 11778 hash != seed 11001 hash (ok)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "overlay::level_design::content_hash_stable": {
+      "ok": true,
+      "detail": "two fresh regenerations MATCH (60 maps hashed)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "overlay::entity_anchors::content_hash_stable": {
+      "ok": true,
+      "detail": "two fresh regenerations MATCH (60 maps hashed)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "overlay::diff_seed_diff_hash": {
+      "ok": true,
+      "detail": "seed bump changes level-design overlay content_hash",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership::audit_result_stable": {
+      "ok": true,
+      "detail": "two audit runs identical (status=fail)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "report::validate_pois_stable_modulo_meta": {
+      "ok": true,
+      "detail": "two validate-pois runs identical (runtime meta stripped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 7,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-determinism",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": [
+      11001
+    ],
+    "git_sha": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "timestamp": "2026-07-02T20:52:33.511956+00:00",
+    "input_spec_hash": "833636f88e8d3255e8314ce892e0080315e833214497e37a70e92ebcca4ab647",
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 7
+  }
+}

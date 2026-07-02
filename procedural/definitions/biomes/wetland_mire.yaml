@@ -1,0 +1,97 @@
+id: wetland_mire
+kind: biome_family
+display_name: Wetland Mire
+description: >
+  Lowland, waterlogged, fog-heavy, traversal-constrained biome. Proves
+  water/terrain boundary sanity, low-visibility classification, and that walkable
+  routes and safe zones survive waterlogging. POIs stay above the waterline
+  unless explicitly allowed; entity anchors stay out of deep water unless tagged
+  aquatic.
+
+terrain_forms:      [mud_flat, reed_marsh]
+material_families:  [wet_mud, shallow_water, peat, moss, slick_stone]
+vegetation_profiles: [reeds, mangrove_like_roots, low_marsh_grass]
+placement_profiles: [marsh_scatter, mire_debris]
+
+environment_profiles:
+  - photoreal_wetland_day
+  - stylized_wetland_day
+  - performance_safe_wetland
+  - fog_heavy_wetland
+visual_style_profiles: [photoreal, stylized, performance_flat, painterly_fog]
+sky_profiles:        [overcast_sky, clear_day_sky, stylized_sky]
+lighting_profiles:   [wetland_flat_key, overcast_diffuse, stylized_key]
+fog_profiles:        [marsh_fog, heavy_fog, clear_thin_fog, performance_fog]
+atmosphere_profiles: [humid_atmo, thick_atmo, clear_atmo, stylized_atmo]
+weather_profiles:    [overcast, heavy_fog, light_haze, clear]
+rendering_profiles:  [performance_baked, balanced_lumen, stylized_render, cinematic_rt]
+scalability_profiles: [performance, balanced, high, cinematic_tier]
+raytracing_profiles: ["off", selective, full]
+
+poi_compatibility:
+  - resource_site
+  - safe_zone
+  - danger_zone
+  - navigation_landmark
+  - ruin_cluster
+  - objective_ready_anchor
+
+entity_anchor_types: [spawn_zone, patrol_anchor, idle_anchor, interaction_anchor, encounter_ready_anchor, aquatic_anchor]
+ecology_tags: [wetland_stalker, wetland_worker, neutral_trader_placeholder, ambient_creature_placeholder]
+
+level_design_rules:
+  player_start_required: true
+  primary_poi_reachable: true
+  min_landmarks: 1
+  max_poi_per_map: 8
+  poi_below_waterline: forbidden_unless_allowed
+
+traversal_rules:
+  slope_max_walkable_deg: 30
+  water_rule: shallow_traversable_deep_blocked
+  deep_water_requires_tag: [aquatic, bridge]
+  hazard_rule: danger_zones_avoidable
+  safe_route_required: true
+  danger_blocks_all_progression: false
+  low_visibility_profile_marked: true
+
+entity_anchor_rules:
+  spawn_in_player_start: forbidden
+  hostile_blocks_player_start: forbidden
+  spawn_in_deep_water: forbidden_unless_aquatic
+  interaction_on_reachable_dry_or_shallow: true
+  patrol_requires_connected_route: true
+  max_entity_density_per_map: 24
+
+budget_caps:
+  material_complexity: 240
+  vegetation_density: 0.7
+  vegetation_density_performance_safe: 0.4
+  poi_count: 8
+  entity_anchor_count: 24
+  dynamic_light_count: 6
+  fog_volume_count: 4
+  water_surface_complexity: 5
+  emissive_material_count: 2
+  volumetric_effect_class: high
+  package_footprint_class: standard
+
+package_rules:
+  content_root: /Game/WorldForge
+  forbid_plugin_writes: true
+  generated_content_registered: true
+
+ownership_rules:
+  ownership_root: /Game/WorldForge/Generated
+  registry_required: true
+  provenance_required: true
+
+negative_fixture_rules:
+  must_reject:
+    - unknown_terrain_form
+    - desert_material_in_wetland
+    - poi_below_waterline_without_allow
+    - entity_in_deep_water_without_aquatic
+    - fog_heavy_without_low_visibility
+    - profile_only_changes_name
+    - generated_asset_outside_ownership_root

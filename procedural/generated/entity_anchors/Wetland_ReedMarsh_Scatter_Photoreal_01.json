@@ -1,0 +1,516 @@
+{
+  "schema_version": "wf.entity_anchors.v1",
+  "slice_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+  "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+  "world_pack_map": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Scatter_Photoreal_01",
+  "biome": "wetland_mire",
+  "variant": "photoreal",
+  "seed": 14007,
+  "poi": {
+    "name": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+    "type": "unknown"
+  },
+  "owned_by": "generated",
+  "destroyable": true,
+  "level_design_consumed": true,
+  "level_design_ref": {
+    "source": "generate_level_design",
+    "consumed": true,
+    "player_start_world": [
+      -329.42,
+      8441.57,
+      0.0
+    ],
+    "poi_origin_world": [
+      349.39,
+      -8953.19,
+      0.0
+    ],
+    "safe_zones_world": [
+      {
+        "center_world": [
+          -6071.25,
+          4703.44,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "safe_zone"
+      }
+    ],
+    "danger_zones_world": [
+      {
+        "center_world": [
+          10336.72,
+          -9560.26,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "danger_zone"
+      }
+    ],
+    "level_design_content_hash": "84666006d38ca1cb0031980dac5178678d396ca386d5a721d9d88b9a3fcc3517",
+    "slice_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+    "approach_bearing_xy": [
+      -0.0389941409805544,
+      0.9992394392582734
+    ]
+  },
+  "density_budget": {
+    "max_anchors_per_map": 40,
+    "max_spawn_zones_per_map": 12,
+    "max_enemy_spawn_zones_per_map": 4,
+    "max_capacity_per_zone": 8,
+    "max_total_spawn_capacity": 30
+  },
+  "world_model": {
+    "ground_z": 0,
+    "player_start": [
+      -136,
+      3497,
+      0
+    ],
+    "player_start_radius_cm": 500,
+    "poi_origin": [
+      0,
+      0,
+      0
+    ],
+    "poi_origin_world": [
+      349.39,
+      -8953.19,
+      0.0
+    ],
+    "critical_route": [
+      [
+        -136,
+        3497,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "route_corridor_radius_cm": 800,
+    "safe_zones": [
+      {
+        "center": [
+          -136,
+          3497,
+          0
+        ],
+        "radius_cm": 2500
+      }
+    ],
+    "danger_zones": [
+      {
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "radius_cm": 2000
+      }
+    ],
+    "blocking_volumes": [],
+    "max_slope_deg": 35,
+    "float_tolerance_cm": 50,
+    "bury_tolerance_cm": 50,
+    "edge_max_dist_cm": 4000
+  },
+  "anchors": [
+    {
+      "id": "safe_zone_center",
+      "type": "safe_zone_anchor",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        -136,
+        3497,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2500
+      },
+      "ground_z": 0,
+      "slope_deg": 7,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      }
+    },
+    {
+      "id": "danger_zone_core",
+      "type": "danger_zone_anchor",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2000
+      },
+      "ground_z": 0,
+      "slope_deg": 6,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "difficulty_tag": "standard"
+    },
+    {
+      "id": "entity_marker_entry",
+      "type": "entity_anchor",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 5,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "interaction_entry",
+      "type": "interaction_anchor",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 7,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "npc_spawn_entry",
+      "type": "npc_spawn_zone",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 0,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "faction_tag": "neutral_traders",
+      "archetypes": [
+        "neutral_trader_placeholder",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "interaction_center",
+      "type": "interaction_anchor",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 8,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "role": "primary"
+    },
+    {
+      "id": "encounter_core",
+      "type": "encounter_anchor",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 8,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "raider_assault"
+    },
+    {
+      "id": "enemy_spawn_core",
+      "type": "enemy_spawn_zone",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 5,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "raider_assault",
+      "archetypes": [
+        "raider",
+        "guard"
+      ],
+      "capacity": 4,
+      "allow_in_safe_zone": false
+    },
+    {
+      "id": "faction_ownership_core",
+      "type": "faction_ownership_anchor",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 2,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "faction_tag": "raiders"
+    },
+    {
+      "id": "neutral_spawn_support",
+      "type": "neutral_spawn_zone",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        1200,
+        -1200,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 3,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "faction_tag": "scavengers",
+      "archetypes": [
+        "scavenger",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "idle_support",
+      "type": "idle_anchor",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        -1200,
+        -1200,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 11,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "faction_tag": "ambient",
+      "archetypes": [
+        "ambient_creature_placeholder"
+      ]
+    },
+    {
+      "id": "patrol_0",
+      "type": "patrol_anchor",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        0,
+        1500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 10,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    },
+    {
+      "id": "patrol_1",
+      "type": "patrol_anchor",
+      "map_id": "Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "position": [
+        -1500,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 5,
+      "owning_poi": "Wetland_ReedMarsh_Scatter_Photoreal_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    }
+  ],
+  "provenance": {
+    "generator": "generate_entity_anchors",
+    "generator_version": "1.0.0",
+    "generated_at_utc": "2026-07-02T20:54:19.650017+00:00",
+    "source_spec_hash": "786ec6d5c7572bc5f06ca77aab6e18f9b6d92c8310f55cc4fae8e761f5b2f29e",
+    "source_spec_path": "D:\\Unreal Projects\\WorldForge\\procedural\\slices\\wetland_mire\\generated\\Wetland_ReedMarsh_Scatter_Photoreal_01.json",
+    "seed": 14007,
+    "owned_by": "generated",
+    "destroyable": true
+  },
+  "content_hash": "79f49fe39a1047b595ff34de45838ad34e505f319ff9bed5443176f6c15fc233"
+}

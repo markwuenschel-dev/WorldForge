@@ -1,0 +1,713 @@
+{
+  "slice_id": "Forest_ErodedGully_Debris_Stylized_01",
+  "schema_version": "wf-level-design-v1",
+  "world_pack_id": "biome_expansion_world",
+  "generated": true,
+  "registry_owner": "worldforge_level_design_overlay",
+  "seed": 11011,
+  "biome": "temperate_forest",
+  "variant": "stylized",
+  "state_key": "canopy_growth",
+  "poi_type": null,
+  "primary_class": "navigation_landmark",
+  "budget_class": "light",
+  "terrain_bounds": {
+    "min": [
+      -25600.0,
+      -25600.0
+    ],
+    "max": [
+      25600.0,
+      25600.0
+    ],
+    "height_range_cm": [
+      0.0,
+      2000.0
+    ]
+  },
+  "player_start": {
+    "id": "player_start",
+    "world_position": [
+      6986.61,
+      4749.32,
+      0.0
+    ],
+    "bounds": {
+      "min": [
+        5986.605223108995,
+        3749.32115743146,
+        0.0
+      ],
+      "max": [
+        7986.605223108995,
+        5749.32115743146,
+        300.0
+      ]
+    },
+    "facing_deg": 214.21,
+    "facing_vector": [
+      -0.827,
+      -0.5622,
+      0.0
+    ],
+    "orientation_cue": "face navigation_landmark bearing to orient",
+    "vista_cue": "primary objective visible on the horizon toward the landmark",
+    "provenance": {
+      "generator": "generate_level_design",
+      "generator_version": "1.0x",
+      "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+      "registry_owner": "worldforge_level_design_overlay"
+    }
+  },
+  "pois": [
+    {
+      "id": "primary_poi",
+      "class": "navigation_landmark",
+      "role": "primary",
+      "world_position": [
+        -7410.04,
+        -5037.16,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -10410.035842691359,
+          -7537.158803336398,
+          0.0
+        ],
+        "max": [
+          -4410.035842691358,
+          -2537.158803336398,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.827,
+        0.5622,
+        0.0
+      ],
+      "exit_vector": [
+        -0.827,
+        -0.5622,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -7410.04,
+        -5037.16,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "eroded_forest_gully",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective",
+        "expected_state": "after",
+        "state_key": "canopy_growth",
+        "sightline_target": "navigation_landmark",
+        "notes": "navigation_landmark (primary) derived from Forest_ErodedGully_Debris_Stylized_01 seed 11011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "secondary_poi",
+      "class": "objective_ready_anchor",
+      "role": "secondary",
+      "world_position": [
+        4749.32,
+        -6986.61,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          2949.321157431461,
+          -8786.605223108996,
+          0.0
+        ],
+        "max": [
+          6549.321157431461,
+          -5186.605223108995,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.5622,
+        0.827,
+        0.0
+      ],
+      "exit_vector": [
+        0.5622,
+        -0.827,
+        0.0
+      ],
+      "gameplay_anchor": [
+        4749.32,
+        -6986.61,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "eroded_forest_gully",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_support",
+        "expected_state": "after",
+        "state_key": "canopy_growth",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (secondary) derived from Forest_ErodedGully_Debris_Stylized_01 seed 11011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "navigation_landmark",
+      "class": "navigation_landmark",
+      "role": "landmark",
+      "world_position": [
+        -19853.64,
+        -5026.28,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -21253.640000000003,
+          -6426.279999999986,
+          0.0
+        ],
+        "max": [
+          -18453.640000000003,
+          -3626.279999999986,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.9694,
+        0.2454,
+        0.0
+      ],
+      "exit_vector": [
+        -0.9694,
+        -0.2454,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -19853.64,
+        -5026.28,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "eroded_forest_gully",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "orientation",
+        "expected_state": "static",
+        "state_key": "canopy_growth",
+        "sightline_target": "vista",
+        "notes": "navigation_landmark (landmark) derived from Forest_ErodedGully_Debris_Stylized_01 seed 11011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "resource_site",
+      "class": "resource_site",
+      "role": "resource",
+      "world_position": [
+        18033.34,
+        -9707.16,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          16233.344460304139,
+          -11507.156513419264,
+          0.0
+        ],
+        "max": [
+          19833.34446030414,
+          -7907.156513419264,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.8805,
+        0.474,
+        0.0
+      ],
+      "exit_vector": [
+        0.8805,
+        -0.474,
+        0.0
+      ],
+      "gameplay_anchor": [
+        18033.34,
+        -9707.16,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "eroded_forest_gully",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "resource",
+        "expected_state": "before",
+        "state_key": "canopy_growth",
+        "sightline_target": "primary_poi",
+        "notes": "resource_site (resource) derived from Forest_ErodedGully_Debris_Stylized_01 seed 11011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "encounter_anchor",
+      "class": "encounter_ready_anchor",
+      "role": "encounter",
+      "world_position": [
+        -6569.08,
+        18856.52,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -8169.080000000002,
+          17256.52,
+          0.0
+        ],
+        "max": [
+          -4969.080000000002,
+          20456.52,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.329,
+        -0.9443,
+        0.0
+      ],
+      "exit_vector": [
+        -0.329,
+        0.9443,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -6569.08,
+        18856.52,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "eroded_forest_gully",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "encounter",
+        "expected_state": "after",
+        "state_key": "canopy_growth",
+        "sightline_target": "danger_zone",
+        "notes": "encounter_ready_anchor (encounter) derived from Forest_ErodedGully_Debris_Stylized_01 seed 11011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "spawn_adjacent_anchor",
+      "class": "spawn_adjacent_anchor",
+      "role": "spawn_adjacent",
+      "world_position": [
+        9423.63,
+        -956.07,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          7923.627737927358,
+          -2456.069097026529,
+          0.0
+        ],
+        "max": [
+          10923.627737927358,
+          543.9309029734708,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.9949,
+        0.1009,
+        0.0
+      ],
+      "exit_vector": [
+        0.9949,
+        -0.1009,
+        0.0
+      ],
+      "gameplay_anchor": [
+        9423.63,
+        -956.07,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "eroded_forest_gully",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "spawn_support",
+        "expected_state": "before",
+        "state_key": "canopy_growth",
+        "sightline_target": "player_start",
+        "notes": "spawn_adjacent_anchor (spawn_adjacent) derived from Forest_ErodedGully_Debris_Stylized_01 seed 11011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "objective_anchor",
+      "class": "objective_ready_anchor",
+      "role": "objective_ready",
+      "world_position": [
+        -13565.72,
+        13946.58,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -15165.720000000003,
+          12346.579999999996,
+          0.0
+        ],
+        "max": [
+          -11965.720000000003,
+          15546.579999999996,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.6973,
+        -0.7168,
+        0.0
+      ],
+      "exit_vector": [
+        -0.6973,
+        0.7168,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -13565.72,
+        13946.58,
+        90.0
+      ],
+      "biome_compat": [
+        "temperate_forest"
+      ],
+      "style_compat": [
+        "eroded_forest_gully",
+        "stylized",
+        "temperate_forest",
+        "terrain_forest_temperate_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_ready",
+        "expected_state": "after",
+        "state_key": "canopy_growth",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (objective_ready) derived from Forest_ErodedGully_Debris_Stylized_01 seed 11011"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "class": "safe_zone",
+      "role": "safe_zone",
+      "world_position": [
+        775.19,
+        7640.78,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -2724.807100047309,
+          4140.777183497955,
+          0.0
+        ],
+        "max": [
+          4275.192899952691,
+          11140.777183497954,
+          400.0
+        ]
+      },
+      "enemy_filled": false,
+      "rest_point": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "rest",
+        "notes": "safe rest zone"
+      }
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "danger_zone",
+      "class": "danger_zone",
+      "role": "danger_zone",
+      "world_position": [
+        -2636.66,
+        -13830.92,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -6636.664557135323,
+          -17830.921878643752,
+          0.0
+        ],
+        "max": [
+          1363.3354428646771,
+          -9830.921878643752,
+          1200.0
+        ]
+      },
+      "enemy_filled": true,
+      "avoidable": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "hazard",
+        "notes": "avoidable hazard zone"
+      }
+    }
+  ],
+  "orientation_cues": [
+    {
+      "id": "orient_landmark",
+      "kind": "landmark_bearing",
+      "target": "navigation_landmark",
+      "from": "player_start",
+      "detail": "distant landmark gives a stable heading"
+    }
+  ],
+  "vista_cues": [
+    {
+      "id": "vista_primary",
+      "kind": "sightline",
+      "from": "player_start",
+      "target": "primary_poi",
+      "detail": "line of sight from spawn to the primary objective"
+    },
+    {
+      "id": "vista_point",
+      "kind": "overlook",
+      "from": "navigation_landmark",
+      "target": "resource_site",
+      "detail": "elevated overlook reveals the resource site"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "player_start",
+        "role": "player_start",
+        "type": "player_start",
+        "position": [
+          6986.61,
+          4749.32
+        ]
+      },
+      {
+        "id": "primary_poi",
+        "role": "primary_poi",
+        "type": "primary_poi",
+        "position": [
+          -7410.04,
+          -5037.16
+        ]
+      },
+      {
+        "id": "secondary_poi",
+        "role": "secondary_poi",
+        "type": "secondary_poi",
+        "position": [
+          4749.32,
+          -6986.61
+        ]
+      },
+      {
+        "id": "safe_zone",
+        "role": "safe_zone",
+        "type": "safe_zone",
+        "position": [
+          775.19,
+          7640.78
+        ]
+      },
+      {
+        "id": "danger_zone",
+        "role": "danger_zone",
+        "type": "danger_zone",
+        "position": [
+          -2636.66,
+          -13830.92
+        ]
+      },
+      {
+        "id": "resource_site",
+        "role": "resource_site",
+        "type": "resource_site",
+        "position": [
+          18033.34,
+          -9707.16
+        ]
+      },
+      {
+        "id": "exit_route",
+        "role": "exit_or_edge_route",
+        "type": "exit_or_edge_route",
+        "position": [
+          -10746.63,
+          -18032.58
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "player_start",
+        "to": "primary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "safe_zone",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "secondary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "primary_poi",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "danger_zone",
+        "kind": "risky"
+      },
+      {
+        "from": "danger_zone",
+        "to": "resource_site",
+        "kind": "risky"
+      },
+      {
+        "from": "secondary_poi",
+        "to": "exit_route",
+        "kind": "reachable"
+      }
+    ]
+  },
+  "provenance": {
+    "generator_name": "generate_level_design",
+    "generator_version": "1.0x",
+    "generated_at_utc": "2026-07-02T20:54:18.171439+00:00",
+    "source_commit": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/slices/temperate_forest/generated/Forest_ErodedGully_Debris_Stylized_01.json": "74bc079128a326db2a46df5e45c33725ba21e4035fcb94cb053f661c1d543147"
+    },
+    "source_spec_hash": "b9ddcd87d9392da3fb7e41dee6b6c837b8a0d21ac45dc1081e4502fb01c011fa",
+    "source_spec_path": "procedural/slices/temperate_forest/generated/Forest_ErodedGully_Debris_Stylized_01.json",
+    "terrain_extent_source": "default(descriptor_unreadable)"
+  },
+  "content_hash": "4ed51ae352068c904199abd2c0b32579f4131e49702b653371336dedb9de935f"
+}

@@ -1,0 +1,516 @@
+{
+  "schema_version": "wf.entity_anchors.v1",
+  "slice_id": "Alien_Plateau_Scatter_Stylized_01",
+  "map_id": "Alien_Plateau_Scatter_Stylized_01",
+  "world_pack_map": "/Game/WorldForge/Maps/Alien_Plateau_Scatter_Stylized_01",
+  "biome": "alien_crystal_badlands",
+  "variant": "stylized",
+  "seed": 15008,
+  "poi": {
+    "name": "Alien_Plateau_Scatter_Stylized_01_poi",
+    "type": "unknown"
+  },
+  "owned_by": "generated",
+  "destroyable": true,
+  "level_design_consumed": true,
+  "level_design_ref": {
+    "source": "generate_level_design",
+    "consumed": true,
+    "player_start_world": [
+      7625.45,
+      -3636.09,
+      0.0
+    ],
+    "poi_origin_world": [
+      -8087.6,
+      3856.46,
+      0.0
+    ],
+    "safe_zones_world": [
+      {
+        "center_world": [
+          6988.14,
+          3185.64,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "safe_zone"
+      }
+    ],
+    "danger_zones_world": [
+      {
+        "center_world": [
+          -13271.86,
+          -4701.51,
+          0.0
+        ],
+        "radius_cm": null,
+        "id": "danger_zone"
+      }
+    ],
+    "level_design_content_hash": "5545cba679c3f86486c6111394adf0ad0f65dee0e77884b250cc7b5022a6f13a",
+    "slice_id": "Alien_Plateau_Scatter_Stylized_01",
+    "approach_bearing_xy": [
+      0.9026341714665939,
+      -0.43040858785671965
+    ]
+  },
+  "density_budget": {
+    "max_anchors_per_map": 40,
+    "max_spawn_zones_per_map": 12,
+    "max_enemy_spawn_zones_per_map": 4,
+    "max_capacity_per_zone": 8,
+    "max_total_spawn_capacity": 30
+  },
+  "world_model": {
+    "ground_z": 0,
+    "player_start": [
+      3159,
+      -1506,
+      0
+    ],
+    "player_start_radius_cm": 500,
+    "poi_origin": [
+      0,
+      0,
+      0
+    ],
+    "poi_origin_world": [
+      -8087.6,
+      3856.46,
+      0.0
+    ],
+    "critical_route": [
+      [
+        3159,
+        -1506,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "route_corridor_radius_cm": 800,
+    "safe_zones": [
+      {
+        "center": [
+          3159,
+          -1506,
+          0
+        ],
+        "radius_cm": 2500
+      }
+    ],
+    "danger_zones": [
+      {
+        "center": [
+          0,
+          0,
+          0
+        ],
+        "radius_cm": 2000
+      }
+    ],
+    "blocking_volumes": [],
+    "max_slope_deg": 35,
+    "float_tolerance_cm": 50,
+    "bury_tolerance_cm": 50,
+    "edge_max_dist_cm": 4000
+  },
+  "anchors": [
+    {
+      "id": "safe_zone_center",
+      "type": "safe_zone_anchor",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        3159,
+        -1506,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2500
+      },
+      "ground_z": 0,
+      "slope_deg": 6,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      }
+    },
+    {
+      "id": "danger_zone_core",
+      "type": "danger_zone_anchor",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 2000
+      },
+      "ground_z": 0,
+      "slope_deg": 8,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "difficulty_tag": "standard"
+    },
+    {
+      "id": "entity_marker_entry",
+      "type": "entity_anchor",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 4,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "interaction_entry",
+      "type": "interaction_anchor",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 11,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "role": "entry"
+    },
+    {
+      "id": "npc_spawn_entry",
+      "type": "npc_spawn_zone",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 6,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "faction_tag": "neutral_traders",
+      "archetypes": [
+        "neutral_trader_placeholder",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "interaction_center",
+      "type": "interaction_anchor",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 12,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "role": "primary"
+    },
+    {
+      "id": "encounter_core",
+      "type": "encounter_anchor",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 4,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "raider_assault"
+    },
+    {
+      "id": "enemy_spawn_core",
+      "type": "enemy_spawn_zone",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 8,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "faction_tag": "raiders",
+      "difficulty_tag": "standard",
+      "encounter_tag": "raider_assault",
+      "archetypes": [
+        "raider",
+        "guard"
+      ],
+      "capacity": 4,
+      "allow_in_safe_zone": false
+    },
+    {
+      "id": "faction_ownership_core",
+      "type": "faction_ownership_anchor",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 12,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "core",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "faction_tag": "raiders"
+    },
+    {
+      "id": "neutral_spawn_support",
+      "type": "neutral_spawn_zone",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        841,
+        -1952,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 0,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "faction_tag": "scavengers",
+      "archetypes": [
+        "scavenger",
+        "worker"
+      ],
+      "capacity": 3
+    },
+    {
+      "id": "idle_support",
+      "type": "idle_anchor",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        -1200,
+        -1200,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 1,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "ambient",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "faction_tag": "ambient",
+      "archetypes": [
+        "ambient_creature_placeholder"
+      ]
+    },
+    {
+      "id": "patrol_0",
+      "type": "patrol_anchor",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        0,
+        1500,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 3,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    },
+    {
+      "id": "patrol_1",
+      "type": "patrol_anchor",
+      "map_id": "Alien_Plateau_Scatter_Stylized_01",
+      "position": [
+        -1500,
+        0,
+        0
+      ],
+      "bounds": {
+        "shape": "sphere",
+        "radius_cm": 600
+      },
+      "ground_z": 0,
+      "slope_deg": 10,
+      "owning_poi": "Alien_Plateau_Scatter_Stylized_01_poi",
+      "reachable": true,
+      "collision_safe": true,
+      "budget_class": "optional",
+      "provenance": {
+        "generator": "generate_entity_anchors",
+        "generator_version": "1.0.0",
+        "owned_by": "generated",
+        "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b"
+      },
+      "faction_tag": "guards",
+      "archetypes": [
+        "guard",
+        "drone"
+      ]
+    }
+  ],
+  "provenance": {
+    "generator": "generate_entity_anchors",
+    "generator_version": "1.0.0",
+    "generated_at_utc": "2026-07-02T20:54:19.660864+00:00",
+    "source_spec_hash": "ae925e76e3192e4c01c066814c628ff5165c143d463775728c4328f0db191d6b",
+    "source_spec_path": "D:\\Unreal Projects\\WorldForge\\procedural\\slices\\alien_crystal_badlands\\generated\\Alien_Plateau_Scatter_Stylized_01.json",
+    "seed": 15008,
+    "owned_by": "generated",
+    "destroyable": true
+  },
+  "content_hash": "1a5aa074c32f6744d4a7743526a6739a78a1788d90922fa58d17f99af47414da"
+}

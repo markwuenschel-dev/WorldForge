@@ -1,0 +1,713 @@
+{
+  "slice_id": "Alpine_SnowyRidge_Scatter_Perf_01",
+  "schema_version": "wf-level-design-v1",
+  "world_pack_id": "biome_expansion_world",
+  "generated": true,
+  "registry_owner": "worldforge_level_design_overlay",
+  "seed": 12003,
+  "biome": "alpine_snow",
+  "variant": "performance",
+  "state_key": "snow_accumulation",
+  "poi_type": null,
+  "primary_class": "navigation_landmark",
+  "budget_class": "light",
+  "terrain_bounds": {
+    "min": [
+      -25600.0,
+      -25600.0
+    ],
+    "max": [
+      25600.0,
+      25600.0
+    ],
+    "height_range_cm": [
+      0.0,
+      2000.0
+    ]
+  },
+  "player_start": {
+    "id": "player_start",
+    "world_position": [
+      -6426.66,
+      -5483.31,
+      0.0
+    ],
+    "bounds": {
+      "min": [
+        -7426.660614865174,
+        -6483.314448519326,
+        0.0
+      ],
+      "max": [
+        -5426.660614865174,
+        -4483.314448519326,
+        300.0
+      ]
+    },
+    "facing_deg": 40.47,
+    "facing_vector": [
+      0.7607,
+      0.6491,
+      0.0
+    ],
+    "orientation_cue": "face navigation_landmark bearing to orient",
+    "vista_cue": "primary objective visible on the horizon toward the landmark",
+    "provenance": {
+      "generator": "generate_level_design",
+      "generator_version": "1.0x",
+      "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+      "registry_owner": "worldforge_level_design_overlay"
+    }
+  },
+  "pois": [
+    {
+      "id": "primary_poi",
+      "class": "navigation_landmark",
+      "role": "primary",
+      "world_position": [
+        6816.16,
+        5815.64,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          3816.1551975842767,
+          3315.6365363083733,
+          0.0
+        ],
+        "max": [
+          9816.155197584278,
+          8315.636536308373,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.7607,
+        -0.6491,
+        0.0
+      ],
+      "exit_vector": [
+        0.7607,
+        0.6491,
+        0.0
+      ],
+      "gameplay_anchor": [
+        6816.16,
+        5815.64,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "performance",
+        "snowy_ridge",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective",
+        "expected_state": "after",
+        "state_key": "snow_accumulation",
+        "sightline_target": "navigation_landmark",
+        "notes": "navigation_landmark (primary) derived from Alpine_SnowyRidge_Scatter_Perf_01 seed 12003"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "secondary_poi",
+      "class": "objective_ready_anchor",
+      "role": "secondary",
+      "world_position": [
+        -5483.31,
+        6426.66,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -7283.3144485193225,
+          4626.660614865175,
+          0.0
+        ],
+        "max": [
+          -3683.3144485193225,
+          8226.660614865175,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.6491,
+        -0.7607,
+        0.0
+      ],
+      "exit_vector": [
+        -0.6491,
+        0.7607,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -5483.31,
+        6426.66,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "performance",
+        "snowy_ridge",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_support",
+        "expected_state": "after",
+        "state_key": "snow_accumulation",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (secondary) derived from Alpine_SnowyRidge_Scatter_Perf_01 seed 12003"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "navigation_landmark",
+      "class": "navigation_landmark",
+      "role": "landmark",
+      "world_position": [
+        19186.64,
+        7162.62,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          17786.6413325249,
+          5762.624824535136,
+          0.0
+        ],
+        "max": [
+          20586.6413325249,
+          8562.624824535136,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.9368,
+        -0.3497,
+        0.0
+      ],
+      "exit_vector": [
+        0.9368,
+        0.3497,
+        0.0
+      ],
+      "gameplay_anchor": [
+        19186.64,
+        7162.62,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "performance",
+        "snowy_ridge",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "orientation",
+        "expected_state": "static",
+        "state_key": "snow_accumulation",
+        "sightline_target": "vista",
+        "notes": "navigation_landmark (landmark) derived from Alpine_SnowyRidge_Scatter_Perf_01 seed 12003"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "resource_site",
+      "class": "resource_site",
+      "role": "resource",
+      "world_position": [
+        -18984.88,
+        7681.47,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -20784.879999999997,
+          5881.470000000001,
+          0.0
+        ],
+        "max": [
+          -17184.879999999997,
+          9481.470000000001,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        0.927,
+        -0.3751,
+        0.0
+      ],
+      "exit_vector": [
+        -0.927,
+        0.3751,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -18984.88,
+        7681.47,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "performance",
+        "snowy_ridge",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "resource",
+        "expected_state": "before",
+        "state_key": "snow_accumulation",
+        "sightline_target": "primary_poi",
+        "notes": "resource_site (resource) derived from Alpine_SnowyRidge_Scatter_Perf_01 seed 12003"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "encounter_anchor",
+      "class": "encounter_ready_anchor",
+      "role": "encounter",
+      "world_position": [
+        8587.4,
+        -18027.13,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          6987.4000000000015,
+          -19627.13,
+          0.0
+        ],
+        "max": [
+          10187.400000000001,
+          -16427.13,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.4301,
+        0.9028,
+        0.0
+      ],
+      "exit_vector": [
+        0.4301,
+        -0.9028,
+        0.0
+      ],
+      "gameplay_anchor": [
+        8587.4,
+        -18027.13,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "performance",
+        "snowy_ridge",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "encounter",
+        "expected_state": "after",
+        "state_key": "snow_accumulation",
+        "sightline_target": "danger_zone",
+        "notes": "encounter_ready_anchor (encounter) derived from Alpine_SnowyRidge_Scatter_Perf_01 seed 12003"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "spawn_adjacent_anchor",
+      "class": "spawn_adjacent_anchor",
+      "role": "spawn_adjacent",
+      "world_position": [
+        -9471.68,
+        -77.91,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -10971.6840220373,
+          -1577.9067615002875,
+          0.0
+        ],
+        "max": [
+          -7971.6840220373,
+          1422.0932384997125,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        1.0,
+        0.0082,
+        0.0
+      ],
+      "exit_vector": [
+        -1.0,
+        -0.0082,
+        0.0
+      ],
+      "gameplay_anchor": [
+        -9471.68,
+        -77.91,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "performance",
+        "snowy_ridge",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "spawn_support",
+        "expected_state": "before",
+        "state_key": "snow_accumulation",
+        "sightline_target": "player_start",
+        "notes": "spawn_adjacent_anchor (spawn_adjacent) derived from Alpine_SnowyRidge_Scatter_Perf_01 seed 12003"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    },
+    {
+      "id": "objective_anchor",
+      "class": "objective_ready_anchor",
+      "role": "objective_ready",
+      "world_position": [
+        15006.52,
+        -12383.07,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          13406.52,
+          -13983.070000000003,
+          0.0
+        ],
+        "max": [
+          16606.519999999997,
+          -10783.070000000003,
+          800.0
+        ]
+      },
+      "approach_vector": [
+        -0.7713,
+        0.6365,
+        0.0
+      ],
+      "exit_vector": [
+        0.7713,
+        -0.6365,
+        0.0
+      ],
+      "gameplay_anchor": [
+        15006.52,
+        -12383.07,
+        90.0
+      ],
+      "biome_compat": [
+        "alpine_snow"
+      ],
+      "style_compat": [
+        "alpine_snow",
+        "performance",
+        "snowy_ridge",
+        "terrain_alpine_snow_01"
+      ],
+      "budget_class": "light",
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "objective_ready",
+        "expected_state": "after",
+        "state_key": "snow_accumulation",
+        "sightline_target": "primary_poi",
+        "notes": "objective_ready_anchor (objective_ready) derived from Alpine_SnowyRidge_Scatter_Perf_01 seed 12003"
+      },
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+        "registry_owner": "worldforge_level_design_overlay"
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "class": "safe_zone",
+      "role": "safe_zone",
+      "world_position": [
+        63.17,
+        -7679.74,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -3436.8320470305252,
+          -11179.740217593147,
+          0.0
+        ],
+        "max": [
+          3563.1679529694748,
+          -4179.7402175931475,
+          400.0
+        ]
+      },
+      "enemy_filled": false,
+      "rest_point": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "rest",
+        "notes": "safe rest zone"
+      }
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "danger_zone",
+      "class": "danger_zone",
+      "role": "danger_zone",
+      "world_position": [
+        1111.74,
+        14036.04,
+        0.0
+      ],
+      "bounds": {
+        "min": [
+          -2888.2558812841926,
+          10036.040218469769,
+          0.0
+        ],
+        "max": [
+          5111.744118715807,
+          18036.040218469767,
+          1200.0
+        ]
+      },
+      "enemy_filled": true,
+      "avoidable": true,
+      "provenance": {
+        "generator": "generate_level_design",
+        "generator_version": "1.0x",
+        "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+        "registry_owner": "worldforge_level_design_overlay"
+      },
+      "inspection": {
+        "inspectable": true,
+        "gameplay_role": "hazard",
+        "notes": "avoidable hazard zone"
+      }
+    }
+  ],
+  "orientation_cues": [
+    {
+      "id": "orient_landmark",
+      "kind": "landmark_bearing",
+      "target": "navigation_landmark",
+      "from": "player_start",
+      "detail": "distant landmark gives a stable heading"
+    }
+  ],
+  "vista_cues": [
+    {
+      "id": "vista_primary",
+      "kind": "sightline",
+      "from": "player_start",
+      "target": "primary_poi",
+      "detail": "line of sight from spawn to the primary objective"
+    },
+    {
+      "id": "vista_point",
+      "kind": "overlook",
+      "from": "navigation_landmark",
+      "target": "resource_site",
+      "detail": "elevated overlook reveals the resource site"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "player_start",
+        "role": "player_start",
+        "type": "player_start",
+        "position": [
+          -6426.66,
+          -5483.31
+        ]
+      },
+      {
+        "id": "primary_poi",
+        "role": "primary_poi",
+        "type": "primary_poi",
+        "position": [
+          6816.16,
+          5815.64
+        ]
+      },
+      {
+        "id": "secondary_poi",
+        "role": "secondary_poi",
+        "type": "secondary_poi",
+        "position": [
+          -5483.31,
+          6426.66
+        ]
+      },
+      {
+        "id": "safe_zone",
+        "role": "safe_zone",
+        "type": "safe_zone",
+        "position": [
+          63.17,
+          -7679.74
+        ]
+      },
+      {
+        "id": "danger_zone",
+        "role": "danger_zone",
+        "type": "danger_zone",
+        "position": [
+          1111.74,
+          14036.04
+        ]
+      },
+      {
+        "id": "resource_site",
+        "role": "resource_site",
+        "type": "resource_site",
+        "position": [
+          -18984.88,
+          7681.47
+        ]
+      },
+      {
+        "id": "exit_route",
+        "role": "exit_or_edge_route",
+        "type": "exit_or_edge_route",
+        "position": [
+          8714.82,
+          19097.54
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "from": "player_start",
+        "to": "primary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "safe_zone",
+        "kind": "reachable"
+      },
+      {
+        "from": "player_start",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "secondary_poi",
+        "kind": "reachable"
+      },
+      {
+        "from": "primary_poi",
+        "to": "resource_site",
+        "kind": "optional"
+      },
+      {
+        "from": "primary_poi",
+        "to": "danger_zone",
+        "kind": "risky"
+      },
+      {
+        "from": "danger_zone",
+        "to": "resource_site",
+        "kind": "risky"
+      },
+      {
+        "from": "secondary_poi",
+        "to": "exit_route",
+        "kind": "reachable"
+      }
+    ]
+  },
+  "provenance": {
+    "generator_name": "generate_level_design",
+    "generator_version": "1.0x",
+    "generated_at_utc": "2026-07-02T20:54:18.293680+00:00",
+    "source_commit": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/slices/alpine_snow/generated/Alpine_SnowyRidge_Scatter_Perf_01.json": "7e5a99f6e7530156cd366d3847c61971f908202d0a3733c9cd5f49faf4dc3e1f"
+    },
+    "source_spec_hash": "d70a36f83ffea7e158423318b05a10274e157141d21d06068449816a30356b2b",
+    "source_spec_path": "procedural/slices/alpine_snow/generated/Alpine_SnowyRidge_Scatter_Perf_01.json",
+    "terrain_extent_source": "default(descriptor_unreadable)"
+  },
+  "content_hash": "c3d3ff7cfc4df86a341991a247e8bbbf202613808e865b102e39944aa4be1e1a"
+}

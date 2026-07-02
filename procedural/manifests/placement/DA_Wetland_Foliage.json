@@ -1,0 +1,113 @@
+{
+  "definition_id": "DA_Wetland_Foliage",
+  "schema_version": "1.1",
+  "biome": "wetland_mire",
+  "source_definition": "procedural/definitions/placement/biomes/wetland_mire",
+  "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter",
+  "ue": {
+    "data_asset_path": "/Game/WorldForge/Generated/Placement/DA_Wetland_Foliage",
+    "data_asset_class": "PlacementRulesDataAsset",
+    "generate_data_asset": true
+  },
+  "species": [
+    {
+      "id": "reed_clusters",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.6,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "flood_pressure",
+      "density_at_state_zero": 0.6,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "driftwood",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "flood_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "mud_mounds",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.4,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "flood_pressure",
+      "density_at_state_zero": 0.4,
+      "density_at_state_one": 0.5
+    },
+    {
+      "id": "lily_mats",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "flood_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.2
+    },
+    {
+      "id": "rotting_logs",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.4,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "decay_pressure",
+      "density_at_state_zero": 0.4,
+      "density_at_state_one": 0.5
+    },
+    {
+      "id": "peat_clumps",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.5,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "decay_pressure",
+      "density_at_state_zero": 0.5,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "still_water_debris",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.2,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "decay_pressure",
+      "density_at_state_zero": 0.2,
+      "density_at_state_one": 0.4
+    },
+    {
+      "id": "stones",
+      "mesh": "/Engine/BasicShapes/Cube.Cube",
+      "base_density": 0.3,
+      "scale_min": 0.8,
+      "scale_max": 1.2,
+      "state_scope": "Region",
+      "state_key": "decay_pressure",
+      "density_at_state_zero": 0.3,
+      "density_at_state_one": 0.3
+    }
+  ],
+  "provenance": {
+    "generator_name": "worldforge-prepare-biome-materialization",
+    "generator_version": "1.1.0",
+    "generated_at_utc": "2026-07-02T20:32:05.775891+00:00",
+    "source_commit": "49c6122b2a4afe612008ee7e34554a1d77316a90",
+    "source_tree_dirty": false,
+    "inputs": {
+      "procedural/definitions/placement/biomes/wetland_mire/marsh_scatter.yaml": "88e7f3d368eb09e7af12232189af6d01f484b68c28f247f9b754d1df6e09a83c",
+      "procedural/definitions/placement/biomes/wetland_mire/mire_debris.yaml": "a43a9b21315d4443919f59ffcd4b2501c56634a2a909fab81c5987f77949a2e9"
+    }
+  }
+}

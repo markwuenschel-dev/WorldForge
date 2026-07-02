@@ -130,6 +130,12 @@ def main(argv=None):
     ap.add_argument("--pack", required=True, help="Path to pack YAML (e.g. procedural/slice_packs/desert_foundation.yaml)")
     ap.add_argument("--jobs", type=int, default=1, help="Parallel workers for non-UE prep phase (default: 1)")
     ap.add_argument("--force", action="store_true", help="Rebuild even if slice is up-to-date")
+    ap.add_argument(
+        "--specs-only", action="store_true",
+        help="Headless spec generation only: emit generated spec JSONs (Phase 1) and "
+             "SKIP Phase 2 (UE .umap creation, registry upsert, placement DA generation). "
+             "A slice counts as OK when its spec JSON is written; editor-only asset checks "
+             "in prepare_slice are advisory (non-fatal) in this mode.")
     args = ap.parse_args(argv)
 
     pack_path = Path(args.pack)
@@ -209,61 +215,85 @@ def main(argv=None):
                     nm, ok, sp = fut.result()
                     phase1_results[nm] = (ok, sp)
 
-        # Phase 2: serialised UE map creation.
-        print("\n--- Phase 2: UE map creation (serialised) ---")
-        for name, variant, seed, placement, state_preset, terrain, poi in to_build:
-            ok, spec_p = phase1_results.get(name, (False, None))
-            if not ok or spec_p is None:
-                results[name] = "fail"
-                continue
-            rc_ue = _run(
-                [sys.executable, RUN_UE_SCRIPT,
-                 "--script", "create_slice_map.py", "--spec", str(spec_p)],
-                name,
-            )
-            if rc_ue != 0:
-                print("[{}] FAIL: create_slice_map exited {}".format(name, rc_ue))
-                results[name] = "fail"
-                continue
-            # Upsert registry.
-            try:
-                spec = _load_spec(spec_p)
-                placement = spec.get("placement", {})
-                ref_assets = [
-                    x for x in [
-                        spec.get("terrain", {}).get("material_mi"),
-                        placement.get("data_asset"),
-                        placement.get("pcg_graph"),
-                    ] if x
-                ]
-                entry = {
-                    "slice_id": name,
-                    "pack_id": pack_id,
-                    "biome": biome,
-                    "variant": variant,
-                    "placement_preset_id": spec.get("placement_preset_id"),
-                    "state_preset_id": spec.get("state_preset_id"),
-                    "terrain_recipe_id": spec.get("terrain_forge", {}).get("recipe_id"),
-                    "poi_type": spec.get("poi_forge", {}).get("poi_type"),
-                    "map_path": spec["map"],
-                    "spec_path": spec_p.relative_to(REPO_ROOT).as_posix(),
-                    "owned_assets": ["Content/WorldForge/Maps/{}.umap".format(name)],
-                    "referenced_assets": ref_assets,
-                    "input_hash": compute_input_hash(spec),
-                }
-                registry = upsert_entry(registry, entry)
-                save_registry(REPO_ROOT, registry)
-            except Exception as exc:
-                print("[{}] WARNING: registry update failed: {}".format(name, exc))
-            # Generate placement DA descriptor (pure Python, no UE).
-            rc_da = _run([sys.executable, GEN_DA_SCRIPT, "--spec", str(spec_p)], name)
-            if rc_da != 0:
-                print("[{}] WARNING: generate_placement_da failed (non-fatal)".format(name))
-
-            results[name] = "ok"
-            print("[{}] OK".format(name))
+        if args.specs_only:
+            # Headless: spec generation is the whole deliverable. Judge each
+            # slice by whether its spec JSON exists on disk; prepare_slice's
+            # editor-only asset checks are advisory here. Skip Phase 2 entirely
+            # (no .umap, no registry, no placement DA — all need the editor).
+            print("\n--- Phase 2 SKIPPED (--specs-only): specs generated headless ---")
+            for name, variant, seed, placement, state_preset, terrain, poi in to_build:
+                _ok, spec_p = phase1_results.get(name, (False, None))
+                if spec_p is not None and Path(spec_p).is_file():
+                    results[name] = "ok"
+                    print("[{}] OK (spec written)".format(name))
+                else:
+                    results[name] = "fail"
+                    print("[{}] FAIL: spec not written".format(name))
+        else:
+            _run_phase2(to_build, phase1_results, results, registry, pack_id, biome)
 
     # Summary.
+    _write_summary_and_exit(pack_id, biome, slices, results)
+
+
+def _run_phase2(to_build, phase1_results, results, registry, pack_id, biome):
+    """Serialised UE map creation + registry upsert + placement DA. Needs editor."""
+    print("\n--- Phase 2: UE map creation (serialised) ---")
+    for name, variant, seed, placement, state_preset, terrain, poi in to_build:
+        ok, spec_p = phase1_results.get(name, (False, None))
+        if not ok or spec_p is None:
+            results[name] = "fail"
+            continue
+        rc_ue = _run(
+            [sys.executable, RUN_UE_SCRIPT,
+             "--script", "create_slice_map.py", "--spec", str(spec_p)],
+            name,
+        )
+        if rc_ue != 0:
+            print("[{}] FAIL: create_slice_map exited {}".format(name, rc_ue))
+            results[name] = "fail"
+            continue
+        # Upsert registry.
+        try:
+            spec = _load_spec(spec_p)
+            placement = spec.get("placement", {})
+            ref_assets = [
+                x for x in [
+                    spec.get("terrain", {}).get("material_mi"),
+                    placement.get("data_asset"),
+                    placement.get("pcg_graph"),
+                ] if x
+            ]
+            entry = {
+                "slice_id": name,
+                "pack_id": pack_id,
+                "biome": biome,
+                "variant": variant,
+                "placement_preset_id": spec.get("placement_preset_id"),
+                "state_preset_id": spec.get("state_preset_id"),
+                "terrain_recipe_id": spec.get("terrain_forge", {}).get("recipe_id"),
+                "poi_type": spec.get("poi_forge", {}).get("poi_type"),
+                "map_path": spec["map"],
+                "spec_path": spec_p.relative_to(REPO_ROOT).as_posix(),
+                "owned_assets": ["Content/WorldForge/Maps/{}.umap".format(name)],
+                "referenced_assets": ref_assets,
+                "input_hash": compute_input_hash(spec),
+            }
+            registry = upsert_entry(registry, entry)
+            save_registry(REPO_ROOT, registry)
+        except Exception as exc:
+            print("[{}] WARNING: registry update failed: {}".format(name, exc))
+        # Generate placement DA descriptor (pure Python, no UE).
+        rc_da = _run([sys.executable, GEN_DA_SCRIPT, "--spec", str(spec_p)], name)
+        if rc_da != 0:
+            print("[{}] WARNING: generate_placement_da failed (non-fatal)".format(name))
+
+        results[name] = "ok"
+        print("[{}] OK".format(name))
+
+
+def _write_summary_and_exit(pack_id, biome, slices, results):
+    """Print the summary, write create_pack_report.json, and exit (0 iff no fails)."""
     n_ok = sum(1 for v in results.values() if v == "ok")
     n_skip = sum(1 for v in results.values() if v == "up_to_date")
     n_fail = sum(1 for v in results.values() if v == "fail")

@@ -1,0 +1,48 @@
+{
+  "slice_id": "Alpine_SnowyRidge_Debris_Photoreal_01",
+  "biome": "alpine_snow",
+  "variant": "photoreal",
+  "region_id": "Alpine_SnowyRidge_Debris_Photoreal_01",
+  "seed": 12004,
+  "map": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Debris_Photoreal_01",
+  "terrain": {
+    "material_recipe": "terrain_alpine_snow_01",
+    "material_mi": "/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Alpine_01",
+    "preview_base_color": [
+      0.9,
+      0.93,
+      0.97
+    ]
+  },
+  "state": {
+    "scope": "Region",
+    "context_id": "Alpine_SnowyRidge_Debris_Photoreal_01",
+    "key": "snow_accumulation",
+    "before": 0.0,
+    "after": 0.5
+  },
+  "placement": {
+    "definition": "ridge_scatter",
+    "data_asset": "/Game/WorldForge/Generated/Placement/DA_Alpine_Scatter",
+    "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter"
+  },
+  "output_dir": "procedural/reports/slices/alpine_snow/Alpine_SnowyRidge_Debris_Photoreal_01",
+  "source_template": "procedural/slices/alpine_snow_photoreal.yaml",
+  "provenance": {
+    "generated_at_utc": "1970-01-01T00:00:00+00:00",
+    "generator": "create_slice_spec",
+    "generator_version": "1.0.0"
+  },
+  "placement_preset_id": "glacial_debris",
+  "placement_preset_path": "procedural/definitions/placement/biomes/alpine_snow/glacial_debris.yaml",
+  "terrain_forge": {
+    "terrain_name": "Snowy Ridge",
+    "recipe_id": "snowy_ridge",
+    "descriptor_path": "procedural/definitions/terrain/biomes/alpine_snow/snowy_ridge.yaml",
+    "definition_only": true,
+    "heightmap": "",
+    "slope_mask": "",
+    "placement_mask": "",
+    "nav_safe_mask": ""
+  }
+}

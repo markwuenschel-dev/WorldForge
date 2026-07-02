@@ -1,0 +1,46 @@
+# alien_crystal_badlands_photoreal.yaml
+# BiomeForge v1.1 variant template — alien_crystal_badlands, "photoreal" slot.
+# Mirrors temperate_forest_photoreal.yaml shape. References Agent 2's
+# alien_crystal_badlands surface families (iridescent_stone). This biome has no
+# photoreal_*_day env profile — the photoreal SLOT binds to surreal_alien_badlands
+# (its primary high-fidelity look) via the binding overlay; this template records
+# the surface only.
+#
+# Safe for agents to duplicate/modify. Keep state.before/after within [0.0, 1.0].
+
+schema_version: "1.0"
+id: alien_crystal_badlands_photoreal
+biome: alien_crystal_badlands
+variant: photoreal
+
+map: /Game/WorldForge/Maps/Alien_Crystal_Badlands_Photoreal_01
+
+recipes:
+  - terrain_alien_crystal_badlands_01
+placement_definitions:
+  - crystal_scatter
+
+state:
+  scope: Region
+  context_id: Alien_Crystal_Badlands_Photoreal_01
+  key: crystal_growth
+  before: 0.0
+  after: 0.5
+
+render:
+  # iridescent_stone family (procedural/definitions/materials/biomes/alien_crystal_badlands/iridescent_stone.yaml)
+  terrain_mi: /Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_AlienCrystal_01
+  preview_base_color: [0.35, 0.20, 0.55]   # linear 0-1 iridescent violet stone
+  placement_data_asset: /Game/WorldForge/Generated/Placement/DA_AlienCrystal_Scatter
+  resolution: [1600, 900]
+  seed: 515101
+
+acceptance:
+  mpc_parameter: CrystalGrowth
+  foliage_increases:
+    - crystal_clusters
+    - alien_fungal_sparse
+  foliage_decreases:
+    - bare_plateau
+
+output_dir: procedural/reports/slices/alien_crystal_badlands_photoreal

@@ -1,0 +1,44 @@
+# temperate_forest_stylized.yaml
+# BiomeForge v1.1 variant template — temperate_forest, stylized env mode.
+# Mirrors desert_sandy.yaml shape. References Agent 2's temperate_forest
+# surface families (leaf_litter). Env profile is assigned per-slice by the
+# binding overlay; this template records the biome-appropriate surface.
+#
+# Safe for agents to duplicate/modify. Keep state.before/after within [0.0, 1.0].
+
+schema_version: "1.0"
+id: temperate_forest_stylized
+biome: temperate_forest
+variant: stylized
+
+map: /Game/WorldForge/Maps/Temperate_Forest_Stylized_01
+
+recipes:
+  - terrain_forest_temperate_01
+placement_definitions:
+  - woodland_scatter
+
+state:
+  scope: Region
+  context_id: Temperate_Forest_Stylized_01
+  key: canopy_growth
+  before: 0.0
+  after: 0.5
+
+render:
+  # leaf_litter family (procedural/definitions/materials/biomes/temperate_forest/leaf_litter.yaml)
+  terrain_mi: /Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Forest_01
+  preview_base_color: [0.35, 0.24, 0.12]   # linear 0-1 warm leaf litter
+  placement_data_asset: /Game/WorldForge/Generated/Placement/DA_Woodland_Foliage
+  resolution: [1600, 900]
+  seed: 424302
+
+acceptance:
+  mpc_parameter: CanopyGrowth
+  foliage_increases:
+    - fern
+    - understory
+  foliage_decreases:
+    - clearing_grass
+
+output_dir: procedural/reports/slices/temperate_forest_stylized

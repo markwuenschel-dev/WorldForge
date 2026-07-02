@@ -662,10 +662,19 @@ def compute_observations(c, rp, terrains, pois, scenarios, das, placement_profil
 
 def _collect_generated_files(c, rp, terrains, pois, scenarios, das):
     files = set()
-    spec_dir = c.repo_root / "procedural" / "slices" / "desert" / "generated"
+    # Resolve each slice spec biome-aware: prefer the registry's spec_path, then the
+    # slice's own biome dir, then the legacy desert dir (keeps desert unchanged).
+    slice_registry = load_registry(c.repo_root)
     for sid in rp.slice_ids:
-        sp = spec_dir / "{}.json".format(sid)
-        if sp.is_file():
+        sp = None
+        entry = slice_registry.get(sid) or {}
+        if entry.get("spec_path") and (c.repo_root / entry["spec_path"]).is_file():
+            sp = c.repo_root / entry["spec_path"]
+        else:
+            for cand in (c.repo_root / "procedural" / "slices").glob("*/generated/{}.json".format(sid)):
+                sp = cand
+                break
+        if sp and sp.is_file():
             files.add(c._rel(sp))
     for name, desc, entry in terrains:
         for opath in (entry.get("owned_outputs", []) or []):

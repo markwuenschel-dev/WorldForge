@@ -1,0 +1,5315 @@
+{
+  "world_pack_id": "biome_expansion_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "Forest_RollingWoodland_Scatter_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 3 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::player_start_valid": {
+      "ok": true,
+      "detail": "player_start must exist, have valid bounds, and sit within terrain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::primary_landmark_exists": {
+      "ok": true,
+      "detail": "need a primary POI and a navigation_landmark POI",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::secondary_pois_exist": {
+      "ok": true,
+      "detail": "at least one secondary POI required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::route_spawn_to_primary": {
+      "ok": true,
+      "detail": "no spawn->primary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::route_primary_to_secondary": {
+      "ok": true,
+      "detail": "no primary->secondary route in graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::danger_reachable_but_avoidable": {
+      "ok": true,
+      "detail": "danger zones must be reachable yet avoidable via a reachable-only route",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::safe_zones_reachable_clean": {
+      "ok": true,
+      "detail": "safe zones must be reachable and not enemy-filled",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::orientation_cue_exists": {
+      "ok": true,
+      "detail": "an orientation cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::vista_cue_exists": {
+      "ok": true,
+      "detail": "a vista/sightline cue is required",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::critical_route_in_terrain": {
+      "ok": true,
+      "detail": "critical nodes outside terrain: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::poi_distribution_spread": {
+      "ok": true,
+      "detail": "POIs clustered in 4 quadrant(s); need >=3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 660,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-level-design",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "timestamp": "2026-07-02T20:52:27.815255+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 60
+  }
+}

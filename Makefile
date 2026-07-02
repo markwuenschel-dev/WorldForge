@@ -36,7 +36,12 @@ export STRICT
         generate-entity-anchors validate-entity-anchors validate-npc-spawns validate-encounter-readiness \
         validate-rendering-profiles validate-scalability validate-raytracing validate-performance-budgets \
         corrupt-world-pack lifecycle-torture seed-matrix fuzz-world-pack validate-determinism validate-regression-matrix \
-        inspect-pack inspect-map diagnose-world-pack
+        inspect-pack inspect-map diagnose-world-pack diff-world-pack \
+        validate-biome-contract validate-biome-matrix validate-biome-profile-bindings \
+        validate-biome-environment-compatibility validate-biome-inspection \
+        validate-terrain-forms validate-material-families validate-vegetation-profiles validate-placement-profiles \
+        validate-biome-poi-compatibility validate-biome-traversal validate-biome-ecology-tags \
+        fuzz-biome-matrix
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -537,6 +542,47 @@ inspect-map:
 	$(PYTHON) tools/pipeline/inspect_world_pack.py --pack $(PACK) --map $(MAP)
 diagnose-world-pack:
 	$(PYTHON) tools/pipeline/diagnose_world_pack.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# ======================================================================
+# v1.1 BiomeForge — multi-environment expansion (Agent 0 aggregation)
+# ----------------------------------------------------------------------
+# Every target maps 1:1 to a python tools/pipeline/<script>.py entrypoint. The
+# biome gates are folded into `make full-shield` automatically for any world
+# pack that declares `biomeforge: true` (e.g. biome_expansion_world); they never
+# run for desert_mvp_world, preserving the v1.0x regression contract.
+#
+#   make full-shield PACK=biome_expansion_world JOBS=8 STRICT=1 DEEP=1 TORTURE=1 SEEDS=200
+# ======================================================================
+BIOME_PACK ?= biome_expansion_world
+
+validate-biome-contract:
+	$(PYTHON) tools/pipeline/validate_biome_contract.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-biome-matrix:
+	$(PYTHON) tools/pipeline/validate_biome_matrix.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-biome-profile-bindings:
+	$(PYTHON) tools/pipeline/validate_biome_profile_bindings.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-biome-environment-compatibility:
+	$(PYTHON) tools/pipeline/validate_biome_environment_compatibility.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-biome-inspection:
+	$(PYTHON) tools/pipeline/validate_biome_inspection.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-terrain-forms:
+	$(PYTHON) tools/pipeline/validate_terrain_forms.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-material-families:
+	$(PYTHON) tools/pipeline/validate_material_families.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-vegetation-profiles:
+	$(PYTHON) tools/pipeline/validate_vegetation_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-placement-profiles:
+	$(PYTHON) tools/pipeline/validate_placement_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-biome-poi-compatibility:
+	$(PYTHON) tools/pipeline/validate_biome_poi_compatibility.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-biome-traversal:
+	$(PYTHON) tools/pipeline/validate_biome_traversal.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-biome-ecology-tags:
+	$(PYTHON) tools/pipeline/validate_biome_ecology_tags.py --pack $(PACK) $(if $(STRICT),--strict,)
+fuzz-biome-matrix:
+	$(PYTHON) tools/pipeline/fuzz_biome_matrix.py --pack $(PACK) --cases $(CASES) $(if $(STRICT),--strict,)
+diff-world-pack:
+	$(PYTHON) tools/pipeline/diff_world_pack.py --pack $(PACK) --baseline $(BASELINE) $(if $(STRICT),--strict,)
 
 preview:
 	@echo "Preview generation is not implemented yet."
