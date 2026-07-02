@@ -1,0 +1,48 @@
+{
+  "slice_id": "Forest_ErodedGully_Scatter_Perf_01",
+  "biome": "temperate_forest",
+  "variant": "performance",
+  "region_id": "Forest_ErodedGully_Scatter_Perf_01",
+  "seed": 11009,
+  "map": "/Game/WorldForge/Maps/Forest_ErodedGully_Scatter_Perf_01",
+  "terrain": {
+    "material_recipe": "terrain_forest_temperate_01",
+    "material_mi": "/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Forest_01",
+    "preview_base_color": [
+      0.34,
+      0.29,
+      0.2
+    ]
+  },
+  "state": {
+    "scope": "Region",
+    "context_id": "Forest_ErodedGully_Scatter_Perf_01",
+    "key": "canopy_growth",
+    "before": 0.0,
+    "after": 0.5
+  },
+  "placement": {
+    "definition": "woodland_scatter",
+    "data_asset": "/Game/WorldForge/Generated/Placement/DA_Woodland_Foliage",
+    "pcg_graph": "/Game/Procedural/PCG/PCG_FoliageScatter"
+  },
+  "output_dir": "procedural/reports/slices/temperate_forest/Forest_ErodedGully_Scatter_Perf_01",
+  "source_template": "procedural/slices/temperate_forest_performance.yaml",
+  "provenance": {
+    "generated_at_utc": "2026-07-02T11:11:27.755343+00:00",
+    "generator": "create_slice_spec",
+    "generator_version": "1.0.0"
+  },
+  "placement_preset_id": "woodland_scatter",
+  "placement_preset_path": "procedural/definitions/placement/biomes/temperate_forest/woodland_scatter.yaml",
+  "terrain_forge": {
+    "terrain_name": "Eroded Forest Gully",
+    "recipe_id": "eroded_forest_gully",
+    "descriptor_path": "procedural/definitions/terrain/biomes/temperate_forest/eroded_forest_gully.yaml",
+    "definition_only": true,
+    "heightmap": "",
+    "slope_mask": "",
+    "placement_mask": "",
+    "nav_safe_mask": ""
+  }
+}

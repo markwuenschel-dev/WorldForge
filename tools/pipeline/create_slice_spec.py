@@ -62,6 +62,25 @@ def get_required(d: dict, key: str, template_path: Path):
     return d[key]
 
 
+def resolve_biome_def(category: str, biome: str, name: str):
+    """Resolve a biome definition file across both supported layouts.
+
+    Desert uses the flat  definitions/<category>/<biome>/<name>.yaml  layout;
+    BiomeForge (Agent 2) uses  definitions/<category>/biomes/<biome>/<name>.yaml.
+    Returns (abs_path, repo_relative_posix) for the first existing file, or
+    (None, None) if neither is present. Non-fatal: callers keep warning.
+    """
+    base = REPO_ROOT / "procedural" / "definitions" / category
+    candidates = [
+        base / biome / (name + ".yaml"),          # desert-style
+        base / "biomes" / biome / (name + ".yaml"),  # BiomeForge biomes/<biome>/ layout
+    ]
+    for c in candidates:
+        if c.is_file():
+            return c, c.relative_to(REPO_ROOT).as_posix()
+    return None, None
+
+
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(
         description="Generate a fully-resolved slice spec JSON from a variant "
@@ -151,12 +170,13 @@ def main(argv=None) -> int:
     state_after = get_required(state, "after", template_path)
     state_preset_id = None
     if args.state_preset:
-        state_preset_path = (
-            REPO_ROOT / "procedural" / "definitions" / "state" / biome / (args.state_preset + ".yaml")
+        state_preset_path, _state_preset_rel = resolve_biome_def(
+            "state", biome, args.state_preset
         )
-        if not state_preset_path.is_file():
+        if state_preset_path is None:
             sys.stderr.write(
-                f"WARNING: state preset not found: {state_preset_path} -- using template defaults\n"
+                f"WARNING: state preset '{args.state_preset}' not found for biome "
+                f"'{biome}' (checked <biome>/ and biomes/<biome>/) -- using template defaults\n"
             )
         else:
             with state_preset_path.open("r", encoding="utf-8") as fh:
@@ -171,18 +191,15 @@ def main(argv=None) -> int:
     placement_preset_id = None
     placement_preset_path_rel = None
     if args.placement:
-        pp_path = (
-            REPO_ROOT / "procedural" / "definitions" / "placement" / biome / (args.placement + ".yaml")
-        )
-        if not pp_path.is_file():
+        pp_path, pp_rel = resolve_biome_def("placement", biome, args.placement)
+        if pp_path is None:
             sys.stderr.write(
-                f"WARNING: placement preset not found: {pp_path} -- continuing without it\n"
+                f"WARNING: placement preset '{args.placement}' not found for biome "
+                f"'{biome}' (checked <biome>/ and biomes/<biome>/) -- continuing without it\n"
             )
         else:
             placement_preset_id = args.placement
-            placement_preset_path_rel = (
-                f"procedural/definitions/placement/{biome}/{args.placement}.yaml"
-            )
+            placement_preset_path_rel = pp_rel
 
     # Resolve terrain_forge descriptor if --terrain was supplied.
     terrain_forge = None
@@ -213,10 +230,33 @@ def main(argv=None) -> int:
                         except Exception:
                             pass
         if tf_desc_file is None or not tf_desc_file.is_file():
-            sys.stderr.write(
-                f"WARNING: terrain descriptor not found for '{args.terrain}' -- "
-                f"run 'make create-terrain RECIPE={args.terrain} NAME=...' first\n"
-            )
+            # Headless fallback: no generated descriptor yet (specs-only path).
+            # Bind directly to Agent 2's biome terrain *definition* recipe so the
+            # spec records a real terrain form instead of a missing-descriptor
+            # warning. Masks stay empty until create-terrain materializes them.
+            def_path, def_rel = resolve_biome_def("terrain", biome, args.terrain)
+            if def_path is not None:
+                try:
+                    tdef = yaml.safe_load(def_path.read_text(encoding="utf-8")) or {}
+                    terrain_forge = {
+                        "terrain_name": tdef.get("display_name") or args.terrain,
+                        "recipe_id": tdef.get("recipe_id", args.terrain),
+                        "descriptor_path": def_rel,
+                        "definition_only": True,
+                        "heightmap": "",
+                        "slope_mask": "",
+                        "placement_mask": "",
+                        "nav_safe_mask": "",
+                    }
+                except Exception as exc:
+                    sys.stderr.write(
+                        f"WARNING: could not read terrain definition '{def_rel}': {exc}\n"
+                    )
+            else:
+                sys.stderr.write(
+                    f"WARNING: terrain descriptor not found for '{args.terrain}' -- "
+                    f"run 'make create-terrain RECIPE={args.terrain} NAME=...' first\n"
+                )
         else:
             try:
                 import json as _json

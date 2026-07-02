@@ -92,7 +92,8 @@ def build_registry():
     # can skip rebuild via BUILD=0.
     G.append(gate("create-world-pack", "Create world pack", "generate",
                   FailureCode.GENERATION_FAILURE, "create_world_pack.py",
-                  lambda c: ["--pack", yaml_arg(c), "--jobs", str(c["jobs"])],
+                  lambda c: ["--pack", yaml_arg(c), "--jobs", str(c["jobs"])]
+                            + (["--specs-only"] if c.get("biomeforge") else []),
                   required=True))
     # 4 — deep world-pack validation
     G.append(gate("validate-world-pack", "Validate world pack (deep)", "generate",
