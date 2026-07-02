@@ -5,10 +5,10 @@
     "pack": "desert_mvp_world",
     "strict": true,
     "deep": true,
-    "torture": false,
-    "seeds": 20,
-    "git_sha": "49c6122b2a4afe612008ee7e34554a1d77316a90",
-    "timestamp": "2026-07-02T20:44:41.610135+00:00",
+    "torture": true,
+    "seeds": 100,
+    "git_sha": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "timestamp": "2026-07-02T20:55:59.667934+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
@@ -22,10 +22,10 @@
   "status": "ok",
   "totals": {
     "gates": 33,
-    "pass": 30,
+    "pass": 33,
     "fail": 0,
     "missing": 0,
-    "skipped": 3
+    "skipped": 0
   },
   "blocking_gates": [],
   "failure_taxonomy": {},
@@ -303,7 +303,7 @@
       "code": "WF181_DETERMINISM_FAILURE",
       "status": "pass",
       "rc": 0,
-      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\seed_matrix_report.json | [seed-matrix] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [seed-matrix] seeds_run=20 record_count=20"
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\seed_matrix_report.json | [seed-matrix] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [seed-matrix] seeds_run=100 record_count=100"
     },
     {
       "id": "fuzz-world-pack",
@@ -319,27 +319,27 @@
       "label": "Lifecycle torture",
       "phase": "lifecycle",
       "code": "WF180_LIFECYCLE_FAILURE",
-      "status": "skipped_no_torture",
-      "rc": null,
-      "detail": "torture-only gate; TORTURE not set"
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\lifecycle_torture_report.json | [lifecycle-torture] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on) | [lifecycle-torture] target=Desert_AshFlats_IndustrialYard_Heavy_01 modes=16 destroy->rebuild->revalidate cycle run"
     },
     {
       "id": "repair-world-pack",
       "label": "Repair world pack",
       "phase": "lifecycle",
       "code": "WF180_LIFECYCLE_FAILURE",
-      "status": "skipped_no_torture",
-      "rc": null,
-      "detail": "torture-only gate; TORTURE not set"
+      "status": "pass",
+      "rc": 0,
+      "detail": "  repaired:       0 | [world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\repair_world_pack_report.json | [repair-world-pack] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
     },
     {
       "id": "revalidate-world-pack",
       "label": "Revalidate world pack",
       "phase": "lifecycle",
       "code": "WF180_LIFECYCLE_FAILURE",
-      "status": "skipped_no_torture",
-      "rc": null,
-      "detail": "torture-only gate; TORTURE not set"
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\desert_mvp_world\\revalidate_world_pack_report.json | [revalidate-world-pack] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on)"
     },
     {
       "id": "validate-regression-matrix",

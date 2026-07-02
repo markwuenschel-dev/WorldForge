@@ -5,10 +5,10 @@
     "pack": "biome_expansion_world",
     "strict": true,
     "deep": true,
-    "torture": false,
-    "seeds": 20,
-    "git_sha": "49c6122b2a4afe612008ee7e34554a1d77316a90",
-    "timestamp": "2026-07-02T20:43:35.095861+00:00",
+    "torture": true,
+    "seeds": 200,
+    "git_sha": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
+    "timestamp": "2026-07-02T20:54:22.035757+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
@@ -22,10 +22,10 @@
   "status": "ok",
   "totals": {
     "gates": 46,
-    "pass": 43,
+    "pass": 46,
     "fail": 0,
     "missing": 0,
-    "skipped": 3
+    "skipped": 0
   },
   "blocking_gates": [],
   "failure_taxonomy": {},
@@ -435,7 +435,7 @@
       "code": "WF181_DETERMINISM_FAILURE",
       "status": "pass",
       "rc": 0,
-      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\seed_matrix_report.json | [seed-matrix] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [seed-matrix] seeds_run=20 record_count=20"
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\seed_matrix_report.json | [seed-matrix] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [seed-matrix] seeds_run=200 record_count=200"
     },
     {
       "id": "fuzz-world-pack",
@@ -460,27 +460,27 @@
       "label": "Lifecycle torture",
       "phase": "lifecycle",
       "code": "WF180_LIFECYCLE_FAILURE",
-      "status": "skipped_no_torture",
-      "rc": null,
-      "detail": "torture-only gate; TORTURE not set"
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\lifecycle_torture_report.json | [lifecycle-torture] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on) | [lifecycle-torture] target=Forest_RollingWoodland_Scatter_Photoreal_01 modes=16 destroy->rebuild->revalidate cycle run"
     },
     {
       "id": "repair-world-pack",
       "label": "Repair world pack",
       "phase": "lifecycle",
       "code": "WF180_LIFECYCLE_FAILURE",
-      "status": "skipped_no_torture",
-      "rc": null,
-      "detail": "torture-only gate; TORTURE not set"
+      "status": "pass",
+      "rc": 0,
+      "detail": "  repaired:       0 | [world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\repair_world_pack_report.json | [repair-world-pack] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
     },
     {
       "id": "revalidate-world-pack",
       "label": "Revalidate world pack",
       "phase": "lifecycle",
       "code": "WF180_LIFECYCLE_FAILURE",
-      "status": "skipped_no_torture",
-      "rc": null,
-      "detail": "torture-only gate; TORTURE not set"
+      "status": "pass",
+      "rc": 0,
+      "detail": "[world_pack_id] report -> procedural\\reports\\world_packs\\biome_expansion_world\\revalidate_world_pack_report.json | [revalidate-world-pack] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on)"
     },
     {
       "id": "validate-regression-matrix",

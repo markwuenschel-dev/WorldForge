@@ -6076,20 +6076,20 @@
       "blocking": false
     },
     "slices:Desert_AshFlats_IndustrialYard_Heavy_01:map_not_temp_bake": {
-      "ok": true,
-      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01",
+      "ok": false,
+      "detail": "map is a forbidden Houdini Temp/Bake path: /Game/HoudiniEngine/Temp/BROKEN_UNOWNED_PATH",
       "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
+      "verdict": "FAIL",
+      "code": "WF040_FORBIDDEN_PATH",
+      "blocking": true
     },
     "slices:Desert_AshFlats_IndustrialYard_Heavy_01:map_owned": {
-      "ok": true,
-      "detail": "map must be under /Game/WorldForge/ — got /Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01",
+      "ok": false,
+      "detail": "map must be under /Game/WorldForge/ — got /Game/HoudiniEngine/Temp/BROKEN_UNOWNED_PATH",
       "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
+      "verdict": "FAIL",
+      "code": "WF041_PATH_NOT_OWNED",
+      "blocking": true
     },
     "slices:Desert_AshFlats_IndustrialYard_Heavy_01:has_owned_assets": {
       "ok": true,
@@ -21970,7 +21970,9 @@
     "poi:ruin_cluster:owner_resolvable: descriptor has no registry_owner stamp; owner inferred from worldforge_poi_registry membership",
     "poi:safe_zone:owner_resolvable: descriptor has no registry_owner stamp; owner inferred from worldforge_poi_registry membership",
     "poi:traversal_choke:owner_resolvable: descriptor has no registry_owner stamp; owner inferred from worldforge_poi_registry membership",
-    "poi:vista_point:owner_resolvable: descriptor has no registry_owner stamp; owner inferred from worldforge_poi_registry membership"
+    "poi:vista_point:owner_resolvable: descriptor has no registry_owner stamp; owner inferred from worldforge_poi_registry membership",
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:map_not_temp_bake: map is a forbidden Houdini Temp/Bake path: /Game/HoudiniEngine/Temp/BROKEN_UNOWNED_PATH",
+    "slices:Desert_AshFlats_IndustrialYard_Heavy_01:map_owned: map must be under /Game/WorldForge/ — got /Game/HoudiniEngine/Temp/BROKEN_UNOWNED_PATH"
   ],
   "warnings": [
     "registries:worldforge_generated_asset_registry:entry_count: 11 entry(ies)",
@@ -22020,10 +22022,10 @@
     "poi:vista_point:human_template_integrity: item is not a human-owned template"
   ],
   "counts": {
-    "PASS": 2667,
+    "PASS": 2665,
     "WARN": 30,
     "WARN_ONLY": 0,
-    "FAIL": 0,
+    "FAIL": 2,
     "SKIP_NOT_APPLICABLE": 45
   },
   "passed": false,

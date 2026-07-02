@@ -1,5 +1,5 @@
 {
-  "world_pack_id": "desert_mvp_world",
+  "world_pack_id": "biome_expansion_world",
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
@@ -29,7 +29,7 @@
     },
     "mode::delete_generated_manifest::detected": {
       "ok": true,
-      "detail": "corruption DETECTED: repair rc=1 [repair-world-pack]   FAIL: Desert_AshFlats_CleanScrub_Clean_01:registered: slice declared by world pack but missing from registry — run create-world-pack PACK=desert_mvp_world",
+      "detail": "corruption DETECTED: repair rc=1 [repair-world-pack]   FAIL: Alien_Plateau_Debris_Perf_01:registered: slice declared by world pack but missing from registry — run create-world-pack PACK=biome_expansion_world",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -61,7 +61,7 @@
     },
     "mode::orphan_generated_asset::detected": {
       "ok": true,
-      "detail": "corruption DETECTED: repair rc=1 [repair-world-pack]   FAIL: Desert_AshFlats_IndustrialYard_Heavy_01:registered: slice declared by world pack but missing from registry — run create-world-pack PACK=desert_mvp_world",
+      "detail": "corruption DETECTED: repair rc=1 [repair-world-pack]   FAIL: Forest_RollingWoodland_Scatter_Photoreal_01:registered: slice declared by world pack but missing from registry — run create-world-pack PACK=biome_expansion_world",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -117,7 +117,7 @@
     },
     "mode::remove_environment_profile::detected": {
       "ok": true,
-      "detail": "corruption DETECTED: 4 environment failure(s)",
+      "detail": "corruption DETECTED: 6 environment failure(s)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -125,7 +125,7 @@
     },
     "mode::remove_lighting_profile::detected": {
       "ok": true,
-      "detail": "corruption DETECTED: 9 environment failure(s)",
+      "detail": "corruption DETECTED: 11 environment failure(s)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -133,7 +133,7 @@
     },
     "mode::remove_material_reference::detected": {
       "ok": true,
-      "detail": "corruption DETECTED: material /Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01 MISSING in referenced_assets",
+      "detail": "corruption DETECTED: material /Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Forest_01 MISSING in referenced_assets",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -165,7 +165,7 @@
     },
     "mode::truncate_manifest::detected": {
       "ok": true,
-      "detail": "corruption DETECTED: repair rc=1 [repair-world-pack]   FAIL: Desert_AshFlats_CleanScrub_Clean_01:registered: slice declared by world pack but missing from registry — run create-world-pack PACK=desert_mvp_world",
+      "detail": "corruption DETECTED: repair rc=1 [repair-world-pack]   FAIL: Alien_Plateau_Debris_Perf_01:registered: slice declared by world pack but missing from registry — run create-world-pack PACK=biome_expansion_world",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -173,7 +173,7 @@
     },
     "cycle::destroy_dryrun_safe": {
       "ok": true,
-      "detail": "destroy_world_pack dry-run rc=0 ([destroy-world-pack] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on))",
+      "detail": "destroy_world_pack dry-run rc=0 ([destroy-world-pack] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -189,7 +189,7 @@
     },
     "cycle::rebuild_level_design": {
       "ok": true,
-      "detail": "regenerated 25 level-design overlays",
+      "detail": "regenerated 60 level-design overlays",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -197,7 +197,7 @@
     },
     "cycle::rebuild_entity_anchors": {
       "ok": true,
-      "detail": "regenerated 25 entity-anchor overlays (missing=0)",
+      "detail": "regenerated 60 entity-anchor overlays (missing=0)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -205,7 +205,7 @@
     },
     "cycle::revalidate::validate-world-pack-spec": {
       "ok": true,
-      "detail": "validate-world-pack-spec rc=0 ([validate-world-pack-spec] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on))",
+      "detail": "validate-world-pack-spec rc=0 ([validate-world-pack-spec] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -213,7 +213,7 @@
     },
     "cycle::revalidate::validate-world-pack": {
       "ok": true,
-      "detail": "validate-world-pack rc=0 ([validate-world-pack] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on))",
+      "detail": "validate-world-pack rc=0 ([validate-world-pack]   WARN_ONLY: pack:biome_expansion_alien_crystal_badlands: child pack WARN_ONLY (0/12))",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -221,7 +221,7 @@
     },
     "cycle::revalidate::validate-environment-contract": {
       "ok": true,
-      "detail": "validate-environment-contract rc=0 ([validate-environment-contract] records=25 (maps in pack))",
+      "detail": "validate-environment-contract rc=0 ([validate-environment-contract] records=60 (maps in pack))",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -229,7 +229,7 @@
     },
     "cycle::revalidate::validate-pois": {
       "ok": true,
-      "detail": "validate-pois rc=0 ([validate-pois] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on))",
+      "detail": "validate-pois rc=0 ([validate-pois] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -237,7 +237,7 @@
     },
     "cycle::revalidate::validate-entity-anchors": {
       "ok": true,
-      "detail": "validate-entity-anchors rc=0 ([validate-entity-anchors] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on))",
+      "detail": "validate-entity-anchors rc=0 ([validate-entity-anchors] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -245,7 +245,7 @@
     },
     "cycle::revalidate::report_integrity_present": {
       "ok": true,
-      "detail": "report-integrity rc=0 ([validate-report-integrity] PASS — desert_mvp_world (0 failure(s), 0 warning(s), strict=on))",
+      "detail": "report-integrity rc=0 ([validate-report-integrity] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
       "warn_only": true,
       "verdict": "PASS",
       "code": null,
@@ -272,13 +272,13 @@
   "status": "ok",
   "meta": {
     "command": "lifecycle-torture",
-    "pack": "desert_mvp_world",
+    "pack": "biome_expansion_world",
     "strict": true,
     "deep": false,
     "torture": true,
     "seeds": null,
     "git_sha": "21dea00aeb7a790b3c2615ffe1c4b4714f197fd9",
-    "timestamp": "2026-07-02T20:55:56.752881+00:00",
+    "timestamp": "2026-07-02T20:54:17.584220+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
@@ -287,7 +287,7 @@
     "warning_count": 0,
     "skipped_count": 0,
     "record_count": 16,
-    "target": "Desert_AshFlats_IndustrialYard_Heavy_01",
+    "target": "Forest_RollingWoodland_Scatter_Photoreal_01",
     "modes": [
       "bad_generated_path",
       "delete_generated_asset",
