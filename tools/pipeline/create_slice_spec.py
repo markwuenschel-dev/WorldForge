@@ -372,11 +372,24 @@ def main(argv=None) -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / f"{name}.json"
 
-    with out_path.open("w", encoding="utf-8") as fh:
-        json.dump(spec, fh, indent=2, ensure_ascii=False)
-        fh.write("\n")
-
+    new_text = json.dumps(spec, indent=2, ensure_ascii=False) + "\n"
     rel_out = out_path.relative_to(REPO_ROOT).as_posix()
+
+    # Idempotent write: if the spec is byte-identical to what's already on disk,
+    # leave the file (and its mtime) untouched. Regeneration is then a no-op for
+    # unchanged inputs, so pre-generation reports don't falsely read as stale and
+    # determinism regen stays stable.
+    if out_path.is_file() and out_path.read_text(encoding="utf-8") == new_text:
+        print(rel_out)
+        print(
+            f"Slice spec '{name}' unchanged — idempotent skip "
+            f"(biome={biome} variant={variant} seed={seed})"
+        )
+        return 0
+
+    with out_path.open("w", encoding="utf-8") as fh:
+        fh.write(new_text)
+
     print(rel_out)
     print(
         f"Wrote slice spec '{name}' (biome={biome} variant={variant} "

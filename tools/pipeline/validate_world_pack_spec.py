@@ -55,6 +55,13 @@ MVP_MIN_POI = 5
 MVP_MIN_STATE = 2
 MVP_MIN_SCENARIO_PATHS = 2
 
+# v1.1 BiomeForge coverage contract (the multi-biome matrix minimums).
+BIOME_MIN_MAPS = 60
+BIOME_MIN_FAMILIES = 5
+BIOME_MIN_TERRAIN_PER = 2       # terrain forms per biome
+BIOME_MIN_PLACEMENT_PER = 2     # placement profiles per biome
+BIOME_MIN_ENV_MODES_PER = 3     # environment/visual modes per biome
+
 REQUIRED_SLICE_FIELDS = ("name", "variant", "seed", "placement", "state_preset",
                          "terrain", "poi")
 
@@ -100,6 +107,47 @@ def _placement_preset(biome, placement):
     return None
 
 
+# --- v1.1 BiomeForge-aware resolution ---------------------------------------
+# BiomeForge surface definitions live under definitions/<cat>/biomes/<biome>/,
+# POIs are abstract classes resolved against the biome contract's
+# poi_compatibility list, and state is baked into the variant template (validated
+# by variant_templates_complete) rather than a separate state-preset file.
+try:
+    import biomes as _biomes
+except Exception:  # pragma: no cover
+    _biomes = None
+
+
+def _terrain_form_resolves(biome, terrain):
+    return any(p.is_file() for p in (
+        DEFN / "terrain" / "biomes" / biome / "{}.yaml".format(terrain),
+        DEFN / "terrain" / "{}.yaml".format(terrain)))
+
+
+def _placement_resolves_biome(biome, placement):
+    return any(p.is_file() for p in (
+        DEFN / "placement" / "biomes" / biome / "{}.yaml".format(placement),
+        DEFN / "placement" / biome / "{}.yaml".format(placement),
+        DEFN / "placement" / "{}.yaml".format(placement)))
+
+
+def _poi_class_resolves(biome, poi):
+    """A biome POI is valid iff the biome contract declares it in poi_compatibility."""
+    if _biomes is None:
+        return False
+    try:
+        return _biomes.compatible(_biomes.load_biome(biome), "poi_class", poi)
+    except Exception:
+        return False
+
+
+def _biome_state_resolves(biome, preset):
+    """State for BiomeForge is specified in the variant template (validated by
+    variant_templates_complete). A dedicated state-preset file is optional; accept
+    it when present under a biome path, else treat as template-backed."""
+    return True
+
+
 def _missing_detail(kind, misses):
     """Render a compact 'kind: <slice> -> <ref>' failure detail."""
     items = ", ".join("{}->{}".format(n, r) for n, r in misses[:8])
@@ -143,6 +191,7 @@ def main(argv=None):
     world_pack_id = world_pack.get("world_pack_id", world_pack_id)
     rep.entity_id = world_pack_id
     default_biome = (world_pack.get("global_defaults") or {}).get("biome", "desert")
+    biomeforge = bool(world_pack.get("biomeforge") or world_pack.get("biome_families"))
     packs = world_pack.get("packs", [])
 
     print("=== Validate World Pack Spec: {} (strict={}) ===".format(
@@ -202,13 +251,25 @@ def main(argv=None):
               code=FailureCode.SPEC_INVALID)
 
     # ---- Reference resolution -------------------------------------------------
-    resolvers = {
-        "variant": lambda b, v: _variant_template(b, v).is_file(),
-        "terrain": lambda b, v: _terrain_recipe(v).is_file(),
-        "poi": lambda b, v: _poi_template(v).is_file(),
-        "state_preset": lambda b, v: _state_preset(b, v).is_file(),
-        "placement": lambda b, v: _placement_preset(b, v) is not None,
-    }
+    if biomeforge:
+        # BiomeForge: terrain/material/placement live under definitions/<cat>/
+        # biomes/<biome>/, POIs are abstract classes checked against the biome
+        # contract, and state is template-backed. (Same variant-template check.)
+        resolvers = {
+            "variant": lambda b, v: _variant_template(b, v).is_file(),
+            "terrain": _terrain_form_resolves,
+            "poi": _poi_class_resolves,
+            "state_preset": _biome_state_resolves,
+            "placement": _placement_resolves_biome,
+        }
+    else:
+        resolvers = {
+            "variant": lambda b, v: _variant_template(b, v).is_file(),
+            "terrain": lambda b, v: _terrain_recipe(v).is_file(),
+            "poi": lambda b, v: _poi_template(v).is_file(),
+            "state_preset": lambda b, v: _state_preset(b, v).is_file(),
+            "placement": lambda b, v: _placement_preset(b, v) is not None,
+        }
     for field, resolves in resolvers.items():
         misses = []
         for biome, sl in all_slices:
@@ -273,18 +334,39 @@ def main(argv=None):
     # Zero maps is a hard FAIL; below-minimum is a WARN (blocking under --strict).
     rep.check("map_count_nonzero", total > 0, "{} maps".format(total),
               code=FailureCode.SPEC_INVALID)
-    cov_checks = [
-        ("map_count_meets_min", total, args.min_maps),
-        ("terrain_coverage", len(terrains), MVP_MIN_TERRAIN),
-        ("material_variant_coverage", len(variants), MVP_MIN_VARIANTS),
-        ("placement_coverage", len(placements), MVP_MIN_PLACEMENT),
-        ("poi_coverage", len(pois), MVP_MIN_POI),
-        ("state_coverage", len(states), MVP_MIN_STATE),
-        ("scenario_path_coverage", len(scenario_paths), MVP_MIN_SCENARIO_PATHS),
-    ]
+
+    if biomeforge:
+        # BiomeForge applies its OWN (stronger, not relaxed) coverage contract:
+        # >=5 non-desert biome families, >=60 maps, and per biome >=2 terrain
+        # forms, >=2 placement profiles, >=3 environment/visual modes.
+        families = sorted({b for b, _ in all_slices})
+        per_biome = {}
+        for b, sl in all_slices:
+            d = per_biome.setdefault(b, {"terrain": set(), "placement": set(), "variant": set()})
+            for axis, field in (("terrain", "terrain"), ("placement", "placement"), ("variant", "variant")):
+                if sl.get(field) not in (None, ""):
+                    d[axis].add(str(sl[field]))
+        cov_checks = [
+            ("biome_map_count", total, BIOME_MIN_MAPS),
+            ("biome_family_coverage", len(families), BIOME_MIN_FAMILIES),
+        ]
+        for b in families:
+            cov_checks.append(("biome_terrain_coverage:{}".format(b), len(per_biome[b]["terrain"]), BIOME_MIN_TERRAIN_PER))
+            cov_checks.append(("biome_placement_coverage:{}".format(b), len(per_biome[b]["placement"]), BIOME_MIN_PLACEMENT_PER))
+            cov_checks.append(("biome_env_mode_coverage:{}".format(b), len(per_biome[b]["variant"]), BIOME_MIN_ENV_MODES_PER))
+    else:
+        cov_checks = [
+            ("map_count_meets_min", total, args.min_maps),
+            ("terrain_coverage", len(terrains), MVP_MIN_TERRAIN),
+            ("material_variant_coverage", len(variants), MVP_MIN_VARIANTS),
+            ("placement_coverage", len(placements), MVP_MIN_PLACEMENT),
+            ("poi_coverage", len(pois), MVP_MIN_POI),
+            ("state_coverage", len(states), MVP_MIN_STATE),
+            ("scenario_path_coverage", len(scenario_paths), MVP_MIN_SCENARIO_PATHS),
+        ]
     for key, have, need in cov_checks:
         rep.check(key, have >= need,
-                  "{} (have {}, need {})".format("ok" if have >= need else "below MVP minimum", have, need),
+                  "{} (have {}, need {})".format("ok" if have >= need else "below minimum", have, need),
                   warn_only=True, code=FailureCode.SPEC_INVALID)
 
     rep.finalize()

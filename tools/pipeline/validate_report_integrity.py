@@ -51,6 +51,13 @@ from world_pack_maps import enumerate_maps, report_dir_for
 # This gate's own report — excluded from the scan so it never grades itself.
 OWN_REPORT = "validate_report_integrity_report.json"
 
+# Aggregate rollup reports that are NOT per-check ValidationReports and are
+# inherently one shield-run behind (the shield writes them AFTER this gate runs).
+# Grading them here is both a shape mismatch (they carry "gates"/"blocking_gates",
+# not "failures") and a red->green deadlock. Their integrity is the shield's own
+# exit code. Excluded from the scan, like OWN_REPORT.
+AGGREGATE_REPORTS = frozenset({"full_shield_report.json"})
+
 # Grace window (seconds) so reports written microseconds apart from their inputs
 # in the same generation batch are not falsely flagged stale.
 STALE_GRACE_SECONDS = 2.0
@@ -243,7 +250,8 @@ def validate_pack(pack, strict, reports_dir=None, final=False, max_age_days=None
     rep = ValidationReport("world_pack_id", world_pack_id or str(pack), strict=strict)
 
     report_files = sorted(
-        p for p in rdir.glob("*_report.json") if p.name != OWN_REPORT
+        p for p in rdir.glob("*_report.json")
+        if p.name != OWN_REPORT and p.name not in AGGREGATE_REPORTS
     ) if rdir.is_dir() else []
 
     if not report_files:

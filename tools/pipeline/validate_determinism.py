@@ -98,14 +98,20 @@ def _semantic_spec_hash(spec):
 def _regen_spec_hash(entry, spec, name, seed):
     """Regenerate a throwaway slice spec via create_slice_spec.py; return semantic
     hash then delete the temp spec. Returns (hash_or_None, err)."""
-    biome = entry.get("biome", "desert")
+    # The generated spec is authoritative for biome/variant/placement/state — the
+    # registry entry is empty for headless (unbuilt) packs, so prefer the spec and
+    # fall back to the registry only when the spec omits a field.
+    biome = spec.get("biome") or entry.get("biome", "desert")
+    variant = spec.get("variant") or entry.get("variant", "")
+    placement = spec.get("placement_preset_id") or entry.get("placement_preset_id")
+    state_preset = spec.get("state_preset_id") or entry.get("state_preset_id")
     cmd = [PY, str(PIPELINE / "create_slice_spec.py"),
-           "--biome", biome, "--variant", entry.get("variant", ""),
+           "--biome", biome, "--variant", variant,
            "--name", name, "--seed", str(seed)]
-    if entry.get("placement_preset_id"):
-        cmd += ["--placement", entry["placement_preset_id"]]
-    if entry.get("state_preset_id"):
-        cmd += ["--state-preset", entry["state_preset_id"]]
+    if placement:
+        cmd += ["--placement", placement]
+    if state_preset:
+        cmd += ["--state-preset", state_preset]
     if (spec.get("terrain_forge") or {}).get("recipe_id"):
         cmd += ["--terrain", spec["terrain_forge"]["recipe_id"]]
     if (spec.get("poi_forge") or {}).get("poi_type"):
@@ -130,8 +136,15 @@ def validate_pack(pack, strict):
     target = C.default_target(pack)
     reg = load_registry(REPO_ROOT)
     entry = reg.get(target, {})
-    spec_path = generated_spec_path(entry.get("biome", "desert"), target)
-    spec = json.loads(spec_path.read_text(encoding="utf-8")) if spec_path.is_file() else {}
+    # Resolve the target's spec from the enumerated maps (authoritative for the
+    # biome, so the path is correct even when the slice isn't in the registry);
+    # fall back to the registry-derived path for legacy desert packs.
+    target_rec = next((m for m in maps if m.slice_id == target and m.spec_exists), None)
+    if target_rec is not None:
+        spec = target_rec.spec
+    else:
+        spec_path = generated_spec_path(entry.get("biome", "desert"), target)
+        spec = json.loads(spec_path.read_text(encoding="utf-8")) if spec_path.is_file() else {}
     seed = spec.get("seed", 12345)
 
     # --- 1. spec determinism (same seed, two fresh regenerations) --------------
