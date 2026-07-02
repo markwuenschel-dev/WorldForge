@@ -1,0 +1,24 @@
+world_pack_id: biome_expansion_world
+description: >
+  Environment/visual-profile binding overlay for the biome_expansion_world pack.
+  Binds every slice_id to a materially-real, biome-appropriate environment
+  profile under procedural/definitions/profiles/environment/. As each biome's
+  slice pack + environment composites land, its slice_ids are added here — no
+  silent fallback in strict mode. default_environment_profile is itself validated.
+
+default_environment_profile: photoreal_forest_day
+
+bindings:
+  # === temperate_forest (12 maps) — 2 terrain × 2 placement × 3 env mode ======
+  Forest_RollingWoodland_Scatter_Photoreal_01: photoreal_forest_day
+  Forest_RollingWoodland_Scatter_Stylized_01:  stylized_forest_day
+  Forest_RollingWoodland_Scatter_Perf_01:      performance_safe_forest
+  Forest_RollingWoodland_Debris_Photoreal_01:  photoreal_forest_day
+  Forest_RollingWoodland_Debris_Stylized_01:   stylized_forest_day
+  Forest_RollingWoodland_Debris_Perf_01:       performance_safe_forest
+  Forest_ErodedGully_Scatter_Photoreal_01:     photoreal_forest_day
+  Forest_ErodedGully_Scatter_Stylized_01:      stylized_forest_day
+  Forest_ErodedGully_Scatter_Perf_01:          performance_safe_forest
+  Forest_ErodedGully_Debris_Photoreal_01:      photoreal_forest_day
+  Forest_ErodedGully_Debris_Stylized_01:       stylized_forest_day
+  Forest_ErodedGully_Debris_Perf_01:           performance_safe_forest
