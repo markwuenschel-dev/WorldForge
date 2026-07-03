@@ -1,0 +1,2819 @@
+{
+  "pack": "biome_expansion_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "mesh_cov_basalt_cover_ridge::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 360.0, 'y_cm': 200.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 360.0cm outside encounter_cover window (60.0, 600.0) for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family encounter_cover (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::geometry_cover_height_class_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'cover_height_class' for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::geometry_cover_height_class_valid": {
+      "ok": true,
+      "detail": "encounter_cover cover_height_class=half not in ('low', 'half', 'full')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 360.0, 'y_cm': 200.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 360.0cm outside encounter_cover window (60.0, 600.0) for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family encounter_cover (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::geometry_cover_height_class_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'cover_height_class' for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::geometry_cover_height_class_valid": {
+      "ok": true,
+      "detail": "encounter_cover cover_height_class=half not in ('low', 'half', 'full')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 360.0, 'y_cm': 200.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 360.0cm outside encounter_cover window (60.0, 600.0) for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family encounter_cover (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::geometry_cover_height_class_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'cover_height_class' for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::geometry_cover_height_class_valid": {
+      "ok": true,
+      "detail": "encounter_cover cover_height_class=half not in ('low', 'half', 'full')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 360.0, 'y_cm': 200.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 360.0cm outside encounter_cover window (60.0, 600.0) for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family encounter_cover (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::geometry_cover_height_class_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'cover_height_class' for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::geometry_cover_height_class_valid": {
+      "ok": true,
+      "detail": "encounter_cover cover_height_class=half not in ('low', 'half', 'full')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 360.0, 'y_cm': 200.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 360.0cm outside encounter_cover window (60.0, 600.0) for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family encounter_cover (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::geometry_cover_height_class_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'cover_height_class' for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::geometry_cover_height_class_valid": {
+      "ok": true,
+      "detail": "encounter_cover cover_height_class=half not in ('low', 'half', 'full')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 360.0, 'y_cm': 200.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 360.0cm outside encounter_cover window (60.0, 600.0) for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family encounter_cover (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::geometry_cover_height_class_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'cover_height_class' for family encounter_cover",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::geometry_cover_height_class_valid": {
+      "ok": true,
+      "detail": "encounter_cover cover_height_class=half not in ('low', 'half', 'full')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 260.0, 'y_cm': 180.0, 'z_cm': 150.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 260.0cm outside industrial_debris window (30.0, 800.0) for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not allowed for family industrial_debris (allowed: ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'Custom', 'SimpleAndComplex'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::geometry_blocking_collision_declared_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'blocking_collision_declared' for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::geometry_blocking_collision_declared_bool": {
+      "ok": true,
+      "detail": "industrial_debris blocking_collision_declared must be a bool, got True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 260.0, 'y_cm': 180.0, 'z_cm': 150.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 260.0cm outside industrial_debris window (30.0, 800.0) for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not allowed for family industrial_debris (allowed: ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'Custom', 'SimpleAndComplex'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::geometry_blocking_collision_declared_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'blocking_collision_declared' for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::geometry_blocking_collision_declared_bool": {
+      "ok": true,
+      "detail": "industrial_debris blocking_collision_declared must be a bool, got True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 260.0, 'y_cm': 180.0, 'z_cm': 150.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 260.0cm outside industrial_debris window (30.0, 800.0) for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not allowed for family industrial_debris (allowed: ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'Custom', 'SimpleAndComplex'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::geometry_blocking_collision_declared_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'blocking_collision_declared' for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::geometry_blocking_collision_declared_bool": {
+      "ok": true,
+      "detail": "industrial_debris blocking_collision_declared must be a bool, got True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 260.0, 'y_cm': 180.0, 'z_cm': 150.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 260.0cm outside industrial_debris window (30.0, 800.0) for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not allowed for family industrial_debris (allowed: ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'Custom', 'SimpleAndComplex'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::geometry_blocking_collision_declared_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'blocking_collision_declared' for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::geometry_blocking_collision_declared_bool": {
+      "ok": true,
+      "detail": "industrial_debris blocking_collision_declared must be a bool, got True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 260.0, 'y_cm': 180.0, 'z_cm': 150.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 260.0cm outside industrial_debris window (30.0, 800.0) for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not allowed for family industrial_debris (allowed: ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'Custom', 'SimpleAndComplex'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::geometry_blocking_collision_declared_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'blocking_collision_declared' for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::geometry_blocking_collision_declared_bool": {
+      "ok": true,
+      "detail": "industrial_debris blocking_collision_declared must be a bool, got True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 260.0, 'y_cm': 180.0, 'z_cm': 150.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 260.0cm outside industrial_debris window (30.0, 800.0) for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAllDynamic not allowed for family industrial_debris (allowed: ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'Custom', 'SimpleAndComplex'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::geometry_blocking_collision_declared_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'blocking_collision_declared' for family industrial_debris",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::geometry_blocking_collision_declared_bool": {
+      "ok": true,
+      "detail": "industrial_debris blocking_collision_declared must be a bool, got True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 1600.0, 'y_cm': 1400.0, 'z_cm': 3200.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 3200.0cm outside biome_landmark window (400.0, 12000.0) for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family biome_landmark (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::geometry_landmark_budget_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'landmark_budget' for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::geometry_landmark_budget_declared": {
+      "ok": true,
+      "detail": "biome_landmark landmark_budget empty",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 1600.0, 'y_cm': 1400.0, 'z_cm': 3200.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 3200.0cm outside biome_landmark window (400.0, 12000.0) for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family biome_landmark (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::geometry_landmark_budget_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'landmark_budget' for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::geometry_landmark_budget_declared": {
+      "ok": true,
+      "detail": "biome_landmark landmark_budget empty",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 1600.0, 'y_cm': 1400.0, 'z_cm': 3200.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 3200.0cm outside biome_landmark window (400.0, 12000.0) for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family biome_landmark (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::geometry_landmark_budget_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'landmark_budget' for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::geometry_landmark_budget_declared": {
+      "ok": true,
+      "detail": "biome_landmark landmark_budget empty",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 1600.0, 'y_cm': 1400.0, 'z_cm': 3200.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 3200.0cm outside biome_landmark window (400.0, 12000.0) for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family biome_landmark (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::geometry_landmark_budget_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'landmark_budget' for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::geometry_landmark_budget_declared": {
+      "ok": true,
+      "detail": "biome_landmark landmark_budget empty",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 1600.0, 'y_cm': 1400.0, 'z_cm': 3200.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 3200.0cm outside biome_landmark window (400.0, 12000.0) for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family biome_landmark (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::geometry_landmark_budget_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'landmark_budget' for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::geometry_landmark_budget_declared": {
+      "ok": true,
+      "detail": "biome_landmark landmark_budget empty",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 1600.0, 'y_cm': 1400.0, 'z_cm': 3200.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 3200.0cm outside biome_landmark window (400.0, 12000.0) for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family biome_landmark (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::geometry_landmark_budget_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'landmark_budget' for family biome_landmark",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::geometry_landmark_budget_declared": {
+      "ok": true,
+      "detail": "biome_landmark landmark_budget empty",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 240.0, 'y_cm': 240.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 240.0cm outside resource_node window (40.0, 700.0) for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family resource_node (allowed: ('OverlapAll', 'BlockAllDynamic', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::geometry_interaction_clearance_cm_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'interaction_clearance_cm' for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::geometry_interaction_clearance_positive": {
+      "ok": true,
+      "detail": "resource_node interaction_clearance_cm must be > 0, got 120.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 240.0, 'y_cm': 240.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 240.0cm outside resource_node window (40.0, 700.0) for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family resource_node (allowed: ('OverlapAll', 'BlockAllDynamic', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::geometry_interaction_clearance_cm_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'interaction_clearance_cm' for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::geometry_interaction_clearance_positive": {
+      "ok": true,
+      "detail": "resource_node interaction_clearance_cm must be > 0, got 120.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 240.0, 'y_cm': 240.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 240.0cm outside resource_node window (40.0, 700.0) for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family resource_node (allowed: ('OverlapAll', 'BlockAllDynamic', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::geometry_interaction_clearance_cm_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'interaction_clearance_cm' for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::geometry_interaction_clearance_positive": {
+      "ok": true,
+      "detail": "resource_node interaction_clearance_cm must be > 0, got 120.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 240.0, 'y_cm': 240.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 240.0cm outside resource_node window (40.0, 700.0) for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family resource_node (allowed: ('OverlapAll', 'BlockAllDynamic', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::geometry_interaction_clearance_cm_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'interaction_clearance_cm' for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::geometry_interaction_clearance_positive": {
+      "ok": true,
+      "detail": "resource_node interaction_clearance_cm must be > 0, got 120.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 240.0, 'y_cm': 240.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 240.0cm outside resource_node window (40.0, 700.0) for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family resource_node (allowed: ('OverlapAll', 'BlockAllDynamic', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::geometry_interaction_clearance_cm_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'interaction_clearance_cm' for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::geometry_interaction_clearance_positive": {
+      "ok": true,
+      "detail": "resource_node interaction_clearance_cm must be > 0, got 120.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 240.0, 'y_cm': 240.0, 'z_cm': 180.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 240.0cm outside resource_node window (40.0, 700.0) for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family resource_node (allowed: ('OverlapAll', 'BlockAllDynamic', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::geometry_interaction_clearance_cm_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'interaction_clearance_cm' for family resource_node",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::geometry_interaction_clearance_positive": {
+      "ok": true,
+      "detail": "resource_node interaction_clearance_cm must be > 0, got 120.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 320.0, 'y_cm': 280.0, 'z_cm': 240.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 320.0cm outside rock_outcrop window (40.0, 2500.0) for family rock_outcrop",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family rock_outcrop (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 320.0, 'y_cm': 280.0, 'z_cm': 240.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 320.0cm outside rock_outcrop window (40.0, 2500.0) for family rock_outcrop",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family rock_outcrop (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 320.0, 'y_cm': 280.0, 'z_cm': 240.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 320.0cm outside rock_outcrop window (40.0, 2500.0) for family rock_outcrop",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family rock_outcrop (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 320.0, 'y_cm': 280.0, 'z_cm': 240.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 320.0cm outside rock_outcrop window (40.0, 2500.0) for family rock_outcrop",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family rock_outcrop (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 320.0, 'y_cm': 280.0, 'z_cm': 240.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 320.0cm outside rock_outcrop window (40.0, 2500.0) for family rock_outcrop",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family rock_outcrop (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 320.0, 'y_cm': 280.0, 'z_cm': 240.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 320.0cm outside rock_outcrop window (40.0, 2500.0) for family rock_outcrop",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=BlockAll not allowed for family rock_outcrop (allowed: ('BlockAll', 'BlockAllDynamic', 'SimpleAndComplex', 'Custom'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 60.0, 'y_cm': 60.0, 'z_cm': 220.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 220.0cm outside traversal_marker window (20.0, 350.0) for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family traversal_marker (allowed: ('OverlapAll', 'NoCollision', 'Custom', 'BlockAllDynamic'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::geometry_route_blocking_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'route_blocking' for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::geometry_route_blocking_false": {
+      "ok": true,
+      "detail": "traversal_marker route_blocking must be False, got False",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 60.0, 'y_cm': 60.0, 'z_cm': 220.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 220.0cm outside traversal_marker window (20.0, 350.0) for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family traversal_marker (allowed: ('OverlapAll', 'NoCollision', 'Custom', 'BlockAllDynamic'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::geometry_route_blocking_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'route_blocking' for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::geometry_route_blocking_false": {
+      "ok": true,
+      "detail": "traversal_marker route_blocking must be False, got False",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 60.0, 'y_cm': 60.0, 'z_cm': 220.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 220.0cm outside traversal_marker window (20.0, 350.0) for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family traversal_marker (allowed: ('OverlapAll', 'NoCollision', 'Custom', 'BlockAllDynamic'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::geometry_route_blocking_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'route_blocking' for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::geometry_route_blocking_false": {
+      "ok": true,
+      "detail": "traversal_marker route_blocking must be False, got False",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 60.0, 'y_cm': 60.0, 'z_cm': 220.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 220.0cm outside traversal_marker window (20.0, 350.0) for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family traversal_marker (allowed: ('OverlapAll', 'NoCollision', 'Custom', 'BlockAllDynamic'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::geometry_route_blocking_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'route_blocking' for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::geometry_route_blocking_false": {
+      "ok": true,
+      "detail": "traversal_marker route_blocking must be False, got False",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 60.0, 'y_cm': 60.0, 'z_cm': 220.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 220.0cm outside traversal_marker window (20.0, 350.0) for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family traversal_marker (allowed: ('OverlapAll', 'NoCollision', 'Custom', 'BlockAllDynamic'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::geometry_route_blocking_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'route_blocking' for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::geometry_route_blocking_false": {
+      "ok": true,
+      "detail": "traversal_marker route_blocking must be False, got False",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::bounds_present": {
+      "ok": true,
+      "detail": "bounds present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::bounds_complete": {
+      "ok": true,
+      "detail": "bounds missing keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::bounds_positive": {
+      "ok": true,
+      "detail": "every bound must be > 0, got {'x_cm': 60.0, 'y_cm': 60.0, 'z_cm': 220.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::bounds_largest_axis_in_window": {
+      "ok": true,
+      "detail": "largest extent 220.0cm outside traversal_marker window (20.0, 350.0) for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::collision_profile_known": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not in ('BlockAll', 'BlockAllDynamic', 'OverlapAll', 'NoCollision', 'Custom', 'SimpleAndComplex')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::collision_profile_allowed_for_family": {
+      "ok": true,
+      "detail": "collision_profile=OverlapAll not allowed for family traversal_marker (allowed: ('OverlapAll', 'NoCollision', 'Custom', 'BlockAllDynamic'))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::pivot_policy_valid": {
+      "ok": true,
+      "detail": "pivot_policy=base_center",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::scale_policy_valid": {
+      "ok": true,
+      "detail": "scale_policy=uniform",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::geometry_route_blocking_present": {
+      "ok": true,
+      "detail": "geometry missing required key 'route_blocking' for family traversal_marker",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::geometry_route_blocking_false": {
+      "ok": true,
+      "detail": "traversal_marker route_blocking must be False, got False",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 348,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-mesh-collision-bounds",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "70314df0b0f98dc97f698b0a15e936b4e10dd0e0",
+    "timestamp": "2026-07-03T23:13:28.870933+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 36
+  }
+}

@@ -1,0 +1,345 @@
+{
+  "pack": "biome_expansion_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "baseline::rebuild": {
+      "ok": true,
+      "detail": "create_mesh_assets rc=0 ([create-mesh-assets] 36 assets, 6 families, 3 source types)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::asset_count": {
+      "ok": true,
+      "detail": "catalog has 36 assets (expected 36)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mesh_contract": {
+      "ok": true,
+      "detail": "validate_mesh_contract.py rc=0 ([validate-mesh-contract] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mesh_catalog": {
+      "ok": true,
+      "detail": "validate_mesh_catalog.py rc=0 ([validate-mesh-catalog] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mesh_provenance": {
+      "ok": true,
+      "detail": "validate_mesh_provenance.py rc=0 ([validate-mesh-provenance] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mesh_final_paths": {
+      "ok": true,
+      "detail": "validate_mesh_final_paths.py rc=0 ([validate-mesh-final-paths] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mesh_material_bindings": {
+      "ok": true,
+      "detail": "validate_mesh_material_bindings.py rc=0 ([validate-mesh-material-bindings] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mesh_collision_bounds": {
+      "ok": true,
+      "detail": "validate_mesh_collision_bounds.py rc=0 ([validate-mesh-collision-bounds] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mesh_pcg_eligibility": {
+      "ok": true,
+      "detail": "validate_mesh_pcg_eligibility.py rc=0 ([validate-mesh-pcg-eligibility] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mesh_biome_compatibility": {
+      "ok": true,
+      "detail": "validate_mesh_biome_compatibility.py rc=0 ([validate-mesh-biome-compatibility] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mesh_rendering_budgets": {
+      "ok": true,
+      "detail": "validate_mesh_rendering_budgets.py rc=0 ([validate-mesh-rendering-budgets] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mesh_package": {
+      "ok": true,
+      "detail": "validate_mesh_package.py rc=0 ([validate-mesh-package] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_catalog_record::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: removed catalog record for mesh_cov_basalt_cover_ridge -> validate_mesh_catalog.py rc=1 ([validate-mesh-catalog]   FAIL: no_orphan_generated_meshes: generated meshes missing catalog records: ['mesh_cov_basalt_cover_ridge'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_catalog_record::repaired": {
+      "ok": true,
+      "detail": "repair rebuild rc=0; post-repair validate_mesh_catalog.py green=True ([validate-mesh-catalog] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_generated_descriptor::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted descriptor.json for mesh_cov_basalt_cover_ridge -> validate_mesh_catalog.py rc=1 ([validate-mesh-catalog]   FAIL: mesh_cov_basalt_cover_ridge::descriptor_exists: descriptor missing: procedural/generated/mesh_assets/mesh_cov_basalt_cover_ridge/descriptor.json)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_generated_descriptor::repaired": {
+      "ok": true,
+      "detail": "repair rebuild rc=0; post-repair validate_mesh_catalog.py green=True ([validate-mesh-catalog] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::final_path_moved_to_temp::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: moved final path to Temp for mesh_cov_basalt_cover_ridge -> validate_mesh_final_paths.py rc=1 ([validate-mesh-final-paths]   FAIL: mesh_cov_basalt_cover_ridge::final_path_not_forbidden: final_asset_path is a forbidden/quarantine path: /Game/HoudiniEngine/Temp/Leaked/SM_mesh_cov_basalt_cover_rid)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::final_path_moved_to_temp::repaired": {
+      "ok": true,
+      "detail": "repair rebuild rc=0; post-repair validate_mesh_final_paths.py green=True ([validate-mesh-final-paths] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership::guard_refuses_human_owned": {
+      "ok": true,
+      "detail": "destroy guard must refuse human_owned entry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership::guard_refuses_unowned_final": {
+      "ok": true,
+      "detail": "destroy guard must refuse entry with final path outside owned roots",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership::all_generated_owned_destroyable": {
+      "ok": true,
+      "detail": "generated-owned assets the guard would wrongly refuse: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::none_refused": {
+      "ok": true,
+      "detail": "destroy refused generated-owned assets (guard misfire): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::all_removed": {
+      "ok": true,
+      "detail": "removed 36 generated-owned assets (expected 36)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::catalog_empty": {
+      "ok": true,
+      "detail": "catalog holds 0 record(s) after destroy (expected 0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::create_mesh_assets": {
+      "ok": true,
+      "detail": "create_mesh_assets rc=0 ([create-mesh-assets] 36 assets, 6 families, 3 source types)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::asset_count": {
+      "ok": true,
+      "detail": "catalog has 36 assets (expected 36)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mesh_contract": {
+      "ok": true,
+      "detail": "validate_mesh_contract.py rc=0 ([validate-mesh-contract] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mesh_catalog": {
+      "ok": true,
+      "detail": "validate_mesh_catalog.py rc=0 ([validate-mesh-catalog] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mesh_provenance": {
+      "ok": true,
+      "detail": "validate_mesh_provenance.py rc=0 ([validate-mesh-provenance] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mesh_final_paths": {
+      "ok": true,
+      "detail": "validate_mesh_final_paths.py rc=0 ([validate-mesh-final-paths] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mesh_material_bindings": {
+      "ok": true,
+      "detail": "validate_mesh_material_bindings.py rc=0 ([validate-mesh-material-bindings] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mesh_collision_bounds": {
+      "ok": true,
+      "detail": "validate_mesh_collision_bounds.py rc=0 ([validate-mesh-collision-bounds] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mesh_pcg_eligibility": {
+      "ok": true,
+      "detail": "validate_mesh_pcg_eligibility.py rc=0 ([validate-mesh-pcg-eligibility] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mesh_biome_compatibility": {
+      "ok": true,
+      "detail": "validate_mesh_biome_compatibility.py rc=0 ([validate-mesh-biome-compatibility] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mesh_rendering_budgets": {
+      "ok": true,
+      "detail": "validate_mesh_rendering_budgets.py rc=0 ([validate-mesh-rendering-budgets] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mesh_package": {
+      "ok": true,
+      "detail": "validate_mesh_package.py rc=0 ([validate-mesh-package] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::catalog_restored": {
+      "ok": true,
+      "detail": "post-restore catalog has 36 assets (expected 36)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::catalog_validator_green": {
+      "ok": true,
+      "detail": "post-restore validate_mesh_catalog rc=0 ([validate-mesh-catalog] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 38,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "mesh-lifecycle-torture",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": false,
+    "torture": true,
+    "seeds": null,
+    "git_sha": "70314df0b0f98dc97f698b0a15e936b4e10dd0e0",
+    "timestamp": "2026-07-03T23:13:29.423705+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 3,
+    "corruption_modes": [
+      "delete_catalog_record",
+      "delete_generated_descriptor",
+      "final_path_moved_to_temp"
+    ],
+    "expected_asset_count": 36
+  }
+}

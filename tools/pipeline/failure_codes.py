@@ -186,6 +186,35 @@ class FailureCode:
     BIOME_PACKAGE_FAILURE = "WF202_BIOME_PACKAGE_FAILURE"
     BIOME_FUZZ_FAILURE = "WF203_BIOME_FUZZ_FAILURE"
 
+    # ======================================================================
+    # v1.2 MeshForge Intake — generated mesh asset taxonomy (210–239)
+    # ----------------------------------------------------------------------
+    # ADDITIVE to the v1.0x / v1.1 taxonomy: one code per MeshForge Intake gate
+    # class so the biome_expansion_world full-shield (MESHES=1) can roll mesh
+    # failures up by lane. Fine-grained WF0xx codes still describe the specific
+    # defect; these bucket which mesh lane owns it. Do NOT reuse or renumber an
+    # earlier code — extend cleanly here.
+    # ======================================================================
+    MESH_CONTRACT_FAILURE = "WF210_MESH_CONTRACT_FAILURE"
+    MESH_CATALOG_FAILURE = "WF211_MESH_CATALOG_FAILURE"
+    MESH_PROVENANCE_FAILURE = "WF212_MESH_PROVENANCE_FAILURE"
+    MESH_OWNERSHIP_FAILURE = "WF213_MESH_OWNERSHIP_FAILURE"
+    MESH_FINAL_PATH_FAILURE = "WF214_MESH_FINAL_PATH_FAILURE"
+    MESH_SOURCE_FAILURE = "WF215_MESH_SOURCE_FAILURE"
+    MESH_MATERIAL_BINDING_FAILURE = "WF216_MESH_MATERIAL_BINDING_FAILURE"
+    MESH_COLLISION_FAILURE = "WF217_MESH_COLLISION_FAILURE"
+    MESH_BOUNDS_FAILURE = "WF218_MESH_BOUNDS_FAILURE"
+    MESH_PIVOT_FAILURE = "WF219_MESH_PIVOT_FAILURE"
+    MESH_SCALE_FAILURE = "WF220_MESH_SCALE_FAILURE"
+    MESH_PCG_ELIGIBILITY_FAILURE = "WF221_MESH_PCG_ELIGIBILITY_FAILURE"
+    MESH_BIOME_COMPATIBILITY_FAILURE = "WF222_MESH_BIOME_COMPATIBILITY_FAILURE"
+    MESH_RENDERING_BUDGET_FAILURE = "WF223_MESH_RENDERING_BUDGET_FAILURE"
+    MESH_PACKAGE_FAILURE = "WF224_MESH_PACKAGE_FAILURE"
+    MESH_LIFECYCLE_FAILURE = "WF225_MESH_LIFECYCLE_FAILURE"
+    MESH_REPAIR_FAILURE = "WF226_MESH_REPAIR_FAILURE"
+    MESH_DESTROY_FAILURE = "WF227_MESH_DESTROY_FAILURE"
+    MESH_NEGATIVE_FIXTURE_FAILURE = "WF228_MESH_NEGATIVE_FIXTURE_FAILURE"
+
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
 # This is the *default* nature of the code; a validator may still choose a
@@ -291,6 +320,26 @@ SEVERITY = {
     FailureCode.BIOME_BUDGET_FAILURE: "fail",
     FailureCode.BIOME_PACKAGE_FAILURE: "fail",
     FailureCode.BIOME_FUZZ_FAILURE: "fail",
+    # v1.2 MeshForge Intake gate-level codes — every gate failure is blocking.
+    FailureCode.MESH_CONTRACT_FAILURE: "fail",
+    FailureCode.MESH_CATALOG_FAILURE: "fail",
+    FailureCode.MESH_PROVENANCE_FAILURE: "fail",
+    FailureCode.MESH_OWNERSHIP_FAILURE: "fail",
+    FailureCode.MESH_FINAL_PATH_FAILURE: "fail",
+    FailureCode.MESH_SOURCE_FAILURE: "fail",
+    FailureCode.MESH_MATERIAL_BINDING_FAILURE: "fail",
+    FailureCode.MESH_COLLISION_FAILURE: "fail",
+    FailureCode.MESH_BOUNDS_FAILURE: "fail",
+    FailureCode.MESH_PIVOT_FAILURE: "fail",
+    FailureCode.MESH_SCALE_FAILURE: "fail",
+    FailureCode.MESH_PCG_ELIGIBILITY_FAILURE: "fail",
+    FailureCode.MESH_BIOME_COMPATIBILITY_FAILURE: "fail",
+    FailureCode.MESH_RENDERING_BUDGET_FAILURE: "fail",
+    FailureCode.MESH_PACKAGE_FAILURE: "fail",
+    FailureCode.MESH_LIFECYCLE_FAILURE: "fail",
+    FailureCode.MESH_REPAIR_FAILURE: "fail",
+    FailureCode.MESH_DESTROY_FAILURE: "fail",
+    FailureCode.MESH_NEGATIVE_FIXTURE_FAILURE: "fail",
 }
 
 # The v1.0x gate-level failure taxonomy (brief §"shared failure taxonomy"):
@@ -336,6 +385,26 @@ GATE_TAXONOMY = {
     "BIOME_BUDGET_FAILURE": FailureCode.BIOME_BUDGET_FAILURE,
     "BIOME_PACKAGE_FAILURE": FailureCode.BIOME_PACKAGE_FAILURE,
     "BIOME_FUZZ_FAILURE": FailureCode.BIOME_FUZZ_FAILURE,
+    # v1.2 MeshForge Intake lane codes.
+    "MESH_CONTRACT_FAILURE": FailureCode.MESH_CONTRACT_FAILURE,
+    "MESH_CATALOG_FAILURE": FailureCode.MESH_CATALOG_FAILURE,
+    "MESH_PROVENANCE_FAILURE": FailureCode.MESH_PROVENANCE_FAILURE,
+    "MESH_OWNERSHIP_FAILURE": FailureCode.MESH_OWNERSHIP_FAILURE,
+    "MESH_FINAL_PATH_FAILURE": FailureCode.MESH_FINAL_PATH_FAILURE,
+    "MESH_SOURCE_FAILURE": FailureCode.MESH_SOURCE_FAILURE,
+    "MESH_MATERIAL_BINDING_FAILURE": FailureCode.MESH_MATERIAL_BINDING_FAILURE,
+    "MESH_COLLISION_FAILURE": FailureCode.MESH_COLLISION_FAILURE,
+    "MESH_BOUNDS_FAILURE": FailureCode.MESH_BOUNDS_FAILURE,
+    "MESH_PIVOT_FAILURE": FailureCode.MESH_PIVOT_FAILURE,
+    "MESH_SCALE_FAILURE": FailureCode.MESH_SCALE_FAILURE,
+    "MESH_PCG_ELIGIBILITY_FAILURE": FailureCode.MESH_PCG_ELIGIBILITY_FAILURE,
+    "MESH_BIOME_COMPATIBILITY_FAILURE": FailureCode.MESH_BIOME_COMPATIBILITY_FAILURE,
+    "MESH_RENDERING_BUDGET_FAILURE": FailureCode.MESH_RENDERING_BUDGET_FAILURE,
+    "MESH_PACKAGE_FAILURE": FailureCode.MESH_PACKAGE_FAILURE,
+    "MESH_LIFECYCLE_FAILURE": FailureCode.MESH_LIFECYCLE_FAILURE,
+    "MESH_REPAIR_FAILURE": FailureCode.MESH_REPAIR_FAILURE,
+    "MESH_DESTROY_FAILURE": FailureCode.MESH_DESTROY_FAILURE,
+    "MESH_NEGATIVE_FIXTURE_FAILURE": FailureCode.MESH_NEGATIVE_FIXTURE_FAILURE,
 }
 
 

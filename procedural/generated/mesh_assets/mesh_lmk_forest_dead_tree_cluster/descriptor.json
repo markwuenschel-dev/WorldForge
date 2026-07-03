@@ -1,0 +1,129 @@
+{
+  "schema_version": "1.2",
+  "asset_id": "mesh_lmk_forest_dead_tree_cluster",
+  "display_name": "BiomeLandmark — ForestDeadTreeCluster",
+  "mesh_family": "biome_landmark",
+  "source_type": "ue_generated",
+  "source_recipe": "recipe_biome_landmark_forest_dead_tree_cluster",
+  "source_hash": "sha256:ab1fef8b3dbc0ab6a273684490e52e906fb933bd9f141681e18afecd6c9ee03f",
+  "source_tool_version": "1.2.0",
+  "final_asset_path": "/Game/WorldForge/Generated/Meshes/BiomeLandmark/SM_ForestDeadTreeCluster",
+  "intermediate_paths": [],
+  "quarantine_paths": [],
+  "generated_owned": true,
+  "human_owned": false,
+  "material_bindings": [
+    {
+      "slot_name": "MI_Body",
+      "material_asset_path": "/Game/WorldForge/Generated/Materials/BiomeLandmark/MI_ForestDeadTreeCluster_RockForest",
+      "material_family": "rock_forest",
+      "biome_compatibility": [
+        "temperate_forest"
+      ],
+      "rendering_budget_class": "cinematic",
+      "fallback_allowed": false
+    }
+  ],
+  "collision_profile": "BlockAll",
+  "bounds": {
+    "x_cm": 1600.0,
+    "y_cm": 1400.0,
+    "z_cm": 3200.0
+  },
+  "pivot_policy": "base_center",
+  "scale_policy": "uniform",
+  "budget_class": "cinematic",
+  "pcg_eligibility": "pcg_conditionally_allowed",
+  "biome_compatibility": [
+    "temperate_forest"
+  ],
+  "poi_compatibility": [
+    "landmark",
+    "vista",
+    "orientation"
+  ],
+  "placement_compatibility": {
+    "allowed_placement_profiles": [
+      "scatter_default",
+      "scatter_sparse"
+    ],
+    "pcg_rules": {
+      "allowed_biomes": [
+        "temperate_forest"
+      ],
+      "allowed_poi_classes": [
+        "landmark",
+        "vista",
+        "orientation"
+      ],
+      "allowed_placement_profiles": [
+        "scatter_default",
+        "scatter_sparse"
+      ],
+      "slope_limits": {
+        "min_deg": 0,
+        "max_deg": 12
+      },
+      "height_limits": {
+        "min_cm": -50000,
+        "max_cm": 50000
+      },
+      "density_class": "sparse",
+      "collision_policy": "BlockAll",
+      "avoid_critical_routes": true,
+      "avoid_player_start": true,
+      "conditions": [
+        "requires_route_graph_clearance"
+      ]
+    }
+  },
+  "nanite_policy": "nanite_enabled",
+  "lod_policy": "lod_auto",
+  "shadow_policy": "shadow_default",
+  "raytracing_policy": "raytracing_default",
+  "rendering_budget": {
+    "triangle_class": "high",
+    "material_complexity_class": "medium",
+    "texture_class": "medium",
+    "collision_complexity_class": "simple",
+    "nanite_policy": "nanite_enabled",
+    "lod_policy": "lod_auto",
+    "shadow_policy": "shadow_default",
+    "raytracing_policy": "raytracing_default",
+    "pcg_density_class": "sparse",
+    "package_size_class": "large"
+  },
+  "geometry": {
+    "landmark_budget": "cinematic_silhouette"
+  },
+  "package_rules": {
+    "include_material_dependencies": true
+  },
+  "repair_policy": "regenerate_from_recipe",
+  "destroy_policy": "generated_owned_only",
+  "source_metadata": {
+    "source_type": "ue_generated",
+    "ue_script": "tools/unreal/materialize_mesh_asset.py",
+    "ue_script_version": "1.2.0",
+    "input_spec": "recipe_biome_landmark_forest_dead_tree_cluster",
+    "editor_version": null,
+    "source_hash": "sha256:ab1fef8b3dbc0ab6a273684490e52e906fb933bd9f141681e18afecd6c9ee03f",
+    "materialization_report": "procedural/reports/mesh_assets/recipe_biome_landmark_forest_dead_tree_cluster/ue_materialize_report.json"
+  },
+  "definition_path": "procedural/definitions/mesh_assets/mesh_lmk_forest_dead_tree_cluster.yaml",
+  "descriptor_path": "procedural/generated/mesh_assets/mesh_lmk_forest_dead_tree_cluster/descriptor.json",
+  "generated_at_utc": "2026-07-03T23:13:15.829073+00:00",
+  "provenance": {
+    "generator_name": "create_mesh_assets",
+    "generator_version": "1.2.0",
+    "generated_at_utc": "2026-07-03T23:13:15.818344+00:00",
+    "source_commit": "70314df0b0f98dc97f698b0a15e936b4e10dd0e0",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/definitions/mesh_assets/mesh_lmk_forest_dead_tree_cluster.yaml": "90b6d2cbeee49ce931b5ecf5f3849ea2d796b5b58d19ec0fe38fa79598e767f5"
+    }
+  },
+  "provenance_id": "prov_mesh_lmk_forest_dead_tree_cluster",
+  "registry_id": "mesh_catalog:mesh_lmk_forest_dead_tree_cluster",
+  "registry_owner": "worldforge_mesh_catalog"
+}

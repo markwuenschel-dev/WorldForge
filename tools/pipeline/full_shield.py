@@ -254,6 +254,68 @@ def build_biomeforge_gates():
     return G
 
 
+def build_meshforge_gates():
+    """v1.2 MeshForge Intake gates (brief §17, gates 47-61). Spliced into the
+    registry ONLY when MESHES=1. Until each validator SCRIPT exists it registers
+    as a blocking failure (status=missing) — no fake green. Every gate maps to the
+    shared CLI contract (``--pack <id> [--strict]``, exit 0/1, writes a report)."""
+    id_arg = lambda c: c["pack_id"]
+
+    def rr(command, name):
+        # mesh command reports live under procedural/reports/mesh/<command>/<name>
+        return lambda c: "procedural/reports/mesh/{}/{}".format(command, name)
+
+    G = []
+    # 47 — generate/ingest the mesh asset matrix (Agent 2). Deterministic.
+    G.append(gate("create-mesh-assets", "Create mesh assets", "mesh",
+                  FailureCode.MESH_CONTRACT_FAILURE, "create_mesh_assets.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  report=rr("create_mesh_assets", "create_mesh_assets_report.json")))
+    # 48-57 — per-dimension mesh validators.
+    mesh_gates = [
+        ("validate-mesh-contract", "Validate mesh contract",
+         FailureCode.MESH_CONTRACT_FAILURE, "validate_mesh_contract.py"),
+        ("validate-mesh-catalog", "Validate mesh catalog",
+         FailureCode.MESH_CATALOG_FAILURE, "validate_mesh_catalog.py"),
+        ("validate-mesh-provenance", "Validate mesh provenance",
+         FailureCode.MESH_PROVENANCE_FAILURE, "validate_mesh_provenance.py"),
+        ("validate-mesh-final-paths", "Validate mesh final paths",
+         FailureCode.MESH_FINAL_PATH_FAILURE, "validate_mesh_final_paths.py"),
+        ("validate-mesh-material-bindings", "Validate mesh material bindings",
+         FailureCode.MESH_MATERIAL_BINDING_FAILURE, "validate_mesh_material_bindings.py"),
+        ("validate-mesh-collision-bounds", "Validate mesh collision/bounds",
+         FailureCode.MESH_COLLISION_FAILURE, "validate_mesh_collision_bounds.py"),
+        ("validate-mesh-pcg-eligibility", "Validate mesh PCG eligibility",
+         FailureCode.MESH_PCG_ELIGIBILITY_FAILURE, "validate_mesh_pcg_eligibility.py"),
+        ("validate-mesh-biome-compatibility", "Validate mesh biome compatibility",
+         FailureCode.MESH_BIOME_COMPATIBILITY_FAILURE, "validate_mesh_biome_compatibility.py"),
+        ("validate-mesh-rendering-budgets", "Validate mesh rendering budgets",
+         FailureCode.MESH_RENDERING_BUDGET_FAILURE, "validate_mesh_rendering_budgets.py"),
+        ("validate-mesh-package", "Validate mesh package",
+         FailureCode.MESH_PACKAGE_FAILURE, "validate_mesh_package.py"),
+    ]
+    for gid, label, code, script in mesh_gates:
+        command = script.replace(".py", "")
+        G.append(gate(gid, label, "mesh", code, script,
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=rr(command, command + "_report.json")))
+    # 58 — negative mesh fixtures (Agent 7): known-bad definitions must be rejected.
+    G.append(gate("mesh-negative-validators", "Mesh negative validators", "mesh",
+                  FailureCode.MESH_NEGATIVE_FIXTURE_FAILURE, "test_negative_mesh.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"])))
+    # 59-60 — mesh lifecycle torture (Agent 7): repair -> destroy -> rebuild ->
+    # revalidate on a generated-owned scope. TORTURE only.
+    G.append(gate("mesh-lifecycle-torture", "Mesh lifecycle torture", "mesh",
+                  FailureCode.MESH_LIFECYCLE_FAILURE, "mesh_lifecycle_torture.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  torture_only=True))
+    # 61 — final report integrity INCLUDING mesh reports (Agent 7 extends).
+    G.append(gate("mesh-report-integrity", "Mesh report integrity", "mesh",
+                  FailureCode.REPORT_INTEGRITY_FAILURE, "validate_report_integrity.py",
+                  lambda c: ["--pack", id_arg(c), "--mesh"] + _s(c["strict"])))
+    return G
+
+
 def pack_declares_biomes(pack):
     """True if a world pack yaml declares BiomeForge (``biome_families:`` list or
     ``biomeforge: true``). Used to conditionally include the v1.1 gates."""
@@ -334,6 +396,8 @@ def main(argv=None):
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--deep", action="store_true")
     ap.add_argument("--torture", action="store_true")
+    ap.add_argument("--meshes", action="store_true",
+                    help="Include v1.2 MeshForge Intake gates (also via MESHES=1).")
     ap.add_argument("--timeout", type=int, default=1800)
     ap.add_argument("--no-build", action="store_true",
                     help="Skip the heavy create-world-pack rebuild gate (validation-only run).")
@@ -383,6 +447,17 @@ def main(argv=None):
         fanchor = ids.index("fuzz-world-pack") + 1 if "fuzz-world-pack" in ids else len(registry)
         registry[fanchor:fanchor] = fuzz_gate
         print("BiomeForge pack detected — %d v1.1 gate(s) active." % len(bf))
+
+    # v1.2 — splice in MeshForge Intake gates when MESHES=1. They append after the
+    # regression matrix and before the final report-integrity gate, so mesh
+    # failures roll up by lane and the final integrity scan sees mesh reports.
+    ctx["meshes"] = args.meshes or flag_from_env("MESHES")
+    if ctx["meshes"]:
+        mf = build_meshforge_gates()
+        ids = [g["id"] for g in registry]
+        anchor = ids.index("final-report-integrity") if "final-report-integrity" in ids else len(registry)
+        registry[anchor:anchor] = mf
+        print("MeshForge Intake enabled — %d v1.2 mesh gate(s) active." % len(mf))
 
     if args.no_build or flag_from_env("NO_BUILD"):
         registry = [g for g in registry if g["id"] != "create-world-pack"]

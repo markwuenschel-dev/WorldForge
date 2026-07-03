@@ -46,6 +46,7 @@ from failure_codes import FailureCode
 from report_meta import (build_meta, hash_obj, flag_from_env,
                          REQUIRED_META_KEYS, missing_meta_keys)
 from world_pack_maps import enumerate_maps, report_dir_for
+from mesh_contract import MESH_REPORTS_REL
 
 
 # This gate's own report — excluded from the scan so it never grades itself.
@@ -282,12 +283,180 @@ def validate_pack(pack, strict, reports_dir=None, final=False, max_age_days=None
     return rep
 
 
+# ---------------------------------------------------------------------------
+# v1.2 MeshForge Intake — mesh command report-integrity scan (--mesh)
+# ---------------------------------------------------------------------------
+# The v1.2 mesh gates (brief §17) each emit a ValidationReport under
+# procedural/reports/mesh/<command>/<command>_report.json. --mesh validates
+# THOSE reports the same way the world-pack scan validates gate reports: a mesh
+# report cannot silently go missing, empty, zero-record, drop required metadata,
+# carry an unknown status, or launder a child failure as success.
+
+# This gate's own mesh report — written under its own command dir; never scanned.
+OWN_MESH_REPORT = "validate_report_integrity_mesh_report.json"
+
+# The canonical set of mesh command reports that MUST be present for a mesh
+# integrity scan. An absent required report is REPORT_MISSING.
+REQUIRED_MESH_COMMANDS = (
+    "create_mesh_assets",
+    "validate_mesh_contract",
+    "validate_mesh_catalog",
+    "validate_mesh_provenance",
+    "validate_mesh_final_paths",
+    "validate_mesh_material_bindings",
+    "validate_mesh_collision_bounds",
+    "validate_mesh_pcg_eligibility",
+    "validate_mesh_biome_compatibility",
+    "validate_mesh_rendering_budgets",
+    "validate_mesh_package",
+)
+
+# TORTURE-gated / negative reports: scanned for integrity IF PRESENT, but never
+# hard-required (mesh-lifecycle-torture only runs under the TORTURE gate, and
+# mesh-negative writes its own report only when the negative lane has run).
+OPTIONAL_MESH_COMMANDS = (
+    "mesh_negative",
+    "mesh_lifecycle_torture",
+)
+
+# Known overall-status vocabulary a mesh report may declare.
+KNOWN_REPORT_STATUSES = ("ok", "warn", "fail", "error")
+
+
+def _mesh_report_path(reports_root, command):
+    """procedural/reports/mesh/<command>/<command>_report.json under reports_root."""
+    return Path(reports_root) / command / (command + "_report.json")
+
+
+def _check_one_mesh_report(rep, command, path, required=True):
+    """Apply the mesh report-integrity battery to a single command report.
+
+    Records checks on rep. Returns True if the report was present+parseable and
+    the deeper battery ran, False if it was missing/empty/unparseable (which is
+    itself a recorded failure for a required report).
+    """
+    tag = "mesh_report::" + command
+
+    if not path.is_file():
+        # A missing torture/negative report is simply not scanned (not required);
+        # a missing required report is a blocking REPORT_MISSING.
+        if required:
+            rep.check(tag + "::present", False,
+                      "required mesh report absent: {}".format(path),
+                      code=FailureCode.REPORT_MISSING)
+        return False
+
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        rep.check(tag + "::parses", False,
+                  "mesh report is unparseable: {}".format(exc),
+                  code=FailureCode.REPORT_EMPTY)
+        return False
+    if not isinstance(data, dict) or not data:
+        rep.check(tag + "::non_empty", False,
+                  "mesh report is empty ({} / no content)".format(type(data).__name__),
+                  code=FailureCode.REPORT_EMPTY)
+        return False
+
+    rep.check(tag + "::present", True, "mesh report present: {}".format(path))
+
+    meta = data.get("meta")
+    failures = data.get("failures") or []
+
+    # -- v1.0x meta block (command+pack+status+record_count at minimum) ------
+    if not isinstance(meta, dict):
+        rep.check(tag + "::meta_present", False,
+                  "mesh report carries no meta block (missing mesh metadata)",
+                  code=FailureCode.REPORT_INTEGRITY_FAILURE)
+    else:
+        missing = list(missing_meta_keys(meta))
+        for k in ("command", "pack", "status", "record_count"):
+            if k not in meta and k not in missing:
+                missing.append(k)
+        if missing:
+            rep.check(tag + "::meta_complete", False,
+                      "missing required meta key(s): {}".format(sorted(missing)),
+                      code=FailureCode.REPORT_INTEGRITY_FAILURE)
+
+    # -- status vocabulary + child-failure propagation ----------------------
+    eff_status = (meta.get("status") if isinstance(meta, dict) else None) or data.get("status")
+    if eff_status not in KNOWN_REPORT_STATUSES:
+        rep.check(tag + "::known_status", False,
+                  "mesh report status outside known vocabulary: {!r}".format(eff_status),
+                  code=FailureCode.REPORT_INTEGRITY_FAILURE)
+    elif eff_status in ("fail", "error"):
+        rep.check(tag + "::child_passed", False,
+                  "child mesh report status='{}' — child failure must propagate".format(eff_status),
+                  code=FailureCode.CHILD_VALIDATION_FAILED)
+
+    # -- partial success laundered as success -------------------------------
+    claims_ok = (eff_status in ("ok", "warn")) or (data.get("passed") is True)
+    if failures and claims_ok:
+        rep.check(tag + "::status_consistent", False,
+                  "{} failure(s) present but status='{}' / passed={} (partial success "
+                  "laundered as success)".format(len(failures), eff_status, data.get("passed")),
+                  code=FailureCode.PARTIAL_SUCCESS_AS_SUCCESS)
+
+    # -- non-zero record count (success over nothing is a lie) --------------
+    rc = meta.get("record_count") if isinstance(meta, dict) else None
+    if isinstance(rc, bool) or not isinstance(rc, int) or rc <= 0:
+        rep.check(tag + "::nonzero_records", False,
+                  "record_count={!r} (a zero-record mesh report claiming success is a lie)".format(rc),
+                  code=FailureCode.REPORT_ZERO_RECORD)
+
+    return True
+
+
+def validate_mesh(pack, strict, reports_dir=None):
+    """Core mesh report-integrity scan. Returns an UNFINALIZED ValidationReport.
+
+    Scans procedural/reports/mesh/<command>/<command>_report.json for every
+    REQUIRED_MESH_COMMANDS entry (plus any present OPTIONAL_MESH_COMMANDS), so a
+    missing/empty/zero-record/child-failed mesh report fails this gate.
+    reports_dir overrides the mesh reports root (used by the negative harness).
+    """
+    try:
+        world_pack_id, _ = enumerate_maps(pack)
+    except Exception:
+        world_pack_id = None
+    reports_root = Path(reports_dir) if reports_dir else (REPO_ROOT / MESH_REPORTS_REL)
+
+    rep = ValidationReport("mesh_pack_id", world_pack_id or str(pack), strict=strict)
+
+    scanned = 0
+    for command in REQUIRED_MESH_COMMANDS:
+        _check_one_mesh_report(rep, command, _mesh_report_path(reports_root, command),
+                               required=True)
+        scanned += 1
+    for command in OPTIONAL_MESH_COMMANDS:
+        path = _mesh_report_path(reports_root, command)
+        if path.is_file():
+            _check_one_mesh_report(rep, command, path, required=False)
+            scanned += 1
+
+    rep.set_meta(build_meta(
+        command="validate-report-integrity-mesh",
+        pack=world_pack_id,
+        strict=strict,
+        status=None,
+        record_count=scanned,
+        extra={"mesh": True,
+               "required_reports": len(REQUIRED_MESH_COMMANDS),
+               "reports_scanned": scanned},
+    ))
+    return rep
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="WorldForge v1.0x report-integrity gate (no fake green).")
     ap.add_argument("--pack", required=True, help="World pack id or path.")
     ap.add_argument("--strict", action="store_true", help="Strict mode; also via STRICT=1.")
     ap.add_argument("--final", action="store_true",
                     help="Also require the FULL set of gate reports to be present.")
+    ap.add_argument("--mesh", action="store_true",
+                    help="Scan the v1.2 MeshForge command reports (procedural/reports/mesh/*) "
+                         "instead of the world-pack gate reports.")
     ap.add_argument("--max-age-days", type=float, default=None,
                     help="Flag reports older than this many days as stale (default: off).")
     ap.add_argument("--reports-dir", default=None,
@@ -302,6 +471,14 @@ def main(argv=None):
     except Exception as exc:
         sys.stderr.write("ERROR: cannot enumerate pack {}: {}\n".format(args.pack, exc))
         return 2
+
+    if args.mesh:
+        rep = validate_mesh(args.pack, strict=strict, reports_dir=args.reports_dir)
+        rep.finalize()
+        mesh_report_dir = REPO_ROOT / MESH_REPORTS_REL / "validate_report_integrity"
+        rep.write(mesh_report_dir, OWN_MESH_REPORT)
+        rep.print_summary("validate-report-integrity --mesh")
+        return rep.exit_code
 
     rep = validate_pack(args.pack, strict=strict, reports_dir=args.reports_dir,
                         final=final, max_age_days=args.max_age_days)

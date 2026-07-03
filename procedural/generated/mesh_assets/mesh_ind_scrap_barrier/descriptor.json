@@ -1,0 +1,132 @@
+{
+  "schema_version": "1.2",
+  "asset_id": "mesh_ind_scrap_barrier",
+  "display_name": "IndustrialDebris — ScrapBarrier",
+  "mesh_family": "industrial_debris",
+  "source_type": "internal_recipe",
+  "source_recipe": "recipe_industrial_debris_scrap_barrier",
+  "source_hash": "sha256:89506f4a1b6ed12d4ec00626274d94801055486e073a8bf7a1542b6410c986e4",
+  "source_tool_version": "1.2.0",
+  "final_asset_path": "/Game/WorldForge/Generated/Meshes/IndustrialDebris/SM_ScrapBarrier",
+  "intermediate_paths": [],
+  "quarantine_paths": [],
+  "generated_owned": true,
+  "human_owned": false,
+  "material_bindings": [
+    {
+      "slot_name": "MI_Body",
+      "material_asset_path": "/Game/WorldForge/Generated/Materials/IndustrialDebris/MI_ScrapBarrier_RockDesert",
+      "material_family": "rock_desert",
+      "biome_compatibility": [
+        "desert",
+        "volcanic_ashlands"
+      ],
+      "rendering_budget_class": "performance_safe",
+      "fallback_allowed": false
+    }
+  ],
+  "collision_profile": "BlockAllDynamic",
+  "bounds": {
+    "x_cm": 260.0,
+    "y_cm": 180.0,
+    "z_cm": 150.0
+  },
+  "pivot_policy": "base_center",
+  "scale_policy": "uniform",
+  "budget_class": "performance_safe",
+  "pcg_eligibility": "pcg_allowed",
+  "biome_compatibility": [
+    "desert",
+    "volcanic_ashlands"
+  ],
+  "poi_compatibility": [
+    "outpost",
+    "industrial",
+    "ruin"
+  ],
+  "placement_compatibility": {
+    "allowed_placement_profiles": [
+      "scatter_default",
+      "scatter_sparse"
+    ],
+    "pcg_rules": {
+      "allowed_biomes": [
+        "desert",
+        "volcanic_ashlands"
+      ],
+      "allowed_poi_classes": [
+        "outpost",
+        "industrial",
+        "ruin"
+      ],
+      "allowed_placement_profiles": [
+        "scatter_default",
+        "scatter_sparse"
+      ],
+      "slope_limits": {
+        "min_deg": 0,
+        "max_deg": 35
+      },
+      "height_limits": {
+        "min_cm": -50000,
+        "max_cm": 50000
+      },
+      "density_class": "medium",
+      "collision_policy": "BlockAllDynamic",
+      "avoid_critical_routes": true,
+      "avoid_player_start": true
+    }
+  },
+  "nanite_policy": "nanite_disabled",
+  "lod_policy": "lod_auto",
+  "shadow_policy": "shadow_default",
+  "raytracing_policy": "raytracing_default",
+  "rendering_budget": {
+    "triangle_class": "medium",
+    "material_complexity_class": "medium",
+    "texture_class": "medium",
+    "collision_complexity_class": "simple",
+    "nanite_policy": "nanite_disabled",
+    "lod_policy": "lod_auto",
+    "shadow_policy": "shadow_default",
+    "raytracing_policy": "raytracing_default",
+    "pcg_density_class": "medium",
+    "package_size_class": "medium"
+  },
+  "geometry": {
+    "blocking_collision_declared": true
+  },
+  "package_rules": {
+    "include_material_dependencies": true
+  },
+  "repair_policy": "regenerate_from_recipe",
+  "destroy_policy": "generated_owned_only",
+  "source_metadata": {
+    "source_type": "internal_recipe",
+    "recipe_id": "recipe_industrial_debris_scrap_barrier",
+    "recipe_version": "1.2.0",
+    "recipe_hash": "sha256:89506f4a1b6ed12d4ec00626274d94801055486e073a8bf7a1542b6410c986e4",
+    "parameters": {
+      "family": "industrial_debris",
+      "variant": "scrap_barrier",
+      "seed": 12
+    },
+    "determinism_key": "industrial_debris:scrap_barrier"
+  },
+  "definition_path": "procedural/definitions/mesh_assets/mesh_ind_scrap_barrier.yaml",
+  "descriptor_path": "procedural/generated/mesh_assets/mesh_ind_scrap_barrier/descriptor.json",
+  "generated_at_utc": "2026-07-03T23:13:15.526910+00:00",
+  "provenance": {
+    "generator_name": "create_mesh_assets",
+    "generator_version": "1.2.0",
+    "generated_at_utc": "2026-07-03T23:13:15.515399+00:00",
+    "source_commit": "70314df0b0f98dc97f698b0a15e936b4e10dd0e0",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/definitions/mesh_assets/mesh_ind_scrap_barrier.yaml": "8665dddb404a77702699b4bb63bcb785ec4c58398583ab6240a701241f4126bc"
+    }
+  },
+  "provenance_id": "prov_mesh_ind_scrap_barrier",
+  "registry_id": "mesh_catalog:mesh_ind_scrap_barrier",
+  "registry_owner": "worldforge_mesh_catalog"
+}
