@@ -48,6 +48,7 @@ from report_meta import (build_meta, hash_obj, flag_from_env,
 from world_pack_maps import enumerate_maps, report_dir_for
 from mesh_contract import MESH_REPORTS_REL
 import mission_contract as MC
+import visual_contract as VC
 
 
 # This gate's own report — excluded from the scan so it never grades itself.
@@ -619,6 +620,92 @@ def validate_missions(pack, strict, reports_dir=None):
     return rep
 
 
+# ---------------------------------------------------------------------------
+# v1.3.5 VisualFidelityForge — visual command report-integrity (--visuals)
+# ---------------------------------------------------------------------------
+# The v1.3.5 visual gates each emit a ValidationReport under
+# procedural/reports/visual/<command>/<command>_report.json — the same
+# per-command layout as the mesh/source/mission gates. --visuals validates THOSE
+# reports exactly the way --mesh validates the mesh command reports: a visual
+# report cannot silently go missing, empty, zero-record, drop required metadata,
+# carry an unknown status, or launder a child failure as success. It does NOT
+# alter the existing world-pack / --mesh / --sources / --missions behaviour.
+
+# This gate's own visuals report — written under its own command dir; never scanned.
+OWN_VISUALS_REPORT = "validate_report_integrity_visuals_report.json"
+
+# The canonical set of visual command reports that MUST be present for a visual
+# integrity scan (brief §"visual lanes"). An absent required report is REPORT_MISSING.
+REQUIRED_VISUAL_COMMANDS = (
+    "materialize_environment_rigs",
+    "scan_megascans_visual_assets",
+    "create_visual_dressing",
+    "validate_visual_asset_coverage",
+    "validate_surface_materialization",
+    "validate_world_dressing",
+    "validate_environment_rig",
+    "validate_sky_materialization",
+    "validate_fog_materialization",
+    "validate_cloud_materialization",
+    "validate_lighting_exposure",
+    "validate_post_process_profiles",
+    "validate_weather_vfx",
+    "validate_visual_readability",
+    "validate_visual_budgets",
+    "validate_visual_package",
+)
+
+# TORTURE-gated / negative visual reports: scanned for integrity IF PRESENT, but
+# never hard-required (visual-lifecycle-torture only runs under the TORTURE gate,
+# and visual-negative writes its report only when that lane has run).
+OPTIONAL_VISUAL_COMMANDS = (
+    "test_negative_visual",
+    "visual_lifecycle_torture",
+)
+
+
+def validate_visuals(pack, strict, reports_dir=None):
+    """Core visual report-integrity scan. Returns an UNFINALIZED ValidationReport.
+
+    Scans procedural/reports/visual/<command>/<command>_report.json for every
+    REQUIRED_VISUAL_COMMANDS entry (plus any present OPTIONAL_VISUAL_COMMANDS),
+    reusing the same per-report battery as the --mesh scan, so a missing / empty /
+    zero-record / child-failed visual report fails this gate. reports_dir overrides
+    the visual reports root (used by a negative harness). Existing behaviour of the
+    world-pack / --mesh / --sources / --missions scans is untouched.
+    """
+    try:
+        world_pack_id, _ = enumerate_maps(pack)
+    except Exception:
+        world_pack_id = None
+    reports_root = Path(reports_dir) if reports_dir else (REPO_ROOT / VC.VISUAL_REPORTS_REL)
+
+    rep = ValidationReport("visual_pack_id", world_pack_id or str(pack), strict=strict)
+
+    scanned = 0
+    for command in REQUIRED_VISUAL_COMMANDS:
+        _check_one_mesh_report(rep, command, _mesh_report_path(reports_root, command),
+                               required=True)
+        scanned += 1
+    for command in OPTIONAL_VISUAL_COMMANDS:
+        path = _mesh_report_path(reports_root, command)
+        if path.is_file():
+            _check_one_mesh_report(rep, command, path, required=False)
+            scanned += 1
+
+    rep.set_meta(build_meta(
+        command="validate-report-integrity-visuals",
+        pack=world_pack_id,
+        strict=strict,
+        status=None,
+        record_count=scanned,
+        extra={"visuals": True,
+               "required_reports": len(REQUIRED_VISUAL_COMMANDS),
+               "reports_scanned": scanned},
+    ))
+    return rep
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="WorldForge v1.0x report-integrity gate (no fake green).")
     ap.add_argument("--pack", required=True, help="World pack id or path.")
@@ -634,6 +721,9 @@ def main(argv=None):
     ap.add_argument("--missions", action="store_true",
                     help="Scan the v1.3 MissionForge + PlaytestForge command reports "
                          "(procedural/reports/missions/*) instead of the world-pack gate reports.")
+    ap.add_argument("--visuals", action="store_true",
+                    help="Scan the v1.3.5 VisualFidelityForge command reports "
+                         "(procedural/reports/visual/*) instead of the world-pack gate reports.")
     ap.add_argument("--max-age-days", type=float, default=None,
                     help="Flag reports older than this many days as stale (default: off).")
     ap.add_argument("--reports-dir", default=None,
@@ -671,6 +761,14 @@ def main(argv=None):
         missions_report_dir = REPO_ROOT / MC.MISSION_REPORTS_REL / "validate_report_integrity"
         rep.write(missions_report_dir, OWN_MISSIONS_REPORT)
         rep.print_summary("validate-report-integrity --missions")
+        return rep.exit_code
+
+    if args.visuals:
+        rep = validate_visuals(args.pack, strict=strict, reports_dir=args.reports_dir)
+        rep.finalize()
+        visuals_report_dir = REPO_ROOT / VC.VISUAL_REPORTS_REL / "validate_report_integrity"
+        rep.write(visuals_report_dir, OWN_VISUALS_REPORT)
+        rep.print_summary("validate-report-integrity --visuals")
         return rep.exit_code
 
     rep = validate_pack(args.pack, strict=strict, reports_dir=args.reports_dir,

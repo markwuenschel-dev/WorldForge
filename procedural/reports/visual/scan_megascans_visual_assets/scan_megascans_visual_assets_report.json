@@ -1,0 +1,75 @@
+{
+  "library": "megascans",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "externals_available": {
+      "ok": true,
+      "detail": "no external assets in procedural/generated/worldforge_external_asset_catalog.json — run scan_external_asset_library first",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "every_record_classified": {
+      "ok": true,
+      "detail": "unclassified: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ownership_stays_third_party": {
+      "ok": true,
+      "detail": "records that lost third-party ownership: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 3,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "scan-megascans-visual-assets",
+    "pack": "megascans",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "764e532ec87b5b62b944bc54c738798460648d52",
+    "timestamp": "2026-07-04T12:50:47.389634+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 51,
+    "coverage": {
+      "scanned": 51,
+      "per_biome": {
+        "alpine_snow": 2,
+        "desert": 46,
+        "temperate_forest": 6,
+        "volcanic_ashlands": 4,
+        "wetland_mire": 3
+      },
+      "per_visual_class": {
+        "debris_dressing": 2,
+        "ground_surface": 38,
+        "rock_dressing": 8,
+        "vegetation_dressing": 3
+      }
+    }
+  }
+}

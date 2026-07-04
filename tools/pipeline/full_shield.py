@@ -403,6 +403,61 @@ def build_source_gates(houdini_mode, megascans_on):
     return G
 
 
+def build_visualforge_gates():
+    """v1.3.5 VisualFidelityForge gates. Spliced into a missionforge shield when
+    VISUALS=1. Materializes the environment rig + surface/dressing/coverage and
+    validates fidelity without breaking playability/budget/lifecycle. Until a
+    validator SCRIPT exists it registers as blocking (status=missing)."""
+    id_arg = lambda c: c["pack_id"]
+
+    def rr(command):
+        return lambda c: "procedural/reports/visual/{}/{}_report.json".format(command, command)
+
+    G = []
+    # generate/scan first: materialize rigs, scan Megascans visual assets, dress.
+    G.append(gate("materialize-environment-rigs", "Materialize environment rigs", "visual",
+                  FailureCode.ENVIRONMENT_RIG_FAILURE, "materialize_environment_rigs.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  report=rr("materialize_environment_rigs")))
+    G.append(gate("scan-megascans-visual-assets", "Scan Megascans visual assets", "visual",
+                  FailureCode.VISUAL_ASSET_COVERAGE_FAILURE, "scan_megascans_visual_assets.py",
+                  lambda c: ["--lib", "megascans"] + _s(c["strict"]),
+                  report=rr("scan_megascans_visual_assets")))
+    G.append(gate("create-visual-dressing", "Create visual dressing", "visual",
+                  FailureCode.WORLD_DRESSING_FAILURE, "create_visual_dressing.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  report=rr("create_visual_dressing")))
+    visual_gates = [
+        ("validate-visual-asset-coverage", FailureCode.VISUAL_ASSET_COVERAGE_FAILURE, "validate_visual_asset_coverage.py"),
+        ("validate-surface-materialization", FailureCode.SURFACE_MATERIALIZATION_FAILURE, "validate_surface_materialization.py"),
+        ("validate-world-dressing", FailureCode.WORLD_DRESSING_FAILURE, "validate_world_dressing.py"),
+        ("validate-environment-rig", FailureCode.ENVIRONMENT_RIG_FAILURE, "validate_environment_rig.py"),
+        ("validate-sky-materialization", FailureCode.SKY_MATERIALIZATION_FAILURE, "validate_sky_materialization.py"),
+        ("validate-fog-materialization", FailureCode.FOG_MATERIALIZATION_FAILURE, "validate_fog_materialization.py"),
+        ("validate-cloud-materialization", FailureCode.CLOUD_MATERIALIZATION_FAILURE, "validate_cloud_materialization.py"),
+        ("validate-lighting-exposure", FailureCode.LIGHTING_EXPOSURE_FAILURE, "validate_lighting_exposure.py"),
+        ("validate-post-process-profiles", FailureCode.POST_PROCESS_PROFILE_FAILURE, "validate_post_process_profiles.py"),
+        ("validate-weather-vfx", FailureCode.WEATHER_VFX_FAILURE, "validate_weather_vfx.py"),
+        ("validate-visual-readability", FailureCode.VISUAL_READABILITY_FAILURE, "validate_visual_readability.py"),
+        ("validate-visual-budgets", FailureCode.VISUAL_BUDGET_FAILURE, "validate_visual_budgets.py"),
+        ("validate-visual-package", FailureCode.VISUAL_PACKAGE_FAILURE, "validate_visual_package.py"),
+    ]
+    for gid, code, script in visual_gates:
+        command = script.replace(".py", "")
+        G.append(gate(gid, gid.replace("-", " ").title(), "visual", code, script,
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr(command)))
+    G.append(gate("visual-negative-validators", "Visual negative validators", "visual",
+                  FailureCode.VISUAL_READABILITY_FAILURE, "test_negative_visual.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"])))
+    G.append(gate("visual-lifecycle-torture", "Visual lifecycle torture", "visual",
+                  FailureCode.VISUAL_LIFECYCLE_FAILURE, "visual_lifecycle_torture.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), torture_only=True))
+    G.append(gate("visual-report-integrity", "Visual report integrity", "visual",
+                  FailureCode.REPORT_INTEGRITY_FAILURE, "validate_report_integrity.py",
+                  lambda c: ["--pack", id_arg(c), "--visuals"] + _s(c["strict"])))
+    return G
+
+
 def pack_declares_missionforge(pack):
     """True if a pack yaml declares MissionForge (``missionforge: true``)."""
     import yaml as _yaml
@@ -569,6 +624,8 @@ def main(argv=None):
                     help="Include v1.3 MissionForge gates (also via MISSIONS=1).")
     ap.add_argument("--playtest", action="store_true",
                     help="Include v1.3 PlaytestForge gates (also via PLAYTEST=1).")
+    ap.add_argument("--visuals", action="store_true",
+                    help="Include v1.3.5 VisualFidelity gates (also via VISUALS=1).")
     ap.add_argument("--timeout", type=int, default=1800)
     ap.add_argument("--no-build", action="store_true",
                     help="Skip the heavy create-world-pack rebuild gate (validation-only run).")
@@ -614,13 +671,16 @@ def main(argv=None):
         ctx["meshes"] = args.meshes or flag_from_env("MESHES")
         ctx["houdini_mode"] = houdini_contract.houdini_mode_from_env()
         ctx["megascans"] = flag_from_env("MEGASCANS")
+        ctx["visuals"] = args.visuals or flag_from_env("VISUALS")
         registry = build_missionforge_gates(playtest_on)
+        if ctx["visuals"]:
+            registry = registry + build_visualforge_gates()
         if ctx["meshes"]:
             registry = (build_meshforge_gates()
                         + build_source_gates(ctx["houdini_mode"], ctx["megascans"])
                         + registry)
-        print("MissionForge pack — %d gate(s) active (playtest=%s, meshes=%s, megascans=%s)." % (
-            len(registry), bool(playtest_on), bool(ctx["meshes"]), bool(ctx["megascans"])))
+        print("MissionForge pack — %d gate(s) active (playtest=%s, visuals=%s, meshes=%s, megascans=%s)." % (
+            len(registry), bool(playtest_on), bool(ctx["visuals"]), bool(ctx["meshes"]), bool(ctx["megascans"])))
     else:
         registry = build_registry()
 

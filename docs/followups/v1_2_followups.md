@@ -17,3 +17,14 @@ HOUDINI=metadata_only MEGASCANS=1 SEEDS=200` (and with `--build`, no `--no-build
 when build time is acceptable. v1.2 verified with `--no-build` + `SEEDS=5`; the
 200-seed + build weight is orthogonal to the mesh/source work and already proven
 green in v1.1.
+
+## WF-FOLLOWUP-UE-VISUAL-MATERIALIZE (v1.3.5)
+Live in-editor spawning of the resolved environment rigs. v1.3.5 resolves every
+map's environment profile into a complete, validated UE-actor/component SPEC
+(SkyAtmosphere / DirectionalLight / SkyLight / ExponentialHeightFog /
+VolumetricCloud / PostProcessVolume / weather VFX) and the driver
+`tools/unreal/materialize_environment_rig.py` spawns them — but there is no
+running NeoStackAI-enabled editor on this runner (unreal_status: no runtime.json),
+so live spawn is deferred. When an editor is available, run the driver per map;
+`validate_environment_rig` then sees `live_spawned:true`. Same convention as the
+deferred UE StaticMesh materialization and Houdini live cook.
