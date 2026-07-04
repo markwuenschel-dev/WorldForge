@@ -1,0 +1,1787 @@
+{
+  "pack": "biome_expansion_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "megascans_arid_debris_48ea3af3::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['desert', 'temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_gravel_ground_80052f5f::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_gravel_ground_80052f5f::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_bright_desert_sand_fe7bd740::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_bright_desert_sand_fe7bd740::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_canyon_sandy_mud_29c6056c::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_canyon_sandy_mud_29c6056c::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_concrete_rubble_pile_f07637e3::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_concrete_rubble_pile_f07637e3::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['desert', 'temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['volcanic_ashlands', 'temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['volcanic_ashlands', 'temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_441ce1e5::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_441ce1e5::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_b195fccf::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_b195fccf::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_soil_scatter_b932fb18::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_soil_scatter_b932fb18::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_large_03_b4a34fb2::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_large_03_b4a34fb2::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_14_23639c4c::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_14_23639c4c::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cluster_rock_large_04_2ddb955b::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cluster_rock_large_04_2ddb955b::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_formation_layered_xl_05_50d4d00f::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_formation_layered_xl_05_50d4d00f::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_ledge_rock_medium_05_17e61fbb::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_ledge_rock_medium_05_17e61fbb::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_patch_ground_slate_small_01_41bf5e83::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_patch_ground_slate_small_01_41bf5e83::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_pile_rock_small_01_fd3e0024::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_pile_rock_small_01_fd3e0024::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_rock_medium_08_11700737::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_rock_medium_08_11700737::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dry_trampled_soil_e9c8521d::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dry_trampled_soil_e9c8521d::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gigantic_sandstone_terrain_ac548dcd::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gigantic_sandstone_terrain_ac548dcd::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_4489a250::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_4489a250::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_dcd3d010::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_dcd3d010::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_ground_cover_e1f6a034::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_ground_cover_e1f6a034::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_icelandic_lava_cliff_e16b2143::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_icelandic_lava_cliff_e16b2143::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_sandstone_cliff_24e87f39::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_sandstone_cliff_24e87f39::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_icelandic_jagged_lava_outcrop_d094c31b::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_icelandic_jagged_lava_outcrop_d094c31b::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_lava_field_gravel_4e740baf::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_lava_field_gravel_4e740baf::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_layered_rock_cliff_31cdea72::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_layered_rock_cliff_31cdea72::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rocks_e55754f9::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rocks_e55754f9::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rubble_6a6bfa70::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rubble_6a6bfa70::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_moist_fallen_leaves_1eb8ff02::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_moist_fallen_leaves_1eb8ff02::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rippled_sand_a6bcc789::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rippled_sand_a6bcc789::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_road_debris_7f2602b9::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_road_debris_7f2602b9::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rock_sandstone_1cc70949::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rock_sandstone_1cc70949::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_028b65b1::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_028b65b1::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_40d229e3::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_40d229e3::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_sand_a913d25a::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_sand_a913d25a::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_boulder_9317cac7::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_boulder_9317cac7::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_cliff_86cfbc5f::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_cliff_86cfbc5f::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_rocky_ground_d6c87516::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_rocky_ground_d6c87516::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_tire_tracks_on_mud_045ed3f6::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_disallowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_tire_tracks_on_mud_045ed3f6::pcg_disallowed_has_no_rules": {
+      "ok": true,
+      "detail": "pcg_disallowed external asset must not declare top-level pcg_rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility must be one of ('pcg_allowed', 'pcg_disallowed', 'pcg_conditionally_allowed'): pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::pcg_rules_present": {
+      "ok": true,
+      "detail": "top-level pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes must be a non-empty list: ['temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>max: {'min_deg': 0, 'max_deg': 30}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>max: {'min_cm': -50000, 'max_cm': 50000}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes must be True: True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class must be non-empty: sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires a non-empty conditions list (external assets need import into a project path): ['requires_import_into_project_path']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 219,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-megascans-pcg-eligibility",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "873bcf5a6d849bb2ec0ab1ae2fffb79ee68b960d",
+    "timestamp": "2026-07-04T01:05:55.375350+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 51
+  }
+}

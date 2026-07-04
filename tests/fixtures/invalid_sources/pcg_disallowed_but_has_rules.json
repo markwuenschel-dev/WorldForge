@@ -1,0 +1,13 @@
+{
+  "case": "pcg_disallowed_but_has_rules",
+  "family": "megascans",
+  "owning_validator": "validate_megascans_pcg_eligibility.py",
+  "validator_arg": "pack",
+  "expected_code": "MEGASCANS_PCG_ELIGIBILITY_FAILURE",
+  "description": "pcg_disallowed record still carries pcg_rules -> pcg gate must reject",
+  "patch": {
+    "set": {
+      "pcg_eligibility": "pcg_disallowed"
+    }
+  }
+}

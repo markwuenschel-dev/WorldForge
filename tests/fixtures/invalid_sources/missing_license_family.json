@@ -1,0 +1,13 @@
+{
+  "case": "missing_license_family",
+  "family": "megascans",
+  "owning_validator": "validate_external_asset_ownership.py",
+  "validator_arg": "lib",
+  "expected_code": "EXTERNAL_LICENSE_METADATA_FAILURE",
+  "description": "license_family deleted -> ownership/license gate must reject",
+  "patch": {
+    "delete": [
+      "license_family"
+    ]
+  }
+}

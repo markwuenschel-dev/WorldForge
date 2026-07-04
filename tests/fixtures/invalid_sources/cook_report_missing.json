@@ -1,0 +1,11 @@
+{
+  "case": "cook_report_missing",
+  "family": "houdini",
+  "owning_validator": "validate_houdini_cook_reports.py",
+  "validator_arg": "pack",
+  "expected_code": "HOUDINI_COOK_FAILURE",
+  "description": "cook_report path points at a nonexistent file -> cook gate must reject",
+  "patch": {
+    "missing_report": "cook"
+  }
+}

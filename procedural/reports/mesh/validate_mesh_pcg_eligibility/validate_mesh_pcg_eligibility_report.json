@@ -1,0 +1,3563 @@
+{
+  "pack": "biome_expansion_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "mesh_cov_basalt_cover_ridge::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_basalt_cover_ridge::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alien_crystal_badlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alien_crystal_badlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_crystal_cover_cluster::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['temperate_forest', 'wetland_mire']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['temperate_forest', 'wetland_mire']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_fallen_tree_cover::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_low_rock_cover::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_scrap_cover_wall::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_cov_snow_drift_cover::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_broken_pipe_cluster::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_collapsed_support_beam::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_forge_debris_chunk::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_industrial_cable_spool::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_rusted_panel_stack::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_ind_scrap_barrier::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alien_crystal_badlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alien_crystal_badlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 12} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alien_crystal_obelisk::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 12} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_alpine_ice_monolith::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 12} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_desert_arch::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 12} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_forest_dead_tree_cluster::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 12} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 12} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 12} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_volcanic_basaltshell::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['wetland_mire']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['wetland_mire']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 12} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_wetland_root_tower::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alien_crystal_badlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alien_crystal_badlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_alien_resonance_cluster::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['temperate_forest', 'wetland_mire']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['temperate_forest', 'wetland_mire']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_herb_patch_proxy::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ice_crystal_node::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_ore_cluster::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_scrap_cache::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_sulfur_deposit::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alien_crystal_badlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alien_crystal_badlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alien_crystal_rock::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_alpine_granite_outcrop::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_desert_eroded_rock::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_forest_mossy_boulder::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_volcanic_basalt_spire::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['wetland_mire']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['wetland_mire']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_wetland_slick_stone::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alien_crystal_badlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alien_crystal_badlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_alien_waypoint_crystal::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'volcanic_ashlands']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_hazard_marker::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['wetland_mire']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['wetland_mire']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_marsh_stake::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['desert', 'temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['desert', 'temperate_forest']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_route_stone::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['alpine_snow']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_snow_flag::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::pcg_eligibility_valid": {
+      "ok": true,
+      "detail": "pcg_eligibility=pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::pcg_rules_present": {
+      "ok": true,
+      "detail": "placement_compatibility.pcg_rules missing for pcg_conditionally_allowed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::pcg_rules_complete": {
+      "ok": true,
+      "detail": "pcg_rules missing required keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::allowed_biomes_non_empty": {
+      "ok": true,
+      "detail": "allowed_biomes=['temperate_forest', 'desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::allowed_biomes_subset_of_compat": {
+      "ok": true,
+      "detail": "allowed_biomes [] not in biome_compatibility ['temperate_forest', 'desert']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::slope_limits_sane": {
+      "ok": true,
+      "detail": "slope_limits min>{'min_deg': 0, 'max_deg': 35} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::height_limits_sane": {
+      "ok": true,
+      "detail": "height_limits min>{'min_cm': -50000, 'max_cm': 50000} max",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::avoid_critical_routes_true": {
+      "ok": true,
+      "detail": "avoid_critical_routes=True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::avoid_player_start_present": {
+      "ok": true,
+      "detail": "avoid_player_start missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::density_class_non_empty": {
+      "ok": true,
+      "detail": "density_class=sparse",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_trav_trail_post::conditions_declared": {
+      "ok": true,
+      "detail": "pcg_conditionally_allowed requires non-empty conditions: ['requires_route_graph_clearance']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 441,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-mesh-pcg-eligibility",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "873bcf5a6d849bb2ec0ab1ae2fffb79ee68b960d",
+    "timestamp": "2026-07-04T00:59:59.302365+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 42
+  }
+}

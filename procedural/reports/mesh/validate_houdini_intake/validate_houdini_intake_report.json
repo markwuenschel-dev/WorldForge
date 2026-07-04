@@ -1,0 +1,755 @@
+{
+  "pack": "biome_expansion_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "mesh_lmk_houdini_desert_mesa::houdini_intake_present": {
+      "ok": true,
+      "detail": "houdini_intake block absent",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::houdini_intake_complete": {
+      "ok": true,
+      "detail": "missing houdini_intake keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::hda_id_present": {
+      "ok": true,
+      "detail": "hda_id missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::hda_path_present": {
+      "ok": true,
+      "detail": "hda_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::hda_ownership_class_valid": {
+      "ok": true,
+      "detail": "hda_ownership_class=project_owned not in ('project_owned', 'third_party_owned')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::hda_not_generated_owned": {
+      "ok": true,
+      "detail": "HDA source must NOT be generated_owned (hda_ownership_class=project_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::parameter_hash_present": {
+      "ok": true,
+      "detail": "parameter_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::source_hash_present": {
+      "ok": true,
+      "detail": "source_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::final_path_present": {
+      "ok": true,
+      "detail": "final_asset_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::final_path_not_temp_bake": {
+      "ok": true,
+      "detail": "final_asset_path is a Temp/Bake/quarantine leak: /Game/WorldForge/Generated/Meshes/BiomeLandmark/SM_HoudiniDesertMesa",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::final_path_allowed": {
+      "ok": true,
+      "detail": "final_asset_path not under an owned generated root: /Game/WorldForge/Generated/Meshes/BiomeLandmark/SM_HoudiniDesertMesa",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::output_generated_owned": {
+      "ok": true,
+      "detail": "baked output must be generated_owned (generated_owned=True, class=generated_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::hda_vs_output_ownership_differ": {
+      "ok": true,
+      "detail": "HDA source (project_owned) and generated output ownership must differ — HDA is not generated",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::registry_id_present": {
+      "ok": true,
+      "detail": "catalog entry has no registry_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_desert_mesa::provenance_present": {
+      "ok": true,
+      "detail": "descriptor missing provenance/provenance_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::houdini_intake_present": {
+      "ok": true,
+      "detail": "houdini_intake block absent",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::houdini_intake_complete": {
+      "ok": true,
+      "detail": "missing houdini_intake keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::hda_id_present": {
+      "ok": true,
+      "detail": "hda_id missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::hda_path_present": {
+      "ok": true,
+      "detail": "hda_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::hda_ownership_class_valid": {
+      "ok": true,
+      "detail": "hda_ownership_class=third_party_owned not in ('project_owned', 'third_party_owned')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::hda_not_generated_owned": {
+      "ok": true,
+      "detail": "HDA source must NOT be generated_owned (hda_ownership_class=third_party_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::parameter_hash_present": {
+      "ok": true,
+      "detail": "parameter_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::source_hash_present": {
+      "ok": true,
+      "detail": "source_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::final_path_present": {
+      "ok": true,
+      "detail": "final_asset_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::final_path_not_temp_bake": {
+      "ok": true,
+      "detail": "final_asset_path is a Temp/Bake/quarantine leak: /Game/WorldForge/Generated/Meshes/BiomeLandmark/SM_HoudiniVolcanicSpire",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::final_path_allowed": {
+      "ok": true,
+      "detail": "final_asset_path not under an owned generated root: /Game/WorldForge/Generated/Meshes/BiomeLandmark/SM_HoudiniVolcanicSpire",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::output_generated_owned": {
+      "ok": true,
+      "detail": "baked output must be generated_owned (generated_owned=True, class=generated_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::hda_vs_output_ownership_differ": {
+      "ok": true,
+      "detail": "HDA source (third_party_owned) and generated output ownership must differ — HDA is not generated",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::registry_id_present": {
+      "ok": true,
+      "detail": "catalog entry has no registry_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_lmk_houdini_volcanic_spire::provenance_present": {
+      "ok": true,
+      "detail": "descriptor missing provenance/provenance_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::houdini_intake_present": {
+      "ok": true,
+      "detail": "houdini_intake block absent",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::houdini_intake_complete": {
+      "ok": true,
+      "detail": "missing houdini_intake keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::hda_id_present": {
+      "ok": true,
+      "detail": "hda_id missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::hda_path_present": {
+      "ok": true,
+      "detail": "hda_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::hda_ownership_class_valid": {
+      "ok": true,
+      "detail": "hda_ownership_class=project_owned not in ('project_owned', 'third_party_owned')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::hda_not_generated_owned": {
+      "ok": true,
+      "detail": "HDA source must NOT be generated_owned (hda_ownership_class=project_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::parameter_hash_present": {
+      "ok": true,
+      "detail": "parameter_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::source_hash_present": {
+      "ok": true,
+      "detail": "source_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::final_path_present": {
+      "ok": true,
+      "detail": "final_asset_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::final_path_not_temp_bake": {
+      "ok": true,
+      "detail": "final_asset_path is a Temp/Bake/quarantine leak: /Game/WorldForge/Generated/Meshes/ResourceNode/SM_HoudiniOreVein",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::final_path_allowed": {
+      "ok": true,
+      "detail": "final_asset_path not under an owned generated root: /Game/WorldForge/Generated/Meshes/ResourceNode/SM_HoudiniOreVein",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::output_generated_owned": {
+      "ok": true,
+      "detail": "baked output must be generated_owned (generated_owned=True, class=generated_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::hda_vs_output_ownership_differ": {
+      "ok": true,
+      "detail": "HDA source (project_owned) and generated output ownership must differ — HDA is not generated",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::registry_id_present": {
+      "ok": true,
+      "detail": "catalog entry has no registry_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_res_houdini_ore_vein::provenance_present": {
+      "ok": true,
+      "detail": "descriptor missing provenance/provenance_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::houdini_intake_present": {
+      "ok": true,
+      "detail": "houdini_intake block absent",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::houdini_intake_complete": {
+      "ok": true,
+      "detail": "missing houdini_intake keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::hda_id_present": {
+      "ok": true,
+      "detail": "hda_id missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::hda_path_present": {
+      "ok": true,
+      "detail": "hda_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::hda_ownership_class_valid": {
+      "ok": true,
+      "detail": "hda_ownership_class=project_owned not in ('project_owned', 'third_party_owned')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::hda_not_generated_owned": {
+      "ok": true,
+      "detail": "HDA source must NOT be generated_owned (hda_ownership_class=project_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::parameter_hash_present": {
+      "ok": true,
+      "detail": "parameter_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::source_hash_present": {
+      "ok": true,
+      "detail": "source_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::final_path_present": {
+      "ok": true,
+      "detail": "final_asset_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::final_path_not_temp_bake": {
+      "ok": true,
+      "detail": "final_asset_path is a Temp/Bake/quarantine leak: /Game/WorldForge/Generated/Meshes/RockOutcrop/SM_HoudiniAlpineScree",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::final_path_allowed": {
+      "ok": true,
+      "detail": "final_asset_path not under an owned generated root: /Game/WorldForge/Generated/Meshes/RockOutcrop/SM_HoudiniAlpineScree",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::output_generated_owned": {
+      "ok": true,
+      "detail": "baked output must be generated_owned (generated_owned=True, class=generated_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::hda_vs_output_ownership_differ": {
+      "ok": true,
+      "detail": "HDA source (project_owned) and generated output ownership must differ — HDA is not generated",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::registry_id_present": {
+      "ok": true,
+      "detail": "catalog entry has no registry_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_alpine_scree::provenance_present": {
+      "ok": true,
+      "detail": "descriptor missing provenance/provenance_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::houdini_intake_present": {
+      "ok": true,
+      "detail": "houdini_intake block absent",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::houdini_intake_complete": {
+      "ok": true,
+      "detail": "missing houdini_intake keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::hda_id_present": {
+      "ok": true,
+      "detail": "hda_id missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::hda_path_present": {
+      "ok": true,
+      "detail": "hda_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::hda_ownership_class_valid": {
+      "ok": true,
+      "detail": "hda_ownership_class=third_party_owned not in ('project_owned', 'third_party_owned')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::hda_not_generated_owned": {
+      "ok": true,
+      "detail": "HDA source must NOT be generated_owned (hda_ownership_class=third_party_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::parameter_hash_present": {
+      "ok": true,
+      "detail": "parameter_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::source_hash_present": {
+      "ok": true,
+      "detail": "source_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::final_path_present": {
+      "ok": true,
+      "detail": "final_asset_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::final_path_not_temp_bake": {
+      "ok": true,
+      "detail": "final_asset_path is a Temp/Bake/quarantine leak: /Game/WorldForge/Generated/Meshes/RockOutcrop/SM_HoudiniDesertBoulder",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::final_path_allowed": {
+      "ok": true,
+      "detail": "final_asset_path not under an owned generated root: /Game/WorldForge/Generated/Meshes/RockOutcrop/SM_HoudiniDesertBoulder",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::output_generated_owned": {
+      "ok": true,
+      "detail": "baked output must be generated_owned (generated_owned=True, class=generated_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::hda_vs_output_ownership_differ": {
+      "ok": true,
+      "detail": "HDA source (third_party_owned) and generated output ownership must differ — HDA is not generated",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::registry_id_present": {
+      "ok": true,
+      "detail": "catalog entry has no registry_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_desert_boulder::provenance_present": {
+      "ok": true,
+      "detail": "descriptor missing provenance/provenance_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::houdini_intake_present": {
+      "ok": true,
+      "detail": "houdini_intake block absent",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::houdini_intake_complete": {
+      "ok": true,
+      "detail": "missing houdini_intake keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::hda_id_present": {
+      "ok": true,
+      "detail": "hda_id missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::hda_path_present": {
+      "ok": true,
+      "detail": "hda_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::hda_ownership_class_valid": {
+      "ok": true,
+      "detail": "hda_ownership_class=third_party_owned not in ('project_owned', 'third_party_owned')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::hda_not_generated_owned": {
+      "ok": true,
+      "detail": "HDA source must NOT be generated_owned (hda_ownership_class=third_party_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::parameter_hash_present": {
+      "ok": true,
+      "detail": "parameter_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::source_hash_present": {
+      "ok": true,
+      "detail": "source_hash missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::final_path_present": {
+      "ok": true,
+      "detail": "final_asset_path missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::final_path_not_temp_bake": {
+      "ok": true,
+      "detail": "final_asset_path is a Temp/Bake/quarantine leak: /Game/WorldForge/Generated/Meshes/RockOutcrop/SM_HoudiniVolcanicBasalt",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::final_path_allowed": {
+      "ok": true,
+      "detail": "final_asset_path not under an owned generated root: /Game/WorldForge/Generated/Meshes/RockOutcrop/SM_HoudiniVolcanicBasalt",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::output_generated_owned": {
+      "ok": true,
+      "detail": "baked output must be generated_owned (generated_owned=True, class=generated_owned)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::hda_vs_output_ownership_differ": {
+      "ok": true,
+      "detail": "HDA source (third_party_owned) and generated output ownership must differ — HDA is not generated",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::registry_id_present": {
+      "ok": true,
+      "detail": "catalog entry has no registry_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mesh_rock_houdini_volcanic_basalt::provenance_present": {
+      "ok": true,
+      "detail": "descriptor missing provenance/provenance_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 90,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-houdini-intake",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "873bcf5a6d849bb2ec0ab1ae2fffb79ee68b960d",
+    "timestamp": "2026-07-04T01:05:54.417666+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 6
+  }
+}

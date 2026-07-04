@@ -1,0 +1,88 @@
+schema_version: '1.2'
+asset_id: mesh_res_alien_resonance_cluster
+display_name: ResourceNode — AlienResonanceCluster
+mesh_family: resource_node
+source_type: imported_generated_stub
+source_recipe: recipe_resource_node_alien_resonance_cluster
+source_hash: sha256:9155e5c21396956ab45a5e73e38f63b2f69817f6b70eb8553b54cba1738e005b
+source_tool_version: 1.2.0
+final_asset_path: /Game/WorldForge/Generated/Meshes/ResourceNode/SM_AlienResonanceCluster
+intermediate_paths:
+- /Game/HoudiniEngine/Temp/Imported/resource_node_alien_resonance_cluster
+quarantine_paths:
+- /Game/HoudiniEngine/Temp/Imported/resource_node_alien_resonance_cluster
+generated_owned: true
+human_owned: false
+material_bindings:
+- slot_name: MI_Body
+  material_asset_path: /Game/WorldForge/Generated/Materials/ResourceNode/MI_AlienResonanceCluster_CrystalAlien
+  material_family: crystal_alien
+  biome_compatibility: &id001
+  - alien_crystal_badlands
+  rendering_budget_class: balanced
+  fallback_allowed: false
+collision_profile: OverlapAll
+bounds:
+  x_cm: 240.0
+  y_cm: 240.0
+  z_cm: 180.0
+pivot_policy: base_center
+scale_policy: uniform
+budget_class: balanced
+pcg_eligibility: pcg_conditionally_allowed
+biome_compatibility: *id001
+poi_compatibility: &id002
+- resource
+- harvest
+placement_compatibility:
+  allowed_placement_profiles:
+  - scatter_default
+  - scatter_sparse
+  pcg_rules:
+    allowed_biomes: *id001
+    allowed_poi_classes: *id002
+    allowed_placement_profiles:
+    - scatter_default
+    - scatter_sparse
+    slope_limits:
+      min_deg: 0
+      max_deg: 35
+    height_limits:
+      min_cm: -50000
+      max_cm: 50000
+    density_class: sparse
+    collision_policy: OverlapAll
+    avoid_critical_routes: true
+    avoid_player_start: true
+    conditions:
+    - requires_route_graph_clearance
+nanite_policy: nanite_enabled
+lod_policy: lod_auto
+shadow_policy: shadow_default
+raytracing_policy: raytracing_default
+rendering_budget:
+  triangle_class: medium
+  material_complexity_class: medium
+  texture_class: medium
+  collision_complexity_class: simple
+  nanite_policy: nanite_enabled
+  lod_policy: lod_auto
+  shadow_policy: shadow_default
+  raytracing_policy: raytracing_default
+  pcg_density_class: sparse
+  package_size_class: medium
+geometry:
+  interaction_clearance_cm: 120.0
+package_rules:
+  include_material_dependencies: true
+repair_policy: regenerate_from_recipe
+destroy_policy: generated_owned_only
+source_metadata:
+  source_type: imported_generated_stub
+  source_manifest: procedural/generated/mesh_assets/resource_node__alien_resonance_cluster/import_manifest.json
+  declared_source_tool: external_generator_stub
+  declared_source_version: 0.1.0
+  input_artifact_hash: sha256:9155e5c21396956ab45a5e73e38f63b2f69817f6b70eb8553b54cba1738e005b
+  import_report: quarantine_import_ok
+  quarantine_path: /Game/HoudiniEngine/Temp/Imported/resource_node_alien_resonance_cluster
+  final_asset_path: /Game/WorldForge/Generated/Meshes/ResourceNode/SM_AlienResonanceCluster

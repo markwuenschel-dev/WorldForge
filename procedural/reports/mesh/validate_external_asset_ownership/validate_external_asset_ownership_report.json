@@ -1,0 +1,2515 @@
+{
+  "library": "megascans",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "catalog_non_empty": {
+      "ok": true,
+      "detail": "external catalog has 51 record(s); expected >=1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "library_ownership_third_party": {
+      "ok": true,
+      "detail": "library ownership_class='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "library_not_generated_owned": {
+      "ok": true,
+      "detail": "library generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "library_repair_destroy_protected": {
+      "ok": true,
+      "detail": "library must be repair_destroy_protected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_debris_48ea3af3::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_gravel_ground_80052f5f::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_gravel_ground_80052f5f::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_gravel_ground_80052f5f::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_gravel_ground_80052f5f::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_gravel_ground_80052f5f::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_arid_gravel_ground_80052f5f::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_bright_desert_sand_fe7bd740::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_bright_desert_sand_fe7bd740::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_bright_desert_sand_fe7bd740::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_bright_desert_sand_fe7bd740::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_bright_desert_sand_fe7bd740::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_bright_desert_sand_fe7bd740::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_broken_stump_767f5e4d::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_canyon_sandy_mud_29c6056c::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_canyon_sandy_mud_29c6056c::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_canyon_sandy_mud_29c6056c::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_canyon_sandy_mud_29c6056c::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_canyon_sandy_mud_29c6056c::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_canyon_sandy_mud_29c6056c::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_concrete_rubble_pile_f07637e3::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_concrete_rubble_pile_f07637e3::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_concrete_rubble_pile_f07637e3::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_concrete_rubble_pile_f07637e3::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_concrete_rubble_pile_f07637e3::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_concrete_rubble_pile_f07637e3::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_shrubs_d8fbec55::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dead_tree_c0c4ec3a::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_441ce1e5::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_441ce1e5::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_441ce1e5::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_441ce1e5::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_441ce1e5::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_441ce1e5::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_b195fccf::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_b195fccf::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_b195fccf::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_b195fccf::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_b195fccf::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_debris_b195fccf::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_soil_scatter_b932fb18::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_soil_scatter_b932fb18::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_soil_scatter_b932fb18::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_soil_scatter_b932fb18::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_soil_scatter_b932fb18::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_soil_scatter_b932fb18::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_large_03_b4a34fb2::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_large_03_b4a34fb2::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_large_03_b4a34fb2::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_large_03_b4a34fb2::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_large_03_b4a34fb2::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_large_03_b4a34fb2::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_01_178f2627::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_14_23639c4c::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_14_23639c4c::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_14_23639c4c::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_14_23639c4c::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_14_23639c4c::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cliff_layered_xl_14_23639c4c::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cluster_rock_large_04_2ddb955b::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cluster_rock_large_04_2ddb955b::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cluster_rock_large_04_2ddb955b::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cluster_rock_large_04_2ddb955b::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cluster_rock_large_04_2ddb955b::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_cluster_rock_large_04_2ddb955b::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_formation_layered_xl_05_50d4d00f::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_formation_layered_xl_05_50d4d00f::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_formation_layered_xl_05_50d4d00f::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_formation_layered_xl_05_50d4d00f::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_formation_layered_xl_05_50d4d00f::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_formation_layered_xl_05_50d4d00f::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_ledge_rock_medium_05_17e61fbb::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_ledge_rock_medium_05_17e61fbb::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_ledge_rock_medium_05_17e61fbb::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_ledge_rock_medium_05_17e61fbb::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_ledge_rock_medium_05_17e61fbb::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_ledge_rock_medium_05_17e61fbb::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_patch_ground_slate_small_01_41bf5e83::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_patch_ground_slate_small_01_41bf5e83::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_patch_ground_slate_small_01_41bf5e83::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_patch_ground_slate_small_01_41bf5e83::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_patch_ground_slate_small_01_41bf5e83::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_patch_ground_slate_small_01_41bf5e83::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_pile_rock_small_01_fd3e0024::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_pile_rock_small_01_fd3e0024::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_pile_rock_small_01_fd3e0024::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_pile_rock_small_01_fd3e0024::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_pile_rock_small_01_fd3e0024::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_pile_rock_small_01_fd3e0024::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_rock_medium_08_11700737::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_rock_medium_08_11700737::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_rock_medium_08_11700737::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_rock_medium_08_11700737::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_rock_medium_08_11700737::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_desert_western_rock_medium_08_11700737::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dry_trampled_soil_e9c8521d::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dry_trampled_soil_e9c8521d::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dry_trampled_soil_e9c8521d::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dry_trampled_soil_e9c8521d::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dry_trampled_soil_e9c8521d::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_dry_trampled_soil_e9c8521d::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gigantic_sandstone_terrain_ac548dcd::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gigantic_sandstone_terrain_ac548dcd::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gigantic_sandstone_terrain_ac548dcd::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gigantic_sandstone_terrain_ac548dcd::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gigantic_sandstone_terrain_ac548dcd::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gigantic_sandstone_terrain_ac548dcd::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_4489a250::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_4489a250::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_4489a250::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_4489a250::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_4489a250::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_4489a250::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_dcd3d010::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_dcd3d010::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_dcd3d010::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_dcd3d010::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_dcd3d010::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_gravel_ground_dcd3d010::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_ground_cover_e1f6a034::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_ground_cover_e1f6a034::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_ground_cover_e1f6a034::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_ground_cover_e1f6a034::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_ground_cover_e1f6a034::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_ground_cover_e1f6a034::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_icelandic_lava_cliff_e16b2143::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_icelandic_lava_cliff_e16b2143::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_icelandic_lava_cliff_e16b2143::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_icelandic_lava_cliff_e16b2143::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_icelandic_lava_cliff_e16b2143::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_icelandic_lava_cliff_e16b2143::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_sandstone_cliff_24e87f39::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_sandstone_cliff_24e87f39::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_sandstone_cliff_24e87f39::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_sandstone_cliff_24e87f39::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_sandstone_cliff_24e87f39::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_huge_sandstone_cliff_24e87f39::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_icelandic_jagged_lava_outcrop_d094c31b::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_icelandic_jagged_lava_outcrop_d094c31b::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_icelandic_jagged_lava_outcrop_d094c31b::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_icelandic_jagged_lava_outcrop_d094c31b::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_icelandic_jagged_lava_outcrop_d094c31b::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_icelandic_jagged_lava_outcrop_d094c31b::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_lava_field_gravel_4e740baf::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_lava_field_gravel_4e740baf::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_lava_field_gravel_4e740baf::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_lava_field_gravel_4e740baf::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_lava_field_gravel_4e740baf::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_lava_field_gravel_4e740baf::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_layered_rock_cliff_31cdea72::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_layered_rock_cliff_31cdea72::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_layered_rock_cliff_31cdea72::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_layered_rock_cliff_31cdea72::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_layered_rock_cliff_31cdea72::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_layered_rock_cliff_31cdea72::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rocks_e55754f9::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rocks_e55754f9::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rocks_e55754f9::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rocks_e55754f9::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rocks_e55754f9::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rocks_e55754f9::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rubble_6a6bfa70::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rubble_6a6bfa70::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rubble_6a6bfa70::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rubble_6a6bfa70::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rubble_6a6bfa70::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_rubble_6a6bfa70::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_limestone_slab_d1613201::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_moist_fallen_leaves_1eb8ff02::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_moist_fallen_leaves_1eb8ff02::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_moist_fallen_leaves_1eb8ff02::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_moist_fallen_leaves_1eb8ff02::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_moist_fallen_leaves_1eb8ff02::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_moist_fallen_leaves_1eb8ff02::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_1184ba2c::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_9e52f6bd::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_b1becdbe::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c47f6376::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_c88f7f3b::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_quarry_cliff_daf32fe5::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rippled_sand_a6bcc789::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rippled_sand_a6bcc789::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rippled_sand_a6bcc789::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rippled_sand_a6bcc789::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rippled_sand_a6bcc789::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rippled_sand_a6bcc789::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_road_debris_7f2602b9::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_road_debris_7f2602b9::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_road_debris_7f2602b9::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_road_debris_7f2602b9::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_road_debris_7f2602b9::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_road_debris_7f2602b9::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rock_sandstone_1cc70949::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rock_sandstone_1cc70949::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rock_sandstone_1cc70949::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rock_sandstone_1cc70949::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rock_sandstone_1cc70949::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rock_sandstone_1cc70949::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_028b65b1::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_028b65b1::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_028b65b1::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_028b65b1::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_028b65b1::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_028b65b1::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_40d229e3::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_40d229e3::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_40d229e3::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_40d229e3::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_40d229e3::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_ground_40d229e3::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_sand_a913d25a::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_sand_a913d25a::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_sand_a913d25a::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_sand_a913d25a::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_sand_a913d25a::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_rocky_sand_a913d25a::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_boulder_9317cac7::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_boulder_9317cac7::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_boulder_9317cac7::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_boulder_9317cac7::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_boulder_9317cac7::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_boulder_9317cac7::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_cliff_86cfbc5f::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_cliff_86cfbc5f::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_cliff_86cfbc5f::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_cliff_86cfbc5f::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_cliff_86cfbc5f::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_cliff_86cfbc5f::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_rocky_ground_d6c87516::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_rocky_ground_d6c87516::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_rocky_ground_d6c87516::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_rocky_ground_d6c87516::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_rocky_ground_d6c87516::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_sandstone_rocky_ground_d6c87516::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_tire_tracks_on_mud_045ed3f6::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_tire_tracks_on_mud_045ed3f6::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_tire_tracks_on_mud_045ed3f6::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_tire_tracks_on_mud_045ed3f6::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_tire_tracks_on_mud_045ed3f6::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_tire_tracks_on_mud_045ed3f6::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::ownership_class_third_party": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned', resolved='third_party_owned', expected 'third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::not_generated_owned": {
+      "ok": true,
+      "detail": "generated_owned must be False (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::external_licensed": {
+      "ok": true,
+      "detail": "external_licensed must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::license_family_known": {
+      "ok": true,
+      "detail": "license_family='fab_standard_license'; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::repair_destroy_protected": {
+      "ok": true,
+      "detail": "repair_destroy_protected must be True (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "megascans_wheat_grass_9070350f::raw_asset_destroy_disallowed": {
+      "ok": true,
+      "detail": "raw_asset_destroy_allowed must be False — a source asset could be destroyed (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 310,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-external-asset-ownership",
+    "pack": "megascans",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "873bcf5a6d849bb2ec0ab1ae2fffb79ee68b960d",
+    "timestamp": "2026-07-04T01:05:56.058136+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": "sha256:605d117a85ef3d6779dfe7563236b732eb57964f064b6be50a04f4fd40e7eace",
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 51
+  }
+}

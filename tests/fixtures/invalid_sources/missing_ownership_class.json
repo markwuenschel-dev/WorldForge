@@ -1,0 +1,13 @@
+{
+  "case": "missing_ownership_class",
+  "family": "megascans",
+  "owning_validator": "validate_external_asset_ownership.py",
+  "validator_arg": "lib",
+  "expected_code": "EXTERNAL_ASSET_OWNERSHIP_FAILURE",
+  "description": "ownership_class field deleted -> ownership gate must reject",
+  "patch": {
+    "delete": [
+      "ownership_class"
+    ]
+  }
+}

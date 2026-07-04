@@ -1,0 +1,13 @@
+{
+  "case": "raw_asset_destroy_allowed_true",
+  "family": "megascans",
+  "owning_validator": "validate_external_asset_ownership.py",
+  "validator_arg": "lib",
+  "expected_code": "THIRD_PARTY_ASSET_DESTROY_RISK",
+  "description": "raw_asset_destroy_allowed=true on a source asset -> destroy-risk gate must reject",
+  "patch": {
+    "set": {
+      "raw_asset_destroy_allowed": true
+    }
+  }
+}

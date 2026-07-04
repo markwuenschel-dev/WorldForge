@@ -1,0 +1,88 @@
+# INVALID mesh-asset fixture — case: bounds_too_large
+# Intentionally broken in exactly ONE way; the v1.2 negative-fixture
+# harness (tools/pipeline/test_negative_mesh.py) asserts it is REJECTED.
+# Base: procedural/definitions/mesh_assets/mesh_rock_desert_eroded_rock.yaml
+schema_version: '1.2'
+asset_id: mesh_negfix_bounds_too_large
+display_name: NEGFIX bounds_too_large (intentionally invalid — do not register)
+mesh_family: rock_outcrop
+source_type: internal_recipe
+source_recipe: recipe_rock_outcrop_desert_eroded_rock
+source_hash: sha256:50d7ddbdb64036df71eb6696c59ce80c93a60258039abd8e0f10e4bf99279a45
+source_tool_version: 1.2.0
+final_asset_path: /Game/WorldForge/Generated/Meshes/RockOutcrop/SM_DesertErodedRock
+intermediate_paths: []
+quarantine_paths: []
+generated_owned: true
+human_owned: false
+material_bindings:
+- slot_name: MI_Body
+  material_asset_path: /Game/WorldForge/Generated/Materials/RockOutcrop/MI_DesertErodedRock_RockDesert
+  material_family: rock_desert
+  biome_compatibility: &id001
+  - desert
+  rendering_budget_class: balanced
+  fallback_allowed: false
+collision_profile: BlockAll
+bounds:
+  x_cm: 999999.0
+  y_cm: 280.0
+  z_cm: 240.0
+pivot_policy: base_center
+scale_policy: uniform
+budget_class: balanced
+pcg_eligibility: pcg_allowed
+biome_compatibility: *id001
+poi_compatibility: &id002
+- landmark
+- dressing
+placement_compatibility:
+  allowed_placement_profiles:
+  - scatter_default
+  - scatter_sparse
+  pcg_rules:
+    allowed_biomes: *id001
+    allowed_poi_classes: *id002
+    allowed_placement_profiles:
+    - scatter_default
+    - scatter_sparse
+    slope_limits:
+      min_deg: 0
+      max_deg: 35
+    height_limits:
+      min_cm: -50000
+      max_cm: 50000
+    density_class: medium
+    collision_policy: BlockAll
+    avoid_critical_routes: true
+    avoid_player_start: true
+nanite_policy: nanite_enabled
+lod_policy: lod_auto
+shadow_policy: shadow_default
+raytracing_policy: raytracing_default
+rendering_budget:
+  triangle_class: medium
+  material_complexity_class: medium
+  texture_class: medium
+  collision_complexity_class: simple
+  nanite_policy: nanite_enabled
+  lod_policy: lod_auto
+  shadow_policy: shadow_default
+  raytracing_policy: raytracing_default
+  pcg_density_class: medium
+  package_size_class: medium
+geometry: {}
+package_rules:
+  include_material_dependencies: true
+repair_policy: regenerate_from_recipe
+destroy_policy: generated_owned_only
+source_metadata:
+  source_type: internal_recipe
+  recipe_id: recipe_rock_outcrop_desert_eroded_rock
+  recipe_version: 1.2.0
+  recipe_hash: sha256:50d7ddbdb64036df71eb6696c59ce80c93a60258039abd8e0f10e4bf99279a45
+  parameters:
+    family: rock_outcrop
+    variant: desert_eroded_rock
+    seed: 12
+  determinism_key: rock_outcrop:desert_eroded_rock

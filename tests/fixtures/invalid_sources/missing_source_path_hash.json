@@ -1,0 +1,13 @@
+{
+  "case": "missing_source_path_hash",
+  "family": "megascans",
+  "owning_validator": "validate_external_asset_catalog.py",
+  "validator_arg": "lib",
+  "expected_code": "MEGASCANS_CATALOG_FAILURE",
+  "description": "source_path_hash deleted -> catalog-integrity gate must reject",
+  "patch": {
+    "delete": [
+      "source_path_hash"
+    ]
+  }
+}

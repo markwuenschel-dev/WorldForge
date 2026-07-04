@@ -1,0 +1,314 @@
+{
+  "pack": "biome_expansion_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "intake::bad_temp_final_path": {
+      "ok": true,
+      "detail": "registrar rc=1 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "intake::bad_intermediate_final_path": {
+      "ok": true,
+      "detail": "registrar rc=1 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "intake::bad_unowned_root": {
+      "ok": true,
+      "detail": "registrar rc=1 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "intake::missing_source_hash": {
+      "ok": true,
+      "detail": "registrar rc=1 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "intake::unknown_source_type": {
+      "ok": true,
+      "detail": "registrar rc=1 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "intake::unknown_mesh_family": {
+      "ok": true,
+      "detail": "registrar rc=1 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "intake::generated_owned_false": {
+      "ok": true,
+      "detail": "registrar rc=1 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "intake::human_owned_true": {
+      "ok": true,
+      "detail": "registrar rc=1 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "intake::missing_required_field": {
+      "ok": true,
+      "detail": "registrar rc=1 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "intake::unknown_field_strict": {
+      "ok": true,
+      "detail": "registrar rc=1 ()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dimension::bounds_too_large": {
+      "ok": true,
+      "detail": "validate_mesh_collision_bounds.py rc=1 ([validate-mesh-collision-bounds]   FAIL: __negfix_bounds_too_large::bounds_largest_axis_in_window: largest extent 999999.0cm outside rock_outcrop window (40.0, 2500.0) for family rock_outcrop)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dimension::material_incompatible_biome": {
+      "ok": true,
+      "detail": "validate_mesh_material_bindings.py rc=1 ([validate-mesh-material-bindings]   FAIL: __negfix_material_incompatible_biome::material_binding_0_biome_compatible: binding 0 material biomes ['alpine_snow'] incompatible with asset biomes ['desert'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dimension::material_path_missing": {
+      "ok": true,
+      "detail": "validate_mesh_material_bindings.py rc=1 ([validate-mesh-material-bindings]   FAIL: __negfix_material_path_missing::material_binding_0_material_path_owned: binding 0 material_asset_path not under /Game/WorldForge/Generated/Materials/:)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dimension::missing_collision_profile": {
+      "ok": true,
+      "detail": "validate_mesh_collision_bounds.py rc=1 ([validate-mesh-collision-bounds]   FAIL: __negfix_missing_collision_profile::collision_profile_allowed_for_family: collision_profile=None not allowed for family rock_outcrop (allowed: ('BlockAll', 'Bl)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dimension::missing_pcg_eligibility": {
+      "ok": true,
+      "detail": "validate_mesh_pcg_eligibility.py rc=1 ([validate-mesh-pcg-eligibility]   FAIL: __negfix_missing_pcg_eligibility::pcg_eligibility_valid: pcg_eligibility=None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dimension::overbudget_raytrace_no_policy": {
+      "ok": true,
+      "detail": "validate_mesh_rendering_budgets.py rc=1 ([validate-mesh-rendering-budgets]   FAIL: __negfix_overbudget_raytrace_no_policy::raytracing_explicit_for_budget: budget_class=raytraced_high requires an explicit raytracing policy (one of ['raytracin)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dimension::pcg_allowed_without_rules": {
+      "ok": true,
+      "detail": "validate_mesh_pcg_eligibility.py rc=1 ([validate-mesh-pcg-eligibility]   FAIL: __negfix_pcg_allowed_without_rules::pcg_rules_present: placement_compatibility.pcg_rules missing for pcg_allowed)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dimension::pcg_disallowed_consumed": {
+      "ok": true,
+      "detail": "validate_mesh_pcg_eligibility.py rc=1 ([validate-mesh-pcg-eligibility]   FAIL: __negfix_pcg_disallowed_consumed::pcg_disallowed_has_no_rules: pcg_disallowed asset must not declare placement_compatibility.pcg_rules)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dimension::zero_bounds": {
+      "ok": true,
+      "detail": "validate_mesh_collision_bounds.py rc=1 ([validate-mesh-collision-bounds]   FAIL: __negfix_zero_bounds::bounds_positive: every bound must be > 0, got {'x_cm': 0.0, 'y_cm': 0.0, 'z_cm': 0.0})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::asset_count": {
+      "ok": true,
+      "detail": "catalog has 42 assets (expected 42)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::no_negfix_records": {
+      "ok": true,
+      "detail": "stray negfix catalog records: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::no_negfix_dirs": {
+      "ok": true,
+      "detail": "stray negfix descriptor dirs: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mesh_contract": {
+      "ok": true,
+      "detail": "validate_mesh_contract.py rc=0 ([validate-mesh-contract] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mesh_catalog": {
+      "ok": true,
+      "detail": "validate_mesh_catalog.py rc=0 ([validate-mesh-catalog] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mesh_provenance": {
+      "ok": true,
+      "detail": "validate_mesh_provenance.py rc=0 ([validate-mesh-provenance] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mesh_final_paths": {
+      "ok": true,
+      "detail": "validate_mesh_final_paths.py rc=0 ([validate-mesh-final-paths] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mesh_material_bindings": {
+      "ok": true,
+      "detail": "validate_mesh_material_bindings.py rc=0 ([validate-mesh-material-bindings] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mesh_collision_bounds": {
+      "ok": true,
+      "detail": "validate_mesh_collision_bounds.py rc=0 ([validate-mesh-collision-bounds] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mesh_pcg_eligibility": {
+      "ok": true,
+      "detail": "validate_mesh_pcg_eligibility.py rc=0 ([validate-mesh-pcg-eligibility] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mesh_biome_compatibility": {
+      "ok": true,
+      "detail": "validate_mesh_biome_compatibility.py rc=0 ([validate-mesh-biome-compatibility] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mesh_rendering_budgets": {
+      "ok": true,
+      "detail": "validate_mesh_rendering_budgets.py rc=0 ([validate-mesh-rendering-budgets] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mesh_package": {
+      "ok": true,
+      "detail": "validate_mesh_package.py rc=0 ([validate-mesh-package] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 32,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "mesh-negative-validators",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "873bcf5a6d849bb2ec0ab1ae2fffb79ee68b960d",
+    "timestamp": "2026-07-04T00:59:44.946450+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 19,
+    "intake_fixtures": [
+      "bad_temp_final_path",
+      "bad_intermediate_final_path",
+      "bad_unowned_root",
+      "missing_source_hash",
+      "unknown_source_type",
+      "unknown_mesh_family",
+      "generated_owned_false",
+      "human_owned_true",
+      "missing_required_field",
+      "unknown_field_strict"
+    ],
+    "dimension_fixtures": [
+      "bounds_too_large",
+      "material_incompatible_biome",
+      "material_path_missing",
+      "missing_collision_profile",
+      "missing_pcg_eligibility",
+      "overbudget_raytrace_no_policy",
+      "pcg_allowed_without_rules",
+      "pcg_disallowed_consumed",
+      "zero_bounds"
+    ]
+  }
+}

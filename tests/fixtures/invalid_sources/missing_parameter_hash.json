@@ -1,0 +1,13 @@
+{
+  "case": "missing_parameter_hash",
+  "family": "houdini",
+  "owning_validator": "validate_houdini_intake.py",
+  "validator_arg": "pack",
+  "expected_code": "HOUDINI_PARAMETER_FAILURE",
+  "description": "houdini_intake.parameter_hash deleted -> intake gate must reject",
+  "patch": {
+    "delete": [
+      "houdini_intake.parameter_hash"
+    ]
+  }
+}

@@ -254,6 +254,155 @@ def build_biomeforge_gates():
     return G
 
 
+def build_meshforge_gates():
+    """v1.2 MeshForge Intake gates (brief §17, gates 47-61). Spliced into the
+    registry ONLY when MESHES=1. Until each validator SCRIPT exists it registers
+    as a blocking failure (status=missing) — no fake green. Every gate maps to the
+    shared CLI contract (``--pack <id> [--strict]``, exit 0/1, writes a report)."""
+    id_arg = lambda c: c["pack_id"]
+
+    def rr(command, name):
+        # mesh command reports live under procedural/reports/mesh/<command>/<name>
+        return lambda c: "procedural/reports/mesh/{}/{}".format(command, name)
+
+    G = []
+    # 47 — generate/ingest the mesh asset matrix (Agent 2). Deterministic.
+    G.append(gate("create-mesh-assets", "Create mesh assets", "mesh",
+                  FailureCode.MESH_CONTRACT_FAILURE, "create_mesh_assets.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  report=rr("create_mesh_assets", "create_mesh_assets_report.json")))
+    # 48-57 — per-dimension mesh validators.
+    mesh_gates = [
+        ("validate-mesh-contract", "Validate mesh contract",
+         FailureCode.MESH_CONTRACT_FAILURE, "validate_mesh_contract.py"),
+        ("validate-mesh-catalog", "Validate mesh catalog",
+         FailureCode.MESH_CATALOG_FAILURE, "validate_mesh_catalog.py"),
+        ("validate-mesh-provenance", "Validate mesh provenance",
+         FailureCode.MESH_PROVENANCE_FAILURE, "validate_mesh_provenance.py"),
+        ("validate-mesh-final-paths", "Validate mesh final paths",
+         FailureCode.MESH_FINAL_PATH_FAILURE, "validate_mesh_final_paths.py"),
+        ("validate-mesh-material-bindings", "Validate mesh material bindings",
+         FailureCode.MESH_MATERIAL_BINDING_FAILURE, "validate_mesh_material_bindings.py"),
+        ("validate-mesh-collision-bounds", "Validate mesh collision/bounds",
+         FailureCode.MESH_COLLISION_FAILURE, "validate_mesh_collision_bounds.py"),
+        ("validate-mesh-pcg-eligibility", "Validate mesh PCG eligibility",
+         FailureCode.MESH_PCG_ELIGIBILITY_FAILURE, "validate_mesh_pcg_eligibility.py"),
+        ("validate-mesh-biome-compatibility", "Validate mesh biome compatibility",
+         FailureCode.MESH_BIOME_COMPATIBILITY_FAILURE, "validate_mesh_biome_compatibility.py"),
+        ("validate-mesh-rendering-budgets", "Validate mesh rendering budgets",
+         FailureCode.MESH_RENDERING_BUDGET_FAILURE, "validate_mesh_rendering_budgets.py"),
+        ("validate-mesh-package", "Validate mesh package",
+         FailureCode.MESH_PACKAGE_FAILURE, "validate_mesh_package.py"),
+    ]
+    for gid, label, code, script in mesh_gates:
+        command = script.replace(".py", "")
+        G.append(gate(gid, label, "mesh", code, script,
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=rr(command, command + "_report.json")))
+    # 58 — negative mesh fixtures (Agent 7): known-bad definitions must be rejected.
+    G.append(gate("mesh-negative-validators", "Mesh negative validators", "mesh",
+                  FailureCode.MESH_NEGATIVE_FIXTURE_FAILURE, "test_negative_mesh.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"])))
+    # 59-60 — mesh lifecycle torture (Agent 7): repair -> destroy -> rebuild ->
+    # revalidate on a generated-owned scope. TORTURE only.
+    G.append(gate("mesh-lifecycle-torture", "Mesh lifecycle torture", "mesh",
+                  FailureCode.MESH_LIFECYCLE_FAILURE, "mesh_lifecycle_torture.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  torture_only=True))
+    # 61 — final report integrity INCLUDING mesh reports (Agent 7 extends).
+    G.append(gate("mesh-report-integrity", "Mesh report integrity", "mesh",
+                  FailureCode.REPORT_INTEGRITY_FAILURE, "validate_report_integrity.py",
+                  lambda c: ["--pack", id_arg(c), "--mesh"] + _s(c["strict"])))
+    return G
+
+
+def build_source_gates(houdini_mode, megascans_on):
+    """v1.2 addendum — source-specific gates (Houdini §5 + Megascans §6, gates
+    62-75). Houdini gates run when HOUDINI is set (live or metadata_only);
+    Megascans gates run when MEGASCANS is set. Until a validator SCRIPT exists it
+    registers as a blocking failure (status=missing) — no fake green."""
+    id_arg = lambda c: c["pack_id"]
+    lib_arg = lambda c: ["--lib", "megascans"]
+
+    def rr(command):
+        return lambda c: "procedural/reports/mesh/{}/{}_report.json".format(command, command)
+
+    G = []
+    if houdini_mode:
+        houdini_gates = [
+            ("validate-houdini-intake", "Validate Houdini intake",
+             FailureCode.HOUDINI_SOURCE_FAILURE, "validate_houdini_intake.py"),
+            ("validate-houdini-cook-reports", "Validate Houdini cook reports",
+             FailureCode.HOUDINI_COOK_FAILURE, "validate_houdini_cook_reports.py"),
+            ("validate-houdini-bake-reports", "Validate Houdini bake reports",
+             FailureCode.HOUDINI_BAKE_FAILURE, "validate_houdini_bake_reports.py"),
+            ("validate-houdini-generated-assets", "Validate Houdini generated assets",
+             FailureCode.HOUDINI_OUTPUT_REGISTRY_FAILURE, "validate_houdini_generated_assets.py"),
+        ]
+        for gid, label, code, script in houdini_gates:
+            command = script.replace(".py", "")
+            G.append(gate(gid, label, "source-houdini", code, script,
+                          lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                          report=rr(command)))
+    if megascans_on:
+        # 66 — scan the external library first (produces the external catalog).
+        G.append(gate("scan-external-asset-library", "Scan external asset library",
+                      "source-megascans", FailureCode.MEGASCANS_SCAN_FAILURE,
+                      "scan_external_asset_library.py", lambda c: lib_arg(c) + _s(c["strict"]),
+                      report=rr("scan_external_asset_library")))
+        lib_gates = [
+            ("validate-external-asset-catalog", "Validate external asset catalog",
+             FailureCode.EXTERNAL_ASSET_OWNERSHIP_FAILURE, "validate_external_asset_catalog.py", True),
+            ("validate-megascans-catalog", "Validate Megascans catalog",
+             FailureCode.MEGASCANS_CATALOG_FAILURE, "validate_megascans_catalog.py", True),
+            ("validate-external-asset-ownership", "Validate external asset ownership",
+             FailureCode.EXTERNAL_ASSET_OWNERSHIP_FAILURE, "validate_external_asset_ownership.py", True),
+        ]
+        for gid, label, code, script, is_lib in lib_gates:
+            command = script.replace(".py", "")
+            args_fn = (lambda c: lib_arg(c) + _s(c["strict"])) if is_lib else \
+                      (lambda c: ["--pack", id_arg(c)] + _s(c["strict"]))
+            G.append(gate(gid, label, "source-megascans", code, script, args_fn, report=rr(command)))
+        pack_gates = [
+            ("validate-megascans-bindings", "Validate Megascans bindings",
+             FailureCode.MEGASCANS_BINDING_FAILURE, "validate_megascans_bindings.py"),
+            ("validate-megascans-pcg-eligibility", "Validate Megascans PCG eligibility",
+             FailureCode.MEGASCANS_PCG_ELIGIBILITY_FAILURE, "validate_megascans_pcg_eligibility.py"),
+            ("validate-megascans-biome-compatibility", "Validate Megascans biome compatibility",
+             FailureCode.MEGASCANS_BIOME_COMPATIBILITY_FAILURE, "validate_megascans_biome_compatibility.py"),
+            ("validate-third-party-package-policy", "Validate third-party package policy",
+             FailureCode.THIRD_PARTY_ASSET_PACKAGE_POLICY_FAILURE, "validate_third_party_package_policy.py"),
+        ]
+        for gid, label, code, script in pack_gates:
+            command = script.replace(".py", "")
+            G.append(gate(gid, label, "source-megascans", code, script,
+                          lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr(command)))
+    # 74 — source ownership separation (runs whenever any source flag is on).
+    if houdini_mode or megascans_on:
+        G.append(gate("validate-source-ownership-separation", "Validate source ownership separation",
+                      "source-separation", FailureCode.SOURCE_OWNERSHIP_SEPARATION_FAILURE,
+                      "validate_source_ownership_separation.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=rr("validate_source_ownership_separation")))
+        # source negative fixtures — known-bad houdini/megascans records must be rejected.
+        G.append(gate("source-negative-validators", "Source negative validators",
+                      "source-separation", FailureCode.MESH_NEGATIVE_FIXTURE_FAILURE,
+                      "test_negative_sources.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"])))
+        # source lifecycle torture (Megascans destroy-protection + ownership) — TORTURE only.
+        G.append(gate("source-lifecycle-torture", "Source lifecycle torture",
+                      "source-separation", FailureCode.MESH_LIFECYCLE_FAILURE,
+                      "source_lifecycle_torture.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      torture_only=True))
+        # 75 — source-specific report integrity (extends validate_report_integrity).
+        G.append(gate("source-report-integrity", "Source report integrity",
+                      "source-separation", FailureCode.REPORT_INTEGRITY_FAILURE,
+                      "validate_report_integrity.py",
+                      lambda c: ["--pack", id_arg(c), "--sources"] + _s(c["strict"])))
+    return G
+
+
 def pack_declares_biomes(pack):
     """True if a world pack yaml declares BiomeForge (``biome_families:`` list or
     ``biomeforge: true``). Used to conditionally include the v1.1 gates."""
@@ -292,6 +441,12 @@ def run_gate(g, ctx):
         env["STRICT"] = "1"
     if ctx["deep"]:
         env["DEEP"] = "1"
+    # v1.2 addendum — make source flags visible to gate subprocesses even when
+    # they were passed as full_shield args rather than the environment.
+    if ctx.get("houdini_mode"):
+        env["HOUDINI"] = ctx["houdini_mode"]
+    if ctx.get("megascans"):
+        env["MEGASCANS"] = "1"
     try:
         proc = subprocess.run(argv, cwd=str(REPO_ROOT), env=env,
                               capture_output=True, text=True, timeout=ctx["timeout"])
@@ -334,6 +489,8 @@ def main(argv=None):
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--deep", action="store_true")
     ap.add_argument("--torture", action="store_true")
+    ap.add_argument("--meshes", action="store_true",
+                    help="Include v1.2 MeshForge Intake gates (also via MESHES=1).")
     ap.add_argument("--timeout", type=int, default=1800)
     ap.add_argument("--no-build", action="store_true",
                     help="Skip the heavy create-world-pack rebuild gate (validation-only run).")
@@ -383,6 +540,29 @@ def main(argv=None):
         fanchor = ids.index("fuzz-world-pack") + 1 if "fuzz-world-pack" in ids else len(registry)
         registry[fanchor:fanchor] = fuzz_gate
         print("BiomeForge pack detected — %d v1.1 gate(s) active." % len(bf))
+
+    # v1.2 — splice in MeshForge Intake gates when MESHES=1. They append after the
+    # regression matrix and before the final report-integrity gate, so mesh
+    # failures roll up by lane and the final integrity scan sees mesh reports.
+    ctx["meshes"] = args.meshes or flag_from_env("MESHES")
+    # v1.2 addendum — Houdini/Megascans source flags. HOUDINI may be '1'/'live'
+    # or 'metadata_only'; MEGASCANS is a plain flag.
+    import houdini_contract  # noqa: E402
+    ctx["houdini_mode"] = houdini_contract.houdini_mode_from_env()
+    ctx["megascans"] = flag_from_env("MEGASCANS")
+    if ctx["meshes"]:
+        mf = build_meshforge_gates()
+        # Addendum source gates depend on the mesh catalog, so append them to the
+        # mesh block (still before final-report-integrity).
+        mf += build_source_gates(ctx["houdini_mode"], ctx["megascans"])
+        ids = [g["id"] for g in registry]
+        anchor = ids.index("final-report-integrity") if "final-report-integrity" in ids else len(registry)
+        registry[anchor:anchor] = mf
+        print("MeshForge Intake enabled — %d v1.2 mesh gate(s) active." % len(mf))
+        if ctx["houdini_mode"]:
+            print("Houdini intake enabled — mode=%s" % ctx["houdini_mode"])
+        if ctx["megascans"]:
+            print("Megascans external library enabled.")
 
     if args.no_build or flag_from_env("NO_BUILD"):
         registry = [g for g in registry if g["id"] != "create-world-pack"]

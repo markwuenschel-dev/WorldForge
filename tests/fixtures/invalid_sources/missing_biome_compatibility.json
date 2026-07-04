@@ -1,0 +1,13 @@
+{
+  "case": "missing_biome_compatibility",
+  "family": "megascans",
+  "owning_validator": "validate_megascans_biome_compatibility.py",
+  "validator_arg": "pack",
+  "expected_code": "MEGASCANS_BIOME_COMPATIBILITY_FAILURE",
+  "description": "biome_compatibility emptied (implicit compatibility) -> biome gate must reject",
+  "patch": {
+    "set": {
+      "biome_compatibility": []
+    }
+  }
+}

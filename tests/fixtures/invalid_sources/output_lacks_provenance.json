@@ -1,0 +1,14 @@
+{
+  "case": "output_lacks_provenance",
+  "family": "houdini",
+  "owning_validator": "validate_houdini_generated_assets.py",
+  "validator_arg": "pack",
+  "expected_code": "HOUDINI_OUTPUT_PROVENANCE_FAILURE",
+  "description": "provenance/provenance_id stripped from output descriptor -> reject",
+  "patch": {
+    "delete": [
+      "provenance",
+      "provenance_id"
+    ]
+  }
+}

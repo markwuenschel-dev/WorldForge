@@ -1,0 +1,90 @@
+schema_version: '1.2'
+asset_id: mesh_trav_route_stone
+display_name: TraversalMarker — RouteStone
+mesh_family: traversal_marker
+source_type: imported_generated_stub
+source_recipe: recipe_traversal_marker_route_stone
+source_hash: sha256:281efffde25405e54832ee72f8bfc7b6042b82d08b16720afd046a5b7a490363
+source_tool_version: 1.2.0
+final_asset_path: /Game/WorldForge/Generated/Meshes/TraversalMarker/SM_RouteStone
+intermediate_paths:
+- /Game/HoudiniEngine/Temp/Imported/traversal_marker_route_stone
+quarantine_paths:
+- /Game/HoudiniEngine/Temp/Imported/traversal_marker_route_stone
+generated_owned: true
+human_owned: false
+material_bindings:
+- slot_name: MI_Body
+  material_asset_path: /Game/WorldForge/Generated/Materials/TraversalMarker/MI_RouteStone_RockDesert
+  material_family: rock_desert
+  biome_compatibility: &id001
+  - desert
+  - temperate_forest
+  rendering_budget_class: performance_safe
+  fallback_allowed: false
+collision_profile: OverlapAll
+bounds:
+  x_cm: 60.0
+  y_cm: 60.0
+  z_cm: 220.0
+pivot_policy: base_center
+scale_policy: uniform
+budget_class: performance_safe
+pcg_eligibility: pcg_conditionally_allowed
+biome_compatibility: *id001
+poi_compatibility: &id002
+- route
+- boundary
+- navigation
+placement_compatibility:
+  allowed_placement_profiles:
+  - scatter_default
+  - scatter_sparse
+  pcg_rules:
+    allowed_biomes: *id001
+    allowed_poi_classes: *id002
+    allowed_placement_profiles:
+    - scatter_default
+    - scatter_sparse
+    slope_limits:
+      min_deg: 0
+      max_deg: 35
+    height_limits:
+      min_cm: -50000
+      max_cm: 50000
+    density_class: sparse
+    collision_policy: OverlapAll
+    avoid_critical_routes: true
+    avoid_player_start: true
+    conditions:
+    - requires_route_graph_clearance
+nanite_policy: nanite_disabled
+lod_policy: lod_auto
+shadow_policy: shadow_default
+raytracing_policy: raytracing_default
+rendering_budget:
+  triangle_class: medium
+  material_complexity_class: medium
+  texture_class: medium
+  collision_complexity_class: simple
+  nanite_policy: nanite_disabled
+  lod_policy: lod_auto
+  shadow_policy: shadow_default
+  raytracing_policy: raytracing_default
+  pcg_density_class: sparse
+  package_size_class: medium
+geometry:
+  route_blocking: false
+package_rules:
+  include_material_dependencies: true
+repair_policy: regenerate_from_recipe
+destroy_policy: generated_owned_only
+source_metadata:
+  source_type: imported_generated_stub
+  source_manifest: procedural/generated/mesh_assets/traversal_marker__route_stone/import_manifest.json
+  declared_source_tool: external_generator_stub
+  declared_source_version: 0.1.0
+  input_artifact_hash: sha256:281efffde25405e54832ee72f8bfc7b6042b82d08b16720afd046a5b7a490363
+  import_report: quarantine_import_ok
+  quarantine_path: /Game/HoudiniEngine/Temp/Imported/traversal_marker_route_stone
+  final_asset_path: /Game/WorldForge/Generated/Meshes/TraversalMarker/SM_RouteStone

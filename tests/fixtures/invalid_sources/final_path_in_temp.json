@@ -1,0 +1,13 @@
+{
+  "case": "final_path_in_temp",
+  "family": "houdini",
+  "owning_validator": "validate_houdini_generated_assets.py",
+  "validator_arg": "pack",
+  "expected_code": "HOUDINI_IMPORT_FAILURE",
+  "description": "final_asset_path under /Game/HoudiniEngine/Bake (quarantine leak) -> reject",
+  "patch": {
+    "set": {
+      "final_asset_path": "/Game/HoudiniEngine/Bake/Leaked/SM_negsrc"
+    }
+  }
+}

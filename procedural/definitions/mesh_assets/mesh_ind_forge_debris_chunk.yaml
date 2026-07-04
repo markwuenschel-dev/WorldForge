@@ -1,0 +1,84 @@
+schema_version: '1.2'
+asset_id: mesh_ind_forge_debris_chunk
+display_name: IndustrialDebris — ForgeDebrisChunk
+mesh_family: industrial_debris
+source_type: ue_generated
+source_recipe: recipe_industrial_debris_forge_debris_chunk
+source_hash: sha256:0c22c96881dc1af06821ead8685822327ae7f7017891da941f15240a9feb9b79
+source_tool_version: 1.2.0
+final_asset_path: /Game/WorldForge/Generated/Meshes/IndustrialDebris/SM_ForgeDebrisChunk
+intermediate_paths: []
+quarantine_paths: []
+generated_owned: true
+human_owned: false
+material_bindings:
+- slot_name: MI_Body
+  material_asset_path: /Game/WorldForge/Generated/Materials/IndustrialDebris/MI_ForgeDebrisChunk_RockVolcanic
+  material_family: rock_volcanic
+  biome_compatibility: &id001
+  - volcanic_ashlands
+  rendering_budget_class: performance_safe
+  fallback_allowed: false
+collision_profile: BlockAllDynamic
+bounds:
+  x_cm: 260.0
+  y_cm: 180.0
+  z_cm: 150.0
+pivot_policy: base_center
+scale_policy: uniform
+budget_class: performance_safe
+pcg_eligibility: pcg_allowed
+biome_compatibility: *id001
+poi_compatibility: &id002
+- outpost
+- industrial
+- ruin
+placement_compatibility:
+  allowed_placement_profiles:
+  - scatter_default
+  - scatter_sparse
+  pcg_rules:
+    allowed_biomes: *id001
+    allowed_poi_classes: *id002
+    allowed_placement_profiles:
+    - scatter_default
+    - scatter_sparse
+    slope_limits:
+      min_deg: 0
+      max_deg: 35
+    height_limits:
+      min_cm: -50000
+      max_cm: 50000
+    density_class: medium
+    collision_policy: BlockAllDynamic
+    avoid_critical_routes: true
+    avoid_player_start: true
+nanite_policy: nanite_disabled
+lod_policy: lod_auto
+shadow_policy: shadow_default
+raytracing_policy: raytracing_default
+rendering_budget:
+  triangle_class: medium
+  material_complexity_class: medium
+  texture_class: medium
+  collision_complexity_class: simple
+  nanite_policy: nanite_disabled
+  lod_policy: lod_auto
+  shadow_policy: shadow_default
+  raytracing_policy: raytracing_default
+  pcg_density_class: medium
+  package_size_class: medium
+geometry:
+  blocking_collision_declared: true
+package_rules:
+  include_material_dependencies: true
+repair_policy: regenerate_from_recipe
+destroy_policy: generated_owned_only
+source_metadata:
+  source_type: ue_generated
+  ue_script: tools/unreal/materialize_mesh_asset.py
+  ue_script_version: 1.2.0
+  input_spec: recipe_industrial_debris_forge_debris_chunk
+  editor_version: null
+  source_hash: sha256:0c22c96881dc1af06821ead8685822327ae7f7017891da941f15240a9feb9b79
+  materialization_report: procedural/reports/mesh_assets/recipe_industrial_debris_forge_debris_chunk/ue_materialize_report.json

@@ -6,6 +6,11 @@ UE_PYTHON := python
 # v0.9 — export STRICT so it reaches subprocesses (incl. UE-side validators that
 # resolve it via strict_from_env(); there is no reliable argv in -ExecutePythonScript).
 export STRICT
+# v1.2 addendum — export the source flags so full_shield's gate subprocesses and
+# the source validators resolve them from the environment.
+export HOUDINI
+export MEGASCANS
+export MESHES
 
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
@@ -41,7 +46,18 @@ export STRICT
         validate-biome-environment-compatibility validate-biome-inspection \
         validate-terrain-forms validate-material-families validate-vegetation-profiles validate-placement-profiles \
         validate-biome-poi-compatibility validate-biome-traversal validate-biome-ecology-tags \
-        fuzz-biome-matrix
+        fuzz-biome-matrix \
+        create-mesh-assets validate-mesh-contract validate-mesh-catalog validate-mesh-provenance \
+        validate-mesh-final-paths validate-mesh-material-bindings validate-mesh-collision-bounds \
+        validate-mesh-pcg-eligibility validate-mesh-biome-compatibility validate-mesh-rendering-budgets \
+        validate-mesh-package mesh-negative-validators mesh-lifecycle-torture \
+        inspect-mesh-catalog inspect-mesh-asset diagnose-mesh-catalog diff-mesh-catalog \
+        validate-houdini-intake validate-houdini-cook-reports validate-houdini-bake-reports \
+        validate-houdini-generated-assets inspect-houdini-intake diagnose-houdini-intake \
+        scan-external-asset-library validate-external-asset-catalog validate-megascans-catalog \
+        validate-megascans-bindings validate-megascans-pcg-eligibility validate-megascans-biome-compatibility \
+        validate-external-asset-ownership validate-third-party-package-policy validate-source-ownership-separation \
+        inspect-external-asset-library inspect-external-asset diagnose-external-asset-library
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -461,7 +477,7 @@ CASES   ?= 25
 full-shield:
 	$(PYTHON) tools/pipeline/full_shield.py --pack $(PACK) --jobs $(JOBS) \
 	  --seeds $(SEEDS) --cases $(CASES) \
-	  $(if $(STRICT),--strict,) $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,)
+	  $(if $(STRICT),--strict,) $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,) $(if $(MESHES),--meshes,)
 
 revalidate-world-pack:
 	$(PYTHON) tools/pipeline/revalidate_world_pack.py --pack $(PACK) $(if $(STRICT),--strict,)
@@ -583,6 +599,103 @@ fuzz-biome-matrix:
 	$(PYTHON) tools/pipeline/fuzz_biome_matrix.py --pack $(PACK) --cases $(CASES) $(if $(STRICT),--strict,)
 diff-world-pack:
 	$(PYTHON) tools/pipeline/diff_world_pack.py --pack $(PACK) --baseline $(BASELINE) $(if $(STRICT),--strict,)
+
+# ======================================================================
+# v1.2 MeshForge Intake — generated mesh asset catalog (Agent 0 aggregation)
+# ----------------------------------------------------------------------
+# Every target maps 1:1 to a python tools/pipeline/<script>.py entrypoint. The
+# mesh gates fold into `make full-shield ... MESHES=1` (any pack). The intake
+# layer is source-agnostic: internal_recipe / ue_generated / imported_generated_stub.
+#
+#   make full-shield PACK=biome_expansion_world JOBS=8 STRICT=1 DEEP=1 TORTURE=1 SEEDS=200 BIOMES=all PROFILES=all MESHES=1
+# ======================================================================
+MESH_PACK ?= biome_expansion_world
+
+create-mesh-assets:
+	$(PYTHON) tools/pipeline/create_mesh_assets.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mesh-contract:
+	$(PYTHON) tools/pipeline/validate_mesh_contract.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mesh-catalog:
+	$(PYTHON) tools/pipeline/validate_mesh_catalog.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mesh-provenance:
+	$(PYTHON) tools/pipeline/validate_mesh_provenance.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mesh-final-paths:
+	$(PYTHON) tools/pipeline/validate_mesh_final_paths.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mesh-material-bindings:
+	$(PYTHON) tools/pipeline/validate_mesh_material_bindings.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mesh-collision-bounds:
+	$(PYTHON) tools/pipeline/validate_mesh_collision_bounds.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mesh-pcg-eligibility:
+	$(PYTHON) tools/pipeline/validate_mesh_pcg_eligibility.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mesh-biome-compatibility:
+	$(PYTHON) tools/pipeline/validate_mesh_biome_compatibility.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mesh-rendering-budgets:
+	$(PYTHON) tools/pipeline/validate_mesh_rendering_budgets.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mesh-package:
+	$(PYTHON) tools/pipeline/validate_mesh_package.py --pack $(PACK) $(if $(STRICT),--strict,)
+mesh-negative-validators:
+	$(PYTHON) tools/pipeline/test_negative_mesh.py --pack $(PACK) $(if $(STRICT),--strict,)
+mesh-lifecycle-torture:
+	$(PYTHON) tools/pipeline/mesh_lifecycle_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+inspect-mesh-catalog:
+	$(PYTHON) tools/pipeline/inspect_mesh_catalog.py --pack $(PACK) $(if $(ASSET),--asset $(ASSET),)
+inspect-mesh-asset:
+	$(PYTHON) tools/pipeline/inspect_mesh_catalog.py --pack $(PACK) --asset $(ASSET)
+diagnose-mesh-catalog:
+	$(PYTHON) tools/pipeline/inspect_mesh_catalog.py --pack $(PACK) --diagnose $(if $(STRICT),--strict,)
+diff-mesh-catalog:
+	$(PYTHON) tools/pipeline/inspect_mesh_catalog.py --pack $(PACK) --diff --baseline $(BASELINE)
+
+# ======================================================================
+# v1.2 addendum — Houdini intake + Megascans external library
+# ----------------------------------------------------------------------
+# Houdini is a GENERATED backend (outputs generated_owned; HDA project/third-
+# party owned). Megascans is a THIRD-PARTY external library (third_party_owned,
+# licensed, repair/destroy-protected). Never collapse the two ownership models.
+#   make full-shield PACK=biome_expansion_world ... MESHES=1 HOUDINI=1 MEGASCANS=1
+#   make full-shield PACK=biome_expansion_world ... MESHES=1 HOUDINI=metadata_only MEGASCANS=1
+# ======================================================================
+LIB ?= megascans
+
+# --- Houdini intake ---------------------------------------------------
+validate-houdini-intake:
+	$(PYTHON) tools/pipeline/validate_houdini_intake.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-houdini-cook-reports:
+	$(PYTHON) tools/pipeline/validate_houdini_cook_reports.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-houdini-bake-reports:
+	$(PYTHON) tools/pipeline/validate_houdini_bake_reports.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-houdini-generated-assets:
+	$(PYTHON) tools/pipeline/validate_houdini_generated_assets.py --pack $(PACK) $(if $(STRICT),--strict,)
+inspect-houdini-intake:
+	$(PYTHON) tools/pipeline/inspect_houdini_intake.py --pack $(PACK)
+diagnose-houdini-intake:
+	$(PYTHON) tools/pipeline/inspect_houdini_intake.py --pack $(PACK) --diagnose $(if $(STRICT),--strict,)
+
+# --- Megascans / external library -------------------------------------
+scan-external-asset-library:
+	$(PYTHON) tools/pipeline/scan_external_asset_library.py --lib $(LIB) $(if $(STRICT),--strict,)
+validate-external-asset-catalog:
+	$(PYTHON) tools/pipeline/validate_external_asset_catalog.py --lib $(LIB) $(if $(STRICT),--strict,)
+validate-megascans-catalog:
+	$(PYTHON) tools/pipeline/validate_megascans_catalog.py --lib $(LIB) $(if $(STRICT),--strict,)
+validate-megascans-bindings:
+	$(PYTHON) tools/pipeline/validate_megascans_bindings.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-megascans-pcg-eligibility:
+	$(PYTHON) tools/pipeline/validate_megascans_pcg_eligibility.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-megascans-biome-compatibility:
+	$(PYTHON) tools/pipeline/validate_megascans_biome_compatibility.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-external-asset-ownership:
+	$(PYTHON) tools/pipeline/validate_external_asset_ownership.py --lib $(LIB) $(if $(STRICT),--strict,)
+validate-third-party-package-policy:
+	$(PYTHON) tools/pipeline/validate_third_party_package_policy.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-source-ownership-separation:
+	$(PYTHON) tools/pipeline/validate_source_ownership_separation.py --pack $(PACK) $(if $(STRICT),--strict,)
+inspect-external-asset-library:
+	$(PYTHON) tools/pipeline/inspect_external_asset_library.py --lib $(LIB) $(if $(ASSET),--asset $(ASSET),)
+inspect-external-asset:
+	$(PYTHON) tools/pipeline/inspect_external_asset_library.py --lib $(LIB) --asset $(ASSET)
+diagnose-external-asset-library:
+	$(PYTHON) tools/pipeline/inspect_external_asset_library.py --lib $(LIB) --diagnose $(if $(STRICT),--strict,)
 
 preview:
 	@echo "Preview generation is not implemented yet."
