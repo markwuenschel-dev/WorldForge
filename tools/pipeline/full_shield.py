@@ -403,6 +403,80 @@ def build_source_gates(houdini_mode, megascans_on):
     return G
 
 
+def pack_declares_missionforge(pack):
+    """True if a pack yaml declares MissionForge (``missionforge: true``)."""
+    import yaml as _yaml
+    from world_pack_maps import resolve_world_pack_path
+    try:
+        wp_path = resolve_world_pack_path(pack)
+        if not wp_path.is_file():
+            return False
+        data = _yaml.safe_load(wp_path.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return False
+    return bool(data.get("missionforge"))
+
+
+def build_missionforge_gates(playtest_on):
+    """v1.3 MissionForge + PlaytestForge gates. A missionforge pack (mission_loop_
+    world) layers missions over a source pack, so this is a mission-FOCUSED gate
+    set — not the 33 world-gen gates. Playtest gates only run under PLAYTEST=1.
+    Until a validator SCRIPT exists it registers as blocking (status=missing)."""
+    id_arg = lambda c: c["pack_id"]
+
+    def rr(command):
+        return lambda c: "procedural/reports/missions/{}/{}_report.json".format(command, command)
+
+    G = []
+    # generate the mission loops first.
+    G.append(gate("create-mission-loops", "Create mission loops", "mission",
+                  FailureCode.MISSION_CONTRACT_FAILURE, "create_mission_loops.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  report=rr("create_mission_loops")))
+    mission_gates = [
+        ("validate-mission-contract", FailureCode.MISSION_CONTRACT_FAILURE, "validate_mission_contract.py"),
+        ("validate-mission-graph", FailureCode.MISSION_GRAPH_FAILURE, "validate_mission_graph.py"),
+        ("validate-mission-placement", FailureCode.MISSION_PLACEMENT_FAILURE, "validate_mission_placement.py"),
+        ("validate-mission-biome-compatibility", FailureCode.MISSION_BIOME_COMPATIBILITY_FAILURE, "validate_mission_biome_compatibility.py"),
+        ("validate-mission-routes", FailureCode.MISSION_ROUTE_FAILURE, "validate_mission_routes.py"),
+        ("validate-mission-objectives", FailureCode.MISSION_OBJECTIVE_FAILURE, "validate_mission_objectives.py"),
+        ("validate-mission-state", FailureCode.MISSION_STATE_FAILURE, "validate_mission_state.py"),
+        ("validate-mission-save-load", FailureCode.MISSION_SAVE_LOAD_FAILURE, "validate_mission_save_load.py"),
+        ("validate-mission-rewards", FailureCode.MISSION_REWARD_FAILURE, "validate_mission_rewards.py"),
+        ("validate-mission-dependencies", FailureCode.MISSION_MESH_DEPENDENCY_FAILURE, "validate_mission_dependencies.py"),
+        ("validate-mission-mesh-usage", FailureCode.MISSION_MESH_DEPENDENCY_FAILURE, "validate_mission_mesh_usage.py"),
+        ("validate-mission-entity-anchors", FailureCode.MISSION_GRAPH_FAILURE, "validate_mission_entity_anchors.py"),
+    ]
+    for gid, code, script in mission_gates:
+        command = script.replace(".py", "")
+        G.append(gate(gid, gid.replace("-", " ").title(), "mission", code, script,
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr(command)))
+    if playtest_on:
+        G.append(gate("validate-playtest-contract", "Validate playtest contract", "playtest",
+                      FailureCode.PLAYTEST_CONTRACT_FAILURE, "validate_playtest_contract.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr("validate_playtest_contract")))
+        G.append(gate("run-playtest-forge", "Run PlaytestForge", "playtest",
+                      FailureCode.PLAYTEST_COMPLETION_FAILURE, "run_playtest_forge.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr("run_playtest_forge")))
+        G.append(gate("validate-playtest-reports", "Validate playtest reports", "playtest",
+                      FailureCode.PLAYTEST_REPORT_FAILURE, "validate_playtest_reports.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr("validate_playtest_reports")))
+    # mission negative + fuzz + torture + report integrity.
+    G.append(gate("mission-negative-validators", "Mission negative validators", "mission",
+                  FailureCode.MISSION_CONTRACT_FAILURE, "test_negative_mission.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"])))
+    G.append(gate("fuzz-mission-matrix", "Fuzz mission matrix", "mission",
+                  FailureCode.MISSION_CONTRACT_FAILURE, "fuzz_mission_matrix.py",
+                  lambda c: ["--pack", id_arg(c), "--cases", str(c["cases"])] + _s(c["strict"])))
+    G.append(gate("mission-lifecycle-torture", "Mission lifecycle torture", "mission",
+                  FailureCode.MISSION_CONTRACT_FAILURE, "mission_lifecycle_torture.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), torture_only=True))
+    G.append(gate("mission-report-integrity", "Mission report integrity", "mission",
+                  FailureCode.REPORT_INTEGRITY_FAILURE, "validate_report_integrity.py",
+                  lambda c: ["--pack", id_arg(c), "--missions"] + _s(c["strict"])))
+    return G
+
+
 def pack_declares_biomes(pack):
     """True if a world pack yaml declares BiomeForge (``biome_families:`` list or
     ``biomeforge: true``). Used to conditionally include the v1.1 gates."""
@@ -491,6 +565,10 @@ def main(argv=None):
     ap.add_argument("--torture", action="store_true")
     ap.add_argument("--meshes", action="store_true",
                     help="Include v1.2 MeshForge Intake gates (also via MESHES=1).")
+    ap.add_argument("--missions", action="store_true",
+                    help="Include v1.3 MissionForge gates (also via MISSIONS=1).")
+    ap.add_argument("--playtest", action="store_true",
+                    help="Include v1.3 PlaytestForge gates (also via PLAYTEST=1).")
     ap.add_argument("--timeout", type=int, default=1800)
     ap.add_argument("--no-build", action="store_true",
                     help="Skip the heavy create-world-pack rebuild gate (validation-only run).")
@@ -501,13 +579,21 @@ def main(argv=None):
     deep = args.deep or flag_from_env("DEEP")
     torture = args.torture or flag_from_env("TORTURE")
 
-    # Resolve world_pack_id from the pack yaml.
+    missionforge = pack_declares_missionforge(args.pack)
+    missions_on = args.missions or flag_from_env("MISSIONS") or missionforge
+    playtest_on = args.playtest or flag_from_env("PLAYTEST")
+
+    # Resolve world_pack_id from the pack yaml. A missionforge pack layers missions
+    # over a source pack and owns no maps of its own, so enumerate_maps is bypassed.
     from world_pack_maps import enumerate_maps
-    try:
-        world_pack_id, maps = enumerate_maps(args.pack)
-    except Exception as exc:
-        sys.stderr.write("ERROR: cannot enumerate pack %s: %s\n" % (args.pack, exc))
-        sys.exit(2)
+    if missionforge:
+        world_pack_id, maps = args.pack, []
+    else:
+        try:
+            world_pack_id, maps = enumerate_maps(args.pack)
+        except Exception as exc:
+            sys.stderr.write("ERROR: cannot enumerate pack %s: %s\n" % (args.pack, exc))
+            sys.exit(2)
 
     ctx = {"pack_id": args.pack, "world_pack_id": world_pack_id,
            "strict": strict, "deep": deep, "torture": torture,
@@ -519,11 +605,30 @@ def main(argv=None):
         world_pack_id, strict, deep, torture, args.seeds))
     print("=" * 70)
 
-    registry = build_registry()
+    # v1.3 — a missionforge pack runs a mission-FOCUSED shield (missions +
+    # playtest + optional mesh/megascans gates), NOT the 33 world-gen gates
+    # (those belong to its source pack, exercised by the regression gate).
+    if missionforge:
+        import houdini_contract  # noqa: E402
+        ctx["biomeforge"] = False
+        ctx["meshes"] = args.meshes or flag_from_env("MESHES")
+        ctx["houdini_mode"] = houdini_contract.houdini_mode_from_env()
+        ctx["megascans"] = flag_from_env("MEGASCANS")
+        registry = build_missionforge_gates(playtest_on)
+        if ctx["meshes"]:
+            registry = (build_meshforge_gates()
+                        + build_source_gates(ctx["houdini_mode"], ctx["megascans"])
+                        + registry)
+        print("MissionForge pack — %d gate(s) active (playtest=%s, meshes=%s, megascans=%s)." % (
+            len(registry), bool(playtest_on), bool(ctx["meshes"]), bool(ctx["megascans"])))
+    else:
+        registry = build_registry()
 
     # v1.1 — splice in BiomeForge gates for biome packs only. desert_mvp_world
     # does not declare biomes, so its 33-gate v1.0x contract is unchanged.
-    ctx["biomeforge"] = pack_declares_biomes(args.pack)
+    # A missionforge pack lists biome_families for context but is NOT a biome
+    # world pack, so it skips the biome/mesh splice blocks entirely.
+    ctx["biomeforge"] = (not missionforge) and pack_declares_biomes(args.pack)
     if ctx["biomeforge"]:
         # Biome packs are not desert/industrial; use the biome-neutral runtime
         # scenario unless the operator explicitly overrode --scenario.
@@ -544,12 +649,13 @@ def main(argv=None):
     # v1.2 — splice in MeshForge Intake gates when MESHES=1. They append after the
     # regression matrix and before the final report-integrity gate, so mesh
     # failures roll up by lane and the final integrity scan sees mesh reports.
-    ctx["meshes"] = args.meshes or flag_from_env("MESHES")
+    ctx["meshes"] = (not missionforge) and (args.meshes or flag_from_env("MESHES"))
     # v1.2 addendum — Houdini/Megascans source flags. HOUDINI may be '1'/'live'
     # or 'metadata_only'; MEGASCANS is a plain flag.
     import houdini_contract  # noqa: E402
-    ctx["houdini_mode"] = houdini_contract.houdini_mode_from_env()
-    ctx["megascans"] = flag_from_env("MEGASCANS")
+    if not missionforge:
+        ctx["houdini_mode"] = houdini_contract.houdini_mode_from_env()
+        ctx["megascans"] = flag_from_env("MEGASCANS")
     if ctx["meshes"]:
         mf = build_meshforge_gates()
         # Addendum source gates depend on the mesh catalog, so append them to the

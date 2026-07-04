@@ -1,0 +1,582 @@
+{
+  "pack": "mission_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "baseline::regen": {
+      "ok": true,
+      "detail": "create rc=0 ([create-mission-loops] 60 missions, 5 biomes, 6 archetypes); playtest rc=0 ([run-playtest-forge] 60/60 missions completed by the playtest harness)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::mission_count": {
+      "ok": true,
+      "detail": "catalog has 60 missions (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_contract": {
+      "ok": true,
+      "detail": "validate_mission_contract.py rc=0 ([validate-mission-contract] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_graph": {
+      "ok": true,
+      "detail": "validate_mission_graph.py rc=0 ([validate-mission-graph] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_objectives": {
+      "ok": true,
+      "detail": "validate_mission_objectives.py rc=0 ([validate-mission-objectives] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_placement": {
+      "ok": true,
+      "detail": "validate_mission_placement.py rc=0 ([validate-mission-placement] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_biome_compatibility": {
+      "ok": true,
+      "detail": "validate_mission_biome_compatibility.py rc=0 ([validate-mission-biome-compatibility] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_routes": {
+      "ok": true,
+      "detail": "validate_mission_routes.py rc=0 ([validate-mission-routes] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_state": {
+      "ok": true,
+      "detail": "validate_mission_state.py rc=0 ([validate-mission-state] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_save_load": {
+      "ok": true,
+      "detail": "validate_mission_save_load.py rc=0 ([validate-mission-save-load] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_rewards": {
+      "ok": true,
+      "detail": "validate_mission_rewards.py rc=0 ([validate-mission-rewards] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_dependencies": {
+      "ok": true,
+      "detail": "validate_mission_dependencies.py rc=0 ([validate-mission-dependencies] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_mesh_usage": {
+      "ok": true,
+      "detail": "validate_mission_mesh_usage.py rc=0 ([validate-mission-mesh-usage] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_mission_entity_anchors": {
+      "ok": true,
+      "detail": "validate_mission_entity_anchors.py rc=0 ([validate-mission-entity-anchors] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_playtest_contract": {
+      "ok": true,
+      "detail": "validate_playtest_contract.py rc=0 ([validate-playtest-contract] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_playtest_reports": {
+      "ok": true,
+      "detail": "validate_playtest_reports.py rc=0 ([validate-playtest-reports] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::playtest_60_of_60": {
+      "ok": true,
+      "detail": "playtest completion 60/60 (expected 60/60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_mission_json::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted mission.json for mission_Alien_CrystalField_Debris_Perf_01 -> validate_mission_contract.py rc=1 ([validate-mission-contract]   FAIL: mission_Alien_CrystalField_Debris_Perf_01::loads: mission not found: D:\\Unreal Projects\\WorldForge\\procedural\\generated\\missions\\mission_Alien_CrystalField_Debris_P)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_mission_json::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-mission-loops] 60 missions, 5 biomes, 6 archetypes); playtest rc=0 ([run-playtest-forge] 60/60 missions completed by the playtest harness)); post-repair still-flagged=False (validate_mission_contract.py rc=0 ([validate-mission-contract] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_catalog_record::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: removed catalog record for mission_Alien_CrystalField_Debris_Perf_01 (orphan mission.json left on disk) -> orphans_on_disk=['mission_Alien_CrystalField_Debris_Perf_01'] catalog_count=59",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_catalog_record::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-mission-loops] 60 missions, 5 biomes, 6 archetypes); playtest rc=0 ([run-playtest-forge] 60/60 missions completed by the playtest harness)); post-repair still-flagged=False (orphans_on_disk=[] catalog_count=60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::zero_state_deltas::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: zeroed all state deltas for mission_Alien_CrystalField_Debris_Perf_01 (mission changes no world state) -> validate_mission_state.py rc=1 ([validate-mission-state]   FAIL: mission_Alien_CrystalField_Debris_Perf_01::no_failure_after_transition: a failure condition fires after the successful transition: final={'site_power': 1.0})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::zero_state_deltas::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-mission-loops] 60 missions, 5 biomes, 6 archetypes); playtest rc=0 ([run-playtest-forge] 60/60 missions completed by the playtest harness)); post-repair still-flagged=False (validate_mission_state.py rc=0 ([validate-mission-state] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::break_route::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: set required_route.avoids_hazards=False for mission_Alien_CrystalField_Debris_Perf_01 -> validate_mission_routes.py rc=1 ([validate-mission-routes]   FAIL: mission_Alien_CrystalField_Debris_Perf_01::route_claims_avoids_hazards: avoids_hazards=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::break_route::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-mission-loops] 60 missions, 5 biomes, 6 archetypes); playtest rc=0 ([run-playtest-forge] 60/60 missions completed by the playtest harness)); post-repair still-flagged=False (validate_mission_routes.py rc=0 ([validate-mission-routes] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_playtest_report::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted playtest report for mission_Alien_CrystalField_Debris_Perf_01 -> validate_playtest_reports.py rc=1 ([validate-playtest-reports]   FAIL: mission_Alien_CrystalField_Debris_Perf_01::report_exists: no playtest report at D:\\Unreal Projects\\WorldForge\\procedural\\reports\\missions\\playtest\\mission_Alien_Cry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_playtest_report::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-mission-loops] 60 missions, 5 biomes, 6 archetypes); playtest rc=0 ([run-playtest-forge] 60/60 missions completed by the playtest harness)); post-repair still-flagged=False (validate_playtest_reports.py rc=0 ([validate-playtest-reports] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::none_refused": {
+      "ok": true,
+      "detail": "destroy refused generated-owned missions (guard misfire): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::all_removed": {
+      "ok": true,
+      "detail": "removed 60 generated-owned missions (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::catalog_empty": {
+      "ok": true,
+      "detail": "catalog holds 0 record(s) after destroy (expected 0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::validators_report_zero": {
+      "ok": true,
+      "detail": "validate_mission_contract rc=1 on empty catalog (expected non-zero) ([validate-mission-contract]   FAIL: no missions — run 'make create-mission-loops' first)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::regen": {
+      "ok": true,
+      "detail": "create rc=0 ([create-mission-loops] 60 missions, 5 biomes, 6 archetypes); playtest rc=0 ([run-playtest-forge] 60/60 missions completed by the playtest harness)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::mission_count": {
+      "ok": true,
+      "detail": "catalog has 60 missions (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_contract": {
+      "ok": true,
+      "detail": "validate_mission_contract.py rc=0 ([validate-mission-contract] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_graph": {
+      "ok": true,
+      "detail": "validate_mission_graph.py rc=0 ([validate-mission-graph] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_objectives": {
+      "ok": true,
+      "detail": "validate_mission_objectives.py rc=0 ([validate-mission-objectives] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_placement": {
+      "ok": true,
+      "detail": "validate_mission_placement.py rc=0 ([validate-mission-placement] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_biome_compatibility": {
+      "ok": true,
+      "detail": "validate_mission_biome_compatibility.py rc=0 ([validate-mission-biome-compatibility] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_routes": {
+      "ok": true,
+      "detail": "validate_mission_routes.py rc=0 ([validate-mission-routes] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_state": {
+      "ok": true,
+      "detail": "validate_mission_state.py rc=0 ([validate-mission-state] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_save_load": {
+      "ok": true,
+      "detail": "validate_mission_save_load.py rc=0 ([validate-mission-save-load] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_rewards": {
+      "ok": true,
+      "detail": "validate_mission_rewards.py rc=0 ([validate-mission-rewards] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_dependencies": {
+      "ok": true,
+      "detail": "validate_mission_dependencies.py rc=0 ([validate-mission-dependencies] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_mesh_usage": {
+      "ok": true,
+      "detail": "validate_mission_mesh_usage.py rc=0 ([validate-mission-mesh-usage] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_mission_entity_anchors": {
+      "ok": true,
+      "detail": "validate_mission_entity_anchors.py rc=0 ([validate-mission-entity-anchors] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_playtest_contract": {
+      "ok": true,
+      "detail": "validate_playtest_contract.py rc=0 ([validate-playtest-contract] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_playtest_reports": {
+      "ok": true,
+      "detail": "validate_playtest_reports.py rc=0 ([validate-playtest-reports] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::playtest_60_of_60": {
+      "ok": true,
+      "detail": "playtest completion 60/60 (expected 60/60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::catalog_restored": {
+      "ok": true,
+      "detail": "post-restore catalog has 60 missions (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::playtest_exit_ok": {
+      "ok": true,
+      "detail": "post-restore run_playtest_forge rc=0 ([run-playtest-forge] 60/60 missions completed by the playtest harness)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::playtest_60_of_60": {
+      "ok": true,
+      "detail": "playtest completion 60/60 (expected 60/60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_contract": {
+      "ok": true,
+      "detail": "validate_mission_contract.py rc=0 ([validate-mission-contract] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_graph": {
+      "ok": true,
+      "detail": "validate_mission_graph.py rc=0 ([validate-mission-graph] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_objectives": {
+      "ok": true,
+      "detail": "validate_mission_objectives.py rc=0 ([validate-mission-objectives] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_placement": {
+      "ok": true,
+      "detail": "validate_mission_placement.py rc=0 ([validate-mission-placement] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_biome_compatibility": {
+      "ok": true,
+      "detail": "validate_mission_biome_compatibility.py rc=0 ([validate-mission-biome-compatibility] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_routes": {
+      "ok": true,
+      "detail": "validate_mission_routes.py rc=0 ([validate-mission-routes] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_state": {
+      "ok": true,
+      "detail": "validate_mission_state.py rc=0 ([validate-mission-state] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_save_load": {
+      "ok": true,
+      "detail": "validate_mission_save_load.py rc=0 ([validate-mission-save-load] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_rewards": {
+      "ok": true,
+      "detail": "validate_mission_rewards.py rc=0 ([validate-mission-rewards] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_dependencies": {
+      "ok": true,
+      "detail": "validate_mission_dependencies.py rc=0 ([validate-mission-dependencies] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_mesh_usage": {
+      "ok": true,
+      "detail": "validate_mission_mesh_usage.py rc=0 ([validate-mission-mesh-usage] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_mission_entity_anchors": {
+      "ok": true,
+      "detail": "validate_mission_entity_anchors.py rc=0 ([validate-mission-entity-anchors] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_playtest_contract": {
+      "ok": true,
+      "detail": "validate_playtest_contract.py rc=0 ([validate-playtest-contract] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_playtest_reports": {
+      "ok": true,
+      "detail": "validate_playtest_reports.py rc=0 ([validate-playtest-reports] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 65,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "mission-lifecycle-torture",
+    "pack": "mission_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": true,
+    "seeds": null,
+    "git_sha": "a5a38bba6f358b72f8ab5b17c52f2194fca12c64",
+    "timestamp": "2026-07-04T01:53:53.967842+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 5,
+    "corruption_modes": [
+      "delete_mission_json",
+      "delete_catalog_record",
+      "zero_state_deltas",
+      "break_route",
+      "delete_playtest_report"
+    ],
+    "expected_mission_count": 60,
+    "final_mission_count": 60,
+    "final_playtest_completed": 60,
+    "final_playtest_total": 60,
+    "validators": [
+      "validate_mission_contract",
+      "validate_mission_graph",
+      "validate_mission_objectives",
+      "validate_mission_placement",
+      "validate_mission_biome_compatibility",
+      "validate_mission_routes",
+      "validate_mission_state",
+      "validate_mission_save_load",
+      "validate_mission_rewards",
+      "validate_mission_dependencies",
+      "validate_mission_mesh_usage",
+      "validate_mission_entity_anchors",
+      "validate_playtest_contract",
+      "validate_playtest_reports"
+    ]
+  }
+}

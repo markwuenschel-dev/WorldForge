@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.3",
+  "mission_id": "mission_Alpine_GlacialBasin_Debris_Photoreal_01",
+  "display_name": "Recover Resource — alpine_snow",
+  "mission_archetype": "recover_resource",
+  "biome_family": "alpine_snow",
+  "seed": 12010,
+  "source_map": {
+    "slice_id": "Alpine_GlacialBasin_Debris_Photoreal_01",
+    "world_pack_map": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Debris_Photoreal_01",
+    "world_pack_id": "biome_expansion_world"
+  },
+  "scenario_id": "mission_state_recover_resource",
+  "start_anchor": {
+    "id": "start_anchor",
+    "world_position": [
+      -8366.75,
+      -1168.84,
+      0.0
+    ],
+    "valid_spawn": true
+  },
+  "primary_poi": {
+    "id": "primary_poi",
+    "poi_class": "navigation_landmark",
+    "gameplay_anchor": [
+      8873.83,
+      1239.68,
+      90.0
+    ]
+  },
+  "objective_anchors": [
+    {
+      "id": "objective_1",
+      "role": "objective_anchor",
+      "world_position": [
+        8873.83,
+        1239.68,
+        90.0
+      ],
+      "interaction": "recover",
+      "at_poi": "primary_poi"
+    }
+  ],
+  "required_route": {
+    "from_node": "start_anchor",
+    "to_node": "primary_poi",
+    "waypoints": [
+      [
+        -8366.75,
+        -1168.84,
+        0.0
+      ],
+      [
+        8873.83,
+        1239.68,
+        90.0
+      ]
+    ],
+    "length_cm": 17408.0,
+    "avoids_hazards": true
+  },
+  "optional_route": null,
+  "hazard_zones": [
+    {
+      "id": "danger_zone",
+      "bounds": {
+        "min": [
+          4482.82210257421,
+          7237.799125099118,
+          0.0
+        ],
+        "max": [
+          12482.82210257421,
+          15237.799125099118,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "world_position": [
+        -4075.15,
+        -6509.65,
+        0.0
+      ]
+    }
+  ],
+  "encounter_zones": [
+    {
+      "id": "danger_zone",
+      "class": "encounter",
+      "bounds": {
+        "min": [
+          4482.82210257421,
+          7237.799125099118,
+          0.0
+        ],
+        "max": [
+          12482.82210257421,
+          15237.799125099118,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "resource_nodes": [
+    {
+      "id": "resource_1",
+      "at_node": "primary_poi"
+    }
+  ],
+  "state_keys": [
+    {
+      "key": "resource_recovered",
+      "initial": 0.0,
+      "delta": 1.0,
+      "expected_final": 1.0
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "complete_1",
+      "state_key": "resource_recovered",
+      "operator": ">=",
+      "threshold": 0.9,
+      "at_node": "primary_poi"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "no_state_change",
+      "state_key": "resource_recovered",
+      "operator": "==",
+      "threshold": 0.0,
+      "at_node": "completion"
+    }
+  ],
+  "reward_outputs": [
+    {
+      "reward_id": "reward_1",
+      "reward_type": "resource_grant",
+      "fires_on": "complete_1"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "resource_recovered"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "graph_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest"
+    ],
+    "expected_completion": true,
+    "max_route_length_cm": 108611.6
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "resource_node",
+      "rock_outcrop"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_res_ice_crystal_node",
+      "mesh_rock_alpine_granite_outcrop",
+      "mesh_rock_houdini_alpine_scree"
+    ],
+    "megascans_dressing": "megascans_huge_icelandic_lava_cliff_e16b2143"
+  },
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:c83cc1e6583dd855923c53e20420b14292d45084d54d58a789f91b29662e0784",
+  "provenance": {
+    "generator": "create_mission_loops",
+    "generator_version": "1.3.0",
+    "generated_at_utc": "2026-07-04T01:53:33.308229+00:00",
+    "source_hash": "sha256:c83cc1e6583dd855923c53e20420b14292d45084d54d58a789f91b29662e0784"
+  },
+  "provenance_id": "prov_mission_Alpine_GlacialBasin_Debris_Photoreal_01",
+  "registry_id": "mission_catalog:mission_Alpine_GlacialBasin_Debris_Photoreal_01",
+  "mission_path": "procedural/generated/missions/mission_Alpine_GlacialBasin_Debris_Photoreal_01/mission.json"
+}

@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.3",
+  "mission_id": "mission_Wetland_ReedMarsh_Debris_Photoreal_01",
+  "display_name": "Recover Resource — wetland_mire",
+  "mission_archetype": "recover_resource",
+  "biome_family": "wetland_mire",
+  "seed": 14010,
+  "source_map": {
+    "slice_id": "Wetland_ReedMarsh_Debris_Photoreal_01",
+    "world_pack_map": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Debris_Photoreal_01",
+    "world_pack_id": "biome_expansion_world"
+  },
+  "scenario_id": "mission_state_recover_resource",
+  "start_anchor": {
+    "id": "start_anchor",
+    "world_position": [
+      -4614.53,
+      -7076.36,
+      0.0
+    ],
+    "valid_spawn": true
+  },
+  "primary_poi": {
+    "id": "primary_poi",
+    "poi_class": "navigation_landmark",
+    "gameplay_anchor": [
+      4894.2,
+      7505.23,
+      90.0
+    ]
+  },
+  "objective_anchors": [
+    {
+      "id": "objective_1",
+      "role": "objective_anchor",
+      "world_position": [
+        4894.2,
+        7505.23,
+        90.0
+      ],
+      "interaction": "recover",
+      "at_poi": "primary_poi"
+    }
+  ],
+  "required_route": {
+    "from_node": "start_anchor",
+    "to_node": "primary_poi",
+    "waypoints": [
+      [
+        -4614.53,
+        -7076.36,
+        0.0
+      ],
+      [
+        4894.2,
+        7505.23,
+        90.0
+      ]
+    ],
+    "length_cm": 17408.01,
+    "avoids_hazards": true
+  },
+  "optional_route": null,
+  "hazard_zones": [
+    {
+      "id": "danger_zone",
+      "bounds": {
+        "min": [
+          -6901.291410329932,
+          9777.841200723204,
+          0.0
+        ],
+        "max": [
+          1098.7085896700678,
+          17777.841200723204,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "world_position": [
+        2231.49,
+        -7348.66,
+        0.0
+      ]
+    }
+  ],
+  "encounter_zones": [
+    {
+      "id": "danger_zone",
+      "class": "encounter",
+      "bounds": {
+        "min": [
+          -6901.291410329932,
+          9777.841200723204,
+          0.0
+        ],
+        "max": [
+          1098.7085896700678,
+          17777.841200723204,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "resource_nodes": [
+    {
+      "id": "resource_1",
+      "at_node": "primary_poi"
+    }
+  ],
+  "state_keys": [
+    {
+      "key": "resource_recovered",
+      "initial": 0.0,
+      "delta": 1.0,
+      "expected_final": 1.0
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "complete_1",
+      "state_key": "resource_recovered",
+      "operator": ">=",
+      "threshold": 0.9,
+      "at_node": "primary_poi"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "no_state_change",
+      "state_key": "resource_recovered",
+      "operator": "==",
+      "threshold": 0.0,
+      "at_node": "completion"
+    }
+  ],
+  "reward_outputs": [
+    {
+      "reward_id": "reward_1",
+      "reward_type": "resource_grant",
+      "fires_on": "complete_1"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "resource_recovered"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "graph_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest"
+    ],
+    "expected_completion": true,
+    "max_route_length_cm": 108611.6
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "resource_node",
+      "rock_outcrop"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_res_herb_patch_proxy",
+      "mesh_rock_wetland_slick_stone"
+    ],
+    "megascans_dressing": "megascans_canyon_sandy_mud_29c6056c"
+  },
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:d0d27927043e602614214efce79f859f862ef60981ba583089ef7b38af1a4207",
+  "provenance": {
+    "generator": "create_mission_loops",
+    "generator_version": "1.3.0",
+    "generated_at_utc": "2026-07-04T01:53:33.322062+00:00",
+    "source_hash": "sha256:d0d27927043e602614214efce79f859f862ef60981ba583089ef7b38af1a4207"
+  },
+  "provenance_id": "prov_mission_Wetland_ReedMarsh_Debris_Photoreal_01",
+  "registry_id": "mission_catalog:mission_Wetland_ReedMarsh_Debris_Photoreal_01",
+  "mission_path": "procedural/generated/missions/mission_Wetland_ReedMarsh_Debris_Photoreal_01/mission.json"
+}

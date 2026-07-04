@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.3",
+  "mission_id": "fixture_objective_unreachable",
+  "display_name": "Disable Site — alien_crystal_badlands",
+  "mission_archetype": "disable_site",
+  "biome_family": "alien_crystal_badlands",
+  "seed": 15006,
+  "source_map": {
+    "slice_id": "Alien_CrystalField_Debris_Perf_01",
+    "world_pack_map": "/Game/WorldForge/Maps/Alien_CrystalField_Debris_Perf_01",
+    "world_pack_id": "biome_expansion_world"
+  },
+  "scenario_id": "mission_state_disable_site",
+  "start_anchor": {
+    "id": "start_anchor",
+    "world_position": [
+      -3701.66,
+      -7593.84,
+      0.0
+    ],
+    "valid_spawn": true
+  },
+  "primary_poi": {
+    "id": "primary_poi",
+    "poi_class": "navigation_landmark",
+    "gameplay_anchor": [
+      3926.0,
+      8054.07,
+      90.0
+    ]
+  },
+  "objective_anchors": [
+    {
+      "id": "objective_1",
+      "role": "objective_anchor",
+      "world_position": [
+        3926.0,
+        8054.07,
+        90.0
+      ],
+      "interaction": "disable",
+      "at_poi": "primary_poi"
+    }
+  ],
+  "required_route": {
+    "from_node": "start_anchor",
+    "to_node": "primary_poi",
+    "waypoints": [
+      [
+        -3701.66,
+        -7593.84,
+        0.0
+      ],
+      [
+        3926.0,
+        8054.07,
+        90.0
+      ]
+    ],
+    "length_cm": 17407.99,
+    "avoids_hazards": false
+  },
+  "optional_route": null,
+  "hazard_zones": [
+    {
+      "id": "danger_zone",
+      "bounds": {
+        "min": [
+          -8586.980000235419,
+          9311.874942225093,
+          0.0
+        ],
+        "max": [
+          -586.9800002354186,
+          17311.87494222509,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "world_position": [
+        3125.31,
+        -7015.33,
+        0.0
+      ]
+    }
+  ],
+  "encounter_zones": [
+    {
+      "id": "danger_zone",
+      "class": "encounter",
+      "bounds": {
+        "min": [
+          -8586.980000235419,
+          9311.874942225093,
+          0.0
+        ],
+        "max": [
+          -586.9800002354186,
+          17311.87494222509,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "resource_nodes": [],
+  "state_keys": [
+    {
+      "key": "site_power",
+      "initial": 1.0,
+      "delta": -1.0,
+      "expected_final": 0.0
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "complete_1",
+      "state_key": "site_power",
+      "operator": "<=",
+      "threshold": 0.1,
+      "at_node": "primary_poi"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "no_state_change",
+      "state_key": "site_power",
+      "operator": "==",
+      "threshold": 1.0,
+      "at_node": "completion"
+    }
+  ],
+  "reward_outputs": [
+    {
+      "reward_id": "reward_1",
+      "reward_type": "progression_marker",
+      "fires_on": "complete_1"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "site_power"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "graph_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest"
+    ],
+    "expected_completion": true,
+    "max_route_length_cm": 108611.6
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "industrial_debris",
+      "encounter_cover"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_crystal_cover_cluster"
+    ],
+    "megascans_dressing": null
+  },
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:a6b5ed0f5b7e9c9b26f46e4736f571cbe0ca8b2189d5b9a104d723fe3a17a936",
+  "provenance": {
+    "generator": "create_mission_loops",
+    "generator_version": "1.3.0",
+    "generated_at_utc": "2026-07-04T01:35:13.013672+00:00",
+    "source_hash": "sha256:a6b5ed0f5b7e9c9b26f46e4736f571cbe0ca8b2189d5b9a104d723fe3a17a936"
+  },
+  "provenance_id": "prov_fixture_objective_unreachable",
+  "registry_id": "mission_catalog:fixture_objective_unreachable",
+  "mission_path": "tests/fixtures/invalid_missions/objective_unreachable.json"
+}

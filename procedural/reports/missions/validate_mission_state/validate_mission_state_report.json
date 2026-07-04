@@ -1,0 +1,3395 @@
+{
+  "pack": "mission_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "mission_Alien_CrystalField_Debris_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'site_power': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'site_power': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'resource_recovered': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'resource_recovered': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'survey_progress': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Debris_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'survey_progress': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'hazard_level': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'hazard_level': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'power_level': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'power_level': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'cache_extracted': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_CrystalField_Scatter_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'cache_extracted': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'site_power': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'site_power': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'resource_recovered': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'resource_recovered': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'survey_progress': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Debris_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'survey_progress': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'hazard_level': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'hazard_level': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'power_level': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'power_level': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'cache_extracted': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alien_Plateau_Scatter_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'cache_extracted': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'site_power': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'site_power': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'resource_recovered': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'resource_recovered': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'survey_progress': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Debris_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'survey_progress': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'hazard_level': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'hazard_level': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'power_level': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'power_level': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'cache_extracted': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_GlacialBasin_Scatter_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'cache_extracted': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'site_power': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'site_power': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'resource_recovered': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'resource_recovered': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'survey_progress': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Debris_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'survey_progress': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'hazard_level': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'hazard_level': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'power_level': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'power_level': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'cache_extracted': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Alpine_SnowyRidge_Scatter_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'cache_extracted': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'site_power': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'site_power': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'resource_recovered': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'resource_recovered': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'survey_progress': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Debris_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'survey_progress': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'hazard_level': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'hazard_level': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'power_level': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'power_level': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'cache_extracted': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_AshRavine_Scar_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'cache_extracted': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'site_power': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'site_power': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'resource_recovered': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'resource_recovered': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'survey_progress': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Debris_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'survey_progress': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'hazard_level': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'hazard_level': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'power_level': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'power_level': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'cache_extracted': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Ashlands_BasaltFlats_Scar_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'cache_extracted': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'site_power': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'site_power': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'resource_recovered': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'resource_recovered': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'survey_progress': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Debris_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'survey_progress': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'hazard_level': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'hazard_level': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'power_level': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'power_level': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'cache_extracted': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_ErodedGully_Scatter_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'cache_extracted': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'site_power': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'site_power': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'resource_recovered': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'resource_recovered': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'survey_progress': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Debris_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'survey_progress': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'hazard_level': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'hazard_level': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'power_level': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'power_level': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'cache_extracted': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Forest_RollingWoodland_Scatter_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'cache_extracted': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'site_power': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'site_power': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'resource_recovered': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'resource_recovered': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'survey_progress': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Debris_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'survey_progress': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'hazard_level': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'hazard_level': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'power_level': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'power_level': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'cache_extracted': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_MudFlat_Scatter_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'cache_extracted': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'site_power': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'site_power': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'resource_recovered': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'resource_recovered': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'survey_progress': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Debris_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'survey_progress': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Perf_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Perf_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Perf_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 0.0 != initial+delta 0.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Perf_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Perf_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Perf_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'hazard_level': 0.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Perf_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'hazard_level': 0.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Photoreal_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Photoreal_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Photoreal_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Photoreal_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Photoreal_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Photoreal_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'power_level': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Photoreal_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'power_level': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Stylized_01::state_keys_present": {
+      "ok": true,
+      "detail": "no state keys — mission is stateless",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Stylized_01::state_0_shape": {
+      "ok": true,
+      "detail": "state key 0 missing key/initial/delta/expected_final",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Stylized_01::state_0_final_honest": {
+      "ok": true,
+      "detail": "expected_final 1.0 != initial+delta 1.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Stylized_01::state_changes": {
+      "ok": true,
+      "detail": "no state key has a non-zero delta — mission completes with no world change",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Stylized_01::completion_keys_declared": {
+      "ok": true,
+      "detail": "completion references undeclared state keys: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Stylized_01::state_change_resolves_completion": {
+      "ok": true,
+      "detail": "simulated final {'cache_extracted': 1.0} does not resolve completion",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission_Wetland_ReedMarsh_Scatter_Stylized_01::no_failure_after_transition": {
+      "ok": true,
+      "detail": "a failure condition fires after the successful transition: final={'cache_extracted': 1.0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 420,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-mission-state",
+    "pack": "mission_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "a5a38bba6f358b72f8ab5b17c52f2194fca12c64",
+    "timestamp": "2026-07-04T01:53:53.234515+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 60
+  }
+}

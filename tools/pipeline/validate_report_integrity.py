@@ -47,6 +47,7 @@ from report_meta import (build_meta, hash_obj, flag_from_env,
                          REQUIRED_META_KEYS, missing_meta_keys)
 from world_pack_maps import enumerate_maps, report_dir_for
 from mesh_contract import MESH_REPORTS_REL
+import mission_contract as MC
 
 
 # This gate's own report — excluded from the scan so it never grades itself.
@@ -531,6 +532,93 @@ def validate_sources(pack, strict, reports_dir=None):
     return rep
 
 
+# ---------------------------------------------------------------------------
+# v1.3 MissionForge + PlaytestForge — mission command report-integrity (--missions)
+# ---------------------------------------------------------------------------
+# The v1.3 mission + playtest gates each emit a ValidationReport under
+# procedural/reports/missions/<command>/<command>_report.json — the same
+# per-command layout as the mesh/source gates. --missions validates THOSE reports
+# exactly the way --mesh validates the mesh command reports: a mission report
+# cannot silently go missing, empty, zero-record, drop required metadata, carry
+# an unknown status, or launder a child failure as success. It does NOT alter the
+# existing world-pack / --mesh / --sources behaviour.
+
+# This gate's own missions report — written under its own command dir; never scanned.
+OWN_MISSIONS_REPORT = "validate_report_integrity_missions_report.json"
+
+# The canonical set of mission command reports that MUST be present for a mission
+# integrity scan (brief §"v1.3 lanes"). An absent required report is REPORT_MISSING.
+REQUIRED_MISSION_COMMANDS = (
+    "create_mission_loops",
+    "validate_mission_contract",
+    "validate_mission_graph",
+    "validate_mission_placement",
+    "validate_mission_biome_compatibility",
+    "validate_mission_routes",
+    "validate_mission_objectives",
+    "validate_mission_state",
+    "validate_mission_save_load",
+    "validate_mission_rewards",
+    "validate_mission_dependencies",
+    "validate_mission_mesh_usage",
+    "validate_mission_entity_anchors",
+    "validate_playtest_contract",
+    "run_playtest_forge",
+    "validate_playtest_reports",
+)
+
+# TORTURE-gated / negative mission reports: scanned for integrity IF PRESENT, but
+# never hard-required (mission-lifecycle-torture only runs under the TORTURE gate,
+# and mission-negative/fuzz write their report only when that lane has run).
+OPTIONAL_MISSION_COMMANDS = (
+    "test_negative_mission",
+    "fuzz_mission_matrix",
+    "mission_lifecycle_torture",
+)
+
+
+def validate_missions(pack, strict, reports_dir=None):
+    """Core mission report-integrity scan. Returns an UNFINALIZED ValidationReport.
+
+    Scans procedural/reports/missions/<command>/<command>_report.json for every
+    REQUIRED_MISSION_COMMANDS entry (plus any present OPTIONAL_MISSION_COMMANDS),
+    reusing the same per-report battery as the --mesh scan, so a missing / empty /
+    zero-record / child-failed mission report fails this gate. reports_dir overrides
+    the missions reports root (used by a negative harness). Existing behaviour of the
+    world-pack / --mesh / --sources scans is untouched.
+    """
+    try:
+        world_pack_id, _ = enumerate_maps(pack)
+    except Exception:
+        world_pack_id = None
+    reports_root = Path(reports_dir) if reports_dir else (REPO_ROOT / MC.MISSION_REPORTS_REL)
+
+    rep = ValidationReport("mission_pack_id", world_pack_id or str(pack), strict=strict)
+
+    scanned = 0
+    for command in REQUIRED_MISSION_COMMANDS:
+        _check_one_mesh_report(rep, command, _mesh_report_path(reports_root, command),
+                               required=True)
+        scanned += 1
+    for command in OPTIONAL_MISSION_COMMANDS:
+        path = _mesh_report_path(reports_root, command)
+        if path.is_file():
+            _check_one_mesh_report(rep, command, path, required=False)
+            scanned += 1
+
+    rep.set_meta(build_meta(
+        command="validate-report-integrity-missions",
+        pack=world_pack_id,
+        strict=strict,
+        status=None,
+        record_count=scanned,
+        extra={"missions": True,
+               "required_reports": len(REQUIRED_MISSION_COMMANDS),
+               "reports_scanned": scanned},
+    ))
+    return rep
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="WorldForge v1.0x report-integrity gate (no fake green).")
     ap.add_argument("--pack", required=True, help="World pack id or path.")
@@ -543,6 +631,9 @@ def main(argv=None):
     ap.add_argument("--sources", action="store_true",
                     help="Scan the v1.2 addendum SOURCE command reports (Houdini + Megascans, "
                          "procedural/reports/mesh/*) instead of the world-pack gate reports.")
+    ap.add_argument("--missions", action="store_true",
+                    help="Scan the v1.3 MissionForge + PlaytestForge command reports "
+                         "(procedural/reports/missions/*) instead of the world-pack gate reports.")
     ap.add_argument("--max-age-days", type=float, default=None,
                     help="Flag reports older than this many days as stale (default: off).")
     ap.add_argument("--reports-dir", default=None,
@@ -572,6 +663,14 @@ def main(argv=None):
         sources_report_dir = REPO_ROOT / MESH_REPORTS_REL / "validate_report_integrity"
         rep.write(sources_report_dir, OWN_SOURCE_REPORT)
         rep.print_summary("validate-report-integrity --sources")
+        return rep.exit_code
+
+    if args.missions:
+        rep = validate_missions(args.pack, strict=strict, reports_dir=args.reports_dir)
+        rep.finalize()
+        missions_report_dir = REPO_ROOT / MC.MISSION_REPORTS_REL / "validate_report_integrity"
+        rep.write(missions_report_dir, OWN_MISSIONS_REPORT)
+        rep.print_summary("validate-report-integrity --missions")
         return rep.exit_code
 
     rep = validate_pack(args.pack, strict=strict, reports_dir=args.reports_dir,

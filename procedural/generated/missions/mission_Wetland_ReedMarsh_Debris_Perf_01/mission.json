@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.3",
+  "mission_id": "mission_Wetland_ReedMarsh_Debris_Perf_01",
+  "display_name": "Disable Site — wetland_mire",
+  "mission_archetype": "disable_site",
+  "biome_family": "wetland_mire",
+  "seed": 14012,
+  "source_map": {
+    "slice_id": "Wetland_ReedMarsh_Debris_Perf_01",
+    "world_pack_map": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Debris_Perf_01",
+    "world_pack_id": "biome_expansion_world"
+  },
+  "scenario_id": "mission_state_disable_site",
+  "start_anchor": {
+    "id": "start_anchor",
+    "world_position": [
+      6864.44,
+      -4924.25,
+      0.0
+    ],
+    "valid_spawn": true
+  },
+  "primary_poi": {
+    "id": "primary_poi",
+    "poi_class": "navigation_landmark",
+    "gameplay_anchor": [
+      -7280.46,
+      5222.69,
+      90.0
+    ]
+  },
+  "objective_anchors": [
+    {
+      "id": "objective_1",
+      "role": "objective_anchor",
+      "world_position": [
+        -7280.46,
+        5222.69,
+        90.0
+      ],
+      "interaction": "disable",
+      "at_poi": "primary_poi"
+    }
+  ],
+  "required_route": {
+    "from_node": "start_anchor",
+    "to_node": "primary_poi",
+    "waypoints": [
+      [
+        6864.44,
+        -4924.25,
+        0.0
+      ],
+      [
+        -7280.46,
+        5222.69,
+        90.0
+      ]
+    ],
+    "length_cm": 17408.0,
+    "avoids_hazards": true
+  },
+  "optional_route": null,
+  "hazard_zones": [
+    {
+      "id": "danger_zone",
+      "bounds": {
+        "min": [
+          -17893.09737065703,
+          -6286.535687332009,
+          0.0
+        ],
+        "max": [
+          -9893.097370657028,
+          1713.4643126679907,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "world_position": [
+        7440.52,
+        1902.93,
+        0.0
+      ]
+    }
+  ],
+  "encounter_zones": [
+    {
+      "id": "danger_zone",
+      "class": "encounter",
+      "bounds": {
+        "min": [
+          -17893.09737065703,
+          -6286.535687332009,
+          0.0
+        ],
+        "max": [
+          -9893.097370657028,
+          1713.4643126679907,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "resource_nodes": [],
+  "state_keys": [
+    {
+      "key": "site_power",
+      "initial": 1.0,
+      "delta": -1.0,
+      "expected_final": 0.0
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "complete_1",
+      "state_key": "site_power",
+      "operator": "<=",
+      "threshold": 0.1,
+      "at_node": "primary_poi"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "no_state_change",
+      "state_key": "site_power",
+      "operator": "==",
+      "threshold": 1.0,
+      "at_node": "completion"
+    }
+  ],
+  "reward_outputs": [
+    {
+      "reward_id": "reward_1",
+      "reward_type": "progression_marker",
+      "fires_on": "complete_1"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "site_power"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "graph_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest"
+    ],
+    "expected_completion": true,
+    "max_route_length_cm": 108611.6
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "industrial_debris",
+      "encounter_cover"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_fallen_tree_cover"
+    ],
+    "megascans_dressing": "megascans_canyon_sandy_mud_29c6056c"
+  },
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:bf5f44dead95b0b782f55fafba304c487f22d6f0082ef35ef313fa2554c3662f",
+  "provenance": {
+    "generator": "create_mission_loops",
+    "generator_version": "1.3.0",
+    "generated_at_utc": "2026-07-04T01:53:33.321740+00:00",
+    "source_hash": "sha256:bf5f44dead95b0b782f55fafba304c487f22d6f0082ef35ef313fa2554c3662f"
+  },
+  "provenance_id": "prov_mission_Wetland_ReedMarsh_Debris_Perf_01",
+  "registry_id": "mission_catalog:mission_Wetland_ReedMarsh_Debris_Perf_01",
+  "mission_path": "procedural/generated/missions/mission_Wetland_ReedMarsh_Debris_Perf_01/mission.json"
+}

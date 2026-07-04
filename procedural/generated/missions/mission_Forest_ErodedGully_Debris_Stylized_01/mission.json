@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.3",
+  "mission_id": "mission_Forest_ErodedGully_Debris_Stylized_01",
+  "display_name": "Survey Landmark — temperate_forest",
+  "mission_archetype": "survey_landmark",
+  "biome_family": "temperate_forest",
+  "seed": 11011,
+  "source_map": {
+    "slice_id": "Forest_ErodedGully_Debris_Stylized_01",
+    "world_pack_map": "/Game/WorldForge/Maps/Forest_ErodedGully_Debris_Stylized_01",
+    "world_pack_id": "biome_expansion_world"
+  },
+  "scenario_id": "mission_state_survey_landmark",
+  "start_anchor": {
+    "id": "start_anchor",
+    "world_position": [
+      6986.61,
+      4749.32,
+      0.0
+    ],
+    "valid_spawn": true
+  },
+  "primary_poi": {
+    "id": "primary_poi",
+    "poi_class": "navigation_landmark",
+    "gameplay_anchor": [
+      -7410.04,
+      -5037.16,
+      90.0
+    ]
+  },
+  "objective_anchors": [
+    {
+      "id": "objective_1",
+      "role": "objective_anchor",
+      "world_position": [
+        -7410.04,
+        -5037.16,
+        90.0
+      ],
+      "interaction": "survey",
+      "at_poi": "primary_poi"
+    }
+  ],
+  "required_route": {
+    "from_node": "start_anchor",
+    "to_node": "primary_poi",
+    "waypoints": [
+      [
+        6986.61,
+        4749.32,
+        0.0
+      ],
+      [
+        -7410.04,
+        -5037.16,
+        90.0
+      ]
+    ],
+    "length_cm": 17408.01,
+    "avoids_hazards": true
+  },
+  "optional_route": null,
+  "hazard_zones": [
+    {
+      "id": "danger_zone",
+      "bounds": {
+        "min": [
+          -6636.664557135323,
+          -17830.921878643752,
+          0.0
+        ],
+        "max": [
+          1363.3354428646771,
+          -9830.921878643752,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "world_position": [
+        775.19,
+        7640.78,
+        0.0
+      ]
+    }
+  ],
+  "encounter_zones": [
+    {
+      "id": "danger_zone",
+      "class": "encounter",
+      "bounds": {
+        "min": [
+          -6636.664557135323,
+          -17830.921878643752,
+          0.0
+        ],
+        "max": [
+          1363.3354428646771,
+          -9830.921878643752,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "resource_nodes": [],
+  "state_keys": [
+    {
+      "key": "survey_progress",
+      "initial": 0.0,
+      "delta": 1.0,
+      "expected_final": 1.0
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "complete_1",
+      "state_key": "survey_progress",
+      "operator": ">=",
+      "threshold": 1.0,
+      "at_node": "primary_poi"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "no_state_change",
+      "state_key": "survey_progress",
+      "operator": "==",
+      "threshold": 0.0,
+      "at_node": "completion"
+    }
+  ],
+  "reward_outputs": [
+    {
+      "reward_id": "reward_1",
+      "reward_type": "unlock",
+      "fires_on": "complete_1"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "survey_progress"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "graph_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest"
+    ],
+    "expected_completion": true,
+    "max_route_length_cm": 108611.6
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "biome_landmark",
+      "traversal_marker"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_lmk_forest_dead_tree_cluster",
+      "mesh_trav_route_stone",
+      "mesh_trav_trail_post"
+    ],
+    "megascans_dressing": "megascans_arid_debris_48ea3af3"
+  },
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:ce2ff8ab3f9d68e68352caf9d9f9cdbc8f768e776ad215d654ac1e0339730a4a",
+  "provenance": {
+    "generator": "create_mission_loops",
+    "generator_version": "1.3.0",
+    "generated_at_utc": "2026-07-04T01:53:33.312424+00:00",
+    "source_hash": "sha256:ce2ff8ab3f9d68e68352caf9d9f9cdbc8f768e776ad215d654ac1e0339730a4a"
+  },
+  "provenance_id": "prov_mission_Forest_ErodedGully_Debris_Stylized_01",
+  "registry_id": "mission_catalog:mission_Forest_ErodedGully_Debris_Stylized_01",
+  "mission_path": "procedural/generated/missions/mission_Forest_ErodedGully_Debris_Stylized_01/mission.json"
+}

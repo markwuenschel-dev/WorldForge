@@ -1,0 +1,188 @@
+{
+  "schema_version": "1.3",
+  "mission_id": "mission_Wetland_ReedMarsh_Scatter_Stylized_01",
+  "display_name": "Extract Cache — wetland_mire",
+  "mission_archetype": "extract_cache",
+  "biome_family": "wetland_mire",
+  "seed": 14008,
+  "source_map": {
+    "slice_id": "Wetland_ReedMarsh_Scatter_Stylized_01",
+    "world_pack_map": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Scatter_Stylized_01",
+    "world_pack_id": "biome_expansion_world"
+  },
+  "scenario_id": "mission_state_extract_cache",
+  "start_anchor": {
+    "id": "start_anchor",
+    "world_position": [
+      -6692.86,
+      5155.03,
+      0.0
+    ],
+    "valid_spawn": true
+  },
+  "primary_poi": {
+    "id": "primary_poi",
+    "poi_class": "navigation_landmark",
+    "gameplay_anchor": [
+      7098.48,
+      -5467.46,
+      90.0
+    ]
+  },
+  "objective_anchors": [
+    {
+      "id": "objective_1",
+      "role": "objective_anchor",
+      "world_position": [
+        7098.48,
+        -5467.46,
+        90.0
+      ],
+      "interaction": "extract",
+      "at_poi": "primary_poi"
+    }
+  ],
+  "required_route": {
+    "from_node": "start_anchor",
+    "to_node": "primary_poi",
+    "waypoints": [
+      [
+        -6692.86,
+        5155.03,
+        0.0
+      ],
+      [
+        7098.48,
+        -5467.46,
+        90.0
+      ]
+    ],
+    "length_cm": 17408.0,
+    "avoids_hazards": true
+  },
+  "optional_route": null,
+  "hazard_zones": [
+    {
+      "id": "danger_zone",
+      "bounds": {
+        "min": [
+          9962.872763354848,
+          -2187.657815321998,
+          0.0
+        ],
+        "max": [
+          17962.872763354848,
+          5812.342184678002,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "world_position": [
+        -7500.97,
+        -1648.58,
+        0.0
+      ]
+    }
+  ],
+  "encounter_zones": [
+    {
+      "id": "danger_zone",
+      "class": "encounter",
+      "bounds": {
+        "min": [
+          9962.872763354848,
+          -2187.657815321998,
+          0.0
+        ],
+        "max": [
+          17962.872763354848,
+          5812.342184678002,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "resource_nodes": [
+    {
+      "id": "resource_1",
+      "at_node": "primary_poi"
+    }
+  ],
+  "state_keys": [
+    {
+      "key": "cache_extracted",
+      "initial": 0.0,
+      "delta": 1.0,
+      "expected_final": 1.0
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "complete_1",
+      "state_key": "cache_extracted",
+      "operator": ">=",
+      "threshold": 1.0,
+      "at_node": "primary_poi"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "no_state_change",
+      "state_key": "cache_extracted",
+      "operator": "==",
+      "threshold": 0.0,
+      "at_node": "completion"
+    }
+  ],
+  "reward_outputs": [
+    {
+      "reward_id": "reward_1",
+      "reward_type": "resource_grant",
+      "fires_on": "complete_1"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "cache_extracted"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "graph_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest"
+    ],
+    "expected_completion": true,
+    "max_route_length_cm": 108611.6
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "resource_node",
+      "biome_landmark"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_lmk_wetland_root_tower",
+      "mesh_res_herb_patch_proxy"
+    ],
+    "megascans_dressing": "megascans_canyon_sandy_mud_29c6056c"
+  },
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:a683c87b7700a7d78f82ffae339c281231965af83f24c7e15aa68df0db5ee245",
+  "provenance": {
+    "generator": "create_mission_loops",
+    "generator_version": "1.3.0",
+    "generated_at_utc": "2026-07-04T01:53:33.323351+00:00",
+    "source_hash": "sha256:a683c87b7700a7d78f82ffae339c281231965af83f24c7e15aa68df0db5ee245"
+  },
+  "provenance_id": "prov_mission_Wetland_ReedMarsh_Scatter_Stylized_01",
+  "registry_id": "mission_catalog:mission_Wetland_ReedMarsh_Scatter_Stylized_01",
+  "mission_path": "procedural/generated/missions/mission_Wetland_ReedMarsh_Scatter_Stylized_01/mission.json"
+}
