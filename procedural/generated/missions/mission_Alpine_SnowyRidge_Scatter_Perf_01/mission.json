@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.3",
+  "mission_id": "mission_Alpine_SnowyRidge_Scatter_Perf_01",
+  "display_name": "Clear Hazard — alpine_snow",
+  "mission_archetype": "clear_hazard",
+  "biome_family": "alpine_snow",
+  "seed": 12003,
+  "source_map": {
+    "slice_id": "Alpine_SnowyRidge_Scatter_Perf_01",
+    "world_pack_map": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Scatter_Perf_01",
+    "world_pack_id": "biome_expansion_world"
+  },
+  "scenario_id": "mission_state_clear_hazard",
+  "start_anchor": {
+    "id": "start_anchor",
+    "world_position": [
+      -6426.66,
+      -5483.31,
+      0.0
+    ],
+    "valid_spawn": true
+  },
+  "primary_poi": {
+    "id": "primary_poi",
+    "poi_class": "navigation_landmark",
+    "gameplay_anchor": [
+      6816.16,
+      5815.64,
+      90.0
+    ]
+  },
+  "objective_anchors": [
+    {
+      "id": "objective_1",
+      "role": "objective_anchor",
+      "world_position": [
+        6816.16,
+        5815.64,
+        90.0
+      ],
+      "interaction": "clear",
+      "at_poi": "primary_poi"
+    }
+  ],
+  "required_route": {
+    "from_node": "start_anchor",
+    "to_node": "primary_poi",
+    "waypoints": [
+      [
+        -6426.66,
+        -5483.31,
+        0.0
+      ],
+      [
+        6816.16,
+        5815.64,
+        90.0
+      ]
+    ],
+    "length_cm": 17408.0,
+    "avoids_hazards": true
+  },
+  "optional_route": null,
+  "hazard_zones": [
+    {
+      "id": "danger_zone",
+      "bounds": {
+        "min": [
+          -2888.2558812841926,
+          10036.040218469769,
+          0.0
+        ],
+        "max": [
+          5111.744118715807,
+          18036.040218469767,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "world_position": [
+        63.17,
+        -7679.74,
+        0.0
+      ]
+    }
+  ],
+  "encounter_zones": [
+    {
+      "id": "danger_zone",
+      "class": "encounter",
+      "bounds": {
+        "min": [
+          -2888.2558812841926,
+          10036.040218469769,
+          0.0
+        ],
+        "max": [
+          5111.744118715807,
+          18036.040218469767,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "resource_nodes": [],
+  "state_keys": [
+    {
+      "key": "hazard_level",
+      "initial": 1.0,
+      "delta": -1.0,
+      "expected_final": 0.0
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "complete_1",
+      "state_key": "hazard_level",
+      "operator": "<=",
+      "threshold": 0.1,
+      "at_node": "primary_poi"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "no_state_change",
+      "state_key": "hazard_level",
+      "operator": "==",
+      "threshold": 1.0,
+      "at_node": "completion"
+    }
+  ],
+  "reward_outputs": [
+    {
+      "reward_id": "reward_1",
+      "reward_type": "state_flag",
+      "fires_on": "complete_1"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "hazard_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "graph_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest"
+    ],
+    "expected_completion": true,
+    "max_route_length_cm": 108611.6
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_snow_drift_cover",
+      "mesh_rock_alpine_granite_outcrop",
+      "mesh_rock_houdini_alpine_scree"
+    ],
+    "megascans_dressing": "megascans_huge_icelandic_lava_cliff_e16b2143"
+  },
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:8d3490b895026d76fd12a28b46f55e80677d8a9fc62bedb324d0dd6027ea5b6b",
+  "provenance": {
+    "generator": "create_mission_loops",
+    "generator_version": "1.3.0",
+    "generated_at_utc": "2026-07-04T01:53:33.310813+00:00",
+    "source_hash": "sha256:8d3490b895026d76fd12a28b46f55e80677d8a9fc62bedb324d0dd6027ea5b6b"
+  },
+  "provenance_id": "prov_mission_Alpine_SnowyRidge_Scatter_Perf_01",
+  "registry_id": "mission_catalog:mission_Alpine_SnowyRidge_Scatter_Perf_01",
+  "mission_path": "procedural/generated/missions/mission_Alpine_SnowyRidge_Scatter_Perf_01/mission.json"
+}

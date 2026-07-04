@@ -1,0 +1,328 @@
+{
+  "pack": "mission_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "inject::completion_never_fires": {
+      "ok": true,
+      "detail": "validate_mission_state.py rc=1 ([validate-mission-state]   FAIL: __negmis_completion_never_fires::state_change_resolves_completion: simulated final {'site_power': 0.0} does not resolve completion)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::entity_anchor_invalid": {
+      "ok": true,
+      "detail": "validate_mission_entity_anchors.py rc=1 ([validate-mission-entity-anchors]   FAIL: __negmis_entity_anchor_invalid::start_anchor_wired: start_anchor XY off generated player_start by 707106.78cm (tol 100.0) sa=[496298.34, 492406.16, 0.0] ps=[-)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::incompatible_biome": {
+      "ok": true,
+      "detail": "validate_mission_biome_compatibility.py rc=1 ([validate-mission-biome-compatibility]   FAIL: __negmis_incompatible_biome::mesh_mesh_cov_crystal_cover_cluster_biome_compatible: mesh mesh_cov_crystal_cover_cluster biome_compatibility=['alien_crysta)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::missing_megascans_reference": {
+      "ok": true,
+      "detail": "validate_mission_dependencies.py rc=1 ([validate-mission-dependencies]   FAIL: __negmis_missing_megascans_reference::megascans_dressing_exists[megascans_fake_does_not_exist]: megascans_dressing 'megascans_fake_does_not_exist' not in extern)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::missing_mesh_asset": {
+      "ok": true,
+      "detail": "validate_mission_dependencies.py rc=1 ([validate-mission-dependencies]   FAIL: __negmis_missing_mesh_asset::resolved_mesh_exists[mesh_fake_does_not_exist]: resolved mesh asset 'mesh_fake_does_not_exist' not in generated mesh catalog)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::missing_objective_anchor": {
+      "ok": true,
+      "detail": "validate_mission_objectives.py rc=1 ([validate-mission-objectives]   FAIL: __negmis_missing_objective_anchor::has_objective: no objective anchors)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::missing_start_anchor": {
+      "ok": true,
+      "detail": "validate_mission_graph.py rc=1 ([validate-mission-graph]   FAIL: __negmis_missing_start_anchor::start_present: start_anchor missing position)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::objective_unreachable": {
+      "ok": true,
+      "detail": "validate_mission_routes.py rc=1 ([validate-mission-routes]   FAIL: __negmis_objective_unreachable::route_claims_avoids_hazards: avoids_hazards=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::reward_missing": {
+      "ok": true,
+      "detail": "validate_mission_rewards.py rc=1 ([validate-mission-rewards]   FAIL: __negmis_reward_missing::rewards_present: no reward_outputs — completing grants nothing)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::route_crosses_blocked_terrain": {
+      "ok": true,
+      "detail": "validate_mission_placement.py rc=1 ([validate-mission-placement]   FAIL: __negmis_route_crosses_blocked_terrain::volcanic_route_completable: no completable route: required_route.avoids_hazards=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::save_load_loses_completion": {
+      "ok": true,
+      "detail": "validate_mission_save_load.py rc=1 ([validate-mission-save-load]   FAIL: __negmis_save_load_loses_completion::completion_survives_reload: completion does not resolve from persisted state {'aux_marker': 0.0} — a completion key is not per)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::state_key_missing": {
+      "ok": true,
+      "detail": "validate_mission_state.py rc=1 ([validate-mission-state]   FAIL: __negmis_state_key_missing::state_change_resolves_completion: simulated final {'site_power': 0.0} does not resolve completion)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "playtest::partial_mission_success_marked_success": {
+      "ok": true,
+      "detail": "validate_playtest_reports rc=1 ([validate-playtest-reports]   FAIL: mission_Alien_CrystalField_Debris_Perf_01::completed_matches_expected: completed=True expected=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "playtest::playtest_reports_success_without_completing": {
+      "ok": true,
+      "detail": "validate_playtest_reports rc=1 ([validate-playtest-reports]   FAIL: mission_Alien_CrystalField_Debris_Perf_01::completed_implies_all_modes_pass: completed=True but a mode failed (contradictory report): ['graph_playtest'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "playtest::playtest_route_report_stale": {
+      "ok": true,
+      "detail": "validate_playtest_reports rc=1 ([validate-playtest-reports]   FAIL: mission_Alien_CrystalField_Debris_Perf_01::report_not_stale: playtest report older than mission.json — re-run run_playtest_forge.py)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "playtest::playtest_skips_required_step": {
+      "ok": true,
+      "detail": "validate_playtest_reports rc=1 ([validate-playtest-reports]   FAIL: mission_Alien_CrystalField_Debris_Perf_01::all_declared_modes_reported: report skips declared modes: ['budget_safe_playtest'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::mission_count": {
+      "ok": true,
+      "detail": "catalog has 60 missions (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::no_temp_records": {
+      "ok": true,
+      "detail": "stray temp catalog records: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::no_temp_dirs": {
+      "ok": true,
+      "detail": "stray temp mission dirs: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_contract": {
+      "ok": true,
+      "detail": "validate_mission_contract.py rc=0 ([validate-mission-contract] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_graph": {
+      "ok": true,
+      "detail": "validate_mission_graph.py rc=0 ([validate-mission-graph] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_objectives": {
+      "ok": true,
+      "detail": "validate_mission_objectives.py rc=0 ([validate-mission-objectives] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_placement": {
+      "ok": true,
+      "detail": "validate_mission_placement.py rc=0 ([validate-mission-placement] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_biome_compatibility": {
+      "ok": true,
+      "detail": "validate_mission_biome_compatibility.py rc=0 ([validate-mission-biome-compatibility] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_routes": {
+      "ok": true,
+      "detail": "validate_mission_routes.py rc=0 ([validate-mission-routes] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_state": {
+      "ok": true,
+      "detail": "validate_mission_state.py rc=0 ([validate-mission-state] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_save_load": {
+      "ok": true,
+      "detail": "validate_mission_save_load.py rc=0 ([validate-mission-save-load] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_rewards": {
+      "ok": true,
+      "detail": "validate_mission_rewards.py rc=0 ([validate-mission-rewards] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_dependencies": {
+      "ok": true,
+      "detail": "validate_mission_dependencies.py rc=0 ([validate-mission-dependencies] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_mesh_usage": {
+      "ok": true,
+      "detail": "validate_mission_mesh_usage.py rc=0 ([validate-mission-mesh-usage] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_mission_entity_anchors": {
+      "ok": true,
+      "detail": "validate_mission_entity_anchors.py rc=0 ([validate-mission-entity-anchors] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_playtest_contract": {
+      "ok": true,
+      "detail": "validate_playtest_contract.py rc=0 ([validate-playtest-contract] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_playtest_reports": {
+      "ok": true,
+      "detail": "validate_playtest_reports.py rc=0 ([validate-playtest-reports] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::run_playtest_forge": {
+      "ok": true,
+      "detail": "run_playtest_forge rc=0 ([run-playtest-forge] 60/60 missions completed by the playtest harness)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 34,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "mission-negative-validators",
+    "pack": "mission_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "a5a38bba6f358b72f8ab5b17c52f2194fca12c64",
+    "timestamp": "2026-07-04T01:53:39.847328+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 16,
+    "mission_fixtures": [
+      "completion_never_fires",
+      "entity_anchor_invalid",
+      "incompatible_biome",
+      "missing_megascans_reference",
+      "missing_mesh_asset",
+      "missing_objective_anchor",
+      "missing_start_anchor",
+      "objective_unreachable",
+      "reward_missing",
+      "route_crosses_blocked_terrain",
+      "save_load_loses_completion",
+      "state_key_missing"
+    ],
+    "playtest_cases": [
+      "partial_mission_success_marked_success",
+      "playtest_reports_success_without_completing",
+      "playtest_route_report_stale",
+      "playtest_skips_required_step"
+    ],
+    "self_heal_target": "mission_Alien_CrystalField_Debris_Perf_01"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "mission_id": "mission_Wetland_ReedMarsh_Scatter_Perf_01",
+  "mission_archetype": "clear_hazard",
+  "biome_family": "wetland_mire",
+  "schema_version": "wf.playtest.v1",
+  "completed": true,
+  "expected_completion": true,
+  "modes": {
+    "graph_playtest": {
+      "passed": true,
+      "detail": "graph start->poi->objective connected"
+    },
+    "anchor_playtest": {
+      "passed": true,
+      "detail": "spawn=True reachable=True within_budget=True objs=True"
+    },
+    "state_transition_playtest": {
+      "passed": true,
+      "detail": "final={'hazard_level': 0.0} completion_resolves=True failure_fires=False"
+    },
+    "save_load_playtest": {
+      "passed": true,
+      "detail": "persist=['hazard_level'] roundtrip=True still_complete=True"
+    },
+    "budget_safe_playtest": {
+      "passed": true,
+      "detail": "budget=light within_route_budget=True"
+    }
+  },
+  "final_state": {
+    "hazard_level": 0.0
+  },
+  "git_sha": "a5a38bba6f358b72f8ab5b17c52f2194fca12c64",
+  "timestamp": "2026-07-04T01:53:52.360344+00:00"
+}

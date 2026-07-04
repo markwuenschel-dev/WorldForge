@@ -1,0 +1,34 @@
+world_pack_id: mission_loop_world
+description: >
+  WorldForge v1.3 MissionForge + PlaytestForge world pack. Layers biome-aware
+  playable mission loops over biome_expansion_world's 60 biome maps: 5 non-desert
+  biome families x 6 mission archetypes x 2 seeds = 60 generated mission loops.
+  Each mission composes the map's level-design navigation graph + v1.2 mesh
+  catalog dependencies + a state model with completion / rewards / save-load, and
+  is proven completable by the PlaytestForge harness. desert_mvp_world and
+  biome_expansion_world remain separate locked regression baselines.
+
+# v1.3 MissionForge marker — activates the mission + playtest gate block in
+# full_shield.py under MISSIONS=1 / PLAYTEST=1.
+missionforge: true
+
+# Missions are layered over this substrate pack (its 60 biome maps supply the
+# navigation graphs, POIs, entity anchors, and biome context).
+source_pack: biome_expansion_world
+
+biome_families:
+  - temperate_forest
+  - alpine_snow
+  - volcanic_ashlands
+  - wetland_mire
+  - alien_crystal_badlands
+
+mission_archetypes:
+  - disable_site
+  - recover_resource
+  - survey_landmark
+  - clear_hazard
+  - restore_power
+  - extract_cache
+
+global_defaults: {}

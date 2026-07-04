@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.3",
+  "mission_id": "mission_Ashlands_AshRavine_Scar_Photoreal_01",
+  "display_name": "Restore Power — volcanic_ashlands",
+  "mission_archetype": "restore_power",
+  "biome_family": "volcanic_ashlands",
+  "seed": 13007,
+  "source_map": {
+    "slice_id": "Ashlands_AshRavine_Scar_Photoreal_01",
+    "world_pack_map": "/Game/WorldForge/Maps/Ashlands_AshRavine_Scar_Photoreal_01",
+    "world_pack_id": "biome_expansion_world"
+  },
+  "scenario_id": "mission_state_restore_power",
+  "start_anchor": {
+    "id": "start_anchor",
+    "world_position": [
+      -3597.38,
+      -7643.79,
+      0.0
+    ],
+    "valid_spawn": true
+  },
+  "primary_poi": {
+    "id": "primary_poi",
+    "poi_class": "industrial_yard",
+    "gameplay_anchor": [
+      3815.4,
+      8107.05,
+      90.0
+    ]
+  },
+  "objective_anchors": [
+    {
+      "id": "objective_1",
+      "role": "objective_anchor",
+      "world_position": [
+        3815.4,
+        8107.05,
+        90.0
+      ],
+      "interaction": "restore",
+      "at_poi": "primary_poi"
+    }
+  ],
+  "required_route": {
+    "from_node": "start_anchor",
+    "to_node": "primary_poi",
+    "waypoints": [
+      [
+        -3597.38,
+        -7643.79,
+        0.0
+      ],
+      [
+        3815.4,
+        8107.05,
+        90.0
+      ]
+    ],
+    "length_cm": 17407.99,
+    "avoids_hazards": true
+  },
+  "optional_route": null,
+  "hazard_zones": [
+    {
+      "id": "danger_zone",
+      "bounds": {
+        "min": [
+          -8768.749584054294,
+          9247.846142093515,
+          0.0
+        ],
+        "max": [
+          -768.7495840542942,
+          17247.846142093513,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "safe_zones": [
+    {
+      "id": "safe_zone",
+      "world_position": [
+        3221.03,
+        -6971.9,
+        0.0
+      ]
+    }
+  ],
+  "encounter_zones": [
+    {
+      "id": "danger_zone",
+      "class": "encounter",
+      "bounds": {
+        "min": [
+          -8768.749584054294,
+          9247.846142093515,
+          0.0
+        ],
+        "max": [
+          -768.7495840542942,
+          17247.846142093513,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "resource_nodes": [
+    {
+      "id": "resource_1",
+      "at_node": "primary_poi"
+    }
+  ],
+  "state_keys": [
+    {
+      "key": "power_level",
+      "initial": 0.0,
+      "delta": 1.0,
+      "expected_final": 1.0
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "complete_1",
+      "state_key": "power_level",
+      "operator": ">=",
+      "threshold": 0.9,
+      "at_node": "primary_poi"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "no_state_change",
+      "state_key": "power_level",
+      "operator": "==",
+      "threshold": 0.0,
+      "at_node": "completion"
+    }
+  ],
+  "reward_outputs": [
+    {
+      "reward_id": "reward_1",
+      "reward_type": "progression_marker",
+      "fires_on": "complete_1"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "power_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "graph_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest"
+    ],
+    "expected_completion": true,
+    "max_route_length_cm": 108611.6
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "industrial_debris",
+      "resource_node"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_ind_broken_pipe_cluster",
+      "mesh_ind_collapsed_support_beam",
+      "mesh_ind_forge_debris_chunk"
+    ],
+    "megascans_dressing": "megascans_dead_tree_c0c4ec3a"
+  },
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:fd46b5ebc50dbd5985a29776a4785e560b635c6a6717b8c3fe60619bc58cb016",
+  "provenance": {
+    "generator": "create_mission_loops",
+    "generator_version": "1.3.0",
+    "generated_at_utc": "2026-07-04T01:53:33.316987+00:00",
+    "source_hash": "sha256:fd46b5ebc50dbd5985a29776a4785e560b635c6a6717b8c3fe60619bc58cb016"
+  },
+  "provenance_id": "prov_mission_Ashlands_AshRavine_Scar_Photoreal_01",
+  "registry_id": "mission_catalog:mission_Ashlands_AshRavine_Scar_Photoreal_01",
+  "mission_path": "procedural/generated/missions/mission_Ashlands_AshRavine_Scar_Photoreal_01/mission.json"
+}

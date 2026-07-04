@@ -11,6 +11,9 @@ export STRICT
 export HOUDINI
 export MEGASCANS
 export MESHES
+# v1.3 — export mission/playtest flags to full_shield gate subprocesses.
+export MISSIONS
+export PLAYTEST
 
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
@@ -57,7 +60,14 @@ export MESHES
         scan-external-asset-library validate-external-asset-catalog validate-megascans-catalog \
         validate-megascans-bindings validate-megascans-pcg-eligibility validate-megascans-biome-compatibility \
         validate-external-asset-ownership validate-third-party-package-policy validate-source-ownership-separation \
-        inspect-external-asset-library inspect-external-asset diagnose-external-asset-library
+        inspect-external-asset-library inspect-external-asset diagnose-external-asset-library \
+        create-mission-loops validate-mission-contract validate-mission-graph validate-mission-placement \
+        validate-mission-biome-compatibility validate-mission-routes validate-mission-objectives \
+        validate-mission-state validate-mission-save-load validate-mission-rewards \
+        validate-mission-dependencies validate-mission-mesh-usage validate-mission-entity-anchors \
+        validate-playtest-contract run-playtest-forge validate-playtest-reports \
+        mission-negative-validators fuzz-mission-matrix mission-lifecycle-torture \
+        inspect-mission-pack diagnose-mission-pack
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -477,7 +487,8 @@ CASES   ?= 25
 full-shield:
 	$(PYTHON) tools/pipeline/full_shield.py --pack $(PACK) --jobs $(JOBS) \
 	  --seeds $(SEEDS) --cases $(CASES) \
-	  $(if $(STRICT),--strict,) $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,) $(if $(MESHES),--meshes,)
+	  $(if $(STRICT),--strict,) $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,) $(if $(MESHES),--meshes,) \
+	  $(if $(MISSIONS),--missions,) $(if $(PLAYTEST),--playtest,)
 
 revalidate-world-pack:
 	$(PYTHON) tools/pipeline/revalidate_world_pack.py --pack $(PACK) $(if $(STRICT),--strict,)
@@ -696,6 +707,58 @@ inspect-external-asset:
 	$(PYTHON) tools/pipeline/inspect_external_asset_library.py --lib $(LIB) --asset $(ASSET)
 diagnose-external-asset-library:
 	$(PYTHON) tools/pipeline/inspect_external_asset_library.py --lib $(LIB) --diagnose $(if $(STRICT),--strict,)
+
+# ======================================================================
+# v1.3 MissionForge + PlaytestForge Alpha
+# ----------------------------------------------------------------------
+# Missions are biome-aware playable purpose layered over biome_expansion_world's
+# maps. Every target maps 1:1 to a python entrypoint. Mission + playtest gates
+# fold into `make full-shield PACK=mission_loop_world MISSIONS=1 PLAYTEST=1`.
+# ======================================================================
+MISSION_PACK ?= mission_loop_world
+
+create-mission-loops:
+	$(PYTHON) tools/pipeline/create_mission_loops.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-contract:
+	$(PYTHON) tools/pipeline/validate_mission_contract.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-graph:
+	$(PYTHON) tools/pipeline/validate_mission_graph.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-placement:
+	$(PYTHON) tools/pipeline/validate_mission_placement.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-biome-compatibility:
+	$(PYTHON) tools/pipeline/validate_mission_biome_compatibility.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-routes:
+	$(PYTHON) tools/pipeline/validate_mission_routes.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-objectives:
+	$(PYTHON) tools/pipeline/validate_mission_objectives.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-state:
+	$(PYTHON) tools/pipeline/validate_mission_state.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-save-load:
+	$(PYTHON) tools/pipeline/validate_mission_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-rewards:
+	$(PYTHON) tools/pipeline/validate_mission_rewards.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-dependencies:
+	$(PYTHON) tools/pipeline/validate_mission_dependencies.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-mesh-usage:
+	$(PYTHON) tools/pipeline/validate_mission_mesh_usage.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-mission-entity-anchors:
+	$(PYTHON) tools/pipeline/validate_mission_entity_anchors.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-playtest-contract:
+	$(PYTHON) tools/pipeline/validate_playtest_contract.py --pack $(PACK) $(if $(STRICT),--strict,)
+run-playtest-forge:
+	$(PYTHON) tools/pipeline/run_playtest_forge.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-playtest-reports:
+	$(PYTHON) tools/pipeline/validate_playtest_reports.py --pack $(PACK) $(if $(STRICT),--strict,)
+mission-negative-validators:
+	$(PYTHON) tools/pipeline/test_negative_mission.py --pack $(PACK) $(if $(STRICT),--strict,)
+fuzz-mission-matrix:
+	$(PYTHON) tools/pipeline/fuzz_mission_matrix.py --pack $(PACK) --cases $(CASES) $(if $(STRICT),--strict,)
+mission-lifecycle-torture:
+	$(PYTHON) tools/pipeline/mission_lifecycle_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+inspect-mission-pack:
+	$(PYTHON) tools/pipeline/inspect_mission_pack.py --pack $(PACK) $(if $(MISSION),--mission $(MISSION),)
+diagnose-mission-pack:
+	$(PYTHON) tools/pipeline/inspect_mission_pack.py --pack $(PACK) --diagnose $(if $(STRICT),--strict,)
 
 preview:
 	@echo "Preview generation is not implemented yet."

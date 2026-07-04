@@ -1,0 +1,18 @@
+schema_version: '1.3'
+mission_archetype: disable_site
+display_name: Disable Site
+interaction: disable
+poi_affinity:
+- danger_zone
+- navigation_landmark
+state_key: site_power
+initial: 1.0
+delta: -1.0
+operator: <=
+threshold: 0.1
+reward_type: progression_marker
+mesh_families:
+- industrial_debris
+- encounter_cover
+intent: Locate a hostile/industrial POI, reach the objective anchor, disable it; site
+  power drops and the world reacts.
