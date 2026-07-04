@@ -1,0 +1,326 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01",
+  "display_name": "Roaming Threat \u2014 wetland_mire",
+  "mission_id": "mission_Wetland_MudFlat_Debris_Stylized_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "wetland_mire",
+  "mission_archetype": "survey_landmark",
+  "encounter_archetype": "roaming_threat",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 14005,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_group_0",
+      "encounter_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01",
+      "archetype_tag": "roaming_threat",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambient_threat",
+        "patroller"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 4.855,
+      "difficulty_value": 1.798,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Wetland_MudFlat_Debris_Stylized_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Wetland_MudFlat_Debris_Stylized_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_sp_Wetland_MudFlat_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_group_1",
+      "encounter_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01",
+      "archetype_tag": "roaming_threat",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambient_threat",
+        "patroller"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 4.725,
+      "difficulty_value": 1.75,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Wetland_MudFlat_Debris_Stylized_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Wetland_MudFlat_Debris_Stylized_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_sp_Wetland_MudFlat_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        607.3130648693234,
+        -1669.6645785334667,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        -2339.7405661918547,
+        1234.5929499836066,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_patrol_0",
+      "kind": "patrol",
+      "world_position": [
+        2350.080410870418,
+        -1209.9871811893233,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_patrol_1",
+      "kind": "patrol",
+      "world_position": [
+        -250.9044108704173,
+        1201.0791811893232,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_patrol_2",
+      "kind": "patrol",
+      "world_position": [
+        -2872.271589129584,
+        -1187.8111811893232,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_patrol_3",
+      "kind": "patrol",
+      "world_position": [
+        -5473.256410870418,
+        1223.2551811893234,
+        0.0
+      ]
+    }
+  ],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_safe_start",
+      "world_position": [
+        7647.92,
+        -835.87,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_safe_mission",
+      "world_position": [
+        4961.55,
+        5862.21,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_danger_0",
+      "bounds": {
+        "min": [
+          -592.6869351306766,
+          -2869.6645785334667,
+          0.0
+        ],
+        "max": [
+          1807.3130648693234,
+          -469.66457853346674,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_danger_1",
+      "bounds": {
+        "min": [
+          -3539.7405661918547,
+          34.59294998360656,
+          0.0
+        ],
+        "max": [
+          -1139.7405661918547,
+          2434.5929499836066,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          8447.92,
+          -35.87,
+          0.0
+        ],
+        [
+          3225.5679999999993,
+          -13.693999999999999,
+          0.0
+        ],
+        [
+          -865.2744000000002,
+          3.677199999999999,
+          0.0
+        ]
+      ],
+      "length_cm": 9313.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -865.2744000000002,
+          3.677199999999999,
+          0.0
+        ],
+        [
+          4961.55,
+          5862.21,
+          0.0
+        ]
+      ],
+      "length_cm": 8262.83
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_activate",
+      "state_key": "survey_progress",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_complete",
+      "state_key": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_fail",
+      "state_key": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Wetland_MudFlat_Debris_Stylized_01_resolved",
+      "survey_progress"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [
+    "megascans_canyon_sandy_mud_29c6056c"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": true,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:006c577f189b0cc627be3bd7ed69d5614264a02080d8554ddf1dbe73c4060b21",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.144004+00:00",
+    "source_hash": "sha256:006c577f189b0cc627be3bd7ed69d5614264a02080d8554ddf1dbe73c4060b21"
+  },
+  "provenance_id": "prov_enc_sp_Wetland_MudFlat_Debris_Stylized_01",
+  "registry_id": "encounter_catalog:enc_sp_Wetland_MudFlat_Debris_Stylized_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Wetland_MudFlat_Debris_Stylized_01/encounter.json"
+}

@@ -1,0 +1,77 @@
+{
+  "encounter_id": "enc_sp_Alpine_GlacialBasin_Scatter_Perf_01",
+  "mission_id": "mission_Alpine_GlacialBasin_Scatter_Perf_01",
+  "biome_family": "alpine_snow",
+  "mission_archetype": "clear_hazard",
+  "encounter_archetype": "ambush_choke",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "hard",
+  "schema_version": "wf.playtest_beta.v1",
+  "completed": true,
+  "expected_completion": true,
+  "modes": {
+    "route_playtest": {
+      "passed": true,
+      "detail": "graph start->poi->objective connected"
+    },
+    "anchor_playtest": {
+      "passed": true,
+      "detail": "spawn=True reachable=True within_budget=True objs=True"
+    },
+    "state_transition_playtest": {
+      "passed": true,
+      "detail": "final={'hazard_level': 0.0} completion_resolves=True failure_fires=False"
+    },
+    "save_load_playtest": {
+      "passed": true,
+      "detail": "persist=['hazard_level'] roundtrip=True still_complete=True"
+    },
+    "budget_safe_playtest": {
+      "passed": true,
+      "detail": "budget=light within_route_budget=True"
+    },
+    "encounter_pressure_playtest": {
+      "passed": true,
+      "detail": "total=33.047 band=hard profile=standard_pressure in_targets=True budget=40.0 within_budget=True max_pressure_band=hard within_max=True below_invalid=True"
+    },
+    "encounter_resolution_playtest": {
+      "passed": true,
+      "detail": "mission_resolves=True encounter_resolves=True mission_failure_fires=False encounter_failure_fires=False activation_ok=True (activation declared (1 condition(s))) route_blockage=0.389 max=0.6 reachable=True"
+    },
+    "pacing_playtest": {
+      "passed": true,
+      "detail": "first_pressure=7911.453439708878 (min 2000.0) blockage=0.389 (max 0.6) cover_density=1.0 (min 0.5) safe_zone_after_pressure=8218.697618982102"
+    }
+  },
+  "pressure": {
+    "components": {
+      "spawn_pressure": 23.058,
+      "hazard_pressure": 0.0,
+      "route_pressure": 3.889,
+      "visibility_pressure": 1.6,
+      "density_pressure": 4.5
+    },
+    "total": 33.047,
+    "band": "hard"
+  },
+  "pacing": {
+    "distance_from_spawn_to_first_pressure": 7911.453439708878,
+    "distance_between_pressure_points": [
+      3878.1
+    ],
+    "objective_pressure_distance": 6761.408430932395,
+    "safe_zone_distance_after_pressure": 8218.697618982102,
+    "encounter_count_per_mission": 1,
+    "pressure_peak_count": 2,
+    "route_blockage_ratio": 0.389,
+    "optional_route_ratio": 0.0,
+    "cover_density_near_pressure": 1.0,
+    "hazard_overlap_ratio": 0.0
+  },
+  "final_state": {
+    "hazard_level": 0.0,
+    "enc_sp_Alpine_GlacialBasin_Scatter_Perf_01_resolved": 1.0
+  },
+  "git_sha": "01dc43976365e5c6b25abecf58535e707f6bb402",
+  "timestamp": "2026-07-04T22:28:32.213780+00:00"
+}

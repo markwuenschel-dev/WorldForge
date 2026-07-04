@@ -16,6 +16,10 @@ export MISSIONS
 export PLAYTEST
 # v1.3.5 — export visual flag to full_shield gate subprocesses.
 export VISUALS
+# v1.4 — export encounter/balance flags to full_shield gate subprocesses.
+# (PLAYTEST is already exported above; PLAYTEST=beta selects PlaytestForge Beta.)
+export ENCOUNTERS
+export BALANCE
 
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
@@ -75,7 +79,17 @@ export VISUALS
         validate-environment-rig validate-sky-materialization validate-fog-materialization \
         validate-cloud-materialization validate-lighting-exposure validate-post-process-profiles \
         validate-weather-vfx validate-visual-readability validate-visual-budgets validate-visual-package \
-        visual-negative-validators visual-lifecycle-torture inspect-visual-pack diagnose-visual-pack
+        visual-negative-validators visual-lifecycle-torture inspect-visual-pack diagnose-visual-pack \
+        create-encounter-pack create-encounters validate-encounter-contract validate-encounter-archetypes \
+        validate-spawn-groups validate-encounter-anchors validate-encounter-routes \
+        validate-encounter-pressure validate-encounter-pacing validate-encounter-biome-compatibility \
+        validate-encounter-mission-compatibility validate-encounter-mesh-dependencies \
+        validate-encounter-cover validate-encounter-hazards validate-encounter-resources \
+        validate-encounter-state validate-encounter-save-load validate-encounter-rewards \
+        validate-playtest-beta-contract run-playtest-forge-beta validate-playtest-beta-reports \
+        validate-balance-contract run-balance-forge validate-balance-reports \
+        encounter-negative-validators fuzz-encounter-matrix encounter-lifecycle-torture \
+        inspect-encounter-pack inspect-encounter diagnose-encounter-pack
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -496,7 +510,8 @@ full-shield:
 	$(PYTHON) tools/pipeline/full_shield.py --pack $(PACK) --jobs $(JOBS) \
 	  --seeds $(SEEDS) --cases $(CASES) \
 	  $(if $(STRICT),--strict,) $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,) $(if $(MESHES),--meshes,) \
-	  $(if $(MISSIONS),--missions,) $(if $(PLAYTEST),--playtest,) $(if $(VISUALS),--visuals,)
+	  $(if $(MISSIONS),--missions,) $(if $(PLAYTEST),--playtest,) $(if $(VISUALS),--visuals,) \
+	  $(if $(ENCOUNTERS),--encounters,) $(if $(BALANCE),--balance,)
 
 revalidate-world-pack:
 	$(PYTHON) tools/pipeline/revalidate_world_pack.py --pack $(PACK) $(if $(STRICT),--strict,)
@@ -767,6 +782,78 @@ inspect-mission-pack:
 	$(PYTHON) tools/pipeline/inspect_mission_pack.py --pack $(PACK) $(if $(MISSION),--mission $(MISSION),)
 diagnose-mission-pack:
 	$(PYTHON) tools/pipeline/inspect_mission_pack.py --pack $(PACK) --diagnose $(if $(STRICT),--strict,)
+
+# ======================================================================
+# v1.4 EncounterForge + PlaytestForge Beta + BalanceForge Alpha
+# ----------------------------------------------------------------------
+# Layers biome/mission-aware encounter pressure over the 60 mission loops:
+# 120 encounter-enabled missions (2 profiles x 8 archetypes), proven by
+# PlaytestForge Beta + classified by BalanceForge Alpha. Folds into
+# `make full-shield PACK=encounter_loop_world MISSIONS=1 ENCOUNTERS=1
+#  PLAYTEST=beta BALANCE=1 MESHES=1 MEGASCANS=1`.
+# ======================================================================
+ENCOUNTER_PACK ?= encounter_loop_world
+
+create-encounter-pack:
+	$(PYTHON) tools/pipeline/create_encounter_pack.py --pack $(PACK) $(if $(STRICT),--strict,)
+create-encounters:
+	$(PYTHON) tools/pipeline/create_encounters.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-contract:
+	$(PYTHON) tools/pipeline/validate_encounter_contract.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-archetypes:
+	$(PYTHON) tools/pipeline/validate_encounter_archetypes.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-spawn-groups:
+	$(PYTHON) tools/pipeline/validate_spawn_groups.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-anchors:
+	$(PYTHON) tools/pipeline/validate_encounter_anchors.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-routes:
+	$(PYTHON) tools/pipeline/validate_encounter_routes.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-pressure:
+	$(PYTHON) tools/pipeline/validate_encounter_pressure.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-pacing:
+	$(PYTHON) tools/pipeline/validate_encounter_pacing.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-biome-compatibility:
+	$(PYTHON) tools/pipeline/validate_encounter_biome_compatibility.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-mission-compatibility:
+	$(PYTHON) tools/pipeline/validate_encounter_mission_compatibility.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-mesh-dependencies:
+	$(PYTHON) tools/pipeline/validate_encounter_mesh_dependencies.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-cover:
+	$(PYTHON) tools/pipeline/validate_encounter_cover.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-hazards:
+	$(PYTHON) tools/pipeline/validate_encounter_hazards.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-resources:
+	$(PYTHON) tools/pipeline/validate_encounter_resources.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-state:
+	$(PYTHON) tools/pipeline/validate_encounter_state.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-save-load:
+	$(PYTHON) tools/pipeline/validate_encounter_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-rewards:
+	$(PYTHON) tools/pipeline/validate_encounter_rewards.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-playtest-beta-contract:
+	$(PYTHON) tools/pipeline/validate_playtest_beta_contract.py --pack $(PACK) $(if $(STRICT),--strict,)
+run-playtest-forge-beta:
+	$(PYTHON) tools/pipeline/run_playtest_forge_beta.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-playtest-beta-reports:
+	$(PYTHON) tools/pipeline/validate_playtest_beta_reports.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-balance-contract:
+	$(PYTHON) tools/pipeline/validate_balance_contract.py --pack $(PACK) $(if $(STRICT),--strict,)
+run-balance-forge:
+	$(PYTHON) tools/pipeline/run_balance_forge.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-balance-reports:
+	$(PYTHON) tools/pipeline/validate_balance_reports.py --pack $(PACK) $(if $(STRICT),--strict,)
+encounter-negative-validators:
+	$(PYTHON) tools/pipeline/test_negative_encounter.py --pack $(PACK) $(if $(STRICT),--strict,)
+fuzz-encounter-matrix:
+	$(PYTHON) tools/pipeline/fuzz_encounter_matrix.py --pack $(PACK) --cases $(CASES) $(if $(STRICT),--strict,)
+encounter-lifecycle-torture:
+	$(PYTHON) tools/pipeline/encounter_lifecycle_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+inspect-encounter-pack:
+	$(PYTHON) tools/pipeline/inspect_encounter_pack.py --pack $(PACK)
+inspect-encounter:
+	$(PYTHON) tools/pipeline/inspect_encounter_pack.py --pack $(PACK) $(if $(ENCOUNTER),--encounter $(ENCOUNTER),)
+diagnose-encounter-pack:
+	$(PYTHON) tools/pipeline/inspect_encounter_pack.py --pack $(PACK) --diagnose $(if $(STRICT),--strict,)
 
 # ======================================================================
 # v1.3.5 VisualFidelityForge — visual realization over the mission substrate

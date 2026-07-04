@@ -1,0 +1,31 @@
+schema_version: '1.4'
+encounter_archetype: ambush_choke
+display_name: Ambush Choke
+intent: Pressure spike at a traversal choke or POI approach.
+required_elements:
+- ambush_anchors
+- spawn_anchors
+- cover_anchors
+- escape_route
+- visual_marker
+- completion_condition
+roles:
+- ambusher
+- melee_pressure
+spawn_groups:
+  light_pressure: 1
+  standard_pressure: 2
+count_range:
+  light_pressure:
+  - 2
+  - 4
+  standard_pressure:
+  - 4
+  - 6
+requires_resource_node: false
+requires_hazard: false
+cover_required: true
+escape_route_required: true
+bypass_allowed: false
+ambush_anchor_min: 2
+spawn_policy: on_activation

@@ -1,0 +1,50 @@
+world_pack_id: encounter_loop_world
+description: >
+  WorldForge v1.4 EncounterForge + PlaytestForge Beta world pack. Layers
+  biome-aware, mission-aware encounter pressure over mission_loop_world's 60
+  generated mission loops: 5 biome families x 6 mission archetypes x 2 encounter
+  profiles x 2 seeds = 120 encounter-enabled mission loops across 8 encounter
+  archetypes. Every encounter is validated as structure, state, pressure,
+  budget, pacing, and playtest outcome (PlaytestForge Beta), and classified by
+  BalanceForge Alpha. mission_loop_world, biome_expansion_world, and
+  desert_mvp_world remain separate locked regression baselines.
+
+# v1.4 EncounterForge marker — activates the encounter + playtest-beta +
+# balance gate block in full_shield.py under ENCOUNTERS=1 / PLAYTEST=beta /
+# BALANCE=1.
+encounterforge: true
+
+# Encounters are layered over this substrate pack (its 60 missions supply the
+# routes, anchors, zones, state models, and biome context).
+source_pack: mission_loop_world
+
+biome_families:
+  - temperate_forest
+  - alpine_snow
+  - volcanic_ashlands
+  - wetland_mire
+  - alien_crystal_badlands
+
+mission_archetypes:
+  - disable_site
+  - recover_resource
+  - survey_landmark
+  - clear_hazard
+  - restore_power
+  - extract_cache
+
+encounter_archetypes:
+  - guarded_objective
+  - patrol_route
+  - ambush_choke
+  - hazard_field
+  - resource_contest
+  - defensive_holdout
+  - roaming_threat
+  - extraction_pressure
+
+encounter_profiles:
+  - light_pressure
+  - standard_pressure
+
+global_defaults: {}

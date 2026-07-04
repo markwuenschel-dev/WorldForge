@@ -1,0 +1,78 @@
+{
+  "encounter_id": "enc_sp_Forest_ErodedGully_Scatter_Photoreal_01",
+  "mission_id": "mission_Forest_ErodedGully_Scatter_Photoreal_01",
+  "biome_family": "temperate_forest",
+  "mission_archetype": "restore_power",
+  "encounter_archetype": "defensive_holdout",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "schema_version": "wf.playtest_beta.v1",
+  "completed": true,
+  "expected_completion": true,
+  "modes": {
+    "route_playtest": {
+      "passed": true,
+      "detail": "graph start->poi->objective connected"
+    },
+    "anchor_playtest": {
+      "passed": true,
+      "detail": "spawn=True reachable=True within_budget=True objs=True"
+    },
+    "state_transition_playtest": {
+      "passed": true,
+      "detail": "final={'power_level': 1.0} completion_resolves=True failure_fires=False"
+    },
+    "save_load_playtest": {
+      "passed": true,
+      "detail": "persist=['power_level'] roundtrip=True still_complete=True"
+    },
+    "budget_safe_playtest": {
+      "passed": true,
+      "detail": "budget=light within_route_budget=True"
+    },
+    "encounter_pressure_playtest": {
+      "passed": true,
+      "detail": "total=29.006 band=standard profile=standard_pressure in_targets=True budget=40.0 within_budget=True max_pressure_band=hard within_max=True below_invalid=True"
+    },
+    "encounter_resolution_playtest": {
+      "passed": true,
+      "detail": "mission_resolves=True encounter_resolves=True mission_failure_fires=False encounter_failure_fires=False activation_ok=True (activation declared (1 condition(s))) route_blockage=0.278 max=0.6 reachable=True"
+    },
+    "pacing_playtest": {
+      "passed": true,
+      "detail": "first_pressure=13625.773396177476 (min 2000.0) blockage=0.278 (max 0.6) cover_density=1.0 (min 0.5) safe_zone_after_pressure=11691.741896683478"
+    }
+  },
+  "pressure": {
+    "components": {
+      "spawn_pressure": 22.728,
+      "hazard_pressure": 0.0,
+      "route_pressure": 2.778,
+      "visibility_pressure": 0.5,
+      "density_pressure": 3.0
+    },
+    "total": 29.006,
+    "band": "standard"
+  },
+  "pacing": {
+    "distance_from_spawn_to_first_pressure": 13625.773396177476,
+    "distance_between_pressure_points": [
+      2551.0,
+      3056.1
+    ],
+    "objective_pressure_distance": 2604.2846705580773,
+    "safe_zone_distance_after_pressure": 11691.741896683478,
+    "encounter_count_per_mission": 1,
+    "pressure_peak_count": 3,
+    "route_blockage_ratio": 0.278,
+    "optional_route_ratio": 0.0,
+    "cover_density_near_pressure": 1.0,
+    "hazard_overlap_ratio": 0.0
+  },
+  "final_state": {
+    "power_level": 1.0,
+    "enc_sp_Forest_ErodedGully_Scatter_Photoreal_01_resolved": 1.0
+  },
+  "git_sha": "01dc43976365e5c6b25abecf58535e707f6bb402",
+  "timestamp": "2026-07-04T22:28:32.518588+00:00"
+}

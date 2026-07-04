@@ -1,0 +1,915 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "hazard_field_has_hazard_zone::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_field encounter declares no hazard zones",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_fields_present[enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0]::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard zone 'enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0' missing required fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_known[enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0]::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'crystal_resonance' not in EC.HAZARD_TYPES",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_biome_allowed[enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0]::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'crystal_resonance' not allowed for biome 'alien_crystal_badlands' (['crystal_resonance', 'fall_risk', 'ambush_visibility_loss'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_visually_marked[enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0]::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no visual_marker_requirements entry targets hazard zone 'enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_bounds_well_formed[enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0]::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "bounds min/max malformed (need min < max on x and y): {'min': [601.8608825975189, -1360.5726977207755, 0.0], 'max': [3801.860882597519, 1839.4273022792245, 1200.0]}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_leaves_route_alternative[enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0]::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "every densified required_route waypoint lies inside hazard zone 'enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0' — no route alternative",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_mission_start[enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0]::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission start position lies inside hazard zone 'enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_objective[enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0][objective_1]::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission objective 'objective_1' lies inside hazard zone 'enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_pressure_modeled[enc_lp_Alien_CrystalField_Scatter_Perf_01_hazard_0]::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'crystal_resonance' has no weight in EC.HAZARD_PRESSURE_WEIGHTS",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_escape_route_exists::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no escape route runs entirely outside all 1 hazard zone(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_field_has_hazard_zone::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_field encounter declares no hazard zones",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_fields_present[enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0]::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard zone 'enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0' missing required fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_known[enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0]::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'crystal_resonance' not in EC.HAZARD_TYPES",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_biome_allowed[enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0]::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'crystal_resonance' not allowed for biome 'alien_crystal_badlands' (['crystal_resonance', 'fall_risk', 'ambush_visibility_loss'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_visually_marked[enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0]::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no visual_marker_requirements entry targets hazard zone 'enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_bounds_well_formed[enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0]::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "bounds min/max malformed (need min < max on x and y): {'min': [-904.5358349700517, -3702.823402366099, 0.0], 'max': [2295.464165029948, -502.8234023660989, 1200.0]}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_leaves_route_alternative[enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0]::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "every densified required_route waypoint lies inside hazard zone 'enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0' — no route alternative",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_mission_start[enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0]::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission start position lies inside hazard zone 'enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_objective[enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0][objective_1]::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission objective 'objective_1' lies inside hazard zone 'enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_pressure_modeled[enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0]::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'crystal_resonance' has no weight in EC.HAZARD_PRESSURE_WEIGHTS",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_escape_route_exists::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no escape route runs entirely outside all 1 hazard zone(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_field_has_hazard_zone::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_field encounter declares no hazard zones",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_fields_present[enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard zone 'enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0' missing required fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_known[enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'whiteout_exposure' not in EC.HAZARD_TYPES",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_biome_allowed[enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'whiteout_exposure' not allowed for biome 'alpine_snow' (['whiteout_exposure', 'fall_risk', 'ambush_visibility_loss'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_visually_marked[enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no visual_marker_requirements entry targets hazard zone 'enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_bounds_well_formed[enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "bounds min/max malformed (need min < max on x and y): {'min': [-182.06936840663434, 101.47447699941836, 0.0], 'max': [3017.9306315933654, 3301.4744769994186, 1200.0]}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_leaves_route_alternative[enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "every densified required_route waypoint lies inside hazard zone 'enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0' — no route alternative",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_mission_start[enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission start position lies inside hazard zone 'enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_objective[enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0][objective_1]::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission objective 'objective_1' lies inside hazard zone 'enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_pressure_modeled[enc_lp_Alpine_GlacialBasin_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'whiteout_exposure' has no weight in EC.HAZARD_PRESSURE_WEIGHTS",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_escape_route_exists::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no escape route runs entirely outside all 1 hazard zone(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_field_has_hazard_zone::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_field encounter declares no hazard zones",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_fields_present[enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard zone 'enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0' missing required fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_known[enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'whiteout_exposure' not in EC.HAZARD_TYPES",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_biome_allowed[enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'whiteout_exposure' not allowed for biome 'alpine_snow' (['whiteout_exposure', 'fall_risk', 'ambush_visibility_loss'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_visually_marked[enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no visual_marker_requirements entry targets hazard zone 'enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_bounds_well_formed[enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "bounds min/max malformed (need min < max on x and y): {'min': [-2833.196137632197, 239.77481952822268, 0.0], 'max': [366.8038623678028, 3439.774819528223, 1200.0]}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_leaves_route_alternative[enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "every densified required_route waypoint lies inside hazard zone 'enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0' — no route alternative",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_mission_start[enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission start position lies inside hazard zone 'enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_objective[enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0][objective_1]::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission objective 'objective_1' lies inside hazard zone 'enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_pressure_modeled[enc_lp_Alpine_SnowyRidge_Scatter_Perf_01_hazard_0]::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'whiteout_exposure' has no weight in EC.HAZARD_PRESSURE_WEIGHTS",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_escape_route_exists::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no escape route runs entirely outside all 1 hazard zone(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_field_has_hazard_zone::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "hazard_field encounter declares no hazard zones",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_fields_present[enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "hazard zone 'enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0' missing required fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_known[enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'heat' not in EC.HAZARD_TYPES",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_biome_allowed[enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'heat' not allowed for biome 'volcanic_ashlands' (['heat', 'lava_adjacent', 'toxic_ash'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_visually_marked[enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "no visual_marker_requirements entry targets hazard zone 'enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_bounds_well_formed[enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "bounds min/max malformed (need min < max on x and y): {'min': [-2626.1781254825187, -3562.775264906166, 0.0], 'max': [573.8218745174813, -362.77526490616583, 1200.0]}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_leaves_route_alternative[enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "every densified required_route waypoint lies inside hazard zone 'enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0' — no route alternative",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_mission_start[enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mission start position lies inside hazard zone 'enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_objective[enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0][objective_1]::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mission objective 'objective_1' lies inside hazard zone 'enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_pressure_modeled[enc_lp_Ashlands_AshRavine_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'heat' has no weight in EC.HAZARD_PRESSURE_WEIGHTS",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_escape_route_exists::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "no escape route runs entirely outside all 1 hazard zone(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_field_has_hazard_zone::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "hazard_field encounter declares no hazard zones",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_fields_present[enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "hazard zone 'enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0' missing required fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_known[enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'heat' not in EC.HAZARD_TYPES",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_biome_allowed[enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'heat' not allowed for biome 'volcanic_ashlands' (['heat', 'lava_adjacent', 'toxic_ash'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_visually_marked[enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "no visual_marker_requirements entry targets hazard zone 'enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_bounds_well_formed[enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "bounds min/max malformed (need min < max on x and y): {'min': [333.9726255561368, -2679.4788873716825, 0.0], 'max': [3533.972625556137, 520.5211126283175, 1200.0]}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_leaves_route_alternative[enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "every densified required_route waypoint lies inside hazard zone 'enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0' — no route alternative",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_mission_start[enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mission start position lies inside hazard zone 'enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_objective[enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0][objective_1]::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mission objective 'objective_1' lies inside hazard zone 'enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_pressure_modeled[enc_lp_Ashlands_BasaltFlats_Scar_Perf_01_hazard_0]::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'heat' has no weight in EC.HAZARD_PRESSURE_WEIGHTS",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_escape_route_exists::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "no escape route runs entirely outside all 1 hazard zone(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_field_has_hazard_zone::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_field encounter declares no hazard zones",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_fields_present[enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0]::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard zone 'enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0' missing required fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_known[enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0]::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'fall_risk' not in EC.HAZARD_TYPES",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_biome_allowed[enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0]::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'fall_risk' not allowed for biome 'temperate_forest' (['fall_risk', 'ambush_visibility_loss', 'mud_slow'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_visually_marked[enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0]::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no visual_marker_requirements entry targets hazard zone 'enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_bounds_well_formed[enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0]::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "bounds min/max malformed (need min < max on x and y): {'min': [-3667.375879643682, -2394.6691225649183, 0.0], 'max': [-467.37587964368186, 805.3308774350814, 1200.0]}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_leaves_route_alternative[enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0]::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "every densified required_route waypoint lies inside hazard zone 'enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0' — no route alternative",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_mission_start[enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0]::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission start position lies inside hazard zone 'enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_objective[enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0][objective_1]::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission objective 'objective_1' lies inside hazard zone 'enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_pressure_modeled[enc_lp_Forest_ErodedGully_Scatter_Perf_01_hazard_0]::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'fall_risk' has no weight in EC.HAZARD_PRESSURE_WEIGHTS",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_escape_route_exists::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no escape route runs entirely outside all 1 hazard zone(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_field_has_hazard_zone::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_field encounter declares no hazard zones",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_fields_present[enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0]::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard zone 'enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0' missing required fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_known[enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0]::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'fall_risk' not in EC.HAZARD_TYPES",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_biome_allowed[enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0]::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'fall_risk' not allowed for biome 'temperate_forest' (['fall_risk', 'ambush_visibility_loss', 'mud_slow'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_visually_marked[enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0]::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no visual_marker_requirements entry targets hazard zone 'enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_bounds_well_formed[enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0]::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "bounds min/max malformed (need min < max on x and y): {'min': [-796.5792074128622, -3663.9907238800915, 0.0], 'max': [2403.420792587138, -463.99072388009154, 1200.0]}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_leaves_route_alternative[enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0]::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "every densified required_route waypoint lies inside hazard zone 'enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0' — no route alternative",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_mission_start[enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0]::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission start position lies inside hazard zone 'enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_objective[enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0][objective_1]::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission objective 'objective_1' lies inside hazard zone 'enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_pressure_modeled[enc_lp_Forest_RollingWoodland_Scatter_Perf_01_hazard_0]::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'fall_risk' has no weight in EC.HAZARD_PRESSURE_WEIGHTS",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_escape_route_exists::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no escape route runs entirely outside all 1 hazard zone(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_field_has_hazard_zone::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_field encounter declares no hazard zones",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_fields_present[enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard zone 'enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0' missing required fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_known[enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'deep_water' not in EC.HAZARD_TYPES",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_biome_allowed[enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'deep_water' not allowed for biome 'wetland_mire' (['deep_water', 'mud_slow', 'ambush_visibility_loss'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_visually_marked[enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no visual_marker_requirements entry targets hazard zone 'enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_bounds_well_formed[enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "bounds min/max malformed (need min < max on x and y): {'min': [-3721.9366039595025, -965.2481295901181, 0.0], 'max': [-521.9366039595025, 2234.751870409882, 1200.0]}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_leaves_route_alternative[enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "every densified required_route waypoint lies inside hazard zone 'enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0' — no route alternative",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_mission_start[enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission start position lies inside hazard zone 'enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_objective[enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0][objective_1]::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission objective 'objective_1' lies inside hazard zone 'enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_pressure_modeled[enc_lp_Wetland_MudFlat_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'deep_water' has no weight in EC.HAZARD_PRESSURE_WEIGHTS",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_escape_route_exists::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no escape route runs entirely outside all 1 hazard zone(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_field_has_hazard_zone::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_field encounter declares no hazard zones",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_fields_present[enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard zone 'enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0' missing required fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_known[enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'deep_water' not in EC.HAZARD_TYPES",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_type_biome_allowed[enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'deep_water' not allowed for biome 'wetland_mire' (['deep_water', 'mud_slow', 'ambush_visibility_loss'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_visually_marked[enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no visual_marker_requirements entry targets hazard zone 'enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_bounds_well_formed[enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "bounds min/max malformed (need min < max on x and y): {'min': [-1364.2798772013844, 602.26161894505, 0.0], 'max': [1835.7201227986156, 3802.26161894505, 1200.0]}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_leaves_route_alternative[enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "every densified required_route waypoint lies inside hazard zone 'enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0' — no route alternative",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_mission_start[enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission start position lies inside hazard zone 'enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_excludes_objective[enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0][objective_1]::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mission objective 'objective_1' lies inside hazard zone 'enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_pressure_modeled[enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0]::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "hazard_type 'deep_water' has no weight in EC.HAZARD_PRESSURE_WEIGHTS",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hazard_escape_route_exists::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "no escape route runs entirely outside all 1 hazard zone(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 110,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-encounter-hazards",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "01dc43976365e5c6b25abecf58535e707f6bb402",
+    "timestamp": "2026-07-04T22:27:02.389869+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 120
+  }
+}

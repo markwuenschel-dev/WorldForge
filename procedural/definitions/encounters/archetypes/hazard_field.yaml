@@ -1,0 +1,29 @@
+schema_version: '1.4'
+encounter_archetype: hazard_field
+display_name: Hazard Field
+intent: Environmental danger that modifies route choice.
+required_elements:
+- hazard_zones
+- safe_route
+- visual_marker
+- completion_condition
+roles:
+- hazard_proxy
+- ambient_threat
+spawn_groups:
+  light_pressure: 1
+  standard_pressure: 1
+count_range:
+  light_pressure:
+  - 1
+  - 2
+  standard_pressure:
+  - 2
+  - 3
+requires_resource_node: false
+requires_hazard: true
+cover_required: false
+escape_route_required: true
+bypass_allowed: true
+hazard_zone_min: 1
+spawn_policy: pre_placed

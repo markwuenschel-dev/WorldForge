@@ -1,0 +1,418 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Alien_Plateau_Debris_Perf_01",
+  "display_name": "Defensive Holdout \u2014 alien_crystal_badlands",
+  "mission_id": "mission_Alien_Plateau_Debris_Perf_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alien_crystal_badlands",
+  "mission_archetype": "disable_site",
+  "encounter_archetype": "defensive_holdout",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.5
+  },
+  "seed": 15012,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Alien_Plateau_Debris_Perf_01_group_0",
+      "encounter_id": "enc_sp_Alien_Plateau_Debris_Perf_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 6.859,
+      "difficulty_value": 1.429,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_Plateau_Debris_Perf_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_Plateau_Debris_Perf_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_Plateau_Debris_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_Plateau_Debris_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Alien_Plateau_Debris_Perf_01_group_1",
+      "encounter_id": "enc_sp_Alien_Plateau_Debris_Perf_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 7.243,
+      "difficulty_value": 1.509,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_Plateau_Debris_Perf_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_Plateau_Debris_Perf_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_Plateau_Debris_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_Plateau_Debris_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Alien_Plateau_Debris_Perf_01_group_2",
+      "encounter_id": "enc_sp_Alien_Plateau_Debris_Perf_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 6.854,
+      "difficulty_value": 1.428,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_Plateau_Debris_Perf_01_spawn_2"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_Plateau_Debris_Perf_01_danger_2"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_Plateau_Debris_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_Plateau_Debris_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        7001.047139862321,
+        -853.0373719103559,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        4898.9517618875125,
+        -3577.3529800961073,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_spawn_2",
+      "kind": "spawn",
+      "world_position": [
+        5162.404140556847,
+        -815.3999203916247,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_cover_0_0",
+      "kind": "cover",
+      "world_position": [
+        7103.573462703312,
+        -571.1005826743551,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_cover_0_1",
+      "kind": "cover",
+      "world_position": [
+        7206.099785544301,
+        -289.16379343835433,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_cover_1_0",
+      "kind": "cover",
+      "world_position": [
+        4796.425439046522,
+        -3859.2897693321083,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_cover_1_1",
+      "kind": "cover",
+      "world_position": [
+        4693.899116205533,
+        -4141.226558568109,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_cover_2_0",
+      "kind": "cover",
+      "world_position": [
+        5264.930463397837,
+        -533.463131155624,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_cover_2_1",
+      "kind": "cover",
+      "world_position": [
+        5367.456786238827,
+        -251.52634191962318,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    }
+  ],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_safe_start",
+      "world_position": [
+        -8739.34,
+        2087.14,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_safe_mission",
+      "world_position": [
+        -6649.99,
+        -3841.88,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_danger_0",
+      "bounds": {
+        "min": [
+          5801.047139862321,
+          -2053.037371910356,
+          0.0
+        ],
+        "max": [
+          8201.047139862321,
+          346.9626280896441,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_danger_1",
+      "bounds": {
+        "min": [
+          3698.9517618875125,
+          -4777.352980096108,
+          0.0
+        ],
+        "max": [
+          6098.9517618875125,
+          -2377.3529800961073,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Debris_Perf_01_danger_2",
+      "bounds": {
+        "min": [
+          3962.404140556847,
+          -2015.3999203916246,
+          0.0
+        ],
+        "max": [
+          6362.404140556847,
+          384.60007960837527,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Alien_Plateau_Debris_Perf_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -7939.34,
+          2887.14,
+          0.0
+        ],
+        [
+          4003.3505000000005,
+          -1455.8197999999998,
+          0.0
+        ],
+        [
+          5584.8026666666665,
+          -2030.914933333334,
+          0.0
+        ]
+      ],
+      "length_cm": 14390.61
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Alien_Plateau_Debris_Perf_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          5584.8026666666665,
+          -2030.914933333334,
+          0.0
+        ],
+        [
+          -6649.99,
+          -3841.88,
+          0.0
+        ]
+      ],
+      "length_cm": 12368.09
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Alien_Plateau_Debris_Perf_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_Plateau_Debris_Perf_01_activate",
+      "state_key": "site_power",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_Plateau_Debris_Perf_01_complete",
+      "state_key": "enc_sp_Alien_Plateau_Debris_Perf_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Alien_Plateau_Debris_Perf_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_Plateau_Debris_Perf_01_fail",
+      "state_key": "enc_sp_Alien_Plateau_Debris_Perf_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Alien_Plateau_Debris_Perf_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Alien_Plateau_Debris_Perf_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Alien_Plateau_Debris_Perf_01_resolved",
+      "site_power"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_crystal_cover_cluster",
+      "mesh_rock_alien_crystal_rock"
+    ]
+  },
+  "megascans_dependencies": [],
+  "visual_marker_requirements": [],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:f2d7a1fccd817facf8289007bf7dffe0d1befc7cf365c468aea5bdb96cadc5ea",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.113868+00:00",
+    "source_hash": "sha256:f2d7a1fccd817facf8289007bf7dffe0d1befc7cf365c468aea5bdb96cadc5ea"
+  },
+  "provenance_id": "prov_enc_sp_Alien_Plateau_Debris_Perf_01",
+  "registry_id": "encounter_catalog:enc_sp_Alien_Plateau_Debris_Perf_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Alien_Plateau_Debris_Perf_01/encounter.json"
+}

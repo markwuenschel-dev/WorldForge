@@ -1,0 +1,326 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01",
+  "display_name": "Roaming Threat \u2014 temperate_forest",
+  "mission_id": "mission_Forest_ErodedGully_Debris_Stylized_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "temperate_forest",
+  "mission_archetype": "survey_landmark",
+  "encounter_archetype": "roaming_threat",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 11011,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_group_0",
+      "encounter_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01",
+      "archetype_tag": "roaming_threat",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambient_threat",
+        "patroller"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 4.19,
+      "difficulty_value": 1.552,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Forest_ErodedGully_Debris_Stylized_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Forest_ErodedGully_Debris_Stylized_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_sp_Forest_ErodedGully_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_group_1",
+      "encounter_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01",
+      "archetype_tag": "roaming_threat",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambient_threat",
+        "patroller"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 5.152,
+      "difficulty_value": 1.908,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Forest_ErodedGully_Debris_Stylized_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Forest_ErodedGully_Debris_Stylized_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_sp_Forest_ErodedGully_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        1048.485134827447,
+        -449.5175356224687,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        -2862.7868553235803,
+        40.20207294106058,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [
+    {
+      "id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_patrol_0",
+      "kind": "patrol",
+      "world_position": [
+        2622.4016981021614,
+        331.6362919663168,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_patrol_1",
+      "kind": "patrol",
+      "world_position": [
+        -886.3341981021615,
+        848.4957080336833,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_patrol_2",
+      "kind": "patrol",
+      "world_position": [
+        -1696.5933018978392,
+        -2604.3077080336834,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_patrol_3",
+      "kind": "patrol",
+      "world_position": [
+        -5205.329198102161,
+        -2087.448291966317,
+        0.0
+      ]
+    }
+  ],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_safe_start",
+      "world_position": [
+        6186.61,
+        3949.3199999999997,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_safe_mission",
+      "world_position": [
+        775.19,
+        7640.78,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_danger_0",
+      "bounds": {
+        "min": [
+          -151.51486517255307,
+          -1649.5175356224686,
+          0.0
+        ],
+        "max": [
+          2248.485134827447,
+          750.4824643775313,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_danger_1",
+      "bounds": {
+        "min": [
+          -4062.7868553235803,
+          -1159.7979270589394,
+          0.0
+        ],
+        "max": [
+          -1662.7868553235803,
+          1240.2020729410606,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          6986.61,
+          4749.32,
+          0.0
+        ],
+        [
+          2667.614999999999,
+          1813.3759999999993,
+          0.0
+        ],
+        [
+          -715.5977500000008,
+          -486.4468000000006,
+          0.0
+        ]
+      ],
+      "length_cm": 9313.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -715.5977500000008,
+          -486.4468000000006,
+          0.0
+        ],
+        [
+          775.19,
+          7640.78,
+          0.0
+        ]
+      ],
+      "length_cm": 8262.82
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_activate",
+      "state_key": "survey_progress",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_complete",
+      "state_key": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_fail",
+      "state_key": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Forest_ErodedGully_Debris_Stylized_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Forest_ErodedGully_Debris_Stylized_01_resolved",
+      "survey_progress"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [
+    "megascans_arid_debris_48ea3af3"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": true,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:c3db1e4fcca7d0545a81c0a183bb08a27b8076e8019a4648c7e6d03e7203da41",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.135679+00:00",
+    "source_hash": "sha256:c3db1e4fcca7d0545a81c0a183bb08a27b8076e8019a4648c7e6d03e7203da41"
+  },
+  "provenance_id": "prov_enc_sp_Forest_ErodedGully_Debris_Stylized_01",
+  "registry_id": "encounter_catalog:enc_sp_Forest_ErodedGully_Debris_Stylized_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Forest_ErodedGully_Debris_Stylized_01/encounter.json"
+}

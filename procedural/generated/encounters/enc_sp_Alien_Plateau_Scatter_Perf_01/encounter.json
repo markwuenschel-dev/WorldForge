@@ -1,0 +1,362 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Alien_Plateau_Scatter_Perf_01",
+  "display_name": "Ambush Choke \u2014 alien_crystal_badlands",
+  "mission_id": "mission_Alien_Plateau_Scatter_Perf_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alien_crystal_badlands",
+  "mission_archetype": "clear_hazard",
+  "encounter_archetype": "ambush_choke",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "hard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.5
+  },
+  "seed": 15009,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Alien_Plateau_Scatter_Perf_01_group_0",
+      "encounter_id": "enc_sp_Alien_Plateau_Scatter_Perf_01",
+      "archetype_tag": "ambush_choke",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "ambusher",
+        "melee_pressure"
+      ],
+      "count_min": 4,
+      "count_max": 6,
+      "pressure_value": 10.43,
+      "difficulty_value": 1.49,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_Plateau_Scatter_Perf_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_Plateau_Scatter_Perf_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_Plateau_Scatter_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_Plateau_Scatter_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Alien_Plateau_Scatter_Perf_01_group_1",
+      "encounter_id": "enc_sp_Alien_Plateau_Scatter_Perf_01",
+      "archetype_tag": "ambush_choke",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "ambusher",
+        "melee_pressure"
+      ],
+      "count_min": 4,
+      "count_max": 6,
+      "pressure_value": 12.271,
+      "difficulty_value": 1.753,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_Plateau_Scatter_Perf_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_Plateau_Scatter_Perf_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_Plateau_Scatter_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_Plateau_Scatter_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        1260.1730671462656,
+        -1252.9392934909747,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        -2628.09748787124,
+        90.37120255930267,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_ambush_0",
+      "kind": "ambush",
+      "world_position": [
+        -557.5839174850275,
+        -1472.3737011830497,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_ambush_1",
+      "kind": "ambush",
+      "world_position": [
+        -1485.183082514976,
+        522.5097011830492,
+        0.0
+      ]
+    }
+  ],
+  "cover_anchors": [
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_cover_0_0",
+      "kind": "cover",
+      "world_position": [
+        1386.663862377622,
+        -1524.968848359079,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_cover_0_1",
+      "kind": "cover",
+      "world_position": [
+        1513.1546576089788,
+        -1796.9984032271834,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_cover_1_0",
+      "kind": "cover",
+      "world_position": [
+        -2754.5882831025965,
+        362.40075742740703,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_cover_1_1",
+      "kind": "cover",
+      "world_position": [
+        -2881.079078333953,
+        634.4303122955114,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    }
+  ],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_safe_start",
+      "world_position": [
+        6860.35,
+        2761.98,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_safe_mission",
+      "world_position": [
+        1995.77,
+        7416.15,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_danger_0",
+      "bounds": {
+        "min": [
+          60.173067146265566,
+          -2452.9392934909747,
+          0.0
+        ],
+        "max": [
+          2460.1730671462656,
+          -52.939293490974705,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Alien_Plateau_Scatter_Perf_01_danger_1",
+      "bounds": {
+        "min": [
+          -3828.09748787124,
+          -1109.6287974406973,
+          0.0
+        ],
+        "max": [
+          -1428.09748787124,
+          1290.3712025593027,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Alien_Plateau_Scatter_Perf_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          7660.35,
+          3561.98,
+          0.0
+        ],
+        [
+          2924.8589999999995,
+          1360.0279999999998,
+          0.0
+        ],
+        [
+          -784.6089500000016,
+          -364.8344000000002,
+          0.0
+        ]
+      ],
+      "length_cm": 9313.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Alien_Plateau_Scatter_Perf_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -784.6089500000016,
+          -364.8344000000002,
+          0.0
+        ],
+        [
+          1995.77,
+          7416.15,
+          0.0
+        ]
+      ],
+      "length_cm": 8262.82
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Alien_Plateau_Scatter_Perf_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_Plateau_Scatter_Perf_01_activate",
+      "state_key": "hazard_level",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_Plateau_Scatter_Perf_01_complete",
+      "state_key": "enc_sp_Alien_Plateau_Scatter_Perf_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Alien_Plateau_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_Plateau_Scatter_Perf_01_fail",
+      "state_key": "enc_sp_Alien_Plateau_Scatter_Perf_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Alien_Plateau_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Alien_Plateau_Scatter_Perf_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Alien_Plateau_Scatter_Perf_01_resolved",
+      "hazard_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_crystal_cover_cluster",
+      "mesh_rock_alien_crystal_rock"
+    ]
+  },
+  "megascans_dependencies": [],
+  "visual_marker_requirements": [
+    {
+      "target_id": "enc_sp_Alien_Plateau_Scatter_Perf_01_ambush_0",
+      "marker_class": "readability_cue_choke"
+    }
+  ],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:3ea2274df0b7193b9ce1d0e6e452ce08d2a498243c2d6d9593bc90b34b836b86",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.115882+00:00",
+    "source_hash": "sha256:3ea2274df0b7193b9ce1d0e6e452ce08d2a498243c2d6d9593bc90b34b836b86"
+  },
+  "provenance_id": "prov_enc_sp_Alien_Plateau_Scatter_Perf_01",
+  "registry_id": "encounter_catalog:enc_sp_Alien_Plateau_Scatter_Perf_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Alien_Plateau_Scatter_Perf_01/encounter.json"
+}

@@ -1,0 +1,425 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01",
+  "display_name": "Defensive Holdout \u2014 volcanic_ashlands",
+  "mission_id": "mission_Ashlands_BasaltFlats_Scar_Photoreal_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "volcanic_ashlands",
+  "mission_archetype": "restore_power",
+  "encounter_archetype": "defensive_holdout",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.5
+  },
+  "seed": 13001,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_group_0",
+      "encounter_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 7.248,
+      "difficulty_value": 1.51,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_activate",
+      "state_keys": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_group_1",
+      "encounter_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 8.616,
+      "difficulty_value": 1.795,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_activate",
+      "state_keys": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_group_2",
+      "encounter_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 6.883,
+      "difficulty_value": 1.434,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_spawn_2"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_danger_2"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_activate",
+      "state_keys": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -6320.746094139308,
+        2860.525472507319,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        -4157.797892895274,
+        4326.488161103821,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_spawn_2",
+      "kind": "spawn",
+      "world_position": [
+        -4833.785898802542,
+        1954.878533497597,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_cover_0_0",
+      "kind": "cover",
+      "world_position": [
+        -6481.098064240404,
+        2606.9761761472278,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_cover_0_1",
+      "kind": "cover",
+      "world_position": [
+        -6641.450034341499,
+        2353.4268797871364,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_cover_1_0",
+      "kind": "cover",
+      "world_position": [
+        -3997.445922794179,
+        4580.037457463912,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_cover_1_1",
+      "kind": "cover",
+      "world_position": [
+        -3837.0939526930833,
+        4833.586753824004,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_cover_2_0",
+      "kind": "cover",
+      "world_position": [
+        -4994.137868903637,
+        1701.3292371375055,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_cover_2_1",
+      "kind": "cover",
+      "world_position": [
+        -5154.489839004733,
+        1447.7799407774141,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    }
+  ],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_safe_start",
+      "world_position": [
+        6339.95,
+        -5315.51,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_safe_mission",
+      "world_position": [
+        7316.87,
+        2333.64,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_danger_0",
+      "bounds": {
+        "min": [
+          -7520.746094139308,
+          1660.5254725073191,
+          0.0
+        ],
+        "max": [
+          -5120.746094139308,
+          4060.525472507319,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_danger_1",
+      "bounds": {
+        "min": [
+          -5357.797892895274,
+          3126.488161103821,
+          0.0
+        ],
+        "max": [
+          -2957.7978928952743,
+          5526.488161103821,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_danger_2",
+      "bounds": {
+        "min": [
+          -6033.785898802542,
+          754.8785334975969,
+          0.0
+        ],
+        "max": [
+          -3633.785898802542,
+          3154.878533497597,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          7139.95,
+          -4515.51,
+          0.0
+        ],
+        [
+          -3600.262599999999,
+          2276.9137,
+          0.0
+        ],
+        [
+          -5022.482533333333,
+          3176.3670666666667,
+          0.0
+        ]
+      ],
+      "length_cm": 14390.61
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -5022.482533333333,
+          3176.3670666666667,
+          0.0
+        ],
+        [
+          7316.87,
+          2333.64,
+          0.0
+        ]
+      ],
+      "length_cm": 12368.1
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_activate",
+      "state_key": "power_level",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_complete",
+      "state_key": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_fail",
+      "state_key": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01_resolved",
+      "power_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop",
+      "industrial_debris"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_basalt_cover_ridge",
+      "mesh_cov_low_rock_cover",
+      "mesh_cov_scrap_cover_wall",
+      "mesh_ind_broken_pipe_cluster",
+      "mesh_ind_collapsed_support_beam",
+      "mesh_ind_forge_debris_chunk"
+    ]
+  },
+  "megascans_dependencies": [
+    "megascans_dead_tree_c0c4ec3a"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:6b7f19de3b51628eb9e1bc91ea6293041d76a4ac1f9d22b3f909e6bc84e3314c",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.132965+00:00",
+    "source_hash": "sha256:6b7f19de3b51628eb9e1bc91ea6293041d76a4ac1f9d22b3f909e6bc84e3314c"
+  },
+  "provenance_id": "prov_enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01",
+  "registry_id": "encounter_catalog:enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01/encounter.json"
+}

@@ -1,0 +1,369 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01",
+  "display_name": "Ambush Choke \u2014 volcanic_ashlands",
+  "mission_id": "mission_Ashlands_BasaltFlats_Scar_Perf_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "volcanic_ashlands",
+  "mission_archetype": "clear_hazard",
+  "encounter_archetype": "ambush_choke",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "hard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.5
+  },
+  "seed": 13003,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_group_0",
+      "encounter_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01",
+      "archetype_tag": "ambush_choke",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambusher",
+        "melee_pressure"
+      ],
+      "count_min": 4,
+      "count_max": 6,
+      "pressure_value": 11.557,
+      "difficulty_value": 1.651,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_group_1",
+      "encounter_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01",
+      "archetype_tag": "ambush_choke",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambusher",
+        "melee_pressure"
+      ],
+      "count_min": 4,
+      "count_max": 6,
+      "pressure_value": 11.193,
+      "difficulty_value": 1.599,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        1403.5531405269458,
+        82.89790619231746,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        -1997.62743987892,
+        -1710.0173218493214,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_ambush_0",
+      "kind": "ambush",
+      "world_position": [
+        584.407312778068,
+        -1461.9314436858417,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_ambush_1",
+      "kind": "ambush",
+      "world_position": [
+        -1447.6653127780687,
+        -618.9125563141592,
+        0.0
+      ]
+    }
+  ],
+  "cover_anchors": [
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_cover_0_0",
+      "kind": "cover",
+      "world_position": [
+        1680.6539531027825,
+        -32.059214812911975,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_cover_0_1",
+      "kind": "cover",
+      "world_position": [
+        1957.7547656786194,
+        -147.0163358181414,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_cover_1_0",
+      "kind": "cover",
+      "world_position": [
+        -2274.728252454757,
+        -1595.060200844092,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_cover_1_1",
+      "kind": "cover",
+      "world_position": [
+        -2551.8290650305935,
+        -1480.1030798388626,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    }
+  ],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_safe_start",
+      "world_position": [
+        2437.19,
+        7003.16,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_safe_mission",
+      "world_position": [
+        -3542.49,
+        6814.19,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_danger_0",
+      "bounds": {
+        "min": [
+          203.55314052694575,
+          -1117.1020938076826,
+          0.0
+        ],
+        "max": [
+          2603.5531405269458,
+          1282.8979061923174,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_danger_1",
+      "bounds": {
+        "min": [
+          -3197.62743987892,
+          -2910.0173218493214,
+          0.0
+        ],
+        "max": [
+          -797.6274398789201,
+          -510.01732184932143,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          3237.19,
+          7803.16,
+          0.0
+        ],
+        [
+          1236.0159999999998,
+          2979.387999999999,
+          0.0
+        ],
+        [
+          -331.5703000000003,
+          -799.233400000001,
+          0.0
+        ]
+      ],
+      "length_cm": 9313.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -331.5703000000003,
+          -799.233400000001,
+          0.0
+        ],
+        [
+          -3542.49,
+          6814.19,
+          0.0
+        ]
+      ],
+      "length_cm": 8262.82
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_activate",
+      "state_key": "hazard_level",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_complete",
+      "state_key": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_fail",
+      "state_key": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_resolved",
+      "hazard_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop",
+      "industrial_debris"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_basalt_cover_ridge",
+      "mesh_cov_low_rock_cover",
+      "mesh_cov_scrap_cover_wall",
+      "mesh_ind_broken_pipe_cluster",
+      "mesh_ind_collapsed_support_beam",
+      "mesh_ind_forge_debris_chunk"
+    ]
+  },
+  "megascans_dependencies": [
+    "megascans_dead_tree_c0c4ec3a"
+  ],
+  "visual_marker_requirements": [
+    {
+      "target_id": "enc_sp_Ashlands_BasaltFlats_Scar_Perf_01_ambush_0",
+      "marker_class": "readability_cue_choke"
+    }
+  ],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:7e9f775b4cfaa0f6e27072602c3d861f70c185dd64b501489e4c2f553606caa9",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.132286+00:00",
+    "source_hash": "sha256:7e9f775b4cfaa0f6e27072602c3d861f70c185dd64b501489e4c2f553606caa9"
+  },
+  "provenance_id": "prov_enc_sp_Ashlands_BasaltFlats_Scar_Perf_01",
+  "registry_id": "encounter_catalog:enc_sp_Ashlands_BasaltFlats_Scar_Perf_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Ashlands_BasaltFlats_Scar_Perf_01/encounter.json"
+}

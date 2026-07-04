@@ -1,0 +1,269 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_lp_Alien_Plateau_Debris_Stylized_01",
+  "display_name": "Patrol Route \u2014 alien_crystal_badlands",
+  "mission_id": "mission_Alien_Plateau_Debris_Stylized_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alien_crystal_badlands",
+  "mission_archetype": "survey_landmark",
+  "encounter_archetype": "patrol_route",
+  "encounter_profile": "light_pressure",
+  "difficulty_band": "light",
+  "pressure_budget": 24.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 15011,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_lp_Alien_Plateau_Debris_Stylized_01_group_0",
+      "encounter_id": "enc_lp_Alien_Plateau_Debris_Stylized_01",
+      "archetype_tag": "patrol_route",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "patroller",
+        "melee_pressure"
+      ],
+      "count_min": 2,
+      "count_max": 3,
+      "pressure_value": 3.078,
+      "difficulty_value": 1.231,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_lp_Alien_Plateau_Debris_Stylized_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_lp_Alien_Plateau_Debris_Stylized_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_lp_Alien_Plateau_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_lp_Alien_Plateau_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_lp_Alien_Plateau_Debris_Stylized_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        974.7733524420557,
+        1273.8040487730057,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [
+    {
+      "id": "enc_lp_Alien_Plateau_Debris_Stylized_01_patrol_0",
+      "kind": "patrol",
+      "world_position": [
+        -140.79299511361182,
+        2639.535950239794,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alien_Plateau_Debris_Stylized_01_patrol_1",
+      "kind": "patrol",
+      "world_position": [
+        -910.4800048863888,
+        -822.5374502397934,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alien_Plateau_Debris_Stylized_01_patrol_2",
+      "kind": "patrol",
+      "world_position": [
+        2474.5530048863884,
+        -1880.8010497602063,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alien_Plateau_Debris_Stylized_01_patrol_3",
+      "kind": "patrol",
+      "world_position": [
+        1704.8659951136117,
+        -5342.874450239795,
+        0.0
+      ]
+    }
+  ],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_lp_Alien_Plateau_Debris_Stylized_01_safe_start",
+      "world_position": [
+        -5030.71,
+        6512.31,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alien_Plateau_Debris_Stylized_01_safe_mission",
+      "world_position": [
+        -7564.54,
+        1326.68,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_lp_Alien_Plateau_Debris_Stylized_01_danger_0",
+      "bounds": {
+        "min": [
+          -225.22664755794426,
+          73.80404877300566,
+          0.0
+        ],
+        "max": [
+          2174.7733524420555,
+          2473.804048773006,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_lp_Alien_Plateau_Debris_Stylized_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -4230.71,
+          7312.31,
+          0.0
+        ],
+        [
+          -1615.3639999999996,
+          2791.972999999999,
+          0.0
+        ],
+        [
+          -307.69100000000026,
+          531.8045000000002,
+          0.0
+        ]
+      ],
+      "length_cm": 7833.6
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_lp_Alien_Plateau_Debris_Stylized_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -307.69100000000026,
+          531.8045000000002,
+          0.0
+        ],
+        [
+          -7564.54,
+          1326.68,
+          0.0
+        ]
+      ],
+      "length_cm": 7300.25
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_lp_Alien_Plateau_Debris_Stylized_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_lp_Alien_Plateau_Debris_Stylized_01_activate",
+      "state_key": "survey_progress",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_lp_Alien_Plateau_Debris_Stylized_01_complete",
+      "state_key": "enc_lp_Alien_Plateau_Debris_Stylized_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_lp_Alien_Plateau_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_lp_Alien_Plateau_Debris_Stylized_01_fail",
+      "state_key": "enc_lp_Alien_Plateau_Debris_Stylized_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_lp_Alien_Plateau_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_lp_Alien_Plateau_Debris_Stylized_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_lp_Alien_Plateau_Debris_Stylized_01_resolved",
+      "survey_progress"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "standard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [],
+  "visual_marker_requirements": [],
+  "bypass_allowed": true,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:cc534253a5775c8b43f7b21df7e813aedd51382d0bf03ba3101027811446c79f",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.114925+00:00",
+    "source_hash": "sha256:cc534253a5775c8b43f7b21df7e813aedd51382d0bf03ba3101027811446c79f"
+  },
+  "provenance_id": "prov_enc_lp_Alien_Plateau_Debris_Stylized_01",
+  "registry_id": "encounter_catalog:enc_lp_Alien_Plateau_Debris_Stylized_01",
+  "encounter_path": "procedural/generated/encounters/enc_lp_Alien_Plateau_Debris_Stylized_01/encounter.json"
+}

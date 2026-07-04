@@ -1,0 +1,30 @@
+schema_version: '1.4'
+encounter_archetype: patrol_route
+display_name: Patrol Route
+intent: Mobile pressure along a mission route.
+required_elements:
+- patrol_anchors
+- spawn_anchors
+- approach_route
+- escape_route
+- completion_condition
+roles:
+- patroller
+- melee_pressure
+spawn_groups:
+  light_pressure: 1
+  standard_pressure: 2
+count_range:
+  light_pressure:
+  - 2
+  - 3
+  standard_pressure:
+  - 3
+  - 5
+requires_resource_node: false
+requires_hazard: false
+cover_required: false
+escape_route_required: true
+bypass_allowed: true
+patrol_anchor_min: 3
+spawn_policy: on_activation

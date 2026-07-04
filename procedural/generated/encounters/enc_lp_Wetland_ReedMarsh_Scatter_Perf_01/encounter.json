@@ -1,0 +1,257 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01",
+  "display_name": "Hazard Field \u2014 wetland_mire",
+  "mission_id": "mission_Wetland_ReedMarsh_Scatter_Perf_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "wetland_mire",
+  "mission_archetype": "clear_hazard",
+  "encounter_archetype": "hazard_field",
+  "encounter_profile": "light_pressure",
+  "difficulty_band": "light",
+  "pressure_budget": 24.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 14009,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_group_0",
+      "encounter_id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01",
+      "archetype_tag": "hazard_field",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "hazard_proxy",
+        "ambient_threat"
+      ],
+      "count_min": 1,
+      "count_max": 2,
+      "pressure_value": 1.492,
+      "difficulty_value": 1.243,
+      "spawn_policy": "pre_placed",
+      "spawn_anchor_ids": [
+        "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_activate",
+      "state_keys": [
+        "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -625.2646104455243,
+        1176.4110336615804,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [
+    {
+      "id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0",
+      "hazard_type": "deep_water",
+      "bounds": {
+        "min": [
+          -1364.2798772013844,
+          602.26161894505,
+          0.0
+        ],
+        "max": [
+          1835.7201227986156,
+          3802.26161894505,
+          1200.0
+        ]
+      },
+      "visual_marker": "hazard_marker_deep_water"
+    }
+  ],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_safe_start",
+      "world_position": [
+        -9247.64,
+        -877.84,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_safe_mission",
+      "world_position": [
+        -4882.19,
+        -5928.46,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_danger_0",
+      "bounds": {
+        "min": [
+          -1825.2646104455243,
+          -23.588966338419596,
+          0.0
+        ],
+        "max": [
+          574.7353895544757,
+          2376.4110336615804,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -8447.64,
+          -77.84,
+          0.0
+        ],
+        [
+          -3225.4619999999977,
+          -29.723,
+          0.0
+        ],
+        [
+          -614.3729999999987,
+          -5.664500000000004,
+          0.0
+        ]
+      ],
+      "length_cm": 7833.6
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -614.3729999999987,
+          -5.664500000000004,
+          0.0
+        ],
+        [
+          -4882.19,
+          -5928.46,
+          0.0
+        ]
+      ],
+      "length_cm": 7300.26
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_activate",
+      "state_key": "hazard_level",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_complete",
+      "state_key": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_fail",
+      "state_key": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_resolved",
+      "hazard_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "standard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [
+    "megascans_canyon_sandy_mud_29c6056c"
+  ],
+  "visual_marker_requirements": [
+    {
+      "target_id": "enc_lp_Wetland_ReedMarsh_Scatter_Perf_01_hazard_0",
+      "marker_class": "hazard_marker_deep_water"
+    }
+  ],
+  "bypass_allowed": true,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:a21c04c9c65c2a3b88daa0a5a4b9f5d1809d15ac0fe06e0e9f08329549bfab41",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.148400+00:00",
+    "source_hash": "sha256:a21c04c9c65c2a3b88daa0a5a4b9f5d1809d15ac0fe06e0e9f08329549bfab41"
+  },
+  "provenance_id": "prov_enc_lp_Wetland_ReedMarsh_Scatter_Perf_01",
+  "registry_id": "encounter_catalog:enc_lp_Wetland_ReedMarsh_Scatter_Perf_01",
+  "encounter_path": "procedural/generated/encounters/enc_lp_Wetland_ReedMarsh_Scatter_Perf_01/encounter.json"
+}

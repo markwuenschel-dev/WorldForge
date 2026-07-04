@@ -1,0 +1,289 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01",
+  "display_name": "Extraction Pressure \u2014 wetland_mire",
+  "mission_id": "mission_Wetland_MudFlat_Debris_Photoreal_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "wetland_mire",
+  "mission_archetype": "recover_resource",
+  "encounter_archetype": "extraction_pressure",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 14004,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_group_0",
+      "encounter_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01",
+      "archetype_tag": "extraction_pressure",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ambusher"
+      ],
+      "count_min": 3,
+      "count_max": 6,
+      "pressure_value": 10.956,
+      "difficulty_value": 1.739,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_activate",
+      "state_keys": [
+        "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_group_1",
+      "encounter_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01",
+      "archetype_tag": "extraction_pressure",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ambusher"
+      ],
+      "count_min": 3,
+      "count_max": 6,
+      "pressure_value": 10.206,
+      "difficulty_value": 1.62,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_activate",
+      "state_keys": [
+        "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -3159.2873413191865,
+        2796.337507613748,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        30.389089599310864,
+        2430.4124072144664,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_safe_start",
+      "world_position": [
+        3929.66,
+        -7799.93,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_safe_mission",
+      "world_position": [
+        7638.57,
+        -796.67,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_danger_0",
+      "bounds": {
+        "min": [
+          -4359.287341319186,
+          1596.3375076137481,
+          0.0
+        ],
+        "max": [
+          -1959.2873413191865,
+          3996.337507613748,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_danger_1",
+      "bounds": {
+        "min": [
+          -1169.6109104006891,
+          1230.4124072144664,
+          0.0
+        ],
+        "max": [
+          1230.3890895993109,
+          3630.4124072144664,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          4729.66,
+          -6999.93,
+          0.0
+        ],
+        [
+          -825.5429000000004,
+          1221.8069999999989,
+          0.0
+        ],
+        [
+          -1702.6801999999998,
+          2519.9759999999987,
+          0.0
+        ]
+      ],
+      "length_cm": 11489.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -1702.6801999999998,
+          2519.9759999999987,
+          0.0
+        ],
+        [
+          7638.57,
+          -796.67,
+          0.0
+        ]
+      ],
+      "length_cm": 9912.57
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_activate",
+      "state_key": "resource_recovered",
+      "operator": ">=",
+      "threshold": 0.9,
+      "trigger": "post_objective"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_complete",
+      "state_key": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_fail",
+      "state_key": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Wetland_MudFlat_Debris_Photoreal_01_resolved",
+      "resource_recovered"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [
+    "megascans_canyon_sandy_mud_29c6056c"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:627ffb5ff969fe4b5cc3fdac1aeb4d058e8c00bbac2a091cb043b98db2c2eba9",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.143344+00:00",
+    "source_hash": "sha256:627ffb5ff969fe4b5cc3fdac1aeb4d058e8c00bbac2a091cb043b98db2c2eba9"
+  },
+  "provenance_id": "prov_enc_sp_Wetland_MudFlat_Debris_Photoreal_01",
+  "registry_id": "encounter_catalog:enc_sp_Wetland_MudFlat_Debris_Photoreal_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Wetland_MudFlat_Debris_Photoreal_01/encounter.json"
+}

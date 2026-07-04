@@ -1,0 +1,263 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01",
+  "display_name": "Guarded Objective \u2014 temperate_forest",
+  "mission_id": "mission_Forest_RollingWoodland_Scatter_Photoreal_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "temperate_forest",
+  "mission_archetype": "restore_power",
+  "encounter_archetype": "guarded_objective",
+  "encounter_profile": "light_pressure",
+  "difficulty_band": "light",
+  "pressure_budget": 24.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.5
+  },
+  "seed": 11001,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_group_0",
+      "encounter_id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01",
+      "archetype_tag": "guarded_objective",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "guard",
+        "ranged_pressure"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 4.809,
+      "difficulty_value": 1.233,
+      "spawn_policy": "pre_placed",
+      "spawn_anchor_ids": [
+        "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_activate",
+      "state_keys": [
+        "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -742.4823951180304,
+        -805.7452499491516,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_cover_0_0",
+      "kind": "cover",
+      "world_position": [
+        -1034.5177875204743,
+        -874.4135074219505,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_cover_0_1",
+      "kind": "cover",
+      "world_position": [
+        -1326.5531799229182,
+        -943.0817648947493,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    }
+  ],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_safe_start",
+      "world_position": [
+        1133.7,
+        -9023.72,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_safe_mission",
+      "world_position": [
+        6856.99,
+        -3458.92,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_danger_0",
+      "bounds": {
+        "min": [
+          -1942.4823951180304,
+          -2005.7452499491515,
+          0.0
+        ],
+        "max": [
+          457.51760488196965,
+          394.25475005084843,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          1933.7,
+          -8223.72,
+          0.0
+        ],
+        [
+          738.3229999999999,
+          -3139.967999999999,
+          0.0
+        ],
+        [
+          140.6344999999999,
+          -598.0919999999987,
+          0.0
+        ]
+      ],
+      "length_cm": 7833.6
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          140.6344999999999,
+          -598.0919999999987,
+          0.0
+        ],
+        [
+          6856.99,
+          -3458.92,
+          0.0
+        ]
+      ],
+      "length_cm": 7300.26
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_activate",
+      "state_key": "power_level",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_complete",
+      "state_key": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_fail",
+      "state_key": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01_resolved",
+      "power_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "standard"
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_fallen_tree_cover",
+      "mesh_rock_forest_mossy_boulder"
+    ]
+  },
+  "megascans_dependencies": [
+    "megascans_arid_debris_48ea3af3"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:e05e8b3b95358da8a4ca9199d135aefa0f75efcb95acd542ef5f3dfcc9819449",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.140989+00:00",
+    "source_hash": "sha256:e05e8b3b95358da8a4ca9199d135aefa0f75efcb95acd542ef5f3dfcc9819449"
+  },
+  "provenance_id": "prov_enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01",
+  "registry_id": "encounter_catalog:enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01",
+  "encounter_path": "procedural/generated/encounters/enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01/encounter.json"
+}
