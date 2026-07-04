@@ -202,211 +202,11 @@
       "verdict": "PASS",
       "code": null,
       "blocking": false
-    },
-    "case[25]::drop_objectives::mission_Ashlands_AshRavine_Debris_Photoreal_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: emptied objective_anchors",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[26]::zero_state_deltas::mission_Ashlands_AshRavine_Debris_Stylized_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: zeroed every state delta",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[27]::break_route_avoids::mission_Ashlands_AshRavine_Scar_Perf_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: required_route.avoids_hazards -> False",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[28]::dangle_reward::mission_Ashlands_AshRavine_Scar_Photoreal_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: reward fires_on a ghost completion",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[29]::fake_mesh_dep::mission_Ashlands_AshRavine_Scar_Stylized_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: resolved_mesh_assets -> fabricated id",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[30]::undeclared_completion_key::mission_Ashlands_BasaltFlats_Debris_Perf_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: completion references an undeclared state key",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[31]::empty_rewards::mission_Ashlands_BasaltFlats_Debris_Photoreal_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: emptied reward_outputs",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[32]::bad_completion_operator::mission_Ashlands_BasaltFlats_Debris_Stylized_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: completion operator not in the allowed set",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[33]::corrupt_route_length::mission_Ashlands_BasaltFlats_Scar_Perf_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: route length_cm fabricated (>1% off geometry)",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[34]::persist_drops_completion::mission_Ashlands_BasaltFlats_Scar_Photoreal_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: persist_keys omits the completion state key",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[35]::wrong_biome::mission_Ashlands_BasaltFlats_Scar_Stylized_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: biome_family swapped away from the source map's biome",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[36]::drop_start_anchor::mission_Forest_ErodedGully_Debris_Perf_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: dropped start_anchor",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[37]::drop_objectives::mission_Forest_ErodedGully_Debris_Photoreal_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: emptied objective_anchors",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[38]::zero_state_deltas::mission_Forest_ErodedGully_Debris_Stylized_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: zeroed every state delta",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[39]::break_route_avoids::mission_Forest_ErodedGully_Scatter_Perf_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: required_route.avoids_hazards -> False",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[40]::dangle_reward::mission_Forest_ErodedGully_Scatter_Photoreal_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: reward fires_on a ghost completion",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[41]::fake_mesh_dep::mission_Forest_ErodedGully_Scatter_Stylized_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: resolved_mesh_assets -> fabricated id",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[42]::undeclared_completion_key::mission_Forest_RollingWoodland_Debris_Perf_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: completion references an undeclared state key",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[43]::empty_rewards::mission_Forest_RollingWoodland_Debris_Photoreal_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: emptied reward_outputs",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[44]::bad_completion_operator::mission_Forest_RollingWoodland_Debris_Stylized_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: completion operator not in the allowed set",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[45]::corrupt_route_length::mission_Forest_RollingWoodland_Scatter_Perf_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: route length_cm fabricated (>1% off geometry)",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[46]::persist_drops_completion::mission_Forest_RollingWoodland_Scatter_Photoreal_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: persist_keys omits the completion state key",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[47]::wrong_biome::mission_Forest_RollingWoodland_Scatter_Stylized_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: biome_family swapped away from the source map's biome",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[48]::drop_start_anchor::mission_Wetland_MudFlat_Debris_Perf_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: dropped start_anchor",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "case[49]::drop_objectives::mission_Wetland_MudFlat_Debris_Photoreal_01": {
-      "ok": true,
-      "detail": "mutation REJECTED: emptied objective_anchors",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
     }
   },
   "failures": [],
   "counts": {
-    "PASS": 50,
+    "PASS": 25,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -421,8 +221,8 @@
     "deep": false,
     "torture": true,
     "seeds": null,
-    "git_sha": "a5a38bba6f358b72f8ab5b17c52f2194fca12c64",
-    "timestamp": "2026-07-04T01:53:39.967230+00:00",
+    "git_sha": "c2344a8e142109a09ad38b3a674764e94a3c8e4a",
+    "timestamp": "2026-07-04T17:19:07.328522+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
@@ -430,8 +230,8 @@
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 50,
-    "valid_rejected": 50,
+    "record_count": 25,
+    "valid_rejected": 25,
     "wrongly_accepted": 0,
     "crashes": 0,
     "base_seed": 1303013,
