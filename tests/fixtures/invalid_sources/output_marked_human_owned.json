@@ -1,0 +1,13 @@
+{
+  "case": "output_marked_human_owned",
+  "family": "houdini",
+  "owning_validator": "validate_houdini_generated_assets.py",
+  "validator_arg": "pack",
+  "expected_code": "HOUDINI_HDA_OWNERSHIP_FAILURE",
+  "description": "baked output marked human_owned -> output-guarantee gate must reject",
+  "patch": {
+    "set": {
+      "human_owned": true
+    }
+  }
+}

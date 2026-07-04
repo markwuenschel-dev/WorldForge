@@ -1,0 +1,11 @@
+{
+  "case": "import_report_missing",
+  "family": "houdini",
+  "owning_validator": "validate_houdini_bake_reports.py",
+  "validator_arg": "pack",
+  "expected_code": "HOUDINI_IMPORT_FAILURE",
+  "description": "import_report path points at a nonexistent file -> bake/import gate must reject",
+  "patch": {
+    "missing_report": "import"
+  }
+}

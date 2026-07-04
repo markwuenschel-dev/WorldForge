@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.2",
+  "asset_id": "mesh_rock_houdini_alpine_scree",
+  "display_name": "RockOutcrop — HoudiniAlpineScree",
+  "mesh_family": "rock_outcrop",
+  "source_type": "houdini_generated",
+  "source_recipe": "recipe_rock_outcrop_houdini_alpine_scree",
+  "source_hash": "sha256:7bb26a4cccb7896750968f9d54c19e1391a4561fdd58cc4df2fc1165f97b06c1",
+  "source_tool_version": "1.2.0",
+  "final_asset_path": "/Game/WorldForge/Generated/Meshes/RockOutcrop/SM_HoudiniAlpineScree",
+  "intermediate_paths": [
+    "/Game/HoudiniEngine/Temp/HoudiniAlpineScree"
+  ],
+  "quarantine_paths": [],
+  "generated_owned": true,
+  "human_owned": false,
+  "material_bindings": [
+    {
+      "slot_name": "MI_Body",
+      "material_asset_path": "/Game/WorldForge/Generated/Materials/RockOutcrop/MI_HoudiniAlpineScree_RockAlpine",
+      "material_family": "rock_alpine",
+      "biome_compatibility": [
+        "alpine_snow"
+      ],
+      "rendering_budget_class": "balanced",
+      "fallback_allowed": false
+    }
+  ],
+  "collision_profile": "BlockAll",
+  "bounds": {
+    "x_cm": 320.0,
+    "y_cm": 280.0,
+    "z_cm": 240.0
+  },
+  "pivot_policy": "base_center",
+  "scale_policy": "uniform",
+  "budget_class": "balanced",
+  "pcg_eligibility": "pcg_allowed",
+  "biome_compatibility": [
+    "alpine_snow"
+  ],
+  "poi_compatibility": [
+    "landmark",
+    "dressing"
+  ],
+  "placement_compatibility": {
+    "allowed_placement_profiles": [
+      "scatter_default",
+      "scatter_sparse"
+    ],
+    "pcg_rules": {
+      "allowed_biomes": [
+        "alpine_snow"
+      ],
+      "allowed_poi_classes": [
+        "landmark",
+        "dressing"
+      ],
+      "allowed_placement_profiles": [
+        "scatter_default",
+        "scatter_sparse"
+      ],
+      "slope_limits": {
+        "min_deg": 0,
+        "max_deg": 35
+      },
+      "height_limits": {
+        "min_cm": -50000,
+        "max_cm": 50000
+      },
+      "density_class": "medium",
+      "collision_policy": "BlockAll",
+      "avoid_critical_routes": true,
+      "avoid_player_start": true
+    }
+  },
+  "nanite_policy": "nanite_enabled",
+  "lod_policy": "lod_auto",
+  "shadow_policy": "shadow_default",
+  "raytracing_policy": "raytracing_default",
+  "rendering_budget": {
+    "triangle_class": "medium",
+    "material_complexity_class": "medium",
+    "texture_class": "medium",
+    "collision_complexity_class": "simple",
+    "nanite_policy": "nanite_enabled",
+    "lod_policy": "lod_auto",
+    "shadow_policy": "shadow_default",
+    "raytracing_policy": "raytracing_default",
+    "pcg_density_class": "medium",
+    "package_size_class": "medium"
+  },
+  "geometry": {},
+  "package_rules": {
+    "include_material_dependencies": true
+  },
+  "repair_policy": "regenerate_from_recipe",
+  "destroy_policy": "generated_owned_only",
+  "source_metadata": {
+    "source_type": "houdini_generated",
+    "hda_id": "hda_worldforge_rock_generator",
+    "hda_name": "worldforge_rock_generator",
+    "source_hash": "sha256:7bb26a4cccb7896750968f9d54c19e1391a4561fdd58cc4df2fc1165f97b06c1",
+    "cook_mode": "metadata_only"
+  },
+  "ownership_class": "generated_owned",
+  "houdini_intake": {
+    "hda_id": "hda_worldforge_rock_generator",
+    "hda_name": "worldforge_rock_generator",
+    "hda_path": "/Game/WorldForge/HDAs/worldforge_rock_generator",
+    "hda_ownership_class": "project_owned",
+    "hda_version": "1.2.0",
+    "houdini_version": "20.5.445",
+    "houdini_engine_version": "5.0",
+    "unreal_plugin_version": "2.2.0",
+    "parameter_set": {
+      "family": "rock_outcrop",
+      "variant": "houdini_alpine_scree",
+      "seed": 12,
+      "resolution": "high"
+    },
+    "parameter_hash": "sha256:73cd940c84fac4dd82f30be99fcbb0bbd1f116fa7ef89ed47c219a9b6a298699",
+    "cook_report": "procedural/reports/mesh_assets/mesh_rock_houdini_alpine_scree/cook_report.json",
+    "bake_report": "procedural/reports/mesh_assets/mesh_rock_houdini_alpine_scree/bake_report.json",
+    "import_report": "procedural/reports/mesh_assets/mesh_rock_houdini_alpine_scree/import_report.json",
+    "source_hash": "sha256:7bb26a4cccb7896750968f9d54c19e1391a4561fdd58cc4df2fc1165f97b06c1",
+    "output_asset_hash": "sha256:8342bdf2078eb7d217e2ed81d9e2dd8da2d4828389335872627f179fc62e3b29",
+    "cook_mode": "metadata_only"
+  },
+  "definition_path": "procedural/definitions/mesh_assets/mesh_rock_houdini_alpine_scree.yaml",
+  "descriptor_path": "procedural/generated/mesh_assets/mesh_rock_houdini_alpine_scree/descriptor.json",
+  "generated_at_utc": "2026-07-04T00:59:38.446079+00:00",
+  "provenance": {
+    "generator_name": "create_mesh_assets",
+    "generator_version": "1.2.0",
+    "generated_at_utc": "2026-07-04T00:59:38.369376+00:00",
+    "source_commit": "873bcf5a6d849bb2ec0ab1ae2fffb79ee68b960d",
+    "source_tree_dirty": true,
+    "inputs": {
+      "procedural/definitions/mesh_assets/mesh_rock_houdini_alpine_scree.yaml": "0acde915bdaed3c02622f636e26b886030536be7448965ad558fb1827d89bb22"
+    }
+  },
+  "provenance_id": "prov_mesh_rock_houdini_alpine_scree",
+  "registry_id": "mesh_catalog:mesh_rock_houdini_alpine_scree",
+  "registry_owner": "worldforge_mesh_catalog"
+}

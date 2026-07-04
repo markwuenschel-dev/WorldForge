@@ -1,0 +1,13 @@
+{
+  "case": "leaked_absolute_source_path",
+  "family": "megascans",
+  "owning_validator": "validate_external_asset_catalog.py",
+  "validator_arg": "lib",
+  "expected_code": "MEGASCANS_CATALOG_FAILURE",
+  "description": "source_path leaks an absolute machine path -> catalog-integrity gate must reject",
+  "patch": {
+    "set": {
+      "source_path": "Z:\\SomeVendor\\ExternalCache\\raw_asset_001"
+    }
+  }
+}

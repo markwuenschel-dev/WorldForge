@@ -1,0 +1,11 @@
+{
+  "case": "bake_report_failed",
+  "family": "houdini",
+  "owning_validator": "validate_houdini_bake_reports.py",
+  "validator_arg": "pack",
+  "expected_code": "HOUDINI_BAKE_FAILURE",
+  "description": "bake_report status=failed -> bake gate must reject",
+  "patch": {
+    "failed_report": "bake"
+  }
+}

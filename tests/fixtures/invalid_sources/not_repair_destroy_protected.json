@@ -1,0 +1,13 @@
+{
+  "case": "not_repair_destroy_protected",
+  "family": "megascans",
+  "owning_validator": "validate_external_asset_ownership.py",
+  "validator_arg": "lib",
+  "expected_code": "THIRD_PARTY_ASSET_DESTROY_RISK",
+  "description": "repair_destroy_protected=false on a source asset -> destroy-risk gate must reject",
+  "patch": {
+    "set": {
+      "repair_destroy_protected": false
+    }
+  }
+}

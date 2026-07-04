@@ -448,6 +448,89 @@ def validate_mesh(pack, strict, reports_dir=None):
     return rep
 
 
+# ---------------------------------------------------------------------------
+# v1.2 addendum — SOURCE (Houdini + Megascans) command report-integrity (--sources)
+# ---------------------------------------------------------------------------
+# The v1.2 addendum source lanes (Houdini intake + Megascans external assets)
+# each emit a ValidationReport under procedural/reports/mesh/<command>/
+# <command>_report.json — the same layout as the mesh gates. --sources validates
+# THOSE reports exactly the way --mesh validates the mesh command reports: a
+# source report cannot silently go missing, empty, zero-record, drop required
+# metadata, carry an unknown status, or launder a child failure as success. It
+# does NOT alter the existing --mesh / world-pack behaviour.
+
+# This gate's own source report — written under its own command dir; never scanned.
+OWN_SOURCE_REPORT = "validate_report_integrity_sources_report.json"
+
+# The canonical set of source command reports that MUST be present for a source
+# integrity scan (addendum §5/§6/§8/§14). An absent required report is REPORT_MISSING.
+REQUIRED_SOURCE_COMMANDS = (
+    "validate_houdini_intake",
+    "validate_houdini_cook_reports",
+    "validate_houdini_bake_reports",
+    "validate_houdini_generated_assets",
+    "scan_external_asset_library",
+    "validate_external_asset_catalog",
+    "validate_megascans_catalog",
+    "validate_external_asset_ownership",
+    "validate_megascans_bindings",
+    "validate_megascans_pcg_eligibility",
+    "validate_megascans_biome_compatibility",
+    "validate_third_party_package_policy",
+    "validate_source_ownership_separation",
+)
+
+# TORTURE-gated / negative source reports: scanned for integrity IF PRESENT, but
+# never hard-required (source-lifecycle-torture only runs under the TORTURE gate,
+# and source-negative writes its report only when the negative lane has run).
+OPTIONAL_SOURCE_COMMANDS = (
+    "test_negative_sources",
+    "source_lifecycle_torture",
+)
+
+
+def validate_sources(pack, strict, reports_dir=None):
+    """Core source report-integrity scan. Returns an UNFINALIZED ValidationReport.
+
+    Scans procedural/reports/mesh/<command>/<command>_report.json for every
+    REQUIRED_SOURCE_COMMANDS entry (plus any present OPTIONAL_SOURCE_COMMANDS),
+    reusing the same per-report battery as the --mesh scan, so a missing / empty /
+    zero-record / child-failed source report fails this gate. reports_dir overrides
+    the mesh reports root (used by a negative harness). Existing behaviour of the
+    world-pack and --mesh scans is untouched.
+    """
+    try:
+        world_pack_id, _ = enumerate_maps(pack)
+    except Exception:
+        world_pack_id = None
+    reports_root = Path(reports_dir) if reports_dir else (REPO_ROOT / MESH_REPORTS_REL)
+
+    rep = ValidationReport("source_pack_id", world_pack_id or str(pack), strict=strict)
+
+    scanned = 0
+    for command in REQUIRED_SOURCE_COMMANDS:
+        _check_one_mesh_report(rep, command, _mesh_report_path(reports_root, command),
+                               required=True)
+        scanned += 1
+    for command in OPTIONAL_SOURCE_COMMANDS:
+        path = _mesh_report_path(reports_root, command)
+        if path.is_file():
+            _check_one_mesh_report(rep, command, path, required=False)
+            scanned += 1
+
+    rep.set_meta(build_meta(
+        command="validate-report-integrity-sources",
+        pack=world_pack_id,
+        strict=strict,
+        status=None,
+        record_count=scanned,
+        extra={"sources": True,
+               "required_reports": len(REQUIRED_SOURCE_COMMANDS),
+               "reports_scanned": scanned},
+    ))
+    return rep
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="WorldForge v1.0x report-integrity gate (no fake green).")
     ap.add_argument("--pack", required=True, help="World pack id or path.")
@@ -457,6 +540,9 @@ def main(argv=None):
     ap.add_argument("--mesh", action="store_true",
                     help="Scan the v1.2 MeshForge command reports (procedural/reports/mesh/*) "
                          "instead of the world-pack gate reports.")
+    ap.add_argument("--sources", action="store_true",
+                    help="Scan the v1.2 addendum SOURCE command reports (Houdini + Megascans, "
+                         "procedural/reports/mesh/*) instead of the world-pack gate reports.")
     ap.add_argument("--max-age-days", type=float, default=None,
                     help="Flag reports older than this many days as stale (default: off).")
     ap.add_argument("--reports-dir", default=None,
@@ -478,6 +564,14 @@ def main(argv=None):
         mesh_report_dir = REPO_ROOT / MESH_REPORTS_REL / "validate_report_integrity"
         rep.write(mesh_report_dir, OWN_MESH_REPORT)
         rep.print_summary("validate-report-integrity --mesh")
+        return rep.exit_code
+
+    if args.sources:
+        rep = validate_sources(args.pack, strict=strict, reports_dir=args.reports_dir)
+        rep.finalize()
+        sources_report_dir = REPO_ROOT / MESH_REPORTS_REL / "validate_report_integrity"
+        rep.write(sources_report_dir, OWN_SOURCE_REPORT)
+        rep.print_summary("validate-report-integrity --sources")
         return rep.exit_code
 
     rep = validate_pack(args.pack, strict=strict, reports_dir=args.reports_dir,

@@ -1,0 +1,103 @@
+schema_version: '1.2'
+asset_id: mesh_rock_houdini_volcanic_basalt
+display_name: RockOutcrop — HoudiniVolcanicBasalt
+mesh_family: rock_outcrop
+source_type: houdini_generated
+source_recipe: recipe_rock_outcrop_houdini_volcanic_basalt
+source_hash: sha256:c6455018ff2705c17c8af42e710ad9e88d77a036e04ae02a6543421f14feca9f
+source_tool_version: 1.2.0
+final_asset_path: /Game/WorldForge/Generated/Meshes/RockOutcrop/SM_HoudiniVolcanicBasalt
+intermediate_paths:
+- /Game/HoudiniEngine/Temp/HoudiniVolcanicBasalt
+quarantine_paths: []
+generated_owned: true
+human_owned: false
+material_bindings:
+- slot_name: MI_Body
+  material_asset_path: /Game/WorldForge/Generated/Materials/RockOutcrop/MI_HoudiniVolcanicBasalt_RockVolcanic
+  material_family: rock_volcanic
+  biome_compatibility: &id001
+  - volcanic_ashlands
+  rendering_budget_class: balanced
+  fallback_allowed: false
+collision_profile: BlockAll
+bounds:
+  x_cm: 320.0
+  y_cm: 280.0
+  z_cm: 240.0
+pivot_policy: base_center
+scale_policy: uniform
+budget_class: balanced
+pcg_eligibility: pcg_allowed
+biome_compatibility: *id001
+poi_compatibility: &id002
+- landmark
+- dressing
+placement_compatibility:
+  allowed_placement_profiles:
+  - scatter_default
+  - scatter_sparse
+  pcg_rules:
+    allowed_biomes: *id001
+    allowed_poi_classes: *id002
+    allowed_placement_profiles:
+    - scatter_default
+    - scatter_sparse
+    slope_limits:
+      min_deg: 0
+      max_deg: 35
+    height_limits:
+      min_cm: -50000
+      max_cm: 50000
+    density_class: medium
+    collision_policy: BlockAll
+    avoid_critical_routes: true
+    avoid_player_start: true
+nanite_policy: nanite_enabled
+lod_policy: lod_auto
+shadow_policy: shadow_default
+raytracing_policy: raytracing_default
+rendering_budget:
+  triangle_class: medium
+  material_complexity_class: medium
+  texture_class: medium
+  collision_complexity_class: simple
+  nanite_policy: nanite_enabled
+  lod_policy: lod_auto
+  shadow_policy: shadow_default
+  raytracing_policy: raytracing_default
+  pcg_density_class: medium
+  package_size_class: medium
+geometry: {}
+package_rules:
+  include_material_dependencies: true
+repair_policy: regenerate_from_recipe
+destroy_policy: generated_owned_only
+source_metadata:
+  source_type: houdini_generated
+  hda_id: hda_worldforge_rock_generator
+  hda_name: worldforge_rock_generator
+  source_hash: sha256:c6455018ff2705c17c8af42e710ad9e88d77a036e04ae02a6543421f14feca9f
+  cook_mode: metadata_only
+ownership_class: generated_owned
+houdini_intake:
+  hda_id: hda_worldforge_rock_generator
+  hda_name: worldforge_rock_generator
+  hda_path: /Game/WorldForge/HDAs/worldforge_rock_generator
+  hda_ownership_class: third_party_owned
+  hda_version: 1.2.0
+  houdini_version: 20.5.445
+  houdini_engine_version: '5.0'
+  unreal_plugin_version: 2.2.0
+  parameter_set:
+    family: rock_outcrop
+    variant: houdini_volcanic_basalt
+    seed: 12
+    resolution: high
+  parameter_hash: sha256:1342fc6859b99c26b3fa716c58509d32682c8a9b5b419cc57fbc48f99ae5817f
+  cook_report: procedural/reports/mesh_assets/mesh_rock_houdini_volcanic_basalt/cook_report.json
+  bake_report: procedural/reports/mesh_assets/mesh_rock_houdini_volcanic_basalt/bake_report.json
+  import_report: procedural/reports/mesh_assets/mesh_rock_houdini_volcanic_basalt/import_report.json
+  source_hash: sha256:c6455018ff2705c17c8af42e710ad9e88d77a036e04ae02a6543421f14feca9f
+  output_asset_hash: sha256:839dfc2d92cd3a3150a1add5455cb48cb0ddfd390c1656850b05f039f88bd077
+  cook_mode: metadata_only

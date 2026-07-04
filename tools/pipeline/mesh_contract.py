@@ -87,11 +87,61 @@ FAMILY_VARIANTS = {
 }
 
 # ---------------------------------------------------------------------------
-# Source types (brief §8). Three are required for green; two optional.
+# Source types (brief §8 + v1.2 addendum §4). Three are required for green; the
+# rest are additional intake backends. houdini_generated is a generated backend;
+# megascans_library is a THIRD-PARTY external library (different ownership — see
+# OWNERSHIP_CLASSES below). Never collapse the two into one generic mesh source.
 # ---------------------------------------------------------------------------
 SOURCE_TYPES_REQUIRED = ("internal_recipe", "ue_generated", "imported_generated_stub")
-SOURCE_TYPES_OPTIONAL = ("blender_generated", "houdini_generated")
+SOURCE_TYPES_OPTIONAL = (
+    "houdini_generated", "megascans_library",
+    "blender_generated", "substance_material_generated", "custom_photogrammetry",
+)
 SOURCE_TYPES = SOURCE_TYPES_REQUIRED + SOURCE_TYPES_OPTIONAL
+
+# ---------------------------------------------------------------------------
+# Ownership classes (v1.2 addendum §3). FOUR explicit, non-collapsible classes.
+# The load-bearing rule of the addendum: repair/destroy semantics differ per
+# class. Ambiguous ownership fails in STRICT=1.
+# ---------------------------------------------------------------------------
+OWNERSHIP_GENERATED = "generated_owned"     # WorldForge/controlled-generator output
+OWNERSHIP_PROJECT = "project_owned"         # committed/authored project asset
+OWNERSHIP_THIRD_PARTY = "third_party_owned"  # external licensed (Megascans/Fab/marketplace)
+OWNERSHIP_HUMAN = "human_owned"             # hand-authored local, outside gen lifecycle
+OWNERSHIP_CLASSES = (
+    OWNERSHIP_GENERATED, OWNERSHIP_PROJECT, OWNERSHIP_THIRD_PARTY, OWNERSHIP_HUMAN,
+)
+
+# Which ownership classes repair/destroy MAY touch (only when provenance is
+# unambiguous). project_owned needs a special explicit command; third_party and
+# human are never touched by ordinary lifecycle.
+OWNERSHIP_LIFECYCLE_TOUCHABLE = (OWNERSHIP_GENERATED,)
+OWNERSHIP_LIFECYCLE_PROTECTED = (OWNERSHIP_PROJECT, OWNERSHIP_THIRD_PARTY, OWNERSHIP_HUMAN)
+
+
+def resolve_ownership_class(record):
+    """Derive the ownership class of a mesh/asset record.
+
+    Prefers an explicit ``ownership_class`` field; otherwise falls back to the
+    v1.2 boolean flags (generated_owned / human_owned / third_party_owned /
+    project_owned) so the existing 36-asset generated matrix resolves cleanly.
+    Returns None when ownership is ambiguous (a STRICT failure at the call site).
+    """
+    r = record or {}
+    oc = r.get("ownership_class")
+    if oc in OWNERSHIP_CLASSES:
+        return oc
+    flags = {
+        OWNERSHIP_THIRD_PARTY: bool(r.get("third_party_owned")),
+        OWNERSHIP_HUMAN: bool(r.get("human_owned")),
+        OWNERSHIP_PROJECT: bool(r.get("project_owned")),
+        OWNERSHIP_GENERATED: bool(r.get("generated_owned")),
+    }
+    asserted = [k for k, v in flags.items() if v]
+    if len(asserted) == 1:
+        return asserted[0]
+    # Ambiguous: zero or conflicting ownership assertions.
+    return None
 
 # ---------------------------------------------------------------------------
 # Biome families this catalog can declare compatibility with (matches v1.1).
@@ -268,6 +318,12 @@ OPTIONAL_FIELDS = (
     "source_metadata",   # per-source-type provenance block (brief §8)
     "geometry",          # family-specific geometry metadata (cover height, etc.)
     "notes",
+    # v1.2 addendum — ownership-class model + Houdini intake.
+    "ownership_class",   # explicit 4-class ownership (addendum §3)
+    "third_party_owned", # ownership boolean flags (addendum §3)
+    "project_owned",
+    "external_licensed",
+    "houdini_intake",    # houdini_generated intake block (addendum §5)
 )
 # Fields the registrar/generator ADDS to the descriptor at materialization time.
 # They are legitimate on a descriptor (not on a human-authored definition), so

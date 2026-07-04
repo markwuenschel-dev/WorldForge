@@ -1,0 +1,13 @@
+{
+  "case": "standalone_redistribution_allowed_true",
+  "family": "megascans",
+  "owning_validator": "validate_third_party_package_policy.py",
+  "validator_arg": "pack",
+  "expected_code": "THIRD_PARTY_ASSET_PACKAGE_POLICY_FAILURE",
+  "description": "package_policy.standalone_redistribution_allowed=true -> package-policy gate must reject",
+  "patch": {
+    "set": {
+      "package_policy.standalone_redistribution_allowed": true
+    }
+  }
+}

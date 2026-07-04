@@ -1,0 +1,411 @@
+{
+  "pack": "biome_expansion_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "source_negative::bake_report_failed": {
+      "ok": true,
+      "detail": "validate_houdini_bake_reports.py rc=1 ([validate-houdini-bake-reports]   FAIL: __negsrc_bake_report_failed::bake_report_ok: bake report status not ok: failed)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::cook_report_failed": {
+      "ok": true,
+      "detail": "validate_houdini_cook_reports.py rc=1 ([validate-houdini-cook-reports]   FAIL: __negsrc_cook_report_failed::cook_report_ok: cook report status not ok: failed)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::cook_report_missing": {
+      "ok": true,
+      "detail": "validate_houdini_cook_reports.py rc=1 ([validate-houdini-cook-reports]   FAIL: __negsrc_cook_report_missing::cook_report_exists: report file not found: procedural/reports/mesh/__negsrc_cook_report_missing_missing/cook_report.json)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::external_in_generated_catalog": {
+      "ok": true,
+      "detail": "validate_source_ownership_separation.py rc=1 ([validate-source-ownership-separation]   FAIL: mesh::__negsrc_external_in_generated_catalog::not_third_party_or_human: generated mesh asset marked 'third_party_owned' — generated output must never car)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::final_path_in_temp": {
+      "ok": true,
+      "detail": "validate_houdini_generated_assets.py rc=1 ([validate-houdini-generated-assets]   FAIL: __negsrc_final_path_in_temp::final_path_allowed: final_asset_path not under an owned generated root: /Game/HoudiniEngine/Bake/Leaked/SM_negsrc)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::hda_marked_generated_owned": {
+      "ok": true,
+      "detail": "validate_houdini_intake.py rc=1 ([validate-houdini-intake]   FAIL: __negsrc_hda_marked_generated_owned::hda_vs_output_ownership_differ: HDA source (generated_owned) and generated output ownership must differ — HDA is not generated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::import_report_missing": {
+      "ok": true,
+      "detail": "validate_houdini_bake_reports.py rc=1 ([validate-houdini-bake-reports]   FAIL: __negsrc_import_report_missing::import_report_exists: report file not found: procedural/reports/mesh/__negsrc_import_report_missing_missing/import_report.json)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::leaked_absolute_source_path": {
+      "ok": true,
+      "detail": "validate_external_asset_catalog.py rc=1 ([validate-external-asset-catalog]   FAIL: __negsrc_leaked_absolute_source_path::source_path_not_absolute: source_path leaks an absolute/machine path: 'Z:\\\\SomeVendor\\\\ExternalCache\\\\raw_asset_001')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::missing_biome_compatibility": {
+      "ok": true,
+      "detail": "validate_megascans_biome_compatibility.py rc=1 ([validate-megascans-biome-compatibility]   FAIL: __negsrc_missing_biome_compatibility::pcg_allowed_biomes_subset: pcg_rules.allowed_biomes ['desert', 'temperate_forest'] not subset of biome_compatibil)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::missing_hda_id": {
+      "ok": true,
+      "detail": "validate_houdini_intake.py rc=1 ([validate-houdini-intake]   FAIL: __negsrc_missing_hda_id::hda_id_present: hda_id missing)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::missing_hda_path": {
+      "ok": true,
+      "detail": "validate_houdini_intake.py rc=1 ([validate-houdini-intake]   FAIL: __negsrc_missing_hda_path::hda_path_present: hda_path missing)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::missing_license_family": {
+      "ok": true,
+      "detail": "validate_external_asset_ownership.py rc=1 ([validate-external-asset-ownership]   FAIL: __negsrc_missing_license_family::license_family_known: license_family=None; must be in ('fab_standard_license', 'fab_professional_license', 'unknown_license)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::missing_ownership_class": {
+      "ok": true,
+      "detail": "validate_external_asset_ownership.py rc=1 ([validate-external-asset-ownership]   FAIL: __negsrc_missing_ownership_class::ownership_class_third_party: ownership_class=None, resolved='third_party_owned', expected 'third_party_owned')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::missing_parameter_hash": {
+      "ok": true,
+      "detail": "validate_houdini_intake.py rc=1 ([validate-houdini-intake]   FAIL: __negsrc_missing_parameter_hash::parameter_hash_present: parameter_hash missing)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::missing_source_path": {
+      "ok": true,
+      "detail": "validate_external_asset_catalog.py rc=1 ([validate-external-asset-catalog]   FAIL: __negsrc_missing_source_path::source_path_not_absolute: source_path leaks an absolute/machine path: None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::missing_source_path_hash": {
+      "ok": true,
+      "detail": "validate_external_asset_catalog.py rc=1 ([validate-external-asset-catalog]   FAIL: __negsrc_missing_source_path_hash::source_path_hash_present: source_path_hash missing)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::not_repair_destroy_protected": {
+      "ok": true,
+      "detail": "validate_external_asset_ownership.py rc=1 ([validate-external-asset-ownership]   FAIL: __negsrc_not_repair_destroy_protected::repair_destroy_protected: repair_destroy_protected must be True (got False))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::output_lacks_provenance": {
+      "ok": true,
+      "detail": "validate_houdini_generated_assets.py rc=1 ([validate-houdini-generated-assets]   FAIL: __negsrc_output_lacks_provenance::provenance_present: descriptor missing provenance/provenance_id)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::output_marked_human_owned": {
+      "ok": true,
+      "detail": "validate_houdini_generated_assets.py rc=1 ([validate-houdini-generated-assets]   FAIL: __negsrc_output_marked_human_owned::output_not_human_owned: human_owned=True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::pcg_disallowed_but_has_rules": {
+      "ok": true,
+      "detail": "validate_megascans_pcg_eligibility.py rc=1 ([validate-megascans-pcg-eligibility]   FAIL: __negsrc_pcg_disallowed_but_has_rules::pcg_disallowed_has_no_rules: pcg_disallowed external asset must not declare top-level pcg_rules)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::raw_asset_destroy_allowed_true": {
+      "ok": true,
+      "detail": "validate_external_asset_ownership.py rc=1 ([validate-external-asset-ownership]   FAIL: __negsrc_raw_asset_destroy_allowed_true::raw_asset_destroy_disallowed: raw_asset_destroy_allowed must be False — a source asset could be destroyed (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::source_marked_generated_owned": {
+      "ok": true,
+      "detail": "validate_external_asset_ownership.py rc=1 ([validate-external-asset-ownership]   FAIL: __negsrc_source_marked_generated_owned::not_generated_owned: generated_owned must be False (got True))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::standalone_redistribution_allowed_true": {
+      "ok": true,
+      "detail": "validate_third_party_package_policy.py rc=1 ([validate-third-party-package-policy]   FAIL: external::__negsrc_standalone_redistribution_allowed_true::standalone_redistribution_forbidden: standalone_redistribution_allowed must be False (raw Megas)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "source_negative::unknown_hda_ownership_class": {
+      "ok": true,
+      "detail": "validate_houdini_intake.py rc=1 ([validate-houdini-intake]   FAIL: __negsrc_unknown_hda_ownership_class::hda_vs_output_ownership_differ: HDA source (bogus_owner_class) and generated output ownership must differ — HDA is not generated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::mesh_count": {
+      "ok": true,
+      "detail": "mesh catalog has 42 assets (expected 42)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::external_count": {
+      "ok": true,
+      "detail": "external catalog has 51 records (expected 51)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::no_negsrc_records": {
+      "ok": true,
+      "detail": "stray negative-fixture catalog records: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::no_negsrc_dirs": {
+      "ok": true,
+      "detail": "stray negative-fixture descriptor dirs: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_houdini_intake": {
+      "ok": true,
+      "detail": "validate_houdini_intake.py rc=0 ([validate-houdini-intake] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_houdini_cook_reports": {
+      "ok": true,
+      "detail": "validate_houdini_cook_reports.py rc=0 ([validate-houdini-cook-reports] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_houdini_bake_reports": {
+      "ok": true,
+      "detail": "validate_houdini_bake_reports.py rc=0 ([validate-houdini-bake-reports] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_houdini_generated_assets": {
+      "ok": true,
+      "detail": "validate_houdini_generated_assets.py rc=0 ([validate-houdini-generated-assets] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_source_ownership_separation": {
+      "ok": true,
+      "detail": "validate_source_ownership_separation.py rc=0 ([validate-source-ownership-separation] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_megascans_bindings": {
+      "ok": true,
+      "detail": "validate_megascans_bindings.py rc=0 ([validate-megascans-bindings] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_megascans_pcg_eligibility": {
+      "ok": true,
+      "detail": "validate_megascans_pcg_eligibility.py rc=0 ([validate-megascans-pcg-eligibility] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_megascans_biome_compatibility": {
+      "ok": true,
+      "detail": "validate_megascans_biome_compatibility.py rc=0 ([validate-megascans-biome-compatibility] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_third_party_package_policy": {
+      "ok": true,
+      "detail": "validate_third_party_package_policy.py rc=0 ([validate-third-party-package-policy] PASS — biome_expansion_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_external_asset_catalog": {
+      "ok": true,
+      "detail": "validate_external_asset_catalog.py rc=0 ([validate-external-asset-catalog] PASS — megascans (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_external_asset_ownership": {
+      "ok": true,
+      "detail": "validate_external_asset_ownership.py rc=0 ([validate-external-asset-ownership] PASS — megascans (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_megascans_catalog": {
+      "ok": true,
+      "detail": "validate_megascans_catalog.py rc=0 ([validate-megascans-catalog] PASS — megascans (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 40,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "source-negative-validators",
+    "pack": "biome_expansion_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "873bcf5a6d849bb2ec0ab1ae2fffb79ee68b960d",
+    "timestamp": "2026-07-04T01:05:56.280143+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 24,
+    "fixtures": [
+      "bake_report_failed",
+      "cook_report_failed",
+      "cook_report_missing",
+      "external_in_generated_catalog",
+      "final_path_in_temp",
+      "hda_marked_generated_owned",
+      "import_report_missing",
+      "leaked_absolute_source_path",
+      "missing_biome_compatibility",
+      "missing_hda_id",
+      "missing_hda_path",
+      "missing_license_family",
+      "missing_ownership_class",
+      "missing_parameter_hash",
+      "missing_source_path",
+      "missing_source_path_hash",
+      "not_repair_destroy_protected",
+      "output_lacks_provenance",
+      "output_marked_human_owned",
+      "pcg_disallowed_but_has_rules",
+      "raw_asset_destroy_allowed_true",
+      "source_marked_generated_owned",
+      "standalone_redistribution_allowed_true",
+      "unknown_hda_ownership_class"
+    ],
+    "houdini_cases": [
+      "bake_report_failed",
+      "cook_report_failed",
+      "cook_report_missing",
+      "final_path_in_temp",
+      "hda_marked_generated_owned",
+      "import_report_missing",
+      "missing_hda_id",
+      "missing_hda_path",
+      "missing_parameter_hash",
+      "output_lacks_provenance",
+      "output_marked_human_owned",
+      "unknown_hda_ownership_class"
+    ],
+    "megascans_cases": [
+      "leaked_absolute_source_path",
+      "missing_biome_compatibility",
+      "missing_license_family",
+      "missing_ownership_class",
+      "missing_source_path",
+      "missing_source_path_hash",
+      "not_repair_destroy_protected",
+      "pcg_disallowed_but_has_rules",
+      "raw_asset_destroy_allowed_true",
+      "source_marked_generated_owned",
+      "standalone_redistribution_allowed_true"
+    ],
+    "separation_cases": [
+      "external_in_generated_catalog"
+    ]
+  }
+}

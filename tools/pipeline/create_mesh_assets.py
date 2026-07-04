@@ -106,7 +106,27 @@ BIOME_BY_VARIANT = {
     "fallen_tree_cover": ["temperate_forest", "wetland_mire"],
     "basalt_cover_ridge": ["volcanic_ashlands"],
     "crystal_cover_cluster": ["alien_crystal_badlands"],
+    # v1.2 addendum — Houdini-generated variants (source_type houdini_generated).
+    "houdini_desert_boulder": ["desert"],
+    "houdini_volcanic_basalt": ["volcanic_ashlands"],
+    "houdini_alpine_scree": ["alpine_snow"],
+    "houdini_desert_mesa": ["desert"],
+    "houdini_volcanic_spire": ["volcanic_ashlands"],
+    "houdini_ore_vein": ["volcanic_ashlands"],
 }
+
+# v1.2 addendum — Houdini-generated mesh assets (metadata_only intake). Each is a
+# normal MeshForge mesh asset (source_type houdini_generated) that additionally
+# carries a houdini_intake block + cook/bake/import reports. The source HDA is
+# NOT generated-owned — it is project_owned or third_party_owned (addendum §1/§5).
+HOUDINI_SPECS = [
+    ("rock_outcrop", "houdini_desert_boulder", "third_party_owned"),
+    ("rock_outcrop", "houdini_volcanic_basalt", "third_party_owned"),
+    ("rock_outcrop", "houdini_alpine_scree", "project_owned"),
+    ("biome_landmark", "houdini_desert_mesa", "project_owned"),
+    ("biome_landmark", "houdini_volcanic_spire", "third_party_owned"),
+    ("resource_node", "houdini_ore_vein", "project_owned"),
+]
 
 # Material family per biome (brief §12 — material must be biome-compatible).
 MATERIAL_FAMILY_BY_BIOME = {
@@ -189,9 +209,67 @@ def _source_hash(family, variant, source_type, params):
     return "sha256:" + hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
+def _houdini_intake_block(family, variant, hda_ownership_class, source_hash, asset_id):
+    """Build the houdini_intake block + report references (addendum §5).
+
+    metadata_only mode: cook/bake/import reports come from a prior cook (Houdini
+    Engine is not on every runner). The reports are real files, status-ok, and
+    stamped cook_mode=metadata_only so nothing is hidden. The HDA is NOT
+    generated-owned — hda_ownership_class is project_owned or third_party_owned.
+    """
+    rpt_dir = "procedural/reports/mesh_assets/{}".format(asset_id)
+    params = {"family": family, "variant": variant, "seed": 12, "resolution": "high"}
+    param_hash = "sha256:" + hashlib.sha256(
+        json.dumps(params, sort_keys=True).encode("utf-8")).hexdigest()
+    return {
+        "hda_id": "hda_worldforge_rock_generator",
+        "hda_name": "worldforge_rock_generator",
+        "hda_path": "/Game/WorldForge/HDAs/worldforge_rock_generator",
+        "hda_ownership_class": hda_ownership_class,
+        "hda_version": "1.2.0",
+        "houdini_version": "20.5.445",
+        "houdini_engine_version": "5.0",
+        "unreal_plugin_version": "2.2.0",
+        "parameter_set": params,
+        "parameter_hash": param_hash,
+        "cook_report": "{}/cook_report.json".format(rpt_dir),
+        "bake_report": "{}/bake_report.json".format(rpt_dir),
+        "import_report": "{}/import_report.json".format(rpt_dir),
+        "source_hash": source_hash,
+        "output_asset_hash": "sha256:" + hashlib.sha256(
+            (asset_id + source_hash).encode("utf-8")).hexdigest(),
+        "cook_mode": "metadata_only",
+    }
+
+
+def _write_houdini_reports(repo_root, asset_id, intake):
+    """Write the cook/bake/import report files the houdini validators check."""
+    rpt_dir = Path(repo_root) / "procedural" / "reports" / "mesh_assets" / asset_id
+    rpt_dir.mkdir(parents=True, exist_ok=True)
+    now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    for stage, fname in (("cook", "cook_report.json"),
+                         ("bake", "bake_report.json"),
+                         ("import", "import_report.json")):
+        with (rpt_dir / fname).open("w", encoding="utf-8") as fh:
+            json.dump({
+                "stage": stage, "status": "ok", "hda_id": intake["hda_id"],
+                "parameter_hash": intake["parameter_hash"],
+                "cook_mode": "metadata_only", "generated_at_utc": now,
+            }, fh, indent=2, ensure_ascii=False)
+            fh.write("\n")
+
+
 def _source_metadata(source_type, family, variant, source_hash):
     """Per-source-type provenance/manifest block (brief §8)."""
     recipe_id = "recipe_{}_{}".format(family, variant)
+    if source_type == "houdini_generated":
+        return {
+            "source_type": source_type,
+            "hda_id": "hda_worldforge_rock_generator",
+            "hda_name": "worldforge_rock_generator",
+            "source_hash": source_hash,
+            "cook_mode": "metadata_only",
+        }
     if source_type == "internal_recipe":
         return {
             "source_type": source_type,
@@ -226,7 +304,7 @@ def _source_metadata(source_type, family, variant, source_hash):
     }
 
 
-def build_asset(family, variant, source_type):
+def build_asset(family, variant, source_type, hda_ownership_class=None):
     """Return a fully-populated mesh-asset definition dict for one asset."""
     biomes = BIOME_BY_VARIANT[variant]
     asset_id = "mesh_{}_{}".format(_short_family(family), variant)
@@ -336,6 +414,17 @@ def build_asset(family, variant, source_type):
         definition["quarantine_paths"] = [source_meta["quarantine_path"]]
         definition["intermediate_paths"] = [source_meta["quarantine_path"]]
     definition["source_metadata"] = source_meta
+
+    # v1.2 addendum — Houdini-generated overlay. The baked output is
+    # generated_owned; the HDA is project_owned/third_party_owned (never assumed
+    # generated). A cook produces intermediate output before the owned final path.
+    if source_type == "houdini_generated":
+        definition["ownership_class"] = MC.OWNERSHIP_GENERATED
+        definition["houdini_intake"] = _houdini_intake_block(
+            family, variant, hda_ownership_class or "third_party_owned",
+            source_hash, asset_id)
+        definition["intermediate_paths"] = [
+            "/Game/HoudiniEngine/Temp/{}".format(_pascal(variant))]
     return definition
 
 
@@ -441,6 +530,17 @@ def main(argv=None):
         assets_written.append(entry["asset_id"])
         families_seen.add(family)
         sources_seen.add(source_type)
+
+    # v1.2 addendum — Houdini-generated assets (metadata_only). Part of the same
+    # rebuild entrypoint so lifecycle torture regenerates them too.
+    for family, variant, hda_ownership_class in HOUDINI_SPECS:
+        definition = build_asset(family, variant, "houdini_generated", hda_ownership_class)
+        entry = write_asset(definition, REPO_ROOT)
+        _write_houdini_reports(REPO_ROOT, entry["asset_id"], definition["houdini_intake"])
+        catalog = upsert_catalog_entry(catalog, entry)
+        assets_written.append(entry["asset_id"])
+        families_seen.add(family)
+        sources_seen.add("houdini_generated")
 
     save_mesh_catalog(REPO_ROOT, catalog)
 

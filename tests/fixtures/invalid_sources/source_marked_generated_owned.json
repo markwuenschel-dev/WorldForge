@@ -1,0 +1,13 @@
+{
+  "case": "source_marked_generated_owned",
+  "family": "megascans",
+  "owning_validator": "validate_external_asset_ownership.py",
+  "validator_arg": "lib",
+  "expected_code": "EXTERNAL_ASSET_OWNERSHIP_FAILURE",
+  "description": "external source record marked generated_owned=true (NON-NEGOTIABLE #1 breach) -> reject",
+  "patch": {
+    "set": {
+      "generated_owned": true
+    }
+  }
+}

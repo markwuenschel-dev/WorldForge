@@ -1,0 +1,15 @@
+{
+  "case": "external_in_generated_catalog",
+  "family": "separation",
+  "owning_validator": "validate_source_ownership_separation.py",
+  "validator_arg": "pack",
+  "expected_code": "SOURCE_OWNERSHIP_SEPARATION_FAILURE",
+  "description": "third_party_owned record injected into the generated mesh catalog -> separation gate must reject",
+  "patch": {
+    "set": {
+      "ownership_class": "third_party_owned",
+      "third_party_owned": true,
+      "generated_owned": false
+    }
+  }
+}

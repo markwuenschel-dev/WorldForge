@@ -5,7 +5,7 @@
   "checks": {
     "asset_count_at_least_24": {
       "ok": true,
-      "detail": "created 36 assets",
+      "detail": "created 42 assets",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -21,7 +21,7 @@
     },
     "source_types_at_least_3": {
       "ok": true,
-      "detail": "source types: ['imported_generated_stub', 'internal_recipe', 'ue_generated']",
+      "detail": "source types: ['houdini_generated', 'imported_generated_stub', 'internal_recipe', 'ue_generated']",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -53,16 +53,16 @@
     "deep": false,
     "torture": false,
     "seeds": null,
-    "git_sha": "70314df0b0f98dc97f698b0a15e936b4e10dd0e0",
-    "timestamp": "2026-07-03T23:13:28.265541+00:00",
+    "git_sha": "873bcf5a6d849bb2ec0ab1ae2fffb79ee68b960d",
+    "timestamp": "2026-07-04T01:00:15.824826+00:00",
     "input_spec_hash": null,
-    "output_manifest_hash": "24cf0a66de91cac8ab59f2ddce929b302fee5a2edfa4a96568c128ded1c24680",
+    "output_manifest_hash": "1e187023d1b4e1503e81447b66161d1cc6c5bbf487886e731f8fcf98b955561d",
     "validator_version": "v1.0x",
     "status": "ok",
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 36,
+    "record_count": 42,
     "families": [
       "biome_landmark",
       "encounter_cover",
@@ -72,6 +72,7 @@
       "traversal_marker"
     ],
     "source_types": [
+      "houdini_generated",
       "imported_generated_stub",
       "internal_recipe",
       "ue_generated"
@@ -112,7 +113,13 @@
       "mesh_cov_snow_drift_cover",
       "mesh_cov_fallen_tree_cover",
       "mesh_cov_basalt_cover_ridge",
-      "mesh_cov_crystal_cover_cluster"
+      "mesh_cov_crystal_cover_cluster",
+      "mesh_rock_houdini_desert_boulder",
+      "mesh_rock_houdini_volcanic_basalt",
+      "mesh_rock_houdini_alpine_scree",
+      "mesh_lmk_houdini_desert_mesa",
+      "mesh_lmk_houdini_volcanic_spire",
+      "mesh_res_houdini_ore_vein"
     ]
   }
 }
