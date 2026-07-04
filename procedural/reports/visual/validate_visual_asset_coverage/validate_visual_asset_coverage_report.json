@@ -1,0 +1,303 @@
+{
+  "pack": "mission_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "visual_asset_catalog_present": {
+      "ok": true,
+      "detail": "no visual assets — run scan_megascans_visual_assets first",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::has_real_assets": {
+      "ok": true,
+      "detail": "biome has ZERO real visual assets (external+generated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::min_assets_met": {
+      "ok": true,
+      "detail": "total_real_assets=12 < MIN_ASSETS_PER_BIOME=3 (ext=6, mesh=6)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::min_families_met": {
+      "ok": true,
+      "detail": "distinct_families=8 < MIN_ASSET_FAMILIES_PER_BIOME=2 (['biome_landmark', 'debris_dressing', 'encounter_cover', 'ground_surface', 'resource_node', 'rock_outcrop', 'traversal_marker', 'vegetation_dressing'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::has_real_assets": {
+      "ok": true,
+      "detail": "biome has ZERO real visual assets (external+generated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::min_assets_met": {
+      "ok": true,
+      "detail": "total_real_assets=8 < MIN_ASSETS_PER_BIOME=3 (ext=2, mesh=6)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::min_families_met": {
+      "ok": true,
+      "detail": "distinct_families=6 < MIN_ASSET_FAMILIES_PER_BIOME=2 (['biome_landmark', 'encounter_cover', 'ground_surface', 'resource_node', 'rock_outcrop', 'traversal_marker'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::has_real_assets": {
+      "ok": true,
+      "detail": "biome has ZERO real visual assets (external+generated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::min_assets_met": {
+      "ok": true,
+      "detail": "total_real_assets=22 < MIN_ASSETS_PER_BIOME=3 (ext=4, mesh=18)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::min_families_met": {
+      "ok": true,
+      "detail": "distinct_families=8 < MIN_ASSET_FAMILIES_PER_BIOME=2 (['biome_landmark', 'encounter_cover', 'ground_surface', 'industrial_debris', 'resource_node', 'rock_outcrop', 'traversal_marker', 'vegetation_dressing'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::has_real_assets": {
+      "ok": true,
+      "detail": "biome has ZERO real visual assets (external+generated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::min_assets_met": {
+      "ok": true,
+      "detail": "total_real_assets=8 < MIN_ASSETS_PER_BIOME=3 (ext=3, mesh=5)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::min_families_met": {
+      "ok": true,
+      "detail": "distinct_families=6 < MIN_ASSET_FAMILIES_PER_BIOME=2 (['biome_landmark', 'encounter_cover', 'ground_surface', 'resource_node', 'rock_outcrop', 'traversal_marker'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::has_real_assets": {
+      "ok": true,
+      "detail": "biome has ZERO real visual assets (external+generated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::min_assets_met": {
+      "ok": true,
+      "detail": "total_real_assets=5 < MIN_ASSETS_PER_BIOME=3 (ext=0, mesh=5)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::min_families_met": {
+      "ok": true,
+      "detail": "distinct_families=5 < MIN_ASSET_FAMILIES_PER_BIOME=2 (['biome_landmark', 'encounter_cover', 'resource_node', 'rock_outcrop', 'traversal_marker'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_covered_by_generated_meshes": {
+      "ok": true,
+      "detail": "alien_crystal_badlands generated meshes=5 (external=0) — must be >= 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 17,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-visual-asset-coverage",
+    "pack": "mission_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "c2344a8e142109a09ad38b3a674764e94a3c8e4a",
+    "timestamp": "2026-07-04T17:19:40.106364+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 5,
+    "coverage": {
+      "temperate_forest": {
+        "biome": "temperate_forest",
+        "external_visual_assets": 6,
+        "generated_mesh_assets": 6,
+        "total_real_assets": 12,
+        "visual_classes": [
+          "debris_dressing",
+          "ground_surface",
+          "vegetation_dressing"
+        ],
+        "mesh_families": [
+          "biome_landmark",
+          "encounter_cover",
+          "resource_node",
+          "rock_outcrop",
+          "traversal_marker"
+        ],
+        "distinct_families": [
+          "biome_landmark",
+          "debris_dressing",
+          "encounter_cover",
+          "ground_surface",
+          "resource_node",
+          "rock_outcrop",
+          "traversal_marker",
+          "vegetation_dressing"
+        ],
+        "distinct_family_count": 8
+      },
+      "alpine_snow": {
+        "biome": "alpine_snow",
+        "external_visual_assets": 2,
+        "generated_mesh_assets": 6,
+        "total_real_assets": 8,
+        "visual_classes": [
+          "ground_surface"
+        ],
+        "mesh_families": [
+          "biome_landmark",
+          "encounter_cover",
+          "resource_node",
+          "rock_outcrop",
+          "traversal_marker"
+        ],
+        "distinct_families": [
+          "biome_landmark",
+          "encounter_cover",
+          "ground_surface",
+          "resource_node",
+          "rock_outcrop",
+          "traversal_marker"
+        ],
+        "distinct_family_count": 6
+      },
+      "volcanic_ashlands": {
+        "biome": "volcanic_ashlands",
+        "external_visual_assets": 4,
+        "generated_mesh_assets": 18,
+        "total_real_assets": 22,
+        "visual_classes": [
+          "ground_surface",
+          "vegetation_dressing"
+        ],
+        "mesh_families": [
+          "biome_landmark",
+          "encounter_cover",
+          "industrial_debris",
+          "resource_node",
+          "rock_outcrop",
+          "traversal_marker"
+        ],
+        "distinct_families": [
+          "biome_landmark",
+          "encounter_cover",
+          "ground_surface",
+          "industrial_debris",
+          "resource_node",
+          "rock_outcrop",
+          "traversal_marker",
+          "vegetation_dressing"
+        ],
+        "distinct_family_count": 8
+      },
+      "wetland_mire": {
+        "biome": "wetland_mire",
+        "external_visual_assets": 3,
+        "generated_mesh_assets": 5,
+        "total_real_assets": 8,
+        "visual_classes": [
+          "ground_surface"
+        ],
+        "mesh_families": [
+          "biome_landmark",
+          "encounter_cover",
+          "resource_node",
+          "rock_outcrop",
+          "traversal_marker"
+        ],
+        "distinct_families": [
+          "biome_landmark",
+          "encounter_cover",
+          "ground_surface",
+          "resource_node",
+          "rock_outcrop",
+          "traversal_marker"
+        ],
+        "distinct_family_count": 6
+      },
+      "alien_crystal_badlands": {
+        "biome": "alien_crystal_badlands",
+        "external_visual_assets": 0,
+        "generated_mesh_assets": 5,
+        "total_real_assets": 5,
+        "visual_classes": [],
+        "mesh_families": [
+          "biome_landmark",
+          "encounter_cover",
+          "resource_node",
+          "rock_outcrop",
+          "traversal_marker"
+        ],
+        "distinct_families": [
+          "biome_landmark",
+          "encounter_cover",
+          "resource_node",
+          "rock_outcrop",
+          "traversal_marker"
+        ],
+        "distinct_family_count": 5
+      }
+    }
+  }
+}

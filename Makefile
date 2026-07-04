@@ -14,6 +14,8 @@ export MESHES
 # v1.3 — export mission/playtest flags to full_shield gate subprocesses.
 export MISSIONS
 export PLAYTEST
+# v1.3.5 — export visual flag to full_shield gate subprocesses.
+export VISUALS
 
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
@@ -67,7 +69,13 @@ export PLAYTEST
         validate-mission-dependencies validate-mission-mesh-usage validate-mission-entity-anchors \
         validate-playtest-contract run-playtest-forge validate-playtest-reports \
         mission-negative-validators fuzz-mission-matrix mission-lifecycle-torture \
-        inspect-mission-pack diagnose-mission-pack
+        inspect-mission-pack diagnose-mission-pack \
+        materialize-environment-rigs scan-megascans-visual-assets create-visual-dressing \
+        validate-visual-asset-coverage validate-surface-materialization validate-world-dressing \
+        validate-environment-rig validate-sky-materialization validate-fog-materialization \
+        validate-cloud-materialization validate-lighting-exposure validate-post-process-profiles \
+        validate-weather-vfx validate-visual-readability validate-visual-budgets validate-visual-package \
+        visual-negative-validators visual-lifecycle-torture inspect-visual-pack diagnose-visual-pack
 
 help:
 	@echo "UE5 Procedural Pipeline - Available targets:"
@@ -488,7 +496,7 @@ full-shield:
 	$(PYTHON) tools/pipeline/full_shield.py --pack $(PACK) --jobs $(JOBS) \
 	  --seeds $(SEEDS) --cases $(CASES) \
 	  $(if $(STRICT),--strict,) $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,) $(if $(MESHES),--meshes,) \
-	  $(if $(MISSIONS),--missions,) $(if $(PLAYTEST),--playtest,)
+	  $(if $(MISSIONS),--missions,) $(if $(PLAYTEST),--playtest,) $(if $(VISUALS),--visuals,)
 
 revalidate-world-pack:
 	$(PYTHON) tools/pipeline/revalidate_world_pack.py --pack $(PACK) $(if $(STRICT),--strict,)
@@ -759,6 +767,54 @@ inspect-mission-pack:
 	$(PYTHON) tools/pipeline/inspect_mission_pack.py --pack $(PACK) $(if $(MISSION),--mission $(MISSION),)
 diagnose-mission-pack:
 	$(PYTHON) tools/pipeline/inspect_mission_pack.py --pack $(PACK) --diagnose $(if $(STRICT),--strict,)
+
+# ======================================================================
+# v1.3.5 VisualFidelityForge — visual realization over the mission substrate
+# ----------------------------------------------------------------------
+# Materializes UE-native environment rigs + Megascans surfaces + world dressing
+# and validates fidelity without breaking playability/budget/lifecycle. Folds
+# into `make full-shield PACK=mission_loop_world MISSIONS=1 PLAYTEST=1 VISUALS=1`.
+# ======================================================================
+materialize-environment-rigs:
+	$(PYTHON) tools/pipeline/materialize_environment_rigs.py --pack $(PACK) $(if $(STRICT),--strict,)
+scan-megascans-visual-assets:
+	$(PYTHON) tools/pipeline/scan_megascans_visual_assets.py --lib $(if $(LIB),$(LIB),megascans) $(if $(STRICT),--strict,)
+create-visual-dressing:
+	$(PYTHON) tools/pipeline/create_visual_dressing.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-visual-asset-coverage:
+	$(PYTHON) tools/pipeline/validate_visual_asset_coverage.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-surface-materialization:
+	$(PYTHON) tools/pipeline/validate_surface_materialization.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-world-dressing:
+	$(PYTHON) tools/pipeline/validate_world_dressing.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-environment-rig:
+	$(PYTHON) tools/pipeline/validate_environment_rig.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-sky-materialization:
+	$(PYTHON) tools/pipeline/validate_sky_materialization.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-fog-materialization:
+	$(PYTHON) tools/pipeline/validate_fog_materialization.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-cloud-materialization:
+	$(PYTHON) tools/pipeline/validate_cloud_materialization.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-lighting-exposure:
+	$(PYTHON) tools/pipeline/validate_lighting_exposure.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-post-process-profiles:
+	$(PYTHON) tools/pipeline/validate_post_process_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-weather-vfx:
+	$(PYTHON) tools/pipeline/validate_weather_vfx.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-visual-readability:
+	$(PYTHON) tools/pipeline/validate_visual_readability.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-visual-budgets:
+	$(PYTHON) tools/pipeline/validate_visual_budgets.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-visual-package:
+	$(PYTHON) tools/pipeline/validate_visual_package.py --pack $(PACK) $(if $(STRICT),--strict,)
+visual-negative-validators:
+	$(PYTHON) tools/pipeline/test_negative_visual.py --pack $(PACK) $(if $(STRICT),--strict,)
+visual-lifecycle-torture:
+	$(PYTHON) tools/pipeline/visual_lifecycle_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+inspect-visual-pack:
+	$(PYTHON) tools/pipeline/inspect_visual_pack.py --pack $(PACK) $(if $(MAP),--map $(MAP),)
+diagnose-visual-pack:
+	$(PYTHON) tools/pipeline/inspect_visual_pack.py --pack $(PACK) --diagnose $(if $(STRICT),--strict,)
 
 preview:
 	@echo "Preview generation is not implemented yet."

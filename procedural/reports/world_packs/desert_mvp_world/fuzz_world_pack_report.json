@@ -42,11 +42,171 @@
       "verdict": "PASS",
       "code": null,
       "blocking": false
+    },
+    "case[5]::overlay": {
+      "ok": true,
+      "detail": "cleanly rejected (mutated=True): Desert_SandyBasin_DebrisCheckpoint_Ind_01::poi[objective_anchor]_usability: empty style_compat",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[6]::env_compat": {
+      "ok": true,
+      "detail": "cleanly rejected: visual_style.style_class=stylized incompatible with environment.class=raytraced",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[7]::overlay": {
+      "ok": true,
+      "detail": "cleanly rejected (mutated=True): Desert_AshFlats_DebrisCheckpoint_Light_01: faction_tags_valid: invalid faction tags: neutral_spawn_support=not_a_real_faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[8]::env_compat": {
+      "ok": true,
+      "detail": "cleanly rejected: visual_style.style_class=alien incompatible with environment.class=cinematic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[9]::overlay": {
+      "ok": true,
+      "detail": "valid overlay (mutated=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[10]::env_compat": {
+      "ok": true,
+      "detail": "cleanly rejected: low_visibility environment but fog.density=0.2 < 0.5; visual_style.style_class=alien incompatible with environment.class=readable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[11]::overlay": {
+      "ok": true,
+      "detail": "valid overlay (mutated=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[12]::env_compat": {
+      "ok": true,
+      "detail": "cleanly rejected: low_visibility environment but fog.density=0.2 < 0.5; visual_style.style_class=stylized incompatible with environment.class=photoreal",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[13]::overlay": {
+      "ok": true,
+      "detail": "valid overlay (mutated=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[14]::env_compat": {
+      "ok": true,
+      "detail": "cleanly rejected: visual_style.style_class=photoreal incompatible with environment.class=stylized",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[15]::overlay": {
+      "ok": true,
+      "detail": "cleanly rejected (mutated=True): Desert_SandyBasin_ScrubNode_Survey_01::poi[encounter_anchor]_usability: invalid budget_class 'ambient'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[16]::env_compat": {
+      "ok": true,
+      "detail": "cleanly rejected: visual_style.style_class=performance incompatible with environment.class=low_visibility",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[17]::overlay": {
+      "ok": true,
+      "detail": "valid overlay (mutated=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[18]::env_compat": {
+      "ok": true,
+      "detail": "valid combo",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[19]::overlay": {
+      "ok": true,
+      "detail": "valid overlay (mutated=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[20]::env_compat": {
+      "ok": true,
+      "detail": "cleanly rejected: time_of_day.phase=dusk but post_process.exposure_ev=3.0 drifts 3.00EV from target_exposure_ev=0.0 (> 1.0EV); visual_style.style_class=low_visibility incompatible with environment.class=alien",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[21]::overlay": {
+      "ok": true,
+      "detail": "valid overlay (mutated=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[22]::env_compat": {
+      "ok": true,
+      "detail": "cleanly rejected: visual_style.style_class=cinematic incompatible with environment.class=readable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[23]::overlay": {
+      "ok": true,
+      "detail": "valid overlay (mutated=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[24]::env_compat": {
+      "ok": true,
+      "detail": "cleanly rejected: visual_style.style_class=stylized incompatible with environment.class=cinematic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     }
   },
   "failures": [],
   "counts": {
-    "PASS": 5,
+    "PASS": 25,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -61,8 +221,8 @@
     "deep": false,
     "torture": true,
     "seeds": null,
-    "git_sha": "70314df0b0f98dc97f698b0a15e936b4e10dd0e0",
-    "timestamp": "2026-07-03T23:11:19.319097+00:00",
+    "git_sha": "c2344a8e142109a09ad38b3a674764e94a3c8e4a",
+    "timestamp": "2026-07-04T17:22:35.264927+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
@@ -70,9 +230,9 @@
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 5,
-    "valid": 3,
-    "cleanly_rejected": 2,
+    "record_count": 25,
+    "valid": 11,
+    "cleanly_rejected": 14,
     "crashes": 0,
     "base_seed": 1337
   }

@@ -1,0 +1,127 @@
+{
+  "schema_version": "1.3.5",
+  "slice_id": "Alien_CrystalField_Debris_Perf_01",
+  "biome": "alien_crystal_badlands",
+  "world_pack_id": "biome_expansion_world",
+  "environment_profile": "performance_safe_alien",
+  "profile_class": "performance",
+  "exposure_ev": 0.0,
+  "components": [
+    {
+      "component": "SkyAtmosphere",
+      "ue_class": "ASkyAtmosphere",
+      "enabled": true,
+      "source_profile": "stylized_sky",
+      "params": {
+        "sky_luminance_cd_m2": 6000,
+        "sun_disk_scale": 1.8,
+        "zenith_color": [
+          0.2,
+          0.4,
+          0.9
+        ],
+        "horizon_color": [
+          1.0,
+          0.7,
+          0.4
+        ],
+        "atmosphere_model": "earth"
+      }
+    },
+    {
+      "component": "DirectionalLight_Sun",
+      "ue_class": "ADirectionalLight",
+      "enabled": true,
+      "source_profile": "alien_emissive_key",
+      "params": {
+        "sun_angle_deg": 55.0,
+        "intensity_lux": 20000,
+        "light_color": null,
+        "casts_shadows": true
+      }
+    },
+    {
+      "component": "SkyLight",
+      "ue_class": "ASkyLight",
+      "enabled": true,
+      "source_profile": "stylized_sky",
+      "params": {
+        "recapture": true,
+        "intensity_scale": 0.8
+      }
+    },
+    {
+      "component": "ExponentialHeightFog",
+      "ue_class": "AExponentialHeightFog",
+      "enabled": true,
+      "source_profile": "performance_fog",
+      "params": {
+        "density": 0.03,
+        "height_falloff": 0.1,
+        "start_distance_cm": 10000,
+        "fog_color": [
+          0.7,
+          0.7,
+          0.72
+        ],
+        "max_opacity": 0.15,
+        "volumetric": false,
+        "visibility_min_cm": 30000
+      }
+    },
+    {
+      "component": "VolumetricCloud",
+      "ue_class": "AVolumetricCloud",
+      "enabled": true,
+      "source_profile": "stylized_sky",
+      "params": {
+        "coverage": 0.15,
+        "cloud_model": "painted"
+      }
+    },
+    {
+      "component": "PostProcessVolume",
+      "ue_class": "APostProcessVolume",
+      "enabled": true,
+      "source_profile": "flat_performance",
+      "params": {
+        "exposure_ev": 0.0,
+        "auto_exposure": false,
+        "color_grading": "flat_performance",
+        "bloom": null,
+        "unbound": true
+      }
+    },
+    {
+      "component": "WeatherVFX_Niagara",
+      "ue_class": "ANiagaraActor",
+      "enabled": false,
+      "source_profile": "clear",
+      "params": {
+        "weather_kind": "clear",
+        "emitter": "Niagara_clear",
+        "emitter_count": 0
+      }
+    }
+  ],
+  "ownership_class": "generated_owned",
+  "materialized": true,
+  "provenance": {
+    "generator": "materialize_environment_rigs",
+    "generator_version": "1.3.5",
+    "generated_at_utc": "2026-07-04T17:19:39.427321+00:00"
+  },
+  "materialization_report": {
+    "spec_resolved": true,
+    "live_spawned": false,
+    "ue_driver": "tools/unreal/materialize_environment_rig.py",
+    "actor_set": [
+      "ASkyAtmosphere",
+      "ADirectionalLight",
+      "ASkyLight",
+      "AExponentialHeightFog",
+      "AVolumetricCloud",
+      "APostProcessVolume"
+    ]
+  }
+}

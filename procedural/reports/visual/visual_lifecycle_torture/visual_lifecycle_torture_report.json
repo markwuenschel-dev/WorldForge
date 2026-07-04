@@ -1,0 +1,562 @@
+{
+  "pack": "mission_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "baseline::regen": {
+      "ok": true,
+      "detail": "scan rc=0 ([scan-megascans-visual-assets] per_visual_class={'debris_dressing': 2, 'ground_surface': 38, 'rock_dressing': 8, 'vegetation_dressing': 3}); materialize rc=0 ([materialize-environment-rigs] 60 rigs, 5 biomes (spec-resolved; live spawn deferred)); dressing rc=0 ([create-visual-dressing] dressed 60 maps (offset off routes: True))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::rig_count": {
+      "ok": true,
+      "detail": "60 rigs (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::dressing_count": {
+      "ok": true,
+      "detail": "60 dressing plans (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_visual_asset_coverage": {
+      "ok": true,
+      "detail": "validate_visual_asset_coverage.py rc=0 ([validate-visual-asset-coverage] alien_crystal_badlands: ext=0 mesh=5 total=5 families=5)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_surface_materialization": {
+      "ok": true,
+      "detail": "validate_surface_materialization.py rc=0 ([validate-surface-materialization] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_world_dressing": {
+      "ok": true,
+      "detail": "validate_world_dressing.py rc=0 ([validate-world-dressing] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_environment_rig": {
+      "ok": true,
+      "detail": "validate_environment_rig.py rc=0 ([validate-environment-rig] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_sky_materialization": {
+      "ok": true,
+      "detail": "validate_sky_materialization.py rc=0 ([validate-sky-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_fog_materialization": {
+      "ok": true,
+      "detail": "validate_fog_materialization.py rc=0 ([validate-fog-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_cloud_materialization": {
+      "ok": true,
+      "detail": "validate_cloud_materialization.py rc=0 ([validate-cloud-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_lighting_exposure": {
+      "ok": true,
+      "detail": "validate_lighting_exposure.py rc=0 ([validate-lighting-exposure] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_post_process_profiles": {
+      "ok": true,
+      "detail": "validate_post_process_profiles.py rc=0 ([validate-post-process-profiles] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_weather_vfx": {
+      "ok": true,
+      "detail": "validate_weather_vfx.py rc=0 ([validate-weather-vfx] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_visual_readability": {
+      "ok": true,
+      "detail": "validate_visual_readability.py rc=0 ([validate-visual-readability] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_visual_budgets": {
+      "ok": true,
+      "detail": "validate_visual_budgets.py rc=0 ([validate-visual-budgets] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_visual_package": {
+      "ok": true,
+      "detail": "validate_visual_package.py rc=0 ([validate-visual-package] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_rig_json::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted rig JSON Alien_CrystalField_Debris_Perf_01.json -> validate_environment_rig.py rc=1 ([validate-environment-rig]   FAIL: Alien_CrystalField_Debris_Perf_01::loads: rig file missing: procedural/generated/visual/environment_rigs/Alien_CrystalField_Debris_Perf_01.json)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_rig_json::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (scan rc=0 ([scan-megascans-visual-assets] per_visual_class={'debris_dressing': 2, 'ground_surface': 38, 'rock_dressing': 8, 'vegetation_dressing': 3}); materialize rc=0 ([materialize-environment-rigs] 60 rigs, 5 biomes (spec-resolved; live spawn deferred)); dressing rc=0 ([create-visual-dressing] dressed 60 maps (offset off routes: True))); post-repair still-flagged=False (validate_environment_rig.py rc=0 ([validate-environment-rig] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::strip_sky::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: stripped SkyAtmosphere params for Alien_CrystalField_Debris_Perf_01 -> validate_sky_materialization.py rc=1 ([validate-sky-materialization]   FAIL: Alien_CrystalField_Debris_Perf_01::sky_colors_present: zenith=None horizon=None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::strip_sky::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (scan rc=0 ([scan-megascans-visual-assets] per_visual_class={'debris_dressing': 2, 'ground_surface': 38, 'rock_dressing': 8, 'vegetation_dressing': 3}); materialize rc=0 ([materialize-environment-rigs] 60 rigs, 5 biomes (spec-resolved; live spawn deferred)); dressing rc=0 ([create-visual-dressing] dressed 60 maps (offset off routes: True))); post-repair still-flagged=False (validate_sky_materialization.py rc=0 ([validate-sky-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_dressing_plan::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted dressing plan Alien_CrystalField_Debris_Perf_01.json -> validate_world_dressing.py rc=1 ([validate-world-dressing] 59 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_dressing_plan::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (scan rc=0 ([scan-megascans-visual-assets] per_visual_class={'debris_dressing': 2, 'ground_surface': 38, 'rock_dressing': 8, 'vegetation_dressing': 3}); materialize rc=0 ([materialize-environment-rigs] 60 rigs, 5 biomes (spec-resolved; live spawn deferred)); dressing rc=0 ([create-visual-dressing] dressed 60 maps (offset off routes: True))); post-repair still-flagged=False (validate_world_dressing.py rc=0 ([validate-world-dressing] 60 maps checked))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "protect::destroy_scope_generated_only": {
+      "ok": true,
+      "detail": "destroy would target non-generated artifacts (guard misfire): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "protect::zero_external_deletions": {
+      "ok": true,
+      "detail": "destroy set includes third-party source paths: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "protect::externals_third_party": {
+      "ok": true,
+      "detail": "external assets not third-party-protected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "protect::external_catalog_present": {
+      "ok": true,
+      "detail": "external asset catalog present (READ-ONLY source): D:\\Unreal Projects\\WorldForge\\procedural\\generated\\worldforge_external_asset_catalog.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::none_refused": {
+      "ok": true,
+      "detail": "destroy refused generated-owned artifacts (guard misfire): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::all_removed": {
+      "ok": true,
+      "detail": "removed 120 generated artifacts (expected 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::rigs_gone": {
+      "ok": true,
+      "detail": "0 rig files remain after destroy",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::megascans_untouched": {
+      "ok": true,
+      "detail": "external asset catalog changed during destroy (Megascans source must be READ-ONLY)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::validators_report_zero": {
+      "ok": true,
+      "detail": "validate_environment_rig rc=1 on empty rig set (expected non-zero) ([validate-environment-rig]   FAIL: no environment rigs — run 'make materialize-environment-rigs' first)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::regen": {
+      "ok": true,
+      "detail": "scan rc=0 ([scan-megascans-visual-assets] per_visual_class={'debris_dressing': 2, 'ground_surface': 38, 'rock_dressing': 8, 'vegetation_dressing': 3}); materialize rc=0 ([materialize-environment-rigs] 60 rigs, 5 biomes (spec-resolved; live spawn deferred)); dressing rc=0 ([create-visual-dressing] dressed 60 maps (offset off routes: True))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::rig_count": {
+      "ok": true,
+      "detail": "60 rigs (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::dressing_count": {
+      "ok": true,
+      "detail": "60 dressing plans (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_visual_asset_coverage": {
+      "ok": true,
+      "detail": "validate_visual_asset_coverage.py rc=0 ([validate-visual-asset-coverage] alien_crystal_badlands: ext=0 mesh=5 total=5 families=5)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_surface_materialization": {
+      "ok": true,
+      "detail": "validate_surface_materialization.py rc=0 ([validate-surface-materialization] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_world_dressing": {
+      "ok": true,
+      "detail": "validate_world_dressing.py rc=0 ([validate-world-dressing] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_environment_rig": {
+      "ok": true,
+      "detail": "validate_environment_rig.py rc=0 ([validate-environment-rig] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_sky_materialization": {
+      "ok": true,
+      "detail": "validate_sky_materialization.py rc=0 ([validate-sky-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_fog_materialization": {
+      "ok": true,
+      "detail": "validate_fog_materialization.py rc=0 ([validate-fog-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_cloud_materialization": {
+      "ok": true,
+      "detail": "validate_cloud_materialization.py rc=0 ([validate-cloud-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_lighting_exposure": {
+      "ok": true,
+      "detail": "validate_lighting_exposure.py rc=0 ([validate-lighting-exposure] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_post_process_profiles": {
+      "ok": true,
+      "detail": "validate_post_process_profiles.py rc=0 ([validate-post-process-profiles] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_weather_vfx": {
+      "ok": true,
+      "detail": "validate_weather_vfx.py rc=0 ([validate-weather-vfx] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_visual_readability": {
+      "ok": true,
+      "detail": "validate_visual_readability.py rc=0 ([validate-visual-readability] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_visual_budgets": {
+      "ok": true,
+      "detail": "validate_visual_budgets.py rc=0 ([validate-visual-budgets] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_visual_package": {
+      "ok": true,
+      "detail": "validate_visual_package.py rc=0 ([validate-visual-package] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::rig_count": {
+      "ok": true,
+      "detail": "60 rigs (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::dressing_count": {
+      "ok": true,
+      "detail": "60 dressing plans (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::regen": {
+      "ok": true,
+      "detail": "scan rc=0 ([scan-megascans-visual-assets] per_visual_class={'debris_dressing': 2, 'ground_surface': 38, 'rock_dressing': 8, 'vegetation_dressing': 3}); materialize rc=0 ([materialize-environment-rigs] 60 rigs, 5 biomes (spec-resolved; live spawn deferred)); dressing rc=0 ([create-visual-dressing] dressed 60 maps (offset off routes: True))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_visual_asset_coverage": {
+      "ok": true,
+      "detail": "validate_visual_asset_coverage.py rc=0 ([validate-visual-asset-coverage] alien_crystal_badlands: ext=0 mesh=5 total=5 families=5)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_surface_materialization": {
+      "ok": true,
+      "detail": "validate_surface_materialization.py rc=0 ([validate-surface-materialization] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_world_dressing": {
+      "ok": true,
+      "detail": "validate_world_dressing.py rc=0 ([validate-world-dressing] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_environment_rig": {
+      "ok": true,
+      "detail": "validate_environment_rig.py rc=0 ([validate-environment-rig] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_sky_materialization": {
+      "ok": true,
+      "detail": "validate_sky_materialization.py rc=0 ([validate-sky-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_fog_materialization": {
+      "ok": true,
+      "detail": "validate_fog_materialization.py rc=0 ([validate-fog-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_cloud_materialization": {
+      "ok": true,
+      "detail": "validate_cloud_materialization.py rc=0 ([validate-cloud-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_lighting_exposure": {
+      "ok": true,
+      "detail": "validate_lighting_exposure.py rc=0 ([validate-lighting-exposure] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_post_process_profiles": {
+      "ok": true,
+      "detail": "validate_post_process_profiles.py rc=0 ([validate-post-process-profiles] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_weather_vfx": {
+      "ok": true,
+      "detail": "validate_weather_vfx.py rc=0 ([validate-weather-vfx] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_visual_readability": {
+      "ok": true,
+      "detail": "validate_visual_readability.py rc=0 ([validate-visual-readability] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_visual_budgets": {
+      "ok": true,
+      "detail": "validate_visual_budgets.py rc=0 ([validate-visual-budgets] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_visual_package": {
+      "ok": true,
+      "detail": "validate_visual_package.py rc=0 ([validate-visual-package] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 63,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "visual-lifecycle-torture",
+    "pack": "mission_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": true,
+    "seeds": null,
+    "git_sha": "c2344a8e142109a09ad38b3a674764e94a3c8e4a",
+    "timestamp": "2026-07-04T17:19:41.725275+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 3,
+    "corruption_modes": [
+      "delete_rig_json",
+      "strip_sky",
+      "delete_dressing_plan"
+    ],
+    "expected_map_count": 60,
+    "final_rig_count": 60,
+    "final_dressing_count": 60,
+    "validators": [
+      "validate_visual_asset_coverage",
+      "validate_surface_materialization",
+      "validate_world_dressing",
+      "validate_environment_rig",
+      "validate_sky_materialization",
+      "validate_fog_materialization",
+      "validate_cloud_materialization",
+      "validate_lighting_exposure",
+      "validate_post_process_profiles",
+      "validate_weather_vfx",
+      "validate_visual_readability",
+      "validate_visual_budgets",
+      "validate_visual_package"
+    ]
+  }
+}

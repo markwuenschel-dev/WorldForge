@@ -1,0 +1,347 @@
+{
+  "pack": "mission_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "fixture::decal_over_budget": {
+      "ok": true,
+      "detail": "fixture descriptor present: decal_over_budget.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::decal_over_budget": {
+      "ok": true,
+      "detail": "validate_visual_budgets.py on Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-visual-budgets]   FAIL: Alien_CrystalField_Debris_Perf_01::decal_count_within_budget: performance class 'performance' map has decal_count=12 over cap 8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fixture::dressing_blocks_player_start": {
+      "ok": true,
+      "detail": "fixture descriptor present: dressing_blocks_player_start.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::dressing_blocks_player_start": {
+      "ok": true,
+      "detail": "validate_world_dressing.py on Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-world-dressing] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fixture::dressing_blocks_route": {
+      "ok": true,
+      "detail": "fixture descriptor present: dressing_blocks_route.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::dressing_blocks_route": {
+      "ok": true,
+      "detail": "validate_world_dressing.py on Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-world-dressing] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fixture::exposure_blowout": {
+      "ok": true,
+      "detail": "fixture descriptor present: exposure_blowout.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::exposure_blowout": {
+      "ok": true,
+      "detail": "validate_lighting_exposure.py on Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-lighting-exposure]   FAIL: Alien_CrystalField_Debris_Perf_01::exposure_in_readable_range: exposure_ev=9.0 not in [-3.0, 3.0] (would black-frame/blow out objective))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fixture::fog_hides_route": {
+      "ok": true,
+      "detail": "fixture descriptor present: fog_hides_route.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::fog_hides_route": {
+      "ok": true,
+      "detail": "validate_visual_readability.py on Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-visual-readability] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fixture::megascans_marked_generated_owned": {
+      "ok": true,
+      "detail": "fixture descriptor present: megascans_marked_generated_owned.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::megascans_marked_generated_owned": {
+      "ok": true,
+      "detail": "validate_visual_package.py on Alpine_GlacialBasin_Debris_Perf_01 rc=1 ([validate-visual-package]   FAIL: Alpine_GlacialBasin_Debris_Perf_01::ground_surface_not_rewritten_generated: megascans ref 'megascans_huge_icelandic_lava_cliff_e16b2143' recorded ownership_class=gene)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fixture::package_omits_asset": {
+      "ok": true,
+      "detail": "fixture descriptor present: package_omits_asset.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::package_omits_asset": {
+      "ok": true,
+      "detail": "validate_visual_package.py on Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-visual-package]   FAIL: Alien_CrystalField_Debris_Perf_01::dressing_1_generated_exists: package omits referenced visual asset: generated mesh 'mesh_nonexistent_fake_asset_zzz' absent from me)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fixture::post_process_missing": {
+      "ok": true,
+      "detail": "fixture descriptor present: post_process_missing.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::post_process_missing": {
+      "ok": true,
+      "detail": "validate_post_process_profiles.py on Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-post-process-profiles]   FAIL: Alien_CrystalField_Debris_Perf_01::post_process_present: no PostProcessVolume component)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fixture::sky_not_materialized": {
+      "ok": true,
+      "detail": "fixture descriptor present: sky_not_materialized.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::sky_not_materialized": {
+      "ok": true,
+      "detail": "validate_sky_materialization.py on Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-sky-materialization]   FAIL: Alien_CrystalField_Debris_Perf_01::sky_colors_present: zenith=None horizon=None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fixture::weather_vfx_overbudget": {
+      "ok": true,
+      "detail": "fixture descriptor present: weather_vfx_overbudget.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::weather_vfx_overbudget": {
+      "ok": true,
+      "detail": "validate_visual_budgets.py on Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-visual-budgets]   FAIL: Alien_CrystalField_Debris_Perf_01::vfx_emitter_count_within_budget: performance class 'performance' map has vfx_emitter_count=99 over cap 2)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::scan_megascans_visual_assets": {
+      "ok": true,
+      "detail": "rc=0 ([scan-megascans-visual-assets] per_visual_class={'debris_dressing': 2, 'ground_surface': 38, 'rock_dressing': 8, 'vegetation_dressing': 3})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::materialize_environment_rigs": {
+      "ok": true,
+      "detail": "materialize_environment_rigs.py rc=0 ([materialize-environment-rigs] 60 rigs, 5 biomes (spec-resolved; live spawn deferred))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::create_visual_dressing": {
+      "ok": true,
+      "detail": "create_visual_dressing.py rc=0 ([create-visual-dressing] dressed 60 maps (offset off routes: True))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_visual_asset_coverage": {
+      "ok": true,
+      "detail": "validate_visual_asset_coverage.py rc=0 ([validate-visual-asset-coverage] alien_crystal_badlands: ext=0 mesh=5 total=5 families=5)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_surface_materialization": {
+      "ok": true,
+      "detail": "validate_surface_materialization.py rc=0 ([validate-surface-materialization] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_world_dressing": {
+      "ok": true,
+      "detail": "validate_world_dressing.py rc=0 ([validate-world-dressing] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_environment_rig": {
+      "ok": true,
+      "detail": "validate_environment_rig.py rc=0 ([validate-environment-rig] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_sky_materialization": {
+      "ok": true,
+      "detail": "validate_sky_materialization.py rc=0 ([validate-sky-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_fog_materialization": {
+      "ok": true,
+      "detail": "validate_fog_materialization.py rc=0 ([validate-fog-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_cloud_materialization": {
+      "ok": true,
+      "detail": "validate_cloud_materialization.py rc=0 ([validate-cloud-materialization] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_lighting_exposure": {
+      "ok": true,
+      "detail": "validate_lighting_exposure.py rc=0 ([validate-lighting-exposure] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_post_process_profiles": {
+      "ok": true,
+      "detail": "validate_post_process_profiles.py rc=0 ([validate-post-process-profiles] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_weather_vfx": {
+      "ok": true,
+      "detail": "validate_weather_vfx.py rc=0 ([validate-weather-vfx] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_visual_readability": {
+      "ok": true,
+      "detail": "validate_visual_readability.py rc=0 ([validate-visual-readability] 60 maps checked)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_visual_budgets": {
+      "ok": true,
+      "detail": "validate_visual_budgets.py rc=0 ([validate-visual-budgets] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_visual_package": {
+      "ok": true,
+      "detail": "validate_visual_package.py rc=0 ([validate-visual-package] PASS — mission_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 36,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "visual-negative-validators",
+    "pack": "mission_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "c2344a8e142109a09ad38b3a674764e94a3c8e4a",
+    "timestamp": "2026-07-04T17:19:30.914042+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 10,
+    "cases": [
+      "decal_over_budget",
+      "dressing_blocks_player_start",
+      "dressing_blocks_route",
+      "exposure_blowout",
+      "fog_hides_route",
+      "megascans_marked_generated_owned",
+      "package_omits_asset",
+      "post_process_missing",
+      "sky_not_materialized",
+      "weather_vfx_overbudget"
+    ],
+    "owning_validators": {
+      "decal_over_budget": "validate_visual_budgets.py",
+      "dressing_blocks_player_start": "validate_world_dressing.py",
+      "dressing_blocks_route": "validate_world_dressing.py",
+      "exposure_blowout": "validate_lighting_exposure.py",
+      "fog_hides_route": "validate_visual_readability.py",
+      "megascans_marked_generated_owned": "validate_visual_package.py",
+      "package_omits_asset": "validate_visual_package.py",
+      "post_process_missing": "validate_post_process_profiles.py",
+      "sky_not_materialized": "validate_sky_materialization.py",
+      "weather_vfx_overbudget": "validate_visual_budgets.py"
+    }
+  }
+}
