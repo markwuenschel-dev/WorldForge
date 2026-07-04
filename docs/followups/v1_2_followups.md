@@ -18,6 +18,23 @@ when build time is acceptable. v1.2 verified with `--no-build` + `SEEDS=5`; the
 200-seed + build weight is orthogonal to the mesh/source work and already proven
 green in v1.1.
 
+## WF-FOLLOWUP-UE-ENCOUNTER-MATERIALIZE (v1.4) — RESOLVED 2026-07-04
+Live in-editor spawning of the 120 validated encounter specs. Resolved via the
+single-boot batch driver `tools/unreal/materialize_encounters.py`
+(UnrealEditor-Cmd -ExecutePythonScript, one boot over all 60 mission maps):
+per map, both encounters' actor sets spawned — TargetPoints for every spawn /
+patrol / ambush anchor, safe zone, danger-zone center, and positioned resource
+node (labels = spec ids, WF_ENC_ prefix); cube-proxy StaticMeshActors per cover
+anchor sized by height class (honest proxies until v1.2 UE .uasset
+materialization lands); TextRenderActor per hazard zone showing its
+visual_marker class — organized under WF_Encounters/<encounter_id> folders,
+maps saved, idempotent (stale WF_ENC_ actors cleared on rerun). Evidence:
+1020 actors across 120 live-spawn reports
+(`procedural/reports/encounters/ue_materialize/<eid>.json`,
+schema wf.encounter.ue_materialize.v1) and WF_ENC_ labels present in all 60
+saved umaps. Gotcha for future drivers: pass -ExecutePythonScript with
+FORWARD slashes — UE's Python resolver eats backslash escapes (`\t` → tab).
+
 ## WF-FOLLOWUP-UE-VISUAL-MATERIALIZE (v1.3.5) — RESOLVED 2026-07-04
 Live in-editor spawning of the resolved environment rigs. v1.3.5 resolves every
 map's environment profile into a complete, validated UE-actor/component SPEC
