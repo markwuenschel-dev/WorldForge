@@ -1,0 +1,425 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01",
+  "display_name": "Defensive Holdout \u2014 volcanic_ashlands",
+  "mission_id": "mission_Ashlands_AshRavine_Debris_Perf_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "volcanic_ashlands",
+  "mission_archetype": "disable_site",
+  "encounter_archetype": "defensive_holdout",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.5
+  },
+  "seed": 13012,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_group_0",
+      "encounter_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 7.166,
+      "difficulty_value": 1.493,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Ashlands_AshRavine_Debris_Perf_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Ashlands_AshRavine_Debris_Perf_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Ashlands_AshRavine_Debris_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_group_1",
+      "encounter_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 8.179,
+      "difficulty_value": 1.704,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Ashlands_AshRavine_Debris_Perf_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Ashlands_AshRavine_Debris_Perf_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Ashlands_AshRavine_Debris_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_group_2",
+      "encounter_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 7.07,
+      "difficulty_value": 1.473,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Ashlands_AshRavine_Debris_Perf_01_spawn_2"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Ashlands_AshRavine_Debris_Perf_01_danger_2"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Ashlands_AshRavine_Debris_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        5290.281349326498,
+        -4618.197955185223,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        2236.0225038792423,
+        -5609.314251645526,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_spawn_2",
+      "kind": "spawn",
+      "world_position": [
+        4131.409747689861,
+        -3311.633754647794,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_cover_0_0",
+      "kind": "cover",
+      "world_position": [
+        5529.995557895504,
+        -4437.817528835425,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_cover_0_1",
+      "kind": "cover",
+      "world_position": [
+        5769.709766464511,
+        -4257.437102485627,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_cover_1_0",
+      "kind": "cover",
+      "world_position": [
+        1996.3082953102357,
+        -5789.694677995324,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_cover_1_1",
+      "kind": "cover",
+      "world_position": [
+        1756.594086741229,
+        -5970.075104345122,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_cover_2_0",
+      "kind": "cover",
+      "world_position": [
+        4371.123956258868,
+        -3131.253328297996,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_cover_2_1",
+      "kind": "cover",
+      "world_position": [
+        4610.838164827875,
+        -2950.872901948199,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    }
+  ],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_safe_start",
+      "world_position": [
+        -5879.51,
+        5950.35,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_safe_mission",
+      "world_position": [
+        -7669.2,
+        407.19,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_danger_0",
+      "bounds": {
+        "min": [
+          4090.2813493264975,
+          -5818.197955185223,
+          0.0
+        ],
+        "max": [
+          6490.281349326498,
+          -3418.197955185223,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_danger_1",
+      "bounds": {
+        "min": [
+          1036.0225038792423,
+          -6809.314251645526,
+          0.0
+        ],
+        "max": [
+          3436.0225038792423,
+          -4409.314251645526,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_danger_2",
+      "bounds": {
+        "min": [
+          2931.4097476898614,
+          -4511.6337546477935,
+          0.0
+        ],
+        "max": [
+          5331.409747689861,
+          -2111.633754647794,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -5079.51,
+          6750.35,
+          0.0
+        ],
+        [
+          2561.3050999999987,
+          -3403.811300000001,
+          0.0
+        ],
+        [
+          3573.1025333333328,
+          -4748.426266666667,
+          0.0
+        ]
+      ],
+      "length_cm": 14390.61
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          3573.1025333333328,
+          -4748.426266666667,
+          0.0
+        ],
+        [
+          -7669.2,
+          407.19,
+          0.0
+        ]
+      ],
+      "length_cm": 12368.09
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_activate",
+      "state_key": "site_power",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_complete",
+      "state_key": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_fail",
+      "state_key": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Ashlands_AshRavine_Debris_Perf_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Ashlands_AshRavine_Debris_Perf_01_resolved",
+      "site_power"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop",
+      "industrial_debris"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_basalt_cover_ridge",
+      "mesh_cov_low_rock_cover",
+      "mesh_cov_scrap_cover_wall",
+      "mesh_ind_broken_pipe_cluster",
+      "mesh_ind_collapsed_support_beam",
+      "mesh_ind_forge_debris_chunk"
+    ]
+  },
+  "megascans_dependencies": [
+    "megascans_dead_tree_c0c4ec3a"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:b908d098b40892587aa20fccc34bf0b6f1af1ac9023f29ae99e957e432fe7439",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.126202+00:00",
+    "source_hash": "sha256:b908d098b40892587aa20fccc34bf0b6f1af1ac9023f29ae99e957e432fe7439"
+  },
+  "provenance_id": "prov_enc_sp_Ashlands_AshRavine_Debris_Perf_01",
+  "registry_id": "encounter_catalog:enc_sp_Ashlands_AshRavine_Debris_Perf_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Ashlands_AshRavine_Debris_Perf_01/encounter.json"
+}

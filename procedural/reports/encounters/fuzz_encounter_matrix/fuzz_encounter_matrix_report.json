@@ -1,0 +1,2464 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "case[0]::drop_start_clearance::enc_lp_Alien_CrystalField_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[1]::drop_required_field::enc_lp_Alien_CrystalField_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[2]::spawn_policy_corruption::enc_lp_Alien_CrystalField_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[3]::safe_zone_smother::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[4]::escape_removal::enc_lp_Alien_CrystalField_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[5]::blockage_explosion::enc_lp_Alien_CrystalField_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[6]::hazard_type_swap_wrong_biome::enc_lp_Alien_Plateau_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'heat' for alien_crystal_badlands",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[7]::seed_drift::enc_lp_Alien_Plateau_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[8]::zero_state_deltas::enc_lp_Alien_Plateau_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[9]::persist_drop::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[10]::dangle_reward::enc_lp_Alien_Plateau_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_1041509940' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[11]::fake_mesh_id::enc_lp_Alien_Plateau_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[12]::char_explode_megascans::enc_lp_Alpine_GlacialBasin_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[13]::cover_displacement::enc_lp_Alpine_GlacialBasin_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every cover anchor displaced 100000cm from its spawn cluster",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[14]::malformed_hazard_bounds::enc_lp_Alpine_GlacialBasin_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[15]::resource_link_corruption::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[16]::band_lie::enc_lp_Alpine_GlacialBasin_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'light' -> 'trivial'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[17]::budget_overrun::enc_lp_Alpine_GlacialBasin_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[18]::first_pressure_at_start::enc_lp_Alpine_SnowyRidge_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[19]::beta_modes_stripped::enc_lp_Alpine_SnowyRidge_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[20]::beta_report_doctored::enc_lp_Alpine_SnowyRidge_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[21]::balance_band_doctored::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[22]::pacing_target_impossible::enc_lp_Alpine_SnowyRidge_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[23]::drop_start_clearance::enc_lp_Alpine_SnowyRidge_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[24]::drop_required_field::enc_lp_Ashlands_AshRavine_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[25]::spawn_policy_corruption::enc_lp_Ashlands_AshRavine_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[26]::safe_zone_smother::enc_lp_Ashlands_AshRavine_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[27]::escape_removal::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[28]::blockage_explosion::enc_lp_Ashlands_AshRavine_Scar_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[29]::hazard_type_swap_wrong_biome::enc_lp_Ashlands_AshRavine_Scar_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'deep_water' for volcanic_ashlands",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[30]::seed_drift::enc_lp_Ashlands_BasaltFlats_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[31]::zero_state_deltas::enc_lp_Ashlands_BasaltFlats_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[32]::persist_drop::enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[33]::dangle_reward::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_389742389' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[34]::fake_mesh_id::enc_lp_Ashlands_BasaltFlats_Scar_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[35]::char_explode_megascans::enc_lp_Ashlands_BasaltFlats_Scar_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[36]::cover_displacement::enc_lp_Forest_ErodedGully_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every cover anchor displaced 100000cm from its spawn cluster",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[37]::malformed_hazard_bounds::enc_lp_Forest_ErodedGully_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[38]::resource_link_corruption::enc_lp_Forest_ErodedGully_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[39]::band_lie::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'light' -> 'trivial'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[40]::budget_overrun::enc_lp_Forest_ErodedGully_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[41]::first_pressure_at_start::enc_lp_Forest_ErodedGully_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[42]::beta_modes_stripped::enc_lp_Forest_RollingWoodland_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[43]::beta_report_doctored::enc_lp_Forest_RollingWoodland_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[44]::balance_band_doctored::enc_lp_Forest_RollingWoodland_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[45]::pacing_target_impossible::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[46]::drop_start_clearance::enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[47]::drop_required_field::enc_lp_Forest_RollingWoodland_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[48]::spawn_policy_corruption::enc_lp_Wetland_MudFlat_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[49]::safe_zone_smother::enc_lp_Wetland_MudFlat_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[50]::escape_removal::enc_lp_Wetland_MudFlat_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[51]::blockage_explosion::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[52]::hazard_type_swap_wrong_biome::enc_lp_Wetland_MudFlat_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'heat' for wetland_mire",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[53]::seed_drift::enc_lp_Wetland_MudFlat_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[54]::zero_state_deltas::enc_lp_Wetland_ReedMarsh_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[55]::persist_drop::enc_lp_Wetland_ReedMarsh_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[56]::dangle_reward::enc_lp_Wetland_ReedMarsh_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_121430635' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[57]::fake_mesh_id::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[58]::char_explode_megascans::enc_lp_Wetland_ReedMarsh_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[59]::cover_displacement::enc_lp_Wetland_ReedMarsh_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every cover anchor displaced 100000cm from its spawn cluster",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[60]::malformed_hazard_bounds::enc_sp_Alien_CrystalField_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[61]::resource_link_corruption::enc_sp_Alien_CrystalField_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[62]::band_lie::enc_sp_Alien_CrystalField_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'standard' -> 'light'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[63]::budget_overrun::enc_sp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[64]::first_pressure_at_start::enc_sp_Alien_CrystalField_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[65]::beta_modes_stripped::enc_sp_Alien_CrystalField_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[66]::beta_report_doctored::enc_sp_Alien_Plateau_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[67]::balance_band_doctored::enc_sp_Alien_Plateau_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[68]::pacing_target_impossible::enc_sp_Alien_Plateau_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[69]::drop_start_clearance::enc_sp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[70]::drop_required_field::enc_sp_Alien_Plateau_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[71]::spawn_policy_corruption::enc_sp_Alien_Plateau_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[72]::safe_zone_smother::enc_sp_Alpine_GlacialBasin_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[73]::escape_removal::enc_sp_Alpine_GlacialBasin_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[74]::blockage_explosion::enc_sp_Alpine_GlacialBasin_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[75]::hazard_type_swap_wrong_biome::enc_sp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'heat' for alpine_snow",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[76]::seed_drift::enc_sp_Alpine_GlacialBasin_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[77]::zero_state_deltas::enc_sp_Alpine_GlacialBasin_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[78]::persist_drop::enc_sp_Alpine_SnowyRidge_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[79]::dangle_reward::enc_sp_Alpine_SnowyRidge_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_220224888' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[80]::fake_mesh_id::enc_sp_Alpine_SnowyRidge_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[81]::char_explode_megascans::enc_sp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[82]::cover_displacement::enc_sp_Alpine_SnowyRidge_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every cover anchor displaced 100000cm from its spawn cluster",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[83]::malformed_hazard_bounds::enc_sp_Alpine_SnowyRidge_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[84]::resource_link_corruption::enc_sp_Ashlands_AshRavine_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[85]::band_lie::enc_sp_Ashlands_AshRavine_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'hard' -> 'light'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[86]::budget_overrun::enc_sp_Ashlands_AshRavine_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[87]::first_pressure_at_start::enc_sp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[88]::beta_modes_stripped::enc_sp_Ashlands_AshRavine_Scar_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[89]::beta_report_doctored::enc_sp_Ashlands_AshRavine_Scar_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[90]::balance_band_doctored::enc_sp_Ashlands_BasaltFlats_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[91]::pacing_target_impossible::enc_sp_Ashlands_BasaltFlats_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[92]::drop_start_clearance::enc_sp_Ashlands_BasaltFlats_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[93]::drop_required_field::enc_sp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[94]::spawn_policy_corruption::enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[95]::safe_zone_smother::enc_sp_Ashlands_BasaltFlats_Scar_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[96]::escape_removal::enc_sp_Forest_ErodedGully_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[97]::blockage_explosion::enc_sp_Forest_ErodedGully_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[98]::hazard_type_swap_wrong_biome::enc_sp_Forest_ErodedGully_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'heat' for temperate_forest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[99]::seed_drift::enc_sp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[100]::zero_state_deltas::enc_sp_Forest_ErodedGully_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[101]::persist_drop::enc_sp_Forest_ErodedGully_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[102]::dangle_reward::enc_sp_Forest_RollingWoodland_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_581818596' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[103]::fake_mesh_id::enc_sp_Forest_RollingWoodland_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[104]::char_explode_megascans::enc_sp_Forest_RollingWoodland_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[105]::cover_displacement::enc_sp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every cover anchor displaced 100000cm from its spawn cluster",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[106]::malformed_hazard_bounds::enc_sp_Forest_RollingWoodland_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[107]::resource_link_corruption::enc_sp_Forest_RollingWoodland_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[108]::band_lie::enc_sp_Wetland_MudFlat_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'standard' -> 'trivial'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[109]::budget_overrun::enc_sp_Wetland_MudFlat_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[110]::first_pressure_at_start::enc_sp_Wetland_MudFlat_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[111]::beta_modes_stripped::enc_sp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[112]::beta_report_doctored::enc_sp_Wetland_MudFlat_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[113]::balance_band_doctored::enc_sp_Wetland_MudFlat_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[114]::pacing_target_impossible::enc_sp_Wetland_ReedMarsh_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[115]::drop_start_clearance::enc_sp_Wetland_ReedMarsh_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[116]::drop_required_field::enc_sp_Wetland_ReedMarsh_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[117]::spawn_policy_corruption::enc_sp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[118]::safe_zone_smother::enc_sp_Wetland_ReedMarsh_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[119]::escape_removal::enc_sp_Wetland_ReedMarsh_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[120]::blockage_explosion::enc_lp_Alien_CrystalField_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[121]::hazard_type_swap_wrong_biome::enc_lp_Alien_CrystalField_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'heat' for alien_crystal_badlands",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[122]::seed_drift::enc_lp_Alien_CrystalField_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[123]::zero_state_deltas::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[124]::persist_drop::enc_lp_Alien_CrystalField_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[125]::dangle_reward::enc_lp_Alien_CrystalField_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_136132190' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[126]::fake_mesh_id::enc_lp_Alien_Plateau_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[127]::char_explode_megascans::enc_lp_Alien_Plateau_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[128]::cover_displacement::enc_lp_Alien_Plateau_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: orphan cover anchor injected 100000cm from every spawn",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[129]::malformed_hazard_bounds::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard bounds inverted (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[130]::resource_link_corruption::enc_lp_Alien_Plateau_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[131]::band_lie::enc_lp_Alien_Plateau_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'light' -> 'standard'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[132]::budget_overrun::enc_lp_Alpine_GlacialBasin_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[133]::first_pressure_at_start::enc_lp_Alpine_GlacialBasin_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[134]::beta_modes_stripped::enc_lp_Alpine_GlacialBasin_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[135]::beta_report_doctored::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[136]::balance_band_doctored::enc_lp_Alpine_GlacialBasin_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[137]::pacing_target_impossible::enc_lp_Alpine_GlacialBasin_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[138]::drop_start_clearance::enc_lp_Alpine_SnowyRidge_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[139]::drop_required_field::enc_lp_Alpine_SnowyRidge_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[140]::spawn_policy_corruption::enc_lp_Alpine_SnowyRidge_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[141]::safe_zone_smother::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[142]::escape_removal::enc_lp_Alpine_SnowyRidge_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[143]::blockage_explosion::enc_lp_Alpine_SnowyRidge_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[144]::hazard_type_swap_wrong_biome::enc_lp_Ashlands_AshRavine_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'deep_water' for volcanic_ashlands",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[145]::seed_drift::enc_lp_Ashlands_AshRavine_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[146]::zero_state_deltas::enc_lp_Ashlands_AshRavine_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[147]::persist_drop::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[148]::dangle_reward::enc_lp_Ashlands_AshRavine_Scar_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_740996576' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[149]::fake_mesh_id::enc_lp_Ashlands_AshRavine_Scar_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[150]::char_explode_megascans::enc_lp_Ashlands_BasaltFlats_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[151]::cover_displacement::enc_lp_Ashlands_BasaltFlats_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every cover anchor displaced 100000cm from its spawn cluster",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[152]::malformed_hazard_bounds::enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[153]::resource_link_corruption::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[154]::band_lie::enc_lp_Ashlands_BasaltFlats_Scar_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'light' -> 'trivial'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[155]::budget_overrun::enc_lp_Ashlands_BasaltFlats_Scar_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[156]::first_pressure_at_start::enc_lp_Forest_ErodedGully_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[157]::beta_modes_stripped::enc_lp_Forest_ErodedGully_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[158]::beta_report_doctored::enc_lp_Forest_ErodedGully_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[159]::balance_band_doctored::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[160]::pacing_target_impossible::enc_lp_Forest_ErodedGully_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[161]::drop_start_clearance::enc_lp_Forest_ErodedGully_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[162]::drop_required_field::enc_lp_Forest_RollingWoodland_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[163]::spawn_policy_corruption::enc_lp_Forest_RollingWoodland_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[164]::safe_zone_smother::enc_lp_Forest_RollingWoodland_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[165]::escape_removal::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[166]::blockage_explosion::enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[167]::hazard_type_swap_wrong_biome::enc_lp_Forest_RollingWoodland_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'heat' for temperate_forest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[168]::seed_drift::enc_lp_Wetland_MudFlat_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[169]::zero_state_deltas::enc_lp_Wetland_MudFlat_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[170]::persist_drop::enc_lp_Wetland_MudFlat_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[171]::dangle_reward::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_36929642' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[172]::fake_mesh_id::enc_lp_Wetland_MudFlat_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[173]::char_explode_megascans::enc_lp_Wetland_MudFlat_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[174]::cover_displacement::enc_lp_Wetland_ReedMarsh_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every cover anchor displaced 100000cm from its spawn cluster",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[175]::malformed_hazard_bounds::enc_lp_Wetland_ReedMarsh_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[176]::resource_link_corruption::enc_lp_Wetland_ReedMarsh_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[177]::band_lie::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'light' -> 'hard'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[178]::budget_overrun::enc_lp_Wetland_ReedMarsh_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[179]::first_pressure_at_start::enc_lp_Wetland_ReedMarsh_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[180]::beta_modes_stripped::enc_sp_Alien_CrystalField_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[181]::beta_report_doctored::enc_sp_Alien_CrystalField_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[182]::balance_band_doctored::enc_sp_Alien_CrystalField_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[183]::pacing_target_impossible::enc_sp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[184]::drop_start_clearance::enc_sp_Alien_CrystalField_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[185]::drop_required_field::enc_sp_Alien_CrystalField_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[186]::spawn_policy_corruption::enc_sp_Alien_Plateau_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[187]::safe_zone_smother::enc_sp_Alien_Plateau_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[188]::escape_removal::enc_sp_Alien_Plateau_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[189]::blockage_explosion::enc_sp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[190]::hazard_type_swap_wrong_biome::enc_sp_Alien_Plateau_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'heat' for alien_crystal_badlands",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[191]::seed_drift::enc_sp_Alien_Plateau_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[192]::zero_state_deltas::enc_sp_Alpine_GlacialBasin_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[193]::persist_drop::enc_sp_Alpine_GlacialBasin_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[194]::dangle_reward::enc_sp_Alpine_GlacialBasin_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_314031294' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[195]::fake_mesh_id::enc_sp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[196]::char_explode_megascans::enc_sp_Alpine_GlacialBasin_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[197]::cover_displacement::enc_sp_Alpine_GlacialBasin_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: orphan cover anchor injected 100000cm from every spawn",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[198]::malformed_hazard_bounds::enc_sp_Alpine_SnowyRidge_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[199]::resource_link_corruption::enc_sp_Alpine_SnowyRidge_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[200]::band_lie::enc_sp_Alpine_SnowyRidge_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'standard' -> 'hard'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[201]::budget_overrun::enc_sp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[202]::first_pressure_at_start::enc_sp_Alpine_SnowyRidge_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[203]::beta_modes_stripped::enc_sp_Alpine_SnowyRidge_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[204]::beta_report_doctored::enc_sp_Ashlands_AshRavine_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[205]::balance_band_doctored::enc_sp_Ashlands_AshRavine_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[206]::pacing_target_impossible::enc_sp_Ashlands_AshRavine_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[207]::drop_start_clearance::enc_sp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[208]::drop_required_field::enc_sp_Ashlands_AshRavine_Scar_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[209]::spawn_policy_corruption::enc_sp_Ashlands_AshRavine_Scar_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[210]::safe_zone_smother::enc_sp_Ashlands_BasaltFlats_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[211]::escape_removal::enc_sp_Ashlands_BasaltFlats_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[212]::blockage_explosion::enc_sp_Ashlands_BasaltFlats_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[213]::hazard_type_swap_wrong_biome::enc_sp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'deep_water' for volcanic_ashlands",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[214]::seed_drift::enc_sp_Ashlands_BasaltFlats_Scar_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[215]::zero_state_deltas::enc_sp_Ashlands_BasaltFlats_Scar_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[216]::persist_drop::enc_sp_Forest_ErodedGully_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[217]::dangle_reward::enc_sp_Forest_ErodedGully_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_1006415809' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[218]::fake_mesh_id::enc_sp_Forest_ErodedGully_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[219]::char_explode_megascans::enc_sp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[220]::cover_displacement::enc_sp_Forest_ErodedGully_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every cover anchor displaced 100000cm from its spawn cluster",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[221]::malformed_hazard_bounds::enc_sp_Forest_ErodedGully_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[222]::resource_link_corruption::enc_sp_Forest_RollingWoodland_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[223]::band_lie::enc_sp_Forest_RollingWoodland_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'standard' -> 'extreme'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[224]::budget_overrun::enc_sp_Forest_RollingWoodland_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[225]::first_pressure_at_start::enc_sp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[226]::beta_modes_stripped::enc_sp_Forest_RollingWoodland_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[227]::beta_report_doctored::enc_sp_Forest_RollingWoodland_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[228]::balance_band_doctored::enc_sp_Wetland_MudFlat_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[229]::pacing_target_impossible::enc_sp_Wetland_MudFlat_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[230]::drop_start_clearance::enc_sp_Wetland_MudFlat_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[231]::drop_required_field::enc_sp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[232]::spawn_policy_corruption::enc_sp_Wetland_MudFlat_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[233]::safe_zone_smother::enc_sp_Wetland_MudFlat_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[234]::escape_removal::enc_sp_Wetland_ReedMarsh_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[235]::blockage_explosion::enc_sp_Wetland_ReedMarsh_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[236]::hazard_type_swap_wrong_biome::enc_sp_Wetland_ReedMarsh_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'heat' for wetland_mire",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[237]::seed_drift::enc_sp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[238]::zero_state_deltas::enc_sp_Wetland_ReedMarsh_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[239]::persist_drop::enc_sp_Wetland_ReedMarsh_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[240]::dangle_reward::enc_lp_Alien_CrystalField_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_879858219' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[241]::fake_mesh_id::enc_lp_Alien_CrystalField_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[242]::char_explode_megascans::enc_lp_Alien_CrystalField_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[243]::cover_displacement::enc_lp_Alien_CrystalField_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: orphan cover anchor injected 100000cm from every spawn",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[244]::malformed_hazard_bounds::enc_lp_Alien_CrystalField_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[245]::resource_link_corruption::enc_lp_Alien_CrystalField_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[246]::band_lie::enc_lp_Alien_Plateau_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'light' -> 'trivial'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[247]::budget_overrun::enc_lp_Alien_Plateau_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[248]::first_pressure_at_start::enc_lp_Alien_Plateau_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[249]::beta_modes_stripped::enc_lp_Alien_Plateau_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[250]::beta_report_doctored::enc_lp_Alien_Plateau_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[251]::balance_band_doctored::enc_lp_Alien_Plateau_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[252]::pacing_target_impossible::enc_lp_Alpine_GlacialBasin_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[253]::drop_start_clearance::enc_lp_Alpine_GlacialBasin_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[254]::drop_required_field::enc_lp_Alpine_GlacialBasin_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[255]::spawn_policy_corruption::enc_lp_Alpine_GlacialBasin_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[256]::safe_zone_smother::enc_lp_Alpine_GlacialBasin_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[257]::escape_removal::enc_lp_Alpine_GlacialBasin_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[258]::blockage_explosion::enc_lp_Alpine_SnowyRidge_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[259]::hazard_type_swap_wrong_biome::enc_lp_Alpine_SnowyRidge_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'heat' for alpine_snow",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[260]::seed_drift::enc_lp_Alpine_SnowyRidge_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[261]::zero_state_deltas::enc_lp_Alpine_SnowyRidge_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[262]::persist_drop::enc_lp_Alpine_SnowyRidge_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[263]::dangle_reward::enc_lp_Alpine_SnowyRidge_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_419084937' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[264]::fake_mesh_id::enc_lp_Ashlands_AshRavine_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[265]::char_explode_megascans::enc_lp_Ashlands_AshRavine_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[266]::cover_displacement::enc_lp_Ashlands_AshRavine_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: orphan cover anchor injected 100000cm from every spawn",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[267]::malformed_hazard_bounds::enc_lp_Ashlands_AshRavine_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard bounds inverted (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[268]::resource_link_corruption::enc_lp_Ashlands_AshRavine_Scar_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[269]::band_lie::enc_lp_Ashlands_AshRavine_Scar_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'light' -> 'trivial'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[270]::budget_overrun::enc_lp_Ashlands_BasaltFlats_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[271]::first_pressure_at_start::enc_lp_Ashlands_BasaltFlats_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[272]::beta_modes_stripped::enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[273]::beta_report_doctored::enc_lp_Ashlands_BasaltFlats_Scar_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[274]::balance_band_doctored::enc_lp_Ashlands_BasaltFlats_Scar_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[275]::pacing_target_impossible::enc_lp_Ashlands_BasaltFlats_Scar_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[276]::drop_start_clearance::enc_lp_Forest_ErodedGully_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[277]::drop_required_field::enc_lp_Forest_ErodedGully_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: dropped required field budget_class",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[278]::spawn_policy_corruption::enc_lp_Forest_ErodedGully_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn policy swapped away from the archetype spec (wave corruption)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[279]::safe_zone_smother::enc_lp_Forest_ErodedGully_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every safe zone moved inside the spawn pressure bubble",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[280]::escape_removal::enc_lp_Forest_ErodedGully_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: emptied escape_routes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[281]::blockage_explosion::enc_lp_Forest_ErodedGully_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn anchors placed on every densified route waypoint (blockage -> 1.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[282]::hazard_type_swap_wrong_biome::enc_lp_Forest_RollingWoodland_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard type swapped to biome-foreign 'heat' for temperate_forest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[283]::seed_drift::enc_lp_Forest_RollingWoodland_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: encounter seed drifted away from the mission seed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[284]::zero_state_deltas::enc_lp_Forest_RollingWoodland_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: zeroed every state delta (encounter never resolves)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[285]::persist_drop::enc_lp_Forest_RollingWoodland_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: persist_keys emptied (completion state not saved)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[286]::dangle_reward::enc_lp_Forest_RollingWoodland_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: reward hooks fire on 'fuzz_ghost_351710744' instead of encounter_resolved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[287]::fake_mesh_id::enc_lp_Forest_RollingWoodland_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: resolved_mesh_assets gained a fabricated id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[288]::char_explode_megascans::enc_lp_Wetland_MudFlat_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: megascans_dependencies set to a scalar string (char-explode guard)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[289]::cover_displacement::enc_lp_Wetland_MudFlat_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every cover anchor displaced 100000cm from its spawn cluster",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[290]::malformed_hazard_bounds::enc_lp_Wetland_MudFlat_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: hazard zone injected with inverted bounds (min > max)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[291]::resource_link_corruption::enc_lp_Wetland_MudFlat_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: phantom resource_grant hook injected with zero resource nodes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[292]::band_lie::enc_lp_Wetland_MudFlat_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: difficulty_band lied: 'light' -> 'trivial'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[293]::budget_overrun::enc_lp_Wetland_MudFlat_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: spawn difficulty exploded (pressure far over budget)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[294]::first_pressure_at_start::enc_lp_Wetland_ReedMarsh_Debris_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: all pressure stacked on the player start (pacing floor violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[295]::beta_modes_stripped::enc_lp_Wetland_ReedMarsh_Debris_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: playtest contract stripped of every encounter_* beta mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[296]::beta_report_doctored::enc_lp_Wetland_ReedMarsh_Debris_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: beta report doctored: completed=True while a declared mode failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[297]::balance_band_doctored::enc_lp_Wetland_ReedMarsh_Scatter_Perf_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: balance report band doctored away from the classified band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[298]::pacing_target_impossible::enc_lp_Wetland_ReedMarsh_Scatter_Photoreal_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: pacing target made unsatisfiable (min_first_pressure_cm=9e8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "case[299]::drop_start_clearance::enc_lp_Wetland_ReedMarsh_Scatter_Stylized_01": {
+      "ok": true,
+      "detail": "mutation REJECTED: every spawn anchor moved onto the mission start (clearance dropped)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 300,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "fuzz-encounter-matrix",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": true,
+    "seeds": null,
+    "git_sha": "01dc43976365e5c6b25abecf58535e707f6bb402",
+    "timestamp": "2026-07-04T22:27:11.496297+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 300,
+    "valid_rejected": 300,
+    "wrongly_accepted": 0,
+    "crashes": 0,
+    "base_seed": 1404014,
+    "corruptions": [
+      "drop_start_clearance",
+      "drop_required_field",
+      "spawn_policy_corruption",
+      "safe_zone_smother",
+      "escape_removal",
+      "blockage_explosion",
+      "hazard_type_swap_wrong_biome",
+      "seed_drift",
+      "zero_state_deltas",
+      "persist_drop",
+      "dangle_reward",
+      "fake_mesh_id",
+      "char_explode_megascans",
+      "cover_displacement",
+      "malformed_hazard_bounds",
+      "resource_link_corruption",
+      "band_lie",
+      "budget_overrun",
+      "first_pressure_at_start",
+      "beta_modes_stripped",
+      "beta_report_doctored",
+      "balance_band_doctored",
+      "pacing_target_impossible"
+    ]
+  }
+}

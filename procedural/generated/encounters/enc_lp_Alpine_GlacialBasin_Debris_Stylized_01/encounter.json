@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01",
+  "display_name": "Patrol Route \u2014 alpine_snow",
+  "mission_id": "mission_Alpine_GlacialBasin_Debris_Stylized_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alpine_snow",
+  "mission_archetype": "survey_landmark",
+  "encounter_archetype": "patrol_route",
+  "encounter_profile": "light_pressure",
+  "difficulty_band": "light",
+  "pressure_budget": 24.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 12011,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_group_0",
+      "encounter_id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01",
+      "archetype_tag": "patrol_route",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "patroller",
+        "melee_pressure"
+      ],
+      "count_min": 2,
+      "count_max": 3,
+      "pressure_value": 2.768,
+      "difficulty_value": 1.107,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -1231.1640630165098,
+        -21.122906004486595,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [
+    {
+      "id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_patrol_0",
+      "kind": "patrol",
+      "world_position": [
+        -2190.042419915922,
+        -1480.093445366521,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_patrol_1",
+      "kind": "patrol",
+      "world_position": [
+        1173.9744199159213,
+        -356.81605463347864,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_patrol_2",
+      "kind": "patrol",
+      "world_position": [
+        337.7335800840783,
+        3089.7855546334795,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_patrol_3",
+      "kind": "patrol",
+      "world_position": [
+        3701.750419915922,
+        4213.062945366522,
+        0.0
+      ]
+    }
+  ],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_safe_start",
+      "world_position": [
+        -4889.05,
+        -8192.45,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_safe_mission",
+      "world_position": [
+        2758.69,
+        -7167.43,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_danger_0",
+      "bounds": {
+        "min": [
+          -2431.1640630165098,
+          -1221.1229060044866,
+          0.0
+        ],
+        "max": [
+          -31.164063016509772,
+          1178.8770939955134,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -4089.05,
+          -7392.45,
+          0.0
+        ],
+        [
+          -1561.274,
+          -2822.570999999999,
+          0.0
+        ],
+        [
+          -297.38599999999997,
+          -537.6314999999995,
+          0.0
+        ]
+      ],
+      "length_cm": 7833.6
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -297.38599999999997,
+          -537.6314999999995,
+          0.0
+        ],
+        [
+          2758.69,
+          -7167.43,
+          0.0
+        ]
+      ],
+      "length_cm": 7300.26
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_activate",
+      "state_key": "survey_progress",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_complete",
+      "state_key": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_fail",
+      "state_key": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_lp_Alpine_GlacialBasin_Debris_Stylized_01_resolved",
+      "survey_progress"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "standard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [
+    "megascans_huge_icelandic_lava_cliff_e16b2143"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": true,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:b016aa2c7f5bfc20d1cb55fec14b6afc25b24047d0b5e71465fc7e294a1835e1",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.118968+00:00",
+    "source_hash": "sha256:b016aa2c7f5bfc20d1cb55fec14b6afc25b24047d0b5e71465fc7e294a1835e1"
+  },
+  "provenance_id": "prov_enc_lp_Alpine_GlacialBasin_Debris_Stylized_01",
+  "registry_id": "encounter_catalog:enc_lp_Alpine_GlacialBasin_Debris_Stylized_01",
+  "encounter_path": "procedural/generated/encounters/enc_lp_Alpine_GlacialBasin_Debris_Stylized_01/encounter.json"
+}

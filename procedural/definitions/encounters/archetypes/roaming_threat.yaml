@@ -1,0 +1,28 @@
+schema_version: '1.4'
+encounter_archetype: roaming_threat
+display_name: Roaming Threat
+intent: Ambient mobile risk that can influence the mission route.
+required_elements:
+- roam_bounds
+- spawn_anchors
+- escape_route
+- completion_condition
+roles:
+- ambient_threat
+- patroller
+spawn_groups:
+  light_pressure: 1
+  standard_pressure: 2
+count_range:
+  light_pressure:
+  - 1
+  - 3
+  standard_pressure:
+  - 2
+  - 4
+requires_resource_node: false
+requires_hazard: false
+cover_required: false
+escape_route_required: true
+bypass_allowed: true
+spawn_policy: on_activation

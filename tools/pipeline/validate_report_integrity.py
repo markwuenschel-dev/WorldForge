@@ -49,6 +49,7 @@ from world_pack_maps import enumerate_maps, report_dir_for
 from mesh_contract import MESH_REPORTS_REL
 import mission_contract as MC
 import visual_contract as VC
+import encounter_contract as ENC
 
 
 # This gate's own report — excluded from the scan so it never grades itself.
@@ -706,6 +707,97 @@ def validate_visuals(pack, strict, reports_dir=None):
     return rep
 
 
+# ---------------------------------------------------------------------------
+# v1.4 EncounterForge + PlaytestForge Beta + BalanceForge — encounter command
+# report-integrity (--encounters)
+# ---------------------------------------------------------------------------
+# The v1.4 encounter gates each emit a ValidationReport under
+# procedural/reports/encounters/<command>/<command>_report.json — the same
+# per-command layout as the mesh/source/mission/visual gates. --encounters
+# validates THOSE reports exactly the way --mesh validates the mesh command
+# reports. It does NOT alter any existing lane.
+
+# This gate's own encounters report — written under its own command dir; never scanned.
+OWN_ENCOUNTERS_REPORT = "validate_report_integrity_encounters_report.json"
+
+# The canonical set of encounter command reports that MUST be present for an
+# encounter integrity scan. An absent required report is REPORT_MISSING.
+REQUIRED_ENCOUNTER_COMMANDS = (
+    "create_encounter_pack",
+    "create_encounters",
+    "validate_encounter_contract",
+    "validate_encounter_archetypes",
+    "validate_spawn_groups",
+    "validate_encounter_anchors",
+    "validate_encounter_routes",
+    "validate_encounter_pressure",
+    "validate_encounter_pacing",
+    "validate_encounter_biome_compatibility",
+    "validate_encounter_mission_compatibility",
+    "validate_encounter_mesh_dependencies",
+    "validate_encounter_cover",
+    "validate_encounter_hazards",
+    "validate_encounter_resources",
+    "validate_encounter_state",
+    "validate_encounter_save_load",
+    "validate_encounter_rewards",
+    "validate_playtest_beta_contract",
+    "run_playtest_forge_beta",
+    "validate_playtest_beta_reports",
+    "validate_balance_contract",
+    "run_balance_forge",
+    "validate_balance_reports",
+)
+
+# TORTURE-gated / negative encounter reports: scanned IF PRESENT, never required.
+OPTIONAL_ENCOUNTER_COMMANDS = (
+    "test_negative_encounter",
+    "fuzz_encounter_matrix",
+    "encounter_lifecycle_torture",
+)
+
+
+def validate_encounters(pack, strict, reports_dir=None):
+    """Core encounter report-integrity scan. Returns an UNFINALIZED ValidationReport.
+
+    Scans procedural/reports/encounters/<command>/<command>_report.json for every
+    REQUIRED_ENCOUNTER_COMMANDS entry (plus any present OPTIONAL_ENCOUNTER_COMMANDS),
+    reusing the same per-report battery as the --mesh scan, so a missing / empty /
+    zero-record / child-failed encounter report fails this gate. reports_dir
+    overrides the encounters reports root (used by a negative harness).
+    """
+    try:
+        world_pack_id, _ = enumerate_maps(pack)
+    except Exception:
+        world_pack_id = None
+    reports_root = Path(reports_dir) if reports_dir else (REPO_ROOT / ENC.ENCOUNTER_REPORTS_REL)
+
+    rep = ValidationReport("encounter_pack_id", world_pack_id or str(pack), strict=strict)
+
+    scanned = 0
+    for command in REQUIRED_ENCOUNTER_COMMANDS:
+        _check_one_mesh_report(rep, command, _mesh_report_path(reports_root, command),
+                               required=True)
+        scanned += 1
+    for command in OPTIONAL_ENCOUNTER_COMMANDS:
+        path = _mesh_report_path(reports_root, command)
+        if path.is_file():
+            _check_one_mesh_report(rep, command, path, required=False)
+            scanned += 1
+
+    rep.set_meta(build_meta(
+        command="validate-report-integrity-encounters",
+        pack=world_pack_id,
+        strict=strict,
+        status=None,
+        record_count=scanned,
+        extra={"encounters": True,
+               "required_reports": len(REQUIRED_ENCOUNTER_COMMANDS),
+               "reports_scanned": scanned},
+    ))
+    return rep
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="WorldForge v1.0x report-integrity gate (no fake green).")
     ap.add_argument("--pack", required=True, help="World pack id or path.")
@@ -724,6 +816,10 @@ def main(argv=None):
     ap.add_argument("--visuals", action="store_true",
                     help="Scan the v1.3.5 VisualFidelityForge command reports "
                          "(procedural/reports/visual/*) instead of the world-pack gate reports.")
+    ap.add_argument("--encounters", action="store_true",
+                    help="Scan the v1.4 EncounterForge + PlaytestForge Beta + BalanceForge "
+                         "command reports (procedural/reports/encounters/*) instead of the "
+                         "world-pack gate reports.")
     ap.add_argument("--max-age-days", type=float, default=None,
                     help="Flag reports older than this many days as stale (default: off).")
     ap.add_argument("--reports-dir", default=None,
@@ -769,6 +865,15 @@ def main(argv=None):
         visuals_report_dir = REPO_ROOT / VC.VISUAL_REPORTS_REL / "validate_report_integrity"
         rep.write(visuals_report_dir, OWN_VISUALS_REPORT)
         rep.print_summary("validate-report-integrity --visuals")
+        return rep.exit_code
+
+    if args.encounters:
+        rep = validate_encounters(args.pack, strict=strict, reports_dir=args.reports_dir)
+        rep.finalize()
+        encounters_report_dir = (REPO_ROOT / ENC.ENCOUNTER_REPORTS_REL
+                                 / "validate_report_integrity")
+        rep.write(encounters_report_dir, OWN_ENCOUNTERS_REPORT)
+        rep.print_summary("validate-report-integrity --encounters")
         return rep.exit_code
 
     rep = validate_pack(args.pack, strict=strict, reports_dir=args.reports_dir,

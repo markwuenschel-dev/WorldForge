@@ -1,0 +1,364 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01",
+  "display_name": "Ambush Choke \u2014 temperate_forest",
+  "mission_id": "mission_Forest_ErodedGully_Scatter_Perf_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "temperate_forest",
+  "mission_archetype": "clear_hazard",
+  "encounter_archetype": "ambush_choke",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "hard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.5
+  },
+  "seed": 11009,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_group_0",
+      "encounter_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01",
+      "archetype_tag": "ambush_choke",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambusher",
+        "melee_pressure"
+      ],
+      "count_min": 4,
+      "count_max": 6,
+      "pressure_value": 12.222,
+      "difficulty_value": 1.746,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Forest_ErodedGully_Scatter_Perf_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Forest_ErodedGully_Scatter_Perf_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Forest_ErodedGully_Scatter_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_group_1",
+      "encounter_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01",
+      "archetype_tag": "ambush_choke",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambusher",
+        "melee_pressure"
+      ],
+      "count_min": 4,
+      "count_max": 6,
+      "pressure_value": 11.963,
+      "difficulty_value": 1.709,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Forest_ErodedGully_Scatter_Perf_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Forest_ErodedGully_Scatter_Perf_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Forest_ErodedGully_Scatter_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -558.0501079420515,
+        -986.2236004352908,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        -71.31159627462284,
+        2610.2207473866015,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_ambush_0",
+      "kind": "ambush",
+      "world_position": [
+        -1497.2199398218413,
+        486.93843871754177,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_ambush_1",
+      "kind": "ambush",
+      "world_position": [
+        451.30093982184053,
+        1508.3425612824608,
+        0.0
+      ]
+    }
+  ],
+  "cover_anchors": [
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_cover_0_0",
+      "kind": "cover",
+      "world_position": [
+        -823.7575006207353,
+        -1125.5059807850525,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_cover_0_1",
+      "kind": "cover",
+      "world_position": [
+        -1089.4648932994191,
+        -1264.7883611348143,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_cover_1_0",
+      "kind": "cover",
+      "world_position": [
+        194.39579640406106,
+        2749.5031277363632,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_cover_1_1",
+      "kind": "cover",
+      "world_position": [
+        460.10318908274496,
+        2888.785508086125,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    }
+  ],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_safe_start",
+      "world_position": [
+        3122.19,
+        -8282.32,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_safe_mission",
+      "world_position": [
+        7502.66,
+        -1640.88,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_danger_0",
+      "bounds": {
+        "min": [
+          -1758.0501079420515,
+          -2186.223600435291,
+          0.0
+        ],
+        "max": [
+          641.9498920579485,
+          213.7763995647092,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_danger_1",
+      "bounds": {
+        "min": [
+          -1271.3115962746228,
+          1410.2207473866015,
+          0.0
+        ],
+        "max": [
+          1128.6884037253772,
+          3810.2207473866015,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          3922.19,
+          -7482.32,
+          0.0
+        ],
+        [
+          1497.5629999999996,
+          -2856.886999999999,
+          0.0
+        ],
+        [
+          -401.72815000000037,
+          766.3688500000007,
+          0.0
+        ]
+      ],
+      "length_cm": 9313.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -401.72815000000037,
+          766.3688500000007,
+          0.0
+        ],
+        [
+          7502.66,
+          -1640.88,
+          0.0
+        ]
+      ],
+      "length_cm": 8262.82
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_activate",
+      "state_key": "hazard_level",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_complete",
+      "state_key": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_fail",
+      "state_key": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Forest_ErodedGully_Scatter_Perf_01_resolved",
+      "hazard_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_fallen_tree_cover",
+      "mesh_rock_forest_mossy_boulder"
+    ]
+  },
+  "megascans_dependencies": [
+    "megascans_arid_debris_48ea3af3"
+  ],
+  "visual_marker_requirements": [
+    {
+      "target_id": "enc_sp_Forest_ErodedGully_Scatter_Perf_01_ambush_0",
+      "marker_class": "readability_cue_choke"
+    }
+  ],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:82382f08b7b5d02af4c8872393839db85f8ae9a3f8d6bbc231e94331c88308c9",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.136377+00:00",
+    "source_hash": "sha256:82382f08b7b5d02af4c8872393839db85f8ae9a3f8d6bbc231e94331c88308c9"
+  },
+  "provenance_id": "prov_enc_sp_Forest_ErodedGully_Scatter_Perf_01",
+  "registry_id": "encounter_catalog:enc_sp_Forest_ErodedGully_Scatter_Perf_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Forest_ErodedGully_Scatter_Perf_01/encounter.json"
+}

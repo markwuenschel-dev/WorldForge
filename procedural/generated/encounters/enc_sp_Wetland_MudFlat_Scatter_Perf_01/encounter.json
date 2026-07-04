@@ -1,0 +1,364 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01",
+  "display_name": "Ambush Choke \u2014 wetland_mire",
+  "mission_id": "mission_Wetland_MudFlat_Scatter_Perf_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "wetland_mire",
+  "mission_archetype": "clear_hazard",
+  "encounter_archetype": "ambush_choke",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "hard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.5
+  },
+  "seed": 14003,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_group_0",
+      "encounter_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01",
+      "archetype_tag": "ambush_choke",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambusher",
+        "melee_pressure"
+      ],
+      "count_min": 4,
+      "count_max": 6,
+      "pressure_value": 11.137,
+      "difficulty_value": 1.591,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Wetland_MudFlat_Scatter_Perf_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Wetland_MudFlat_Scatter_Perf_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Wetland_MudFlat_Scatter_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_group_1",
+      "encounter_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01",
+      "archetype_tag": "ambush_choke",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambusher",
+        "melee_pressure"
+      ],
+      "count_min": 4,
+      "count_max": 6,
+      "pressure_value": 11.578,
+      "difficulty_value": 1.654,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Wetland_MudFlat_Scatter_Perf_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Wetland_MudFlat_Scatter_Perf_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Wetland_MudFlat_Scatter_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -1685.2993824197663,
+        -326.24153455308414,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        1689.2338054656361,
+        2082.8982088599455,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_ambush_0",
+      "kind": "ambush",
+      "world_position": [
+        -887.312301979751,
+        1300.5589352049428,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_ambush_1",
+      "kind": "ambush",
+      "world_position": [
+        1279.1543019797512,
+        917.9070647950612,
+        0.0
+      ]
+    }
+  ],
+  "cover_anchors": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_cover_0_0",
+      "kind": "cover",
+      "world_position": [
+        -1980.726646596062,
+        -274.06173404264575,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_cover_0_1",
+      "kind": "cover",
+      "world_position": [
+        -2276.153910772358,
+        -221.88193353220734,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_cover_1_0",
+      "kind": "cover",
+      "world_position": [
+        1984.6610696419318,
+        2030.7184083495072,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_cover_1_1",
+      "kind": "cover",
+      "world_position": [
+        2280.0883338182275,
+        1978.5386078390686,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    }
+  ],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_safe_start",
+      "world_position": [
+        -2269.38,
+        -9119.23,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_safe_mission",
+      "world_position": [
+        4934.91,
+        -5884.65,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_danger_0",
+      "bounds": {
+        "min": [
+          -2885.2993824197665,
+          -1526.2415345530842,
+          0.0
+        ],
+        "max": [
+          -485.2993824197663,
+          873.7584654469158,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_danger_1",
+      "bounds": {
+        "min": [
+          489.2338054656361,
+          882.8982088599455,
+          0.0
+        ],
+        "max": [
+          2889.233805465636,
+          3282.8982088599455,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -1469.38,
+          -8319.23,
+          0.0
+        ],
+        [
+          -561.0339999999999,
+          -3176.431999999999,
+          0.0
+        ],
+        [
+          150.50369999999998,
+          852.0931,
+          0.0
+        ]
+      ],
+      "length_cm": 9313.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          150.50369999999998,
+          852.0931,
+          0.0
+        ],
+        [
+          4934.91,
+          -5884.65,
+          0.0
+        ]
+      ],
+      "length_cm": 8262.82
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_activate",
+      "state_key": "hazard_level",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_complete",
+      "state_key": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_fail",
+      "state_key": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Wetland_MudFlat_Scatter_Perf_01_resolved",
+      "hazard_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_fallen_tree_cover",
+      "mesh_rock_wetland_slick_stone"
+    ]
+  },
+  "megascans_dependencies": [
+    "megascans_canyon_sandy_mud_29c6056c"
+  ],
+  "visual_marker_requirements": [
+    {
+      "target_id": "enc_sp_Wetland_MudFlat_Scatter_Perf_01_ambush_0",
+      "marker_class": "readability_cue_choke"
+    }
+  ],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:fe7c11035d9e9982d0b20e08a2b7cdfeac3296cc0e506474f78a257f804d6a8a",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.144659+00:00",
+    "source_hash": "sha256:fe7c11035d9e9982d0b20e08a2b7cdfeac3296cc0e506474f78a257f804d6a8a"
+  },
+  "provenance_id": "prov_enc_sp_Wetland_MudFlat_Scatter_Perf_01",
+  "registry_id": "encounter_catalog:enc_sp_Wetland_MudFlat_Scatter_Perf_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Wetland_MudFlat_Scatter_Perf_01/encounter.json"
+}

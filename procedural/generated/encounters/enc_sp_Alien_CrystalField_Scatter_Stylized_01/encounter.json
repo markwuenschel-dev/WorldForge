@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01",
+  "display_name": "Extraction Pressure \u2014 alien_crystal_badlands",
+  "mission_id": "mission_Alien_CrystalField_Scatter_Stylized_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alien_crystal_badlands",
+  "mission_archetype": "extract_cache",
+  "encounter_archetype": "extraction_pressure",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 15002,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_group_0",
+      "encounter_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01",
+      "archetype_tag": "extraction_pressure",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "melee_pressure",
+        "ambusher"
+      ],
+      "count_min": 3,
+      "count_max": 6,
+      "pressure_value": 9.91,
+      "difficulty_value": 1.573,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_CrystalField_Scatter_Stylized_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_CrystalField_Scatter_Stylized_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_CrystalField_Scatter_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_group_1",
+      "encounter_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01",
+      "archetype_tag": "extraction_pressure",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "melee_pressure",
+        "ambusher"
+      ],
+      "count_min": 3,
+      "count_max": 6,
+      "pressure_value": 8.984,
+      "difficulty_value": 1.426,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_CrystalField_Scatter_Stylized_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_CrystalField_Scatter_Stylized_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_CrystalField_Scatter_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -1034.4017783579322,
+        -4284.229254456719,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        -2403.553323678075,
+        -735.1243546661295,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_safe_start",
+      "world_position": [
+        4117.35,
+        6069.38,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_safe_mission",
+      "world_position": [
+        -1910.39,
+        7438.6,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_danger_0",
+      "bounds": {
+        "min": [
+          -2234.401778357932,
+          -5484.229254456719,
+          0.0
+        ],
+        "max": [
+          165.59822164206776,
+          -3084.229254456719,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_danger_1",
+      "bounds": {
+        "min": [
+          -3603.553323678075,
+          -1935.1243546661294,
+          0.0
+        ],
+        "max": [
+          -1203.5533236780748,
+          464.87564533387047,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          4917.35,
+          6869.38,
+          0.0
+        ],
+        [
+          -858.3060999999989,
+          -1199.0155999999988,
+          0.0
+        ],
+        [
+          -1770.2517999999982,
+          -2472.9727999999986,
+          0.0
+        ]
+      ],
+      "length_cm": 11489.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -1770.2517999999982,
+          -2472.9727999999986,
+          0.0
+        ],
+        [
+          -1910.39,
+          7438.6,
+          0.0
+        ]
+      ],
+      "length_cm": 9912.56
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_activate",
+      "state_key": "cache_extracted",
+      "operator": ">=",
+      "threshold": 1.0,
+      "trigger": "post_objective"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_complete",
+      "state_key": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_fail",
+      "state_key": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Alien_CrystalField_Scatter_Stylized_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Alien_CrystalField_Scatter_Stylized_01_resolved",
+      "cache_extracted"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [],
+  "visual_marker_requirements": [],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:77d1214b2c350930c0dde4698e3ba14a91876d75ac1bdc2d58f8787d3e82a71d",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.113184+00:00",
+    "source_hash": "sha256:77d1214b2c350930c0dde4698e3ba14a91876d75ac1bdc2d58f8787d3e82a71d"
+  },
+  "provenance_id": "prov_enc_sp_Alien_CrystalField_Scatter_Stylized_01",
+  "registry_id": "encounter_catalog:enc_sp_Alien_CrystalField_Scatter_Stylized_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Alien_CrystalField_Scatter_Stylized_01/encounter.json"
+}

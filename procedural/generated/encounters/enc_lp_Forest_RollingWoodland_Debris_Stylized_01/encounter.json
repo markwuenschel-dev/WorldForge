@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01",
+  "display_name": "Patrol Route \u2014 temperate_forest",
+  "mission_id": "mission_Forest_RollingWoodland_Debris_Stylized_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "temperate_forest",
+  "mission_archetype": "survey_landmark",
+  "encounter_archetype": "patrol_route",
+  "encounter_profile": "light_pressure",
+  "difficulty_band": "light",
+  "pressure_budget": 24.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 11005,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_group_0",
+      "encounter_id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01",
+      "archetype_tag": "patrol_route",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "patroller",
+        "melee_pressure"
+      ],
+      "count_min": 2,
+      "count_max": 3,
+      "pressure_value": 3.098,
+      "difficulty_value": 1.239,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        595.9542085125278,
+        968.8159263709582,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_patrol_0",
+      "kind": "patrol",
+      "world_position": [
+        59.56114966344785,
+        2642.6172072955333,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_patrol_1",
+      "kind": "patrol",
+      "world_position": [
+        -970.1681496634483,
+        -751.2052072955341,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_patrol_2",
+      "kind": "patrol",
+      "world_position": [
+        2324.975149663448,
+        -2062.8467927044676,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_patrol_3",
+      "kind": "patrol",
+      "world_position": [
+        1295.2458503365515,
+        -5456.669207295536,
+        0.0
+      ]
+    }
+  ],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_safe_start",
+      "world_position": [
+        -4464.639999999999,
+        6811.78,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_safe_mission",
+      "world_position": [
+        -7442.31,
+        1895.89,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_danger_0",
+      "bounds": {
+        "min": [
+          -604.0457914874722,
+          -231.1840736290418,
+          0.0
+        ],
+        "max": [
+          1795.9542085125277,
+          2168.815926370958,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -3664.64,
+          7611.78,
+          0.0
+        ],
+        [
+          -1399.2259999999997,
+          2906.315999999999,
+          0.0
+        ],
+        [
+          -266.51900000000023,
+          553.5839999999989,
+          0.0
+        ]
+      ],
+      "length_cm": 7833.6
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -266.51900000000023,
+          553.5839999999989,
+          0.0
+        ],
+        [
+          -7442.31,
+          1895.89,
+          0.0
+        ]
+      ],
+      "length_cm": 7300.26
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_activate",
+      "state_key": "survey_progress",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_complete",
+      "state_key": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_fail",
+      "state_key": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_lp_Forest_RollingWoodland_Debris_Stylized_01_resolved",
+      "survey_progress"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "standard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [
+    "megascans_arid_debris_48ea3af3"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": true,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:5de6bc8f97bb3406abdb138ed672a0af7db186586b3a155611f37a0c3d4d3464",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.139629+00:00",
+    "source_hash": "sha256:5de6bc8f97bb3406abdb138ed672a0af7db186586b3a155611f37a0c3d4d3464"
+  },
+  "provenance_id": "prov_enc_lp_Forest_RollingWoodland_Debris_Stylized_01",
+  "registry_id": "encounter_catalog:enc_lp_Forest_RollingWoodland_Debris_Stylized_01",
+  "encounter_path": "procedural/generated/encounters/enc_lp_Forest_RollingWoodland_Debris_Stylized_01/encounter.json"
+}

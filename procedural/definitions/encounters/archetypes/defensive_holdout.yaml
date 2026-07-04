@@ -1,0 +1,31 @@
+schema_version: '1.4'
+encounter_archetype: defensive_holdout
+display_name: Defensive Holdout
+intent: Timed or staged pressure around a fixed objective.
+required_elements:
+- holdout_zone
+- wave_definitions
+- cover_anchors
+- safe_zone
+- completion_condition
+roles:
+- melee_pressure
+- ranged_pressure
+- area_denial
+spawn_groups:
+  light_pressure: 2
+  standard_pressure: 3
+count_range:
+  light_pressure:
+  - 2
+  - 3
+  standard_pressure:
+  - 2
+  - 4
+requires_resource_node: false
+requires_hazard: false
+cover_required: true
+escape_route_required: false
+bypass_allowed: false
+wave_min: 2
+spawn_policy: staged_waves

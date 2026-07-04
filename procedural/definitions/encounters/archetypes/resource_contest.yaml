@@ -1,0 +1,31 @@
+schema_version: '1.4'
+encounter_archetype: resource_contest
+display_name: Resource Contest
+intent: Encounter around a resource/reward node.
+required_elements:
+- resource_link
+- spawn_anchors
+- cover_anchors
+- escape_route
+- reward_hook
+- completion_condition
+roles:
+- guard
+- melee_pressure
+- ranged_pressure
+spawn_groups:
+  light_pressure: 1
+  standard_pressure: 2
+count_range:
+  light_pressure:
+  - 2
+  - 4
+  standard_pressure:
+  - 3
+  - 6
+requires_resource_node: true
+requires_hazard: false
+cover_required: true
+escape_route_required: true
+bypass_allowed: false
+spawn_policy: pre_placed

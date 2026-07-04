@@ -1,0 +1,336 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "inject::ambush_no_escape": {
+      "ok": true,
+      "detail": "validate_encounter_archetypes.py rc=1 ([validate-encounter-archetypes]   FAIL: escape_route_present::__negenc_ambush_no_escape: spec requires an escape route but escape_routes is empty)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::completion_not_saved": {
+      "ok": true,
+      "detail": "validate_encounter_save_load.py rc=1 ([validate-encounter-save-load]   FAIL: __negenc_completion_not_saved::completion_resolves_after_load: completion does not resolve from loaded state {} — resolution lost across save/load)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::defensive_holdout_no_cover": {
+      "ok": true,
+      "detail": "validate_encounter_archetypes.py rc=1 ([validate-encounter-archetypes]   FAIL: cover_present::__negenc_defensive_holdout_no_cover: spec requires cover but cover_anchors is empty)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::difficulty_band_unclassified": {
+      "ok": true,
+      "detail": "validate_encounter_pressure.py rc=1 ([validate-encounter-pressure]   FAIL: __negenc_difficulty_band_unclassified::stored_band_matches_recomputed: stored difficulty_band 'invalid' != recomputed 'light' (total=11.605))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::encounter_blocks_required_route": {
+      "ok": true,
+      "detail": "validate_encounter_routes.py rc=1 ([validate-encounter-routes]   FAIL: required_route_not_blocked::__negenc_encounter_blocks_required_route: blockage_ratio=0.278 max_route_blockage_ratio=0.05 (must be <=max and <1.0))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::extraction_blocks_exit": {
+      "ok": true,
+      "detail": "validate_encounter_routes.py rc=1 ([validate-encounter-routes]   FAIL: escape_clear_of_spawns::__negenc_extraction_blocks_exit: escape routes ending within 3000.0cm of a spawn anchor: ('__negenc_extraction_blocks_exit_escape', 0.0))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::first_pressure_at_player_start": {
+      "ok": true,
+      "detail": "validate_encounter_pacing.py rc=1 ([validate-encounter-pacing]   FAIL: __negenc_first_pressure_at_player_start::cover_density_meets_target: cover_density_near_pressure 0.0 < min_cover_per_pressure_point 0.5)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::hazard_covers_all_routes": {
+      "ok": true,
+      "detail": "validate_encounter_routes.py rc=1 ([validate-encounter-routes]   FAIL: hazard_clear_of_objective::__negenc_hazard_covers_all_routes: encounter hazard zones containing mission objective anchors: ('__negenc_hazard_covers_all_routes_hazar)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::hazard_lacks_visual_marker": {
+      "ok": true,
+      "detail": "validate_encounter_biome_compatibility.py rc=1 ([validate-encounter-biome-compatibility]   FAIL: crystal_resonance_marked::__negenc_hazard_lacks_visual_marker: crystal_resonance hazards without a visual_marker_requirements entry: __negenc_hazard_la)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::missing_biome_link": {
+      "ok": true,
+      "detail": "validate_encounter_contract.py rc=1 ([validate-encounter-contract]   FAIL: biome_matches_mission::__negenc_missing_biome_link: encounter biome=None mission biome=alien_crystal_badlands)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::missing_mission_link": {
+      "ok": true,
+      "detail": "validate_encounter_contract.py rc=1 ([validate-encounter-contract]   FAIL: biome_matches_mission::__negenc_missing_mission_link: encounter biome=alien_crystal_badlands mission biome=None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::missing_objective_link": {
+      "ok": true,
+      "detail": "validate_encounter_contract.py rc=1 ([validate-encounter-contract]   FAIL: has_objective_links::__negenc_missing_objective_link: no objective links)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::missing_playtest_contract": {
+      "ok": true,
+      "detail": "validate_encounter_contract.py rc=1 ([validate-encounter-contract]   FAIL: playtest_expects_completion::__negenc_missing_playtest_contract: expected_completion=None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::missing_pressure_budget": {
+      "ok": true,
+      "detail": "validate_encounter_contract.py rc=1 ([validate-encounter-contract]   FAIL: pressure_budget::__negenc_missing_pressure_budget: pressure_budget=None expected 24.0 (profile=light_pressure))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::mission_completes_while_encounter_unmet": {
+      "ok": true,
+      "detail": "validate_encounter_mission_compatibility.py rc=1 ([validate-encounter-mission-compatibility]   FAIL: extraction_pressure_armed_post_objective::__negenc_mission_completes_while_encounter_unmet: post_objective activations ('resource_recovered', 0.5) do)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::no_safe_recovery": {
+      "ok": true,
+      "detail": "validate_encounter_pacing.py rc=1 ([validate-encounter-pacing]   FAIL: __negenc_no_safe_recovery::safe_recovery_exists: no safe zone reachable after pressure (safe_zone_distance_after_pressure is None))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::patrol_path_disconnected": {
+      "ok": true,
+      "detail": "validate_encounter_anchors.py rc=1 ([validate-encounter-anchors]   FAIL: patrol_on_corridor::__negenc_patrol_path_disconnected: patrol anchors farther than 3750.0cm from the required-route corridor: ('__negenc_patrol_path_disconnected_p)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::pressure_over_budget": {
+      "ok": true,
+      "detail": "validate_encounter_pressure.py rc=1 ([validate-encounter-pressure]   FAIL: __negenc_pressure_over_budget::spawn_pressure_values_honest: recomputed spawn_pressure 39.0 disagrees with stored per-group sum 4.583 (tolerance 25%))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::resource_reward_without_resolution": {
+      "ok": true,
+      "detail": "validate_encounter_rewards.py rc=1 ([validate-encounter-rewards]   FAIL: __negenc_resource_reward_without_resolution::reward_0_fires_on_resolution: fires_on 'encounter_start' != 'encounter_resolved' — reward would fire without contest r)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::roaming_threat_covers_safe_routes": {
+      "ok": true,
+      "detail": "validate_encounter_anchors.py rc=1 ([validate-encounter-anchors]   FAIL: safe_zone_outside_pressure::__negenc_roaming_threat_covers_safe_routes: no safe zone at least 3000.0cm from every spawn anchor (2 safe zones))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::spawn_group_missing_anchor": {
+      "ok": true,
+      "detail": "validate_spawn_groups.py rc=1 ([validate-spawn-groups]   FAIL: group_0_anchor_0_resolves::__negenc_spawn_group_missing_anchor: spawn_anchor_id=dangling_spawn_anchor_missing not in spawn_anchors)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::spawn_inside_objective_interaction": {
+      "ok": true,
+      "detail": "validate_spawn_groups.py rc=1 ([validate-spawn-groups]   FAIL: group_0_anchor_0_objective_0_clearance::__negenc_spawn_inside_objective_interaction: anchor __negenc_spawn_inside_objective_interaction_spawn_0 is 0.0cm from objective_)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::spawn_inside_player_start": {
+      "ok": true,
+      "detail": "validate_spawn_groups.py rc=1 ([validate-spawn-groups]   FAIL: group_0_anchor_0_start_clearance::__negenc_spawn_inside_player_start: anchor __negenc_spawn_inside_player_start_spawn_0 is 0.0cm from player start (min 2000.0))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inject::state_never_resolves": {
+      "ok": true,
+      "detail": "validate_encounter_state.py rc=1 ([validate-encounter-state]   FAIL: __negenc_state_never_resolves::resolution_satisfies_completion: simulated final {'__negenc_state_never_resolves_resolved': 0.0} does not satisfy every completion con)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "doctor::balance_marks_invalid_valid": {
+      "ok": true,
+      "detail": "validate_balance_reports.py on enc_sp_Alien_Plateau_Scatter_Perf_01 rc=1 ([validate-balance-reports]   FAIL: enc_sp_Alien_Plateau_Scatter_Perf_01::band_agreement: band disagreement: report 'light' / catalog 'hard' / encounter 'hard')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "doctor::playtest_ignores_encounter": {
+      "ok": true,
+      "detail": "validate_playtest_beta_contract.py on enc_lp_Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-playtest-beta-contract]   FAIL: enc_lp_Alien_CrystalField_Debris_Perf_01::core_modes_present: missing core beta modes (playtest would ignore the encounter): ['encounter_pressure_playtest', ')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "doctor::success_without_completion": {
+      "ok": true,
+      "detail": "validate_playtest_beta_reports.py on enc_lp_Alien_CrystalField_Debris_Perf_01 rc=1 ([validate-playtest-beta-reports]   FAIL: enc_lp_Alien_CrystalField_Debris_Perf_01::completed_implies_all_modes_pass: completed=True but modes failed (contradictory report): ['anchor_playtest'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::encounter_count": {
+      "ok": true,
+      "detail": "catalog has 120 encounters (expected 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::no_temp_records": {
+      "ok": true,
+      "detail": "stray temp catalog records: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::no_temp_dirs": {
+      "ok": true,
+      "detail": "stray temp encounter dirs: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_encounter_contract": {
+      "ok": true,
+      "detail": "validate_encounter_contract.py rc=0 ([validate-encounter-contract] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_playtest_beta_reports": {
+      "ok": true,
+      "detail": "validate_playtest_beta_reports.py rc=0 ([validate-playtest-beta-reports] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_balance_reports": {
+      "ok": true,
+      "detail": "validate_balance_reports.py rc=0 ([validate-balance-reports] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 33,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "encounter-negative-validators",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "01dc43976365e5c6b25abecf58535e707f6bb402",
+    "timestamp": "2026-07-04T22:27:11.319248+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 27,
+    "cases_exercised": 27,
+    "encounter_fixtures": [
+      "ambush_no_escape",
+      "completion_not_saved",
+      "defensive_holdout_no_cover",
+      "difficulty_band_unclassified",
+      "encounter_blocks_required_route",
+      "extraction_blocks_exit",
+      "first_pressure_at_player_start",
+      "hazard_covers_all_routes",
+      "hazard_lacks_visual_marker",
+      "missing_biome_link",
+      "missing_mission_link",
+      "missing_objective_link",
+      "missing_playtest_contract",
+      "missing_pressure_budget",
+      "mission_completes_while_encounter_unmet",
+      "no_safe_recovery",
+      "patrol_path_disconnected",
+      "pressure_over_budget",
+      "resource_reward_without_resolution",
+      "roaming_threat_covers_safe_routes",
+      "spawn_group_missing_anchor",
+      "spawn_inside_objective_interaction",
+      "spawn_inside_player_start",
+      "state_never_resolves"
+    ],
+    "doctor_cases": [
+      "balance_marks_invalid_valid",
+      "playtest_ignores_encounter",
+      "success_without_completion"
+    ],
+    "doctor_targets": {
+      "success_without_completion": "enc_lp_Alien_CrystalField_Debris_Perf_01",
+      "playtest_ignores_encounter": "enc_lp_Alien_CrystalField_Debris_Perf_01",
+      "balance_marks_invalid_valid": "enc_sp_Alien_Plateau_Scatter_Perf_01"
+    }
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01",
+  "display_name": "Roaming Threat \u2014 alien_crystal_badlands",
+  "mission_id": "mission_Alien_CrystalField_Debris_Stylized_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alien_crystal_badlands",
+  "mission_archetype": "survey_landmark",
+  "encounter_archetype": "roaming_threat",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 15005,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_group_0",
+      "encounter_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01",
+      "archetype_tag": "roaming_threat",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "ambient_threat",
+        "patroller"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 4.693,
+      "difficulty_value": 1.738,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_CrystalField_Debris_Stylized_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_CrystalField_Debris_Stylized_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_CrystalField_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_CrystalField_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_group_1",
+      "encounter_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01",
+      "archetype_tag": "roaming_threat",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "ambient_threat",
+        "patroller"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 4.096,
+      "difficulty_value": 1.517,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_CrystalField_Debris_Stylized_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_CrystalField_Debris_Stylized_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_CrystalField_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_CrystalField_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -904.2915710215105,
+        912.613050261572,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        2505.801476279454,
+        -221.69012954455457,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_patrol_0",
+      "kind": "patrol",
+      "world_position": [
+        -2596.1988590981605,
+        496.71136814775423,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_patrol_1",
+      "kind": "patrol",
+      "world_position": [
+        580.0253590981615,
+        -1081.2528681477545,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_patrol_2",
+      "kind": "patrol",
+      "world_position": [
+        2419.648140901841,
+        1950.9343681477542,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_patrol_3",
+      "kind": "patrol",
+      "world_position": [
+        5595.872359098163,
+        372.97013185224546,
+        0.0
+      ]
+    }
+  ],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_safe_start",
+      "world_position": [
+        -8913.869999999999,
+        -3152.42,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_safe_mission",
+      "world_position": [
+        -3103.12,
+        -7025.17,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_danger_0",
+      "bounds": {
+        "min": [
+          -2104.2915710215107,
+          -287.38694973842803,
+          0.0
+        ],
+        "max": [
+          295.70842897848945,
+          2112.613050261572,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_danger_1",
+      "bounds": {
+        "min": [
+          1305.8014762794542,
+          -1421.6901295445546,
+          0.0
+        ],
+        "max": [
+          3705.801476279454,
+          978.3098704554454,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -8113.87,
+          -2352.42,
+          0.0
+        ],
+        [
+          -3098.0229999999983,
+          -898.1969999999999,
+          0.0
+        ],
+        [
+          831.0571500000015,
+          240.9443500000002,
+          0.0
+        ]
+      ],
+      "length_cm": 9313.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          831.0571500000015,
+          240.9443500000002,
+          0.0
+        ],
+        [
+          -3103.12,
+          -7025.17,
+          0.0
+        ]
+      ],
+      "length_cm": 8262.82
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Alien_CrystalField_Debris_Stylized_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_activate",
+      "state_key": "survey_progress",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_complete",
+      "state_key": "enc_sp_Alien_CrystalField_Debris_Stylized_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Alien_CrystalField_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_fail",
+      "state_key": "enc_sp_Alien_CrystalField_Debris_Stylized_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Alien_CrystalField_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Alien_CrystalField_Debris_Stylized_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Alien_CrystalField_Debris_Stylized_01_resolved",
+      "survey_progress"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [],
+  "visual_marker_requirements": [],
+  "bypass_allowed": true,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:a7b12c54ec73c803a282b2b4cd8c90f29c90c3654aa6657aa5a6bb4dd24a27ec",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.111074+00:00",
+    "source_hash": "sha256:a7b12c54ec73c803a282b2b4cd8c90f29c90c3654aa6657aa5a6bb4dd24a27ec"
+  },
+  "provenance_id": "prov_enc_sp_Alien_CrystalField_Debris_Stylized_01",
+  "registry_id": "encounter_catalog:enc_sp_Alien_CrystalField_Debris_Stylized_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Alien_CrystalField_Debris_Stylized_01/encounter.json"
+}

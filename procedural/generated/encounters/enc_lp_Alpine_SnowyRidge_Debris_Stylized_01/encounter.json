@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01",
+  "display_name": "Patrol Route \u2014 alpine_snow",
+  "mission_id": "mission_Alpine_SnowyRidge_Debris_Stylized_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alpine_snow",
+  "mission_archetype": "survey_landmark",
+  "encounter_archetype": "patrol_route",
+  "encounter_profile": "light_pressure",
+  "difficulty_band": "light",
+  "pressure_budget": 24.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 12005,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_group_0",
+      "encounter_id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01",
+      "archetype_tag": "patrol_route",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "patroller",
+        "melee_pressure"
+      ],
+      "count_min": 2,
+      "count_max": 3,
+      "pressure_value": 2.965,
+      "difficulty_value": 1.186,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -767.4102206495484,
+        -1397.6933521211813,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [
+    {
+      "id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_patrol_0",
+      "kind": "patrol",
+      "world_position": [
+        530.0466449394308,
+        -2589.5989313070563,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_patrol_1",
+      "kind": "patrol",
+      "world_position": [
+        778.6608550605687,
+        948.2749313070557,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_patrol_2",
+      "kind": "patrol",
+      "world_position": [
+        -2725.7483550605693,
+        1493.6890686929441,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_patrol_3",
+      "kind": "patrol",
+      "world_position": [
+        -2477.134144939432,
+        5031.562931307056,
+        0.0
+      ]
+    }
+  ],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_safe_start",
+      "world_position": [
+        4466.73,
+        -7405.32,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_safe_mission",
+      "world_position": [
+        7677.6,
+        -192.06,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_danger_0",
+      "bounds": {
+        "min": [
+          -1967.4102206495484,
+          -2597.6933521211813,
+          0.0
+        ],
+        "max": [
+          432.58977935045164,
+          -197.6933521211813,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          5266.73,
+          -6605.32,
+          0.0
+        ],
+        [
+          2010.934999999999,
+          -2522.0319999999992,
+          0.0
+        ],
+        [
+          383.03749999999945,
+          -480.3879999999999,
+          0.0
+        ]
+      ],
+      "length_cm": 7833.6
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          383.03749999999945,
+          -480.3879999999999,
+          0.0
+        ],
+        [
+          7677.6,
+          -192.06,
+          0.0
+        ]
+      ],
+      "length_cm": 7300.26
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_activate",
+      "state_key": "survey_progress",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_complete",
+      "state_key": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_fail",
+      "state_key": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_lp_Alpine_SnowyRidge_Debris_Stylized_01_resolved",
+      "survey_progress"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "standard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [
+    "megascans_huge_icelandic_lava_cliff_e16b2143"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": true,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:547bf92723154afcbb862fac7d467c632979502e72d19ac0ecfcaafbe5dc1d7e",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.123123+00:00",
+    "source_hash": "sha256:547bf92723154afcbb862fac7d467c632979502e72d19ac0ecfcaafbe5dc1d7e"
+  },
+  "provenance_id": "prov_enc_lp_Alpine_SnowyRidge_Debris_Stylized_01",
+  "registry_id": "encounter_catalog:enc_lp_Alpine_SnowyRidge_Debris_Stylized_01",
+  "encounter_path": "procedural/generated/encounters/enc_lp_Alpine_SnowyRidge_Debris_Stylized_01/encounter.json"
+}

@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01",
+  "display_name": "Ambush Choke \u2014 alpine_snow",
+  "mission_id": "mission_Alpine_SnowyRidge_Scatter_Perf_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alpine_snow",
+  "mission_archetype": "clear_hazard",
+  "encounter_archetype": "ambush_choke",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "hard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.5
+  },
+  "seed": 12003,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_group_0",
+      "encounter_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01",
+      "archetype_tag": "ambush_choke",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambusher",
+        "melee_pressure"
+      ],
+      "count_min": 4,
+      "count_max": 6,
+      "pressure_value": 10.241,
+      "difficulty_value": 1.463,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_group_1",
+      "encounter_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01",
+      "archetype_tag": "ambush_choke",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "ambusher",
+        "melee_pressure"
+      ],
+      "count_min": 4,
+      "count_max": 6,
+      "pressure_value": 12.173,
+      "difficulty_value": 1.739,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -1091.4028278608967,
+        332.5842477272523,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        2493.7143510397736,
+        690.0946776560174,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_ambush_0",
+      "kind": "ambush",
+      "world_position": [
+        142.91793118390194,
+        1567.9174097641117,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_ambush_1",
+      "kind": "ambush",
+      "world_position": [
+        1570.864068816099,
+        -105.69240976411118,
+        0.0
+      ]
+    }
+  ],
+  "cover_anchors": [
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_cover_0_0",
+      "kind": "cover",
+      "world_position": [
+        -1286.1227557198326,
+        560.80376857201,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_cover_0_1",
+      "kind": "cover",
+      "world_position": [
+        -1480.8426835787686,
+        789.0232894167675,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_cover_1_0",
+      "kind": "cover",
+      "world_position": [
+        2688.4342788987096,
+        461.8751568112598,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_cover_1_1",
+      "kind": "cover",
+      "world_position": [
+        2883.1542067576456,
+        233.6556359665022,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    }
+  ],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_safe_start",
+      "world_position": [
+        -7226.66,
+        -6283.31,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_safe_mission",
+      "world_position": [
+        63.17,
+        -7679.74,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_danger_0",
+      "bounds": {
+        "min": [
+          -2291.4028278608967,
+          -867.4157522727477,
+          0.0
+        ],
+        "max": [
+          108.59717213910335,
+          1532.5842477272522,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_danger_1",
+      "bounds": {
+        "min": [
+          1293.7143510397736,
+          -509.90532234398256,
+          0.0
+        ],
+        "max": [
+          3693.7143510397736,
+          1890.0946776560174,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -6426.66,
+          -5483.31,
+          0.0
+        ],
+        [
+          -2453.8139999999994,
+          -2093.6249999999995,
+          0.0
+        ],
+        [
+          658.2487000000001,
+          561.6282500000007,
+          0.0
+        ]
+      ],
+      "length_cm": 9313.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          658.2487000000001,
+          561.6282500000007,
+          0.0
+        ],
+        [
+          63.17,
+          -7679.74,
+          0.0
+        ]
+      ],
+      "length_cm": 8262.82
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_activate",
+      "state_key": "hazard_level",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_complete",
+      "state_key": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_fail",
+      "state_key": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_resolved",
+      "hazard_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_snow_drift_cover",
+      "mesh_rock_alpine_granite_outcrop",
+      "mesh_rock_houdini_alpine_scree"
+    ]
+  },
+  "megascans_dependencies": [
+    "megascans_huge_icelandic_lava_cliff_e16b2143"
+  ],
+  "visual_marker_requirements": [
+    {
+      "target_id": "enc_sp_Alpine_SnowyRidge_Scatter_Perf_01_ambush_0",
+      "marker_class": "readability_cue_choke"
+    }
+  ],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:27ee42d7740ed657f6d26e019df06caa719e878f243d66b08ac7900fadd29379",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.124095+00:00",
+    "source_hash": "sha256:27ee42d7740ed657f6d26e019df06caa719e878f243d66b08ac7900fadd29379"
+  },
+  "provenance_id": "prov_enc_sp_Alpine_SnowyRidge_Scatter_Perf_01",
+  "registry_id": "encounter_catalog:enc_sp_Alpine_SnowyRidge_Scatter_Perf_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Alpine_SnowyRidge_Scatter_Perf_01/encounter.json"
+}

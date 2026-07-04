@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01",
+  "display_name": "Patrol Route \u2014 volcanic_ashlands",
+  "mission_id": "mission_Ashlands_BasaltFlats_Debris_Stylized_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "volcanic_ashlands",
+  "mission_archetype": "survey_landmark",
+  "encounter_archetype": "patrol_route",
+  "encounter_profile": "light_pressure",
+  "difficulty_band": "light",
+  "pressure_budget": 24.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 13005,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_group_0",
+      "encounter_id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01",
+      "archetype_tag": "patrol_route",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "patroller",
+        "melee_pressure"
+      ],
+      "count_min": 2,
+      "count_max": 3,
+      "pressure_value": 2.843,
+      "difficulty_value": 1.137,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_activate",
+      "state_keys": [
+        "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -133.60985924844346,
+        1309.121632917939,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [
+    {
+      "id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_patrol_0",
+      "kind": "patrol",
+      "world_position": [
+        -1733.9797191859761,
+        1995.0674313979375,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_patrol_1",
+      "kind": "patrol",
+      "world_position": [
+        -212.28728081402545,
+        -1208.4964313979376,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_patrol_2",
+      "kind": "patrol",
+      "world_position": [
+        3107.954280814025,
+        38.24543139793741,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_patrol_3",
+      "kind": "patrol",
+      "world_position": [
+        4629.646719185976,
+        -3165.3184313979377,
+        0.0
+      ]
+    }
+  ],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_safe_start",
+      "world_position": [
+        -8632.54,
+        2365.45,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_safe_mission",
+      "world_position": [
+        -6781.39,
+        -3604.87,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_danger_0",
+      "bounds": {
+        "min": [
+          -1333.6098592484434,
+          109.121632917939,
+          0.0
+        ],
+        "max": [
+          1066.3901407515566,
+          2509.1216329179388,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -7832.54,
+          3165.45,
+          0.0
+        ],
+        [
+          -2990.6059999999998,
+          1208.6279999999997,
+          0.0
+        ],
+        [
+          -569.6390000000001,
+          230.21699999999964,
+          0.0
+        ]
+      ],
+      "length_cm": 7833.6
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -569.6390000000001,
+          230.21699999999964,
+          0.0
+        ],
+        [
+          -6781.39,
+          -3604.87,
+          0.0
+        ]
+      ],
+      "length_cm": 7300.26
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_activate",
+      "state_key": "survey_progress",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_complete",
+      "state_key": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_fail",
+      "state_key": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01_resolved",
+      "survey_progress"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "standard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [
+    "megascans_dead_tree_c0c4ec3a"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": true,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:f32aa5a085615e2a42fca90bbcb5093ef302e7151b90fa029893788af9d616a5",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.131316+00:00",
+    "source_hash": "sha256:f32aa5a085615e2a42fca90bbcb5093ef302e7151b90fa029893788af9d616a5"
+  },
+  "provenance_id": "prov_enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01",
+  "registry_id": "encounter_catalog:enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01",
+  "encounter_path": "procedural/generated/encounters/enc_lp_Ashlands_BasaltFlats_Debris_Stylized_01/encounter.json"
+}

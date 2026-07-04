@@ -1,0 +1,421 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01",
+  "display_name": "Defensive Holdout \u2014 alpine_snow",
+  "mission_id": "mission_Alpine_GlacialBasin_Debris_Perf_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alpine_snow",
+  "mission_archetype": "disable_site",
+  "encounter_archetype": "defensive_holdout",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.5
+  },
+  "seed": 12012,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_group_0",
+      "encounter_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 7.061,
+      "difficulty_value": 1.471,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_group_1",
+      "encounter_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 8.549,
+      "difficulty_value": 1.781,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_group_2",
+      "encounter_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01",
+      "archetype_tag": "defensive_holdout",
+      "faction_tag": "scavenger_band",
+      "role_tags": [
+        "melee_pressure",
+        "ranged_pressure",
+        "area_denial"
+      ],
+      "count_min": 2,
+      "count_max": 4,
+      "pressure_value": 8.458,
+      "difficulty_value": 1.762,
+      "spawn_policy": "staged_waves",
+      "spawn_anchor_ids": [
+        "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_spawn_2"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_danger_2"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_activate",
+      "state_keys": [
+        "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        -3607.7656949022767,
+        6010.865784259595,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        -375.10092047192006,
+        6049.092358721585,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_spawn_2",
+      "kind": "spawn",
+      "world_position": [
+        -3271.3585601740333,
+        4283.139456746151,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_cover_0_0",
+      "kind": "cover",
+      "world_position": [
+        -3890.5113627696924,
+        5910.591723295609,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_cover_0_1",
+      "kind": "cover",
+      "world_position": [
+        -4173.257030637108,
+        5810.317662331624,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_cover_1_0",
+      "kind": "cover",
+      "world_position": [
+        -92.35525260450441,
+        6149.366419685571,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_cover_1_1",
+      "kind": "cover",
+      "world_position": [
+        190.39041526291123,
+        6249.640480649556,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_cover_2_0",
+      "kind": "cover",
+      "world_position": [
+        -3554.104228041449,
+        4182.865395782165,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    },
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_cover_2_1",
+      "kind": "cover",
+      "world_position": [
+        -3836.8498959088647,
+        4082.5913348181803,
+        0.0
+      ],
+      "height_class": "half_height",
+      "collision": true
+    }
+  ],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_safe_start",
+      "world_position": [
+        2023.7199999999998,
+        -8762.119999999999,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_safe_mission",
+      "world_position": [
+        7194.9,
+        -2686.23,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_danger_0",
+      "bounds": {
+        "min": [
+          -4807.765694902277,
+          4810.865784259595,
+          0.0
+        ],
+        "max": [
+          -2407.7656949022767,
+          7210.865784259595,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_danger_1",
+      "bounds": {
+        "min": [
+          -1575.10092047192,
+          4849.092358721585,
+          0.0
+        ],
+        "max": [
+          824.8990795280799,
+          7249.092358721585,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_danger_2",
+      "bounds": {
+        "min": [
+          -4471.358560174033,
+          3083.139456746151,
+          0.0
+        ],
+        "max": [
+          -2071.3585601740333,
+          5483.139456746151,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          2823.72,
+          -7962.12,
+          0.0
+        ],
+        [
+          -1423.8361,
+          4014.8367000000007,
+          0.0
+        ],
+        [
+          -1986.2978666666663,
+          5600.826400000001,
+          0.0
+        ]
+      ],
+      "length_cm": 14390.61
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          -1986.2978666666663,
+          5600.826400000001,
+          0.0
+        ],
+        [
+          7194.9,
+          -2686.23,
+          0.0
+        ]
+      ],
+      "length_cm": 12368.09
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_activate",
+      "state_key": "site_power",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_complete",
+      "state_key": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_fail",
+      "state_key": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Alpine_GlacialBasin_Debris_Perf_01_resolved",
+      "site_power"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [
+      "encounter_cover",
+      "rock_outcrop"
+    ],
+    "resolved_mesh_assets": [
+      "mesh_cov_snow_drift_cover",
+      "mesh_rock_alpine_granite_outcrop",
+      "mesh_rock_houdini_alpine_scree"
+    ]
+  },
+  "megascans_dependencies": [
+    "megascans_huge_icelandic_lava_cliff_e16b2143"
+  ],
+  "visual_marker_requirements": [],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:983a8487521771ee31481f94f7b3aa6c2e334411f6bc3081b20d6d6668ddff22",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.117913+00:00",
+    "source_hash": "sha256:983a8487521771ee31481f94f7b3aa6c2e334411f6bc3081b20d6d6668ddff22"
+  },
+  "provenance_id": "prov_enc_sp_Alpine_GlacialBasin_Debris_Perf_01",
+  "registry_id": "encounter_catalog:enc_sp_Alpine_GlacialBasin_Debris_Perf_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Alpine_GlacialBasin_Debris_Perf_01/encounter.json"
+}

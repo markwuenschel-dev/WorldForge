@@ -1,0 +1,29 @@
+schema_version: '1.4'
+encounter_archetype: extraction_pressure
+display_name: Extraction Pressure
+intent: Pressure after objective completion, before mission exit.
+required_elements:
+- post_objective_trigger
+- exit_route
+- spawn_anchors
+- completion_condition
+- save_load_state
+roles:
+- melee_pressure
+- ambusher
+spawn_groups:
+  light_pressure: 1
+  standard_pressure: 2
+count_range:
+  light_pressure:
+  - 2
+  - 4
+  standard_pressure:
+  - 3
+  - 6
+requires_resource_node: false
+requires_hazard: false
+cover_required: false
+escape_route_required: true
+bypass_allowed: false
+spawn_policy: on_activation

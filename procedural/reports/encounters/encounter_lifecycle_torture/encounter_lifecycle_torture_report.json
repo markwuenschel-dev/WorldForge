@@ -1,0 +1,476 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "baseline::regen": {
+      "ok": true,
+      "detail": "create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::encounter_count": {
+      "ok": true,
+      "detail": "catalog has 120 encounters (expected 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_encounter_contract": {
+      "ok": true,
+      "detail": "validate_encounter_contract.py rc=0 ([validate-encounter-contract] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_encounter_pressure": {
+      "ok": true,
+      "detail": "validate_encounter_pressure.py rc=0 ([validate-encounter-pressure] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline::validate_playtest_beta_reports": {
+      "ok": true,
+      "detail": "validate_playtest_beta_reports.py rc=0 ([validate-playtest-beta-reports] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_encounter_definition::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted encounter.json for enc_lp_Alien_CrystalField_Debris_Perf_01 -> validate_encounter_contract.py rc=1 ([validate-encounter-contract]   FAIL: loads::enc_lp_Alien_CrystalField_Debris_Perf_01: encounter.json missing: D:\\Unreal Projects\\WorldForge\\procedural\\generated\\encounters\\enc_lp_Alien_CrystalField_D)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_encounter_definition::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_encounter_contract.py rc=0 ([validate-encounter-contract] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_spawn_group::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted every spawn group of enc_lp_Alien_CrystalField_Debris_Perf_01 -> validate_spawn_groups.py rc=1 ([validate-spawn-groups]   FAIL: has_spawn_groups::enc_lp_Alien_CrystalField_Debris_Perf_01: no spawn groups)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_spawn_group::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_spawn_groups.py rc=0 ([validate-spawn-groups] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_spawn_anchor::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted every spawn anchor of enc_lp_Alien_CrystalField_Debris_Perf_01 (group refs dangle) -> validate_spawn_groups.py rc=1 ([validate-spawn-groups]   FAIL: group_0_anchor_0_resolves::enc_lp_Alien_CrystalField_Debris_Perf_01: spawn_anchor_id=enc_lp_Alien_CrystalField_Debris_Perf_01_spawn_0 not in spawn_anchors)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_spawn_anchor::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_spawn_groups.py rc=0 ([validate-spawn-groups] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_cover_anchor::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted cover anchors of cover-required encounter enc_lp_Alien_CrystalField_Debris_Perf_01 -> validate_encounter_archetypes.py rc=1 ([validate-encounter-archetypes]   FAIL: cover_present::enc_lp_Alien_CrystalField_Debris_Perf_01: spec requires cover but cover_anchors is empty)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_cover_anchor::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_encounter_archetypes.py rc=0 ([validate-encounter-archetypes] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_hazard_zone::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted hazard zones of hazard_field encounter enc_lp_Alien_CrystalField_Scatter_Perf_01 -> validate_encounter_archetypes.py rc=1 ([validate-encounter-archetypes]   FAIL: hazard_zones_present::enc_lp_Alien_CrystalField_Scatter_Perf_01: hazard_zones=0 (spec min 1))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_hazard_zone::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_encounter_archetypes.py rc=0 ([validate-encounter-archetypes] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_encounter_state_key::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted every encounter state key of enc_lp_Alien_CrystalField_Debris_Perf_01 -> validate_encounter_state.py rc=1 ([validate-encounter-state]   FAIL: enc_lp_Alien_CrystalField_Debris_Perf_01::spawn_group_0_state_keys_declared: spawn group state_keys not declared on the encounter: ['enc_lp_Alien_CrystalField_Debris)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_encounter_state_key::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_encounter_state.py rc=0 ([validate-encounter-state] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_completion_condition::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted every completion condition of enc_lp_Alien_CrystalField_Debris_Perf_01 -> validate_encounter_contract.py rc=1 ([validate-encounter-contract]   FAIL: has_completion::enc_lp_Alien_CrystalField_Debris_Perf_01: no completion conditions)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_completion_condition::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_encounter_contract.py rc=0 ([validate-encounter-contract] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_reward_hook::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: deleted every reward hook of enc_lp_Alien_CrystalField_Debris_Perf_01 -> validate_encounter_rewards.py rc=1 ([validate-encounter-rewards]   FAIL: enc_lp_Alien_CrystalField_Debris_Perf_01::reward_hooks_present: no reward hooks — encounter resolution grants nothing)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::delete_reward_hook::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_encounter_rewards.py rc=0 ([validate-encounter-rewards] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::corrupt_pressure_budget::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: pressure_budget of enc_lp_Alien_CrystalField_Debris_Perf_01 corrupted to 1.0 -> validate_encounter_pressure.py rc=1 ([validate-encounter-pressure]   FAIL: enc_lp_Alien_CrystalField_Debris_Perf_01::budget_matches_profile: pressure_budget 1.0 != canonical budget 24.0 for profile 'light_pressure')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::corrupt_pressure_budget::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_encounter_pressure.py rc=0 ([validate-encounter-pressure] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::corrupt_difficulty_band::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: difficulty_band of enc_lp_Alien_CrystalField_Debris_Perf_01 corrupted to 'trivial' -> validate_encounter_pressure.py rc=1 ([validate-encounter-pressure]   FAIL: enc_lp_Alien_CrystalField_Debris_Perf_01::stored_band_matches_recomputed: stored difficulty_band 'trivial' != recomputed 'light' (total=11.605))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::corrupt_difficulty_band::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_encounter_pressure.py rc=0 ([validate-encounter-pressure] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::corrupt_playtest_beta_report::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: truncated beta playtest report for enc_lp_Alien_CrystalField_Debris_Perf_01 -> validate_playtest_beta_reports.py rc=1 ([validate-playtest-beta-reports]   FAIL: enc_lp_Alien_CrystalField_Debris_Perf_01::report_present: no parseable beta report — run run_playtest_forge_beta.py)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::corrupt_playtest_beta_report::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_playtest_beta_reports.py rc=0 ([validate-playtest-beta-reports] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::orphan_encounter_record::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: removed catalog record for enc_lp_Alien_CrystalField_Debris_Perf_01 (orphan encounter.json left on disk) -> orphans_on_disk=['enc_lp_Alien_CrystalField_Debris_Perf_01'] catalog_count=119",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::orphan_encounter_record::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (orphans_on_disk=[] catalog_count=120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::duplicate_encounter_record::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: cloned catalog record enc_lp_Alien_CrystalField_Debris_Perf_01 under ghost key __torture_dup_enc_lp_Alien_CrystalField_Debris_Perf_01 (no dir on disk) -> ghost_records=['__torture_dup_enc_lp_Alien_CrystalField_Debris_Perf_01'] catalog_count=121",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::duplicate_encounter_record::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (ghost_records=[] catalog_count=120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::route_blocking_encounter::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: spawns moved onto the required route of enc_lp_Alien_CrystalField_Debris_Perf_01 + blockage target tightened -> validate_encounter_routes.py rc=1 ([validate-encounter-routes]   FAIL: required_route_not_blocked::enc_lp_Alien_CrystalField_Debris_Perf_01: blockage_ratio=1.0 max_route_blockage_ratio=0.05 (must be <=max and <1.0))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::route_blocking_encounter::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_encounter_routes.py rc=0 ([validate-encounter-routes] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::objective_blocking_spawn::detected": {
+      "ok": true,
+      "detail": "corruption DETECTED: spawn anchors of enc_lp_Alien_CrystalField_Debris_Perf_01 moved onto the mission objective -> validate_spawn_groups.py rc=1 ([validate-spawn-groups]   FAIL: group_0_anchor_0_objective_0_clearance::enc_lp_Alien_CrystalField_Debris_Perf_01: anchor enc_lp_Alien_CrystalField_Debris_Perf_01_spawn_0 is 0.0cm from objective_0 (min)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::objective_blocking_spawn::repaired": {
+      "ok": true,
+      "detail": "repair regen ok=True (create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)); post-repair still-flagged=False (validate_spawn_groups.py rc=0 ([validate-spawn-groups] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::destroy_human_owned_dependency_attempt::target_exists": {
+      "ok": true,
+      "detail": "no external (Megascans) asset record to test the guard against",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::destroy_human_owned_dependency_attempt::refused": {
+      "ok": true,
+      "detail": "destroy guard verdict for 'megascans_arid_debris_48ea3af3': allowed=False (ownership_class='third_party_owned' != 'generated_owned')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mode::destroy_human_owned_dependency_attempt::external_catalog_untouched": {
+      "ok": true,
+      "detail": "external asset catalog bytes changed during the destroy attempt",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::none_refused": {
+      "ok": true,
+      "detail": "destroy refused generated-owned encounters (guard misfire): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::all_removed": {
+      "ok": true,
+      "detail": "removed 120 generated-owned encounters (expected 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::catalog_empty": {
+      "ok": true,
+      "detail": "catalog holds 0 record(s) after destroy (expected 0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "destroy::validators_report_zero": {
+      "ok": true,
+      "detail": "validate_encounter_contract rc=1 on empty catalog (expected non-zero) ([validate-encounter-contract]   FAIL: no encounters — run 'make create-encounters' first)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::regen": {
+      "ok": true,
+      "detail": "create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::encounter_count": {
+      "ok": true,
+      "detail": "catalog has 120 encounters (expected 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_encounter_contract": {
+      "ok": true,
+      "detail": "validate_encounter_contract.py rc=0 ([validate-encounter-contract] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_encounter_pressure": {
+      "ok": true,
+      "detail": "validate_encounter_pressure.py rc=0 ([validate-encounter-pressure] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rebuild::validate_playtest_beta_reports": {
+      "ok": true,
+      "detail": "validate_playtest_beta_reports.py rc=0 ([validate-playtest-beta-reports] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::regen": {
+      "ok": true,
+      "detail": "create rc=0 ([create-encounters] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on)); beta rc=0 ([run-playtest-forge-beta] 120/120 encounters completed by the beta harness); balance rc=0 ([run-balance-forge] 120/120 encounters classified by BalanceForge)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::catalog_restored": {
+      "ok": true,
+      "detail": "post-restore catalog has 120 encounters (expected 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_encounter_contract": {
+      "ok": true,
+      "detail": "validate_encounter_contract.py rc=0 ([validate-encounter-contract] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_encounter_pressure": {
+      "ok": true,
+      "detail": "validate_encounter_pressure.py rc=0 ([validate-encounter-pressure] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "final::validate_playtest_beta_reports": {
+      "ok": true,
+      "detail": "validate_playtest_beta_reports.py rc=0 ([validate-playtest-beta-reports] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 52,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "encounter-lifecycle-torture",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": true,
+    "seeds": null,
+    "git_sha": "01dc43976365e5c6b25abecf58535e707f6bb402",
+    "timestamp": "2026-07-04T22:28:34.877330+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 16,
+    "corruption_modes": [
+      "delete_encounter_definition",
+      "delete_spawn_group",
+      "delete_spawn_anchor",
+      "delete_cover_anchor",
+      "delete_hazard_zone",
+      "delete_encounter_state_key",
+      "delete_completion_condition",
+      "delete_reward_hook",
+      "corrupt_pressure_budget",
+      "corrupt_difficulty_band",
+      "corrupt_playtest_beta_report",
+      "orphan_encounter_record",
+      "duplicate_encounter_record",
+      "route_blocking_encounter",
+      "objective_blocking_spawn",
+      "destroy_human_owned_dependency_attempt"
+    ],
+    "expected_encounter_count": 120,
+    "final_encounter_count": 120,
+    "revalidators": [
+      "validate_encounter_contract",
+      "validate_encounter_pressure",
+      "validate_playtest_beta_reports"
+    ]
+  }
+}

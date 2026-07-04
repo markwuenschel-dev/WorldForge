@@ -1,0 +1,255 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_lp_Alien_Plateau_Scatter_Perf_01",
+  "display_name": "Hazard Field \u2014 alien_crystal_badlands",
+  "mission_id": "mission_Alien_Plateau_Scatter_Perf_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alien_crystal_badlands",
+  "mission_archetype": "clear_hazard",
+  "encounter_archetype": "hazard_field",
+  "encounter_profile": "light_pressure",
+  "difficulty_band": "light",
+  "pressure_budget": 24.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 15009,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_lp_Alien_Plateau_Scatter_Perf_01_group_0",
+      "encounter_id": "enc_lp_Alien_Plateau_Scatter_Perf_01",
+      "archetype_tag": "hazard_field",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "hazard_proxy",
+        "ambient_threat"
+      ],
+      "count_min": 1,
+      "count_max": 2,
+      "pressure_value": 1.236,
+      "difficulty_value": 1.03,
+      "spawn_policy": "pre_placed",
+      "spawn_anchor_ids": [
+        "enc_lp_Alien_Plateau_Scatter_Perf_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_lp_Alien_Plateau_Scatter_Perf_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_lp_Alien_Plateau_Scatter_Perf_01_activate",
+      "state_keys": [
+        "enc_lp_Alien_Plateau_Scatter_Perf_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_lp_Alien_Plateau_Scatter_Perf_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        1006.2735050644546,
+        -706.9060052347565,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [
+    {
+      "id": "enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0",
+      "hazard_type": "crystal_resonance",
+      "bounds": {
+        "min": [
+          -904.5358349700517,
+          -3702.823402366099,
+          0.0
+        ],
+        "max": [
+          2295.464165029948,
+          -502.8234023660989,
+          1200.0
+        ]
+      },
+      "visual_marker": "hazard_marker_crystal_resonance"
+    }
+  ],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_lp_Alien_Plateau_Scatter_Perf_01_safe_start",
+      "world_position": [
+        6860.35,
+        2761.98,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_lp_Alien_Plateau_Scatter_Perf_01_safe_mission",
+      "world_position": [
+        1995.77,
+        7416.15,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_lp_Alien_Plateau_Scatter_Perf_01_danger_0",
+      "bounds": {
+        "min": [
+          -193.72649493554536,
+          -1906.9060052347565,
+          0.0
+        ],
+        "max": [
+          2206.2735050644546,
+          493.09399476524345,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_lp_Alien_Plateau_Scatter_Perf_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          7660.35,
+          3561.98,
+          0.0
+        ],
+        [
+          2924.8589999999995,
+          1360.0279999999998,
+          0.0
+        ],
+        [
+          557.1134999999995,
+          259.0519999999997,
+          0.0
+        ]
+      ],
+      "length_cm": 7833.6
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_lp_Alien_Plateau_Scatter_Perf_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          557.1134999999995,
+          259.0519999999997,
+          0.0
+        ],
+        [
+          1995.77,
+          7416.15,
+          0.0
+        ]
+      ],
+      "length_cm": 7300.26
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_lp_Alien_Plateau_Scatter_Perf_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_lp_Alien_Plateau_Scatter_Perf_01_activate",
+      "state_key": "hazard_level",
+      "operator": ">=",
+      "threshold": 0,
+      "trigger": "mission_start"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_lp_Alien_Plateau_Scatter_Perf_01_complete",
+      "state_key": "enc_lp_Alien_Plateau_Scatter_Perf_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_lp_Alien_Plateau_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_lp_Alien_Plateau_Scatter_Perf_01_fail",
+      "state_key": "enc_lp_Alien_Plateau_Scatter_Perf_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_lp_Alien_Plateau_Scatter_Perf_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_lp_Alien_Plateau_Scatter_Perf_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_lp_Alien_Plateau_Scatter_Perf_01_resolved",
+      "hazard_level"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "standard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [],
+  "visual_marker_requirements": [
+    {
+      "target_id": "enc_lp_Alien_Plateau_Scatter_Perf_01_hazard_0",
+      "marker_class": "hazard_marker_crystal_resonance"
+    }
+  ],
+  "bypass_allowed": true,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:df44c60e303dcefc5ae69af3badfc9fe3163ab9a723c43244c2273f51c8e8627",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.115583+00:00",
+    "source_hash": "sha256:df44c60e303dcefc5ae69af3badfc9fe3163ab9a723c43244c2273f51c8e8627"
+  },
+  "provenance_id": "prov_enc_lp_Alien_Plateau_Scatter_Perf_01",
+  "registry_id": "encounter_catalog:enc_lp_Alien_Plateau_Scatter_Perf_01",
+  "encounter_path": "procedural/generated/encounters/enc_lp_Alien_Plateau_Scatter_Perf_01/encounter.json"
+}

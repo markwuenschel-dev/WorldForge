@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.4",
+  "encounter_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01",
+  "display_name": "Extraction Pressure \u2014 alien_crystal_badlands",
+  "mission_id": "mission_Alien_CrystalField_Debris_Photoreal_01",
+  "pack_id": "encounter_loop_world",
+  "biome_family": "alien_crystal_badlands",
+  "mission_archetype": "recover_resource",
+  "encounter_archetype": "extraction_pressure",
+  "encounter_profile": "standard_pressure",
+  "difficulty_band": "standard",
+  "pressure_budget": 40.0,
+  "pacing_target": {
+    "min_first_pressure_cm": 2000.0,
+    "max_route_blockage_ratio": 0.6,
+    "min_cover_per_pressure_point": 0.0
+  },
+  "seed": 15004,
+  "spawn_groups": [
+    {
+      "spawn_group_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_group_0",
+      "encounter_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01",
+      "archetype_tag": "extraction_pressure",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "melee_pressure",
+        "ambusher"
+      ],
+      "count_min": 3,
+      "count_max": 6,
+      "pressure_value": 8.883,
+      "difficulty_value": 1.41,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_CrystalField_Debris_Photoreal_01_spawn_0"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_CrystalField_Debris_Photoreal_01_danger_0"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_CrystalField_Debris_Photoreal_01_resolved"
+      ],
+      "budget_class": "light"
+    },
+    {
+      "spawn_group_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_group_1",
+      "encounter_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01",
+      "archetype_tag": "extraction_pressure",
+      "faction_tag": "hostile_wildlife",
+      "role_tags": [
+        "melee_pressure",
+        "ambusher"
+      ],
+      "count_min": 3,
+      "count_max": 6,
+      "pressure_value": 10.861,
+      "difficulty_value": 1.724,
+      "spawn_policy": "on_activation",
+      "spawn_anchor_ids": [
+        "enc_sp_Alien_CrystalField_Debris_Photoreal_01_spawn_1"
+      ],
+      "allowed_spawn_zones": [
+        "enc_sp_Alien_CrystalField_Debris_Photoreal_01_danger_1"
+      ],
+      "forbidden_spawn_zones": [
+        "player_start",
+        "objective_interaction"
+      ],
+      "activation_condition": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_activate",
+      "state_keys": [
+        "enc_sp_Alien_CrystalField_Debris_Photoreal_01_resolved"
+      ],
+      "budget_class": "light"
+    }
+  ],
+  "spawn_anchors": [
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_spawn_0",
+      "kind": "spawn",
+      "world_position": [
+        4202.290588353014,
+        -1252.2841752400454,
+        0.0
+      ],
+      "valid_spawn": true
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_spawn_1",
+      "kind": "spawn",
+      "world_position": [
+        616.739256048268,
+        -2459.240579330859,
+        0.0
+      ],
+      "valid_spawn": true
+    }
+  ],
+  "patrol_anchors": [],
+  "idle_anchors": [],
+  "ambush_anchors": [],
+  "cover_anchors": [],
+  "hazard_zones": [],
+  "resource_nodes": [],
+  "safe_zones": [
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_safe_start",
+      "world_position": [
+        -7467.95,
+        4387.21,
+        0.0
+      ]
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_safe_mission",
+      "world_position": [
+        -7508.83,
+        -1612.43,
+        0.0
+      ]
+    }
+  ],
+  "danger_zones": [
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_danger_0",
+      "bounds": {
+        "min": [
+          3002.290588353014,
+          -2452.2841752400454,
+          0.0
+        ],
+        "max": [
+          5402.290588353014,
+          -52.28417524004544,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_danger_1",
+      "bounds": {
+        "min": [
+          -583.260743951732,
+          -3659.240579330859,
+          0.0
+        ],
+        "max": [
+          1816.739256048268,
+          -1259.240579330859,
+          1200.0
+        ]
+      }
+    }
+  ],
+  "approach_routes": [
+    {
+      "route_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_approach",
+      "kind": "approach",
+      "waypoints": [
+        [
+          -6667.95,
+          5187.21,
+          0.0
+        ],
+        [
+          1163.8613999999998,
+          -905.405999999999,
+          0.0
+        ],
+        [
+          2400.4631999999992,
+          -1867.3979999999983,
+          0.0
+        ]
+      ],
+      "length_cm": 11489.28
+    }
+  ],
+  "escape_routes": [
+    {
+      "route_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_escape",
+      "kind": "escape",
+      "waypoints": [
+        [
+          2400.4631999999992,
+          -1867.3979999999983,
+          0.0
+        ],
+        [
+          -7508.83,
+          -1612.43,
+          0.0
+        ]
+      ],
+      "length_cm": 9912.57
+    }
+  ],
+  "objective_links": [
+    "objective_1"
+  ],
+  "state_keys": [
+    {
+      "key": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_resolved",
+      "initial": 0,
+      "delta": 1,
+      "expected_final": 1
+    }
+  ],
+  "activation_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_activate",
+      "state_key": "resource_recovered",
+      "operator": ">=",
+      "threshold": 0.9,
+      "trigger": "post_objective"
+    }
+  ],
+  "completion_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_complete",
+      "state_key": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_resolved",
+      "operator": ">=",
+      "threshold": 1,
+      "at_node": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_danger_0"
+    }
+  ],
+  "failure_conditions": [
+    {
+      "condition_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_fail",
+      "state_key": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_resolved",
+      "operator": "<",
+      "threshold": 0,
+      "at_node": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_danger_0"
+    }
+  ],
+  "reward_hooks": [
+    {
+      "reward_id": "enc_sp_Alien_CrystalField_Debris_Photoreal_01_reward",
+      "reward_type": "state_flag",
+      "fires_on": "encounter_resolved"
+    }
+  ],
+  "save_load_contract": {
+    "persist_keys": [
+      "enc_sp_Alien_CrystalField_Debris_Photoreal_01_resolved",
+      "resource_recovered"
+    ],
+    "expect_roundtrip": true
+  },
+  "playtest_contract": {
+    "modes": [
+      "route_playtest",
+      "anchor_playtest",
+      "state_transition_playtest",
+      "save_load_playtest",
+      "budget_safe_playtest",
+      "encounter_pressure_playtest",
+      "encounter_resolution_playtest",
+      "pacing_playtest"
+    ],
+    "expected_completion": true,
+    "max_pressure_band": "hard"
+  },
+  "mesh_dependencies": {
+    "required_families": [],
+    "resolved_mesh_assets": []
+  },
+  "megascans_dependencies": [],
+  "visual_marker_requirements": [],
+  "bypass_allowed": false,
+  "budget_class": "light",
+  "ownership_class": "generated_owned",
+  "source_hash": "sha256:809bc8b8d1d4fe2ee7be25b3488e2700bf4eef715ab42563713067f394849e28",
+  "provenance": {
+    "generator": "create_encounters",
+    "generator_version": "1.4.0",
+    "generated_at_utc": "2026-07-04T22:28:31.110348+00:00",
+    "source_hash": "sha256:809bc8b8d1d4fe2ee7be25b3488e2700bf4eef715ab42563713067f394849e28"
+  },
+  "provenance_id": "prov_enc_sp_Alien_CrystalField_Debris_Photoreal_01",
+  "registry_id": "encounter_catalog:enc_sp_Alien_CrystalField_Debris_Photoreal_01",
+  "encounter_path": "procedural/generated/encounters/enc_sp_Alien_CrystalField_Debris_Photoreal_01/encounter.json"
+}

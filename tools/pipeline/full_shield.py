@@ -532,6 +532,107 @@ def build_missionforge_gates(playtest_on):
     return G
 
 
+def pack_declares_encounterforge(pack):
+    """True if a pack yaml declares EncounterForge (``encounterforge: true``)."""
+    import yaml as _yaml
+    from world_pack_maps import resolve_world_pack_path
+    try:
+        wp_path = resolve_world_pack_path(pack)
+        if not wp_path.is_file():
+            return False
+        data = _yaml.safe_load(wp_path.read_text(encoding="utf-8")) or {}
+    except Exception:
+        return False
+    return bool(data.get("encounterforge"))
+
+
+def build_encounterforge_gates(playtest_beta_on, balance_on):
+    """v1.4 EncounterForge + PlaytestForge Beta + BalanceForge Alpha gates.
+
+    An encounterforge pack (encounter_loop_world) layers encounters over the 60
+    missions of its source pack, so this is an encounter-FOCUSED gate set.
+    Playtest-beta gates run under PLAYTEST=beta; balance gates under BALANCE=1.
+    Until a validator SCRIPT exists it registers as blocking (status=missing)."""
+    id_arg = lambda c: c["pack_id"]
+
+    def rr(command):
+        return lambda c: "procedural/reports/encounters/{}/{}_report.json".format(command, command)
+
+    G = []
+    G.append(gate("create-encounter-pack", "Create encounter pack", "encounter",
+                  FailureCode.ENCOUNTER_CONTRACT_FAILURE, "create_encounter_pack.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  report=rr("create_encounter_pack")))
+    G.append(gate("create-encounters", "Create encounters", "encounter",
+                  FailureCode.ENCOUNTER_CONTRACT_FAILURE, "create_encounters.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  report=rr("create_encounters")))
+    encounter_gates = [
+        ("validate-encounter-contract", FailureCode.ENCOUNTER_CONTRACT_FAILURE, "validate_encounter_contract.py"),
+        ("validate-encounter-archetypes", FailureCode.ENCOUNTER_ARCHETYPE_FAILURE, "validate_encounter_archetypes.py"),
+        ("validate-spawn-groups", FailureCode.ENCOUNTER_SPAWN_GROUP_FAILURE, "validate_spawn_groups.py"),
+        ("validate-encounter-anchors", FailureCode.ENCOUNTER_ANCHOR_FAILURE, "validate_encounter_anchors.py"),
+        ("validate-encounter-routes", FailureCode.ENCOUNTER_ROUTE_FAILURE, "validate_encounter_routes.py"),
+        ("validate-encounter-pressure", FailureCode.ENCOUNTER_PRESSURE_FAILURE, "validate_encounter_pressure.py"),
+        ("validate-encounter-pacing", FailureCode.ENCOUNTER_PACING_FAILURE, "validate_encounter_pacing.py"),
+        ("validate-encounter-biome-compatibility", FailureCode.ENCOUNTER_BIOME_COMPATIBILITY_FAILURE, "validate_encounter_biome_compatibility.py"),
+        ("validate-encounter-mission-compatibility", FailureCode.ENCOUNTER_MISSION_COMPATIBILITY_FAILURE, "validate_encounter_mission_compatibility.py"),
+        ("validate-encounter-mesh-dependencies", FailureCode.ENCOUNTER_MESH_DEPENDENCY_FAILURE, "validate_encounter_mesh_dependencies.py"),
+        ("validate-encounter-cover", FailureCode.ENCOUNTER_MESH_DEPENDENCY_FAILURE, "validate_encounter_cover.py"),
+        ("validate-encounter-hazards", FailureCode.ENCOUNTER_BIOME_COMPATIBILITY_FAILURE, "validate_encounter_hazards.py"),
+        ("validate-encounter-resources", FailureCode.ENCOUNTER_REWARD_FAILURE, "validate_encounter_resources.py"),
+        ("validate-encounter-state", FailureCode.ENCOUNTER_STATE_FAILURE, "validate_encounter_state.py"),
+        ("validate-encounter-save-load", FailureCode.ENCOUNTER_SAVE_LOAD_FAILURE, "validate_encounter_save_load.py"),
+        ("validate-encounter-rewards", FailureCode.ENCOUNTER_REWARD_FAILURE, "validate_encounter_rewards.py"),
+    ]
+    for gid, code, script in encounter_gates:
+        command = script.replace(".py", "")
+        G.append(gate(gid, gid.replace("-", " ").title(), "encounter", code, script,
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr(command)))
+    if playtest_beta_on:
+        G.append(gate("validate-playtest-beta-contract", "Validate playtest beta contract",
+                      "playtest_beta", FailureCode.PLAYTEST_BETA_CONTRACT_FAILURE,
+                      "validate_playtest_beta_contract.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=rr("validate_playtest_beta_contract")))
+        G.append(gate("run-playtest-forge-beta", "Run PlaytestForge Beta", "playtest_beta",
+                      FailureCode.PLAYTEST_BETA_COMPLETION_FAILURE, "run_playtest_forge_beta.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=rr("run_playtest_forge_beta")))
+        G.append(gate("validate-playtest-beta-reports", "Validate playtest beta reports",
+                      "playtest_beta", FailureCode.PLAYTEST_BETA_REPORT_FAILURE,
+                      "validate_playtest_beta_reports.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=rr("validate_playtest_beta_reports")))
+    if balance_on:
+        G.append(gate("validate-balance-contract", "Validate balance contract", "balance",
+                      FailureCode.BALANCE_CONTRACT_FAILURE, "validate_balance_contract.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=rr("validate_balance_contract")))
+        G.append(gate("run-balance-forge", "Run BalanceForge", "balance",
+                      FailureCode.ENCOUNTER_BALANCE_FAILURE, "run_balance_forge.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=rr("run_balance_forge")))
+        G.append(gate("validate-balance-reports", "Validate balance reports", "balance",
+                      FailureCode.BALANCE_REPORT_FAILURE, "validate_balance_reports.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=rr("validate_balance_reports")))
+    # encounter negative + fuzz + torture + report integrity.
+    G.append(gate("encounter-negative-validators", "Encounter negative validators", "encounter",
+                  FailureCode.ENCOUNTER_CONTRACT_FAILURE, "test_negative_encounter.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"])))
+    G.append(gate("fuzz-encounter-matrix", "Fuzz encounter matrix", "encounter",
+                  FailureCode.ENCOUNTER_CONTRACT_FAILURE, "fuzz_encounter_matrix.py",
+                  lambda c: ["--pack", id_arg(c), "--cases", str(c["cases"])] + _s(c["strict"])))
+    G.append(gate("encounter-lifecycle-torture", "Encounter lifecycle torture", "encounter",
+                  FailureCode.ENCOUNTER_LIFECYCLE_FAILURE, "encounter_lifecycle_torture.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), torture_only=True))
+    G.append(gate("encounter-report-integrity", "Encounter report integrity", "encounter",
+                  FailureCode.REPORT_INTEGRITY_FAILURE, "validate_report_integrity.py",
+                  lambda c: ["--pack", id_arg(c), "--encounters"] + _s(c["strict"])))
+    return G
+
+
 def pack_declares_biomes(pack):
     """True if a world pack yaml declares BiomeForge (``biome_families:`` list or
     ``biomeforge: true``). Used to conditionally include the v1.1 gates."""
@@ -626,6 +727,12 @@ def main(argv=None):
                     help="Include v1.3 PlaytestForge gates (also via PLAYTEST=1).")
     ap.add_argument("--visuals", action="store_true",
                     help="Include v1.3.5 VisualFidelity gates (also via VISUALS=1).")
+    ap.add_argument("--encounters", action="store_true",
+                    help="Include v1.4 EncounterForge gates (also via ENCOUNTERS=1).")
+    ap.add_argument("--playtest-beta", action="store_true",
+                    help="Include v1.4 PlaytestForge Beta gates (also via PLAYTEST=beta).")
+    ap.add_argument("--balance", action="store_true",
+                    help="Include v1.4 BalanceForge Alpha gates (also via BALANCE=1).")
     ap.add_argument("--timeout", type=int, default=1800)
     ap.add_argument("--no-build", action="store_true",
                     help="Skip the heavy create-world-pack rebuild gate (validation-only run).")
@@ -637,13 +744,21 @@ def main(argv=None):
     torture = args.torture or flag_from_env("TORTURE")
 
     missionforge = pack_declares_missionforge(args.pack)
+    encounterforge = pack_declares_encounterforge(args.pack)
     missions_on = args.missions or flag_from_env("MISSIONS") or missionforge
-    playtest_on = args.playtest or flag_from_env("PLAYTEST")
+    encounters_on = args.encounters or flag_from_env("ENCOUNTERS") or encounterforge
+    # PLAYTEST=beta is a mode value, not a boolean flag (cf. HOUDINI=metadata_only).
+    playtest_beta_on = args.playtest_beta or (
+        os.environ.get("PLAYTEST", "").strip().lower() == "beta")
+    # Beta layers on Alpha: PLAYTEST=beta keeps the v1.3 alpha playtest gates on.
+    playtest_on = args.playtest or flag_from_env("PLAYTEST") or playtest_beta_on
+    balance_on = args.balance or flag_from_env("BALANCE")
 
-    # Resolve world_pack_id from the pack yaml. A missionforge pack layers missions
-    # over a source pack and owns no maps of its own, so enumerate_maps is bypassed.
+    # Resolve world_pack_id from the pack yaml. A missionforge/encounterforge pack
+    # layers over a source pack and owns no maps of its own, so enumerate_maps is
+    # bypassed.
     from world_pack_maps import enumerate_maps
-    if missionforge:
+    if missionforge or encounterforge:
         world_pack_id, maps = args.pack, []
     else:
         try:
@@ -662,10 +777,36 @@ def main(argv=None):
         world_pack_id, strict, deep, torture, args.seeds))
     print("=" * 70)
 
+    # v1.4 — an encounterforge pack runs an encounter-FOCUSED shield: encounter +
+    # playtest-beta + balance gates layered over the mission gate block (MISSIONS=1
+    # keeps the 60-mission substrate proven inside the same shield), plus optional
+    # visual/mesh/megascans gates. The 33 world-gen gates belong to the source
+    # packs, exercised by the regression gates.
+    if encounterforge:
+        import houdini_contract  # noqa: E402
+        ctx["biomeforge"] = False
+        ctx["meshes"] = args.meshes or flag_from_env("MESHES")
+        ctx["houdini_mode"] = houdini_contract.houdini_mode_from_env()
+        ctx["megascans"] = flag_from_env("MEGASCANS")
+        ctx["visuals"] = args.visuals or flag_from_env("VISUALS")
+        registry = build_encounterforge_gates(playtest_beta_on, balance_on)
+        if missions_on:
+            registry = build_missionforge_gates(playtest_on) + registry
+        if ctx["visuals"]:
+            registry = registry + build_visualforge_gates()
+        if ctx["meshes"]:
+            registry = (build_meshforge_gates()
+                        + build_source_gates(ctx["houdini_mode"], ctx["megascans"])
+                        + registry)
+        print("EncounterForge pack — %d gate(s) active (missions=%s, playtest=%s, "
+              "playtest_beta=%s, balance=%s, visuals=%s, meshes=%s, megascans=%s)." % (
+                  len(registry), bool(missions_on), bool(playtest_on),
+                  bool(playtest_beta_on), bool(balance_on), bool(ctx["visuals"]),
+                  bool(ctx["meshes"]), bool(ctx["megascans"])))
     # v1.3 — a missionforge pack runs a mission-FOCUSED shield (missions +
     # playtest + optional mesh/megascans gates), NOT the 33 world-gen gates
     # (those belong to its source pack, exercised by the regression gate).
-    if missionforge:
+    elif missionforge:
         import houdini_contract  # noqa: E402
         ctx["biomeforge"] = False
         ctx["meshes"] = args.meshes or flag_from_env("MESHES")
@@ -688,7 +829,7 @@ def main(argv=None):
     # does not declare biomes, so its 33-gate v1.0x contract is unchanged.
     # A missionforge pack lists biome_families for context but is NOT a biome
     # world pack, so it skips the biome/mesh splice blocks entirely.
-    ctx["biomeforge"] = (not missionforge) and pack_declares_biomes(args.pack)
+    ctx["biomeforge"] = (not (missionforge or encounterforge)) and pack_declares_biomes(args.pack)
     if ctx["biomeforge"]:
         # Biome packs are not desert/industrial; use the biome-neutral runtime
         # scenario unless the operator explicitly overrode --scenario.
@@ -709,11 +850,11 @@ def main(argv=None):
     # v1.2 — splice in MeshForge Intake gates when MESHES=1. They append after the
     # regression matrix and before the final report-integrity gate, so mesh
     # failures roll up by lane and the final integrity scan sees mesh reports.
-    ctx["meshes"] = (not missionforge) and (args.meshes or flag_from_env("MESHES"))
+    ctx["meshes"] = (not (missionforge or encounterforge)) and (args.meshes or flag_from_env("MESHES"))
     # v1.2 addendum — Houdini/Megascans source flags. HOUDINI may be '1'/'live'
     # or 'metadata_only'; MEGASCANS is a plain flag.
     import houdini_contract  # noqa: E402
-    if not missionforge:
+    if not (missionforge or encounterforge):
         ctx["houdini_mode"] = houdini_contract.houdini_mode_from_env()
         ctx["megascans"] = flag_from_env("MEGASCANS")
     if ctx["meshes"]:
