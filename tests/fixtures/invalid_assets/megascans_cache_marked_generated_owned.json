@@ -1,0 +1,14 @@
+{
+  "case": "megascans_cache_marked_generated_owned",
+  "family": "ownership",
+  "record_type": "quarantine",
+  "owning_validator": "validate_asset_quarantine.py",
+  "expected_code": "ASSET_OWNERSHIP_FAILURE",
+  "description": "Megascans raw cache record mislabeled generated_owned (ownership conflict)",
+  "patch": {
+    "set": {
+      "generated_owned": true,
+      "ownership_class": ""
+    }
+  }
+}

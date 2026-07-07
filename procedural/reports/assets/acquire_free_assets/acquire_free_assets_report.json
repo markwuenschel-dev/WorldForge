@@ -1,0 +1,154 @@
+{
+  "free_acquisition": "polyhaven",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "source_is_free_approved": {
+      "ok": true,
+      "detail": "acquire_free_assets only runs free-approved (non-paid) sources",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "cc0_only": {
+      "ok": true,
+      "detail": "free-download source must be CC0-only",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "adapter_cannot_delete_source": {
+      "ok": true,
+      "detail": "adapter must not delete its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "candidate::cand_polyhaven_direct_download_3a29bb3b20ef": {
+      "ok": true,
+      "detail": "schema ok",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "quarantine::q_polyhaven_direct_download_34fafe838c5d": {
+      "ok": true,
+      "detail": "schema ok",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real_content_hash::cand_polyhaven_direct_download_3a29bb3b20ef": {
+      "ok": true,
+      "detail": "downloaded asset must carry a real content sha256",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "candidate::cand_polyhaven_direct_download_384ce17d2261": {
+      "ok": true,
+      "detail": "schema ok",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "quarantine::q_polyhaven_direct_download_fce6933aea38": {
+      "ok": true,
+      "detail": "schema ok",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real_content_hash::cand_polyhaven_direct_download_384ce17d2261": {
+      "ok": true,
+      "detail": "downloaded asset must carry a real content sha256",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "candidate::cand_polyhaven_direct_download_01f61f736b46": {
+      "ok": true,
+      "detail": "schema ok",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "quarantine::q_polyhaven_direct_download_80a0577fa360": {
+      "ok": true,
+      "detail": "schema ok",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real_content_hash::cand_polyhaven_direct_download_01f61f736b46": {
+      "ok": true,
+      "detail": "downloaded asset must carry a real content sha256",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "acquisition_attempted": {
+      "ok": true,
+      "detail": "no candidates produced and network state unknown",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 13,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "acquire-free-assets",
+    "pack": "polyhaven",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T22:32:10.692112+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.asset.download_report.v1",
+    "report_id": "wf.asset.download_report.v1:b9e41ccf68b8",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 3,
+    "records_total": 3,
+    "records_passed": 3,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "live_download": true,
+    "network_ok": true,
+    "network_note": "live network OK",
+    "downloaded_count": 3,
+    "quarantined_count": 3,
+    "manual_fallback_count": 0,
+    "total_bytes": 2955919,
+    "notes": []
+  }
+}

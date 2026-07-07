@@ -62,6 +62,47 @@ def _hash(*parts):
     return "sha256:" + hashlib.sha256("|".join(str(p) for p in parts).encode("utf-8")).hexdigest()
 
 
+def representative_source_file(asset_dir):
+    """Return the most representative real source file for content hashing.
+
+    Prefers the actual gltf mesh (small, canonical), then the Fab metadata JSON,
+    then the first texture/binary present. Returns a Path or None. Read-only —
+    NEVER mutates the cache.
+    """
+    asset_dir = Path(asset_dir)
+    for f in sorted(asset_dir.glob("gltf/high/**/*.gltf")):
+        if f.is_file():
+            return f
+    meta = asset_dir / "gltf" / "high" / "metadata"
+    if meta.is_file():
+        return meta
+    for f in sorted(asset_dir.glob("gltf/high/**/*")):
+        if f.is_file():
+            return f
+    return None
+
+
+def content_sha256(asset_dir):
+    """Real sha256 of a representative source file's bytes as ``sha256:<hex>``.
+
+    This is the ADDITIVE content hash (v1.5): unlike ``source_path_hash`` (which
+    hashes only path|uid), this hashes the ACTUAL gltf/texture bytes on disk so a
+    quarantine/provenance record can prove file identity, not just path identity.
+    Returns None when no readable source file exists.
+    """
+    f = representative_source_file(asset_dir)
+    if f is None:
+        return None
+    h = hashlib.sha256()
+    try:
+        with f.open("rb") as fh:
+            for chunk in iter(lambda: fh.read(1 << 20), b""):
+                h.update(chunk)
+    except OSError:
+        return None
+    return "sha256:" + h.hexdigest()
+
+
 def _read_json(path):
     try:
         with Path(path).open("r", encoding="utf-8") as fh:
@@ -106,6 +147,12 @@ def build_external_record(asset_dir, lib_block, library_root):
         "library_root_alias": asset_config.library_root_alias("megascans"),
         "source_path": rel_path,
         "source_path_hash": _hash(rel_path, uid),
+        # v1.5 ADDITIVE: real content hash of the actual gltf/texture bytes.
+        # Existing source_path_hash (path|uid) is unchanged; this is a new field.
+        "source_content_hash": content_sha256(asset_dir),
+        "source_content_file": (
+            representative_source_file(asset_dir).relative_to(asset_dir).as_posix()
+            if representative_source_file(asset_dir) is not None else None),
         "asset_name": name,
         "asset_category": (categories[0] if categories else asset_type),
         "asset_type": asset_type,

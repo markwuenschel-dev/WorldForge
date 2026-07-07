@@ -1,0 +1,69 @@
+{
+  "asset_need_id": "need_encounter_loop_world_cover_wetland_mire_rock_outcrop_half_height",
+  "pack": "encounter_loop_world",
+  "source_module": "encounter_forge",
+  "priority": "P1",
+  "biome_tags": [
+    "wetland_mire"
+  ],
+  "terrain_tags": [
+    "cover_anchor",
+    "route_edge"
+  ],
+  "mission_tags": [],
+  "encounter_tags": [
+    "cover_replacement",
+    "rock_outcrop"
+  ],
+  "usage_tags": [
+    "encounter_cover",
+    "v1.4x_proxy_replacement"
+  ],
+  "asset_type": "3d_mesh",
+  "required_count": 48,
+  "current_count": 0,
+  "minimum_quality_tier": "game_ready",
+  "physical_requirements": {
+    "height_class": "half_height",
+    "collision": "BlockAll",
+    "max_extent_cm": 600
+  },
+  "visual_requirements": {
+    "biome_read": "wetland_mire",
+    "cover_family": "rock_outcrop"
+  },
+  "collision_required": true,
+  "material_required": true,
+  "ue_materialization_required": true,
+  "preferred_sources": [
+    "internal_generated",
+    "local_megascans_cache",
+    "polyhaven"
+  ],
+  "allowed_license_families": [
+    "cc0",
+    "fab_standard",
+    "project_owned",
+    "generated_owned"
+  ],
+  "disallowed_license_families": [
+    "unknown",
+    "editorial_only",
+    "noncommercial_only"
+  ],
+  "free_ok": true,
+  "paid_ok": true,
+  "manual_acquisition_allowed": true,
+  "download_automation_allowed": false,
+  "package_policy": "project_incorporated_content_only",
+  "validation_requirements": [
+    "collision",
+    "bounds",
+    "material_binding"
+  ],
+  "created_by": "analyze_asset_gaps",
+  "created_at": "generated@922c4b6",
+  "schema_version": "1.5",
+  "display_name": "Cover mesh — wetland_mire / rock_outcrop / half_height",
+  "rationale": "Replace 48 v1.4x proxy cover anchors (rock_outcrop / half_height) in biome wetland_mire with catalog-backed, collision-bearing meshes."
+}

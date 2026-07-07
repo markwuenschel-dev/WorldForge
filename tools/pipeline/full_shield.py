@@ -403,11 +403,16 @@ def build_source_gates(houdini_mode, megascans_on):
     return G
 
 
-def build_visualforge_gates():
+def build_visualforge_gates(include_v1_5_kits=False):
     """v1.3.5 VisualFidelityForge gates. Spliced into a missionforge shield when
     VISUALS=1. Materializes the environment rig + surface/dressing/coverage and
     validates fidelity without breaking playability/budget/lifecycle. Until a
-    validator SCRIPT exists it registers as blocking (status=missing)."""
+    validator SCRIPT exists it registers as blocking (status=missing).
+
+    The v1.5 VisualEnvironmentForge biome-kit gates (which include a fail-closed
+    inspection-screenshot gate needing a live UE capture) are added ONLY when
+    include_v1_5_kits=True — i.e. on the v1.5 materialize shield — so a prior-pack
+    shield run with plain VISUALS=1 (mission/biome) is not regressed by v1.5 work."""
     id_arg = lambda c: c["pack_id"]
 
     def rr(command):
@@ -446,6 +451,26 @@ def build_visualforge_gates():
         command = script.replace(".py", "")
         G.append(gate(gid, gid.replace("-", " ").title(), "visual", code, script,
                       lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr(command)))
+    # v1.5 VisualEnvironmentForge — biome visual kits composed from the v1.3.5
+    # profile system, materialized live, with per-zone readability + density +
+    # inspection-evidence gates. Registers blocking (missing) until each script
+    # exists; the inspection gate is fail-closed until the live UE capture runs.
+    # Gated on the v1.5 materialize lane so prior VISUALS-only shields are clean.
+    if include_v1_5_kits:
+        G.append(gate("create-visual-environment-kits", "Create visual environment kits", "visual",
+                      FailureCode.VISUAL_KIT_CONTRACT_FAILURE, "create_visual_environment_kits.py",
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                      report=rr("create_visual_environment_kits")))
+        v1_5_visual_gates = [
+            ("validate-visual-kit-schema", FailureCode.VISUAL_KIT_SCHEMA_FAILURE, "validate_visual_kit.py"),
+            ("validate-biome-visual-readability", FailureCode.VISUAL_ROUTE_READABILITY_FAILURE, "validate_biome_visual_readability.py"),
+            ("validate-visual-density-budgets", FailureCode.VISUAL_DENSITY_BUDGET_FAILURE, "validate_visual_density_budgets.py"),
+            ("visual-inspection-report", FailureCode.VISUAL_SCREENSHOT_REPORT_FAILURE, "validate_visual_inspection_report.py"),
+        ]
+        for gid, code, script in v1_5_visual_gates:
+            command = script.replace(".py", "")
+            G.append(gate(gid, gid.replace("-", " ").title(), "visual", code, script,
+                          lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr(command)))
     G.append(gate("visual-negative-validators", "Visual negative validators", "visual",
                   FailureCode.VISUAL_READABILITY_FAILURE, "test_negative_visual.py",
                   lambda c: ["--pack", id_arg(c)] + _s(c["strict"])))
@@ -455,6 +480,110 @@ def build_visualforge_gates():
     G.append(gate("visual-report-integrity", "Visual report integrity", "visual",
                   FailureCode.REPORT_INTEGRITY_FAILURE, "validate_report_integrity.py",
                   lambda c: ["--pack", id_arg(c), "--visuals"] + _s(c["strict"])))
+    return G
+
+
+def build_assetforge_gates():
+    """v1.5 AssetAcquisitionForge gates. Spliced when ASSETS=1. Gap analysis →
+    procurement → source-adapter policy → quarantine → license/provenance/hash →
+    catalog → package policy, plus acquisition negatives + report integrity.
+    Until a validator SCRIPT exists it registers as blocking (status=missing) so
+    the shield is honest about the unfinished lane."""
+    id_arg = lambda c: c["pack_id"]
+
+    def rr(command):
+        return lambda c: "procedural/reports/assets/{}/{}_report.json".format(command, command)
+
+    G = []
+    # generate first: gap report -> procurement manifest.
+    G.append(gate("asset-gap-report", "Asset gap report", "assets",
+                  FailureCode.ASSET_NEED_ANALYSIS_FAILURE, "analyze_asset_gaps.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  report=rr("analyze_asset_gaps")))
+    G.append(gate("asset-procurement-manifest", "Asset procurement manifest", "assets",
+                  FailureCode.ASSET_PROCUREMENT_MANIFEST_FAILURE, "create_procurement_manifest.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  report=rr("create_procurement_manifest")))
+    # contract/schema validators (pack-independent, but keyed on --pack for reports).
+    schema_gates = [
+        ("validate-asset-need-schema", FailureCode.ASSET_NEED_SCHEMA_FAILURE, "validate_asset_need.py"),
+        ("validate-asset-procurement-schema", FailureCode.ASSET_PROCUREMENT_MANIFEST_FAILURE, "validate_asset_procurement.py"),
+        ("validate-asset-candidate-schema", FailureCode.ASSET_CANDIDATE_SCHEMA_FAILURE, "validate_asset_candidate.py"),
+        ("validate-asset-approval-schema", FailureCode.ASSET_APPROVAL_STATE_FAILURE, "validate_asset_approval.py"),
+        ("validate-asset-quarantine-schema", FailureCode.ASSET_QUARANTINE_SCHEMA_FAILURE, "validate_asset_quarantine_schema.py"),
+        ("validate-asset-catalog-schema", FailureCode.ASSET_CATALOG_FAILURE, "validate_asset_catalog_schema.py"),
+        ("validate-v1-5-taxonomy", FailureCode.V1_5_TAXONOMY_FAILURE, "validate_v1_5_taxonomy.py"),
+    ]
+    for gid, code, script in schema_gates:
+        command = script.replace(".py", "")
+        G.append(gate(gid, gid.replace("-", " ").title(), "assets", code, script,
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr(command)))
+    # policy + intake validators.
+    intake_gates = [
+        ("validate-source-adapters", FailureCode.ASSET_SOURCE_ADAPTER_FAILURE, "validate_source_adapters.py"),
+        ("asset-quarantine-validators", FailureCode.ASSET_QUARANTINE_FAILURE, "validate_asset_quarantine.py"),
+        ("validate-asset-licenses", FailureCode.ASSET_LICENSE_MISSING, "validate_asset_licenses.py"),
+        ("validate-asset-provenance", FailureCode.ASSET_PROVENANCE_MISSING, "validate_asset_provenance.py"),
+        ("validate-asset-hashes", FailureCode.ASSET_HASH_MISMATCH, "validate_asset_hashes.py"),
+        ("asset-catalog-validators", FailureCode.ASSET_CATALOG_FAILURE, "validate_asset_catalog.py"),
+        ("validate-asset-package-policy", FailureCode.ASSET_PACKAGE_POLICY_FAILURE, "validate_asset_package_policy.py"),
+    ]
+    for gid, code, script in intake_gates:
+        command = script.replace(".py", "")
+        G.append(gate(gid, gid.replace("-", " ").title(), "assets", code, script,
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr(command)))
+    # negatives + report integrity.
+    G.append(gate("asset-acquisition-negative-validators", "Asset acquisition negatives", "assets",
+                  FailureCode.ASSET_NEGATIVE_FIXTURE_FAILURE, "test_negative_assets.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"])))
+    G.append(gate("asset-source-torture", "Asset source torture", "assets",
+                  FailureCode.ASSET_QUARANTINE_BYPASS, "asset_source_torture.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), torture_only=True))
+    G.append(gate("asset-report-integrity", "Asset report integrity", "assets",
+                  FailureCode.V1_5_REPORT_INTEGRITY_FAILURE, "validate_report_integrity.py",
+                  lambda c: ["--pack", id_arg(c), "--assets"] + _s(c["strict"])))
+    return G
+
+
+def build_realizationforge_gates():
+    """v1.5 AssetRealizationForge gates. Spliced when MATERIALIZE=1. Generated-
+    owned baseline cover meshes -> import approved third-party -> hybrid cube→real
+    replacement -> validate materialization/dependencies/cover semantics. The
+    headless resolvers here write plans/bindings + read the UE-driver reports; the
+    live editor import/spawn runs via tools/unreal drivers. Until a SCRIPT exists a
+    gate registers as blocking (status=missing)."""
+    id_arg = lambda c: c["pack_id"]
+
+    def rr(command):
+        return lambda c: "procedural/reports/realization/{}/{}_report.json".format(command, command)
+
+    G = []
+    # generate: guaranteed generated-owned baseline cover per family (hybrid rule).
+    G.append(gate("generate-owned-cover-meshes", "Generate owned cover meshes", "realization",
+                  FailureCode.COVER_BASELINE_MISSING, "generate_owned_cover_meshes.py",
+                  lambda c: ["--pack", id_arg(c)] + _s(c["strict"]),
+                  report=rr("generate_owned_cover_meshes")))
+    G.append(gate("asset-materialize-ue", "Materialize approved assets in UE", "realization",
+                  FailureCode.ASSET_UE_MATERIALIZATION_FAILURE, "materialize_assets.py",
+                  lambda c: ["--pack", id_arg(c), "--approved-only"] + _s(c["strict"]),
+                  report=rr("materialize_assets")))
+    G.append(gate("visual-cover-replacement", "Replace cover proxies", "realization",
+                  FailureCode.COVER_PROXY_REPLACEMENT_FAILURE, "replace_cover_proxies.py",
+                  lambda c: ["--pack", id_arg(c), "--approved-only"] + _s(c["strict"]),
+                  report=rr("replace_cover_proxies")))
+    real_gates = [
+        ("validate-cover-binding-schema", FailureCode.COVER_BINDING_SCHEMA_FAILURE, "validate_cover_binding.py"),
+        ("validate-ue-materialization", FailureCode.ASSET_UE_MATERIALIZATION_FAILURE, "validate_ue_materialization.py"),
+        ("validate-asset-dependencies", FailureCode.ASSET_DEPENDENCY_FAILURE, "validate_asset_dependencies.py"),
+        ("validate-cover-real-meshes", FailureCode.COVER_PROXY_REPLACEMENT_FAILURE, "validate_cover_replacement.py"),
+    ]
+    for gid, code, script in real_gates:
+        command = script.replace(".py", "")
+        G.append(gate(gid, gid.replace("-", " ").title(), "realization", code, script,
+                      lambda c: ["--pack", id_arg(c)] + _s(c["strict"]), report=rr(command)))
+    G.append(gate("realization-report-integrity", "Realization report integrity", "realization",
+                  FailureCode.V1_5_REPORT_INTEGRITY_FAILURE, "validate_report_integrity.py",
+                  lambda c: ["--pack", id_arg(c), "--materialize"] + _s(c["strict"])))
     return G
 
 
@@ -733,6 +862,10 @@ def main(argv=None):
                     help="Include v1.4 PlaytestForge Beta gates (also via PLAYTEST=beta).")
     ap.add_argument("--balance", action="store_true",
                     help="Include v1.4 BalanceForge Alpha gates (also via BALANCE=1).")
+    ap.add_argument("--assets", action="store_true",
+                    help="Include v1.5 AssetAcquisitionForge gates (also via ASSETS=1).")
+    ap.add_argument("--materialize", action="store_true",
+                    help="Include v1.5 AssetRealizationForge gates (also via MATERIALIZE=1).")
     ap.add_argument("--timeout", type=int, default=1800)
     ap.add_argument("--no-build", action="store_true",
                     help="Skip the heavy create-world-pack rebuild gate (validation-only run).")
@@ -753,6 +886,10 @@ def main(argv=None):
     # Beta layers on Alpha: PLAYTEST=beta keeps the v1.3 alpha playtest gates on.
     playtest_on = args.playtest or flag_from_env("PLAYTEST") or playtest_beta_on
     balance_on = args.balance or flag_from_env("BALANCE")
+    # v1.5 lane flags. VISUAL is accepted as an alias for VISUALS (the v1.5 shield
+    # target spells it VISUAL=1); assets/materialize are net-new.
+    assets_on = args.assets or flag_from_env("ASSETS")
+    materialize_on = args.materialize or flag_from_env("MATERIALIZE")
 
     # Resolve world_pack_id from the pack yaml. A missionforge/encounterforge pack
     # layers over a source pack and owns no maps of its own, so enumerate_maps is
@@ -788,20 +925,28 @@ def main(argv=None):
         ctx["meshes"] = args.meshes or flag_from_env("MESHES")
         ctx["houdini_mode"] = houdini_contract.houdini_mode_from_env()
         ctx["megascans"] = flag_from_env("MEGASCANS")
-        ctx["visuals"] = args.visuals or flag_from_env("VISUALS")
+        ctx["visuals"] = args.visuals or flag_from_env("VISUALS") or flag_from_env("VISUAL")
         registry = build_encounterforge_gates(playtest_beta_on, balance_on)
         if missions_on:
             registry = build_missionforge_gates(playtest_on) + registry
         if ctx["visuals"]:
-            registry = registry + build_visualforge_gates()
+            registry = registry + build_visualforge_gates(include_v1_5_kits=materialize_on)
+        # v1.5 — acquisition substrate before realization (realization consumes the
+        # approved catalog), both after the encounter/mission/visual gates.
+        if assets_on:
+            registry = registry + build_assetforge_gates()
+        if materialize_on:
+            registry = registry + build_realizationforge_gates()
         if ctx["meshes"]:
             registry = (build_meshforge_gates()
                         + build_source_gates(ctx["houdini_mode"], ctx["megascans"])
                         + registry)
         print("EncounterForge pack — %d gate(s) active (missions=%s, playtest=%s, "
-              "playtest_beta=%s, balance=%s, visuals=%s, meshes=%s, megascans=%s)." % (
+              "playtest_beta=%s, balance=%s, visuals=%s, assets=%s, materialize=%s, "
+              "meshes=%s, megascans=%s)." % (
                   len(registry), bool(missions_on), bool(playtest_on),
                   bool(playtest_beta_on), bool(balance_on), bool(ctx["visuals"]),
+                  bool(assets_on), bool(materialize_on),
                   bool(ctx["meshes"]), bool(ctx["megascans"])))
     # v1.3 — a missionforge pack runs a mission-FOCUSED shield (missions +
     # playtest + optional mesh/megascans gates), NOT the 33 world-gen gates
@@ -812,16 +957,21 @@ def main(argv=None):
         ctx["meshes"] = args.meshes or flag_from_env("MESHES")
         ctx["houdini_mode"] = houdini_contract.houdini_mode_from_env()
         ctx["megascans"] = flag_from_env("MEGASCANS")
-        ctx["visuals"] = args.visuals or flag_from_env("VISUALS")
+        ctx["visuals"] = args.visuals or flag_from_env("VISUALS") or flag_from_env("VISUAL")
         registry = build_missionforge_gates(playtest_on)
         if ctx["visuals"]:
-            registry = registry + build_visualforge_gates()
+            registry = registry + build_visualforge_gates(include_v1_5_kits=materialize_on)
+        if assets_on:
+            registry = registry + build_assetforge_gates()
+        if materialize_on:
+            registry = registry + build_realizationforge_gates()
         if ctx["meshes"]:
             registry = (build_meshforge_gates()
                         + build_source_gates(ctx["houdini_mode"], ctx["megascans"])
                         + registry)
-        print("MissionForge pack — %d gate(s) active (playtest=%s, visuals=%s, meshes=%s, megascans=%s)." % (
-            len(registry), bool(playtest_on), bool(ctx["visuals"]), bool(ctx["meshes"]), bool(ctx["megascans"])))
+        print("MissionForge pack — %d gate(s) active (playtest=%s, visuals=%s, assets=%s, materialize=%s, meshes=%s, megascans=%s)." % (
+            len(registry), bool(playtest_on), bool(ctx["visuals"]), bool(assets_on),
+            bool(materialize_on), bool(ctx["meshes"]), bool(ctx["megascans"])))
     else:
         registry = build_registry()
 

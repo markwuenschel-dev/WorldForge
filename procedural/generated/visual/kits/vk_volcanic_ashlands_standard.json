@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.5",
+  "visual_kit_id": "vk_volcanic_ashlands_standard",
+  "display_name": "Volcanic Ashlands — standard visual kit",
+  "biome": "volcanic_ashlands",
+  "environment_mode": "photoreal",
+  "sky_profile": "ash_overcast_sky",
+  "fog_profile": "clear_thin_fog",
+  "lighting_profile": "volcanic_ember_key",
+  "atmosphere_profile": "ashen_atmo",
+  "postprocess_profile": "neutral_daylight",
+  "terrain_material_profile": "black_basalt",
+  "decal_profile": "industrial_scar",
+  "dressing_asset_sets": [
+    {
+      "set_id": "volcanic_ashlands_dressing",
+      "ownership_class": "generated_owned",
+      "asset_ids": [
+        "mesh_cov_basalt_cover_ridge",
+        "mesh_cov_low_rock_cover",
+        "mesh_cov_scrap_cover_wall",
+        "mesh_ind_broken_pipe_cluster",
+        "mesh_ind_collapsed_support_beam",
+        "mesh_ind_forge_debris_chunk",
+        "mesh_ind_industrial_cable_spool",
+        "mesh_ind_rusted_panel_stack"
+      ]
+    }
+  ],
+  "hazard_visual_language": {
+    "marker_type": "pulsing_emissive_decal",
+    "color_rgb": [
+      1.0,
+      0.15,
+      0.05
+    ],
+    "pulse_hz": 1.5,
+    "priority": "high",
+    "readable_at_distance_cm": 4000
+  },
+  "safe_zone_visual_language": {
+    "marker_type": "steady_cool_ambient",
+    "color_rgb": [
+      0.35,
+      0.65,
+      1.0
+    ],
+    "pulse_hz": 0.0,
+    "priority": "ambient",
+    "readable_at_distance_cm": 6000
+  },
+  "danger_zone_visual_language": {
+    "marker_type": "warm_haze_vignette",
+    "color_rgb": [
+      1.0,
+      0.55,
+      0.1
+    ],
+    "pulse_hz": 0.5,
+    "priority": "elevated",
+    "readable_at_distance_cm": 5000
+  },
+  "route_readability_rules": {
+    "min_fog_visibility_fraction_of_route": 0.25,
+    "exposure_ev_min": -3.0,
+    "exposure_ev_max": 3.0,
+    "dressing_clearance_min_cm": 200.0,
+    "min_route_contrast": 0.3,
+    "objective_must_be_visible": true
+  },
+  "density_budget": {
+    "vegetation_density": 0.15,
+    "dynamic_light_count": 10,
+    "fog_volume_count": 4,
+    "emissive_material_count": 8,
+    "volumetric_effect_class": "high",
+    "poi_count": 8,
+    "entity_anchor_count": 26
+  },
+  "performance_budget": {
+    "dynamic_light_count": 10,
+    "fog_volume_count": 4,
+    "emissive_material_count": 8,
+    "material_complexity": 250,
+    "volumetric_effect_class": "high",
+    "package_footprint_class": "standard"
+  },
+  "screenshot_requirements": [
+    "biome_overview",
+    "mission_route",
+    "hazard_zone",
+    "safe_zone",
+    "poi_objective"
+  ],
+  "validation_requirements": [
+    "route_readability",
+    "density_budget",
+    "zone_visual_language_distinct",
+    "inspection_screenshot_report"
+  ],
+  "provenance": {
+    "generator": "create_visual_environment_kits",
+    "generator_version": "1.5",
+    "pack": "encounter_loop_world",
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "environment_profile": "photoreal_ashlands_day",
+    "profile_class": "photoreal",
+    "composed_from": {
+      "sky": "ash_overcast_sky",
+      "fog": "clear_thin_fog",
+      "lighting": "volcanic_ember_key",
+      "atmosphere": "ashen_atmo",
+      "post_process": "neutral_daylight",
+      "weather": "ashfall"
+    }
+  },
+  "notes": "Composed from existing v1.3.5 profile system. Screenshots are EVIDENCE captured by the tools/unreal driver; per TICKET-001 they must come from PIE/-game, not headless SceneCapture.",
+  "provenance_id": "vkprov:9de6e69b4a424538"
+}

@@ -1,0 +1,15 @@
+{
+  "case": "eula_gated_no_manual_acquisition",
+  "family": "candidate",
+  "record_type": "candidate",
+  "owning_validator": "validate_asset_candidate.py",
+  "expected_code": "ASSET_EULA_REQUIRED_MANUAL_ACTION",
+  "description": "EULA-gated candidate approved for download without a manual acquisition action",
+  "patch": {
+    "set": {
+      "eula_required": true,
+      "manual_acquisition_required": false,
+      "download_automation_allowed": true
+    }
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "_comment": "WorldForge v1.2 addendum — external asset library config TEMPLATE. Copy to worldforge_assets.local.json and set library_root to your machine-local cache. The .local.json file is gitignored; never commit a real absolute path.",
+  "_comment": "WorldForge external asset config TEMPLATE. Copy to worldforge_assets.local.json and set library_root to your machine-local cache. The .local.json file is gitignored; never commit a real absolute path. v1.5 Wave-2 adds download_sources (CC0 free-download adapters) and quarantine_roots (anchor-relative holding areas — never absolute).",
   "external_asset_libraries": {
     "megascans": {
       "library_root": "<SET_TO_YOUR_LOCAL>\\Fab\\Megascans\\VaultCache\\FabLibrary",
@@ -9,5 +9,23 @@
       "external_licensed": true,
       "repair_destroy_protected": true
     }
-  }
+  },
+  "download_sources": {
+    "polyhaven": {
+      "api_base": "https://api.polyhaven.com",
+      "enabled": true,
+      "license_family": "cc0",
+      "license_url": "https://polyhaven.com/license",
+      "publisher": "Poly Haven",
+      "approved_free_only": true,
+      "allowed_license_families": ["cc0"],
+      "max_assets_per_run": 3,
+      "preferred_resolutions": ["1k", "2k"],
+      "preferred_formats": ["jpg", "png"]
+    }
+  },
+  "quarantine_roots": [
+    "WorldForgeAssetCache/_Quarantine",
+    "Content/WorldForge/_Quarantine"
+  ]
 }

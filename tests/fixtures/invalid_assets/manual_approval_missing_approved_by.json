@@ -1,0 +1,15 @@
+{
+  "case": "manual_approval_missing_approved_by",
+  "family": "approval",
+  "record_type": "approval",
+  "owning_validator": "validate_asset_approval_flow.py",
+  "expected_code": "ASSET_MANUAL_APPROVAL_MISSING",
+  "description": "manual marketplace approval with no approved_by and no completed action",
+  "patch": {
+    "set": {
+      "approval_type": "manual_marketplace_acquisition",
+      "approved_by": "",
+      "manual_action_completed": false
+    }
+  }
+}

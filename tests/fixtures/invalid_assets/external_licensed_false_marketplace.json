@@ -1,0 +1,13 @@
+{
+  "case": "external_licensed_false_marketplace",
+  "family": "ownership",
+  "record_type": "catalog",
+  "owning_validator": "validate_asset_catalog.py",
+  "expected_code": "ASSET_OWNERSHIP_FAILURE",
+  "description": "third-party marketplace catalog asset with external_licensed=False",
+  "patch": {
+    "set": {
+      "external_licensed": false
+    }
+  }
+}

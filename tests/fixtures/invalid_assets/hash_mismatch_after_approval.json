@@ -1,0 +1,11 @@
+{
+  "case": "hash_mismatch_after_approval",
+  "family": "hash",
+  "record_type": "catalog",
+  "owning_validator": "validate_asset_hashes.py",
+  "expected_code": "ASSET_HASH_MISMATCH",
+  "description": "catalog source_hash disagrees with the quarantine content hash it derives from",
+  "patch": {
+    "mismatch_from_quarantine": true
+  }
+}

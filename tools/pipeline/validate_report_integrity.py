@@ -798,6 +798,81 @@ def validate_encounters(pack, strict, reports_dir=None):
     return rep
 
 
+# v1.5 AssetAcquisitionForge — asset command report-integrity (--assets).
+OWN_ASSETS_REPORT = "validate_report_integrity_assets_report.json"
+ASSETS_REPORTS_REL = "procedural/reports/assets"
+REQUIRED_ASSET_COMMANDS = (
+    "analyze_asset_gaps",
+    "create_procurement_manifest",
+    "validate_asset_need",
+    "validate_asset_procurement",
+    "validate_asset_candidate",
+    "validate_asset_approval",
+    "validate_asset_quarantine_schema",
+    "validate_asset_catalog_schema",
+    "validate_v1_5_taxonomy",
+    "validate_source_adapters",
+    "validate_asset_quarantine",
+    "validate_asset_licenses",
+    "validate_asset_provenance",
+    "validate_asset_hashes",
+    "validate_asset_catalog",
+    "validate_asset_package_policy",
+)
+OPTIONAL_ASSET_COMMANDS = (
+    "test_negative_assets",
+    "asset_source_torture",
+    "catalog_approved_assets",
+    "export_shopping_list",
+)
+
+# v1.5 AssetRealizationForge — realization command report-integrity (--materialize).
+OWN_REALIZATION_REPORT = "validate_report_integrity_realization_report.json"
+REALIZATION_REPORTS_REL = "procedural/reports/realization"
+REQUIRED_REALIZATION_COMMANDS = (
+    "generate_owned_cover_meshes",
+    "materialize_assets",
+    "replace_cover_proxies",
+    "validate_cover_binding",
+    "validate_ue_materialization",
+    "validate_asset_dependencies",
+    "validate_cover_replacement",
+)
+OPTIONAL_REALIZATION_COMMANDS = ()
+
+
+def _validate_command_lane(pack, strict, reports_rel, required, optional, reports_dir=None):
+    """Shared lane scan: mirror validate_visuals for a per-command report root."""
+    try:
+        world_pack_id, _ = enumerate_maps(pack)
+    except Exception:
+        world_pack_id = None
+    reports_root = Path(reports_dir) if reports_dir else (REPO_ROOT / reports_rel)
+    rep = ValidationReport("pack_id", world_pack_id or str(pack), strict=strict)
+    for command in required:
+        _check_one_mesh_report(rep, command, _mesh_report_path(reports_root, command),
+                               required=True)
+    for command in optional:
+        path = _mesh_report_path(reports_root, command)
+        if path.is_file():
+            _check_one_mesh_report(rep, command, path, required=False)
+    return rep
+
+
+def validate_assets(pack, strict, reports_dir=None):
+    """v1.5 asset-acquisition report-integrity. Returns an UNFINALIZED report."""
+    return _validate_command_lane(pack, strict, ASSETS_REPORTS_REL,
+                                  REQUIRED_ASSET_COMMANDS, OPTIONAL_ASSET_COMMANDS,
+                                  reports_dir=reports_dir)
+
+
+def validate_realization(pack, strict, reports_dir=None):
+    """v1.5 asset-realization report-integrity. Returns an UNFINALIZED report."""
+    return _validate_command_lane(pack, strict, REALIZATION_REPORTS_REL,
+                                  REQUIRED_REALIZATION_COMMANDS,
+                                  OPTIONAL_REALIZATION_COMMANDS, reports_dir=reports_dir)
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="WorldForge v1.0x report-integrity gate (no fake green).")
     ap.add_argument("--pack", required=True, help="World pack id or path.")
@@ -820,6 +895,12 @@ def main(argv=None):
                     help="Scan the v1.4 EncounterForge + PlaytestForge Beta + BalanceForge "
                          "command reports (procedural/reports/encounters/*) instead of the "
                          "world-pack gate reports.")
+    ap.add_argument("--assets", action="store_true",
+                    help="Scan the v1.5 AssetAcquisitionForge command reports "
+                         "(procedural/reports/assets/*) instead of the world-pack gate reports.")
+    ap.add_argument("--materialize", action="store_true",
+                    help="Scan the v1.5 AssetRealizationForge command reports "
+                         "(procedural/reports/realization/*) instead of the world-pack gate reports.")
     ap.add_argument("--max-age-days", type=float, default=None,
                     help="Flag reports older than this many days as stale (default: off).")
     ap.add_argument("--reports-dir", default=None,
@@ -865,6 +946,22 @@ def main(argv=None):
         visuals_report_dir = REPO_ROOT / VC.VISUAL_REPORTS_REL / "validate_report_integrity"
         rep.write(visuals_report_dir, OWN_VISUALS_REPORT)
         rep.print_summary("validate-report-integrity --visuals")
+        return rep.exit_code
+
+    if args.assets:
+        rep = validate_assets(args.pack, strict=strict, reports_dir=args.reports_dir)
+        rep.finalize()
+        assets_report_dir = REPO_ROOT / ASSETS_REPORTS_REL / "validate_report_integrity"
+        rep.write(assets_report_dir, OWN_ASSETS_REPORT)
+        rep.print_summary("validate-report-integrity --assets")
+        return rep.exit_code
+
+    if args.materialize:
+        rep = validate_realization(args.pack, strict=strict, reports_dir=args.reports_dir)
+        rep.finalize()
+        realization_report_dir = REPO_ROOT / REALIZATION_REPORTS_REL / "validate_report_integrity"
+        rep.write(realization_report_dir, OWN_REALIZATION_REPORT)
+        rep.print_summary("validate-report-integrity --materialize")
         return rep.exit_code
 
     if args.encounters:

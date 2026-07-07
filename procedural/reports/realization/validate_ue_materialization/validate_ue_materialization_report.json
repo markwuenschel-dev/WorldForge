@@ -1,0 +1,109 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "materialization_plan_present": {
+      "ok": true,
+      "detail": "plan loaded",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_backed[SM_Owned_encounter_cover_half_height]": {
+      "ok": true,
+      "detail": "planned UE asset 'SM_Owned_encounter_cover_half_height' (/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_encounter_cover_half_height) is backed by neither a catalog record nor an owned-cover baseline",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ue_path_approved_root[SM_Owned_encounter_cover_half_height]": {
+      "ok": true,
+      "detail": "ue_asset_path '/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_encounter_cover_half_height' is not under an approved /Game owned root",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_backed[SM_Owned_industrial_debris_half_height]": {
+      "ok": true,
+      "detail": "planned UE asset 'SM_Owned_industrial_debris_half_height' (/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_industrial_debris_half_height) is backed by neither a catalog record nor an owned-cover baseline",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ue_path_approved_root[SM_Owned_industrial_debris_half_height]": {
+      "ok": true,
+      "detail": "ue_asset_path '/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_industrial_debris_half_height' is not under an approved /Game owned root",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_backed[SM_Owned_rock_outcrop_half_height]": {
+      "ok": true,
+      "detail": "planned UE asset 'SM_Owned_rock_outcrop_half_height' (/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_rock_outcrop_half_height) is backed by neither a catalog record nor an owned-cover baseline",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ue_path_approved_root[SM_Owned_rock_outcrop_half_height]": {
+      "ok": true,
+      "detail": "ue_asset_path '/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_rock_outcrop_half_height' is not under an approved /Game owned root",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "live_materialized": {
+      "ok": true,
+      "detail": "plan live_materialized=False: 3 UE asset(s) still need import/build in the editor — run the UE materialization driver",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 8,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-ue-materialization",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T23:37:50.704434+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.realization.ue_materialization_validation.v1",
+    "report_id": "wf.realization.ue_materialization_validation.v1:3c6560623fbc",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 3,
+    "records_total": 3,
+    "records_passed": 3,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "planned_ue_assets": 3,
+    "schema_backed": 3,
+    "live_materialized": true
+  }
+}

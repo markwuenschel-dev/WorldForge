@@ -1,0 +1,102 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "pack_has_encounters": {
+      "ok": true,
+      "detail": "no encounters in pack 'encounter_loop_world'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pack_declares_cover_families": {
+      "ok": true,
+      "detail": "no cover families derivable from pack biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pack_declares_height_classes": {
+      "ok": true,
+      "detail": "no realized-cover height classes on pack cover anchors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline_present[encounter_cover:half_height]": {
+      "ok": true,
+      "detail": "cover family 'encounter_cover' at height 'half_height' has no generated_owned baseline (hybrid rule violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline_present[industrial_debris:half_height]": {
+      "ok": true,
+      "detail": "cover family 'industrial_debris' at height 'half_height' has no generated_owned baseline (hybrid rule violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "baseline_present[rock_outcrop:half_height]": {
+      "ok": true,
+      "detail": "cover family 'rock_outcrop' at height 'half_height' has no generated_owned baseline (hybrid rule violated)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 6,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "generate-owned-cover-meshes",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T23:37:50.194147+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.realization.owned_cover_report.v1",
+    "report_id": "wf.realization.owned_cover_report.v1:27b2f202ce4c",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 9,
+    "records_total": 9,
+    "records_passed": 9,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "baseline_specs": [
+      "SM_Owned_encounter_cover_full_height",
+      "SM_Owned_encounter_cover_half_height",
+      "SM_Owned_encounter_cover_low",
+      "SM_Owned_industrial_debris_full_height",
+      "SM_Owned_industrial_debris_half_height",
+      "SM_Owned_industrial_debris_low",
+      "SM_Owned_rock_outcrop_full_height",
+      "SM_Owned_rock_outcrop_half_height",
+      "SM_Owned_rock_outcrop_low"
+    ],
+    "owned_cover_dir": "procedural/generated/realization/owned_cover_meshes"
+  }
+}

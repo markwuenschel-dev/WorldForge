@@ -1,0 +1,347 @@
+{
+  "source_adapter_policy": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "local_fab_megascans_cache::ownership_class_valid": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "local_fab_megascans_cache::may_not_delete_source": {
+      "ok": true,
+      "detail": "no adapter may delete its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "local_fab_megascans_cache::may_not_mutate_source": {
+      "ok": true,
+      "detail": "no adapter may mutate its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "local_fab_megascans_cache::emit_policy_coherent": {
+      "ok": true,
+      "detail": "emit_policy() must echo adapter_name + policy flags",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "polyhaven_direct_download::ownership_class_valid": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "polyhaven_direct_download::may_not_delete_source": {
+      "ok": true,
+      "detail": "no adapter may delete its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "polyhaven_direct_download::may_not_mutate_source": {
+      "ok": true,
+      "detail": "no adapter may mutate its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "polyhaven_direct_download::emit_policy_coherent": {
+      "ok": true,
+      "detail": "emit_policy() must echo adapter_name + policy flags",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "polyhaven_direct_download::automation_is_cc0_free": {
+      "ok": true,
+      "detail": "automated-download adapter must be free + CC0-only",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "manual_fab_acquisition::ownership_class_valid": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "manual_fab_acquisition::may_not_delete_source": {
+      "ok": true,
+      "detail": "no adapter may delete its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "manual_fab_acquisition::may_not_mutate_source": {
+      "ok": true,
+      "detail": "no adapter may mutate its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "manual_fab_acquisition::emit_policy_coherent": {
+      "ok": true,
+      "detail": "emit_policy() must echo adapter_name + policy flags",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "manual_fab_acquisition::paid_is_manual_only": {
+      "ok": true,
+      "detail": "paid-capable adapter must be manual-only, no automation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "quarantine_folder::ownership_class_valid": {
+      "ok": true,
+      "detail": "ownership_class='third_party_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "quarantine_folder::may_not_delete_source": {
+      "ok": true,
+      "detail": "no adapter may delete its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "quarantine_folder::may_not_mutate_source": {
+      "ok": true,
+      "detail": "no adapter may mutate its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "quarantine_folder::emit_policy_coherent": {
+      "ok": true,
+      "detail": "emit_policy() must echo adapter_name + policy flags",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "houdini_generated_asset::ownership_class_valid": {
+      "ok": true,
+      "detail": "ownership_class='generated_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "houdini_generated_asset::may_not_delete_source": {
+      "ok": true,
+      "detail": "no adapter may delete its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "houdini_generated_asset::may_not_mutate_source": {
+      "ok": true,
+      "detail": "no adapter may mutate its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "houdini_generated_asset::emit_policy_coherent": {
+      "ok": true,
+      "detail": "emit_policy() must echo adapter_name + policy flags",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "internal_generated_asset::ownership_class_valid": {
+      "ok": true,
+      "detail": "ownership_class='generated_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "internal_generated_asset::may_not_delete_source": {
+      "ok": true,
+      "detail": "no adapter may delete its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "internal_generated_asset::may_not_mutate_source": {
+      "ok": true,
+      "detail": "no adapter may mutate its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "internal_generated_asset::emit_policy_coherent": {
+      "ok": true,
+      "detail": "emit_policy() must echo adapter_name + policy flags",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "existing_project_asset::ownership_class_valid": {
+      "ok": true,
+      "detail": "ownership_class='project_owned'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "existing_project_asset::may_not_delete_source": {
+      "ok": true,
+      "detail": "no adapter may delete its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "existing_project_asset::may_not_mutate_source": {
+      "ok": true,
+      "detail": "no adapter may mutate its source",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "existing_project_asset::emit_policy_coherent": {
+      "ok": true,
+      "detail": "emit_policy() must echo adapter_name + policy flags",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "polyhaven_refuses_non_cc0": {
+      "ok": true,
+      "detail": "expected CC0-only refusal, got {'refused': True, 'adapter': 'polyhaven_direct_download', 'failure_code': 'WF356_ASSET_LICENSE_UNSUPPORTED', 'detail': \"PolyHaven adapter only downloads CC0; got 'royalty_free'\", 'candidate_id': 'probe_noncc0', 'at': '2026-07-06T23:37:44.785740+00:00'}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "polyhaven_refuses_missing_license": {
+      "ok": true,
+      "detail": "expected missing-license refusal, got {'refused': True, 'adapter': 'polyhaven_direct_download', 'failure_code': 'WF355_ASSET_LICENSE_MISSING', 'detail': 'candidate has no license_family', 'candidate_id': 'probe_nolic', 'at': '2026-07-06T23:37:44.785754+00:00'}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "manual_fab_refuses_download": {
+      "ok": true,
+      "detail": "expected download-not-allowed refusal, got {'refused': True, 'adapter': 'manual_fab_acquisition', 'failure_code': 'WF354_ASSET_DOWNLOAD_NOT_ALLOWED', 'detail': 'manual Fab acquisition can never be automated (no login/purchase/EULA)', 'candidate_id': 'probe_manual', 'at': '2026-07-06T23:37:44.785760+00:00'}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "local_cache_may_not_delete_source": {
+      "ok": true,
+      "detail": "local Fab/Megascans cache adapter must never delete a source file",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "local_cache_may_not_mutate_source": {
+      "ok": true,
+      "detail": "local Fab/Megascans cache adapter must never mutate a source file",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "quarantine_folder_rejects_unknown": {
+      "ok": true,
+      "detail": "unknown-license drop must fail closed (reject), got {'ownership_class': None, 'third_party_owned': False, 'generated_owned': False, 'human_owned': False, 'project_owned': False, 'external_licensed': False, 'license_family': 'unknown', 'decision': 'reject', 'reason': 'unknown source/license on manual drop — fail closed'}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "quarantine_folder_accepts_known_license": {
+      "ok": true,
+      "detail": "known-license drop should resolve, got {'ownership_class': 'third_party_owned', 'third_party_owned': True, 'generated_owned': False, 'human_owned': False, 'project_owned': False, 'external_licensed': True, 'license_family': 'cc0', 'decision': 'accept_pending_review', 'reason': 'drop carries a known license sidecar (cc0)'}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 37,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-source-adapters",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T23:37:44.798613+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.asset.source_search.v1",
+    "report_id": "wf.asset.source_search.v1:cebcef12804b",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 37,
+    "records_total": 37,
+    "records_passed": 37,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "adapters_checked": [
+      "local_fab_megascans_cache",
+      "polyhaven_direct_download",
+      "manual_fab_acquisition",
+      "quarantine_folder",
+      "houdini_generated_asset",
+      "internal_generated_asset",
+      "existing_project_asset"
+    ]
+  }
+}

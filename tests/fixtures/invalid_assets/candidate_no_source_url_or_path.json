@@ -1,0 +1,14 @@
+{
+  "case": "candidate_no_source_url_or_path",
+  "family": "candidate",
+  "record_type": "candidate",
+  "owning_validator": "validate_asset_candidate.py",
+  "expected_code": "ASSET_SOURCE_URL_MISSING",
+  "description": "candidate carrying neither a source_url nor a source_path (unlocatable)",
+  "patch": {
+    "set": {
+      "source_url": "",
+      "source_path": ""
+    }
+  }
+}

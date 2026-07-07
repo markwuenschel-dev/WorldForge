@@ -1,0 +1,145 @@
+{
+  "fuzz": "v1_5_schemas",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "base_accepted::asset_need": {
+      "ok": true,
+      "detail": "untouched base record rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "base_accepted::asset_candidate": {
+      "ok": true,
+      "detail": "untouched base record rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "base_accepted::asset_approval": {
+      "ok": true,
+      "detail": "untouched base record rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "base_accepted::quarantine": {
+      "ok": true,
+      "detail": "untouched base record rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "base_accepted::asset_catalog": {
+      "ok": true,
+      "detail": "untouched base record rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "base_accepted::visual_kit": {
+      "ok": true,
+      "detail": "untouched base record rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "base_accepted::realized_cover": {
+      "ok": true,
+      "detail": "untouched base record rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "all_base_records_accepted": {
+      "ok": true,
+      "detail": "7/7 base records accepted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "no_invalid_mutation_accepted": {
+      "ok": true,
+      "detail": "0 invalid mutation(s) were wrongly accepted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "no_validator_crash": {
+      "ok": true,
+      "detail": "0 validator crash(es) during fuzzing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "every_case_ran": {
+      "ok": true,
+      "detail": "ran 300 of 300 requested cases",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 11,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "v1-5-fuzz",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T23:30:46.290365+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.v1_5.fuzz.v1",
+    "report_id": "wf.v1_5.fuzz.v1:30bc237d4aa7",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 300,
+    "records_total": 300,
+    "records_passed": 307,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "cases_run": 300,
+    "rejected": 300,
+    "accepted": 0,
+    "crashes": 0,
+    "base_records_accepted": 7,
+    "seed": 1505,
+    "contracts_fuzzed": [
+      "asset_need",
+      "asset_candidate",
+      "asset_approval",
+      "quarantine",
+      "asset_catalog",
+      "visual_kit",
+      "realized_cover"
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "registry": "failure_codes",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "codes_well_formed": {
+      "ok": true,
+      "detail": "malformed: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wf_numbers_unique": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "every_code_has_severity": {
+      "ok": true,
+      "detail": "no severity: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "severity_values_valid": {
+      "ok": true,
+      "detail": "bad severity: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "every_code_in_gate_taxonomy": {
+      "ok": true,
+      "detail": "missing from taxonomy: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "v1_5_bands_present": {
+      "ok": true,
+      "detail": "missing v1.5 anchor codes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 6,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-failure-codes",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T22:01:20.327557+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.v1_5.failure_codes.v1",
+    "report_id": "wf.v1_5.failure_codes.v1:aa6806dba54e",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 271,
+    "records_total": 271,
+    "records_passed": 271,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}
