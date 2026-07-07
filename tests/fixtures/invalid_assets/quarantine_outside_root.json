@@ -1,0 +1,13 @@
+{
+  "case": "quarantine_outside_root",
+  "family": "quarantine",
+  "record_type": "quarantine",
+  "owning_validator": "validate_asset_quarantine.py",
+  "expected_code": "ASSET_QUARANTINE_FAILURE",
+  "description": "quarantine record whose local path escaped every approved quarantine root",
+  "patch": {
+    "set": {
+      "local_quarantine_path": "D:/Loose/Unmanaged/rock_pack"
+    }
+  }
+}

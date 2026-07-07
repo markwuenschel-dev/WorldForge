@@ -1,0 +1,13 @@
+{
+  "case": "asset_unsupported_license",
+  "family": "license",
+  "record_type": "candidate",
+  "owning_validator": "validate_asset_licenses.py",
+  "expected_code": "ASSET_LICENSE_UNSUPPORTED",
+  "description": "asset with an unsupported (noncommercial_only) license family",
+  "patch": {
+    "set": {
+      "license_family": "noncommercial_only"
+    }
+  }
+}

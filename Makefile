@@ -20,6 +20,12 @@ export VISUALS
 # (PLAYTEST is already exported above; PLAYTEST=beta selects PlaytestForge Beta.)
 export ENCOUNTERS
 export BALANCE
+# v1.5 — export asset-acquisition / realization flags to full_shield gate
+# subprocesses and the UE-side + source validators. VISUAL is an alias for VISUALS.
+export ASSETS
+export MATERIALIZE
+export VISUAL
+export SOURCE
 
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
@@ -511,7 +517,9 @@ full-shield:
 	  --seeds $(SEEDS) --cases $(CASES) \
 	  $(if $(STRICT),--strict,) $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,) $(if $(MESHES),--meshes,) \
 	  $(if $(MISSIONS),--missions,) $(if $(PLAYTEST),--playtest,) $(if $(VISUALS),--visuals,) \
-	  $(if $(ENCOUNTERS),--encounters,) $(if $(BALANCE),--balance,)
+	  $(if $(VISUAL),--visuals,) \
+	  $(if $(ENCOUNTERS),--encounters,) $(if $(BALANCE),--balance,) \
+	  $(if $(ASSETS),--assets,) $(if $(MATERIALIZE),--materialize,)
 
 revalidate-world-pack:
 	$(PYTHON) tools/pipeline/revalidate_world_pack.py --pack $(PACK) $(if $(STRICT),--strict,)
@@ -922,3 +930,132 @@ build:
 clean:
 	find . -name "*.pyc" -delete 2>/dev/null || true
 	find . -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
+
+# ======================================================================
+# v1.5 — AssetAcquisitionForge + AssetRealizationForge + VisualEnvironmentForge
+# ----------------------------------------------------------------------
+# Every target maps 1:1 to a tools/pipeline/<script>.py entrypoint (UE-side
+# drivers live in tools/unreal/). SOURCE/PRIORITY parameterize acquisition.
+# ======================================================================
+SOURCE   ?= polyhaven
+PRIORITY ?= P1
+
+.PHONY: validate-asset-need-schema validate-asset-procurement-schema \
+        validate-asset-candidate-schema validate-asset-approval-schema \
+        validate-asset-quarantine-schema validate-asset-catalog-schema \
+        validate-visual-kit-schema validate-cover-binding-schema validate-v1-5-taxonomy \
+        asset-gap-report asset-procurement-manifest asset-shopping-list \
+        asset-free-downloads asset-local-cache-scan asset-quarantine-validators \
+        asset-catalog-validators validate-asset-package-policy validate-source-adapters \
+        validate-asset-licenses validate-asset-provenance validate-asset-hashes \
+        validate-asset-approval-flow asset-acquisition-negative-validators asset-source-torture \
+        generate-owned-cover-meshes asset-materialize-ue validate-ue-materialization-reports \
+        validate-asset-dependencies list-cover-proxies \
+        visual-environment-kits visual-materialize visual-cover-replacement \
+        validate-cover-real-meshes validate-biome-visual-readability \
+        validate-visual-density-budgets visual-inspection-report \
+        run-balance-forge-alpha validate-route-clearance-after-visuals \
+        validate-encounter-anchor-preservation v1-5-fuzz v1-5-shield \
+        validate-failure-codes
+
+# --- v1.5 Agent 1: contract / schema gates ----------------------------
+validate-asset-need-schema:
+	$(PYTHON) tools/pipeline/validate_asset_need.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-procurement-schema:
+	$(PYTHON) tools/pipeline/validate_asset_procurement.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-candidate-schema:
+	$(PYTHON) tools/pipeline/validate_asset_candidate.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-approval-schema:
+	$(PYTHON) tools/pipeline/validate_asset_approval.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-quarantine-schema:
+	$(PYTHON) tools/pipeline/validate_asset_quarantine_schema.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-catalog-schema:
+	$(PYTHON) tools/pipeline/validate_asset_catalog_schema.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-visual-kit-schema:
+	$(PYTHON) tools/pipeline/validate_visual_kit.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-cover-binding-schema:
+	$(PYTHON) tools/pipeline/validate_cover_binding.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-v1-5-taxonomy:
+	$(PYTHON) tools/pipeline/validate_v1_5_taxonomy.py $(if $(STRICT),--strict,)
+validate-failure-codes:
+	$(PYTHON) tools/pipeline/validate_failure_codes.py $(if $(STRICT),--strict,)
+
+# --- v1.5 Agent 2/3: acquisition + quarantine + catalog ---------------
+asset-gap-report:
+	$(PYTHON) tools/pipeline/analyze_asset_gaps.py --pack $(PACK) $(if $(STRICT),--strict,)
+asset-procurement-manifest:
+	$(PYTHON) tools/pipeline/create_procurement_manifest.py --pack $(PACK) $(if $(STRICT),--strict,)
+asset-shopping-list:
+	$(PYTHON) tools/pipeline/export_shopping_list.py --pack $(PACK) --source $(SOURCE) --priority $(PRIORITY) $(if $(STRICT),--strict,)
+asset-free-downloads:
+	$(PYTHON) tools/pipeline/acquire_free_assets.py --source $(SOURCE) --approved-free-only $(if $(STRICT),--strict,)
+asset-local-cache-scan:
+	$(PYTHON) tools/pipeline/scan_local_asset_cache.py --source $(SOURCE) $(if $(STRICT),--strict,)
+validate-source-adapters:
+	$(PYTHON) tools/pipeline/validate_source_adapters.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-approval-flow:
+	$(PYTHON) tools/pipeline/validate_asset_approval_flow.py --pack $(PACK) $(if $(STRICT),--strict,)
+asset-quarantine-validators:
+	$(PYTHON) tools/pipeline/validate_asset_quarantine.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-licenses:
+	$(PYTHON) tools/pipeline/validate_asset_licenses.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-provenance:
+	$(PYTHON) tools/pipeline/validate_asset_provenance.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-hashes:
+	$(PYTHON) tools/pipeline/validate_asset_hashes.py --pack $(PACK) $(if $(STRICT),--strict,)
+asset-catalog-validators:
+	$(PYTHON) tools/pipeline/validate_asset_catalog.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-package-policy:
+	$(PYTHON) tools/pipeline/validate_asset_package_policy.py --pack $(PACK) $(if $(STRICT),--strict,)
+asset-acquisition-negative-validators:
+	$(PYTHON) tools/pipeline/test_negative_assets.py --pack $(PACK) $(if $(STRICT),--strict,)
+asset-source-torture:
+	$(PYTHON) tools/pipeline/asset_source_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- v1.5 Agent 4: UE realization + cover replacement -----------------
+generate-owned-cover-meshes:
+	$(PYTHON) tools/pipeline/generate_owned_cover_meshes.py --pack $(PACK) $(if $(STRICT),--strict,)
+asset-materialize-ue:
+	$(PYTHON) tools/pipeline/materialize_assets.py --pack $(PACK) --approved-only $(if $(STRICT),--strict,)
+validate-ue-materialization-reports:
+	$(PYTHON) tools/pipeline/validate_ue_materialization.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-asset-dependencies:
+	$(PYTHON) tools/pipeline/validate_asset_dependencies.py --pack $(PACK) $(if $(STRICT),--strict,)
+list-cover-proxies:
+	$(PYTHON) tools/pipeline/list_cover_proxies.py --pack $(PACK) $(if $(STRICT),--strict,)
+visual-cover-replacement:
+	$(PYTHON) tools/pipeline/replace_cover_proxies.py --pack $(PACK) --approved-only $(if $(STRICT),--strict,)
+validate-cover-real-meshes:
+	$(PYTHON) tools/pipeline/validate_cover_replacement.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- v1.5 Agent 5: visual environment kits ----------------------------
+visual-environment-kits:
+	$(PYTHON) tools/pipeline/create_visual_environment_kits.py --pack $(PACK) $(if $(STRICT),--strict,)
+visual-materialize:
+	$(PYTHON) tools/pipeline/materialize_visual_environment_kits.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-biome-visual-readability:
+	$(PYTHON) tools/pipeline/validate_biome_visual_readability.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-visual-density-budgets:
+	$(PYTHON) tools/pipeline/validate_visual_density_budgets.py --pack $(PACK) $(if $(STRICT),--strict,)
+visual-inspection-report:
+	$(PYTHON) tools/pipeline/validate_visual_inspection_report.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- v1.5 Agent 6: regression preservation ----------------------------
+run-balance-forge-alpha:
+	$(PYTHON) tools/pipeline/run_balance_forge.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-route-clearance-after-visuals:
+	$(PYTHON) tools/pipeline/validate_route_clearance_after_visuals.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-encounter-anchor-preservation:
+	$(PYTHON) tools/pipeline/validate_encounter_anchor_preservation.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- v1.5 Agent 7: fuzz ------------------------------------------------
+v1-5-fuzz:
+	$(PYTHON) tools/pipeline/v1_5_fuzz.py --cases $(CASES) $(if $(STRICT),--strict,)
+
+# --- v1.5 full shield --------------------------------------------------
+v1-5-shield:
+	$(PYTHON) tools/pipeline/full_shield.py --pack $(PACK) --jobs $(JOBS) \
+	  --seeds $(SEEDS) --cases $(CASES) \
+	  $(if $(STRICT),--strict,) $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,) \
+	  --missions --encounters --playtest --balance \
+	  $(if $(VISUAL)$(VISUALS),--visuals,) $(if $(ASSETS),--assets,) $(if $(MATERIALIZE),--materialize,)

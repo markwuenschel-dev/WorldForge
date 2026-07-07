@@ -1,0 +1,163 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "torture::corrupt_quarantined_content_hash": {
+      "ok": true,
+      "detail": "attack caught by validate_asset_hashes.py with ASSET_HASH_MISMATCH (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::mutate_catalog_hash_after_approval": {
+      "ok": true,
+      "detail": "attack caught by validate_asset_hashes.py with ASSET_HASH_MISMATCH (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::remove_license_snapshot": {
+      "ok": true,
+      "detail": "attack caught by validate_asset_provenance.py with ASSET_PROVENANCE_MISSING (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::move_asset_outside_quarantine_root": {
+      "ok": true,
+      "detail": "attack caught by validate_asset_quarantine.py with ASSET_QUARANTINE_FAILURE (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::flip_megascans_to_generated_owned": {
+      "ok": true,
+      "detail": "attack caught by validate_asset_quarantine.py with ASSET_OWNERSHIP_FAILURE (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::attempt_destroy_third_party_source": {
+      "ok": true,
+      "detail": "attack caught by validate_asset_catalog.py with ASSET_OWNERSHIP_FAILURE (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::inject_stale_zero_record_report": {
+      "ok": true,
+      "detail": "stale zero-record report caught with WF104_REPORT_ZERO_RECORD",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_licenses": {
+      "ok": true,
+      "detail": "validate_asset_licenses.py rc=0 ([validate-asset-licenses] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_provenance": {
+      "ok": true,
+      "detail": "validate_asset_provenance.py rc=0 ([validate-asset-provenance] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_hashes": {
+      "ok": true,
+      "detail": "validate_asset_hashes.py rc=0 ([validate-asset-hashes] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_quarantine": {
+      "ok": true,
+      "detail": "validate_asset_quarantine.py rc=0 ([validate-asset-quarantine] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_package_policy": {
+      "ok": true,
+      "detail": "validate_asset_package_policy.py rc=0 ([validate-asset-package-policy] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_approval_flow": {
+      "ok": true,
+      "detail": "validate_asset_approval_flow.py rc=0 ([validate-asset-approval-flow] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_catalog": {
+      "ok": true,
+      "detail": "validate_asset_catalog.py rc=0 ([validate-asset-catalog] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 14,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "asset-source-torture",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": true,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T23:37:49.974768+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.asset.torture.v1",
+    "report_id": "wf.asset.torture.v1:f9401f8e2421",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 7,
+    "records_total": 7,
+    "records_passed": 7,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "attacks": [
+      "corrupt_quarantined_content_hash",
+      "mutate_catalog_hash_after_approval",
+      "remove_license_snapshot",
+      "move_asset_outside_quarantine_root",
+      "flip_megascans_to_generated_owned",
+      "attempt_destroy_third_party_source",
+      "inject_stale_zero_record_report"
+    ]
+  }
+}

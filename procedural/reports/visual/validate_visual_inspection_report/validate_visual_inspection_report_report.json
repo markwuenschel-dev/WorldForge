@@ -1,0 +1,132 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "inspection_report_exists": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\visual\\capture_inspection_shots\\capture_inspection_shots_report.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "inspection_report_has_entries": {
+      "ok": true,
+      "detail": "inspection report has no screenshot entries (empty is not done)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "entry[0]_complete": {
+      "ok": true,
+      "detail": "entry missing fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "entry[1]_complete": {
+      "ok": true,
+      "detail": "entry missing fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "entry[2]_complete": {
+      "ok": true,
+      "detail": "entry missing fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "entry[3]_complete": {
+      "ok": true,
+      "detail": "entry missing fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "entry[4]_complete": {
+      "ok": true,
+      "detail": "entry missing fields []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "entries_have_map_ids": {
+      "ok": true,
+      "detail": "no entry carries a map_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "all_pack_biomes_captured": {
+      "ok": true,
+      "detail": "inspection report is missing shots for biomes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "capture_source_declared": {
+      "ok": true,
+      "detail": "capture_source='scene_capture' — captures must honestly declare their method (pie/game/scene_capture)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scene_capture_discloses_ticket_001": {
+      "ok": true,
+      "detail": "SceneCapture report must carry a ticket_001_limitation note (TICKET-001 near-white MIC texture-param captures)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 11,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-visual-inspection-report",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T23:37:31.734503+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.visual.inspection_screenshot_report.v1",
+    "report_id": "wf.visual.inspection_screenshot_report.v1:583632d19bf4",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 5,
+    "records_total": 5,
+    "records_passed": 5,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "inspection_report": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\visual\\capture_inspection_shots\\capture_inspection_shots_report.json",
+    "note": "TICKET-001: captures must come from PIE/-game, not headless SceneCapture (MIC texture-param overrides render near-white)."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "case": "polyhaven_no_cc0_metadata",
+  "family": "license",
+  "record_type": "candidate",
+  "owning_validator": "validate_asset_licenses.py",
+  "expected_code": "ASSET_LICENSE_MISSING",
+  "description": "PolyHaven/cc0 asset accepted without any license url/snapshot proof",
+  "patch": {
+    "set": {
+      "license_family": "cc0",
+      "publisher": "Poly Haven",
+      "source_type": "polyhaven_direct_download",
+      "source_adapter": "polyhaven_direct_download",
+      "source_url": "https://polyhaven.com/a/desert_rock",
+      "license_url": "",
+      "license_text_snapshot_path": ""
+    }
+  }
+}

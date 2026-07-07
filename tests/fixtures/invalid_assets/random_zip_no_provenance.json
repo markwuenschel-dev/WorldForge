@@ -1,0 +1,14 @@
+{
+  "case": "random_zip_no_provenance",
+  "family": "provenance",
+  "record_type": "quarantine",
+  "owning_validator": "validate_asset_provenance.py",
+  "expected_code": "ASSET_PROVENANCE_MISSING",
+  "description": "a raw quarantined zip with no source reference and no adapter linkage",
+  "patch": {
+    "set": {
+      "source_url_or_path": "",
+      "source_adapter": ""
+    }
+  }
+}

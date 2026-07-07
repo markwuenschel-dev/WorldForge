@@ -1,0 +1,13 @@
+{
+  "case": "quarantine_bypass_to_final_path",
+  "family": "quarantine",
+  "record_type": "quarantine",
+  "owning_validator": "validate_asset_quarantine.py",
+  "expected_code": "ASSET_QUARANTINE_BYPASS",
+  "description": "quarantine record whose local path jumped straight to a final owned /Game root",
+  "patch": {
+    "set": {
+      "local_quarantine_path": "/Game/WorldForge/Generated/Meshes/rock_pack"
+    }
+  }
+}

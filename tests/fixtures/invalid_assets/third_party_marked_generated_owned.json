@@ -1,0 +1,15 @@
+{
+  "case": "third_party_marked_generated_owned",
+  "family": "ownership",
+  "record_type": "catalog",
+  "owning_validator": "validate_asset_catalog.py",
+  "expected_code": "ASSET_OWNERSHIP_FAILURE",
+  "description": "third-party asset claimed both generated_owned and project_owned (ownership laundering)",
+  "patch": {
+    "set": {
+      "generated_owned": true,
+      "project_owned": true,
+      "ownership_class": ""
+    }
+  }
+}

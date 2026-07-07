@@ -1,0 +1,15 @@
+{
+  "case": "paid_fab_auto_downloadable",
+  "family": "candidate",
+  "record_type": "candidate",
+  "owning_validator": "validate_asset_candidate.py",
+  "expected_code": "ASSET_PURCHASE_REQUIRED_MANUAL_ACTION",
+  "description": "paid Fab candidate marked auto-downloadable (no manual acquisition) must be rejected",
+  "patch": {
+    "set": {
+      "price_class": "paid",
+      "manual_acquisition_required": false,
+      "download_automation_allowed": true
+    }
+  }
+}

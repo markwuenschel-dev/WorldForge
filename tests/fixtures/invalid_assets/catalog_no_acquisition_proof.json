@@ -1,0 +1,13 @@
+{
+  "case": "catalog_no_acquisition_proof",
+  "family": "hash",
+  "record_type": "catalog",
+  "owning_validator": "validate_asset_hashes.py",
+  "expected_code": "ASSET_HASH_MISSING",
+  "description": "shopping-list candidate cataloged/imported directly with no source_hash proof",
+  "patch": {
+    "set": {
+      "source_hash": ""
+    }
+  }
+}

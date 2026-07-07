@@ -1,0 +1,13 @@
+{
+  "case": "asset_no_license",
+  "family": "license",
+  "record_type": "candidate",
+  "owning_validator": "validate_asset_licenses.py",
+  "expected_code": "ASSET_LICENSE_MISSING",
+  "description": "asset with no license_family at all (fail-closed)",
+  "patch": {
+    "set": {
+      "license_family": ""
+    }
+  }
+}

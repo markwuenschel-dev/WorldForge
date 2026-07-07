@@ -1,0 +1,356 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "asset_negative::approval_claims_completion_no_user_marker": {
+      "ok": true,
+      "detail": "validate_asset_approval_flow.py rejected with ASSET_MANUAL_APPROVAL_MISSING (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::asset_no_license": {
+      "ok": true,
+      "detail": "validate_asset_licenses.py rejected with ASSET_LICENSE_MISSING (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::asset_unsupported_license": {
+      "ok": true,
+      "detail": "validate_asset_licenses.py rejected with ASSET_LICENSE_UNSUPPORTED (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::candidate_no_source_url_or_path": {
+      "ok": true,
+      "detail": "validate_asset_candidate.py rejected with ASSET_SOURCE_URL_MISSING (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::catalog_no_acquisition_proof": {
+      "ok": true,
+      "detail": "validate_asset_hashes.py rejected with ASSET_HASH_MISSING (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::downloaded_file_hash_missing": {
+      "ok": true,
+      "detail": "validate_asset_hashes.py rejected with ASSET_HASH_MISSING (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::eula_gated_no_manual_acquisition": {
+      "ok": true,
+      "detail": "validate_asset_candidate.py rejected with ASSET_EULA_REQUIRED_MANUAL_ACTION (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::external_licensed_false_marketplace": {
+      "ok": true,
+      "detail": "validate_asset_catalog.py rejected with ASSET_OWNERSHIP_FAILURE (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::fab_raw_marked_generated_owned": {
+      "ok": true,
+      "detail": "validate_asset_catalog.py rejected with ASSET_OWNERSHIP_FAILURE (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::fab_standalone_redistribution": {
+      "ok": true,
+      "detail": "validate_asset_package_policy.py rejected with ASSET_STANDALONE_REDISTRIBUTION_FORBIDDEN (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::hash_mismatch_after_approval": {
+      "ok": true,
+      "detail": "validate_asset_hashes.py rejected with ASSET_HASH_MISMATCH (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::license_snapshot_missing": {
+      "ok": true,
+      "detail": "validate_asset_provenance.py rejected with ASSET_PROVENANCE_MISSING (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::manual_approval_missing_approved_by": {
+      "ok": true,
+      "detail": "validate_asset_approval_flow.py rejected with ASSET_MANUAL_APPROVAL_MISSING (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::megascans_cache_marked_generated_owned": {
+      "ok": true,
+      "detail": "validate_asset_quarantine.py rejected with ASSET_OWNERSHIP_FAILURE (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::paid_fab_auto_downloadable": {
+      "ok": true,
+      "detail": "validate_asset_candidate.py rejected with ASSET_PURCHASE_REQUIRED_MANUAL_ACTION (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::polyhaven_no_cc0_metadata": {
+      "ok": true,
+      "detail": "validate_asset_licenses.py rejected with ASSET_LICENSE_MISSING (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::quarantine_bypass_to_final_path": {
+      "ok": true,
+      "detail": "validate_asset_quarantine.py rejected with ASSET_QUARANTINE_BYPASS (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::quarantine_outside_root": {
+      "ok": true,
+      "detail": "validate_asset_quarantine.py rejected with ASSET_QUARANTINE_FAILURE (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::random_zip_no_provenance": {
+      "ok": true,
+      "detail": "validate_asset_provenance.py rejected with ASSET_PROVENANCE_MISSING (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::third_party_marked_generated_owned": {
+      "ok": true,
+      "detail": "validate_asset_catalog.py rejected with ASSET_OWNERSHIP_FAILURE (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::third_party_missing_repair_destroy_protected": {
+      "ok": true,
+      "detail": "validate_asset_catalog.py rejected with ASSET_OWNERSHIP_FAILURE (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asset_negative::third_party_standalone_redistribution_approval": {
+      "ok": true,
+      "detail": "validate_asset_approval_flow.py rejected with ASSET_STANDALONE_REDISTRIBUTION_FORBIDDEN (rc=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::no_negasset_records": {
+      "ok": true,
+      "detail": "stray negative-fixture records: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_licenses": {
+      "ok": true,
+      "detail": "validate_asset_licenses.py rc=0 ([validate-asset-licenses] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_provenance": {
+      "ok": true,
+      "detail": "validate_asset_provenance.py rc=0 ([validate-asset-provenance] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_hashes": {
+      "ok": true,
+      "detail": "validate_asset_hashes.py rc=0 ([validate-asset-hashes] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_quarantine": {
+      "ok": true,
+      "detail": "validate_asset_quarantine.py rc=0 ([validate-asset-quarantine] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_package_policy": {
+      "ok": true,
+      "detail": "validate_asset_package_policy.py rc=0 ([validate-asset-package-policy] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_approval_flow": {
+      "ok": true,
+      "detail": "validate_asset_approval_flow.py rc=0 ([validate-asset-approval-flow] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_catalog": {
+      "ok": true,
+      "detail": "validate_asset_catalog.py rc=0 ([validate-asset-catalog] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_need": {
+      "ok": true,
+      "detail": "validate_asset_need.py rc=0 ([validate-asset-need] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_candidate": {
+      "ok": true,
+      "detail": "validate_asset_candidate.py rc=0 ([validate-asset-candidate] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_approval": {
+      "ok": true,
+      "detail": "validate_asset_approval.py rc=0 ([validate-asset-approval] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_quarantine_schema": {
+      "ok": true,
+      "detail": "validate_asset_quarantine_schema.py rc=0 ([validate-asset-quarantine-schema] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "selfheal::validate_asset_catalog_schema": {
+      "ok": true,
+      "detail": "validate_asset_catalog_schema.py rc=0 ([validate-asset-catalog-schema] PASS — encounter_loop_world (0 failure(s), 0 warning(s), strict=on))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 35,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "asset-negative-validators",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T23:37:48.582516+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.asset.negative.v1",
+    "report_id": "wf.asset.negative.v1:298169806479",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 22,
+    "records_total": 22,
+    "records_passed": 22,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "fixtures": [
+      "approval_claims_completion_no_user_marker",
+      "asset_no_license",
+      "asset_unsupported_license",
+      "candidate_no_source_url_or_path",
+      "catalog_no_acquisition_proof",
+      "downloaded_file_hash_missing",
+      "eula_gated_no_manual_acquisition",
+      "external_licensed_false_marketplace",
+      "fab_raw_marked_generated_owned",
+      "fab_standalone_redistribution",
+      "hash_mismatch_after_approval",
+      "license_snapshot_missing",
+      "manual_approval_missing_approved_by",
+      "megascans_cache_marked_generated_owned",
+      "paid_fab_auto_downloadable",
+      "polyhaven_no_cc0_metadata",
+      "quarantine_bypass_to_final_path",
+      "quarantine_outside_root",
+      "random_zip_no_provenance",
+      "third_party_marked_generated_owned",
+      "third_party_missing_repair_destroy_protected",
+      "third_party_standalone_redistribution_approval"
+    ],
+    "by_owner": [
+      "validate_asset_approval_flow.py",
+      "validate_asset_candidate.py",
+      "validate_asset_catalog.py",
+      "validate_asset_hashes.py",
+      "validate_asset_licenses.py",
+      "validate_asset_package_policy.py",
+      "validate_asset_provenance.py",
+      "validate_asset_quarantine.py"
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "case": "third_party_standalone_redistribution_approval",
+  "family": "approval",
+  "record_type": "approval",
+  "owning_validator": "validate_asset_approval_flow.py",
+  "expected_code": "ASSET_STANDALONE_REDISTRIBUTION_FORBIDDEN",
+  "description": "third-party approval that grants standalone redistribution (owned-only privilege)",
+  "patch": {
+    "set": {
+      "standalone_redistribution_allowed": true
+    }
+  }
+}

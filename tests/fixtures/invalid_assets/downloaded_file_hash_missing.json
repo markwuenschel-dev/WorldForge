@@ -1,0 +1,13 @@
+{
+  "case": "downloaded_file_hash_missing",
+  "family": "hash",
+  "record_type": "quarantine",
+  "owning_validator": "validate_asset_hashes.py",
+  "expected_code": "ASSET_HASH_MISSING",
+  "description": "downloaded quarantined file carries no content_sha256 (no acquisition proof)",
+  "patch": {
+    "set": {
+      "hashes": {}
+    }
+  }
+}

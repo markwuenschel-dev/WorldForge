@@ -1,0 +1,14 @@
+{
+  "case": "fab_raw_marked_generated_owned",
+  "family": "ownership",
+  "record_type": "catalog",
+  "owning_validator": "validate_asset_catalog.py",
+  "expected_code": "ASSET_OWNERSHIP_FAILURE",
+  "description": "Fab raw catalog asset mislabeled generated_owned (ownership conflict)",
+  "patch": {
+    "set": {
+      "generated_owned": true,
+      "ownership_class": ""
+    }
+  }
+}

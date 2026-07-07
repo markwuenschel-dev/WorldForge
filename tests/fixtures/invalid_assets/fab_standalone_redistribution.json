@@ -1,0 +1,13 @@
+{
+  "case": "fab_standalone_redistribution",
+  "family": "package",
+  "record_type": "catalog",
+  "owning_validator": "validate_asset_package_policy.py",
+  "expected_code": "ASSET_STANDALONE_REDISTRIBUTION_FORBIDDEN",
+  "description": "Fab/third-party catalog asset packaged as a standalone raw redistributable",
+  "patch": {
+    "set": {
+      "package_policy": "standalone_redistributable"
+    }
+  }
+}

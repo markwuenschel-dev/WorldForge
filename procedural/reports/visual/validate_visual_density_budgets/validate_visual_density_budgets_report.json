@@ -1,0 +1,3803 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "temperate_forest::kit_vegetation_density_within_biome_cap": {
+      "ok": true,
+      "detail": "kit vegetation_density=0.85 exceeds biome budget_cap 0.85",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::kit_dynamic_light_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit dynamic_light_count=8 exceeds biome budget_cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::kit_fog_volume_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit fog_volume_count=3 exceeds biome budget_cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::kit_emissive_material_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit emissive_material_count=3 exceeds biome budget_cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::kit_poi_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit poi_count=8 exceeds biome budget_cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::kit_entity_anchor_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit entity_anchor_count=28 exceeds biome budget_cap 28",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::kit_material_complexity_within_biome_cap": {
+      "ok": true,
+      "detail": "kit material_complexity=260 exceeds biome budget_cap 260",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::kit_volumetric_effect_class_matches_biome": {
+      "ok": true,
+      "detail": "kit volumetric_effect_class=medium != biome cap medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::dressing_coverage_present": {
+      "ok": true,
+      "detail": "kit references no dressing assets",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::has_maps": {
+      "ok": true,
+      "detail": "no maps for biome temperate_forest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Debris_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_ErodedGully_Scatter_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Debris_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Forest_RollingWoodland_Scatter_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::kit_vegetation_density_within_biome_cap": {
+      "ok": true,
+      "detail": "kit vegetation_density=0.25 exceeds biome budget_cap 0.25",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::kit_dynamic_light_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit dynamic_light_count=6 exceeds biome budget_cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::kit_fog_volume_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit fog_volume_count=3 exceeds biome budget_cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::kit_emissive_material_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit emissive_material_count=2 exceeds biome budget_cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::kit_poi_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit poi_count=8 exceeds biome budget_cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::kit_entity_anchor_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit entity_anchor_count=22 exceeds biome budget_cap 22",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::kit_material_complexity_within_biome_cap": {
+      "ok": true,
+      "detail": "kit material_complexity=240 exceeds biome budget_cap 240",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::kit_volumetric_effect_class_matches_biome": {
+      "ok": true,
+      "detail": "kit volumetric_effect_class=medium != biome cap medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::dressing_coverage_present": {
+      "ok": true,
+      "detail": "kit references no dressing assets",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::has_maps": {
+      "ok": true,
+      "detail": "no maps for biome alpine_snow",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=0 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Debris_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=0 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_GlacialBasin_Scatter_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=0 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Debris_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=0 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alpine_SnowyRidge_Scatter_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::kit_vegetation_density_within_biome_cap": {
+      "ok": true,
+      "detail": "kit vegetation_density=0.15 exceeds biome budget_cap 0.15",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::kit_dynamic_light_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit dynamic_light_count=10 exceeds biome budget_cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::kit_fog_volume_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit fog_volume_count=4 exceeds biome budget_cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::kit_emissive_material_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit emissive_material_count=8 exceeds biome budget_cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::kit_poi_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit poi_count=8 exceeds biome budget_cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::kit_entity_anchor_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit entity_anchor_count=26 exceeds biome budget_cap 26",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::kit_material_complexity_within_biome_cap": {
+      "ok": true,
+      "detail": "kit material_complexity=250 exceeds biome budget_cap 250",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::kit_volumetric_effect_class_matches_biome": {
+      "ok": true,
+      "detail": "kit volumetric_effect_class=high != biome cap high",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::dressing_coverage_present": {
+      "ok": true,
+      "detail": "kit references no dressing assets",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::has_maps": {
+      "ok": true,
+      "detail": "no maps for biome volcanic_ashlands",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=1 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Debris_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=1 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_AshRavine_Scar_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=1 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Debris_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=1 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Ashlands_BasaltFlats_Scar_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::kit_vegetation_density_within_biome_cap": {
+      "ok": true,
+      "detail": "kit vegetation_density=0.7 exceeds biome budget_cap 0.7",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::kit_dynamic_light_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit dynamic_light_count=6 exceeds biome budget_cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::kit_fog_volume_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit fog_volume_count=4 exceeds biome budget_cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::kit_emissive_material_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit emissive_material_count=2 exceeds biome budget_cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::kit_poi_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit poi_count=8 exceeds biome budget_cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::kit_entity_anchor_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit entity_anchor_count=24 exceeds biome budget_cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::kit_material_complexity_within_biome_cap": {
+      "ok": true,
+      "detail": "kit material_complexity=240 exceeds biome budget_cap 240",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::kit_volumetric_effect_class_matches_biome": {
+      "ok": true,
+      "detail": "kit volumetric_effect_class=high != biome cap high",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::dressing_coverage_present": {
+      "ok": true,
+      "detail": "kit references no dressing assets",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::has_maps": {
+      "ok": true,
+      "detail": "no maps for biome wetland_mire",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Debris_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_MudFlat_Scatter_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Debris_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has dynamic_light_count=2 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has decal_count=0 over cap 64",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "raytraced class 'photoreal' map has vfx_emitter_count=0 over cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Wetland_ReedMarsh_Scatter_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::kit_vegetation_density_within_biome_cap": {
+      "ok": true,
+      "detail": "kit vegetation_density=0.4 exceeds biome budget_cap 0.4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::kit_dynamic_light_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit dynamic_light_count=8 exceeds biome budget_cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::kit_fog_volume_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit fog_volume_count=2 exceeds biome budget_cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::kit_emissive_material_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit emissive_material_count=12 exceeds biome budget_cap 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::kit_poi_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit poi_count=8 exceeds biome budget_cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::kit_entity_anchor_count_within_biome_cap": {
+      "ok": true,
+      "detail": "kit entity_anchor_count=22 exceeds biome budget_cap 22",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::kit_material_complexity_within_biome_cap": {
+      "ok": true,
+      "detail": "kit material_complexity=280 exceeds biome budget_cap 280",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::kit_volumetric_effect_class_matches_biome": {
+      "ok": true,
+      "detail": "kit volumetric_effect_class=medium != biome cap medium",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::dressing_coverage_present": {
+      "ok": true,
+      "detail": "kit references no dressing assets",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::has_maps": {
+      "ok": true,
+      "detail": "no maps for biome alien_crystal_badlands",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Debris_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_CrystalField_Scatter_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Debris_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has dynamic_light_count=2 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has decal_count=0 over cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "performance class 'performance' map has vfx_emitter_count=0 over cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Perf_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'alien' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Photoreal_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::dynamic_light_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has dynamic_light_count=2 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::decal_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has decal_count=0 over cap 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::vfx_emitter_count_within_budget": {
+      "ok": true,
+      "detail": "balanced class 'stylized' map has vfx_emitter_count=1 over cap 4",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::nanite_policy_declared": {
+      "ok": true,
+      "detail": "no nanite policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::lod_policy_declared": {
+      "ok": true,
+      "detail": "no lod policy context",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::dynamic_light_within_biome_cap": {
+      "ok": true,
+      "detail": "map dynamic_light_count=2 over biome cap 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "Alien_Plateau_Scatter_Stylized_01::fog_volume_within_biome_cap": {
+      "ok": true,
+      "detail": "map fog_volume_count=1 over biome cap 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 470,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-visual-density-budgets",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T23:37:31.653467+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.visual.density_budget_report.v1",
+    "report_id": "wf.visual.density_budget_report.v1:e60702c19f75",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 5,
+    "records_total": 5,
+    "records_passed": 5,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "maps_checked": 60
+  }
+}

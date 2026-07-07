@@ -1,0 +1,16 @@
+{
+  "case": "third_party_missing_repair_destroy_protected",
+  "family": "ownership",
+  "record_type": "catalog",
+  "owning_validator": "validate_asset_catalog.py",
+  "expected_code": "ASSET_OWNERSHIP_FAILURE",
+  "description": "third-party catalog asset whose lifecycle_policy permits repair/destroy",
+  "patch": {
+    "set": {
+      "lifecycle_policy": {
+        "repair_allowed": true,
+        "destroy_allowed": true
+      }
+    }
+  }
+}

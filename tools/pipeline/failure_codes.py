@@ -343,6 +343,122 @@ class FailureCode:
     BALANCE_CONTRACT_FAILURE = "WF340_BALANCE_CONTRACT_FAILURE"
     BALANCE_REPORT_FAILURE = "WF341_BALANCE_REPORT_FAILURE"
 
+    # ======================================================================
+    # v1.5 AssetAcquisitionForge — safe acquisition taxonomy (350–376)
+    # ----------------------------------------------------------------------
+    # Convert content gaps into approved, licensed, provenance-proven,
+    # quarantined asset inventory. The most dangerous bugs this guards against:
+    # importing paid/EULA-gated content without manual action, accepting unclear
+    # licenses, bypassing quarantine, and mismarking third-party as generated.
+    # ======================================================================
+    ASSET_NEED_ANALYSIS_FAILURE = "WF350_ASSET_NEED_ANALYSIS_FAILURE"
+    ASSET_PROCUREMENT_MANIFEST_FAILURE = "WF351_ASSET_PROCUREMENT_MANIFEST_FAILURE"
+    ASSET_SOURCE_POLICY_FAILURE = "WF352_ASSET_SOURCE_POLICY_FAILURE"
+    ASSET_SOURCE_ADAPTER_FAILURE = "WF353_ASSET_SOURCE_ADAPTER_FAILURE"
+    ASSET_DOWNLOAD_NOT_ALLOWED = "WF354_ASSET_DOWNLOAD_NOT_ALLOWED"
+    ASSET_LICENSE_MISSING = "WF355_ASSET_LICENSE_MISSING"
+    ASSET_LICENSE_UNSUPPORTED = "WF356_ASSET_LICENSE_UNSUPPORTED"
+    ASSET_EULA_REQUIRED_MANUAL_ACTION = "WF357_ASSET_EULA_REQUIRED_MANUAL_ACTION"
+    ASSET_PURCHASE_REQUIRED_MANUAL_ACTION = "WF358_ASSET_PURCHASE_REQUIRED_MANUAL_ACTION"
+    ASSET_MANUAL_APPROVAL_MISSING = "WF359_ASSET_MANUAL_APPROVAL_MISSING"
+    ASSET_PROVENANCE_MISSING = "WF360_ASSET_PROVENANCE_MISSING"
+    ASSET_SOURCE_URL_MISSING = "WF361_ASSET_SOURCE_URL_MISSING"
+    ASSET_SOURCE_PATH_MISSING = "WF362_ASSET_SOURCE_PATH_MISSING"
+    ASSET_HASH_MISSING = "WF363_ASSET_HASH_MISSING"
+    ASSET_HASH_MISMATCH = "WF364_ASSET_HASH_MISMATCH"
+    ASSET_QUARANTINE_BYPASS = "WF365_ASSET_QUARANTINE_BYPASS"
+    ASSET_QUARANTINE_FAILURE = "WF366_ASSET_QUARANTINE_FAILURE"
+    ASSET_CATALOG_FAILURE = "WF367_ASSET_CATALOG_FAILURE"
+    ASSET_OWNERSHIP_FAILURE = "WF368_ASSET_OWNERSHIP_FAILURE"
+    ASSET_PACKAGE_POLICY_FAILURE = "WF369_ASSET_PACKAGE_POLICY_FAILURE"
+    ASSET_DEPENDENCY_FAILURE = "WF370_ASSET_DEPENDENCY_FAILURE"
+    ASSET_OUTSIDE_APPROVED_ROOT = "WF371_ASSET_OUTSIDE_APPROVED_ROOT"
+    ASSET_UNKNOWN_LICENSE_REJECTED = "WF372_ASSET_UNKNOWN_LICENSE_REJECTED"
+    ASSET_STANDALONE_REDISTRIBUTION_FORBIDDEN = "WF373_ASSET_STANDALONE_REDISTRIBUTION_FORBIDDEN"
+    ASSET_NEED_SCHEMA_FAILURE = "WF374_ASSET_NEED_SCHEMA_FAILURE"
+    ASSET_APPROVAL_STATE_FAILURE = "WF375_ASSET_APPROVAL_STATE_FAILURE"
+    ASSET_SHOPPING_LIST_FAILURE = "WF376_ASSET_SHOPPING_LIST_FAILURE"
+    ASSET_NEGATIVE_FIXTURE_FAILURE = "WF377_ASSET_NEGATIVE_FIXTURE_FAILURE"
+
+    # ======================================================================
+    # v1.5 AssetRealizationForge — UE realization + cover replacement (380–398)
+    # ----------------------------------------------------------------------
+    # Turn approved catalog records into UE-realized assets and replace v1.4x
+    # cube cover proxies with real catalog-backed meshes WITHOUT moving anchors,
+    # blocking routes, or breaking cover semantics. Hybrid rule: every cover
+    # family must have a generated_owned baseline (COVER_BASELINE_MISSING).
+    # ======================================================================
+    ASSET_UE_MATERIALIZATION_FAILURE = "WF380_ASSET_UE_MATERIALIZATION_FAILURE"
+    ASSET_UE_IMPORT_FAILURE = "WF381_ASSET_UE_IMPORT_FAILURE"
+    ASSET_UE_PATH_INVALID = "WF382_ASSET_UE_PATH_INVALID"
+    ASSET_MATERIAL_BINDING_FAILURE = "WF383_ASSET_MATERIAL_BINDING_FAILURE"
+    ASSET_TEXTURE_DEPENDENCY_FAILURE = "WF384_ASSET_TEXTURE_DEPENDENCY_FAILURE"
+    ASSET_COLLISION_MISSING = "WF385_ASSET_COLLISION_MISSING"
+    ASSET_BOUNDS_INVALID = "WF386_ASSET_BOUNDS_INVALID"
+    ASSET_LOD_POLICY_FAILURE = "WF387_ASSET_LOD_POLICY_FAILURE"
+    ASSET_NANITE_POLICY_FAILURE = "WF388_ASSET_NANITE_POLICY_FAILURE"
+    ASSET_MAP_REFERENCE_FAILURE = "WF389_ASSET_MAP_REFERENCE_FAILURE"
+    COVER_PROXY_REPLACEMENT_FAILURE = "WF390_COVER_PROXY_REPLACEMENT_FAILURE"
+    COVER_REPLACEMENT_NOT_CATALOG_BACKED = "WF391_COVER_REPLACEMENT_NOT_CATALOG_BACKED"
+    COVER_REPLACEMENT_ROUTE_BLOCKED = "WF392_COVER_REPLACEMENT_ROUTE_BLOCKED"
+    COVER_REPLACEMENT_COLLISION_INVALID = "WF393_COVER_REPLACEMENT_COLLISION_INVALID"
+    COVER_REPLACEMENT_HEIGHT_CLASS_MISMATCH = "WF394_COVER_REPLACEMENT_HEIGHT_CLASS_MISMATCH"
+    COVER_REPLACEMENT_LOS_FAILURE = "WF395_COVER_REPLACEMENT_LOS_FAILURE"
+    COVER_REPLACEMENT_ANCHOR_MUTATED = "WF396_COVER_REPLACEMENT_ANCHOR_MUTATED"
+    COVER_BASELINE_MISSING = "WF397_COVER_BASELINE_MISSING"
+    REALIZED_COVER_BINDING_FAILURE = "WF398_REALIZED_COVER_BINDING_FAILURE"
+
+    # ======================================================================
+    # v1.5 VisualEnvironmentForge — biome visual kits (400–416)
+    # ----------------------------------------------------------------------
+    # Give every biome/mission/encounter context a validated visual environment
+    # kit and materialize it WITHOUT breaking routes, budgets, ownership, or
+    # package policy. Distinct from the v1.3.5 rig codes (290–303): these are
+    # kit-composition + per-zone readability codes.
+    # ======================================================================
+    VISUAL_KIT_CONTRACT_FAILURE = "WF400_VISUAL_KIT_CONTRACT_FAILURE"
+    VISUAL_KIT_MISSING_BIOME = "WF401_VISUAL_KIT_MISSING_BIOME"
+    VISUAL_SKY_PROFILE_FAILURE = "WF402_VISUAL_SKY_PROFILE_FAILURE"
+    VISUAL_FOG_PROFILE_FAILURE = "WF403_VISUAL_FOG_PROFILE_FAILURE"
+    VISUAL_LIGHTING_PROFILE_FAILURE = "WF404_VISUAL_LIGHTING_PROFILE_FAILURE"
+    VISUAL_ATMOSPHERE_PROFILE_FAILURE = "WF405_VISUAL_ATMOSPHERE_PROFILE_FAILURE"
+    VISUAL_POSTPROCESS_PROFILE_FAILURE = "WF406_VISUAL_POSTPROCESS_PROFILE_FAILURE"
+    VISUAL_DRESSING_COVERAGE_FAILURE = "WF407_VISUAL_DRESSING_COVERAGE_FAILURE"
+    VISUAL_DENSITY_BUDGET_FAILURE = "WF408_VISUAL_DENSITY_BUDGET_FAILURE"
+    VISUAL_ROUTE_READABILITY_FAILURE = "WF409_VISUAL_ROUTE_READABILITY_FAILURE"
+    VISUAL_HAZARD_READABILITY_FAILURE = "WF410_VISUAL_HAZARD_READABILITY_FAILURE"
+    VISUAL_SAFE_ZONE_READABILITY_FAILURE = "WF411_VISUAL_SAFE_ZONE_READABILITY_FAILURE"
+    VISUAL_DANGER_ZONE_READABILITY_FAILURE = "WF412_VISUAL_DANGER_ZONE_READABILITY_FAILURE"
+    VISUAL_SCREENSHOT_REPORT_FAILURE = "WF413_VISUAL_SCREENSHOT_REPORT_FAILURE"
+    VISUAL_KIT_MATERIALIZATION_FAILURE = "WF414_VISUAL_KIT_MATERIALIZATION_FAILURE"
+    VISUAL_WEATHER_BINDING_FAILURE = "WF415_VISUAL_WEATHER_BINDING_FAILURE"
+    VISUAL_KIT_NEGATIVE_FIXTURE_FAILURE = "WF416_VISUAL_KIT_NEGATIVE_FIXTURE_FAILURE"
+
+    # ======================================================================
+    # v1.5 lifecycle / package protection (420–425)
+    # ----------------------------------------------------------------------
+    # Lifecycle torture must prove third-party / human-owned source assets are
+    # never destroyed or mutated, and packaging must never redistribute raw
+    # third-party content or leak absolute/cache paths.
+    # ======================================================================
+    LIFECYCLE_THIRD_PARTY_DESTROY_ATTEMPT = "WF420_LIFECYCLE_THIRD_PARTY_DESTROY_ATTEMPT"
+    LIFECYCLE_HUMAN_OWNED_MUTATION_ATTEMPT = "WF421_LIFECYCLE_HUMAN_OWNED_MUTATION_ATTEMPT"
+    PACKAGE_EXTERNAL_LICENSE_FAILURE = "WF422_PACKAGE_EXTERNAL_LICENSE_FAILURE"
+    PACKAGE_RAW_ASSET_REDISTRIBUTION_FAILURE = "WF423_PACKAGE_RAW_ASSET_REDISTRIBUTION_FAILURE"
+    PACKAGE_DEPENDENCY_LEAK_FAILURE = "WF424_PACKAGE_DEPENDENCY_LEAK_FAILURE"
+    PACKAGE_ABSOLUTE_PATH_LEAK_FAILURE = "WF425_PACKAGE_ABSOLUTE_PATH_LEAK_FAILURE"
+
+    # ======================================================================
+    # v1.5 schema / taxonomy / integrity (430–436)
+    # ======================================================================
+    V1_5_TAXONOMY_FAILURE = "WF430_V1_5_TAXONOMY_FAILURE"
+    VISUAL_KIT_SCHEMA_FAILURE = "WF431_VISUAL_KIT_SCHEMA_FAILURE"
+    COVER_BINDING_SCHEMA_FAILURE = "WF432_COVER_BINDING_SCHEMA_FAILURE"
+    ASSET_CANDIDATE_SCHEMA_FAILURE = "WF433_ASSET_CANDIDATE_SCHEMA_FAILURE"
+    ASSET_QUARANTINE_SCHEMA_FAILURE = "WF434_ASSET_QUARANTINE_SCHEMA_FAILURE"
+    V1_5_FUZZ_FAILURE = "WF435_V1_5_FUZZ_FAILURE"
+    V1_5_REPORT_INTEGRITY_FAILURE = "WF436_V1_5_REPORT_INTEGRITY_FAILURE"
+
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
 # This is the *default* nature of the code; a validator may still choose a
@@ -700,10 +816,32 @@ GATE_TAXONOMY = {
 }
 
 
+# --- completeness backfill (v1.5) -----------------------------------------
+# Every defined code MUST have a severity (default: blocking) and appear in the
+# gate taxonomy so full-shield rolls it up by lane and validate_failure_codes can
+# prove no code is orphaned. Earlier bands enumerate these explicitly above; this
+# backfill covers the v1.5 bands without 60 hand-written lines and stays correct
+# as codes are added. It never overrides an explicit severity already set above.
+for _name, _code in list(vars(FailureCode).items()):
+    if _name.startswith("_") or not isinstance(_code, str):
+        continue
+    SEVERITY.setdefault(_code, "fail")
+    GATE_TAXONOMY.setdefault(_name, _code)
+del _name, _code
+
+
 def all_codes():
     """Return every defined code string (for tests / docs generation)."""
     return [v for k, v in vars(FailureCode).items()
             if not k.startswith("_") and isinstance(v, str)]
+
+
+def code_number(code):
+    """Return the integer band number of a WFnnn_* code, or -1 if malformed."""
+    try:
+        return int(str(code)[2:5])
+    except (ValueError, IndexError):
+        return -1
 
 
 def severity_of(code):

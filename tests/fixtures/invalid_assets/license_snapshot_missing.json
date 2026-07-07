@@ -1,0 +1,14 @@
+{
+  "case": "license_snapshot_missing",
+  "family": "provenance",
+  "record_type": "catalog",
+  "owning_validator": "validate_asset_provenance.py",
+  "expected_code": "ASSET_PROVENANCE_MISSING",
+  "description": "catalog record whose license snapshot/url proof is absent",
+  "patch": {
+    "set": {
+      "license_url": "",
+      "license_snapshot": ""
+    }
+  }
+}

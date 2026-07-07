@@ -1,0 +1,17 @@
+{
+  "case": "approval_claims_completion_no_user_marker",
+  "family": "approval",
+  "record_type": "approval",
+  "owning_validator": "validate_asset_approval_flow.py",
+  "expected_code": "ASSET_MANUAL_APPROVAL_MISSING",
+  "description": "marketplace approval claims completion but lacks real-user EULA/purchase markers",
+  "patch": {
+    "set": {
+      "approval_type": "manual_marketplace_acquisition",
+      "approved_by": "maw271190",
+      "manual_action_completed": true,
+      "eula_accepted_by_user": false,
+      "purchase_completed_by_user": false
+    }
+  }
+}

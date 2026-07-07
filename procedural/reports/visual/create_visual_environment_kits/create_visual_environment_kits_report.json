@@ -1,0 +1,618 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "temperate_forest::required_fields_present": {
+      "ok": true,
+      "detail": "all required fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::biome_in_enum": {
+      "ok": true,
+      "detail": "biome='temperate_forest' not in ('temperate_forest', 'alpine_snow', 'volcanic_ashlands', 'wetland_mire', 'alien_crystal_badlands', 'desert_borderlands')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::sky_profile_non_empty_string": {
+      "ok": true,
+      "detail": "sky_profile must be a non-empty string, got 'clear_day_sky'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::fog_profile_non_empty_string": {
+      "ok": true,
+      "detail": "fog_profile must be a non-empty string, got 'clear_thin_fog'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::lighting_profile_non_empty_string": {
+      "ok": true,
+      "detail": "lighting_profile must be a non-empty string, got 'forest_canopy_dappled'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::atmosphere_profile_non_empty_string": {
+      "ok": true,
+      "detail": "atmosphere_profile must be a non-empty string, got 'humid_atmo'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::postprocess_profile_non_empty_string": {
+      "ok": true,
+      "detail": "postprocess_profile must be a non-empty string, got 'neutral_daylight'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::terrain_material_profile_non_empty_string": {
+      "ok": true,
+      "detail": "terrain_material_profile must be a non-empty string, got 'mossy_soil'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::decal_profile_non_empty_string": {
+      "ok": true,
+      "detail": "decal_profile must be a non-empty string, got 'woodland_scatter'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::density_budget_is_dict": {
+      "ok": true,
+      "detail": "density_budget must be a dict, got 'dict'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::performance_budget_is_dict": {
+      "ok": true,
+      "detail": "performance_budget must be a dict, got 'dict'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "temperate_forest::written": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\procedural\\generated\\visual\\kits\\vk_temperate_forest_standard.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::required_fields_present": {
+      "ok": true,
+      "detail": "all required fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::biome_in_enum": {
+      "ok": true,
+      "detail": "biome='alpine_snow' not in ('temperate_forest', 'alpine_snow', 'volcanic_ashlands', 'wetland_mire', 'alien_crystal_badlands', 'desert_borderlands')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::sky_profile_non_empty_string": {
+      "ok": true,
+      "detail": "sky_profile must be a non-empty string, got 'clear_day_sky'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::fog_profile_non_empty_string": {
+      "ok": true,
+      "detail": "fog_profile must be a non-empty string, got 'clear_thin_fog'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::lighting_profile_non_empty_string": {
+      "ok": true,
+      "detail": "lighting_profile must be a non-empty string, got 'alpine_cold_key'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::atmosphere_profile_non_empty_string": {
+      "ok": true,
+      "detail": "atmosphere_profile must be a non-empty string, got 'alpine_thin_atmo'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::postprocess_profile_non_empty_string": {
+      "ok": true,
+      "detail": "postprocess_profile must be a non-empty string, got 'neutral_daylight'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::terrain_material_profile_non_empty_string": {
+      "ok": true,
+      "detail": "terrain_material_profile must be a non-empty string, got 'packed_snow'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::decal_profile_non_empty_string": {
+      "ok": true,
+      "detail": "decal_profile must be a non-empty string, got 'ridge_scatter'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::density_budget_is_dict": {
+      "ok": true,
+      "detail": "density_budget must be a dict, got 'dict'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::performance_budget_is_dict": {
+      "ok": true,
+      "detail": "performance_budget must be a dict, got 'dict'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alpine_snow::written": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\procedural\\generated\\visual\\kits\\vk_alpine_snow_standard.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::required_fields_present": {
+      "ok": true,
+      "detail": "all required fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::biome_in_enum": {
+      "ok": true,
+      "detail": "biome='volcanic_ashlands' not in ('temperate_forest', 'alpine_snow', 'volcanic_ashlands', 'wetland_mire', 'alien_crystal_badlands', 'desert_borderlands')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::sky_profile_non_empty_string": {
+      "ok": true,
+      "detail": "sky_profile must be a non-empty string, got 'ash_overcast_sky'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::fog_profile_non_empty_string": {
+      "ok": true,
+      "detail": "fog_profile must be a non-empty string, got 'clear_thin_fog'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::lighting_profile_non_empty_string": {
+      "ok": true,
+      "detail": "lighting_profile must be a non-empty string, got 'volcanic_ember_key'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::atmosphere_profile_non_empty_string": {
+      "ok": true,
+      "detail": "atmosphere_profile must be a non-empty string, got 'ashen_atmo'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::postprocess_profile_non_empty_string": {
+      "ok": true,
+      "detail": "postprocess_profile must be a non-empty string, got 'neutral_daylight'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::terrain_material_profile_non_empty_string": {
+      "ok": true,
+      "detail": "terrain_material_profile must be a non-empty string, got 'black_basalt'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::decal_profile_non_empty_string": {
+      "ok": true,
+      "detail": "decal_profile must be a non-empty string, got 'industrial_scar'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::density_budget_is_dict": {
+      "ok": true,
+      "detail": "density_budget must be a dict, got 'dict'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::performance_budget_is_dict": {
+      "ok": true,
+      "detail": "performance_budget must be a dict, got 'dict'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "volcanic_ashlands::written": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\procedural\\generated\\visual\\kits\\vk_volcanic_ashlands_standard.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::required_fields_present": {
+      "ok": true,
+      "detail": "all required fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::biome_in_enum": {
+      "ok": true,
+      "detail": "biome='wetland_mire' not in ('temperate_forest', 'alpine_snow', 'volcanic_ashlands', 'wetland_mire', 'alien_crystal_badlands', 'desert_borderlands')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::sky_profile_non_empty_string": {
+      "ok": true,
+      "detail": "sky_profile must be a non-empty string, got 'clear_day_sky'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::fog_profile_non_empty_string": {
+      "ok": true,
+      "detail": "fog_profile must be a non-empty string, got 'clear_thin_fog'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::lighting_profile_non_empty_string": {
+      "ok": true,
+      "detail": "lighting_profile must be a non-empty string, got 'wetland_flat_key'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::atmosphere_profile_non_empty_string": {
+      "ok": true,
+      "detail": "atmosphere_profile must be a non-empty string, got 'humid_atmo'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::postprocess_profile_non_empty_string": {
+      "ok": true,
+      "detail": "postprocess_profile must be a non-empty string, got 'neutral_daylight'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::terrain_material_profile_non_empty_string": {
+      "ok": true,
+      "detail": "terrain_material_profile must be a non-empty string, got 'wet_mud'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::decal_profile_non_empty_string": {
+      "ok": true,
+      "detail": "decal_profile must be a non-empty string, got 'marsh_scatter'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::density_budget_is_dict": {
+      "ok": true,
+      "detail": "density_budget must be a dict, got 'dict'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::performance_budget_is_dict": {
+      "ok": true,
+      "detail": "performance_budget must be a dict, got 'dict'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "wetland_mire::written": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\procedural\\generated\\visual\\kits\\vk_wetland_mire_standard.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::required_fields_present": {
+      "ok": true,
+      "detail": "all required fields present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::biome_in_enum": {
+      "ok": true,
+      "detail": "biome='alien_crystal_badlands' not in ('temperate_forest', 'alpine_snow', 'volcanic_ashlands', 'wetland_mire', 'alien_crystal_badlands', 'desert_borderlands')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::sky_profile_non_empty_string": {
+      "ok": true,
+      "detail": "sky_profile must be a non-empty string, got 'alien_sky'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::fog_profile_non_empty_string": {
+      "ok": true,
+      "detail": "fog_profile must be a non-empty string, got 'alien_fog'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::lighting_profile_non_empty_string": {
+      "ok": true,
+      "detail": "lighting_profile must be a non-empty string, got 'alien_emissive_key'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::atmosphere_profile_non_empty_string": {
+      "ok": true,
+      "detail": "atmosphere_profile must be a non-empty string, got 'alien_atmo'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::postprocess_profile_non_empty_string": {
+      "ok": true,
+      "detail": "postprocess_profile must be a non-empty string, got 'alien_grade'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::terrain_material_profile_non_empty_string": {
+      "ok": true,
+      "detail": "terrain_material_profile must be a non-empty string, got 'iridescent_stone'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::decal_profile_non_empty_string": {
+      "ok": true,
+      "detail": "decal_profile must be a non-empty string, got 'crystal_scatter'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::density_budget_is_dict": {
+      "ok": true,
+      "detail": "density_budget must be a dict, got 'dict'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::performance_budget_is_dict": {
+      "ok": true,
+      "detail": "performance_budget must be a dict, got 'dict'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "alien_crystal_badlands::written": {
+      "ok": true,
+      "detail": "D:\\Unreal Projects\\WorldForge\\procedural\\generated\\visual\\kits\\vk_alien_crystal_badlands_standard.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "biome_has_kit::temperate_forest": {
+      "ok": true,
+      "detail": "no visual kit composed for biome temperate_forest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "biome_has_kit::alpine_snow": {
+      "ok": true,
+      "detail": "no visual kit composed for biome alpine_snow",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "biome_has_kit::volcanic_ashlands": {
+      "ok": true,
+      "detail": "no visual kit composed for biome volcanic_ashlands",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "biome_has_kit::wetland_mire": {
+      "ok": true,
+      "detail": "no visual kit composed for biome wetland_mire",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "biome_has_kit::alien_crystal_badlands": {
+      "ok": true,
+      "detail": "no visual kit composed for biome alien_crystal_badlands",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "all_pack_biomes_covered": {
+      "ok": true,
+      "detail": "composed 5/5 biome kits: ['vk_alien_crystal_badlands_standard', 'vk_alpine_snow_standard', 'vk_temperate_forest_standard', 'vk_volcanic_ashlands_standard', 'vk_wetland_mire_standard']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 71,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "create-visual-environment-kits",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "922c4b6990b59dee086d2197b56e522e2c7cb012",
+    "timestamp": "2026-07-06T23:37:31.361980+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.visual.environment_kit_report.v1",
+    "report_id": "wf.visual.environment_kit_report.v1:069903ddfd40",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 5,
+    "records_total": 5,
+    "records_passed": 5,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "kits": {
+      "temperate_forest": "vk_temperate_forest_standard",
+      "alpine_snow": "vk_alpine_snow_standard",
+      "volcanic_ashlands": "vk_volcanic_ashlands_standard",
+      "wetland_mire": "vk_wetland_mire_standard",
+      "alien_crystal_badlands": "vk_alien_crystal_badlands_standard"
+    },
+    "kits_dir": "procedural\\generated\\visual\\kits"
+  }
+}
