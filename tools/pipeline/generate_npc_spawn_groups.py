@@ -67,10 +67,11 @@ def build_spawn_groups(pack):
                 continue
             count = int(eg.get("count_min") or 1)
             count = max(1, min(count, len(anchors)))  # never exceed anchor budget
+            map_id = (enc.get("mission_id") or "").replace("mission_", "") or eid.split("_", 2)[-1]
             groups.append({
                 "spawn_group_id": "sg_{}_{}".format(eid, i),
                 "encounter_id": eid, "mission_id": enc.get("mission_id"),
-                "map_id": eid.replace("enc_lp_", ""), "biome": enc.get("biome_family"),
+                "map_id": map_id, "biome": enc.get("biome_family"),
                 "pressure_profile": profile,
                 "npc_archetype_ids": [NP.archetype_id(r) for r in roster],
                 "spawn_anchor_ids": list(anchors), "count": count,

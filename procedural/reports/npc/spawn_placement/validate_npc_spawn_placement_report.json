@@ -3,33 +3,49 @@
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
-    "archetypes::required_present": {
+    "placement::groups_exist": {
       "ok": true,
-      "detail": "missing required archetypes: []",
+      "detail": "no spawn groups generated (run generate-npc-spawn-groups)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "archetypes::perception_refs_resolve": {
+    "placement::encounters_resolve": {
       "ok": true,
-      "detail": "an archetype references an unknown perception_model",
+      "detail": "0 groups with missing encounter",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "archetypes::pressure_refs_resolve": {
+    "placement::anchors_resolve": {
       "ok": true,
-      "detail": "an archetype references an unknown pressure_model",
+      "detail": "0 dangling spawn anchors",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "archetypes::all_valid": {
+    "placement::on_walkable": {
       "ok": true,
-      "detail": "0 invalid records",
+      "detail": "0 spawn anchors off-walkable / inside collision",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement::density_budget": {
+      "ok": true,
+      "detail": "0 groups exceed density budget",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "placement::policy_walkability_driven": {
+      "ok": true,
+      "detail": "0 groups not walkability-driven",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -38,7 +54,7 @@
   },
   "failures": [],
   "counts": {
-    "PASS": 4,
+    "PASS": 6,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -47,27 +63,27 @@
   "passed": true,
   "status": "ok",
   "meta": {
-    "command": "generate-npc-archetypes",
+    "command": "validate-npc-spawn-placement",
     "pack": "encounter_loop_world",
     "strict": true,
     "deep": false,
     "torture": false,
     "seeds": null,
     "git_sha": "1bceade26e9564828535374f7efb8df4dc0c7ae7",
-    "timestamp": "2026-07-08T20:52:49.176332+00:00",
+    "timestamp": "2026-07-08T20:52:49.931641+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
     "worldforge_version": "v1.5",
-    "report_type": "wf.npc.archetype_report.v1",
-    "report_id": "wf.npc.archetype_report.v1:4eb138f1940c",
+    "report_type": "wf.npc.spawn_placement_report.v1",
+    "report_id": "wf.npc.spawn_placement_report.v1:a93a46d02982",
     "status": "ok",
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 16,
-    "records_total": 16,
-    "records_passed": 16,
+    "record_count": 200,
+    "records_total": 200,
+    "records_passed": 200,
     "records_failed": 0,
     "records_skipped": 0
   }

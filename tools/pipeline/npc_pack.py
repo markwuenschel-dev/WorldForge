@@ -218,6 +218,36 @@ def load_route_graph(map_id):
         return None
 
 
+ANCHOR_LISTS = ("spawn_anchors", "patrol_anchors", "idle_anchors", "ambush_anchors",
+                "cover_anchors", "hazard_zones", "safe_zones", "danger_zones", "resource_nodes")
+
+
+def encounter_anchor_index(enc):
+    """Return {anchor_id: anchor_dict} over every anchor/zone list in an encounter."""
+    idx = {}
+    for key in ANCHOR_LISTS:
+        for a in enc.get(key, []):
+            if isinstance(a, dict) and a.get("id"):
+                idx[a["id"]] = a
+    return idx
+
+
+def anchor_is_placeable(anchor):
+    """True if an anchor is a safe NPC placement: has a numeric world_position and
+    is not flagged as inside collision. A spawn-kind anchor additionally carries
+    valid_spawn — respected when present."""
+    if not isinstance(anchor, dict):
+        return False
+    pos = anchor.get("world_position")
+    if not (isinstance(pos, (list, tuple)) and len(pos) == 3 and all(isinstance(c, (int, float)) for c in pos)):
+        return False
+    if anchor.get("collision") is True:
+        return False
+    if anchor.get("valid_spawn") is False:
+        return False
+    return True
+
+
 def route_plan_for_encounter(plans, encounter_id, pressure_profile):
     """Find the grounded route plan that grounds this encounter+profile.
 
