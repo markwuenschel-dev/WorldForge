@@ -1,0 +1,137 @@
+{
+  "route_graph_id": "rg:Alien_CrystalField_Debris_Perf_01",
+  "map_id": "Alien_CrystalField_Debris_Perf_01",
+  "nodes": [
+    {
+      "node_id": "spawn",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 90.0,
+      "kind": "spawn",
+      "walkable": true
+    },
+    {
+      "node_id": "mid1",
+      "x": 225.0,
+      "y": 0.0,
+      "z": 90.0,
+      "kind": "walkable",
+      "walkable": true
+    },
+    {
+      "node_id": "mid2",
+      "x": 450.0,
+      "y": 0.0,
+      "z": 90.0,
+      "kind": "walkable",
+      "walkable": true
+    },
+    {
+      "node_id": "mid3",
+      "x": 675.0,
+      "y": 0.0,
+      "z": 90.0,
+      "kind": "walkable",
+      "walkable": true
+    },
+    {
+      "node_id": "obj",
+      "x": 900.0,
+      "y": 0.0,
+      "z": 90.0,
+      "kind": "objective",
+      "walkable": true
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "e0",
+      "from_node": "spawn",
+      "to_node": "mid1",
+      "distance": 225.0,
+      "min_clearance": 130.0,
+      "max_slope": 12.0,
+      "max_step": 20.0,
+      "cover_intrusion": false,
+      "hazard_intrusion": false,
+      "walkability_status": "pass"
+    },
+    {
+      "edge_id": "e1",
+      "from_node": "mid1",
+      "to_node": "mid2",
+      "distance": 225.0,
+      "min_clearance": 130.0,
+      "max_slope": 12.0,
+      "max_step": 20.0,
+      "cover_intrusion": false,
+      "hazard_intrusion": false,
+      "walkability_status": "pass"
+    },
+    {
+      "edge_id": "e2",
+      "from_node": "mid2",
+      "to_node": "mid3",
+      "distance": 225.0,
+      "min_clearance": 130.0,
+      "max_slope": 12.0,
+      "max_step": 20.0,
+      "cover_intrusion": false,
+      "hazard_intrusion": false,
+      "walkability_status": "pass"
+    },
+    {
+      "edge_id": "e3",
+      "from_node": "mid3",
+      "to_node": "obj",
+      "distance": 225.0,
+      "min_clearance": 130.0,
+      "max_slope": 12.0,
+      "max_step": 20.0,
+      "cover_intrusion": false,
+      "hazard_intrusion": false,
+      "walkability_status": "pass"
+    }
+  ],
+  "walkable_surface_refs": [
+    "surf:Alien_CrystalField_Debris_Perf_01"
+  ],
+  "anchor_refs": [
+    "spawn_player_primary",
+    "objective"
+  ],
+  "spawn_node": "spawn",
+  "objective_node": "obj",
+  "cover_avoidance_zones": [],
+  "hazard_avoidance_zones": [],
+  "safe_zone_refs": [],
+  "danger_zone_refs": [],
+  "route_widths": [
+    120.0,
+    120.0,
+    120.0,
+    120.0
+  ],
+  "slope_samples": [
+    12.0,
+    12.0,
+    12.0,
+    12.0
+  ],
+  "step_samples": [
+    20.0,
+    20.0,
+    20.0,
+    20.0
+  ],
+  "capsule_clearance_samples": [
+    130.0,
+    130.0,
+    130.0,
+    130.0
+  ],
+  "validation_status": "valid",
+  "failure_codes": [],
+  "created_by": "worldforge.v1.6z.route_graph_generator",
+  "created_at": "2026-07-08T00:00:00+00:00"
+}

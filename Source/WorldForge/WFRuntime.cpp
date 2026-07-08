@@ -261,6 +261,81 @@ void AWFGroundedRuntimePawn::BeginPlay()
 		Mode == EWFGroundMode::NavMesh ? TEXT("navmesh") : TEXT("grounded_straight"),
 		SpawnZ, GetCharacterMovement() ? GetCharacterMovement()->GravityScale : -1.f);
 	ProbeNavmesh(Goal);
+	ProbeWalkability(Goal);
+}
+
+void AWFGroundedRuntimePawn::ProbeWalkability(const FVector& Goal)
+{
+	// Deep walkability from the REAL game-world collision the pawn falls onto:
+	// a grid of downward complex traces -> slope (from impact normal), step
+	// discontinuities between neighbours, and head clearance; plus spawn /
+	// objective / corridor walkability. Emitted as one WF_WALK line the
+	// analyzer parses into a WalkabilityReport.
+	UWorld* W = GetWorld();
+	if (!W) { return; }
+	const FVector Ctr = GetActorLocation();
+	const float Extent = 1500.f, Step = 250.f, MaxSlope = 44.f, MaxStepH = 45.f;
+	const int32 N = (int32)(Extent / Step);
+	FCollisionQueryParams Q;
+	Q.bTraceComplex = true;
+	Q.AddIgnoredActor(this);
+
+	auto TraceDown = [&](float X, float Y, float& OutZ, float& OutSlopeDeg) -> bool
+	{
+		FHitResult H;
+		const FVector S(X, Y, Ctr.Z + 1000.f), E(X, Y, Ctr.Z - 3000.f);
+		if (!W->LineTraceSingleByChannel(H, S, E, ECC_Visibility, Q)) { return false; }
+		OutZ = H.ImpactPoint.Z;
+		OutSlopeDeg = FMath::RadiansToDegrees(FMath::Acos(FMath::Clamp(H.ImpactNormal.Z, -1.f, 1.f)));
+		return true;
+	};
+	auto HeadClear = [&](float X, float Y, float GZ) -> bool
+	{
+		FHitResult H;
+		const FVector S(X, Y, GZ + MaxStepH + 5.f), E(X, Y, GZ + 176.f);
+		return W->LineTraceSingleByChannel(H, S, E, ECC_Visibility, Q);  // blocked = clearance fail
+	};
+
+	int32 Checked = 0, Walk = 0, Blocked = 0, Unknown = 0, SlopeF = 0, StepF = 0, ClearF = 0;
+	TMap<int64, float> GridZ;
+	for (int32 ix = -N; ix <= N; ++ix)
+	{
+		for (int32 iy = -N; iy <= N; ++iy)
+		{
+			++Checked;
+			float Z = 0.f, Sl = 0.f;
+			if (!TraceDown(Ctr.X + ix * Step, Ctr.Y + iy * Step, Z, Sl)) { ++Unknown; continue; }
+			GridZ.Add((int64)ix * 100000 + iy, Z);
+			if (Sl > MaxSlope) { ++Blocked; ++SlopeF; continue; }
+			++Walk;
+			if (HeadClear(Ctr.X + ix * Step, Ctr.Y + iy * Step, Z)) { ++ClearF; }
+		}
+	}
+	for (const TPair<int64, float>& It : GridZ)
+	{
+		const int64 K = It.Key;
+		for (int64 D : {(int64)100000, (int64)1})
+		{
+			const float* Nb = GridZ.Find(K + D);
+			if (Nb && FMath::Abs(It.Value - *Nb) > MaxStepH * 2.f) { ++StepF; }
+		}
+	}
+	auto WalkAt = [&](float X, float Y) -> bool
+	{
+		float Z = 0.f, Sl = 0.f;
+		return TraceDown(X, Y, Z, Sl) && Sl <= MaxSlope;
+	};
+	const bool SpawnW = WalkAt(Ctr.X, Ctr.Y);
+	const bool ObjW = WalkAt(Goal.X, Goal.Y);
+	const bool Corridor = WalkAt(FMath::Lerp(Ctr.X, Goal.X, 0.25f), Ctr.Y)
+		&& WalkAt(FMath::Lerp(Ctr.X, Goal.X, 0.5f), Ctr.Y)
+		&& WalkAt(FMath::Lerp(Ctr.X, Goal.X, 0.75f), Ctr.Y);
+
+	UE_LOG(LogWFRuntime, Display,
+		TEXT("WF_WALK checked=%d walkable=%d blocked=%d unknown=%d slopeF=%d stepF=%d clearF=%d ")
+		TEXT("spawnW=%d objW=%d corridorW=%d"),
+		Checked, Walk, Blocked, Unknown, SlopeF, StepF, ClearF,
+		SpawnW ? 1 : 0, ObjW ? 1 : 0, Corridor ? 1 : 0);
 }
 
 void AWFGroundedRuntimePawn::Tick(float DeltaSeconds)

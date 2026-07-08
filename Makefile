@@ -1209,3 +1209,51 @@ v1-6y-shield:
 .PHONY: ground-prepare ground-run run-grounded-runtime-sample run-playtest-forge-delta \
 	ground-gate ground-status validate-ground-completion validate-no-flight-ground-success \
 	validate-no-teleport-ground-success ground-no-fake-green-selftest v1-6y-shield
+
+# --- v1.6z GroundTraversalForge Production Hardening -------------------
+# Contract spine, deep walkability (real UE geometry), multi-node route graph,
+# and the full hostile-validation suite that NPCForge will stand on.
+validate-ground-traversal-schemas:
+	$(PYTHON) tools/pipeline/validate_ground_traversal_schemas.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-v1-6z-taxonomy:
+	$(PYTHON) tools/pipeline/validate_ground_traversal_schemas.py --pack $(PACK) $(if $(STRICT),--strict,)
+analyze-ground-walkability:
+	$(PYTHON) tools/pipeline/analyze_ground_walkability.py --pack $(PACK) $(if $(STRICT),--strict,) $(if $(LIMIT),--limit $(LIMIT),)
+validate-ground-walkability:
+	$(PYTHON) tools/pipeline/validate_ground_walkability.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-ground-route-graph:
+	$(PYTHON) tools/pipeline/generate_ground_route_graph.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-ground-route-graph:
+	$(PYTHON) tools/pipeline/validate_ground_route_graph.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-ground-route-plans:
+	$(PYTHON) tools/pipeline/generate_ground_route_plans.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-ground-route-plans:
+	$(PYTHON) tools/pipeline/validate_ground_route_plans.py --pack $(PACK) $(if $(STRICT),--strict,)
+ground-traversal-negative-validators:
+	$(PYTHON) tools/pipeline/ground_traversal_negatives.py $(if $(STRICT),--strict,)
+ground-walkability-negative-validators:
+	$(PYTHON) tools/pipeline/ground_traversal_negatives.py $(if $(STRICT),--strict,)
+ground-navmesh-negative-validators:
+	$(PYTHON) tools/pipeline/ground_traversal_negatives.py $(if $(STRICT),--strict,)
+ground-route-graph-negative-validators:
+	$(PYTHON) tools/pipeline/ground_traversal_negatives.py $(if $(STRICT),--strict,)
+ground-traversal-torture:
+	$(PYTHON) tools/pipeline/ground_traversal_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+ground-traversal-report-integrity:
+	$(PYTHON) tools/pipeline/ground_traversal_report_integrity.py --pack $(PACK) $(if $(STRICT),--strict,)
+ground-traversal-fuzz:
+	$(PYTHON) tools/pipeline/ground_traversal_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+v1-6z-shield:
+	$(PYTHON) tools/pipeline/v1_6z_shield.py --pack $(PACK) $(if $(STRICT),--strict,) $(if $(REQUIRE_LIVE),--require-live,)
+
+# v1.6x regression alias: the headless flight matrix is gated by the v1.6 shield
+# under --require-live (which runs the 120/120 headless full-matrix gate).
+v1-6x-shield:
+	$(PYTHON) tools/pipeline/v1_6_shield.py --pack $(PACK) $(if $(STRICT),--strict,) $(if $(REQUIRE_LIVE),--require-live,)
+
+.PHONY: validate-ground-traversal-schemas validate-v1-6z-taxonomy analyze-ground-walkability \
+	validate-ground-walkability generate-ground-route-graph validate-ground-route-graph \
+	generate-ground-route-plans validate-ground-route-plans ground-traversal-negative-validators \
+	ground-walkability-negative-validators ground-navmesh-negative-validators \
+	ground-route-graph-negative-validators ground-traversal-torture ground-traversal-report-integrity \
+	ground-traversal-fuzz v1-6z-shield v1-6x-shield

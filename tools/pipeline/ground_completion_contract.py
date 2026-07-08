@@ -116,6 +116,15 @@ def _b(obj, k):
     return obj.get(k) is True if isinstance(obj, dict) else False
 
 
+def is_grounded_mode(m):
+    """Hashable-guarded membership (fuzzed input may be an unhashable dict)."""
+    return isinstance(m, str) and m in GROUNDED_SUCCESS_MODES
+
+
+def is_forbidden_mode(m):
+    return isinstance(m, str) and m in FORBIDDEN_SUCCESS_MODES
+
+
 def validate_completion(obj, strict=False):
     """Check tuples for one grounded completion report. Enforces the no-flight /
     no-teleport invariants between completion_class, traversal mode, and evidence."""
@@ -155,7 +164,7 @@ def validate_completion(obj, strict=False):
         checks.append(("ground::success_not_teleport", not teleport,
                        "grounded_completed_runtime with teleport_used=true",
                        C.GROUND_TELEPORT_COUNTED_AS_SUCCESS))
-        checks.append(("ground::success_mode_grounded", mode in GROUNDED_SUCCESS_MODES,
+        checks.append(("ground::success_mode_grounded", is_grounded_mode(mode),
                        "grounded success actual_traversal_mode={!r} not a grounded mode".format(mode),
                        C.GROUND_TRAVERSAL_MODE_FORBIDDEN))
         checks.append(("ground::success_flag", grounded,
@@ -190,7 +199,7 @@ def validate_completion(obj, strict=False):
         checks.append(("ground::grounded_flag_not_teleport", not teleport,
                        "grounded_success=true with teleport_used=true",
                        C.GROUND_TELEPORT_COUNTED_AS_SUCCESS))
-        checks.append(("ground::grounded_flag_mode", mode in GROUNDED_SUCCESS_MODES,
+        checks.append(("ground::grounded_flag_mode", is_grounded_mode(mode),
                        "grounded_success=true but mode {!r} is not grounded".format(mode),
                        C.GROUND_TRAVERSAL_MODE_FORBIDDEN))
     return checks

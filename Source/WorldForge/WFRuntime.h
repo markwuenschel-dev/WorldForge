@@ -110,6 +110,7 @@ private:
 
 	AWFRuntimeObjective* FindObjective();
 	void ProbeNavmesh(const FVector& Goal);
+	void ProbeWalkability(const FVector& Goal);  // game-world grid geometry probe
 	void RequestGracefulExit(const TCHAR* Why);
 };
 
