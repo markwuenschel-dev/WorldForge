@@ -1,0 +1,30 @@
+{
+  "schema_version": "wf.runtime.interaction_actor.v1",
+  "interaction_actor_id": "int_Alpine_SnowyRidge_Scatter_Photoreal_01__restore_power",
+  "map_id": "Alpine_SnowyRidge_Scatter_Photoreal_01",
+  "mission_id": "mission_Alpine_SnowyRidge_Scatter_Photoreal_01",
+  "objective_id": "restore_target",
+  "actor_tag": "WF_OBJ_RESTORE_TARGET",
+  "verb": "restore",
+  "display_label": "Restore target",
+  "world_transform": {
+    "x": 2836.0,
+    "y": 3772.0,
+    "z": 96.0,
+    "yaw": 332.0
+  },
+  "interaction_radius": 175.0,
+  "interaction_duration_seconds": 3.0,
+  "requires_line_of_sight": true,
+  "requires_facing": true,
+  "state_key_written": "mission.restore_power.completed",
+  "event_emitted": "objective.restored",
+  "completion_contribution": 1.0,
+  "save_load_key": "mission.restore_power.completed",
+  "collision_profile": "BlockAllDynamic",
+  "visual_marker_id": "WF_MARKER_OBJECTIVE",
+  "biome": "alpine_snow",
+  "mission_archetype": "restore_power",
+  "created_by": "worldforge.v1.6.interaction_forge_alpha",
+  "created_at": "2026-07-06T00:00:00+00:00"
+}

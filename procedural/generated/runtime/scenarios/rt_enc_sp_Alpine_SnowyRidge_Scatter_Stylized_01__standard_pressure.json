@@ -1,0 +1,65 @@
+{
+  "schema_version": "wf.runtime.scenario.v1",
+  "runtime_scenario_id": "rt_enc_sp_Alpine_SnowyRidge_Scatter_Stylized_01__standard_pressure",
+  "pack": "encounter_loop_world",
+  "map_id": "Alpine_SnowyRidge_Scatter_Stylized_01",
+  "biome": "alpine_snow",
+  "mission_id": "mission_Alpine_SnowyRidge_Scatter_Stylized_01",
+  "mission_archetype": "extract_cache",
+  "encounter_id": "enc_sp_Alpine_SnowyRidge_Scatter_Stylized_01",
+  "encounter_profile": "standard_pressure",
+  "spawn_anchor_id": "spawn_player_primary",
+  "start_transform": {
+    "x": 1264.0,
+    "y": 3188.0,
+    "z": 120.0,
+    "yaw": 48.0
+  },
+  "objective_sequence": [
+    "reach_primary_poi",
+    "extract_target",
+    "confirm_state",
+    "extract_or_complete"
+  ],
+  "required_interactions": [
+    {
+      "interaction_id": "extract_target",
+      "verb": "extract",
+      "actor_tag": "WF_OBJ_EXTRACT_TARGET",
+      "required_radius": 175.0,
+      "expected_event": "objective.extracted"
+    }
+  ],
+  "expected_state_transitions": [
+    {
+      "key": "mission.extract_cache.completed",
+      "from": false,
+      "to": true
+    }
+  ],
+  "expected_completion_event": "mission.completed",
+  "save_load_required": true,
+  "pawn_profile_id": "wf_runtime_test_pawn_default",
+  "route_plan_id": "route_Alpine_SnowyRidge_Scatter_Stylized_01__extract_cache",
+  "visual_kit_id": "visual_kit_alpine_snow_default",
+  "cover_realization_report_id": "wf.visual.cover_replacement_report.v1.latest",
+  "world_state_keys": [
+    "mission.extract_cache.completed",
+    "objective.extract_target.cache_extracted"
+  ],
+  "timeout_seconds": 180,
+  "allowed_recovery_modes": [],
+  "validation_requirements": [
+    "spawn",
+    "possession",
+    "navmesh",
+    "collision",
+    "interaction",
+    "state",
+    "completion",
+    "save_load",
+    "telemetry"
+  ],
+  "created_by": "worldforge.v1.6.runtime_scenario_generator",
+  "created_at": "2026-07-06T00:00:00+00:00"
+}

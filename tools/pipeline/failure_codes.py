@@ -459,6 +459,120 @@ class FailureCode:
     V1_5_FUZZ_FAILURE = "WF435_V1_5_FUZZ_FAILURE"
     V1_5_REPORT_INTEGRITY_FAILURE = "WF436_V1_5_REPORT_INTEGRITY_FAILURE"
 
+    # ======================================================================
+    # v1.6 LiveRuntimeForge Alpha — runtime execution taxonomy (440–465)
+    # ----------------------------------------------------------------------
+    # v1.6 is the first RUNTIME-TRUTH milestone: a controlled UE pawn must
+    # spawn, be possessed, traverse real navmesh/collision to objective
+    # actors, and never fake completion via teleport or graph-only claims.
+    # These bucket runtime-execution failures by lane. Fine-grained WF0xx
+    # codes still describe the specific defect. Do NOT reuse/renumber an
+    # earlier band — extend cleanly here.
+    #
+    # STAGING NOTE: RUNTIME_LIVE_RUN_PENDING is the one honest exception to
+    # "every failure is blocking" — it marks a live-UE gate that cannot run
+    # because the editor/NeoStack bridge is offline. It is emitted as a WARN
+    # (blocking under STRICT so the shield is never falsely green, non-
+    # blocking otherwise so the authoring substrate can be proven), and is
+    # explicitly NOT a fake-green path: it never counts as completion.
+    # ======================================================================
+    RUNTIME_SCENARIO_SCHEMA_FAILURE = "WF440_RUNTIME_SCENARIO_SCHEMA_FAILURE"
+    RUNTIME_SCENARIO_GENERATION_FAILURE = "WF441_RUNTIME_SCENARIO_GENERATION_FAILURE"
+    RUNTIME_MAP_LOAD_FAILURE = "WF442_RUNTIME_MAP_LOAD_FAILURE"
+    RUNTIME_PAWN_PROFILE_FAILURE = "WF443_RUNTIME_PAWN_PROFILE_FAILURE"
+    RUNTIME_PAWN_SPAWN_FAILURE = "WF444_RUNTIME_PAWN_SPAWN_FAILURE"
+    RUNTIME_PAWN_POSSESSION_FAILURE = "WF445_RUNTIME_PAWN_POSSESSION_FAILURE"
+    RUNTIME_NAVMESH_MISSING = "WF446_RUNTIME_NAVMESH_MISSING"
+    RUNTIME_NAVMESH_INVALID = "WF447_RUNTIME_NAVMESH_INVALID"
+    RUNTIME_ROUTE_PLAN_FAILURE = "WF448_RUNTIME_ROUTE_PLAN_FAILURE"
+    RUNTIME_ROUTE_BLOCKED = "WF449_RUNTIME_ROUTE_BLOCKED"
+    RUNTIME_ROUTE_TIMEOUT = "WF450_RUNTIME_ROUTE_TIMEOUT"
+    RUNTIME_COLLISION_BLOCKED = "WF451_RUNTIME_COLLISION_BLOCKED"
+    RUNTIME_COLLISION_INVALID = "WF452_RUNTIME_COLLISION_INVALID"
+    RUNTIME_WAYPOINT_UNREACHABLE = "WF453_RUNTIME_WAYPOINT_UNREACHABLE"
+    RUNTIME_OBJECTIVE_UNREACHABLE = "WF454_RUNTIME_OBJECTIVE_UNREACHABLE"
+    RUNTIME_DRIVER_FAILURE = "WF455_RUNTIME_DRIVER_FAILURE"
+    RUNTIME_UE_ERROR_SWALLOWED = "WF456_RUNTIME_UE_ERROR_SWALLOWED"
+    RUNTIME_EVIDENCE_FAILURE = "WF457_RUNTIME_EVIDENCE_FAILURE"
+    RUNTIME_TELEMETRY_MISSING = "WF458_RUNTIME_TELEMETRY_MISSING"
+    RUNTIME_TELEMETRY_INVALID = "WF459_RUNTIME_TELEMETRY_INVALID"
+    RUNTIME_PAWN_SCHEMA_FAILURE = "WF460_RUNTIME_PAWN_SCHEMA_FAILURE"
+    RUNTIME_ROUTE_PLAN_SCHEMA_FAILURE = "WF461_RUNTIME_ROUTE_PLAN_SCHEMA_FAILURE"
+    RUNTIME_TELEMETRY_SCHEMA_FAILURE = "WF462_RUNTIME_TELEMETRY_SCHEMA_FAILURE"
+    RUNTIME_COMPLETION_SCHEMA_FAILURE = "WF463_RUNTIME_COMPLETION_SCHEMA_FAILURE"
+    RUNTIME_SCENARIO_COVERAGE_FAILURE = "WF464_RUNTIME_SCENARIO_COVERAGE_FAILURE"
+    RUNTIME_LIVE_RUN_PENDING = "WF465_RUNTIME_LIVE_RUN_PENDING"
+
+    # ======================================================================
+    # v1.6 InteractionForge Alpha — runtime objective actors (470–485)
+    # ----------------------------------------------------------------------
+    # Materialize generated runtime objective actors for the six mission
+    # archetypes; each verb must emit an event and mutate mission state, and
+    # completion must persist through save/load.
+    # ======================================================================
+    INTERACTION_ACTOR_SCHEMA_FAILURE = "WF470_INTERACTION_ACTOR_SCHEMA_FAILURE"
+    INTERACTION_ACTOR_MATERIALIZATION_FAILURE = "WF471_INTERACTION_ACTOR_MATERIALIZATION_FAILURE"
+    INTERACTION_ACTOR_MISSING = "WF472_INTERACTION_ACTOR_MISSING"
+    INTERACTION_ACTOR_DUPLICATE = "WF473_INTERACTION_ACTOR_DUPLICATE"
+    INTERACTION_RADIUS_INVALID = "WF474_INTERACTION_RADIUS_INVALID"
+    INTERACTION_VERB_UNSUPPORTED = "WF475_INTERACTION_VERB_UNSUPPORTED"
+    INTERACTION_LINE_OF_SIGHT_FAILURE = "WF476_INTERACTION_LINE_OF_SIGHT_FAILURE"
+    INTERACTION_PROMPT_METADATA_FAILURE = "WF477_INTERACTION_PROMPT_METADATA_FAILURE"
+    INTERACTION_EVENT_MISSING = "WF478_INTERACTION_EVENT_MISSING"
+    INTERACTION_EVENT_INVALID = "WF479_INTERACTION_EVENT_INVALID"
+    INTERACTION_STATE_KEY_MISSING = "WF480_INTERACTION_STATE_KEY_MISSING"
+    INTERACTION_STATE_MUTATION_FAILURE = "WF481_INTERACTION_STATE_MUTATION_FAILURE"
+    INTERACTION_COMPLETION_CONTRIBUTION_FAILURE = "WF482_INTERACTION_COMPLETION_CONTRIBUTION_FAILURE"
+    INTERACTION_SAVE_LOAD_BINDING_FAILURE = "WF483_INTERACTION_SAVE_LOAD_BINDING_FAILURE"
+    INTERACTION_MISSION_BRIDGE_FAILURE = "WF484_INTERACTION_MISSION_BRIDGE_FAILURE"
+    INTERACTION_NEGATIVE_FIXTURE_FAILURE = "WF485_INTERACTION_NEGATIVE_FIXTURE_FAILURE"
+
+    # ======================================================================
+    # v1.6 PlaytestForge Gamma — runtime completion classification (486–495)
+    # ----------------------------------------------------------------------
+    # Consumes runtime scenarios, classifies actual runtime completion, and
+    # rejects every fake-green path (graph-only, teleport, no-telemetry,
+    # unchanged-state, skipped save/load, partial/empty/stale report).
+    # ======================================================================
+    PLAYTEST_GAMMA_SCENARIO_FAILURE = "WF486_PLAYTEST_GAMMA_SCENARIO_FAILURE"
+    PLAYTEST_GAMMA_COMPLETION_FAILURE = "WF487_PLAYTEST_GAMMA_COMPLETION_FAILURE"
+    PLAYTEST_GAMMA_FALSE_SUCCESS = "WF488_PLAYTEST_GAMMA_FALSE_SUCCESS"
+    PLAYTEST_GAMMA_TELEPORT_SUCCESS_FORBIDDEN = "WF489_PLAYTEST_GAMMA_TELEPORT_SUCCESS_FORBIDDEN"
+    PLAYTEST_GAMMA_PARTIAL_COMPLETION = "WF490_PLAYTEST_GAMMA_PARTIAL_COMPLETION"
+    PLAYTEST_GAMMA_TIMEOUT = "WF491_PLAYTEST_GAMMA_TIMEOUT"
+    PLAYTEST_GAMMA_REPORT_FAILURE = "WF492_PLAYTEST_GAMMA_REPORT_FAILURE"
+    PLAYTEST_GAMMA_ROLLUP_FAILURE = "WF493_PLAYTEST_GAMMA_ROLLUP_FAILURE"
+    PLAYTEST_GAMMA_CONTRACT_FAILURE = "WF494_PLAYTEST_GAMMA_CONTRACT_FAILURE"
+    PLAYTEST_GAMMA_STATE_BRIDGE_FAILURE = "WF495_PLAYTEST_GAMMA_STATE_BRIDGE_FAILURE"
+
+    # ======================================================================
+    # v1.6 runtime save/load persistence (496–503)
+    # ======================================================================
+    RUNTIME_SAVE_FAILURE = "WF496_RUNTIME_SAVE_FAILURE"
+    RUNTIME_LOAD_FAILURE = "WF497_RUNTIME_LOAD_FAILURE"
+    RUNTIME_SAVE_FILE_MISSING = "WF498_RUNTIME_SAVE_FILE_MISSING"
+    RUNTIME_SAVE_STATE_MISSING = "WF499_RUNTIME_SAVE_STATE_MISSING"
+    RUNTIME_POST_LOAD_STATE_MISMATCH = "WF500_RUNTIME_POST_LOAD_STATE_MISMATCH"
+    RUNTIME_COMPLETION_NOT_PERSISTED = "WF501_RUNTIME_COMPLETION_NOT_PERSISTED"
+    RUNTIME_SAVE_LOAD_SCHEMA_FAILURE = "WF502_RUNTIME_SAVE_LOAD_SCHEMA_FAILURE"
+    RUNTIME_SAVE_LOAD_PROOF_FAILURE = "WF503_RUNTIME_SAVE_LOAD_PROOF_FAILURE"
+
+    # ======================================================================
+    # v1.6 runtime report integrity + torture/fuzz/lifecycle/taxonomy (504–515)
+    # ======================================================================
+    RUNTIME_REPORT_EMPTY = "WF504_RUNTIME_REPORT_EMPTY"
+    RUNTIME_REPORT_STALE = "WF505_RUNTIME_REPORT_STALE"
+    RUNTIME_REPORT_PARTIAL_SUCCESS = "WF506_RUNTIME_REPORT_PARTIAL_SUCCESS"
+    RUNTIME_REPORT_ZERO_RECORD_SUCCESS = "WF507_RUNTIME_REPORT_ZERO_RECORD_SUCCESS"
+    RUNTIME_REPORT_MISSING_TELEMETRY = "WF508_RUNTIME_REPORT_MISSING_TELEMETRY"
+    RUNTIME_REPORT_MISSING_EVIDENCE = "WF509_RUNTIME_REPORT_MISSING_EVIDENCE"
+    RUNTIME_REPORT_INTEGRITY_FAILURE = "WF510_RUNTIME_REPORT_INTEGRITY_FAILURE"
+    RUNTIME_LIFECYCLE_FAILURE = "WF511_RUNTIME_LIFECYCLE_FAILURE"
+    RUNTIME_NEGATIVE_FIXTURE_FAILURE = "WF512_RUNTIME_NEGATIVE_FIXTURE_FAILURE"
+    V1_6_TAXONOMY_FAILURE = "WF513_V1_6_TAXONOMY_FAILURE"
+    V1_6_FUZZ_FAILURE = "WF514_V1_6_FUZZ_FAILURE"
+    V1_6_REPORT_INTEGRITY_FAILURE = "WF515_V1_6_REPORT_INTEGRITY_FAILURE"
+
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
 # This is the *default* nature of the code; a validator may still choose a
@@ -666,6 +780,12 @@ SEVERITY = {
     FailureCode.PLAYTEST_BETA_REPORT_FAILURE: "fail",
     FailureCode.BALANCE_CONTRACT_FAILURE: "fail",
     FailureCode.BALANCE_REPORT_FAILURE: "fail",
+    # v1.6 — the single honest non-blocking-by-default code: a live-UE gate
+    # that cannot run because the editor bridge is offline. WARN => blocking
+    # under STRICT (so the shield is never falsely green) but non-blocking
+    # otherwise (so the authoring substrate can be proven without the editor).
+    # It NEVER counts as runtime completion — see PlaytestForge Gamma.
+    FailureCode.RUNTIME_LIVE_RUN_PENDING: "warn",
 }
 
 # The v1.0x gate-level failure taxonomy (brief §"shared failure taxonomy"):

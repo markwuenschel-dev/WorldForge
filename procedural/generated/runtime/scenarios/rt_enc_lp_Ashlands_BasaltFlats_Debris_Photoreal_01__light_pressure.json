@@ -1,0 +1,65 @@
+{
+  "schema_version": "wf.runtime.scenario.v1",
+  "runtime_scenario_id": "rt_enc_lp_Ashlands_BasaltFlats_Debris_Photoreal_01__light_pressure",
+  "pack": "encounter_loop_world",
+  "map_id": "Ashlands_BasaltFlats_Debris_Photoreal_01",
+  "biome": "volcanic_ashlands",
+  "mission_id": "mission_Ashlands_BasaltFlats_Debris_Photoreal_01",
+  "mission_archetype": "recover_resource",
+  "encounter_id": "enc_lp_Ashlands_BasaltFlats_Debris_Photoreal_01",
+  "encounter_profile": "light_pressure",
+  "spawn_anchor_id": "spawn_player_primary",
+  "start_transform": {
+    "x": 3576.0,
+    "y": 1002.0,
+    "z": 120.0,
+    "yaw": 72.0
+  },
+  "objective_sequence": [
+    "reach_primary_poi",
+    "recover_target",
+    "confirm_state",
+    "extract_or_complete"
+  ],
+  "required_interactions": [
+    {
+      "interaction_id": "recover_target",
+      "verb": "recover",
+      "actor_tag": "WF_OBJ_RECOVER_TARGET",
+      "required_radius": 175.0,
+      "expected_event": "objective.recovered"
+    }
+  ],
+  "expected_state_transitions": [
+    {
+      "key": "mission.recover_resource.completed",
+      "from": false,
+      "to": true
+    }
+  ],
+  "expected_completion_event": "mission.completed",
+  "save_load_required": true,
+  "pawn_profile_id": "wf_runtime_test_pawn_default",
+  "route_plan_id": "route_Ashlands_BasaltFlats_Debris_Photoreal_01__recover_resource",
+  "visual_kit_id": "visual_kit_volcanic_ashlands_default",
+  "cover_realization_report_id": "wf.visual.cover_replacement_report.v1.latest",
+  "world_state_keys": [
+    "mission.recover_resource.completed",
+    "objective.recover_target.resource_recovered"
+  ],
+  "timeout_seconds": 180,
+  "allowed_recovery_modes": [],
+  "validation_requirements": [
+    "spawn",
+    "possession",
+    "navmesh",
+    "collision",
+    "interaction",
+    "state",
+    "completion",
+    "save_load",
+    "telemetry"
+  ],
+  "created_by": "worldforge.v1.6.runtime_scenario_generator",
+  "created_at": "2026-07-06T00:00:00+00:00"
+}

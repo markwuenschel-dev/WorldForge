@@ -1,0 +1,65 @@
+{
+  "schema_version": "wf.runtime.scenario.v1",
+  "runtime_scenario_id": "rt_enc_lp_Forest_ErodedGully_Scatter_Perf_01__light_pressure",
+  "pack": "encounter_loop_world",
+  "map_id": "Forest_ErodedGully_Scatter_Perf_01",
+  "biome": "temperate_forest",
+  "mission_id": "mission_Forest_ErodedGully_Scatter_Perf_01",
+  "mission_archetype": "clear_hazard",
+  "encounter_id": "enc_lp_Forest_ErodedGully_Scatter_Perf_01",
+  "encounter_profile": "light_pressure",
+  "spawn_anchor_id": "spawn_player_primary",
+  "start_transform": {
+    "x": 1046.0,
+    "y": 3929.0,
+    "z": 120.0,
+    "yaw": 198.0
+  },
+  "objective_sequence": [
+    "reach_primary_poi",
+    "clear_target",
+    "confirm_state",
+    "extract_or_complete"
+  ],
+  "required_interactions": [
+    {
+      "interaction_id": "clear_target",
+      "verb": "clear",
+      "actor_tag": "WF_OBJ_CLEAR_TARGET",
+      "required_radius": 175.0,
+      "expected_event": "objective.cleared"
+    }
+  ],
+  "expected_state_transitions": [
+    {
+      "key": "mission.clear_hazard.completed",
+      "from": false,
+      "to": true
+    }
+  ],
+  "expected_completion_event": "mission.completed",
+  "save_load_required": true,
+  "pawn_profile_id": "wf_runtime_test_pawn_default",
+  "route_plan_id": "route_Forest_ErodedGully_Scatter_Perf_01__clear_hazard",
+  "visual_kit_id": "visual_kit_temperate_forest_default",
+  "cover_realization_report_id": "wf.visual.cover_replacement_report.v1.latest",
+  "world_state_keys": [
+    "mission.clear_hazard.completed",
+    "objective.clear_target.hazard_level"
+  ],
+  "timeout_seconds": 180,
+  "allowed_recovery_modes": [],
+  "validation_requirements": [
+    "spawn",
+    "possession",
+    "navmesh",
+    "collision",
+    "interaction",
+    "state",
+    "completion",
+    "save_load",
+    "telemetry"
+  ],
+  "created_by": "worldforge.v1.6.runtime_scenario_generator",
+  "created_at": "2026-07-06T00:00:00+00:00"
+}

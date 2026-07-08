@@ -1,0 +1,30 @@
+{
+  "schema_version": "wf.runtime.interaction_actor.v1",
+  "interaction_actor_id": "int_Forest_RollingWoodland_Debris_Photoreal_01__recover_resource",
+  "map_id": "Forest_RollingWoodland_Debris_Photoreal_01",
+  "mission_id": "mission_Forest_RollingWoodland_Debris_Photoreal_01",
+  "objective_id": "recover_target",
+  "actor_tag": "WF_OBJ_RECOVER_TARGET",
+  "verb": "recover",
+  "display_label": "Recover target",
+  "world_transform": {
+    "x": 3660.0,
+    "y": 1356.0,
+    "z": 96.0,
+    "yaw": 148.0
+  },
+  "interaction_radius": 175.0,
+  "interaction_duration_seconds": 3.0,
+  "requires_line_of_sight": true,
+  "requires_facing": true,
+  "state_key_written": "mission.recover_resource.completed",
+  "event_emitted": "objective.recovered",
+  "completion_contribution": 1.0,
+  "save_load_key": "mission.recover_resource.completed",
+  "collision_profile": "BlockAllDynamic",
+  "visual_marker_id": "WF_MARKER_OBJECTIVE",
+  "biome": "temperate_forest",
+  "mission_archetype": "recover_resource",
+  "created_by": "worldforge.v1.6.interaction_forge_alpha",
+  "created_at": "2026-07-06T00:00:00+00:00"
+}

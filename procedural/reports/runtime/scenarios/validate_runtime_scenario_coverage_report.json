@@ -1,0 +1,102 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "scenario_count": {
+      "ok": true,
+      "detail": "120 scenarios (expected 120)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "distinct_maps": {
+      "ok": true,
+      "detail": "60 distinct maps (expected 60)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "all_biomes_covered": {
+      "ok": true,
+      "detail": "missing biomes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "all_archetypes_covered": {
+      "ok": true,
+      "detail": "missing archetypes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "both_profiles_covered": {
+      "ok": true,
+      "detail": "missing profiles: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 5,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-runtime-scenario-coverage",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "33f8d964a52fc1fdeedb2a457f75b4205d5c89de",
+    "timestamp": "2026-07-08T00:09:01.517907+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.runtime.scenario_manifest.v1",
+    "report_id": "wf.runtime.scenario_manifest.v1:c2457d44065e",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 120,
+    "records_total": 120,
+    "records_passed": 120,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "biomes": [
+      "alien_crystal_badlands",
+      "alpine_snow",
+      "temperate_forest",
+      "volcanic_ashlands",
+      "wetland_mire"
+    ],
+    "archetypes": [
+      "clear_hazard",
+      "disable_site",
+      "extract_cache",
+      "recover_resource",
+      "restore_power",
+      "survey_landmark"
+    ],
+    "profiles": [
+      "light_pressure",
+      "standard_pressure"
+    ],
+    "distinct_maps": 60
+  }
+}

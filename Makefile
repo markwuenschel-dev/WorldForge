@@ -1059,3 +1059,119 @@ v1-5-shield:
 	  $(if $(STRICT),--strict,) $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,) \
 	  --missions --encounters --playtest --balance \
 	  $(if $(VISUAL)$(VISUALS),--visuals,) $(if $(ASSETS),--assets,) $(if $(MATERIALIZE),--materialize,)
+
+# ======================================================================
+# v1.6 LiveRuntimeForge Alpha + InteractionForge Alpha + PlaytestForge Gamma
+# ----------------------------------------------------------------------
+# First runtime-truth milestone: generate runtime scenarios from the v1.5-
+# realized encounter_loop_world, materialize interaction actors, and drive a
+# controlled UE pawn through real navmesh/collision to completion + save/load.
+# The authoring substrate (contracts/generation/validation/coverage) is proven
+# WITHOUT the editor; the live-run gates fail closed (RUNTIME_LIVE_RUN_PENDING,
+# blocking under STRICT) until the NeoStack/UE bridge is connected — they never
+# fake-green. See docs/guides + the v1.6 status doc.
+# ======================================================================
+RUNTIME_PACK ?= encounter_loop_world
+
+# --- v1.6 taxonomy / contracts -----------------------------------------
+validate-v1-6-taxonomy:
+	$(PYTHON) tools/pipeline/validate_v1_6_taxonomy.py $(if $(STRICT),--strict,)
+
+# --- v1.6 Agent 4: runtime scenario generation + validation ------------
+runtime-scenarios:
+	$(PYTHON) tools/pipeline/generate_runtime_scenarios.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-runtime-scenarios:
+	$(PYTHON) tools/pipeline/validate_runtime_scenarios.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-runtime-scenario-schema:
+	$(PYTHON) tools/pipeline/validate_runtime_scenarios.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-runtime-scenario-coverage:
+	$(PYTHON) tools/pipeline/validate_runtime_scenario_coverage.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+.PHONY: validate-v1-6-taxonomy runtime-scenarios validate-runtime-scenarios \
+	validate-runtime-scenario-schema validate-runtime-scenario-coverage
+
+# --- v1.6 Agent 2: runtime pawn profile --------------------------------
+runtime-pawn-profile:
+	$(PYTHON) tools/pipeline/create_runtime_pawn_profile.py --profile $(if $(PROFILE),$(PROFILE),default) $(if $(STRICT),--strict,)
+validate-runtime-pawn-profile:
+	$(PYTHON) tools/pipeline/validate_runtime_pawn_profile.py --profile $(if $(PROFILE),$(PROFILE),default) $(if $(STRICT),--strict,)
+
+.PHONY: runtime-pawn-profile validate-runtime-pawn-profile
+
+# --- v1.6 Agent 3: InteractionForge Alpha ------------------------------
+runtime-interaction-actors:
+	$(PYTHON) tools/pipeline/materialize_runtime_interaction_actors.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-runtime-interactions:
+	$(PYTHON) tools/pipeline/validate_runtime_interactions.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-runtime-interaction-verbs:
+	$(PYTHON) tools/pipeline/validate_runtime_interaction_verbs.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-runtime-mission-completion-bridge:
+	$(PYTHON) tools/pipeline/validate_runtime_mission_completion_bridge.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+.PHONY: runtime-interaction-actors validate-runtime-interactions \
+	validate-runtime-interaction-verbs validate-runtime-mission-completion-bridge
+
+# --- v1.6 Agent 4: route plans -----------------------------------------
+runtime-route-plans:
+	$(PYTHON) tools/pipeline/generate_runtime_route_plans.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-runtime-route-plans:
+	$(PYTHON) tools/pipeline/validate_runtime_route_plans.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+.PHONY: runtime-route-plans validate-runtime-route-plans
+
+# --- v1.6 Agent 5: PlaytestForge Gamma classification ------------------
+run-playtest-forge-gamma:
+	$(PYTHON) tools/pipeline/run_playtest_forge_gamma.py --pack $(PACK) --scenarios $(if $(SCENARIOS),$(SCENARIOS),all) $(if $(STRICT),--strict,)
+validate-runtime-completion:
+	$(PYTHON) tools/pipeline/validate_runtime_completion.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-playtest-gamma-no-fake-green:
+	$(PYTHON) tools/pipeline/validate_playtest_gamma_no_fake_green.py --pack $(PACK) $(if $(STRICT),--strict,)
+runtime-bridge-status:
+	$(PYTHON) tools/pipeline/runtime_bridge.py
+
+# --- v1.6 full shield --------------------------------------------------
+v1-6-shield:
+	$(PYTHON) tools/pipeline/v1_6_shield.py --pack $(PACK) $(if $(STRICT),--strict,) $(if $(REQUIRE_LIVE),--require-live,)
+
+.PHONY: run-playtest-forge-gamma validate-runtime-completion \
+	validate-playtest-gamma-no-fake-green runtime-bridge-status v1-6-shield
+
+# --- v1.6 Agent 6/7: live-output validators + negatives ----------------
+validate-runtime-telemetry:
+	$(PYTHON) tools/pipeline/validate_runtime_telemetry.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-runtime-save-load:
+	$(PYTHON) tools/pipeline/validate_runtime_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+runtime-negative-validators:
+	$(PYTHON) tools/pipeline/test_negative_runtime.py $(if $(STRICT),--strict,)
+
+.PHONY: validate-runtime-telemetry validate-runtime-save-load runtime-negative-validators
+
+# --- v1.6 Agent 7: fuzz + report integrity -----------------------------
+v1-6-fuzz:
+	$(PYTHON) tools/pipeline/v1_6_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+runtime-report-integrity:
+	$(PYTHON) tools/pipeline/runtime_report_integrity.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+.PHONY: v1-6-fuzz runtime-report-integrity
+
+# --- v1.6x: headless full-matrix live runtime completion ---------------
+# Drives all 120 scenarios to GENUINE completed_runtime with no editor, no
+# NeoStack bridge and no navmesh. Each scenario is one fresh crash-isolated
+# UnrealEditor-Cmd -game process running the C++ AWFRuntimeTestPawn/Objective:
+# the pawn flies continuously (never teleports) to the real objective transform,
+# mutates state, saves, reload-verifies, and requests a graceful exit. Requires
+# the WorldForge module built (Build.bat WorldForgeEditor Win64 Development).
+#   make v1-6x-prepare        # place C++ runtime actors on all 60 maps (1 boot)
+#   make v1-6x-run            # drive pending scenarios (checkpoint/resume)
+#   make v1-6x-gate STRICT=1  # exit 0 only if all 120 genuinely completed_runtime
+#   make v1-6x-status
+v1-6x-prepare:
+	$(PYTHON) tools/pipeline/run_headless_runtime_batch.py --prepare $(if $(LIMIT),--limit $(LIMIT),)
+v1-6x-run:
+	$(PYTHON) tools/pipeline/run_headless_runtime_batch.py --run $(if $(LIMIT),--limit $(LIMIT),) $(if $(ONLY),--only $(ONLY),)
+v1-6x-gate:
+	$(PYTHON) tools/pipeline/run_headless_runtime_batch.py --gate $(if $(STRICT),--strict,)
+v1-6x-status:
+	$(PYTHON) tools/pipeline/run_headless_runtime_batch.py --status
+
+.PHONY: v1-6x-prepare v1-6x-run v1-6x-gate v1-6x-status

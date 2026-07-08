@@ -1,0 +1,259 @@
+{
+  "pawn_profile": "default",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "field::pawn_profile_id": {
+      "ok": true,
+      "detail": "required field 'pawn_profile_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::pawn_class": {
+      "ok": true,
+      "detail": "required field 'pawn_class' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::movement_mode": {
+      "ok": true,
+      "detail": "required field 'movement_mode' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::capsule_radius": {
+      "ok": true,
+      "detail": "required field 'capsule_radius' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::capsule_half_height": {
+      "ok": true,
+      "detail": "required field 'capsule_half_height' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::max_walk_speed": {
+      "ok": true,
+      "detail": "required field 'max_walk_speed' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::step_height": {
+      "ok": true,
+      "detail": "required field 'step_height' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::slope_limit": {
+      "ok": true,
+      "detail": "required field 'slope_limit' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::jump_allowed": {
+      "ok": true,
+      "detail": "required field 'jump_allowed' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::crouch_allowed": {
+      "ok": true,
+      "detail": "required field 'crouch_allowed' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::interaction_component": {
+      "ok": true,
+      "detail": "required field 'interaction_component' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::camera_component": {
+      "ok": true,
+      "detail": "required field 'camera_component' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::input_driver": {
+      "ok": true,
+      "detail": "required field 'input_driver' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::nav_agent_properties": {
+      "ok": true,
+      "detail": "required field 'nav_agent_properties' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::collision_channel": {
+      "ok": true,
+      "detail": "required field 'collision_channel' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::failure_recovery_policy": {
+      "ok": true,
+      "detail": "required field 'failure_recovery_policy' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "field::telemetry_channels": {
+      "ok": true,
+      "detail": "required field 'telemetry_channels' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "number::capsule_radius": {
+      "ok": true,
+      "detail": "capsule_radius=34.0 is >0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "number::capsule_half_height": {
+      "ok": true,
+      "detail": "capsule_half_height=88.0 is >0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "number::max_walk_speed": {
+      "ok": true,
+      "detail": "max_walk_speed=600.0 is >0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "number::step_height": {
+      "ok": true,
+      "detail": "step_height=45.0 is >=0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "type::interaction_component": {
+      "ok": true,
+      "detail": "interaction_component is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "type::telemetry_channels": {
+      "ok": true,
+      "detail": "telemetry_channels is list",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pawn::no_objective_teleport": {
+      "ok": true,
+      "detail": "pawn may not teleport to objectives (can_teleport_to_objective=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pawn::emits_telemetry": {
+      "ok": true,
+      "detail": "pawn must declare >=1 telemetry channel",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pawn::has_interaction_component": {
+      "ok": true,
+      "detail": "pawn must declare an interaction component",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 27,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "runtime-pawn-profile",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "33f8d964a52fc1fdeedb2a457f75b4205d5c89de",
+    "timestamp": "2026-07-08T00:09:02.023899+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.runtime.pawn_profile.v1",
+    "report_id": "wf.runtime.pawn_profile.v1:f5d375f714b6",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 1,
+    "records_total": 1,
+    "records_passed": 1,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "pawn_profile_id": "wf_runtime_test_pawn_default"
+  }
+}
