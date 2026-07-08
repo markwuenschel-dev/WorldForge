@@ -1,0 +1,62 @@
+{
+  "suite": "v1_6_fuzz",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "no_validator_crashes": {
+      "ok": true,
+      "detail": "0 validator crash(es) on hostile input",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "no_corrupted_accepted": {
+      "ok": true,
+      "detail": "0 corrupted artifacts validated clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 2,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "v1-6-fuzz",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": 1337,
+    "git_sha": "33f8d964a52fc1fdeedb2a457f75b4205d5c89de",
+    "timestamp": "2026-07-08T00:09:02.927399+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.runtime.fuzz.v1",
+    "report_id": "wf.runtime.fuzz.v1:abac84157a67",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 300,
+    "records_total": 300,
+    "records_passed": 300,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "cases": 300,
+    "seed": 1337,
+    "crashes": 0,
+    "accepted_bad": 0
+  }
+}

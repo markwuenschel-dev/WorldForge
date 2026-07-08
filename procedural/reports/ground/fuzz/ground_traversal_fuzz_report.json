@@ -1,0 +1,62 @@
+{
+  "suite": "ground_traversal_fuzz",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "fuzz::no_crashes": {
+      "ok": true,
+      "detail": "0 validator crashes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::no_laundered_corruption": {
+      "ok": true,
+      "detail": "0 corrupting mutations laundered into a pass",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 2,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "ground-traversal-fuzz",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "3e832a357007793e300f024a00bfc7a0c88db8ed",
+    "timestamp": "2026-07-08T01:53:31.017300+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.ground.fuzz.v1",
+    "report_id": "wf.ground.fuzz.v1:52545c12e5d6",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 300,
+    "records_total": 300,
+    "records_passed": 300,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "cases": 300,
+    "seed": 1337,
+    "crashes": 0,
+    "laundered": 0
+  }
+}

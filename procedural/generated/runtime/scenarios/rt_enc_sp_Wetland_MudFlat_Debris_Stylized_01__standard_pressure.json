@@ -1,0 +1,65 @@
+{
+  "schema_version": "wf.runtime.scenario.v1",
+  "runtime_scenario_id": "rt_enc_sp_Wetland_MudFlat_Debris_Stylized_01__standard_pressure",
+  "pack": "encounter_loop_world",
+  "map_id": "Wetland_MudFlat_Debris_Stylized_01",
+  "biome": "wetland_mire",
+  "mission_id": "mission_Wetland_MudFlat_Debris_Stylized_01",
+  "mission_archetype": "survey_landmark",
+  "encounter_id": "enc_sp_Wetland_MudFlat_Debris_Stylized_01",
+  "encounter_profile": "standard_pressure",
+  "spawn_anchor_id": "spawn_player_primary",
+  "start_transform": {
+    "x": 2156.0,
+    "y": 596.0,
+    "z": 120.0,
+    "yaw": 308.0
+  },
+  "objective_sequence": [
+    "reach_primary_poi",
+    "survey_target",
+    "confirm_state",
+    "extract_or_complete"
+  ],
+  "required_interactions": [
+    {
+      "interaction_id": "survey_target",
+      "verb": "survey",
+      "actor_tag": "WF_OBJ_SURVEY_TARGET",
+      "required_radius": 175.0,
+      "expected_event": "objective.surveyed"
+    }
+  ],
+  "expected_state_transitions": [
+    {
+      "key": "mission.survey_landmark.completed",
+      "from": false,
+      "to": true
+    }
+  ],
+  "expected_completion_event": "mission.completed",
+  "save_load_required": true,
+  "pawn_profile_id": "wf_runtime_test_pawn_default",
+  "route_plan_id": "route_Wetland_MudFlat_Debris_Stylized_01__survey_landmark",
+  "visual_kit_id": "visual_kit_wetland_mire_default",
+  "cover_realization_report_id": "wf.visual.cover_replacement_report.v1.latest",
+  "world_state_keys": [
+    "mission.survey_landmark.completed",
+    "objective.survey_target.survey_progress"
+  ],
+  "timeout_seconds": 180,
+  "allowed_recovery_modes": [],
+  "validation_requirements": [
+    "spawn",
+    "possession",
+    "navmesh",
+    "collision",
+    "interaction",
+    "state",
+    "completion",
+    "save_load",
+    "telemetry"
+  ],
+  "created_by": "worldforge.v1.6.runtime_scenario_generator",
+  "created_at": "2026-07-06T00:00:00+00:00"
+}

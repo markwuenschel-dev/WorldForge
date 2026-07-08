@@ -1,0 +1,65 @@
+{
+  "schema_version": "wf.runtime.scenario.v1",
+  "runtime_scenario_id": "rt_enc_sp_Forest_RollingWoodland_Debris_Perf_01__standard_pressure",
+  "pack": "encounter_loop_world",
+  "map_id": "Forest_RollingWoodland_Debris_Perf_01",
+  "biome": "temperate_forest",
+  "mission_id": "mission_Forest_RollingWoodland_Debris_Perf_01",
+  "mission_archetype": "disable_site",
+  "encounter_id": "enc_sp_Forest_RollingWoodland_Debris_Perf_01",
+  "encounter_profile": "standard_pressure",
+  "spawn_anchor_id": "spawn_player_primary",
+  "start_transform": {
+    "x": 3082.0,
+    "y": 3869.0,
+    "z": 120.0,
+    "yaw": 58.0
+  },
+  "objective_sequence": [
+    "reach_primary_poi",
+    "disable_target",
+    "confirm_state",
+    "extract_or_complete"
+  ],
+  "required_interactions": [
+    {
+      "interaction_id": "disable_target",
+      "verb": "disable",
+      "actor_tag": "WF_OBJ_DISABLE_TARGET",
+      "required_radius": 175.0,
+      "expected_event": "objective.disabled"
+    }
+  ],
+  "expected_state_transitions": [
+    {
+      "key": "mission.disable_site.completed",
+      "from": false,
+      "to": true
+    }
+  ],
+  "expected_completion_event": "mission.completed",
+  "save_load_required": true,
+  "pawn_profile_id": "wf_runtime_test_pawn_default",
+  "route_plan_id": "route_Forest_RollingWoodland_Debris_Perf_01__disable_site",
+  "visual_kit_id": "visual_kit_temperate_forest_default",
+  "cover_realization_report_id": "wf.visual.cover_replacement_report.v1.latest",
+  "world_state_keys": [
+    "mission.disable_site.completed",
+    "objective.disable_target.site_power"
+  ],
+  "timeout_seconds": 180,
+  "allowed_recovery_modes": [],
+  "validation_requirements": [
+    "spawn",
+    "possession",
+    "navmesh",
+    "collision",
+    "interaction",
+    "state",
+    "completion",
+    "save_load",
+    "telemetry"
+  ],
+  "created_by": "worldforge.v1.6.runtime_scenario_generator",
+  "created_at": "2026-07-06T00:00:00+00:00"
+}

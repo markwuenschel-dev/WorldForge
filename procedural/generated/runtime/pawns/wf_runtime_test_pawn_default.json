@@ -1,0 +1,30 @@
+{
+  "schema_version": "wf.runtime.pawn_profile.v1",
+  "pawn_profile_id": "wf_runtime_test_pawn_default",
+  "profile_type": "default",
+  "pawn_class": "WF_RuntimeTestPawn",
+  "movement_mode": "walking",
+  "capsule_radius": 34.0,
+  "capsule_half_height": 88.0,
+  "max_walk_speed": 600.0,
+  "step_height": 45.0,
+  "slope_limit": 44.0,
+  "jump_allowed": true,
+  "crouch_allowed": true,
+  "interaction_component": "WF_RuntimeInteractionComponent",
+  "camera_component": "WF_RuntimeCameraComponent",
+  "input_driver": "scripted_route_executor",
+  "nav_agent_properties": {
+    "agent_radius": 34.0,
+    "agent_height": 176.0
+  },
+  "collision_channel": "Pawn",
+  "failure_recovery_policy": "report_and_fail",
+  "telemetry_channels": [
+    "movement",
+    "interaction",
+    "state",
+    "save_load"
+  ],
+  "can_teleport_to_objective": false
+}

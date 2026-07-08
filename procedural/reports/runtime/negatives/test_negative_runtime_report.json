@@ -1,0 +1,219 @@
+{
+  "suite": "runtime_negatives",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "negative::scenario_missing_map_id": {
+      "ok": true,
+      "detail": "expected owning code WF440_RUNTIME_SCENARIO_SCHEMA_FAILURE in ['WF440_RUNTIME_SCENARIO_SCHEMA_FAILURE']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::scenario_unsupported_verb": {
+      "ok": true,
+      "detail": "expected owning code WF475_INTERACTION_VERB_UNSUPPORTED in ['WF475_INTERACTION_VERB_UNSUPPORTED']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::scenario_teleport_recovery": {
+      "ok": true,
+      "detail": "expected owning code WF489_PLAYTEST_GAMMA_TELEPORT_SUCCESS_FORBIDDEN in ['WF489_PLAYTEST_GAMMA_TELEPORT_SUCCESS_FORBIDDEN']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::scenario_timeout_zero": {
+      "ok": true,
+      "detail": "expected owning code WF450_RUNTIME_ROUTE_TIMEOUT in ['WF450_RUNTIME_ROUTE_TIMEOUT']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::scenario_unknown_field_strict": {
+      "ok": true,
+      "detail": "expected owning code WF440_RUNTIME_SCENARIO_SCHEMA_FAILURE in ['WF440_RUNTIME_SCENARIO_SCHEMA_FAILURE']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::pawn_missing_capsule": {
+      "ok": true,
+      "detail": "expected owning code WF460_RUNTIME_PAWN_SCHEMA_FAILURE in ['WF443_RUNTIME_PAWN_PROFILE_FAILURE', 'WF460_RUNTIME_PAWN_SCHEMA_FAILURE']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::pawn_zero_speed": {
+      "ok": true,
+      "detail": "expected owning code WF443_RUNTIME_PAWN_PROFILE_FAILURE in ['WF443_RUNTIME_PAWN_PROFILE_FAILURE']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::pawn_can_teleport": {
+      "ok": true,
+      "detail": "expected owning code WF489_PLAYTEST_GAMMA_TELEPORT_SUCCESS_FORBIDDEN in ['WF489_PLAYTEST_GAMMA_TELEPORT_SUCCESS_FORBIDDEN']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::pawn_no_telemetry": {
+      "ok": true,
+      "detail": "expected owning code WF458_RUNTIME_TELEMETRY_MISSING in ['WF458_RUNTIME_TELEMETRY_MISSING']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::route_no_waypoints": {
+      "ok": true,
+      "detail": "expected owning code WF453_RUNTIME_WAYPOINT_UNREACHABLE in ['WF453_RUNTIME_WAYPOINT_UNREACHABLE']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::route_zero_approach_radius": {
+      "ok": true,
+      "detail": "expected owning code WF454_RUNTIME_OBJECTIVE_UNREACHABLE in ['WF454_RUNTIME_OBJECTIVE_UNREACHABLE']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::route_navmesh_not_bool": {
+      "ok": true,
+      "detail": "expected owning code WF446_RUNTIME_NAVMESH_MISSING in ['WF446_RUNTIME_NAVMESH_MISSING']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::interaction_zero_radius": {
+      "ok": true,
+      "detail": "expected owning code WF474_INTERACTION_RADIUS_INVALID in ['WF474_INTERACTION_RADIUS_INVALID']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::interaction_unsupported_verb": {
+      "ok": true,
+      "detail": "expected owning code WF475_INTERACTION_VERB_UNSUPPORTED in ['WF475_INTERACTION_VERB_UNSUPPORTED']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::interaction_missing_state_key": {
+      "ok": true,
+      "detail": "expected owning code WF480_INTERACTION_STATE_KEY_MISSING in ['WF470_INTERACTION_ACTOR_SCHEMA_FAILURE', 'WF480_INTERACTION_STATE_KEY_MISSING']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::interaction_missing_event": {
+      "ok": true,
+      "detail": "expected owning code WF478_INTERACTION_EVENT_MISSING in ['WF470_INTERACTION_ACTOR_SCHEMA_FAILURE', 'WF478_INTERACTION_EVENT_MISSING']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::completion_fake_green_no_telemetry": {
+      "ok": true,
+      "detail": "expected owning code WF508_RUNTIME_REPORT_MISSING_TELEMETRY in ['WF508_RUNTIME_REPORT_MISSING_TELEMETRY']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::completion_fake_green_no_events": {
+      "ok": true,
+      "detail": "expected owning code WF488_PLAYTEST_GAMMA_FALSE_SUCCESS in ['WF488_PLAYTEST_GAMMA_FALSE_SUCCESS']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::completion_failure_wrong_code": {
+      "ok": true,
+      "detail": "expected owning code WF463_RUNTIME_COMPLETION_SCHEMA_FAILURE in ['WF463_RUNTIME_COMPLETION_SCHEMA_FAILURE']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::saveload_empty_diff": {
+      "ok": true,
+      "detail": "expected owning code WF499_RUNTIME_SAVE_STATE_MISSING in ['WF499_RUNTIME_SAVE_STATE_MISSING', 'WF500_RUNTIME_POST_LOAD_STATE_MISMATCH']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::saveload_lost_completion": {
+      "ok": true,
+      "detail": "expected owning code WF501_RUNTIME_COMPLETION_NOT_PERSISTED in ['WF501_RUNTIME_COMPLETION_NOT_PERSISTED']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::telemetry_missing_mission_completed": {
+      "ok": true,
+      "detail": "expected owning code WF459_RUNTIME_TELEMETRY_INVALID in ['WF459_RUNTIME_TELEMETRY_INVALID']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 22,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "runtime-negative-validators",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "33f8d964a52fc1fdeedb2a457f75b4205d5c89de",
+    "timestamp": "2026-07-08T00:09:02.819365+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.runtime.negative_suite.v1",
+    "report_id": "wf.runtime.negative_suite.v1:c73073ddda63",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 22,
+    "records_total": 22,
+    "records_passed": 22,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "negative_cases": 22
+  }
+}
