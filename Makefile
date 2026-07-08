@@ -1175,3 +1175,37 @@ v1-6x-status:
 	$(PYTHON) tools/pipeline/run_headless_runtime_batch.py --status
 
 .PHONY: v1-6x-prepare v1-6x-run v1-6x-gate v1-6x-status
+
+# --- v1.6y GroundTraversalForge: grounded (walking, gravity, collision) runtime -
+# Wave-0 empirical decision: UE runtime navmesh is unavailable headless
+# (WF_GNAV path_exists=0), but the static-mesh terrain HAS collision, so a
+# gravity+capsule Character lands and WALKS to the objective. Success mode =
+# grounded_manual_waypoint (grounded straight-line following); flight and
+# teleport can NEVER count as grounded success.
+#   make ground-prepare / ground-run / ground-gate STRICT=1 / ground-status
+ground-prepare:
+	$(PYTHON) tools/pipeline/run_ground_runtime_batch.py --prepare $(if $(LIMIT),--limit $(LIMIT),)
+ground-run:
+	$(PYTHON) tools/pipeline/run_ground_runtime_batch.py --run $(if $(LIMIT),--limit $(LIMIT),) $(if $(ONLY),--only $(ONLY),)
+run-grounded-runtime-sample:
+	$(PYTHON) tools/pipeline/run_ground_runtime_batch.py --run --limit $(if $(SCENARIOS),$(SCENARIOS),12)
+run-playtest-forge-delta:
+	$(PYTHON) tools/pipeline/run_ground_runtime_batch.py --run $(if $(SCENARIOS),--limit $(SCENARIOS),)
+ground-gate:
+	$(PYTHON) tools/pipeline/run_ground_runtime_batch.py --gate $(if $(STRICT),--strict,)
+ground-status:
+	$(PYTHON) tools/pipeline/run_ground_runtime_batch.py --status
+validate-ground-completion:
+	$(PYTHON) tools/pipeline/validate_ground_completion.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-no-flight-ground-success:
+	$(PYTHON) tools/pipeline/validate_no_flight_ground_success.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-no-teleport-ground-success:
+	$(PYTHON) tools/pipeline/validate_no_flight_ground_success.py --pack $(PACK) $(if $(STRICT),--strict,)
+ground-no-fake-green-selftest:
+	$(PYTHON) tools/pipeline/validate_no_flight_ground_success.py --self-test
+v1-6y-shield:
+	$(PYTHON) tools/pipeline/v1_6y_shield.py --pack $(PACK) $(if $(STRICT),--strict,) $(if $(REQUIRE_LIVE),--require-live,)
+
+.PHONY: ground-prepare ground-run run-grounded-runtime-sample run-playtest-forge-delta \
+	ground-gate ground-status validate-ground-completion validate-no-flight-ground-success \
+	validate-no-teleport-ground-success ground-no-fake-green-selftest v1-6y-shield

@@ -65,6 +65,54 @@ private:
 	void ScheduleExit();
 };
 
+/** v1.6y traversal mode the grounded pawn should attempt. */
+UENUM()
+enum class EWFGroundMode : uint8
+{
+	GroundedStraight,  // grounded walking, straight-line AddMovementInput (WorldForce route substrate)
+	NavMesh            // AI SimpleMoveToLocation over UE navmesh
+};
+
+/** v1.6y grounded pawn. Walks (gravity ON, capsule collision ON, MOVE_Walking)
+ *  toward the objective and records genuine grounded evidence — is-on-ground
+ *  samples, movement mode, a navmesh path probe, and fall-through detection — so
+ *  v1.6y can classify grounded traversal truthfully and NEVER count flight. This
+ *  is the Wave-0 viability probe and the grounded runtime driver seed. */
+UCLASS()
+class AWFGroundedRuntimePawn : public ACharacter
+{
+	GENERATED_BODY()
+public:
+	AWFGroundedRuntimePawn();
+
+	UPROPERTY(EditAnywhere, Category = "WorldForge") EWFGroundMode Mode = EWFGroundMode::GroundedStraight;
+	UPROPERTY(EditAnywhere, Category = "WorldForge") float MaxWalkSpeedProp = 600.f;
+	UPROPERTY(EditAnywhere, Category = "WorldForge") float MaxSlopeDegrees = 44.f;
+	UPROPERTY(EditAnywhere, Category = "WorldForge") float MaxStepHeight = 45.f;
+	/** If the pawn falls below (spawn Z - this) it is judged to have fallen through
+	 *  the world — a truthful failure, never a success. */
+	UPROPERTY(EditAnywhere, Category = "WorldForge") float FallThroughDropZ = 2000.f;
+
+protected:
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaSeconds) override;
+
+private:
+	UPROPERTY() AWFRuntimeObjective* Target = nullptr;
+	float StartTime = 0.f;
+	float SpawnZ = 0.f;
+	float LastSampleTime = -1.f;
+	int32 GroundedSamples = 0;
+	int32 AirborneSamples = 0;
+	bool bLoggedArrival = false;
+	bool bNavMoveIssued = false;
+	bool bDead = false;
+
+	AWFRuntimeObjective* FindObjective();
+	void ProbeNavmesh(const FVector& Goal);
+	void RequestGracefulExit(const TCHAR* Why);
+};
+
 /** The controlled pawn. Flies (gravity-free, nav-free) straight toward the single
  *  AWFRuntimeObjective by continuous AddMovementInput every tick — genuine motion
  *  through the world, not a teleport — and triggers completion on arrival. Flight

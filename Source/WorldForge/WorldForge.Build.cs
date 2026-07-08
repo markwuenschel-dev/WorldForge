@@ -14,7 +14,10 @@ public class WorldForge : ModuleRules
 			"Core",
 			"CoreUObject",
 			"Engine",
-			"WorldForgeCore"
+			"WorldForgeCore",
+			// v1.6y grounded traversal: navmesh probing + AI MoveTo bridge.
+			"NavigationSystem",
+			"AIModule"
 		});
 
 		PrivateDependencyModuleNames.AddRange(new string[] { });

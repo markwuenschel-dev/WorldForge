@@ -58,7 +58,10 @@ def prepare_one(map_id):
         if lbl in TEST_LABELS:
             eas.destroy_actor(a)
 
-    pawn_cls = unreal.WFRuntimeTestPawn
+    # WF_GROUND=1 places the v1.6y grounded pawn (walking, gravity, capsule
+    # collision); default is the v1.6x flight pawn.
+    grounded = os.environ.get("WF_GROUND", "") == "1"
+    pawn_cls = unreal.WFGroundedRuntimePawn if grounded else unreal.WFRuntimeTestPawn
     obj_cls = unreal.WFRuntimeObjective
 
     p = eas.spawn_actor_from_class(pawn_cls, unreal.Vector(sx, sy, sz), unreal.Rotator(0, 0, 0))
