@@ -1,27 +1,27 @@
 {
-  "pack": "encounter_loop_world",
+  "suite": "npc_behavior_fuzz",
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
-    "generate-npc-behavior-scenarios::nonzero": {
+    "fuzz::no_wrongly_accepted": {
       "ok": true,
-      "detail": "generator produced 120 records (no zero-record success)",
+      "detail": "0 malformed record(s) wrongly accepted ([])",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "generate-npc-behavior-scenarios::all_valid": {
+    "fuzz::no_crashes": {
       "ok": true,
-      "detail": "0/120 records invalid",
+      "detail": "0 validator crash(es)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "scenarios::all_grounded": {
+    "fuzz::cases_run": {
       "ok": true,
-      "detail": "0/120 scenarios lack a grounded route plan",
+      "detail": "ran 300 cases",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -39,27 +39,27 @@
   "passed": true,
   "status": "ok",
   "meta": {
-    "command": "generate-npc-behavior-scenarios",
+    "command": "npc-fuzz",
     "pack": "encounter_loop_world",
     "strict": true,
     "deep": false,
     "torture": false,
     "seeds": null,
     "git_sha": "203bb2130883c15e8ef6410480d8d1ef94c802ee",
-    "timestamp": "2026-07-08T20:58:45.245958+00:00",
+    "timestamp": "2026-07-08T20:58:45.765039+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
     "worldforge_version": "v1.5",
-    "report_type": "wf.npc.behavior_scenario_manifest.v1",
-    "report_id": "wf.npc.behavior_scenario_manifest.v1:0ad1bd739967",
+    "report_type": "wf.npc.fuzz.v1",
+    "report_id": "wf.npc.fuzz.v1:fe465fa6b150",
     "status": "ok",
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 120,
-    "records_total": 120,
-    "records_passed": 120,
+    "record_count": 300,
+    "records_total": 300,
+    "records_passed": 300,
     "records_failed": 0,
     "records_skipped": 0
   }

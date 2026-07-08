@@ -480,6 +480,12 @@ BEHAVIOR_STATE_REQUIRED = (
 BEHAVIOR_STATE_ALLOWED = BEHAVIOR_STATE_REQUIRED + ("meta", "schema_version", "report_type")
 
 
+_STATE_STR_FIELDS = ("npc_instance_id", "spawn_group_id", "archetype_id", "map_id", "mission_id",
+                     "encounter_id", "perception_state", "engagement_state", "pressure_state",
+                     "health_state", "save_load_key")
+_STATE_NUM_FIELDS = ("spawned_at", "last_state_change")
+
+
 def validate_behavior_state(obj, strict=False):
     ch = RS.check_required(obj, BEHAVIOR_STATE_REQUIRED, C.NPC_BEHAVIOR_INIT_FAILURE,
                            nullable=("current_route_node", "current_target"))
@@ -487,6 +493,12 @@ def validate_behavior_state(obj, strict=False):
     ch += RS.check_enum(obj, "current_state", BEHAVIOR_STATES, C.NPC_ENCOUNTER_STATE_FAILURE)
     if not isinstance(obj, dict):
         return ch
+    # Genuine strictness: every scalar field must hold its declared type — a
+    # runtime state record with a numeric id or a stringly timestamp is malformed.
+    for f in _STATE_STR_FIELDS:
+        ch += RS.check_type(obj, f, str, C.NPC_BEHAVIOR_INIT_FAILURE, prefix="state::")
+    for f in _STATE_NUM_FIELDS:
+        ch += RS.check_positive_number(obj, f, C.NPC_BEHAVIOR_INIT_FAILURE, prefix="state::", allow_zero=True)
     sk = obj.get("save_load_key")
     ch.append(("state::save_load_key", isinstance(sk, str) and len(sk) > 0,
                "save_load_key must be a non-empty string (save/load unit)", C.NPC_SAVE_LOAD_FAILURE))
