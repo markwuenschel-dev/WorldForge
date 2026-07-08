@@ -1,0 +1,36 @@
+{
+  "spawn_group_id": "sg_enc_sp_Alpine_SnowyRidge_Scatter_Stylized_01_0",
+  "encounter_id": "enc_sp_Alpine_SnowyRidge_Scatter_Stylized_01",
+  "mission_id": "mission_Alpine_SnowyRidge_Scatter_Stylized_01",
+  "map_id": "enc_sp_Alpine_SnowyRidge_Scatter_Stylized_01",
+  "biome": "alpine_snow",
+  "pressure_profile": "standard_pressure",
+  "npc_archetype_ids": [
+    "npc_ranged_sentry",
+    "npc_grunt_patroller"
+  ],
+  "spawn_anchor_ids": [
+    "enc_sp_Alpine_SnowyRidge_Scatter_Stylized_01_spawn_0"
+  ],
+  "count": 1,
+  "formation_policy": "perimeter",
+  "route_binding_policy": "guard_anchor",
+  "spawn_zone_policy": "walkable_off_route",
+  "max_density": 1.0,
+  "min_distance_from_objective": 400.0,
+  "min_distance_from_player_spawn": 1500.0,
+  "route_clearance_required": true,
+  "walkability_required": true,
+  "save_load_required": true,
+  "validation_requirements": [
+    "spawn_walkable",
+    "not_on_route",
+    "not_near_objective",
+    "not_near_player_start",
+    "density_within_budget"
+  ],
+  "behavior_profile_id": "bp_ranged_pressure_extraction_pressure",
+  "created_by": "worldforge.v1.7",
+  "created_at": "2026-07-08T00:00:00+00:00",
+  "schema_version": "wf.npc.spawn_group.v1"
+}

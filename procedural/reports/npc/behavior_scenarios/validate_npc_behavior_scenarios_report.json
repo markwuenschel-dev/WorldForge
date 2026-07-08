@@ -1,0 +1,82 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "scenarios::exist": {
+      "ok": true,
+      "detail": "no behavior scenarios generated (run generate-npc-behavior-scenarios)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios::all_valid": {
+      "ok": true,
+      "detail": "0 invalid scenarios",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios::no_dangling_refs": {
+      "ok": true,
+      "detail": "0 dangling references",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios::all_grounded_no_flight": {
+      "ok": true,
+      "detail": "0 scenarios not grounded on a valid grounded route plan",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenarios::matrix_complete": {
+      "ok": true,
+      "detail": "matrix has 120 scenarios, expected >= 120 (no partial-as-full)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 5,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-npc-behavior-scenarios",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "dd6b88919c6f8982c373fb0903db8d72f10bf8c1",
+    "timestamp": "2026-07-08T20:49:37.846262+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.npc.behavior_scenario_manifest.v1",
+    "report_id": "wf.npc.behavior_scenario_manifest.v1:0ad1bd739967",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 120,
+    "records_total": 120,
+    "records_passed": 120,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}
