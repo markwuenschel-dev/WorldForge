@@ -18,6 +18,7 @@ Acceptance: `python tools/pipeline/validate_combat_runtime_core.py --pack encoun
 """
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -30,22 +31,77 @@ from validation_report import ValidationReport
 from failure_codes import FailureCode
 
 COMPLETION_DIR = REPO_ROOT / CX.COMBAT_COMPLETION_REPORTS_REL
+_DEFAULT_COMBAT_ROOT = REPO_ROOT / "procedural" / "reports" / "combat"
 
 
-def _check_record(rep, tag, report, strict):
-    """Feed the frozen completion contract + telemetry-on-disk check for one record.
+def _combat_root(reports_dir):
+    """--reports-dir > WF_COMBAT_REPORTS_DIR > committed default. Lets the gate
+    read a throwaway fixture dir while the real evidence dir stays untouched."""
+    return Path(reports_dir or os.environ.get("WF_COMBAT_REPORTS_DIR") or _DEFAULT_COMBAT_ROOT)
+
+
+def _body(r):
+    """Strip the top-level ``damage_events`` list (contract §4) before the frozen
+    completion body-check, whose no-unknown set doesn't list it; the list itself is
+    validated separately in _check_record."""
+    if isinstance(r, dict) and "damage_events" in r:
+        r = dict(r)
+        r.pop("damage_events")
+    return r
+
+
+def _tp_exists(tp, base):
+    if not tp:
+        return False
+    p = Path(tp)
+    if p.is_absolute() and p.is_file():
+        return True
+    if (REPO_ROOT / tp).is_file():
+        return True
+    if (base / "telemetry" / p.name).is_file():
+        return True
+    return False
+
+
+def _check_record(rep, tag, report, strict, base):
+    """Feed the frozen completion contract (body) + the top-level damage_events
+    contract + telemetry-on-disk check for one record.
 
     Returns the number of failing checks recorded (0 == clean).
     """
     bad = 0
-    for name, ok, detail, code in CX.validate_combat_completion_report(report, strict=strict):
+    for name, ok, detail, code in CX.validate_combat_completion_report(_body(report), strict=strict):
         if not ok:
             bad += 1
             rep.check("core::{}::{}".format(tag, name), False, detail, code=code)
-    if report.get("completion_class") == CX.SUCCESS_COMBAT_CLASS:
+    # Contract §4: the completion carries a TOP-LEVEL damage_events list.
+    de = report.get("damage_events")
+    success = report.get("completion_class") == CX.SUCCESS_COMBAT_CLASS
+    if not isinstance(de, list):
+        bad += 1
+        rep.check("core::{}::damage_events_list".format(tag), False,
+                  "completion must carry a top-level damage_events list (contract §4)",
+                  code=FailureCode.DAMAGE_EVENT_MISSING)
+    else:
+        if success and len(de) == 0:
+            bad += 1
+            rep.check("core::{}::damage_events_nonempty".format(tag), False,
+                      "combat_completed_runtime requires a non-empty damage_events list",
+                      code=FailureCode.COMBAT_NO_DAMAGE_EVENTS)
+        for i, ev in enumerate(de):
+            for name, ok, detail, code in CX.validate_damage_event(ev, strict=strict):
+                if not ok:
+                    bad += 1
+                    rep.check("core::{}::de{}::{}".format(tag, i, name), False, detail, code=code)
+        dev = report.get("damage_events_seen")
+        if success and isinstance(dev, int) and dev != len(de):
+            bad += 1
+            rep.check("core::{}::damage_events_count_matches".format(tag), False,
+                      "damage_events_seen ({}) must equal len(damage_events) ({})".format(dev, len(de)),
+                      code=FailureCode.DAMAGE_ACCOUNTING_INCONSISTENT)
+    if success:
         tp = report.get("telemetry_path") or ""
-        exists = bool(tp) and (REPO_ROOT / tp).is_file()
-        if not exists:
+        if not _tp_exists(tp, base):
             bad += 1
             rep.check("core::{}::telemetry_on_disk".format(tag), False,
                       "success telemetry_path missing on disk: {!r}".format(tp),
@@ -70,6 +126,15 @@ def _dogfood(rep, strict):
               "synthetic zero-damage/no-mutation success is rejected ({} check(s) fired)".format(
                   len(bad_fails)),
               code=FailureCode.COMBAT_FAKE_SUCCESS)
+    # Top-level damage_events (contract §4): valid event passes, zero-amount rejected.
+    good_de = [c for c in CX.validate_damage_event(CX._example_damage_event(), strict=True) if not c[1]]
+    bad_de = [c for c in CX.validate_damage_event(
+        CX._example_damage_event(amount=0.0, health_after=72.0), strict=True) if not c[1]]
+    rep.check("dogfood::damage_event_valid", not good_de,
+              "valid top-level DamageEvent passes the frozen contract",
+              code=FailureCode.DAMAGE_EVENT_SCHEMA_FAILURE)
+    rep.check("dogfood::damage_event_zero_rejected", len(bad_de) > 0,
+              "zero-amount DamageEvent is rejected", code=FailureCode.COMBAT_ZERO_DAMAGE_FAKE)
 
 
 def main(argv=None):
@@ -78,15 +143,20 @@ def main(argv=None):
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--require-live", action="store_true", default=True,
                     help="fail-closed when no runtime evidence is present (default on)")
+    ap.add_argument("--reports-dir", default=None,
+                    help="override combat reports root (points completion/ at a fixture dir)")
     args = ap.parse_args(argv)
     strict = args.strict or strict_from_env()
     rep = ValidationReport("pack", args.pack, strict=strict)
+
+    base = _combat_root(args.reports_dir)
+    completion_dir = base / "completion"
 
     # (a) dogfood the logic so the constraint is proven even with zero evidence.
     _dogfood(rep, strict)
 
     # (b) read the real (Wave-R) evidence — fail-closed if absent.
-    files = sorted(COMPLETION_DIR.glob("cs_*.json")) if COMPLETION_DIR.is_dir() else []
+    files = sorted(completion_dir.glob("cs_*.json")) if completion_dir.is_dir() else []
     rep.check("runtime_core::evidence_present", len(files) > 0,
               "no combat completion evidence in {} (run the Wave-R combat matrix)".format(
                   CX.COMBAT_COMPLETION_REPORTS_REL),
@@ -102,7 +172,7 @@ def main(argv=None):
             rep.check("core::{}::readable".format(tag), False, "unreadable: {}".format(e),
                       code=FailureCode.COMBAT_REPORT_INTEGRITY_FAILURE)
             continue
-        bad += _check_record(rep, tag, report, strict)
+        bad += _check_record(rep, tag, report, strict, base)
         if report.get("completion_class") == CX.SUCCESS_COMBAT_CLASS:
             success += 1
 
@@ -116,7 +186,7 @@ def main(argv=None):
                             status=rep.status, record_count=len(files),
                             report_type=CX.RT_COMBAT_COMPLETION, records_total=len(files),
                             extra={"success": success, "evidence_present": bool(files)}))
-    rep.write(COMPLETION_DIR, "validate_combat_runtime_core_report.json")
+    rep.write(completion_dir, "validate_combat_runtime_core_report.json")
     rep.print_summary("validate-combat-runtime-core")
     print("[validate-combat-runtime-core] {} completion record(s), {} success; evidence_present={}".format(
         len(files), success, bool(files)))

@@ -405,7 +405,13 @@ COMBAT_COMPLETION_REQUIRED = (
     "runtime_duration_seconds", "player_max_health", "player_min_health", "player_final_health",
     "damage_events_seen", "mission_completed", "created_at", "git_commit",
 )
-COMBAT_COMPLETION_ALLOWED = COMBAT_COMPLETION_REQUIRED + ("meta", "schema_version", "report_type")
+# `damage_events`: the top-level list of DamageEvent records the runtime batch
+# emits alongside the report (Wave-R-Prime evidence contract §4). Optional/allowed
+# here — its contents are validated per-event by validate_damage_event in the
+# evidence validators; the completion schema just permits the field so a genuine
+# cs_*.json validates under strict check_no_unknown.
+COMBAT_COMPLETION_ALLOWED = COMBAT_COMPLETION_REQUIRED + ("meta", "schema_version", "report_type",
+                                                          "damage_events")
 _COMBAT_RESULT_FIELDS = ("combat_spawn_result", "player_health_result", "damage_application_result",
                          "npc_damage_result", "hazard_damage_result", "health_mutation_result",
                          "mission_completion_result", "save_load_result", "balance_result")

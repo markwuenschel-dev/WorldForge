@@ -1,0 +1,162 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::survivable_labelled": {
+      "ok": true,
+      "detail": "expected survivable, got 'survivable'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::unwinnable_labelled": {
+      "ok": true,
+      "detail": "expected unwinnable, got 'unwinnable'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::no_damage_labelled": {
+      "ok": true,
+      "detail": "expected no_damage, got 'no_damage'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::too_soft_boundary": {
+      "ok": true,
+      "detail": "barely-scratched player must classify too_soft",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::too_low_boundary": {
+      "ok": true,
+      "detail": "near-death survivor must classify too_low",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::blocks_bad_bands": {
+      "ok": true,
+      "detail": "blocking logic must flag unwinnable+no_damage, got ['no_damage', 'unwinnable']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::passes_good_band": {
+      "ok": true,
+      "detail": "blocking logic must pass an all-survivable rollup, got []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "balance::rollup_present": {
+      "ok": true,
+      "detail": "no balance rollup (run classify-combat-balance)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "balance::reports_present": {
+      "ok": true,
+      "detail": "no per-scenario balance reports (nothing realized at runtime yet)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "balance::no_unwinnable": {
+      "ok": true,
+      "detail": "0 scenarios in blocking band 'unwinnable'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "balance::no_no_damage": {
+      "ok": true,
+      "detail": "0 scenarios in blocking band 'no_damage'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "balance::bands_consistent": {
+      "ok": true,
+      "detail": "0 balance reports with unknown/unreadable/tampered band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "balance::rollup_matches_reports": {
+      "ok": true,
+      "detail": "rollup band counts disagree with per-scenario reports: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "balance::advisory_bands": {
+      "ok": true,
+      "detail": "advisory: too_low=0 too_soft=0 (non-blocking)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 14,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-combat-balance",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "689810ff2de501739c69842170bbb9e2820930d3",
+    "timestamp": "2026-07-09T23:06:32.693437+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.combat.combat_balance_report.v1",
+    "report_id": "wf.combat.combat_balance_report.v1:85c04b7508b8",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 120,
+    "records_total": 120,
+    "records_passed": 120,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "bands": {
+      "survivable": 120,
+      "too_soft": 0,
+      "too_low": 0,
+      "unwinnable": 0,
+      "no_damage": 0
+    },
+    "blocking_bands": {}
+  }
+}

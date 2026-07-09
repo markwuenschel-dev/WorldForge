@@ -23,6 +23,7 @@ Acceptance: `python tools/pipeline/validate_npc_damage_bridge.py --pack encounte
 """
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -36,6 +37,12 @@ from failure_codes import FailureCode
 
 COMPLETION_DIR = REPO_ROOT / CX.COMBAT_COMPLETION_REPORTS_REL
 _SKIPPED_RESULTS = (None, "skipped", "not_implemented")
+_DEFAULT_COMBAT_ROOT = REPO_ROOT / "procedural" / "reports" / "combat"
+
+
+def _combat_root(reports_dir):
+    """--reports-dir > WF_COMBAT_REPORTS_DIR > committed default."""
+    return Path(reports_dir or os.environ.get("WF_COMBAT_REPORTS_DIR") or _DEFAULT_COMBAT_ROOT)
 
 
 def _npc_expected(report):
@@ -45,19 +52,11 @@ def _npc_expected(report):
 
 
 def _load_damage_events(report):
-    """Load the DamageEvent list this completion record was realized with. Runtime
-    stores them alongside the telemetry stream under a 'damage_events' key."""
-    tp = report.get("telemetry_path")
-    if not tp:
-        return []
-    p = REPO_ROOT / tp
-    if not p.is_file():
-        return []
-    try:
-        t = json.loads(p.read_text(encoding="utf-8"))
-    except Exception:  # noqa: BLE001
-        return []
-    evs = t.get("damage_events")
+    """The DamageEvent list this completion record was realized with. Per LOCKED
+    contract §4 the completion cs_*.json carries a TOP-LEVEL ``damage_events`` list
+    (each a DamageEvent) — it is NOT read from the telemetry stream (telemetry
+    carries only an ``events`` list of event-type markers)."""
+    evs = report.get("damage_events")
     return evs if isinstance(evs, list) else []
 
 
@@ -117,13 +116,18 @@ def main(argv=None):
     ap.add_argument("--pack", default="encounter_loop_world")
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--require-live", action="store_true", default=True)
+    ap.add_argument("--reports-dir", default=None,
+                    help="override combat reports root (points completion/ at a fixture dir)")
     args = ap.parse_args(argv)
     strict = args.strict or strict_from_env()
     rep = ValidationReport("pack", args.pack, strict=strict)
 
+    base = _combat_root(args.reports_dir)
+    completion_dir = base / "completion"
+
     _dogfood(rep)
 
-    files = sorted(COMPLETION_DIR.glob("cs_*.json")) if COMPLETION_DIR.is_dir() else []
+    files = sorted(completion_dir.glob("cs_*.json")) if completion_dir.is_dir() else []
     rep.check("npc_bridge::evidence_present", len(files) > 0,
               "no combat completion evidence in {} (run the Wave-R combat matrix)".format(
                   CX.COMBAT_COMPLETION_REPORTS_REL),
@@ -161,7 +165,7 @@ def main(argv=None):
                             report_type=CX.RT_COMBAT_COMPLETION, records_total=len(files),
                             extra={"applicable": applicable, "skipped": skipped,
                                    "evidence_present": bool(files)}))
-    rep.write(COMPLETION_DIR, "validate_npc_damage_bridge_report.json")
+    rep.write(completion_dir, "validate_npc_damage_bridge_report.json")
     rep.print_summary("validate-npc-damage-bridge")
     print("[validate-npc-damage-bridge] {} record(s), {} npc-applicable, {} skipped; evidence_present={}".format(
         len(files), applicable, skipped, bool(files)))

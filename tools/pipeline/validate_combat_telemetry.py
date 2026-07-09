@@ -22,6 +22,7 @@ Reports -> procedural/reports/combat/telemetry/validate_combat_telemetry_report.
 """
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -35,6 +36,14 @@ from failure_codes import FailureCode
 
 TELEMETRY_DIR = REPO_ROOT / CX.DAMAGE_TELEMETRY_REPORTS_REL
 SKIP = {"validate_combat_telemetry_report.json"}
+_DEFAULT_COMBAT_ROOT = REPO_ROOT / "procedural" / "reports" / "combat"
+
+
+def _telemetry_dir(reports_dir):
+    """--reports-dir > WF_COMBAT_REPORTS_DIR > committed default; returns the
+    telemetry/ subdir so the gate can be pointed at a throwaway fixture dir."""
+    base = Path(reports_dir or os.environ.get("WF_COMBAT_REPORTS_DIR") or _DEFAULT_COMBAT_ROOT)
+    return base / "telemetry"
 
 
 def _dogfood(rep, strict):
@@ -60,16 +69,20 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--pack", default="encounter_loop_world")
     ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--reports-dir", default=None,
+                    help="override combat reports root (points telemetry/ at a fixture dir)")
     args = ap.parse_args(argv)
     strict = args.strict or strict_from_env()
     rep = ValidationReport("pack", args.pack, strict=strict)
+
+    telemetry_dir = _telemetry_dir(args.reports_dir)
 
     # 1) Dogfood the gate logic (green regardless of real evidence).
     _dogfood(rep, strict)
 
     # 2) Real runtime evidence — fail-closed when absent.
-    files = [f for f in sorted(TELEMETRY_DIR.glob("cs_*.json")) if f.name not in SKIP] \
-        if TELEMETRY_DIR.is_dir() else []
+    files = [f for f in sorted(telemetry_dir.glob("cs_*.json")) if f.name not in SKIP] \
+        if telemetry_dir.is_dir() else []
     rep.check("telemetry::present", len(files) > 0,
               "no combat telemetry emitted under {} (run the combat runtime batch)".format(
                   CX.DAMAGE_TELEMETRY_REPORTS_REL),
@@ -99,7 +112,7 @@ def main(argv=None):
     rep.set_meta(build_meta(command="validate-combat-telemetry", pack=args.pack, strict=strict,
                             status=rep.status, record_count=len(files),
                             report_type=CX.RT_COMBAT_TELEMETRY, records_total=len(files)))
-    rep.write(TELEMETRY_DIR, "validate_combat_telemetry_report.json")
+    rep.write(telemetry_dir, "validate_combat_telemetry_report.json")
     rep.print_summary("validate-combat-telemetry")
     print("[validate-combat-telemetry] {} telemetry reports checked".format(len(files)))
     sys.exit(rep.exit_code)

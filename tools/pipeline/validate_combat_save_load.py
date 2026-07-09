@@ -22,6 +22,7 @@ Reports -> procedural/reports/combat/save_load/validate_combat_save_load_report.
 """
 import argparse
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -36,7 +37,13 @@ from failure_codes import FailureCode
 
 COMPLETION_DIR = REPO_ROOT / CX.COMBAT_COMPLETION_REPORTS_REL
 SAVELOAD_DIR = REPO_ROOT / "procedural/reports/combat/save_load"
+_DEFAULT_COMBAT_ROOT = REPO_ROOT / "procedural" / "reports" / "combat"
 SL_CODE = FailureCode.COMBAT_STATE_SAVE_LOAD_FAILURE
+
+
+def _combat_root(reports_dir):
+    """--reports-dir > WF_COMBAT_REPORTS_DIR > committed default."""
+    return Path(reports_dir or os.environ.get("WF_COMBAT_REPORTS_DIR") or _DEFAULT_COMBAT_ROOT)
 COMPLETION_SKIP = {"validate_combat_completion_report.json", "combat_completion_rollup.json",
                    "run_combat_runtime_batch_gate_report.json"}
 
@@ -89,8 +96,8 @@ def _dogfood(rep, strict):
               code=SL_CODE)
 
 
-def _load_persisted_state(combat_scenario_id):
-    p = SAVELOAD_DIR / "{}.json".format(combat_scenario_id)
+def _load_persisted_state(combat_scenario_id, saveload_dir):
+    p = saveload_dir / "{}.json".format(combat_scenario_id)
     if not p.is_file():
         return None
     try:
@@ -103,16 +110,22 @@ def main(argv=None):
     ap = argparse.ArgumentParser()
     ap.add_argument("--pack", default="encounter_loop_world")
     ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--reports-dir", default=None,
+                    help="override combat reports root (points completion/ + save_load/ at a fixture dir)")
     args = ap.parse_args(argv)
     strict = args.strict or strict_from_env()
     rep = ValidationReport("pack", args.pack, strict=strict)
+
+    base = _combat_root(args.reports_dir)
+    completion_dir = base / "completion"
+    saveload_dir = base / "save_load"
 
     # 1) Dogfood the gate logic (green regardless of real evidence).
     _dogfood(rep, strict)
 
     # 2) Real runtime evidence — success completions and their persisted states.
-    files = [f for f in sorted(COMPLETION_DIR.glob("cs_*.json")) if f.name not in COMPLETION_SKIP] \
-        if COMPLETION_DIR.is_dir() else []
+    files = [f for f in sorted(completion_dir.glob("cs_*.json")) if f.name not in COMPLETION_SKIP] \
+        if completion_dir.is_dir() else []
     successes = []
     for f in files:
         try:
@@ -130,7 +143,7 @@ def main(argv=None):
     bad = verified = 0
     for sid, r in successes:
         csid = r.get("combat_scenario_id") or sid
-        state = _load_persisted_state(csid)
+        state = _load_persisted_state(csid, saveload_dir)
         sub_fails = 0
         for name, ok, detail, code in _persistence_checks(r, state, strict):
             if not ok:
@@ -150,7 +163,7 @@ def main(argv=None):
                             status=rep.status, record_count=len(successes),
                             report_type="wf.combat.save_load_report.v1",
                             records_total=len(successes), extra={"verified": verified}))
-    rep.write(SAVELOAD_DIR, "validate_combat_save_load_report.json")
+    rep.write(saveload_dir, "validate_combat_save_load_report.json")
     rep.print_summary("validate-combat-save-load")
     print("[validate-combat-save-load] {} success completion(s), {} persistence-verified".format(
         len(successes), verified))

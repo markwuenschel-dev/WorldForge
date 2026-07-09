@@ -1,0 +1,92 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::valid_passes": {
+      "ok": true,
+      "detail": "synthetic valid completion passes (0 fail)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad_rejected": {
+      "ok": true,
+      "detail": "synthetic zero-damage/no-mutation success is rejected (2 check(s) fired)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::damage_event_valid": {
+      "ok": true,
+      "detail": "valid top-level DamageEvent passes the frozen contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::damage_event_zero_rejected": {
+      "ok": true,
+      "detail": "zero-amount DamageEvent is rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "runtime_core::evidence_present": {
+      "ok": true,
+      "detail": "no combat completion evidence in procedural/reports/combat/completion (run the Wave-R combat matrix)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "runtime_core::all_genuine": {
+      "ok": true,
+      "detail": "0 runtime-core check failure(s) across 120 record(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 6,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-combat-runtime-core",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "689810ff2de501739c69842170bbb9e2820930d3",
+    "timestamp": "2026-07-09T23:06:28.958970+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.combat.combat_completion_report.v1",
+    "report_id": "wf.combat.combat_completion_report.v1:c2e7c49622ec",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 120,
+    "records_total": 120,
+    "records_passed": 120,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "success": 120,
+    "evidence_present": true
+  }
+}
