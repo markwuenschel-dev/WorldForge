@@ -1,0 +1,106 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::clean_no_orphans": {
+      "ok": true,
+      "detail": "a generatable cs_*.json must not be flagged as orphan",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::clean_no_junk": {
+      "ok": true,
+      "detail": "a clean tree must report no junk",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::orphan_flagged": {
+      "ok": true,
+      "detail": "a non-generatable cs_*.json must be flagged as orphan (got [('completion/cs_totally_synthetic_orphan.json', 'cs_totally_synthetic_orphan')])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::junk_flagged": {
+      "ok": true,
+      "detail": "UE transients / crash logs / save slots must be flagged (got ['Saved/autosave.json', 'telemetry/UECrash_2026.txt', 'telemetry/WFCombat.log', 'telemetry/WFCombat_State.sav'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::generatable_known": {
+      "ok": true,
+      "detail": "no generatable combat scenario ids resolved from procedural/generated/npc/behavior_scenarios — cannot validate orphans (behavior scenarios missing?)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::no_orphan_evidence": {
+      "ok": true,
+      "detail": "orphan/stale/synthetic combat evidence (id not generatable): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::no_ue_transients_or_junk": {
+      "ok": true,
+      "detail": "UE transients / crash logs / save-slot junk under the combat tree: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scan_ran": {
+      "ok": true,
+      "detail": "scanned 360 combat evidence file(s), 120 generatable id(s) (0 evidence is a clean pass)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 8,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "combat-hygiene",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "689810ff2de501739c69842170bbb9e2820930d3",
+    "timestamp": "2026-07-09T23:06:04.685434+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.combat.hygiene.v1",
+    "report_id": "wf.combat.hygiene.v1:e8a2cf7bfed8",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 360,
+    "records_total": 360,
+    "records_passed": 360,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::valid_passes": {
+      "ok": true,
+      "detail": "synthetic mutated-health record passes (0 fail)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::no_mutation_rejected": {
+      "ok": true,
+      "detail": "synthetic no-mutation record is rejected (2 check(s))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::invulnerable_flag_rejected": {
+      "ok": true,
+      "detail": "synthetic invulnerable-flagged record is rejected on the abuse check",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "player_health::evidence_present": {
+      "ok": true,
+      "detail": "no combat completion evidence in procedural/reports/combat/completion (run the Wave-R combat matrix)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "player_health::all_mutated": {
+      "ok": true,
+      "detail": "0 player-health failure(s) across 120 record(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 5,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-player-health",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "689810ff2de501739c69842170bbb9e2820930d3",
+    "timestamp": "2026-07-09T23:06:29.257886+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.combat.combat_completion_report.v1",
+    "report_id": "wf.combat.combat_completion_report.v1:c2e7c49622ec",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 120,
+    "records_total": 120,
+    "records_passed": 120,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "checked": 120,
+    "evidence_present": true
+  }
+}

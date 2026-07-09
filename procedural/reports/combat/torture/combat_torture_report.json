@@ -1,0 +1,346 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "torture::example_valid::CombatProfile": {
+      "ok": true,
+      "detail": "canonical CombatProfile example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::PlayerCombatState": {
+      "ok": true,
+      "detail": "canonical PlayerCombatState example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::DamageEvent": {
+      "ok": true,
+      "detail": "canonical DamageEvent example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::CombatTelemetry": {
+      "ok": true,
+      "detail": "canonical CombatTelemetry example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::CombatCompletionReport": {
+      "ok": true,
+      "detail": "canonical CombatCompletionReport example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::corrupt::completion_status_flipped": {
+      "ok": true,
+      "detail": "corruption 'completion_status_flipped' must be rejected owning WF630_COMBAT_FAKE_SUCCESS (got 1 fail(s), codes=['WF630_COMBAT_FAKE_SUCCESS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::corrupt::completion_zero_damage": {
+      "ok": true,
+      "detail": "corruption 'completion_zero_damage' must be rejected owning WF626_COMBAT_NO_DAMAGE_EVENTS (got 1 fail(s), codes=['WF626_COMBAT_NO_DAMAGE_EVENTS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::corrupt::completion_no_health_mutation": {
+      "ok": true,
+      "detail": "corruption 'completion_no_health_mutation' must be rejected owning WF612_PLAYER_HEALTH_NO_MUTATION (got 1 fail(s), codes=['WF612_PLAYER_HEALTH_NO_MUTATION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::corrupt::completion_player_dead": {
+      "ok": true,
+      "detail": "corruption 'completion_player_dead' must be rejected owning WF625_COMBAT_UNWINNABLE_BASELINE (got 1 fail(s), codes=['WF625_COMBAT_UNWINNABLE_BASELINE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::corrupt::completion_mission_incomplete": {
+      "ok": true,
+      "detail": "corruption 'completion_mission_incomplete' must be rejected owning WF620_COMBAT_MISSION_COMPLETION_BLOCKED (got 1 fail(s), codes=['WF620_COMBAT_MISSION_COMPLETION_BLOCKED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::corrupt::completion_bad_class": {
+      "ok": true,
+      "detail": "corruption 'completion_bad_class' must be rejected owning WF629_COMBAT_REPORT_INTEGRITY_FAILURE (got 4 fail(s), codes=['WF629_COMBAT_REPORT_INTEGRITY_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::corrupt::profile_unwinnable_baseline": {
+      "ok": true,
+      "detail": "corruption 'profile_unwinnable_baseline' must be rejected owning WF625_COMBAT_UNWINNABLE_BASELINE (got 1 fail(s), codes=['WF625_COMBAT_UNWINNABLE_BASELINE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::corrupt::damage_zero_amount": {
+      "ok": true,
+      "detail": "corruption 'damage_zero_amount' must be rejected owning WF627_COMBAT_ZERO_DAMAGE_FAKE (got 2 fail(s), codes=['WF617_DAMAGE_ACCOUNTING_INCONSISTENT', 'WF627_COMBAT_ZERO_DAMAGE_FAKE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::corrupt::pcs_alive_at_zero_health": {
+      "ok": true,
+      "detail": "corruption 'pcs_alive_at_zero_health' must be rejected owning WF606_PLAYER_COMBAT_STATE_SCHEMA_FAILURE (got 1 fail(s), codes=['WF606_PLAYER_COMBAT_STATE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::CombatProfile": {
+      "ok": true,
+      "detail": "CombatProfile known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::PlayerCombatState": {
+      "ok": true,
+      "detail": "PlayerCombatState known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::DamageEvent": {
+      "ok": true,
+      "detail": "DamageEvent known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::CombatTelemetry": {
+      "ok": true,
+      "detail": "CombatTelemetry known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::CombatCompletionReport": {
+      "ok": true,
+      "detail": "CombatCompletionReport known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::CombatProfile": {
+      "ok": true,
+      "detail": "CombatProfile validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::CombatProfile": {
+      "ok": true,
+      "detail": "CombatProfile validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::PlayerCombatState": {
+      "ok": true,
+      "detail": "PlayerCombatState validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::PlayerCombatState": {
+      "ok": true,
+      "detail": "PlayerCombatState validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::DamageEvent": {
+      "ok": true,
+      "detail": "DamageEvent validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::DamageEvent": {
+      "ok": true,
+      "detail": "DamageEvent validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::CombatTelemetry": {
+      "ok": true,
+      "detail": "CombatTelemetry validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::CombatTelemetry": {
+      "ok": true,
+      "detail": "CombatTelemetry validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::CombatCompletionReport": {
+      "ok": true,
+      "detail": "CombatCompletionReport validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::CombatCompletionReport": {
+      "ok": true,
+      "detail": "CombatCompletionReport validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::CombatProfile": {
+      "ok": true,
+      "detail": "full CombatProfile record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::CombatProfile": {
+      "ok": true,
+      "detail": "a CombatProfile record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::PlayerCombatState": {
+      "ok": true,
+      "detail": "full PlayerCombatState record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::PlayerCombatState": {
+      "ok": true,
+      "detail": "a PlayerCombatState record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::DamageEvent": {
+      "ok": true,
+      "detail": "full DamageEvent record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::DamageEvent": {
+      "ok": true,
+      "detail": "a DamageEvent record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::CombatCompletionReport": {
+      "ok": true,
+      "detail": "full CombatCompletionReport record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::CombatCompletionReport": {
+      "ok": true,
+      "detail": "a CombatCompletionReport record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::CombatTelemetry": {
+      "ok": true,
+      "detail": "completion telemetry missing required events must not pass as complete",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 38,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "combat-torture",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "689810ff2de501739c69842170bbb9e2820930d3",
+    "timestamp": "2026-07-09T23:06:32.992611+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.combat.torture.v1",
+    "report_id": "wf.combat.torture.v1:f6903fb656f2",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 5,
+    "records_total": 5,
+    "records_passed": 5,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

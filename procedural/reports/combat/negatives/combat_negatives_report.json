@@ -1,0 +1,498 @@
+{
+  "suite": "combat_negatives",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "neg::profile_baseline_unwinnable::rejected": {
+      "ok": true,
+      "detail": "known-bad 'profile_baseline_unwinnable' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_baseline_unwinnable::owning_code": {
+      "ok": true,
+      "detail": "'profile_baseline_unwinnable' rejected for owning code WF625_COMBAT_UNWINNABLE_BASELINE (got ['WF625_COMBAT_UNWINNABLE_BASELINE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_baseline_zero_damage::rejected": {
+      "ok": true,
+      "detail": "known-bad 'profile_baseline_zero_damage' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_baseline_zero_damage::owning_code": {
+      "ok": true,
+      "detail": "'profile_baseline_zero_damage' rejected for owning code WF626_COMBAT_NO_DAMAGE_EVENTS (got ['WF626_COMBAT_NO_DAMAGE_EVENTS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_environment_only_source::rejected": {
+      "ok": true,
+      "detail": "known-bad 'profile_environment_only_source' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_environment_only_source::owning_code": {
+      "ok": true,
+      "detail": "'profile_environment_only_source' rejected for owning code WF613_PLAYER_DAMAGE_NOT_APPLIED (got ['WF613_PLAYER_DAMAGE_NOT_APPLIED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_unknown_damage_source::rejected": {
+      "ok": true,
+      "detail": "known-bad 'profile_unknown_damage_source' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_unknown_damage_source::owning_code": {
+      "ok": true,
+      "detail": "'profile_unknown_damage_source' rejected for owning code WF605_COMBAT_PROFILE_SCHEMA_FAILURE (got ['WF605_COMBAT_PROFILE_SCHEMA_FAILURE', 'WF613_PLAYER_DAMAGE_NOT_APPLIED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_missing_player_max_health::rejected": {
+      "ok": true,
+      "detail": "known-bad 'profile_missing_player_max_health' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_missing_player_max_health::owning_code": {
+      "ok": true,
+      "detail": "'profile_missing_player_max_health' rejected for owning code WF605_COMBAT_PROFILE_SCHEMA_FAILURE (got ['WF605_COMBAT_PROFILE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_unknown_encounter_archetype::rejected": {
+      "ok": true,
+      "detail": "known-bad 'profile_unknown_encounter_archetype' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_unknown_encounter_archetype::owning_code": {
+      "ok": true,
+      "detail": "'profile_unknown_encounter_archetype' rejected for owning code WF605_COMBAT_PROFILE_SCHEMA_FAILURE (got ['WF605_COMBAT_PROFILE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_bad_completion_policy::rejected": {
+      "ok": true,
+      "detail": "known-bad 'profile_bad_completion_policy' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_bad_completion_policy::owning_code": {
+      "ok": true,
+      "detail": "'profile_bad_completion_policy' rejected for owning code WF620_COMBAT_MISSION_COMPLETION_BLOCKED (got ['WF620_COMBAT_MISSION_COMPLETION_BLOCKED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_unknown_field_strict::rejected": {
+      "ok": true,
+      "detail": "known-bad 'profile_unknown_field_strict' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_unknown_field_strict::owning_code": {
+      "ok": true,
+      "detail": "'profile_unknown_field_strict' rejected for owning code WF605_COMBAT_PROFILE_SCHEMA_FAILURE (got ['WF605_COMBAT_PROFILE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::player_alive_at_zero_health::rejected": {
+      "ok": true,
+      "detail": "known-bad 'player_alive_at_zero_health' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::player_alive_at_zero_health::owning_code": {
+      "ok": true,
+      "detail": "'player_alive_at_zero_health' rejected for owning code WF606_PLAYER_COMBAT_STATE_SCHEMA_FAILURE (got ['WF606_PLAYER_COMBAT_STATE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::player_health_over_max::rejected": {
+      "ok": true,
+      "detail": "known-bad 'player_health_over_max' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::player_health_over_max::owning_code": {
+      "ok": true,
+      "detail": "'player_health_over_max' rejected for owning code WF606_PLAYER_COMBAT_STATE_SCHEMA_FAILURE (got ['WF606_PLAYER_COMBAT_STATE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::player_negative_health::rejected": {
+      "ok": true,
+      "detail": "known-bad 'player_negative_health' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::player_negative_health::owning_code": {
+      "ok": true,
+      "detail": "'player_negative_health' rejected for owning code WF606_PLAYER_COMBAT_STATE_SCHEMA_FAILURE (got ['WF606_PLAYER_COMBAT_STATE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::player_empty_save_load_key::rejected": {
+      "ok": true,
+      "detail": "known-bad 'player_empty_save_load_key' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::player_empty_save_load_key::owning_code": {
+      "ok": true,
+      "detail": "'player_empty_save_load_key' rejected for owning code WF621_COMBAT_STATE_SAVE_LOAD_FAILURE (got ['WF621_COMBAT_STATE_SAVE_LOAD_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::damage_zero_amount::rejected": {
+      "ok": true,
+      "detail": "known-bad 'damage_zero_amount' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::damage_zero_amount::owning_code": {
+      "ok": true,
+      "detail": "'damage_zero_amount' rejected for owning code WF627_COMBAT_ZERO_DAMAGE_FAKE (got ['WF617_DAMAGE_ACCOUNTING_INCONSISTENT', 'WF627_COMBAT_ZERO_DAMAGE_FAKE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::damage_accounting_inconsistent::rejected": {
+      "ok": true,
+      "detail": "known-bad 'damage_accounting_inconsistent' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::damage_accounting_inconsistent::owning_code": {
+      "ok": true,
+      "detail": "'damage_accounting_inconsistent' rejected for owning code WF617_DAMAGE_ACCOUNTING_INCONSISTENT (got ['WF617_DAMAGE_ACCOUNTING_INCONSISTENT'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::damage_health_not_decreased::rejected": {
+      "ok": true,
+      "detail": "known-bad 'damage_health_not_decreased' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::damage_health_not_decreased::owning_code": {
+      "ok": true,
+      "detail": "'damage_health_not_decreased' rejected for owning code WF617_DAMAGE_ACCOUNTING_INCONSISTENT (got ['WF617_DAMAGE_ACCOUNTING_INCONSISTENT'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::damage_unknown_source_type::rejected": {
+      "ok": true,
+      "detail": "known-bad 'damage_unknown_source_type' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::damage_unknown_source_type::owning_code": {
+      "ok": true,
+      "detail": "'damage_unknown_source_type' rejected for owning code WF607_DAMAGE_EVENT_SCHEMA_FAILURE (got ['WF607_DAMAGE_EVENT_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::damage_unknown_damage_type::rejected": {
+      "ok": true,
+      "detail": "known-bad 'damage_unknown_damage_type' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::damage_unknown_damage_type::owning_code": {
+      "ok": true,
+      "detail": "'damage_unknown_damage_type' rejected for owning code WF607_DAMAGE_EVENT_SCHEMA_FAILURE (got ['WF607_DAMAGE_EVENT_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::telemetry_missing_damage_event::rejected": {
+      "ok": true,
+      "detail": "known-bad 'telemetry_missing_damage_event' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::telemetry_missing_damage_event::owning_code": {
+      "ok": true,
+      "detail": "'telemetry_missing_damage_event' rejected for owning code WF626_COMBAT_NO_DAMAGE_EVENTS (got ['WF618_COMBAT_DAMAGE_TELEMETRY_MISSING', 'WF626_COMBAT_NO_DAMAGE_EVENTS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::telemetry_empty_events::rejected": {
+      "ok": true,
+      "detail": "known-bad 'telemetry_empty_events' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::telemetry_empty_events::owning_code": {
+      "ok": true,
+      "detail": "'telemetry_empty_events' rejected for owning code WF618_COMBAT_DAMAGE_TELEMETRY_MISSING (got ['WF618_COMBAT_DAMAGE_TELEMETRY_MISSING', 'WF626_COMBAT_NO_DAMAGE_EVENTS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_zero_damage::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_success_zero_damage' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_zero_damage::owning_code": {
+      "ok": true,
+      "detail": "'completion_success_zero_damage' rejected for owning code WF626_COMBAT_NO_DAMAGE_EVENTS (got ['WF626_COMBAT_NO_DAMAGE_EVENTS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_no_mutation::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_success_no_mutation' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_no_mutation::owning_code": {
+      "ok": true,
+      "detail": "'completion_success_no_mutation' rejected for owning code WF612_PLAYER_HEALTH_NO_MUTATION (got ['WF612_PLAYER_HEALTH_NO_MUTATION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_mission_not_done::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_success_mission_not_done' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_mission_not_done::owning_code": {
+      "ok": true,
+      "detail": "'completion_success_mission_not_done' rejected for owning code WF620_COMBAT_MISSION_COMPLETION_BLOCKED (got ['WF620_COMBAT_MISSION_COMPLETION_BLOCKED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_save_load_fail::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_success_save_load_fail' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_save_load_fail::owning_code": {
+      "ok": true,
+      "detail": "'completion_success_save_load_fail' rejected for owning code WF621_COMBAT_STATE_SAVE_LOAD_FAILURE (got ['WF621_COMBAT_STATE_SAVE_LOAD_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_did_not_survive::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_success_did_not_survive' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_did_not_survive::owning_code": {
+      "ok": true,
+      "detail": "'completion_success_did_not_survive' rejected for owning code WF625_COMBAT_UNWINNABLE_BASELINE (got ['WF625_COMBAT_UNWINNABLE_BASELINE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_band_not_survivable::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_success_band_not_survivable' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_success_band_not_survivable::owning_code": {
+      "ok": true,
+      "detail": "'completion_success_band_not_survivable' rejected for owning code WF628_COMBAT_BALANCE_REPORT_FAILURE (got ['WF628_COMBAT_BALANCE_REPORT_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_failed_class_no_code::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_failed_class_no_code' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_failed_class_no_code::owning_code": {
+      "ok": true,
+      "detail": "'completion_failed_class_no_code' rejected for owning code WF629_COMBAT_REPORT_INTEGRITY_FAILURE (got ['WF629_COMBAT_REPORT_INTEGRITY_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::CombatProfile::valid_example_passes": {
+      "ok": true,
+      "detail": "valid CombatProfile example must pass ([])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::PlayerCombatState::valid_example_passes": {
+      "ok": true,
+      "detail": "valid PlayerCombatState example must pass ([])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::DamageEvent::valid_example_passes": {
+      "ok": true,
+      "detail": "valid DamageEvent example must pass ([])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::CombatTelemetry::valid_example_passes": {
+      "ok": true,
+      "detail": "valid CombatTelemetry example must pass ([])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::CombatCompletionReport::valid_example_passes": {
+      "ok": true,
+      "detail": "valid CombatCompletionReport example must pass ([])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 57,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "combat-negative-validators",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "689810ff2de501739c69842170bbb9e2820930d3",
+    "timestamp": "2026-07-09T23:06:32.789703+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.combat.negatives.v1",
+    "report_id": "wf.combat.negatives.v1:cae336dfef70",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 26,
+    "records_total": 26,
+    "records_passed": 26,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

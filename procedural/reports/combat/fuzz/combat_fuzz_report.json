@@ -1,0 +1,66 @@
+{
+  "suite": "combat_fuzz",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "fuzz::no_wrongly_accepted": {
+      "ok": true,
+      "detail": "0 malformed record(s) wrongly accepted ([])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::no_crashes": {
+      "ok": true,
+      "detail": "0 validator crash(es)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::cases_run": {
+      "ok": true,
+      "detail": "ran 300 cases",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 3,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "combat-fuzz",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "689810ff2de501739c69842170bbb9e2820930d3",
+    "timestamp": "2026-07-09T23:06:32.896409+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.combat.fuzz.v1",
+    "report_id": "wf.combat.fuzz.v1:6641c0110972",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 300,
+    "records_total": 300,
+    "records_passed": 300,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

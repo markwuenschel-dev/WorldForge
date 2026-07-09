@@ -1,0 +1,81 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "classify::completions_present": {
+      "ok": true,
+      "detail": "no combat completion reports to classify (run the combat runtime batch)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "classify::no_no_damage": {
+      "ok": true,
+      "detail": "0 scenarios with zero damage events (not real combat)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "classify::no_unwinnable": {
+      "ok": true,
+      "detail": "0 scenarios unwinnable under combat baseline",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "classify::advisory_bands": {
+      "ok": true,
+      "detail": "advisory: too_low=0 too_soft=0 (non-blocking)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 4,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "classify-combat-balance",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "689810ff2de501739c69842170bbb9e2820930d3",
+    "timestamp": "2026-07-09T23:06:32.594631+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.combat.combat_balance_report.v1",
+    "report_id": "wf.combat.combat_balance_report.v1:85c04b7508b8",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 120,
+    "records_total": 120,
+    "records_passed": 120,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "bands": {
+      "survivable": 120,
+      "too_soft": 0,
+      "too_low": 0,
+      "unwinnable": 0,
+      "no_damage": 0
+    }
+  }
+}

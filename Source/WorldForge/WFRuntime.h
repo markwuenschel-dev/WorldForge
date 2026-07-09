@@ -74,6 +74,24 @@ enum class EWFGroundMode : uint8
 	NavMesh            // AI SimpleMoveToLocation over UE navmesh
 };
 
+/** v1.8 CombatForge — persisted player combat state (the combat save/load unit).
+ *  Distinct slot (WFCombat_State) from the mission (WFRuntime_Complete) and NPC
+ *  (WFNPC_State) saves, so combat persistence is proven INDEPENDENTLY of mission
+ *  and NPC save/load. */
+UCLASS()
+class UWFCombatSaveGame : public USaveGame
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY() FString ScenarioId;
+	UPROPERTY() FString PlayerInstanceId;
+	UPROPERTY() float MaxHealth = 0.f;
+	UPROPERTY() float CurrentHealth = 0.f;
+	UPROPERTY() float DamageTakenTotal = 0.f;
+	UPROPERTY() int32 DamageEventsCount = 0;
+	UPROPERTY() bool bIsAlive = true;
+};
+
 /** v1.6y grounded pawn. Walks (gravity ON, capsule collision ON, MOVE_Walking)
  *  toward the objective and records genuine grounded evidence — is-on-ground
  *  samples, movement mode, a navmesh path probe, and fall-through detection — so
@@ -94,6 +112,22 @@ public:
 	 *  the world — a truthful failure, never a success. */
 	UPROPERTY(EditAnywhere, Category = "WorldForge") float FallThroughDropZ = 2000.f;
 
+	// --- v1.8 combat: player health (inert unless WF_COMBAT_ENABLED=1) ---------
+	/** Apply real combat damage from a source: mutates CurrentHealth (clamped >=0),
+	 *  records the event, emits WF_COMBAT_DAMAGE + WF_COMBAT_HEALTH_CHANGED, and
+	 *  returns the post-damage health. No-op (returns current health unchanged) when
+	 *  combat is disabled or the pawn is already dead. `Amount` logged is the amount
+	 *  actually applied, so health_after == health_before - amount exactly. */
+	float ApplyCombatDamage(float Amount, const FString& SourceType, const FString& SourceId, const FString& DamageType);
+	bool IsCombatEnabled() const { return bCombatEnabled; }
+	float GetMaxHealth() const { return MaxHealth; }
+	float GetCurrentHealth() const { return CurrentHealth; }
+	float GetMinHealth() const { return MinHealth; }
+	float GetDamageTakenTotal() const { return DamageTakenTotal; }
+	int32 GetDamageEventsCount() const { return DamageEventsCount; }
+	bool IsAlive() const { return CurrentHealth > 0.f; }
+	FString GetPlayerInstanceId() const { return PlayerInstanceId; }
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
@@ -109,10 +143,20 @@ private:
 	bool bNavMoveIssued = false;
 	bool bDead = false;
 
+	// v1.8 combat health state (set from the environment when combat is enabled).
+	bool bCombatEnabled = false;
+	float MaxHealth = 0.f;
+	float CurrentHealth = 0.f;
+	float MinHealth = 0.f;
+	float DamageTakenTotal = 0.f;
+	int32 DamageEventsCount = 0;
+	FString PlayerInstanceId;
+
 	AWFRuntimeObjective* FindObjective();
 	void ProbeNavmesh(const FVector& Goal);
 	void ProbeWalkability(const FVector& Goal);  // game-world grid geometry probe
 	void RequestGracefulExit(const TCHAR* Why);
+	void InitCombatFromEnv();  // v1.8: reads WF_COMBAT_* env, inits health, logs init
 };
 
 // ===========================================================================
@@ -194,6 +238,11 @@ public:
 	/** Called by the manager when the mission completes / player departs. */
 	void Resolve();
 
+	// v1.8 combat: when enabled by the manager, each pressure tick also applies real
+	// damage to the player pawn (the NPC pressure-to-damage bridge).
+	void EnableDamage(float PerTick) { bDealsDamage = true; DamagePerTick = PerTick; }
+	int32 GetDamageDealt() const { return DamageDealt; }
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
@@ -205,7 +254,41 @@ private:
 	float LastPressureTime = -1000.f;
 	float SpawnZ = 0.f;
 
+	// v1.8 combat bridge
+	bool bDealsDamage = false;
+	float DamagePerTick = 0.f;
+	int32 DamageDealt = 0;
+
 	void SetState(EWFNPCState NewState, const TCHAR* Why);
+};
+
+/** v1.8 CombatForge — a grounded damage-over-time hazard zone. While the player
+ *  pawn is within its radius it applies real per-tick damage via the pawn's
+ *  ApplyCombatDamage, emitting WF_COMBAT_DAMAGE source=hazard. Query-only overlap so
+ *  it never blocks the mission path. Spawned by the manager only for combat
+ *  scenarios whose source includes hazard. */
+UCLASS()
+class AWFHazardVolume : public AActor
+{
+	GENERATED_BODY()
+public:
+	AWFHazardVolume();
+
+	UPROPERTY(EditAnywhere, Category = "WorldForge|Combat") FString HazardId = TEXT("hazard_0");
+	UPROPERTY(EditAnywhere, Category = "WorldForge|Combat") float Radius = 500.f;
+	UPROPERTY(EditAnywhere, Category = "WorldForge|Combat") float DamagePerTick = 5.f;
+	UPROPERTY(EditAnywhere, Category = "WorldForge|Combat") float TickInterval = 0.5f;
+
+	int32 GetDamageDealt() const { return DamageDealt; }
+
+protected:
+	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaSeconds) override;
+
+private:
+	UPROPERTY() USphereComponent* Zone = nullptr;
+	float LastTick = -1000.f;
+	int32 DamageDealt = 0;
 };
 
 /** Placed once per map at prepare time. At BeginPlay it reads the per-scenario
@@ -242,7 +325,19 @@ private:
 	bool bLoggedPressuring = false;
 	FString Profile = TEXT("light_pressure");
 
+	// v1.8 combat layer (active only when WF_COMBAT_ENABLED=1; otherwise a pure v1.7
+	// behavior run — this is what keeps the v1.7 + v1.6z regressions green).
+	bool bCombatEnabled = false;
+	bool bCombatFinalized = false;
+	FString CombatSource = TEXT("npc_pressure");
+	float PlayerMaxHealth = 100.f;
+	UPROPERTY() TArray<AWFHazardVolume*> Hazards;
+
 	int32 TotalPressure() const;
+	int32 TotalDamageEvents() const;                 // v1.8: player pawn's damage-event count
+	AWFGroundedRuntimePawn* FindPlayerPawn() const;  // v1.8
+	void SetupCombat(const FVector& Start, const FVector& Goal);  // v1.8: enable NPC damage + spawn hazards
+	void FinalizeCombat(bool bMissionDone);          // v1.8: combat save/verify + WF_COMBAT_DONE
 	void FinalizeCompletion();
 	void FinalizeFailure(const TCHAR* Why);
 };

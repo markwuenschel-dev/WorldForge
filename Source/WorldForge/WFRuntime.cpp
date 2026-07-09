@@ -299,6 +299,18 @@ void AWFNPCPawn::Tick(float DeltaSeconds)
 			UE_LOG(LogWFRuntime, Display,
 				TEXT("WF_NPC_PRESSURE npc=%s applied=%d value=%.1f dist=%.0f"),
 				*InstanceId, PressureApplied, PressureValue, Dist);
+			// v1.8 pressure-to-damage bridge: when the manager enabled damage, each
+			// real pressure tick applies real damage to the player pawn.
+			if (bDealsDamage)
+			{
+				if (AWFGroundedRuntimePawn* GP = Cast<AWFGroundedRuntimePawn>(Player))
+				{
+					const FString DType = (ArchetypeRole == TEXT("ranged_sentry"))
+						? TEXT("ranged_tick") : TEXT("proximity_tick");
+					GP->ApplyCombatDamage(DamagePerTick, TEXT("npc_pressure"), InstanceId, DType);
+					++DamageDealt;
+				}
+			}
 		}
 	}
 	else if (State == EWFNPCState::Pressuring && Dist > DisengagementRadius)
@@ -307,6 +319,48 @@ void AWFNPCPawn::Tick(float DeltaSeconds)
 		UE_LOG(LogWFRuntime, Display, TEXT("WF_NPC_PRESSURE_EXPIRED npc=%s applied=%d"),
 			*InstanceId, PressureApplied);
 		SetState(EWFNPCState::Alerted, TEXT("player_left_pressure_radius"));
+	}
+}
+
+// ---------------------------------------------------------------------------
+// AWFHazardVolume — v1.8 grounded damage-over-time hazard
+// ---------------------------------------------------------------------------
+AWFHazardVolume::AWFHazardVolume()
+{
+	PrimaryActorTick.bCanEverTick = true;
+	Zone = CreateDefaultSubobject<USphereComponent>(TEXT("Zone"));
+	Zone->InitSphereRadius(Radius);
+	Zone->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	Zone->SetCollisionResponseToAllChannels(ECR_Overlap);
+	RootComponent = Zone;
+}
+
+void AWFHazardVolume::BeginPlay()
+{
+	Super::BeginPlay();
+	if (Zone) { Zone->SetSphereRadius(Radius); }
+	UE_LOG(LogWFRuntime, Display,
+		TEXT("WF_COMBAT_HAZARD_SPAWN hazard=%s at=%s radius=%.0f dmg=%.1f"),
+		*HazardId, *GetActorLocation().ToCompactString(), Radius, DamagePerTick);
+}
+
+void AWFHazardVolume::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	APawn* Player = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	if (!Player) { return; }
+	if (FVector::Dist(GetActorLocation(), Player->GetActorLocation()) <= Radius)
+	{
+		const float Now = GetWorld()->GetTimeSeconds();
+		if (Now - LastTick >= TickInterval)
+		{
+			LastTick = Now;
+			if (AWFGroundedRuntimePawn* GP = Cast<AWFGroundedRuntimePawn>(Player))
+			{
+				GP->ApplyCombatDamage(DamagePerTick, TEXT("hazard"), HazardId, TEXT("hazard_zone"));
+				++DamageDealt;
+			}
+		}
 	}
 }
 
@@ -391,9 +445,62 @@ void AWFEncounterManager::BeginPlay()
 			*N->InstanceId, *Loc.ToCompactString());
 	}
 	UE_LOG(LogWFRuntime, Display, TEXT("WF_NPC_SPAWN count=%d requested=%d"), Spawned, Count);
+
+	// --- v1.8 combat layer: enable NPC damage + spawn hazards (if enabled) ------
+	bCombatEnabled = WFEnvInt(TEXT("WF_COMBAT_ENABLED"), 0) == 1;
+	if (bCombatEnabled)
+	{
+		CombatSource = WFEnvStr(TEXT("WF_COMBAT_SOURCE"), TEXT("npc_pressure"));
+		PlayerMaxHealth = WFEnvFloat(TEXT("WF_COMBAT_MAX_HEALTH"), 100.f);
+		SetupCombat(Start, Goal);
+	}
+
 	if (Spawned == 0)
 	{
 		FinalizeFailure(TEXT("no_npc_spawned"));
+	}
+}
+
+AWFGroundedRuntimePawn* AWFEncounterManager::FindPlayerPawn() const
+{
+	for (TActorIterator<AWFGroundedRuntimePawn> It(GetWorld()); It; ++It) { return *It; }
+	return nullptr;
+}
+
+int32 AWFEncounterManager::TotalDamageEvents() const
+{
+	const AWFGroundedRuntimePawn* P = FindPlayerPawn();
+	return P ? P->GetDamageEventsCount() : 0;
+}
+
+void AWFEncounterManager::SetupCombat(const FVector& Start, const FVector& Goal)
+{
+	const float DmgPerTick = WFEnvFloat(TEXT("WF_COMBAT_DAMAGE_PER_TICK"), 4.f);
+	const float HazDmg = WFEnvFloat(TEXT("WF_COMBAT_HAZARD_DAMAGE"), 5.f);
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_COMBAT_START scenario=%s max_health=%.1f source=%s"),
+		*ScenarioId, PlayerMaxHealth, *CombatSource);
+
+	if (CombatSource == TEXT("npc_pressure") || CombatSource == TEXT("both"))
+	{
+		for (AWFNPCPawn* N : NPCs) { if (N) { N->EnableDamage(DmgPerTick); } }
+	}
+	if (CombatSource == TEXT("hazard") || CombatSource == TEXT("both"))
+	{
+		// A single hazard zone straddling the route midpoint so the walking player
+		// passes through it and takes real hazard damage-over-time. Query-only, so it
+		// never blocks the mission path.
+		FActorSpawnParameters SP;
+		SP.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		const FVector Mid = (Start + Goal) * 0.5f;
+		AWFHazardVolume* H = GetWorld()->SpawnActor<AWFHazardVolume>(
+			AWFHazardVolume::StaticClass(), FVector(Mid.X, Mid.Y, Start.Z + 50.f), FRotator::ZeroRotator, SP);
+		if (H)
+		{
+			H->HazardId = ScenarioId + TEXT("_hazard_0");
+			H->DamagePerTick = HazDmg;
+			H->Radius = 700.f;
+			Hazards.Add(H);
+		}
 	}
 }
 
@@ -436,7 +543,10 @@ void AWFEncounterManager::Tick(float DeltaSeconds)
 
 	// Completion: the mission objective is genuinely done AND real pressure fired.
 	const bool bMissionDone = Objective && Objective->IsCompleted();
-	if (bMissionDone && TotalPressure() >= 1)
+	// v1.8: with combat enabled, completion additionally requires a real damage event
+	// (health actually mutated); otherwise the v1.7 pressure gate holds.
+	const bool bGate = bCombatEnabled ? (TotalDamageEvents() >= 1) : (TotalPressure() >= 1);
+	if (bMissionDone && bGate)
 	{
 		FinalizeCompletion();
 		return;
@@ -517,6 +627,13 @@ void AWFEncounterManager::FinalizeCompletion()
 			TEXT("WF_NPC_FAIL completion_chain_broken saved=%d verified=%d pressure=%d"),
 			bSaved ? 1 : 0, bVerified ? 1 : 0, Total);
 	}
+
+	// v1.8: persist + verify combat state and emit the combat completion markers.
+	if (bCombatEnabled)
+	{
+		FinalizeCombat(true);
+	}
+
 	// The objective owns the process exit (it schedules a graceful exit on arrival);
 	// we do not race it. If the objective is gone, request exit ourselves.
 	if (!Objective)
@@ -532,8 +649,79 @@ void AWFEncounterManager::FinalizeFailure(const TCHAR* Why)
 	bFinalized = true;
 	UE_LOG(LogWFRuntime, Warning, TEXT("WF_NPC_FAIL %s scenario=%s npcs=%d pressure=%d"),
 		Why, *ScenarioId, NPCs.Num(), TotalPressure());
+	// v1.8: if this was a combat scenario, emit an honest combat failure too so the
+	// batch runner writes a failure completion, never a silent gap.
+	if (bCombatEnabled && !bCombatFinalized)
+	{
+		UE_LOG(LogWFRuntime, Warning, TEXT("WF_COMBAT_FAIL %s scenario=%s"), Why, *ScenarioId);
+	}
 	FTimerHandle H;
 	GetWorldTimerManager().SetTimer(H, []() { FPlatformMisc::RequestExit(false); }, 1.0f, false);
+}
+
+void AWFEncounterManager::FinalizeCombat(bool bMissionDone)
+{
+	if (bCombatFinalized) { return; }
+	bCombatFinalized = true;
+
+	AWFGroundedRuntimePawn* P = FindPlayerPawn();
+	if (!P)
+	{
+		UE_LOG(LogWFRuntime, Warning, TEXT("WF_COMBAT_FAIL no_player_pawn scenario=%s"), *ScenarioId);
+		return;
+	}
+	const int32 Events = P->GetDamageEventsCount();
+	const float MinH = P->GetMinHealth();
+	const float FinalH = P->GetCurrentHealth();
+
+	// Persist combat state to a DISTINCT slot (independent of mission + NPC saves).
+	const FString Slot = TEXT("WFCombat_State");
+	UWFCombatSaveGame* Save = Cast<UWFCombatSaveGame>(
+		UGameplayStatics::CreateSaveGameObject(UWFCombatSaveGame::StaticClass()));
+	bool bSaved = false;
+	if (Save)
+	{
+		Save->ScenarioId = ScenarioId;
+		Save->PlayerInstanceId = P->GetPlayerInstanceId();
+		Save->MaxHealth = P->GetMaxHealth();
+		Save->CurrentHealth = FinalH;
+		Save->DamageTakenTotal = P->GetDamageTakenTotal();
+		Save->DamageEventsCount = Events;
+		Save->bIsAlive = P->IsAlive();
+		bSaved = UGameplayStatics::SaveGameToSlot(Save, Slot, 0);
+	}
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_COMBAT_SAVE saved=%d slot=%s events=%d taken=%.1f"),
+		bSaved ? 1 : 0, *Slot, Events, Save ? Save->DamageTakenTotal : 0.f);
+
+	// Reload-verify from disk in-process (SaveGameToSlot is synchronous).
+	bool bVerified = false;
+	float LoadedH = 0.f;
+	int32 LoadedEv = 0;
+	if (bSaved && UGameplayStatics::DoesSaveGameExist(Slot, 0))
+	{
+		if (UWFCombatSaveGame* L = Cast<UWFCombatSaveGame>(UGameplayStatics::LoadGameFromSlot(Slot, 0)))
+		{
+			LoadedH = L->CurrentHealth;
+			LoadedEv = L->DamageEventsCount;
+			bVerified = (LoadedEv == Events) && (LoadedEv >= 1) && L->bIsAlive;
+		}
+	}
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_COMBAT_VERIFY persisted_%s health=%.1f events=%d"),
+		bVerified ? TEXT("true") : TEXT("false"), LoadedH, LoadedEv);
+
+	// Real combat completion: mission done AND real damage AND survived AND save/load.
+	if (bSaved && bVerified && Events >= 1 && FinalH > 0.f && bMissionDone)
+	{
+		UE_LOG(LogWFRuntime, Display,
+			TEXT("WF_COMBAT_DONE scenario.completed scenario=%s events=%d min_health=%.1f final_health=%.1f mission=%d"),
+			*ScenarioId, Events, MinH, FinalH, bMissionDone ? 1 : 0);
+	}
+	else
+	{
+		UE_LOG(LogWFRuntime, Warning,
+			TEXT("WF_COMBAT_FAIL combat_chain_broken scenario=%s saved=%d verified=%d events=%d final=%.1f mission=%d"),
+			*ScenarioId, bSaved ? 1 : 0, bVerified ? 1 : 0, Events, FinalH, bMissionDone ? 1 : 0);
+	}
 }
 
 // ---------------------------------------------------------------------------
@@ -616,6 +804,55 @@ void AWFGroundedRuntimePawn::BeginPlay()
 		SpawnZ, GetCharacterMovement() ? GetCharacterMovement()->GravityScale : -1.f);
 	ProbeNavmesh(Goal);
 	ProbeWalkability(Goal);
+	InitCombatFromEnv();  // v1.8: player health (no-op unless WF_COMBAT_ENABLED=1)
+}
+
+void AWFGroundedRuntimePawn::InitCombatFromEnv()
+{
+	// Combat is inert unless the batch driver explicitly enabled it — a pure v1.7
+	// behavior run (no WF_COMBAT_ENABLED) never mutates health, preserving the v1.7
+	// and v1.6z regressions.
+	bCombatEnabled = FPlatformMisc::GetEnvironmentVariable(TEXT("WF_COMBAT_ENABLED")) == TEXT("1");
+	if (!bCombatEnabled)
+	{
+		return;
+	}
+	const FString ScenId = FPlatformMisc::GetEnvironmentVariable(TEXT("WF_NPC_SCENARIO_ID"));
+	PlayerInstanceId = (ScenId.IsEmpty() ? TEXT("player") : ScenId) + TEXT("_player");
+	const FString MaxStr = FPlatformMisc::GetEnvironmentVariable(TEXT("WF_COMBAT_MAX_HEALTH"));
+	MaxHealth = MaxStr.IsEmpty() ? 100.f : FCString::Atof(*MaxStr);
+	CurrentHealth = MaxHealth;
+	MinHealth = MaxHealth;
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_COMBAT_HEALTH_INIT player=%s max=%.1f"),
+		*PlayerInstanceId, MaxHealth);
+}
+
+float AWFGroundedRuntimePawn::ApplyCombatDamage(float Amount, const FString& SourceType,
+	const FString& SourceId, const FString& DamageType)
+{
+	if (!bCombatEnabled || Amount <= 0.f || CurrentHealth <= 0.f)
+	{
+		return CurrentHealth;
+	}
+	const float Before = CurrentHealth;
+	CurrentHealth = FMath::Max(0.f, CurrentHealth - Amount);
+	const float After = CurrentHealth;
+	const float Applied = Before - After;  // logged amount == exactly before-after
+	DamageTakenTotal += Applied;
+	++DamageEventsCount;
+	if (After < MinHealth) { MinHealth = After; }
+	const float Now = GetWorld() ? GetWorld()->GetTimeSeconds() : 0.f;
+	// One WF_COMBAT_DAMAGE line per event — the ordered set IS the damage_events list.
+	UE_LOG(LogWFRuntime, Display,
+		TEXT("WF_COMBAT_DAMAGE source=%s src_id=%s type=%s amount=%.1f before=%.1f after=%.1f at=%.2f"),
+		*SourceType, *SourceId, *DamageType, Applied, Before, After, Now);
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_COMBAT_HEALTH_CHANGED player=%s health=%.1f min=%.1f"),
+		*PlayerInstanceId, After, MinHealth);
+	if (After <= 0.f)
+	{
+		UE_LOG(LogWFRuntime, Warning, TEXT("WF_COMBAT_PLAYER_DIED player=%s"), *PlayerInstanceId);
+	}
+	return After;
 }
 
 void AWFGroundedRuntimePawn::ProbeWalkability(const FVector& Goal)

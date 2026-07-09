@@ -1,0 +1,74 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::valid_telemetry_passes": {
+      "ok": true,
+      "detail": "valid combat telemetry passes strict/require_completion (0 fail)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad telemetry (no player.damage.taken) is rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "telemetry::present": {
+      "ok": true,
+      "detail": "no combat telemetry emitted under procedural/reports/combat/telemetry (run the combat runtime batch)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "telemetry::all_valid": {
+      "ok": true,
+      "detail": "0 telemetry check failure(s) across 120 reports",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 4,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-combat-telemetry",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "689810ff2de501739c69842170bbb9e2820930d3",
+    "timestamp": "2026-07-09T23:06:29.354159+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.combat.telemetry.v1",
+    "report_id": "wf.combat.telemetry.v1:0e00b71dcfef",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 120,
+    "records_total": 120,
+    "records_passed": 120,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

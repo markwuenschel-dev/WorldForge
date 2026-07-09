@@ -1342,3 +1342,75 @@ v1-7-shield:
 	run-npc-behavior-sample run-encounter-behavior-forge-alpha validate-npc-telemetry \
 	validate-npc-completion validate-npc-save-load classify-npc-pressure validate-npc-balance \
 	npc-negative-validators npc-behavior-torture npc-report-integrity npc-fuzz v1-7-shield
+
+# ======================================================================
+# v1.8 CombatForge Alpha — runtime combat pressure (Agent 0)
+# ----------------------------------------------------------------------
+# Turns v1.7 NPC behavior pressure into real runtime combat pressure: NPC
+# pressure and hazards produce damage, player health mutates at runtime, mission
+# completion must remain possible under baseline. Every target maps 1:1 to a
+# python tools/pipeline/<script>.py entrypoint. Gates are FAIL-CLOSED: a target
+# whose script is not yet built errors (non-zero), turning v1-8-shield RED until
+# it is implemented and green. Hard non-goals: no weapons/abilities/boss/tactical
+# AI/cover/navmesh — only that damage happens, health mutates, and baseline stays
+# winnable, all provably (no fake combat success).
+#
+#   make v1-8-shield PACK=encounter_loop_world STRICT=1 REQUIRE_LIVE=1 COMBAT=1 BEHAVIOR=1 TORTURE=1
+# ======================================================================
+COMBAT_PACK ?= encounter_loop_world
+
+# --- Contracts + profiles ---------------------------------------------
+combat-contracts:
+	$(PYTHON) tools/pipeline/validate_combat_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+combat-profiles:
+	$(PYTHON) tools/pipeline/generate_combat_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-combat-profiles:
+	$(PYTHON) tools/pipeline/validate_combat_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Runtime combat ----------------------------------------------------
+validate-combat-runtime-core:
+	$(PYTHON) tools/pipeline/validate_combat_runtime_core.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-damage-bridge:
+	$(PYTHON) tools/pipeline/validate_npc_damage_bridge.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-hazard-combat:
+	$(PYTHON) tools/pipeline/validate_hazard_combat.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-player-health:
+	$(PYTHON) tools/pipeline/validate_player_health.py --pack $(PACK) $(if $(STRICT),--strict,)
+run-combat-forge-sample:
+	$(PYTHON) tools/pipeline/run_combat_forge_alpha.py --scenarios $(if $(SCENARIOS),$(SCENARIOS),12) $(if $(STRICT),--strict,)
+run-combat-forge-alpha:
+	$(PYTHON) tools/pipeline/run_combat_forge_alpha.py --gate --scenarios $(if $(SCENARIOS),$(SCENARIOS),120) $(if $(STRICT),--strict,)
+validate-combat-telemetry:
+	$(PYTHON) tools/pipeline/validate_combat_telemetry.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-combat-completion:
+	$(PYTHON) tools/pipeline/validate_combat_completion.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-combat-save-load:
+	$(PYTHON) tools/pipeline/validate_combat_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Balance / survivability -------------------------------------------
+classify-combat-balance:
+	$(PYTHON) tools/pipeline/classify_combat_balance.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-combat-balance:
+	$(PYTHON) tools/pipeline/validate_combat_balance.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Hostile validation ------------------------------------------------
+combat-negative-validators:
+	$(PYTHON) tools/pipeline/combat_negatives.py $(if $(STRICT),--strict,)
+combat-torture:
+	$(PYTHON) tools/pipeline/combat_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+combat-report-integrity:
+	$(PYTHON) tools/pipeline/combat_report_integrity.py --pack $(PACK) $(if $(STRICT),--strict,)
+combat-fuzz:
+	$(PYTHON) tools/pipeline/combat_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v1-8-shield:
+	$(PYTHON) tools/pipeline/v1_8_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(COMBAT),--combat,) $(if $(BEHAVIOR),--behavior,) $(if $(TORTURE),--torture,) \
+	  $(if $(REQUIRE_LIVE),--require-live,) $(if $(SCENARIOS),--scenarios $(SCENARIOS),)
+
+.PHONY: combat-contracts combat-profiles validate-combat-profiles validate-combat-runtime-core \
+	validate-npc-damage-bridge validate-hazard-combat validate-player-health run-combat-forge-sample \
+	run-combat-forge-alpha validate-combat-telemetry validate-combat-completion validate-combat-save-load \
+	classify-combat-balance validate-combat-balance combat-negative-validators combat-torture \
+	combat-report-integrity combat-fuzz v1-8-shield
