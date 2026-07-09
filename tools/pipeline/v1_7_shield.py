@@ -86,6 +86,9 @@ def main(argv=None):
         else:
             results.append(run("behavior:sample", "run_npc_behavior_batch.py",
                                "--scenarios", "12", *s))
+        results.append(run("behavior:runtime-core", "validate_npc_runtime_core.py", *P, *s))
+        results.append(run("behavior:perception", "validate_npc_perception.py", *P, *s))
+        results.append(run("behavior:movement", "validate_npc_movement.py", *P, *s))
         results.append(run("behavior:telemetry", "validate_npc_telemetry.py", *P, *s))
         results.append(run("behavior:completion", "validate_npc_completion.py", *P, *s))
         results.append(run("behavior:save-load", "validate_npc_save_load.py", *P, *s))

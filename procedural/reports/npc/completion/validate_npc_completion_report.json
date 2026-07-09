@@ -1,0 +1,67 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "completion::present": {
+      "ok": true,
+      "detail": "no behavior completion reports (run the NPC behavior batch)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "completion::all_valid": {
+      "ok": true,
+      "detail": "0 completion check failure(s) across 120 reports",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "completion::rollup_matches_disk": {
+      "ok": true,
+      "detail": "rollup claims 120 but 120 success reports on disk",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 3,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-npc-completion",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "67ffd5a08c308a24bbd08a1a11f7cba0f1ba4fd7",
+    "timestamp": "2026-07-09T00:18:52.353183+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.npc.behavior_completion_report.v1",
+    "report_id": "wf.npc.behavior_completion_report.v1:d84380267993",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 120,
+    "records_total": 120,
+    "records_passed": 120,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "success": 120
+  }
+}

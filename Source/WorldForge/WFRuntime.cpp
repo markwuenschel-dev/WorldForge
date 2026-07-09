@@ -4,6 +4,8 @@
 
 #include "Components/SphereComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/SceneComponent.h"
+#include "GameFramework/PlayerStart.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
@@ -180,6 +182,357 @@ void AWFRuntimeTestPawn::Tick(float DeltaSeconds)
 
 	// Continuous motion toward the objective (consumed by CharacterMovement).
 	AddMovementInput(Delta.GetSafeNormal(), 1.0f);
+}
+
+// ===========================================================================
+// v1.7 NPCForge — AWFNPCPawn + AWFEncounterManager
+// ===========================================================================
+
+// ---------------------------------------------------------------------------
+// AWFNPCPawn
+// ---------------------------------------------------------------------------
+AWFNPCPawn::AWFNPCPawn()
+{
+	PrimaryActorTick.bCanEverTick = true;
+	// NPCs are AI sentries — never auto-possessed by the player.
+	AutoPossessPlayer = EAutoReceiveInput::Disabled;
+
+	if (UCharacterMovementComponent* M = GetCharacterMovement())
+	{
+		M->GravityScale = 1.f;                 // grounded: stands on real terrain
+		M->DefaultLandMovementMode = MOVE_Walking;
+		M->MaxWalkSpeed = 200.f;
+	}
+	if (UCapsuleComponent* C = GetCapsuleComponent())
+	{
+		// Collide with the world so it stands on terrain, but IGNORE the Pawn
+		// channel so an NPC can NEVER block the player's mission path.
+		C->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+		C->SetCollisionProfileName(TEXT("Pawn"));
+		C->SetCollisionResponseToChannel(ECC_Pawn, ECR_Ignore);
+	}
+}
+
+FString AWFNPCPawn::StateName() const
+{
+	switch (State)
+	{
+	case EWFNPCState::Idle:       return TEXT("idle");
+	case EWFNPCState::Alerted:    return TEXT("alerted");
+	case EWFNPCState::Pressuring: return TEXT("pressuring");
+	default:                      return TEXT("resolved");
+	}
+}
+
+void AWFNPCPawn::SetState(EWFNPCState NewState, const TCHAR* Why)
+{
+	if (State == NewState)
+	{
+		return;
+	}
+	const FString From = StateName();
+	State = NewState;
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_NPC_STATE npc=%s %s->%s why=%s"),
+		*InstanceId, *From, *StateName(), Why);
+}
+
+void AWFNPCPawn::BeginPlay()
+{
+	Super::BeginPlay();
+	SpawnZ = GetActorLocation().Z;
+	UE_LOG(LogWFRuntime, Display,
+		TEXT("WF_NPC_INIT npc=%s role=%s at=%s perc=%.0f engage=%.0f pressR=%.0f pressV=%.1f"),
+		*InstanceId, *ArchetypeRole, *GetActorLocation().ToCompactString(),
+		PerceptionRadius, EngagementRadius, PressureRadius, PressureValue);
+}
+
+void AWFNPCPawn::Resolve()
+{
+	if (State != EWFNPCState::Resolved)
+	{
+		SetState(EWFNPCState::Resolved, TEXT("mission_complete_or_departed"));
+	}
+}
+
+void AWFNPCPawn::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	if (State == EWFNPCState::Resolved)
+	{
+		return;
+	}
+	APawn* Player = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	if (!Player)
+	{
+		return;
+	}
+	const float Dist = FVector::Dist(GetActorLocation(), Player->GetActorLocation());
+
+	// Perception: detect the real, moving player within the perception radius.
+	if (Dist <= PerceptionRadius)
+	{
+		if (!bDetectedPlayer)
+		{
+			bDetectedPlayer = true;
+			UE_LOG(LogWFRuntime, Display, TEXT("WF_NPC_PERCEPT npc=%s detected dist=%.0f"),
+				*InstanceId, Dist);
+		}
+		if (State == EWFNPCState::Idle)
+		{
+			SetState(EWFNPCState::Alerted, TEXT("player_perceived"));
+		}
+	}
+
+	// Pressure: genuine per-tick pressure while the player is within range.
+	if (Dist <= PressureRadius)
+	{
+		if (State != EWFNPCState::Pressuring)
+		{
+			SetState(EWFNPCState::Pressuring, TEXT("player_in_pressure_radius"));
+		}
+		const float Now = GetWorld()->GetTimeSeconds();
+		if (Now - LastPressureTime >= PressureTickInterval)
+		{
+			LastPressureTime = Now;
+			++PressureApplied;
+			UE_LOG(LogWFRuntime, Display,
+				TEXT("WF_NPC_PRESSURE npc=%s applied=%d value=%.1f dist=%.0f"),
+				*InstanceId, PressureApplied, PressureValue, Dist);
+		}
+	}
+	else if (State == EWFNPCState::Pressuring && Dist > DisengagementRadius)
+	{
+		// Player escaped the disengagement radius — pressure expires.
+		UE_LOG(LogWFRuntime, Display, TEXT("WF_NPC_PRESSURE_EXPIRED npc=%s applied=%d"),
+			*InstanceId, PressureApplied);
+		SetState(EWFNPCState::Alerted, TEXT("player_left_pressure_radius"));
+	}
+}
+
+// ---------------------------------------------------------------------------
+// AWFEncounterManager
+// ---------------------------------------------------------------------------
+AWFEncounterManager::AWFEncounterManager()
+{
+	PrimaryActorTick.bCanEverTick = true;
+	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
+}
+
+static int32 WFEnvInt(const TCHAR* Name, int32 Def)
+{
+	const FString V = FPlatformMisc::GetEnvironmentVariable(Name);
+	return V.IsEmpty() ? Def : FCString::Atoi(*V);
+}
+static float WFEnvFloat(const TCHAR* Name, float Def)
+{
+	const FString V = FPlatformMisc::GetEnvironmentVariable(Name);
+	return V.IsEmpty() ? Def : FCString::Atof(*V);
+}
+static FString WFEnvStr(const TCHAR* Name, const FString& Def)
+{
+	const FString V = FPlatformMisc::GetEnvironmentVariable(Name);
+	return V.IsEmpty() ? Def : V;
+}
+
+void AWFEncounterManager::BeginPlay()
+{
+	Super::BeginPlay();
+	StartTime = GetWorld() ? GetWorld()->GetTimeSeconds() : 0.f;
+
+	// --- per-scenario spec from the environment (set by the batch driver) ---
+	ScenarioId = WFEnvStr(TEXT("WF_NPC_SCENARIO_ID"), ScenarioId.IsEmpty() ? TEXT("unknown") : ScenarioId);
+	Profile = WFEnvStr(TEXT("WF_NPC_PROFILE"), TEXT("light_pressure"));
+	int32 Count = FMath::Max(1, WFEnvInt(TEXT("WF_NPC_COUNT"), DefaultNPCCount));
+	const float PressV = WFEnvFloat(TEXT("WF_NPC_PRESSURE_VALUE"), Profile == TEXT("standard_pressure") ? 6.f : 4.f);
+	const float PressR = WFEnvFloat(TEXT("WF_NPC_PRESSURE_RADIUS"), Profile == TEXT("standard_pressure") ? 800.f : 600.f);
+	const float EngageR = WFEnvFloat(TEXT("WF_NPC_ENGAGE_RADIUS"), 800.f);
+
+	UE_LOG(LogWFRuntime, Display,
+		TEXT("WF_NPC_MGR scenario.started scenario=%s profile=%s requested_count=%d"),
+		*ScenarioId, *Profile, Count);
+
+	// --- locate the player's route: PlayerStart -> objective --------------
+	Objective = nullptr;
+	for (TActorIterator<AWFRuntimeObjective> It(GetWorld()); It; ++It) { Objective = *It; break; }
+	FVector Start(0, 0, 300.f);
+	for (TActorIterator<APlayerStart> It(GetWorld()); It; ++It) { Start = It->GetActorLocation(); break; }
+	const FVector Goal = Objective ? Objective->GetActorLocation() : Start + FVector(900, 0, 0);
+	const FVector Mid = (Start + Goal) * 0.5f;
+
+	// --- spawn grounded NPC sentries near the route (never on it) ----------
+	FActorSpawnParameters SP;
+	SP.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	int32 Spawned = 0;
+	for (int32 i = 0; i < Count; ++i)
+	{
+		// Deterministic lateral offsets: along the route, off to the side, so the
+		// walking player passes within pressure range but the path stays clear.
+		const float Along = (float)i * 150.f - (Count - 1) * 75.f;
+		const float Side = 250.f + (float)(i % 3) * 90.f;
+		const FVector Loc(Mid.X + Along, Mid.Y + Side, Start.Z + 50.f);
+		AWFNPCPawn* N = GetWorld()->SpawnActor<AWFNPCPawn>(AWFNPCPawn::StaticClass(), Loc, FRotator::ZeroRotator, SP);
+		if (!N)
+		{
+			continue;
+		}
+		N->InstanceId = FString::Printf(TEXT("%s_npc_%d"), *ScenarioId, i);
+		N->ArchetypeRole = (i % 2 == 0) ? TEXT("static_guard") : TEXT("ranged_sentry");
+		N->EngagementRadius = EngageR;
+		N->DisengagementRadius = EngageR + 400.f;
+		N->PerceptionRadius = EngageR + 100.f;
+		N->PressureRadius = PressR;
+		N->PressureValue = PressV;
+		NPCs.Add(N);
+		++Spawned;
+		// Route binding: each NPC is bound to a grounded guard waypoint (its own
+		// spawn location) — a grounded_manual_waypoint, never flight/teleport.
+		UE_LOG(LogWFRuntime, Display, TEXT("WF_NPC_ROUTE_BOUND npc=%s mode=grounded_manual_waypoint node=%s"),
+			*N->InstanceId, *Loc.ToCompactString());
+	}
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_NPC_SPAWN count=%d requested=%d"), Spawned, Count);
+	if (Spawned == 0)
+	{
+		FinalizeFailure(TEXT("no_npc_spawned"));
+	}
+}
+
+int32 AWFEncounterManager::TotalPressure() const
+{
+	int32 T = 0;
+	for (const AWFNPCPawn* N : NPCs)
+	{
+		if (N) { T += N->GetPressureApplied(); }
+	}
+	return T;
+}
+
+void AWFEncounterManager::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	if (bFinalized)
+	{
+		return;
+	}
+
+	// Encounter-level state transitions, logged once each.
+	bool bAnyAlerted = false, bAnyPressuring = false;
+	for (const AWFNPCPawn* N : NPCs)
+	{
+		if (!N) { continue; }
+		if (N->DetectedPlayer()) { bAnyAlerted = true; }
+		if (N->GetState() == EWFNPCState::Pressuring) { bAnyPressuring = true; }
+	}
+	if (bAnyAlerted && !bLoggedAlerted)
+	{
+		bLoggedAlerted = true;
+		UE_LOG(LogWFRuntime, Display, TEXT("WF_ENC_STATE idle->alerted scenario=%s"), *ScenarioId);
+	}
+	if (bAnyPressuring && !bLoggedPressuring)
+	{
+		bLoggedPressuring = true;
+		UE_LOG(LogWFRuntime, Display, TEXT("WF_ENC_STATE alerted->pressuring scenario=%s"), *ScenarioId);
+	}
+
+	// Completion: the mission objective is genuinely done AND real pressure fired.
+	const bool bMissionDone = Objective && Objective->IsCompleted();
+	if (bMissionDone && TotalPressure() >= 1)
+	{
+		FinalizeCompletion();
+		return;
+	}
+
+	// Hard lifetime backstop so a process never hangs.
+	if (GetWorld()->GetTimeSeconds() - StartTime > MaxLifetimeSeconds)
+	{
+		if (bMissionDone)
+		{
+			FinalizeFailure(TEXT("mission_done_but_no_pressure"));
+		}
+		else
+		{
+			FinalizeFailure(TEXT("timeout_no_mission_completion"));
+		}
+	}
+}
+
+void AWFEncounterManager::FinalizeCompletion()
+{
+	if (bFinalized) { return; }
+	bFinalized = true;
+
+	// Resolve every NPC and collect its persisted state.
+	UWFNPCSaveGame* Save = Cast<UWFNPCSaveGame>(
+		UGameplayStatics::CreateSaveGameObject(UWFNPCSaveGame::StaticClass()));
+	int32 Total = 0;
+	if (Save)
+	{
+		Save->ScenarioId = ScenarioId;
+		for (AWFNPCPawn* N : NPCs)
+		{
+			if (!N) { continue; }
+			N->Resolve();
+			FWFNPCStateEntry E;
+			E.InstanceId = N->InstanceId;
+			E.ArchetypeRole = N->ArchetypeRole;
+			E.FinalState = N->StateName();
+			E.PressureApplied = N->GetPressureApplied();
+			E.bDetectedPlayer = N->DetectedPlayer();
+			Total += E.PressureApplied;
+			Save->NPCs.Add(E);
+		}
+		Save->TotalPressureApplied = Total;
+	}
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_ENC_STATE pressuring->resolved scenario=%s"), *ScenarioId);
+
+	const FString Slot = TEXT("WFNPC_State");
+	const bool bSaved = Save && UGameplayStatics::SaveGameToSlot(Save, Slot, 0);
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_NPC_SAVE saved=%d slot=%s npcs=%d pressure=%d"),
+		bSaved ? 1 : 0, *Slot, Save ? Save->NPCs.Num() : 0, Total);
+
+	// Reload-verify from disk in-process.
+	int32 LoadedNPCs = 0, LoadedPressure = 0;
+	bool bVerified = false;
+	if (bSaved && UGameplayStatics::DoesSaveGameExist(Slot, 0))
+	{
+		if (UWFNPCSaveGame* L = Cast<UWFNPCSaveGame>(UGameplayStatics::LoadGameFromSlot(Slot, 0)))
+		{
+			LoadedNPCs = L->NPCs.Num();
+			LoadedPressure = L->TotalPressureApplied;
+			bVerified = (LoadedNPCs == (Save ? Save->NPCs.Num() : -1)) && LoadedNPCs > 0 && LoadedPressure >= 1;
+		}
+	}
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_NPC_VERIFY persisted_%s npcs=%d pressure=%d"),
+		bVerified ? TEXT("true") : TEXT("false"), LoadedNPCs, LoadedPressure);
+
+	if (bSaved && bVerified && Total >= 1)
+	{
+		UE_LOG(LogWFRuntime, Display,
+			TEXT("WF_NPC_DONE scenario.completed scenario=%s npcs=%d pressure=%d"),
+			*ScenarioId, LoadedNPCs, Total);
+	}
+	else
+	{
+		UE_LOG(LogWFRuntime, Warning,
+			TEXT("WF_NPC_FAIL completion_chain_broken saved=%d verified=%d pressure=%d"),
+			bSaved ? 1 : 0, bVerified ? 1 : 0, Total);
+	}
+	// The objective owns the process exit (it schedules a graceful exit on arrival);
+	// we do not race it. If the objective is gone, request exit ourselves.
+	if (!Objective)
+	{
+		FTimerHandle H;
+		GetWorldTimerManager().SetTimer(H, []() { FPlatformMisc::RequestExit(false); }, 1.0f, false);
+	}
+}
+
+void AWFEncounterManager::FinalizeFailure(const TCHAR* Why)
+{
+	if (bFinalized) { return; }
+	bFinalized = true;
+	UE_LOG(LogWFRuntime, Warning, TEXT("WF_NPC_FAIL %s scenario=%s npcs=%d pressure=%d"),
+		Why, *ScenarioId, NPCs.Num(), TotalPressure());
+	FTimerHandle H;
+	GetWorldTimerManager().SetTimer(H, []() { FPlatformMisc::RequestExit(false); }, 1.0f, false);
 }
 
 // ---------------------------------------------------------------------------

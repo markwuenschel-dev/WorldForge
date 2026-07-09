@@ -1,0 +1,82 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "actors::scenarios_exist": {
+      "ok": true,
+      "detail": "no behavior scenarios generated",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "actors::manifest_exists": {
+      "ok": true,
+      "detail": "no materialization manifest (run materialize-npc-actors)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "actors::report_type": {
+      "ok": true,
+      "detail": "manifest report_type mismatch",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "actors::all_maps_materialized": {
+      "ok": true,
+      "detail": "60/60 maps materialized; missing: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "actors::no_phantom_maps": {
+      "ok": true,
+      "detail": "manifest lists maps not in the scenario set: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 5,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-npc-actors",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "67ffd5a08c308a24bbd08a1a11f7cba0f1ba4fd7",
+    "timestamp": "2026-07-09T00:19:09.338345+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.npc.materialization_report.v1",
+    "report_id": "wf.npc.materialization_report.v1:b4ed928e1ad0",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 60,
+    "records_total": 60,
+    "records_passed": 60,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

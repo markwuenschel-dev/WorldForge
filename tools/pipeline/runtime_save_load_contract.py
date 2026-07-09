@@ -40,7 +40,7 @@ REQUIRED_FIELDS = (
     "failure_code",
 )
 
-ALLOWED_FIELDS = REQUIRED_FIELDS + ("schema_version", "created_at")
+ALLOWED_FIELDS = REQUIRED_FIELDS + ("schema_version", "created_at", "meta")
 
 
 def validate_save_load_proof(obj, strict=False):
