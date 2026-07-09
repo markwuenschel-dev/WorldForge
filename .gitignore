@@ -82,3 +82,18 @@ procedural/generated/runtime/_ground_prepare_maps.json
 *-Crash.log
 *.runtime-xml
 Saved/Crashes/
+
+# ----------------------------------------------------------------------
+# Local engine/plugin environment noise
+# ----------------------------------------------------------------------
+# Third-party engine plugins may be installed locally for development,
+# but are not part of the WorldForge source payload unless explicitly
+# added by a dedicated feature PR with validation gates.
+Plugins/HoudiniEngine/
+Plugins/HoudiniNiagara/
+Plugins/HoudiniLiveLink/
+Plugins/UELLMToolkit/
+
+# Houdini local/generated transients
+Content/HoudiniEngine/Bake/
+Content/HoudiniEngine/Temp/
