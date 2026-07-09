@@ -1,0 +1,55 @@
+{
+  "behavior_scenario_id": "bs_enc_lp_Forest_ErodedGully_Debris_Photoreal_01__light_pressure",
+  "runtime_scenario_id": "rt_enc_lp_Forest_ErodedGully_Debris_Photoreal_01__light_pressure",
+  "ground_scenario_id": "rt_enc_lp_Forest_ErodedGully_Debris_Photoreal_01__light_pressure",
+  "pack": "encounter_loop_world",
+  "map_id": "Forest_ErodedGully_Debris_Photoreal_01",
+  "mission_id": "mission_Forest_ErodedGully_Debris_Photoreal_01",
+  "encounter_id": "enc_lp_Forest_ErodedGully_Debris_Photoreal_01",
+  "biome": "temperate_forest",
+  "mission_archetype": "recover_resource",
+  "pressure_profile": "light_pressure",
+  "seed": 11010,
+  "spawn_groups": [
+    "sg_enc_lp_Forest_ErodedGully_Debris_Photoreal_01_0"
+  ],
+  "behavior_profiles": [
+    "bp_guard_pressure_resource_contest"
+  ],
+  "expected_npc_states": [
+    "spawned",
+    "idle",
+    "alerted",
+    "engaging",
+    "pressuring",
+    "resolved"
+  ],
+  "expected_perception_events": [
+    "behavior.perception.checked",
+    "behavior.perception.detected"
+  ],
+  "expected_pressure_events": [
+    "behavior.pressure.applied",
+    "behavior.pressure.expired"
+  ],
+  "expected_encounter_state_transitions": [
+    "idle->alerted",
+    "alerted->pressuring",
+    "pressuring->resolved"
+  ],
+  "expected_mission_completion": true,
+  "save_load_required": true,
+  "timeout_seconds": 180.0,
+  "validation_requirements": [
+    "telemetry",
+    "route_binding",
+    "perception",
+    "pressure",
+    "mission_completion",
+    "save_load",
+    "no_permanent_block"
+  ],
+  "created_by": "worldforge.v1.7",
+  "created_at": "2026-07-08T00:00:00+00:00",
+  "schema_version": "wf.npc.behavior_scenario.v1"
+}

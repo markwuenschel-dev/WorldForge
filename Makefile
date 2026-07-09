@@ -1257,3 +1257,88 @@ v1-6x-shield:
 	ground-walkability-negative-validators ground-navmesh-negative-validators \
 	ground-route-graph-negative-validators ground-traversal-torture ground-traversal-report-integrity \
 	ground-traversal-fuzz v1-6z-shield v1-6x-shield
+
+# ======================================================================
+# v1.7 NPCForge + EncounterBehaviorForge — behavior substrate (Agent 0)
+# ----------------------------------------------------------------------
+# Every target maps 1:1 to a python tools/pipeline/<script>.py entrypoint, on
+# the v1.6z grounded traversal substrate. Gates are FAIL-CLOSED: a target whose
+# script is not yet built errors (non-zero), turning v1-7-shield RED until it is
+# implemented and green. No native UE navmesh claim; NPCs move over the validated
+# grounded_worldforge_route substrate — never flight, never teleport.
+#
+#   make v1-7-shield PACK=encounter_loop_world JOBS=8 STRICT=1 DEEP=1 TORTURE=1 NPC=1 BEHAVIOR=1
+# ======================================================================
+NPC_PACK ?= encounter_loop_world
+
+# --- Contracts + generation -------------------------------------------
+npc-contracts:
+	$(PYTHON) tools/pipeline/validate_npc_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+npc-archetypes:
+	$(PYTHON) tools/pipeline/generate_npc_archetypes.py --pack $(PACK) $(if $(STRICT),--strict,)
+npc-spawn-groups:
+	$(PYTHON) tools/pipeline/generate_npc_spawn_groups.py --pack $(PACK) $(if $(STRICT),--strict,)
+npc-behavior-profiles:
+	$(PYTHON) tools/pipeline/generate_npc_behavior_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+npc-behavior-scenarios:
+	$(PYTHON) tools/pipeline/generate_npc_behavior_scenarios.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-behavior-scenarios:
+	$(PYTHON) tools/pipeline/validate_npc_behavior_scenarios.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Materialization ---------------------------------------------------
+npc-materialize:
+	$(PYTHON) tools/pipeline/materialize_npc_actors.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-actors:
+	$(PYTHON) tools/pipeline/validate_npc_actors.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-spawn-placement:
+	$(PYTHON) tools/pipeline/validate_npc_spawn_placement.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-route-binding:
+	$(PYTHON) tools/pipeline/validate_npc_route_binding.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Runtime behavior --------------------------------------------------
+validate-npc-runtime-core:
+	$(PYTHON) tools/pipeline/validate_npc_runtime_core.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-perception:
+	$(PYTHON) tools/pipeline/validate_npc_perception.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-movement:
+	$(PYTHON) tools/pipeline/validate_npc_movement.py --pack $(PACK) $(if $(STRICT),--strict,)
+run-npc-behavior-sample:
+	$(PYTHON) tools/pipeline/run_npc_behavior_batch.py --scenarios $(if $(SCENARIOS),$(SCENARIOS),12) $(if $(STRICT),--strict,)
+run-encounter-behavior-forge-alpha:
+	$(PYTHON) tools/pipeline/run_npc_behavior_batch.py --gate --scenarios $(if $(SCENARIOS),$(SCENARIOS),120) $(if $(STRICT),--strict,)
+validate-npc-telemetry:
+	$(PYTHON) tools/pipeline/validate_npc_telemetry.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-completion:
+	$(PYTHON) tools/pipeline/validate_npc_completion.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-save-load:
+	$(PYTHON) tools/pipeline/validate_npc_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Balance -----------------------------------------------------------
+classify-npc-pressure:
+	$(PYTHON) tools/pipeline/classify_npc_pressure.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-npc-balance:
+	$(PYTHON) tools/pipeline/validate_npc_balance.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Hostile validation ------------------------------------------------
+npc-negative-validators:
+	$(PYTHON) tools/pipeline/npc_behavior_negatives.py $(if $(STRICT),--strict,)
+npc-behavior-torture:
+	$(PYTHON) tools/pipeline/npc_behavior_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+npc-report-integrity:
+	$(PYTHON) tools/pipeline/npc_report_integrity.py --pack $(PACK) $(if $(STRICT),--strict,)
+npc-fuzz:
+	$(PYTHON) tools/pipeline/npc_behavior_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v1-7-shield:
+	$(PYTHON) tools/pipeline/v1_7_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(DEEP),--deep,) $(if $(TORTURE),--torture,) $(if $(NPC),--npc,) \
+	  $(if $(BEHAVIOR),--behavior,) $(if $(REQUIRE_LIVE),--require-live,) \
+	  $(if $(SCENARIOS),--scenarios $(SCENARIOS),)
+
+.PHONY: npc-contracts npc-archetypes npc-spawn-groups npc-behavior-profiles npc-behavior-scenarios \
+	validate-npc-behavior-scenarios npc-materialize validate-npc-actors validate-npc-spawn-placement \
+	validate-npc-route-binding validate-npc-runtime-core validate-npc-perception validate-npc-movement \
+	run-npc-behavior-sample run-encounter-behavior-forge-alpha validate-npc-telemetry \
+	validate-npc-completion validate-npc-save-load classify-npc-pressure validate-npc-balance \
+	npc-negative-validators npc-behavior-torture npc-report-integrity npc-fuzz v1-7-shield

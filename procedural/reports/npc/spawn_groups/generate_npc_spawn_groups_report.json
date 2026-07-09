@@ -1,0 +1,58 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "generate-npc-spawn-groups::nonzero": {
+      "ok": true,
+      "detail": "generator produced 200 records (no zero-record success)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "generate-npc-spawn-groups::all_valid": {
+      "ok": true,
+      "detail": "0/200 records invalid",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 2,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "generate-npc-spawn-groups",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "7955b048fbdf80db97374d054782e1aa9cbc3c89",
+    "timestamp": "2026-07-09T11:18:21.155785+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.npc.spawn_group_report.v1",
+    "report_id": "wf.npc.spawn_group_report.v1:ed84e0d1d809",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 200,
+    "records_total": 200,
+    "records_passed": 200,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "generate-npc-behavior-profiles::nonzero": {
+      "ok": true,
+      "detail": "generator produced 8 records (no zero-record success)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "generate-npc-behavior-profiles::all_valid": {
+      "ok": true,
+      "detail": "0/8 records invalid",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "profiles::all_encounter_archetypes_mapped": {
+      "ok": true,
+      "detail": "not all 8 encounter archetypes mapped",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "profiles::required_kinds_covered": {
+      "ok": true,
+      "detail": "missing behavior profile kinds: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 4,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "generate-npc-behavior-profiles",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "7955b048fbdf80db97374d054782e1aa9cbc3c89",
+    "timestamp": "2026-07-09T11:18:21.245743+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.npc.behavior_profile_report.v1",
+    "report_id": "wf.npc.behavior_profile_report.v1:6bfb63c24e8c",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 8,
+    "records_total": 8,
+    "records_passed": 8,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

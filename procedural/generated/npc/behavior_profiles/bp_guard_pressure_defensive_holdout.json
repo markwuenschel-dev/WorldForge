@@ -1,0 +1,66 @@
+{
+  "behavior_profile_id": "bp_guard_pressure_defensive_holdout",
+  "encounter_archetype": "defensive_holdout",
+  "pressure_profile": "standard_pressure",
+  "npc_archetypes": [
+    "static_guard",
+    "heavy_blocker"
+  ],
+  "profile_kind": "guard_pressure",
+  "spawn_group_rules": {
+    "formation": "perimeter",
+    "walkability_required": true,
+    "min_dist_objective": 400.0,
+    "min_dist_player_spawn": 1500.0
+  },
+  "route_rules": {
+    "binding": "guard_anchor",
+    "modes": [
+      "grounded_worldforge_route",
+      "grounded_manual_waypoint"
+    ],
+    "no_flight": true,
+    "no_teleport": true,
+    "no_block_mission_path": true
+  },
+  "perception_rules": {
+    "detect_on": "engagement_radius",
+    "lose_on": "disengagement_radius"
+  },
+  "engagement_rules": {
+    "enter_state": "engaging",
+    "hysteresis": true
+  },
+  "pressure_rules": {
+    "kind": "guard_pressure",
+    "expires": true,
+    "cooldown": true
+  },
+  "resolution_rules": {
+    "on_pawn_leaves": "return_to_anchor",
+    "expire_after": 60.0,
+    "resolved_state": "resolved"
+  },
+  "mission_completion_policy": "must_remain_possible_under_baseline",
+  "save_load_policy": {
+    "persist": [
+      "current_state",
+      "current_route_node",
+      "pressure_state"
+    ]
+  },
+  "telemetry_requirements": [
+    "behavior.npc.spawned",
+    "behavior.npc.route.bound",
+    "behavior.pressure.applied",
+    "behavior.encounter.state_changed"
+  ],
+  "balance_requirements": [
+    "baseline_winnable",
+    "pressure_events_seen",
+    "no_permanent_route_block"
+  ],
+  "created_by": "worldforge.v1.7",
+  "created_at": "2026-07-08T00:00:00+00:00",
+  "schema_version": "wf.npc.behavior_profile.v1"
+}

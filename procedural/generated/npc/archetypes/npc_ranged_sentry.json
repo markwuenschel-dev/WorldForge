@@ -1,0 +1,37 @@
+{
+  "npc_archetype_id": "npc_ranged_sentry",
+  "display_name": "Ranged Sentry",
+  "behavior_role": "ranged_sentry",
+  "movement_model": "stationary",
+  "perception_model": "perc_long_los",
+  "pressure_model": "ranged_tick_pressure",
+  "allowed_spawn_zones": [
+    "anchor_bound"
+  ],
+  "allowed_route_modes": [
+    "stationary_anchor"
+  ],
+  "collision_profile": "Pawn",
+  "capsule_radius": 34.0,
+  "capsule_half_height": 88.0,
+  "movement_speed": 0.0,
+  "engagement_radius": 1400.0,
+  "disengagement_radius": 1800.0,
+  "line_of_sight_required": true,
+  "can_block_route": false,
+  "route_blocking_policy": "never",
+  "save_load_required": true,
+  "telemetry_required": true,
+  "balance_tags": [
+    "ranged_pressure"
+  ],
+  "validation_requirements": [
+    "spawn_walkable",
+    "route_bound",
+    "telemetry",
+    "save_load"
+  ],
+  "created_by": "worldforge.v1.7",
+  "created_at": "2026-07-08T00:00:00+00:00",
+  "schema_version": "wf.npc.archetype.v1"
+}

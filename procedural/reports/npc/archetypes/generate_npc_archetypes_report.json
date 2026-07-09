@@ -1,0 +1,74 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "archetypes::required_present": {
+      "ok": true,
+      "detail": "missing required archetypes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "archetypes::perception_refs_resolve": {
+      "ok": true,
+      "detail": "an archetype references an unknown perception_model",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "archetypes::pressure_refs_resolve": {
+      "ok": true,
+      "detail": "an archetype references an unknown pressure_model",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "archetypes::all_valid": {
+      "ok": true,
+      "detail": "0 invalid records",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 4,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "generate-npc-archetypes",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "7955b048fbdf80db97374d054782e1aa9cbc3c89",
+    "timestamp": "2026-07-09T11:18:21.033054+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.npc.archetype_report.v1",
+    "report_id": "wf.npc.archetype_report.v1:4eb138f1940c",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 16,
+    "records_total": 16,
+    "records_passed": 16,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

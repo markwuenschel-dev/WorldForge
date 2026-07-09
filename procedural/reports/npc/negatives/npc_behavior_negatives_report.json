@@ -1,0 +1,498 @@
+{
+  "suite": "npc_behavior_negatives",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "neg::anchor_inside_collision_rejected": {
+      "ok": true,
+      "detail": "an anchor flagged inside collision must not be placeable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::anchor_off_walkable_rejected": {
+      "ok": true,
+      "detail": "a valid_spawn=false anchor must not be placeable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::anchor_no_position_rejected": {
+      "ok": true,
+      "detail": "an anchor with no world position must not be placeable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_missing_movement_model::rejected": {
+      "ok": true,
+      "detail": "known-bad 'archetype_missing_movement_model' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_missing_movement_model::owning_code": {
+      "ok": true,
+      "detail": "'archetype_missing_movement_model' rejected for owning code WF564_NPC_ARCHETYPE_SCHEMA_FAILURE (got ['WF564_NPC_ARCHETYPE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_missing_perception_model::rejected": {
+      "ok": true,
+      "detail": "known-bad 'archetype_missing_perception_model' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_missing_perception_model::owning_code": {
+      "ok": true,
+      "detail": "'archetype_missing_perception_model' rejected for owning code WF564_NPC_ARCHETYPE_SCHEMA_FAILURE (got ['WF564_NPC_ARCHETYPE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_unknown_field_strict::rejected": {
+      "ok": true,
+      "detail": "known-bad 'archetype_unknown_field_strict' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_unknown_field_strict::owning_code": {
+      "ok": true,
+      "detail": "'archetype_unknown_field_strict' rejected for owning code WF564_NPC_ARCHETYPE_SCHEMA_FAILURE (got ['WF564_NPC_ARCHETYPE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::spawn_group_empty_archetypes::rejected": {
+      "ok": true,
+      "detail": "known-bad 'spawn_group_empty_archetypes' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::spawn_group_empty_archetypes::owning_code": {
+      "ok": true,
+      "detail": "'spawn_group_empty_archetypes' rejected for owning code WF565_NPC_SPAWN_GROUP_SCHEMA_FAILURE (got ['WF565_NPC_SPAWN_GROUP_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_unknown_encounter_archetype::rejected": {
+      "ok": true,
+      "detail": "known-bad 'profile_unknown_encounter_archetype' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile_unknown_encounter_archetype::owning_code": {
+      "ok": true,
+      "detail": "'profile_unknown_encounter_archetype' rejected for owning code WF566_NPC_BEHAVIOR_PROFILE_SCHEMA_FAILURE (got ['WF566_NPC_BEHAVIOR_PROFILE_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scenario_missing_save_load::rejected": {
+      "ok": true,
+      "detail": "known-bad 'scenario_missing_save_load' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scenario_missing_save_load::owning_code": {
+      "ok": true,
+      "detail": "'scenario_missing_save_load' rejected for owning code WF567_NPC_BEHAVIOR_SCENARIO_SCHEMA_FAILURE (got ['WF567_NPC_BEHAVIOR_SCENARIO_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scenario_missing_ground_ref::rejected": {
+      "ok": true,
+      "detail": "known-bad 'scenario_missing_ground_ref' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scenario_missing_ground_ref::owning_code": {
+      "ok": true,
+      "detail": "'scenario_missing_ground_ref' rejected for owning code WF580_NPC_ROUTE_GRAPH_MISSING (got ['WF580_NPC_ROUTE_GRAPH_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::behavior_state_unknown_state::rejected": {
+      "ok": true,
+      "detail": "known-bad 'behavior_state_unknown_state' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::behavior_state_unknown_state::owning_code": {
+      "ok": true,
+      "detail": "'behavior_state_unknown_state' rejected for owning code WF594_NPC_ENCOUNTER_STATE_FAILURE (got ['WF594_NPC_ENCOUNTER_STATE_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::spawn_group_walkability_not_required::rejected": {
+      "ok": true,
+      "detail": "known-bad 'spawn_group_walkability_not_required' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::spawn_group_walkability_not_required::owning_code": {
+      "ok": true,
+      "detail": "'spawn_group_walkability_not_required' rejected for owning code WF575_NPC_SPAWN_OFF_WALKABLE_SURFACE (got ['WF575_NPC_SPAWN_OFF_WALKABLE_SURFACE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::spawn_group_no_anchors::rejected": {
+      "ok": true,
+      "detail": "known-bad 'spawn_group_no_anchors' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::spawn_group_no_anchors::owning_code": {
+      "ok": true,
+      "detail": "'spawn_group_no_anchors' rejected for owning code WF573_NPC_SPAWN_POINT_MISSING (got ['WF573_NPC_SPAWN_POINT_MISSING', 'WF578_NPC_DENSITY_BUDGET_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::spawn_group_exceeds_density::rejected": {
+      "ok": true,
+      "detail": "known-bad 'spawn_group_exceeds_density' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::spawn_group_exceeds_density::owning_code": {
+      "ok": true,
+      "detail": "'spawn_group_exceeds_density' rejected for owning code WF578_NPC_DENSITY_BUDGET_FAILURE (got ['WF578_NPC_DENSITY_BUDGET_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_route_requires_flight::rejected": {
+      "ok": true,
+      "detail": "known-bad 'archetype_route_requires_flight' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_route_requires_flight::owning_code": {
+      "ok": true,
+      "detail": "'archetype_route_requires_flight' rejected for owning code WF586_NPC_ROUTE_FLIGHT_REQUIRED (got ['WF586_NPC_ROUTE_FLIGHT_REQUIRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_route_requires_teleport::rejected": {
+      "ok": true,
+      "detail": "known-bad 'archetype_route_requires_teleport' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_route_requires_teleport::owning_code": {
+      "ok": true,
+      "detail": "'archetype_route_requires_teleport' rejected for owning code WF586_NPC_ROUTE_FLIGHT_REQUIRED (got ['WF586_NPC_ROUTE_FLIGHT_REQUIRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_can_block_but_policy_never_violated::rejected": {
+      "ok": true,
+      "detail": "known-bad 'archetype_can_block_but_policy_never_violated' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::archetype_can_block_but_policy_never_violated::owning_code": {
+      "ok": true,
+      "detail": "'archetype_can_block_but_policy_never_violated' rejected for owning code WF583_NPC_ROUTE_BLOCKS_MISSION_PATH (got ['WF583_NPC_ROUTE_BLOCKS_MISSION_PATH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::perception_los_no_occlusion::rejected": {
+      "ok": true,
+      "detail": "known-bad 'perception_los_no_occlusion' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::perception_los_no_occlusion::owning_code": {
+      "ok": true,
+      "detail": "'perception_los_no_occlusion' rejected for owning code WF592_NPC_PERCEPTION_FAILURE (got ['WF592_NPC_PERCEPTION_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::perception_detect_threshold_invalid::rejected": {
+      "ok": true,
+      "detail": "known-bad 'perception_detect_threshold_invalid' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::perception_detect_threshold_invalid::owning_code": {
+      "ok": true,
+      "detail": "'perception_detect_threshold_invalid' rejected for owning code WF568_NPC_PERCEPTION_MODEL_SCHEMA_FAILURE (got ['WF568_NPC_PERCEPTION_MODEL_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::perception_fov_invalid::rejected": {
+      "ok": true,
+      "detail": "known-bad 'perception_fov_invalid' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::perception_fov_invalid::owning_code": {
+      "ok": true,
+      "detail": "'perception_fov_invalid' rejected for owning code WF568_NPC_PERCEPTION_MODEL_SCHEMA_FAILURE (got ['WF568_NPC_PERCEPTION_MODEL_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::perception_loss_gt_detect::rejected": {
+      "ok": true,
+      "detail": "known-bad 'perception_loss_gt_detect' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::perception_loss_gt_detect::owning_code": {
+      "ok": true,
+      "detail": "'perception_loss_gt_detect' rejected for owning code WF568_NPC_PERCEPTION_MODEL_SCHEMA_FAILURE (got ['WF568_NPC_PERCEPTION_MODEL_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pressure_no_events::rejected": {
+      "ok": true,
+      "detail": "known-bad 'pressure_no_events' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pressure_no_events::owning_code": {
+      "ok": true,
+      "detail": "'pressure_no_events' rejected for owning code WF569_NPC_PRESSURE_MODEL_SCHEMA_FAILURE (got ['WF569_NPC_PRESSURE_MODEL_SCHEMA_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pressure_never_expires::rejected": {
+      "ok": true,
+      "detail": "known-bad 'pressure_never_expires' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pressure_never_expires::owning_code": {
+      "ok": true,
+      "detail": "'pressure_never_expires' rejected for owning code WF593_NPC_PRESSURE_FAILURE (got ['WF569_NPC_PRESSURE_MODEL_SCHEMA_FAILURE', 'WF593_NPC_PRESSURE_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pressure_too_low_nontelemetry::rejected": {
+      "ok": true,
+      "detail": "known-bad 'pressure_too_low_nontelemetry' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pressure_too_low_nontelemetry::owning_code": {
+      "ok": true,
+      "detail": "'pressure_too_low_nontelemetry' rejected for owning code WF599_NPC_PRESSURE_TOO_LOW (got ['WF569_NPC_PRESSURE_MODEL_SCHEMA_FAILURE', 'WF599_NPC_PRESSURE_TOO_LOW'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_zero_npcs_success::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_zero_npcs_success' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_zero_npcs_success::owning_code": {
+      "ok": true,
+      "detail": "'completion_zero_npcs_success' rejected for owning code WF571_NPC_ACTOR_MISSING (got ['WF571_NPC_ACTOR_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_zero_pressure_success::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_zero_pressure_success' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_zero_pressure_success::owning_code": {
+      "ok": true,
+      "detail": "'completion_zero_pressure_success' rejected for owning code WF602_NPC_NO_PRESSURE_EVENTS (got ['WF602_NPC_NO_PRESSURE_EVENTS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_no_telemetry_success::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_no_telemetry_success' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_no_telemetry_success::owning_code": {
+      "ok": true,
+      "detail": "'completion_no_telemetry_success' rejected for owning code WF597_NPC_TELEMETRY_MISSING (got ['WF597_NPC_TELEMETRY_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_save_load_skipped_success::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_save_load_skipped_success' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_save_load_skipped_success::owning_code": {
+      "ok": true,
+      "detail": "'completion_save_load_skipped_success' rejected for owning code WF596_NPC_SAVE_LOAD_FAILURE (got ['WF596_NPC_SAVE_LOAD_FAILURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_mission_not_done_success::rejected": {
+      "ok": true,
+      "detail": "known-bad 'completion_mission_not_done_success' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::completion_mission_not_done_success::owning_code": {
+      "ok": true,
+      "detail": "'completion_mission_not_done_success' rejected for owning code WF595_NPC_MISSION_COMPLETION_BLOCKED (got ['WF595_NPC_MISSION_COMPLETION_BLOCKED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::telemetry_complete_missing_pressure::rejected": {
+      "ok": true,
+      "detail": "known-bad 'telemetry_complete_missing_pressure' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::telemetry_complete_missing_pressure::owning_code": {
+      "ok": true,
+      "detail": "'telemetry_complete_missing_pressure' rejected for owning code WF602_NPC_NO_PRESSURE_EVENTS (got ['WF597_NPC_TELEMETRY_MISSING', 'WF602_NPC_NO_PRESSURE_EVENTS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 57,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "npc-negative-validators",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "7955b048fbdf80db97374d054782e1aa9cbc3c89",
+    "timestamp": "2026-07-09T11:18:25.572686+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.npc.negatives.v1",
+    "report_id": "wf.npc.negatives.v1:f8462b4c0f13",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 30,
+    "records_total": 30,
+    "records_passed": 30,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}
