@@ -1,0 +1,73 @@
+{
+  "combat_profile_id": "cp_ambush_pressure_ambush_choke",
+  "encounter_archetype": "ambush_choke",
+  "pressure_profile": "standard_pressure",
+  "behavior_profile_id": "bp_ambush_pressure_ambush_choke",
+  "player_max_health": 100.0,
+  "damage_sources": [
+    "npc_pressure"
+  ],
+  "npc_damage_rules": {
+    "damage_type": "contact",
+    "proximity_tick": 9.0,
+    "tick_interval_seconds": 1.5,
+    "requires_los": false
+  },
+  "hazard_damage_rules": {},
+  "baseline_expected_damage": 45.0,
+  "survivability_policy": {
+    "min_final_health": 1.0,
+    "max_final_health": 77.5,
+    "blocking_bands": [
+      "unwinnable",
+      "no_damage"
+    ]
+  },
+  "mission_completion_policy": "must_remain_possible_under_baseline",
+  "save_load_policy": {
+    "persist": [
+      "current_health",
+      "damage_taken_total",
+      "damage_events_count"
+    ]
+  },
+  "telemetry_requirements": [
+    "combat.player.damage.taken",
+    "combat.player.health.changed",
+    "combat.player.health.initialized"
+  ],
+  "balance_requirements": [
+    "baseline_winnable",
+    "damage_events_seen",
+    "survivable_band"
+  ],
+  "created_by": "worldforge.v1.8",
+  "created_at": "2026-07-09T00:00:00+00:00",
+  "schema_version": "wf.combat.combat_profile.v1",
+  "report_type": "wf.combat.combat_profile_report.v1",
+  "meta": {
+    "command": "generate-combat-profiles",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "9734faabf5fddfc968b96655947af5f61e318968",
+    "timestamp": "2026-07-09T21:57:51.067018+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.combat.combat_profile_report.v1",
+    "report_id": "wf.combat.combat_profile_report.v1:ff21a00008f6",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 1,
+    "records_total": 1,
+    "records_passed": 1,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}
