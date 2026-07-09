@@ -27,17 +27,33 @@
       "code": null,
       "blocking": false
     },
-    "actors::all_maps_materialized": {
+    "actors::mode_known": {
       "ok": true,
-      "detail": "60/60 maps materialized; missing: []",
+      "detail": "unknown materialization_mode: runtime_spawn",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "actors::no_phantom_maps": {
+    "actors::all_maps_materialized": {
       "ok": true,
-      "detail": "manifest lists maps not in the scenario set: []",
+      "detail": "60/60 maps runtime-realized; missing: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "actors::manifest_matches_evidence": {
+      "ok": true,
+      "detail": "manifest claims maps without runtime evidence: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "actors::manifest_complete": {
+      "ok": true,
+      "detail": "manifest omits runtime-realized maps: []",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -46,7 +62,7 @@
   },
   "failures": [],
   "counts": {
-    "PASS": 5,
+    "PASS": 7,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -61,8 +77,8 @@
     "deep": false,
     "torture": false,
     "seeds": null,
-    "git_sha": "67ffd5a08c308a24bbd08a1a11f7cba0f1ba4fd7",
-    "timestamp": "2026-07-09T00:19:09.338345+00:00",
+    "git_sha": "7955b048fbdf80db97374d054782e1aa9cbc3c89",
+    "timestamp": "2026-07-09T11:18:21.670938+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",

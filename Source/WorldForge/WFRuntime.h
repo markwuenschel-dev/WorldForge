@@ -16,6 +16,7 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/Actor.h"
 #include "GameFramework/SaveGame.h"
+#include "Subsystems/WorldSubsystem.h"
 #include "WFRuntime.generated.h"
 
 class USphereComponent;
@@ -272,4 +273,29 @@ private:
 	bool bLoggedArrival = false;
 
 	AWFRuntimeObjective* FindObjective();
+};
+
+/** Headless runtime auto-spawn for the NPC behavior batch.
+ *
+ *  v1.7 originally required each map to be MATERIALIZED (the runtime actor set baked
+ *  into the .umap by the editor prepare step) before the batch could drive it. That
+ *  made the committed 120/120 evidence depend on uncommitted map edits — it did not
+ *  reproduce from a clean checkout. This subsystem removes that dependency: when the
+ *  batch drives a map in standalone `-game` (signalled by the WF_NPC_SCENARIO_ID
+ *  environment variable the driver sets per scenario), it spawns the SAME actor set
+ *  the editor prepare step would have baked — the grounded player pawn, the mission
+ *  objective, and the encounter manager — at world begin-play. Runtime spawn is now
+ *  the canonical v1.7 materialization mode; baked editor placement is optional
+ *  (editor-preview / v1.7x).
+ *
+ *  It is deliberately inert everywhere else: it does nothing unless WF_NPC_SCENARIO_ID
+ *  is set AND the world is a game world, and it is idempotent — if the map was already
+ *  materialized (an AWFEncounterManager already exists) it skips, so baked maps,
+ *  the editor, and normal play are entirely unaffected. */
+UCLASS()
+class UWFRuntimeAutoSpawnSubsystem : public UWorldSubsystem
+{
+	GENERATED_BODY()
+public:
+	virtual void OnWorldBeginPlay(UWorld& InWorld) override;
 };

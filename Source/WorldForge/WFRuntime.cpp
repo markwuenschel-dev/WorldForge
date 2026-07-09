@@ -6,6 +6,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/SceneComponent.h"
 #include "GameFramework/PlayerStart.h"
+#include "GameFramework/PlayerController.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
@@ -780,4 +781,72 @@ void AWFGroundedRuntimePawn::Tick(float DeltaSeconds)
 		const FVector Dir = (FVector(GoalXY.X, GoalXY.Y, Self.Z) - Self).GetSafeNormal();
 		AddMovementInput(Dir, 1.0f);
 	}
+}
+
+// ---------------------------------------------------------------------------
+// UWFRuntimeAutoSpawnSubsystem — runtime-spawn the actor set on clean maps
+// ---------------------------------------------------------------------------
+void UWFRuntimeAutoSpawnSubsystem::OnWorldBeginPlay(UWorld& InWorld)
+{
+	Super::OnWorldBeginPlay(InWorld);
+
+	// Only the headless NPC behavior batch sets WF_NPC_SCENARIO_ID (per scenario).
+	// Editor, PIE, and normal play never do — so this stays completely inert there.
+	const FString ScenarioId = FPlatformMisc::GetEnvironmentVariable(TEXT("WF_NPC_SCENARIO_ID"));
+	if (ScenarioId.IsEmpty() || !InWorld.IsGameWorld())
+	{
+		return;
+	}
+
+	// Idempotent: a materialized (baked) map already carries the actor set — leave it
+	// exactly as authored so baked/editor-preview maps keep working unchanged.
+	for (TActorIterator<AWFEncounterManager> It(&InWorld); It; ++It)
+	{
+		UE_LOG(LogWFRuntime, Display,
+			TEXT("WF_AUTOSPAWN skipped=already_materialized scenario=%s"), *ScenarioId);
+		return;
+	}
+
+	// Mirror the editor prepare step: locate the PlayerStart, then spawn the objective
+	// (+900 X, reach 250), the grounded player pawn (at the start), and the manager.
+	FVector Start(0, 0, 300.f);
+	for (TActorIterator<APlayerStart> It(&InWorld); It; ++It) { Start = It->GetActorLocation(); break; }
+
+	FActorSpawnParameters SP;
+	SP.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+	// Objective FIRST: the pawn and manager find it via TActorIterator in their own
+	// BeginPlay, which runs synchronously as each actor is spawned into a live world.
+	AWFRuntimeObjective* Obj = InWorld.SpawnActor<AWFRuntimeObjective>(
+		AWFRuntimeObjective::StaticClass(), Start + FVector(900.f, 0.f, 0.f), FRotator::ZeroRotator, SP);
+	if (Obj)
+	{
+		Obj->ScenarioId = ScenarioId;
+		Obj->ReachRadius = 250.f;
+	}
+
+	// Grounded player pawn, explicitly possessed by Player 0 — AutoPossessPlayer is
+	// unreliable for a pawn spawned after the world has already begun play.
+	AWFGroundedRuntimePawn* Pawn = InWorld.SpawnActor<AWFGroundedRuntimePawn>(
+		AWFGroundedRuntimePawn::StaticClass(), Start, FRotator::ZeroRotator, SP);
+	if (Pawn)
+	{
+		if (APlayerController* PC = UGameplayStatics::GetPlayerController(&InWorld, 0))
+		{
+			PC->Possess(Pawn);
+		}
+	}
+
+	// Encounter manager (reads the per-scenario NPC spec from the environment in its
+	// own BeginPlay, then spawns the grounded sentries).
+	AWFEncounterManager* Mgr = InWorld.SpawnActor<AWFEncounterManager>(
+		AWFEncounterManager::StaticClass(), Start, FRotator::ZeroRotator, SP);
+	if (Mgr)
+	{
+		Mgr->ScenarioId = ScenarioId;
+	}
+
+	UE_LOG(LogWFRuntime, Display,
+		TEXT("WF_AUTOSPAWN spawned scenario=%s pawn=%d obj=%d mgr=%d start=%s"),
+		*ScenarioId, Pawn ? 1 : 0, Obj ? 1 : 0, Mgr ? 1 : 0, *Start.ToCompactString());
 }

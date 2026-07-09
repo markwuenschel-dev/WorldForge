@@ -137,6 +137,43 @@ TELEMETRY_REPORTS_REL = "procedural/reports/npc/telemetry"
 COMPLETION_REPORTS_REL = "procedural/reports/npc/completion"
 BALANCE_REPORTS_REL = "procedural/reports/npc/balance"
 
+# v1.7 materialization modes — how the runtime actor set is realized on a map.
+#   runtime_spawn: UWFRuntimeAutoSpawnSubsystem spawns the actor set at BeginPlay in
+#                  standalone -game (the CANONICAL v1.7 mode — reproduces the whole
+#                  matrix from a clean checkout with no committed .umap edits).
+#   baked_editor:  the actor set baked into the .umap by the editor prepare step
+#                  (optional editor-preview / v1.7x; not required for the matrix).
+RUNTIME_SPAWN_MODE = "runtime_spawn"
+BAKED_EDITOR_MODE = "baked_editor"
+MATERIALIZATION_MODES = (RUNTIME_SPAWN_MODE, BAKED_EDITOR_MODE)
+
+
+def runtime_realized_maps(completion_dir):
+    """The set of maps genuinely realized AT RUNTIME, derived only from committed
+    behavior-completion evidence: a map counts iff it has >=1 completion report whose
+    completion_class is SUCCESS_COMPLETION_CLASS with npc_count > 0 (the engine spawned
+    real NPCs on that map). This is the single source of truth shared by the manifest
+    writer (materialize) and the gate (validate) so the two can never drift, and it is
+    grounded in evidence a separate validator (validate-npc-completion) already proves
+    genuine — so runtime_spawn materialization cannot be greened without real runtime
+    behavior. Returns a set of map_id strings."""
+    import json as _json
+    from pathlib import Path as _Path
+    d = _Path(completion_dir)
+    realized = set()
+    if not d.is_dir():
+        return realized
+    for f in sorted(d.glob("bs_*.json")):
+        try:
+            r = _json.loads(f.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            continue
+        if (r.get("completion_class") == SUCCESS_COMPLETION_CLASS
+                and isinstance(r.get("npc_count"), int) and r["npc_count"] > 0
+                and r.get("map_id")):
+            realized.add(r["map_id"])
+    return realized
+
 
 def _num(obj, field, code, prefix, allow_zero=True):
     return RS.check_positive_number(obj, field, code, prefix=prefix, allow_zero=allow_zero)
