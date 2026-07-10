@@ -43,6 +43,22 @@
       "code": null,
       "blocking": false
     },
+    "dogfood::ue_target_real_passes": {
+      "ok": true,
+      "detail": "expected WorldForge to resolve as a real UE target",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::ue_target_fiction_rejected": {
+      "ok": true,
+      "detail": "a fictional ue_target must NOT resolve to a real target",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "package_report_present": {
       "ok": true,
       "detail": "package report missing — run Wave P (build+package) to produce it",
@@ -78,6 +94,14 @@
     "package::field::build_target": {
       "ok": true,
       "detail": "required field 'build_target' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::ue_target": {
+      "ok": true,
+      "detail": "required field 'ue_target' present",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -243,6 +267,22 @@
       "code": null,
       "blocking": false
     },
+    "package::pr::type::ue_target": {
+      "ok": true,
+      "detail": "ue_target is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::ue_target_nonempty": {
+      "ok": true,
+      "detail": "ue_target must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "package::pr::type::package_path": {
       "ok": true,
       "detail": "package_path is str",
@@ -389,7 +429,7 @@
     },
     "package::pr::live_requires_real_sha": {
       "ok": true,
-      "detail": "created_at='live' requires a real git_sha (got '69103050d1d4e24470c1b6a3c5f67dae35ad2f31')",
+      "detail": "created_at='live' requires a real git_sha (got 'abb73ee23862dd7fa6cae83b8f94ec2eb6a61b89')",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -419,9 +459,17 @@
       "code": null,
       "blocking": false
     },
+    "package::ue_target_is_real": {
+      "ok": true,
+      "detail": "ue_target 'WorldForge' is not a real UE target (have ['WorldForge', 'WorldForgeEditor'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "package::git_sha_real": {
       "ok": true,
-      "detail": "live package must carry a real git_sha (got '69103050d1d4e24470c1b6a3c5f67dae35ad2f31')",
+      "detail": "live package must carry a real git_sha (got 'abb73ee23862dd7fa6cae83b8f94ec2eb6a61b89')",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -429,7 +477,7 @@
     },
     "package::git_sha_matches_head": {
       "ok": true,
-      "detail": "package built at 69103050d1d4e24470c1b6a3c5f67dae35ad2f31 (current HEAD 69103050d1d4e24470c1b6a3c5f67dae35ad2f31)",
+      "detail": "package built at abb73ee23862dd7fa6cae83b8f94ec2eb6a61b89 (current HEAD abb73ee23862dd7fa6cae83b8f94ec2eb6a61b89)",
       "warn_only": true,
       "verdict": "PASS",
       "code": null,
@@ -438,7 +486,7 @@
   },
   "failures": [],
   "counts": {
-    "PASS": 54,
+    "PASS": 60,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -453,8 +501,8 @@
     "deep": false,
     "torture": false,
     "seeds": null,
-    "git_sha": "69103050d1d4e24470c1b6a3c5f67dae35ad2f31",
-    "timestamp": "2026-07-10T19:02:22.216895+00:00",
+    "git_sha": "abb73ee23862dd7fa6cae83b8f94ec2eb6a61b89",
+    "timestamp": "2026-07-10T20:17:09.657371+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",

@@ -33,7 +33,8 @@ from report_meta import git_sha
 import os
 
 SLICE_ID = "worldforge_vertical_slice"
-BUILD_TARGET = "WorldForgeVerticalSlice"
+BUILD_TARGET = "WorldForgeVerticalSlice"   # slice build-identity LABEL
+UE_TARGET = "WorldForge"                    # the REAL UnrealBuildTool target built
 ARCHIVE_DIR = REPO_ROOT / "Build" / BUILD_TARGET
 PACKAGE_REPORT_DIR = REPO_ROOT / SX.SLICE_PACKAGE_REPORTS_REL
 
@@ -52,6 +53,7 @@ def run_uat(maps, config="Development", timeout=3600):
     cmd = [
         RUNUAT, "BuildCookRun",
         "-project={}".format(UPROJECT),
+        "-target={}".format(UE_TARGET),
         "-noP4", "-nocompileeditor", "-utf8output", "-unattended",
         "-platform=Win64", "-clientconfig={}".format(config),
         "-cook", "-build", "-stage", "-pak", "-archive",
@@ -95,6 +97,7 @@ def write_report(maps):
         "slice_id": SLICE_ID,
         "pack_id": "encounter_loop_world",
         "build_target": BUILD_TARGET,
+        "ue_target": UE_TARGET,
         "package_path": rel or "Build/{}/Windows/WorldForge.exe".format(BUILD_TARGET),
         "package_exists": exists,
         "package_size_bytes": size,

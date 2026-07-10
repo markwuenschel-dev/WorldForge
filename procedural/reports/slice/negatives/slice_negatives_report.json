@@ -411,6 +411,22 @@
       "code": null,
       "blocking": false
     },
+    "neg::pkg:missing_ue_target::rejected": {
+      "ok": true,
+      "detail": "known-bad 'pkg:missing_ue_target' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pkg:missing_ue_target::owning_code": {
+      "ok": true,
+      "detail": "'pkg:missing_ue_target' must be rejected for owning code WF674_SLICE_BUILD_MANIFEST_INVALID (got ['WF674_SLICE_BUILD_MANIFEST_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "neg::idx:partial_matrix::rejected": {
       "ok": true,
       "detail": "known-bad 'idx:partial_matrix' must be rejected",
@@ -526,7 +542,7 @@
   },
   "failures": [],
   "counts": {
-    "PASS": 65,
+    "PASS": 67,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -541,8 +557,8 @@
     "deep": false,
     "torture": false,
     "seeds": null,
-    "git_sha": "ba27cb4c1031263c682c4db56a7473d7e522d19c",
-    "timestamp": "2026-07-10T20:05:30.580149+00:00",
+    "git_sha": "abb73ee23862dd7fa6cae83b8f94ec2eb6a61b89",
+    "timestamp": "2026-07-10T20:17:09.743935+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
@@ -553,9 +569,9 @@
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 29,
-    "records_total": 29,
-    "records_passed": 29,
+    "record_count": 30,
+    "records_total": 30,
+    "records_passed": 30,
     "records_failed": 0,
     "records_skipped": 0
   }

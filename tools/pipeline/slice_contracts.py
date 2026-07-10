@@ -514,11 +514,15 @@ def _example_slice_runtime_report(**over):
 # --------------------------------------------------------------------------- #
 # 5. SlicePackageReport (WF674/675)  — the build/package artifact proof
 # --------------------------------------------------------------------------- #
+# build_target is the SLICE build-identity LABEL (e.g. "WorldForgeVerticalSlice");
+# ue_target is the REAL UnrealBuildTool target that was built (must resolve to a
+# Source/<ue_target>.Target.cs — enforced by validate_slice_package). Keeping them
+# separate stops the report from claiming a UE target that does not exist. (C8.)
 SLICE_PACKAGE_REPORT_REQUIRED = (
-    "package_report_id", "slice_id", "pack_id", "build_target", "package_path",
-    "package_exists", "package_size_bytes", "build_config", "maps_included",
-    "assets_included", "runtime_entrypoint", "created_at", "git_sha",
-    "failure_codes", "schema_version",
+    "package_report_id", "slice_id", "pack_id", "build_target", "ue_target",
+    "package_path", "package_exists", "package_size_bytes", "build_config",
+    "maps_included", "assets_included", "runtime_entrypoint", "created_at",
+    "git_sha", "failure_codes", "schema_version",
 )
 SLICE_PACKAGE_REPORT_ALLOWED = SLICE_PACKAGE_REPORT_REQUIRED + (
     "meta", "report_type", "created_by", "package_hash", "notes",
@@ -530,8 +534,8 @@ def validate_slice_package_report(obj, strict=False):
     ch = RS.check_required(obj, SLICE_PACKAGE_REPORT_REQUIRED, code)
     ch += RS.check_no_unknown(obj, SLICE_PACKAGE_REPORT_ALLOWED, code, strict)
     for f in ("package_report_id", "slice_id", "pack_id", "build_target",
-              "package_path", "build_config", "runtime_entrypoint", "git_sha",
-              "created_at"):
+              "ue_target", "package_path", "build_config", "runtime_entrypoint",
+              "git_sha", "created_at"):
         ch += _str(obj, f, code, "pr::")
     ch += _bool(obj, "package_exists", C.SLICE_PACKAGE_MISSING, "pr::")
     ch += _int(obj, "package_size_bytes", C.SLICE_PACKAGE_INVALID, "pr::", allow_zero=True)
@@ -573,6 +577,7 @@ def _example_slice_package_report(**over):
         "slice_id": "worldforge_vertical_slice",
         "pack_id": "encounter_loop_world",
         "build_target": "WorldForgeVerticalSlice",
+        "ue_target": "WorldForge",
         "package_path": "Build/WorldForgeVerticalSlice/Windows/WorldForgeVerticalSlice.exe",
         "package_exists": True,
         "package_size_bytes": 524288000,

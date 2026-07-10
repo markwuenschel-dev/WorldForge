@@ -29,6 +29,13 @@ from validation_report import ValidationReport
 
 REPORT_DIR = REPO_ROOT / SX.SLICE_PACKAGE_REPORTS_REL
 SLICE_ID = "worldforge_vertical_slice"
+_TARGET_SUFFIX = ".Target.cs"
+
+
+def _real_ue_targets():
+    """The set of real UnrealBuildTool target names (Source/<name>.Target.cs)."""
+    return {p.name[:-len(_TARGET_SUFFIX)]
+            for p in (REPO_ROOT / "Source").glob("*" + _TARGET_SUFFIX)}
 
 
 def _dogfood(rep):
@@ -46,6 +53,13 @@ def _dogfood(rep):
         rep.check("dogfood::rejects_{}".format(label), len(bfails) > 0,
                   "'{}' package report must be rejected".format(label),
                   code=F.SLICE_NEGATIVE_ACCEPTED)
+    # C8: prove the ue_target resolution predicate rejects a fictional target.
+    real = _real_ue_targets()
+    rep.check("dogfood::ue_target_real_passes", "WorldForge" in real,
+              "expected WorldForge to resolve as a real UE target", code=F.SLICE_REPORT_INTEGRITY_FAILED)
+    rep.check("dogfood::ue_target_fiction_rejected", "WorldForgeVerticalSlice" not in real,
+              "a fictional ue_target must NOT resolve to a real target",
+              code=F.SLICE_NEGATIVE_ACCEPTED)
 
 
 def main(argv=None):
@@ -76,6 +90,14 @@ def main(argv=None):
         rep.check("package::entrypoint_included",
                   pkg.get("runtime_entrypoint") in (pkg.get("maps_included") or []),
                   "runtime_entrypoint must be one of maps_included", code=F.SLICE_PACKAGE_INVALID)
+        # ue_target must resolve to a REAL UnrealBuildTool target (C8): a package
+        # report cannot claim a UE target that has no Source/<ue_target>.Target.cs.
+        real_targets = _real_ue_targets()
+        rep.check("package::ue_target_is_real",
+                  pkg.get("ue_target") in real_targets,
+                  "ue_target {!r} is not a real UE target (have {})".format(
+                      pkg.get("ue_target"), sorted(real_targets)),
+                  code=F.SLICE_PACKAGE_INVALID)
         # live evidence must carry a REAL sha (build provenance). We do NOT require
         # ==HEAD: a committed package report necessarily predates the commit that
         # records it, and the repo has no HEAD-comparison staleness check anywhere

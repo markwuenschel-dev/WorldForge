@@ -111,6 +111,11 @@ def cases():
               e_pkg(git_sha="unknown"), F.SLICE_STALE_EVIDENCE))
     c.append(("pkg:no_maps_included", PKG,
               e_pkg(maps_included=[]), F.SLICE_BUILD_MANIFEST_INVALID))
+    # C8: ue_target is a required field — a report omitting the real UE target is
+    # rejected at the schema level (the "is it a REAL target" resolution is enforced
+    # by validate_slice_package's gate + dogfood, which has filesystem access).
+    c.append(("pkg:missing_ue_target", PKG,
+              e_pkg(ue_target=None), F.SLICE_BUILD_MANIFEST_INVALID))
 
     # --- SliceEvidenceIndex ---
     c.append(("idx:partial_matrix", IDX, e_idx(scenario_count_expected=2),
