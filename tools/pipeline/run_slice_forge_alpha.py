@@ -298,8 +298,9 @@ def do_index(strict):
         "schema_version": SX.RT_SLICE_EVIDENCE_INDEX,
         "report_type": SX.RT_SLICE_EVIDENCE_INDEX,
     }
-    fails = [c for c in SX.validate_slice_evidence_index(idx, strict=True) if not c[1]]
-    for name, ok, detail, code in SX.validate_slice_evidence_index(idx, strict=True):
+    checks = SX.validate_slice_evidence_index(idx, strict=True)
+    fails = [c for c in checks if not c[1]]
+    for name, ok, detail, code in checks:
         if not ok:
             rep.check("index::{}".format(name), ok, detail, code=code)
     _write_json(INTEGRITY_DIR / "slice_evidence_index_{}.json".format(SLICE_ID), idx)
