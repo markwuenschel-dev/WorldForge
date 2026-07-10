@@ -1,0 +1,92 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::good_package_passes": {
+      "ok": true,
+      "detail": "reference package report rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_no_package": {
+      "ok": true,
+      "detail": "'no_package' package report must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_zero_size": {
+      "ok": true,
+      "detail": "'zero_size' package report must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_no_maps": {
+      "ok": true,
+      "detail": "'no_maps' package report must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_live_no_sha": {
+      "ok": true,
+      "detail": "'live_no_sha' package report must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package_report_present": {
+      "ok": false,
+      "detail": "package report missing — run Wave P (build+package) to produce it",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF675_SLICE_PACKAGE_MISSING",
+      "blocking": true
+    }
+  },
+  "failures": [
+    "package_report_present: package report missing — run Wave P (build+package) to produce it"
+  ],
+  "counts": {
+    "PASS": 5,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 1,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail",
+  "meta": {
+    "command": "validate-slice-package",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "197df1d1be403fa47903f90de0b514e5ed01c17d",
+    "timestamp": "2026-07-10T10:33:25.411543+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.slice.package_gate.v1",
+    "report_id": "wf.slice.package_gate.v1:ee66b16ea60d",
+    "status": "fail",
+    "failure_count": 1,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 1,
+    "records_total": 1,
+    "records_passed": 1,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

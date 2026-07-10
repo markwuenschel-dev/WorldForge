@@ -113,7 +113,8 @@ def main(argv=None):
     print("v2.0 shield: {} — {}/{} gates passed".format(
         verdict, len(results) - len(failed), len(results)))
     if failed:
-        print("  FAILED (fail-closed until built): {}".format(failed))
+        print("  FAILED (fail-closed — awaiting UE runtime/package evidence, Waves R/P): {}"
+              .format(failed))
     print("  NOTE: engine-realized regressions also run via their own shields —")
     print("        v1_9_shield.py / v1_8_shield.py / v1_7_shield.py / v1_6z_shield.py")
     print("        (with --require-live) for the full runtime regression.")

@@ -1,0 +1,100 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::clean_passes": {
+      "ok": true,
+      "detail": "clean runtime report flagged: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_telemetry_missing": {
+      "ok": true,
+      "detail": "'telemetry_missing' must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_live_no_sha": {
+      "ok": true,
+      "detail": "'live_no_sha' must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_orphan": {
+      "ok": true,
+      "detail": "'orphan' must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_fake_completed": {
+      "ok": true,
+      "detail": "'fake_completed' must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::no_duplicate_scenarios": {
+      "ok": true,
+      "detail": "duplicate scenario runtime reports",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::non_vacuous": {
+      "ok": false,
+      "detail": "0 runtime reports present, need 24 — nothing to prove until Wave R",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF678_SLICE_RUNTIME_REPORT_MISSING",
+      "blocking": true
+    }
+  },
+  "failures": [
+    "integrity::non_vacuous: 0 runtime reports present, need 24 — nothing to prove until Wave R"
+  ],
+  "counts": {
+    "PASS": 6,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 1,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail",
+  "meta": {
+    "command": "vertical-slice-report-integrity",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "197df1d1be403fa47903f90de0b514e5ed01c17d",
+    "timestamp": "2026-07-10T10:33:25.778499+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.slice.report_integrity.v1",
+    "report_id": "wf.slice.report_integrity.v1:c1d23e100c15",
+    "status": "fail",
+    "failure_count": 1,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 0,
+    "records_total": 0,
+    "records_passed": 0,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::good_passes": {
+      "ok": true,
+      "detail": "reference reward report failed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_no_mutation": {
+      "ok": true,
+      "detail": "'no_mutation' must fail the reward facet",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_reward_without_completion": {
+      "ok": true,
+      "detail": "'reward_without_completion' must fail the reward facet",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_no_reward": {
+      "ok": true,
+      "detail": "'no_reward' must fail the reward facet",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "facet::matrix_complete": {
+      "ok": false,
+      "detail": "0/0 scenarios satisfy this facet (needs 24) — run Wave R (UE) to produce runtime evidence",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF686_SLICE_PARTIAL_MATRIX",
+      "blocking": true
+    },
+    "facet::no_duplicates": {
+      "ok": true,
+      "detail": "duplicate scenario runtime reports",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [
+    "facet::matrix_complete: 0/0 scenarios satisfy this facet (needs 24) — run Wave R (UE) to produce runtime evidence"
+  ],
+  "counts": {
+    "PASS": 5,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 1,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail",
+  "meta": {
+    "command": "validate-slice-rewards",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "197df1d1be403fa47903f90de0b514e5ed01c17d",
+    "timestamp": "2026-07-10T10:33:25.115148+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.slice.rewards.v1",
+    "report_id": "wf.slice.rewards.v1:19cf11f77f22",
+    "status": "fail",
+    "failure_count": 1,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 0,
+    "records_total": 24,
+    "records_passed": 0,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

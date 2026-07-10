@@ -1,67 +1,67 @@
 {
-  "suite": "slice_fuzz",
+  "suite": "slice_hygiene",
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
-    "fuzz::zero_invalid_accepted": {
+    "contract_present": {
       "ok": true,
-      "detail": "0 invalid fuzz cases accepted",
+      "detail": "vertical_slice_contract.json missing",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "fuzz::case_count": {
+    "manifest_present": {
       "ok": true,
-      "detail": "must run >0 cases",
+      "detail": "manifest.json missing",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "fuzz::valid::VerticalSliceContract": {
+    "contract_count_24": {
       "ok": true,
-      "detail": "valid example rejected",
+      "detail": "contract scenario_count != 24",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "fuzz::valid::SliceScenario": {
+    "manifest_count_24": {
       "ok": true,
-      "detail": "valid example rejected",
+      "detail": "manifest scenario_count != 24",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "fuzz::valid::SliceManifest": {
+    "scenario_files_24": {
       "ok": true,
-      "detail": "valid example rejected",
+      "detail": "expected 24 scenario files, got 24",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "fuzz::valid::SliceRuntimeReport": {
+    "no_orphan_scenario_files": {
       "ok": true,
-      "detail": "valid example rejected",
+      "detail": "scenario files not in manifest: []",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "fuzz::valid::SlicePackageReport": {
+    "no_missing_scenario_files": {
       "ok": true,
-      "detail": "valid example rejected",
+      "detail": "manifest scenarios with no file: []",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "fuzz::valid::SliceEvidenceIndex": {
+    "all_maps_on_disk": {
       "ok": true,
-      "detail": "valid example rejected",
+      "detail": "manifest maps missing .umap: []",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -79,29 +79,27 @@
   "passed": true,
   "status": "ok",
   "meta": {
-    "command": "slice-fuzz",
+    "command": "vertical-slice-hygiene",
     "pack": null,
     "strict": true,
     "deep": false,
     "torture": false,
-    "seeds": [
-      1337
-    ],
+    "seeds": null,
     "git_sha": "197df1d1be403fa47903f90de0b514e5ed01c17d",
-    "timestamp": "2026-07-10T10:33:25.598844+00:00",
+    "timestamp": "2026-07-10T10:33:25.864535+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
     "worldforge_version": "v1.5",
-    "report_type": "wf.slice.fuzz.v1",
-    "report_id": "wf.slice.fuzz.v1:3f03660cc2ad",
+    "report_type": "wf.slice.hygiene.v1",
+    "report_id": "wf.slice.hygiene.v1:21c277376653",
     "status": "ok",
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 300,
-    "records_total": 300,
-    "records_passed": 300,
+    "record_count": 24,
+    "records_total": 24,
+    "records_passed": 24,
     "records_failed": 0,
     "records_skipped": 0
   }

@@ -1,0 +1,130 @@
+{
+  "suite": "slice_torture",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "torture::partial_matrix_rejected": {
+      "ok": true,
+      "detail": "23/24 evidence index must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::stale_package_rejected": {
+      "ok": true,
+      "detail": "live package without real sha must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::duplicate_scenario_rejected": {
+      "ok": true,
+      "detail": "duplicate scenario manifest must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::fake_completed_no_state_mutation_rejected": {
+      "ok": true,
+      "detail": "fake-completed 'no_state_mutation' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::fake_completed_empty_telemetry_rejected": {
+      "ok": true,
+      "detail": "fake-completed 'empty_telemetry' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::fake_completed_dirty_failure_codes_rejected": {
+      "ok": true,
+      "detail": "fake-completed 'dirty_failure_codes' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::fake_completed_wrong_save_slot_rejected": {
+      "ok": true,
+      "detail": "fake-completed 'wrong_save_slot' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::fake_completed_mission_incomplete_rejected": {
+      "ok": true,
+      "detail": "fake-completed 'mission_incomplete' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::orphan_scenario_flagged": {
+      "ok": true,
+      "detail": "orphan scenario id must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::package_without_artifact_rejected": {
+      "ok": true,
+      "detail": "passing package report with no package must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::battery_nonempty": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 11,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "vertical-slice-torture",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": true,
+    "seeds": null,
+    "git_sha": "197df1d1be403fa47903f90de0b514e5ed01c17d",
+    "timestamp": "2026-07-10T10:33:25.689074+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.slice.torture.v1",
+    "report_id": "wf.slice.torture.v1:eee1987441cf",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 1,
+    "records_total": 1,
+    "records_passed": 1,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

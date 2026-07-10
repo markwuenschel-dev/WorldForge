@@ -1,0 +1,100 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::good_runtime_report_passes": {
+      "ok": true,
+      "detail": "reference runtime report rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_no_state_mutation": {
+      "ok": true,
+      "detail": "fake-green runtime report 'no_state_mutation' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_mission_incomplete": {
+      "ok": true,
+      "detail": "fake-green runtime report 'mission_incomplete' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_forbidden_slot": {
+      "ok": true,
+      "detail": "fake-green runtime report 'forbidden_slot' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::rejects_dirty_failure_codes": {
+      "ok": true,
+      "detail": "fake-green runtime report 'dirty_failure_codes' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "runtime::matrix_complete": {
+      "ok": false,
+      "detail": "runtime matrix 0/0 slice_completed_runtime (needs 24) — run the UE headless slice matrix (Wave R) to produce evidence",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF686_SLICE_PARTIAL_MATRIX",
+      "blocking": true
+    },
+    "runtime::no_duplicate_scenarios": {
+      "ok": true,
+      "detail": "duplicate scenario runtime reports",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [
+    "runtime::matrix_complete: runtime matrix 0/0 slice_completed_runtime (needs 24) — run the UE headless slice matrix (Wave R) to produce evidence"
+  ],
+  "counts": {
+    "PASS": 6,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 1,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail",
+  "meta": {
+    "command": "run-vertical-slice-runtime",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "197df1d1be403fa47903f90de0b514e5ed01c17d",
+    "timestamp": "2026-07-10T10:33:24.833540+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.slice.runtime_matrix.v1",
+    "report_id": "wf.slice.runtime_matrix.v1:78baa9243903",
+    "status": "fail",
+    "failure_count": 1,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 0,
+    "records_total": 24,
+    "records_passed": 0,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}
