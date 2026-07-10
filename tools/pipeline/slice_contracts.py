@@ -629,15 +629,26 @@ def validate_slice_evidence_index(obj, strict=False):
                    _is_list(obj, "stale_evidence") and len(obj["stale_evidence"]) == 0,
                    "integrity_result=ok requires stale_evidence to be empty",
                    C.SLICE_STALE_EVIDENCE))
-        # each evidence category must have exactly one report per expected scenario.
+        # each evidence category must cover the SAME distinct scenarios — count
+        # alone is not coverage (24 duplicate ids is not 24 scenarios). runtime_
+        # reports is the reference set; every other per-scenario category must be
+        # exactly that set of distinct ids.
+        ref = set(obj["runtime_reports"]) if _is_list(obj, "runtime_reports") else set()
+        ch.append(("ei::runtime_reports_distinct_full",
+                   RS.is_number(exp) and len(ref) == int(exp),
+                   "runtime_reports must list {} DISTINCT scenario ids (got {} distinct)"
+                   .format(exp, len(ref)), C.SLICE_PARTIAL_MATRIX))
         for f in _EVIDENCE_LIST_FIELDS:
             if f == "package_reports":
                 continue  # one package covers the whole slice, not one-per-scenario
-            n = len(obj[f]) if _is_list(obj, f) else -1
-            ch.append(("ei::{}_covers_all".format(f),
-                       RS.is_number(exp) and n == int(exp),
-                       "{} must carry one entry per expected scenario ({} != {})"
-                       .format(f, n, exp), C.SLICE_PARTIAL_MATRIX))
+            vals = obj[f] if _is_list(obj, f) else []
+            distinct = set(vals)
+            ok = RS.is_number(exp) and len(distinct) == int(exp) and distinct == ref
+            ch.append(("ei::{}_covers_all".format(f), ok,
+                       "{} must cover the {} distinct scenarios in runtime_reports "
+                       "({} distinct, same_set={})"
+                       .format(f, exp, len(distinct), distinct == ref),
+                       C.SLICE_PARTIAL_MATRIX))
     sv = obj.get("schema_version")
     ch.append(("ei::schema_version", sv == RT_SLICE_EVIDENCE_INDEX,
                "schema_version must be {!r} (got {!r})".format(RT_SLICE_EVIDENCE_INDEX, sv), code))
