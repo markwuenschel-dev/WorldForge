@@ -1508,6 +1508,8 @@ SLICE_PACK ?= encounter_loop_world
 # --- Contract spine (Wave 1, GREEN) ------------------------------------
 vertical-slice-contracts:
 	$(PYTHON) tools/pipeline/validate_vertical_slice_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-makefile-refs:
+	$(PYTHON) tools/pipeline/validate_makefile_refs.py $(if $(STRICT),--strict,)
 
 # --- Slice authoring (Wave 2) ------------------------------------------
 generate-slice-scenarios:
@@ -1520,10 +1522,12 @@ validate-slice-assets:
 	$(PYTHON) tools/pipeline/validate_slice_assets.py --pack $(PACK) $(if $(STRICT),--strict,)
 
 # --- Runtime slice matrix (Wave R) -------------------------------------
+# The UE build is bundled into packaging (RunUAT BuildCookRun does build+cook+
+# stage in one pass), so build-vertical-slice and package-slice share one script.
 build-vertical-slice:
-	$(PYTHON) tools/pipeline/build_vertical_slice.py --pack $(PACK) $(if $(STRICT),--strict,)
+	$(PYTHON) tools/pipeline/package_slice.py --pack $(PACK) $(if $(STRICT),--strict,)
 run-vertical-slice-runtime:
-	$(PYTHON) tools/pipeline/run_slice_forge_alpha.py --pack $(PACK) $(if $(SCENARIOS),--scenarios $(SCENARIOS),--scenarios 24) $(if $(STRICT),--strict,)
+	$(PYTHON) tools/pipeline/run_slice_forge_alpha.py --run --pack $(PACK) $(if $(SCENARIOS),--scenarios $(SCENARIOS),--scenarios 24) $(if $(STRICT),--strict,)
 validate-slice-traversal:
 	$(PYTHON) tools/pipeline/validate_slice_traversal.py --pack $(PACK) $(if $(STRICT),--strict,)
 validate-slice-npc-combat:
@@ -1560,7 +1564,7 @@ v2-0-shield:
 	  $(if $(PACKAGE),--package,) $(if $(TORTURE),--torture,) \
 	  $(if $(REGRESSIONS),--regressions,) $(if $(SCENARIOS),--scenarios $(SCENARIOS),)
 
-.PHONY: vertical-slice-contracts generate-slice-scenarios validate-slice-scenarios \
+.PHONY: vertical-slice-contracts validate-makefile-refs generate-slice-scenarios validate-slice-scenarios \
 	validate-slice-environment validate-slice-assets build-vertical-slice \
 	run-vertical-slice-runtime validate-slice-traversal validate-slice-npc-combat \
 	validate-slice-rewards validate-slice-save-load validate-slice-evidence-index \

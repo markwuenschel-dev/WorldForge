@@ -69,6 +69,7 @@ def main(argv=None):
     results = []
     # --- Contract spine (always) -------------------------------------------
     results.append(run("failure-codes", "validate_failure_codes.py", *s))
+    results.append(run("makefile-refs", "validate_makefile_refs.py", *s))
     results.append(run("slice-contracts", "validate_vertical_slice_contracts.py", *P, *s))
 
     # --- Slice authoring lane ----------------------------------------------
