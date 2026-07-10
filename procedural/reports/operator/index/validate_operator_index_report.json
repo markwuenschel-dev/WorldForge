@@ -1,0 +1,3746 @@
+{
+  "operator": "index",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "index_file_present": {
+      "ok": true,
+      "detail": "operator_report_index.json missing — run operator-index-reports first",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "graph_file_present": {
+      "ok": true,
+      "detail": "evidence_graph.json missing — run operator-index-reports first",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::index_id": {
+      "ok": true,
+      "detail": "required field 'index_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::created_at": {
+      "ok": true,
+      "detail": "required field 'created_at' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::git_sha": {
+      "ok": true,
+      "detail": "required field 'git_sha' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::repo_status": {
+      "ok": true,
+      "detail": "required field 'repo_status' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::source_roots": {
+      "ok": true,
+      "detail": "required field 'source_roots' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::report_count": {
+      "ok": true,
+      "detail": "required field 'report_count' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::scenario_count": {
+      "ok": true,
+      "detail": "required field 'scenario_count' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::pack_count": {
+      "ok": true,
+      "detail": "required field 'pack_count' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::map_count": {
+      "ok": true,
+      "detail": "required field 'map_count' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::failure_code_count": {
+      "ok": true,
+      "detail": "required field 'failure_code_count' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::evidence_categories": {
+      "ok": true,
+      "detail": "required field 'evidence_categories' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::missing_evidence": {
+      "ok": true,
+      "detail": "required field 'missing_evidence' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::stale_evidence": {
+      "ok": true,
+      "detail": "required field 'stale_evidence' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::integrity_result": {
+      "ok": true,
+      "detail": "required field 'integrity_result' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::field::schema_version": {
+      "ok": true,
+      "detail": "required field 'schema_version' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::type::index_id": {
+      "ok": true,
+      "detail": "index_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::index_id_nonempty": {
+      "ok": true,
+      "detail": "index_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::type::created_at": {
+      "ok": true,
+      "detail": "created_at is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::created_at_nonempty": {
+      "ok": true,
+      "detail": "created_at must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::type::git_sha": {
+      "ok": true,
+      "detail": "git_sha is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::git_sha_nonempty": {
+      "ok": true,
+      "detail": "git_sha must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::type::repo_status": {
+      "ok": true,
+      "detail": "repo_status is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::repo_status_nonempty": {
+      "ok": true,
+      "detail": "repo_status must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::source_roots_str_list": {
+      "ok": true,
+      "detail": "source_roots must be a list of >= 1 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::number::report_count": {
+      "ok": true,
+      "detail": "report_count=85 is >=0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::report_count_integer": {
+      "ok": true,
+      "detail": "report_count must be an integer (got 85)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::number::scenario_count": {
+      "ok": true,
+      "detail": "scenario_count=24 is >=0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::scenario_count_integer": {
+      "ok": true,
+      "detail": "scenario_count must be an integer (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::number::pack_count": {
+      "ok": true,
+      "detail": "pack_count=1 is >=0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::pack_count_integer": {
+      "ok": true,
+      "detail": "pack_count must be an integer (got 1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::number::map_count": {
+      "ok": true,
+      "detail": "map_count=12 is >=0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::map_count_integer": {
+      "ok": true,
+      "detail": "map_count must be an integer (got 12)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::number::failure_code_count": {
+      "ok": true,
+      "detail": "failure_code_count=0 is >=0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::failure_code_count_integer": {
+      "ok": true,
+      "detail": "failure_code_count must be an integer (got 0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::evidence_categories_is_list": {
+      "ok": true,
+      "detail": "evidence_categories must be a list",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::missing_evidence_is_list": {
+      "ok": true,
+      "detail": "missing_evidence must be a list",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::stale_evidence_is_list": {
+      "ok": true,
+      "detail": "stale_evidence must be a list",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::enum::integrity_result": {
+      "ok": true,
+      "detail": "integrity_result='pass' is a known value",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::live_requires_real_sha": {
+      "ok": true,
+      "detail": "created_at='live' requires a real git_sha (got '488051e5a7bc2e4b76d3cd7c9a591eb389aaa394')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::pass_requires_no_missing": {
+      "ok": true,
+      "detail": "integrity_result=pass requires an empty missing_evidence list",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::pass_requires_no_stale": {
+      "ok": true,
+      "detail": "integrity_result=pass requires an empty stale_evidence list",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::ori::schema_version": {
+      "ok": true,
+      "detail": "schema_version must be 'wf.operator.report_index.v1' (got 'wf.operator.report_index.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "root_exists::procedural/reports/slice/runtime": {
+      "ok": true,
+      "detail": "source_root does not exist: procedural/reports/slice/runtime",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "root_exists::procedural/reports/slice/integrity": {
+      "ok": true,
+      "detail": "source_root does not exist: procedural/reports/slice/integrity",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "root_exists::procedural/reports/slice/package": {
+      "ok": true,
+      "detail": "source_root does not exist: procedural/reports/slice/package",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "root_exists::procedural/generated/slice": {
+      "ok": true,
+      "detail": "source_root does not exist: procedural/generated/slice",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::real_git_sha": {
+      "ok": true,
+      "detail": "index git_sha must be real (got '488051e5a7bc2e4b76d3cd7c9a591eb389aaa394')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_scenario_completed::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_scenario_completed::slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_npc_pressure_occurred::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_combat_damage_occurred::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_reward_granted::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_scenario_completed::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_scenario_completed::slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_npc_pressure_occurred::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_combat_damage_occurred::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_reward_granted::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_baseline_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_scenario_completed::slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_scenario_completed::slice_telemetry_vs_alpine_snow_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_npc_pressure_occurred::slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_combat_damage_occurred::slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_reward_granted::slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_scenario_completed::slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_scenario_completed::slice_telemetry_vs_alpine_snow_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_npc_pressure_occurred::slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_combat_damage_occurred::slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_reward_granted::slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_clear_hazard_high_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_scenario_completed::slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_scenario_completed::slice_telemetry_vs_alpine_snow_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_npc_pressure_occurred::slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_combat_damage_occurred::slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_reward_granted::slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_scenario_completed::slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_scenario_completed::slice_telemetry_vs_alpine_snow_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_npc_pressure_occurred::slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_combat_damage_occurred::slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_reward_granted::slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_baseline_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_scenario_completed::slice_runtime_vs_alpine_snow_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_scenario_completed::slice_telemetry_vs_alpine_snow_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_npc_pressure_occurred::slice_runtime_vs_alpine_snow_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_combat_damage_occurred::slice_runtime_vs_alpine_snow_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_reward_granted::slice_runtime_vs_alpine_snow_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_scenario_completed::slice_runtime_vs_alpine_snow_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_scenario_completed::slice_telemetry_vs_alpine_snow_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_npc_pressure_occurred::slice_runtime_vs_alpine_snow_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_combat_damage_occurred::slice_runtime_vs_alpine_snow_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_reward_granted::slice_runtime_vs_alpine_snow_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_recover_resource_high_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_scenario_completed::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_scenario_completed::slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_npc_pressure_occurred::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_combat_damage_occurred::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_reward_granted::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_scenario_completed::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_scenario_completed::slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_npc_pressure_occurred::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_combat_damage_occurred::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_reward_granted::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_baseline_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_scenario_completed::slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_scenario_completed::slice_telemetry_vs_alpine_snow_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_npc_pressure_occurred::slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_combat_damage_occurred::slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_reward_granted::slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_scenario_completed::slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_scenario_completed::slice_telemetry_vs_alpine_snow_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_grounded_traversal_succeeded::slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_grounded_traversal_succeeded::slice_telemetry_vs_alpine_snow_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_npc_pressure_occurred::slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_combat_damage_occurred::slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_reward_granted::slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_save_load_roundtrip_passed::slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_alpine_snow_survey_landmark_high_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_scenario_completed::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_scenario_completed::slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_reward_granted::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_scenario_completed::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_scenario_completed::slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_reward_granted::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_baseline_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_scenario_completed::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_scenario_completed::slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_reward_granted::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_scenario_completed::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_scenario_completed::slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_reward_granted::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_clear_hazard_high_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_scenario_completed::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_scenario_completed::slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_reward_granted::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_scenario_completed::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_scenario_completed::slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_reward_granted::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_baseline_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_scenario_completed::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_scenario_completed::slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_reward_granted::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_scenario_completed::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_scenario_completed::slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_reward_granted::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_recover_resource_high_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_scenario_completed::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_scenario_completed::slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_reward_granted::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_scenario_completed::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_scenario_completed::slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_reward_granted::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_baseline_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_scenario_completed::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_scenario_completed::slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_reward_granted::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s1_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_scenario_completed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_scenario_completed::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_scenario_completed::slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_scenario_completed::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_grounded_traversal_succeeded::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_grounded_traversal_succeeded::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_grounded_traversal_succeeded::slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_npc_pressure_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_npc_pressure_occurred::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_combat_damage_occurred::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_combat_damage_occurred::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_reward_granted::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_reward_granted::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_save_load_roundtrip_passed::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_save_load_roundtrip_passed::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_package_includes_map::schema": {
+      "ok": true,
+      "detail": "0 schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::trace_vs_volcanic_ashlands_survey_landmark_high_s2_package_includes_map::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "PASS trace references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "traces::unique_ids": {
+      "ok": true,
+      "detail": "0 duplicate trace_id(s) in evidence graph",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "traces::nonempty": {
+      "ok": true,
+      "detail": "evidence graph carries no traces",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "coverage::graph_covers_index_scenarios": {
+      "ok": true,
+      "detail": "graph covers 24 distinct scenarios but index counts 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::pass_recheck_no_missing": {
+      "ok": true,
+      "detail": "integrity_result=pass but missing_evidence is non-empty",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::pass_recheck_no_stale": {
+      "ok": true,
+      "detail": "integrity_result=pass but stale_evidence is non-empty",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 463,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-operator-index",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "488051e5a7bc2e4b76d3cd7c9a591eb389aaa394",
+    "timestamp": "2026-07-10T22:51:44.430371+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.operator.index_gate.v1",
+    "report_id": "wf.operator.index_gate.v1:62504974954f",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 168,
+    "records_total": 168,
+    "records_passed": 168,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

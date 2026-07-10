@@ -1573,3 +1573,77 @@ v2-0-shield:
 	package-slice validate-slice-package vertical-slice-negative-validators \
 	vertical-slice-fuzz vertical-slice-torture vertical-slice-report-integrity \
 	vertical-slice-hygiene v2-0-shield
+
+# ======================================================================
+# v2.1 OperatorForge — operator control plane (Agent 0)
+# ----------------------------------------------------------------------
+# Turns WorldForge's evidence sprawl into an operator-readable surface:
+# report index + evidence graph, static pack/scenario/evidence/failure/
+# asset/route dashboard, safe bounded command launcher, and run diffs.
+# FAIL-CLOSED: a gate whose script is not yet built turns v2-1-shield RED
+# until it exists (no fake green). NOTE: `make` is not installed in this
+# environment; these targets document the canonical command surface — run
+# the mapped `python tools/operator/*.py` (or tools/pipeline/*.py for the
+# shield) directly (PYTHONUTF8=1 on Windows). Operator scripts live under
+# tools/operator/ so they are additive to the tools/pipeline/ surface.
+#   python tools/pipeline/v2_1_shield.py --strict --operator
+# ======================================================================
+OPERATOR_PACK ?= worldforge_vertical_slice
+
+# --- Contract spine (Wave 1, GREEN) ------------------------------------
+operator-contracts:
+	$(PYTHON) tools/operator/validate_operator_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+operator-negative-fixtures:
+	$(PYTHON) tools/operator/operator_negatives.py $(if $(STRICT),--strict,)
+
+# --- Report index + evidence graph (Wave 2) ----------------------------
+operator-index-reports:
+	$(PYTHON) tools/operator/index_reports.py $(if $(STRICT),--strict,)
+validate-operator-index:
+	$(PYTHON) tools/operator/validate_operator_index.py $(if $(STRICT),--strict,)
+
+# --- Static dashboard + per-view builders (Wave 3) ---------------------
+operator-dashboard:
+	$(PYTHON) tools/operator/build_dashboard.py $(if $(STRICT),--strict,)
+operator-smoke:
+	$(PYTHON) tools/operator/operator_smoke.py $(if $(STRICT),--strict,)
+operator-evidence-view:
+	$(PYTHON) tools/operator/validate_operator_evidence.py $(if $(STRICT),--strict,)
+operator-failure-index:
+	$(PYTHON) tools/operator/build_failure_index.py $(if $(STRICT),--strict,)
+operator-asset-ownership:
+	$(PYTHON) tools/operator/build_asset_ownership.py $(if $(STRICT),--strict,)
+operator-route-view:
+	$(PYTHON) tools/operator/build_route_view.py $(if $(STRICT),--strict,)
+
+# --- Safe command launcher + diff (Wave 4) -----------------------------
+operator-command-dry-run:
+	$(PYTHON) tools/operator/operator_command.py --dry-run --command operator-index-reports $(if $(STRICT),--strict,)
+operator-diff-runs:
+	$(PYTHON) tools/operator/diff_operator_runs.py $(if $(STRICT),--strict,)
+operator-command-negative-validators:
+	$(PYTHON) tools/operator/operator_command_negatives.py $(if $(STRICT),--strict,)
+
+# --- Hostile validation (Wave R) ---------------------------------------
+operator-negative-validators:
+	$(PYTHON) tools/operator/operator_negatives.py $(if $(STRICT),--strict,)
+operator-fuzz:
+	$(PYTHON) tools/operator/operator_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+operator-torture:
+	$(PYTHON) tools/operator/operator_torture.py $(if $(STRICT),--strict,)
+operator-report-integrity:
+	$(PYTHON) tools/operator/operator_report_integrity.py $(if $(STRICT),--strict,)
+operator-hygiene:
+	$(PYTHON) tools/operator/operator_hygiene.py $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v2-1-shield:
+	$(PYTHON) tools/pipeline/v2_1_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(OPERATOR),--operator,) $(if $(REGRESSIONS),--regressions,)
+
+.PHONY: operator-contracts operator-negative-fixtures operator-index-reports \
+	validate-operator-index operator-dashboard operator-smoke operator-evidence-view \
+	operator-failure-index operator-asset-ownership operator-route-view \
+	operator-command-dry-run operator-diff-runs operator-command-negative-validators \
+	operator-negative-validators operator-fuzz operator-torture \
+	operator-report-integrity operator-hygiene v2-1-shield

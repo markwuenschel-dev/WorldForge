@@ -1,0 +1,2586 @@
+{
+  "operator": "evidence_view",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "scenario_cards_present": {
+      "ok": true,
+      "detail": "scenario_cards.json missing — run operator-dashboard/operator-index-reports",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pack_cards_present": {
+      "ok": true,
+      "detail": "pack_cards.json missing — run operator-dashboard/operator-index-reports",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "evidence_graph_present": {
+      "ok": true,
+      "detail": "evidence_graph.json missing — run operator-dashboard/operator-index-reports",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pack::worldforge_vertical_slice::schema": {
+      "ok": true,
+      "detail": "pack card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s1::slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_baseline_s2::slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s1::slice_telemetry_vs_alpine_snow_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_clear_hazard_high_s2::slice_telemetry_vs_alpine_snow_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s1::slice_telemetry_vs_alpine_snow_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_baseline_s2::slice_telemetry_vs_alpine_snow_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::slice_runtime_vs_alpine_snow_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s1::slice_telemetry_vs_alpine_snow_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::slice_runtime_vs_alpine_snow_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_recover_resource_high_s2::slice_telemetry_vs_alpine_snow_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s1::slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_baseline_s2::slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s1::slice_telemetry_vs_alpine_snow_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_alpine_snow_survey_landmark_high_s2::slice_telemetry_vs_alpine_snow_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s1::slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_baseline_s2::slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s1::slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_clear_hazard_high_s2::slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s1::slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_baseline_s2::slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s1::slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_recover_resource_high_s2::slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s1::slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_baseline_s2::slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s1::slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s1.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::schema": {
+      "ok": true,
+      "detail": "scenario card schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::runtime_status::matches_graph": {
+      "ok": true,
+      "detail": "card runtime_status='pass' but graph verdict for 'scenario completed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::traversal_status::matches_graph": {
+      "ok": true,
+      "detail": "card traversal_status='pass' but graph verdict for 'grounded traversal succeeded' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::npc_status::matches_graph": {
+      "ok": true,
+      "detail": "card npc_status='pass' but graph verdict for 'npc pressure occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::combat_status::matches_graph": {
+      "ok": true,
+      "detail": "card combat_status='pass' but graph verdict for 'combat damage occurred' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::reward_status::matches_graph": {
+      "ok": true,
+      "detail": "card reward_status='pass' but graph verdict for 'reward granted' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::save_load_status::matches_graph": {
+      "ok": true,
+      "detail": "card save_load_status='pass' but graph verdict for 'save/load roundtrip passed' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::package_status::matches_graph": {
+      "ok": true,
+      "detail": "card package_status='pass' but graph verdict for 'package includes map' is 'pass'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::report_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty report_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::slice_package_worldforge_vertical_slice.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_runtime_vs_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::telemetry_paths_nonempty": {
+      "ok": true,
+      "detail": "runtime pass card has empty telemetry_paths",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scn::vs_volcanic_ashlands_survey_landmark_high_s2::slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s2.json::exists": {
+      "ok": true,
+      "detail": "card references missing path: procedural/reports/slice/runtime/slice_telemetry_vs_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "cards::no_duplicates": {
+      "ok": true,
+      "detail": "duplicate scenario cards: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "cards::cover_manifest": {
+      "ok": true,
+      "detail": "manifest scenarios with no card: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 318,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "operator-evidence-view",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "488051e5a7bc2e4b76d3cd7c9a591eb389aaa394",
+    "timestamp": "2026-07-10T22:51:44.650421+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.operator.evidence_view.v1",
+    "report_id": "wf.operator.evidence_view.v1:0bfeda72307a",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 24,
+    "records_total": 24,
+    "records_passed": 24,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Scenario · vs_alpine_snow_clear_hazard_baseline_s2</title><style>:root { color-scheme: light dark; --bg:#0e1116; --fg:#d7dde3; --muted:#8b97a5;
+  --card:#171c23; --line:#252c36; --accent:#5aa9ff; --pass:#3fb950; --fail:#f85149;
+  --blocked:#d29922; --absent:#6e7681; }
+@media (prefers-color-scheme: light) { :root { --bg:#f6f8fa; --fg:#1f2328;
+  --muted:#57606a; --card:#ffffff; --line:#d0d7de; --accent:#0969da; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg);
+  font:14px/1.5 ui-monospace,"SF Mono",Menlo,Consolas,monospace; }
+.wrap { max-width:1100px; margin:0 auto; padding:24px; }
+h1,h2,h3 { font-weight:600; line-height:1.25; }
+h1 { font-size:22px; margin:0 0 4px; } h2 { font-size:16px; margin:28px 0 10px;
+  border-bottom:1px solid var(--line); padding-bottom:6px; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.muted { color:var(--muted); } .sub { color:var(--muted); margin:0 0 18px; font-size:13px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:8px;
+  padding:14px 16px; }
+.card h3 { margin:0 0 8px; font-size:14px; }
+.kv { display:flex; justify-content:space-between; gap:12px; padding:2px 0;
+  border-bottom:1px dashed var(--line); }
+.kv:last-child { border-bottom:0; } .kv .k { color:var(--muted); }
+.badge { display:inline-block; padding:1px 8px; border-radius:999px; font-size:12px;
+  font-weight:600; }
+.b-pass{ background:rgba(63,185,80,.15); color:var(--pass); }
+.b-fail{ background:rgba(248,81,73,.15); color:var(--fail); }
+.b-blocked{ background:rgba(210,153,34,.15); color:var(--blocked); }
+.b-absent,.b-not_run{ background:rgba(110,118,129,.15); color:var(--absent); }
+table { width:100%; border-collapse:collapse; }
+.scroll { overflow-x:auto; }
+th,td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line);
+  white-space:nowrap; }
+th { color:var(--muted); font-weight:600; }
+code { background:var(--card); border:1px solid var(--line); border-radius:4px;
+  padding:1px 5px; font-size:12px; }
+.foot { margin-top:32px; color:var(--muted); font-size:12px;
+  border-top:1px solid var(--line); padding-top:12px; }</style></head><body><div class="wrap">
+<p class="muted"><a href="../index.html">dashboard</a> &nbsp;/&nbsp; OperatorForge</p>
+<h1>Scenario · vs_alpine_snow_clear_hazard_baseline_s2</h1><p class="sub">alpine_snow · clear_hazard · baseline</p>
+<h2>Scenario</h2><div class="card"><div class="kv"><span class="k">scenario_id</span><span class="v">vs_alpine_snow_clear_hazard_baseline_s2</span></div><div class="kv"><span class="k">map_id</span><span class="v">Alpine_SnowyRidge_Scatter_Perf_01</span></div><div class="kv"><span class="k">biome</span><span class="v">alpine_snow</span></div><div class="kv"><span class="k">mission_archetype</span><span class="v">clear_hazard</span></div><div class="kv"><span class="k">pressure_profile</span><span class="v">baseline</span></div><div class="kv"><span class="k">seed</span><span class="v">2</span></div></div><h2>Facet status</h2><div class="card"><div class="kv"><span class="k">runtime</span><span class="v"><span class="badge b-pass">pass</span></span></div><div class="kv"><span class="k">traversal</span><span class="v"><span class="badge b-pass">pass</span></span></div><div class="kv"><span class="k">npc</span><span class="v"><span class="badge b-pass">pass</span></span></div><div class="kv"><span class="k">combat</span><span class="v"><span class="badge b-pass">pass</span></span></div><div class="kv"><span class="k">reward</span><span class="v"><span class="badge b-pass">pass</span></span></div><div class="kv"><span class="k">save/load</span><span class="v"><span class="badge b-pass">pass</span></span></div><div class="kv"><span class="k">package</span><span class="v"><span class="badge b-pass">pass</span></span></div></div><h2>Evidence traces</h2><div class="scroll"><table><tr><th>claim</th><th>verdict</th><th>supporting</th><th>milestone</th></tr><tr><td>combat damage occurred</td><td><span class="badge b-pass">pass</span></td><td><a href="../../../../../procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json">slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json</a></td><td>v1.8</td></tr><tr><td>grounded traversal succeeded</td><td><span class="badge b-pass">pass</span></td><td><a href="../../../../../procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json">slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json</a></td><td>v1.6z</td></tr><tr><td>npc pressure occurred</td><td><span class="badge b-pass">pass</span></td><td><a href="../../../../../procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json">slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json</a></td><td>v1.7</td></tr><tr><td>package includes map</td><td><span class="badge b-pass">pass</span></td><td><a href="../../../../../procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json">slice_package_worldforge_vertical_slice.json</a> <a href="../../../../../procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json">slice_package_worldforge_vertical_slice.json</a></td><td>v2.0</td></tr><tr><td>reward granted</td><td><span class="badge b-pass">pass</span></td><td><a href="../../../../../procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json">slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json</a></td><td>v1.9</td></tr><tr><td>save/load roundtrip passed</td><td><span class="badge b-pass">pass</span></td><td><a href="../../../../../procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json">slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json</a></td><td>v1.9</td></tr><tr><td>scenario completed</td><td><span class="badge b-pass">pass</span></td><td><a href="../../../../../procedural/reports/slice/runtime/slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json">slice_runtime_vs_alpine_snow_clear_hazard_baseline_s2.json</a> <a href="../../../../../procedural/reports/slice/package/slice_package_worldforge_vertical_slice.json">slice_package_worldforge_vertical_slice.json</a></td><td>v2.0</td></tr></table></div>
+<div class="foot">WorldForge v2.1 OperatorForge — static operator dashboard.
+git_sha <code>488051e5a7bc</code>. Local/static; indexes existing evidence, does not
+make stale evidence true.</div>
+</div></body></html>

@@ -1,0 +1,698 @@
+{
+  "suite": "operator_negatives",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "suite_nonempty": {
+      "ok": true,
+      "detail": "negative suite must carry >= 20 fixtures (got 35)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:pass_with_missing_evidence::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:pass_with_missing_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF717_OPERATOR_MISSING_EVIDENCE (got ['WF717_OPERATOR_MISSING_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:pass_with_stale_evidence::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:pass_with_stale_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF716_OPERATOR_STALE_EVIDENCE (got ['WF716_OPERATOR_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:live_without_real_sha::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:live_without_real_sha::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF716_OPERATOR_STALE_EVIDENCE (got ['WF716_OPERATOR_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:no_source_roots::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:no_source_roots::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF712_OPERATOR_SOURCE_ROOT_MISSING (got ['WF712_OPERATOR_SOURCE_ROOT_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:bad_integrity_result::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:bad_integrity_result::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF711_OPERATOR_INDEX_SCHEMA_INVALID (got ['WF711_OPERATOR_INDEX_SCHEMA_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pack:v2_0_no_package::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pack:v2_0_no_package::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF725_OPERATOR_PACKAGE_PROOF_MISSING (got ['WF725_OPERATOR_PACKAGE_PROOF_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pack:v2_0_zero_size::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pack:v2_0_zero_size::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF725_OPERATOR_PACKAGE_PROOF_MISSING (got ['WF725_OPERATOR_PACKAGE_PROOF_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pack:empty_biomes::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pack:empty_biomes::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF719_OPERATOR_PACK_INDEX_INVALID (got ['WF719_OPERATOR_PACK_INDEX_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:runtime_pass_no_reports::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:runtime_pass_no_reports::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF714_OPERATOR_REPORT_PATH_MISSING (got ['WF714_OPERATOR_REPORT_PATH_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:runtime_pass_no_telemetry::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:runtime_pass_no_telemetry::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF714_OPERATOR_REPORT_PATH_MISSING (got ['WF714_OPERATOR_REPORT_PATH_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:bad_facet_status::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:bad_facet_status::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF720_OPERATOR_SCENARIO_CARD_INVALID (got ['WF720_OPERATOR_SCENARIO_CARD_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::trc:pass_no_supporting_report::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::trc:pass_no_supporting_report::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF721_OPERATOR_EVIDENCE_TRACE_INVALID (got ['WF721_OPERATOR_EVIDENCE_TRACE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::trc:pass_with_missing_inputs::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::trc:pass_with_missing_inputs::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF717_OPERATOR_MISSING_EVIDENCE (got ['WF717_OPERATOR_MISSING_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::trc:stale_not_blocked::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::trc:stale_not_blocked::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF716_OPERATOR_STALE_EVIDENCE (got ['WF716_OPERATOR_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::fci:blocking_no_next_action::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::fci:blocking_no_next_action::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF722_OPERATOR_FAILURE_INDEX_INVALID (got ['WF722_OPERATOR_FAILURE_INDEX_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::fci:malformed_code::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::fci:malformed_code::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF715_OPERATOR_UNKNOWN_FAILURE_CODE (got ['WF715_OPERATOR_UNKNOWN_FAILURE_CODE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::fci:bad_severity::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::fci:bad_severity::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF722_OPERATOR_FAILURE_INDEX_INVALID (got ['WF722_OPERATOR_FAILURE_INDEX_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::aov:third_party_regenerate::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::aov:third_party_regenerate::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF723_OPERATOR_ASSET_OWNERSHIP_INVALID (got ['WF723_OPERATOR_ASSET_OWNERSHIP_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::aov:human_regenerate::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::aov:human_regenerate::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF723_OPERATOR_ASSET_OWNERSHIP_INVALID (got ['WF723_OPERATOR_ASSET_OWNERSHIP_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::aov:bad_ownership_class::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::aov:bad_ownership_class::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF723_OPERATOR_ASSET_OWNERSHIP_INVALID (got ['WF723_OPERATOR_ASSET_OWNERSHIP_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rtv:navmesh_claimed_proved::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rtv:navmesh_claimed_proved::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF724_OPERATOR_ROUTE_VIEW_INVALID (got ['WF724_OPERATOR_ROUTE_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rtv:flight_claimed_proved::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rtv:flight_claimed_proved::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF724_OPERATOR_ROUTE_VIEW_INVALID (got ['WF724_OPERATOR_ROUTE_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rtv:teleport_claimed_proved::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rtv:teleport_claimed_proved::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF724_OPERATOR_ROUTE_VIEW_INVALID (got ['WF724_OPERATOR_ROUTE_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::req:allowed_not_allowlisted::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::req:allowed_not_allowlisted::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF726_OPERATOR_COMMAND_NOT_ALLOWLISTED (got ['WF726_OPERATOR_COMMAND_NOT_ALLOWLISTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::req:destructive_allowed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::req:destructive_allowed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF729_OPERATOR_DESTRUCTIVE_COMMAND_BLOCKED (got ['WF729_OPERATOR_DESTRUCTIVE_COMMAND_BLOCKED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::req:full_matrix_no_reason::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::req:full_matrix_no_reason::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF728_OPERATOR_FULL_MATRIX_UNAUTHORIZED (got ['WF727_OPERATOR_COMMAND_DRY_RUN_REQUIRED', 'WF728_OPERATOR_FULL_MATRIX_UNAUTHORIZED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::req:real_run_no_reason::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::req:real_run_no_reason::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF727_OPERATOR_COMMAND_DRY_RUN_REQUIRED (got ['WF727_OPERATOR_COMMAND_DRY_RUN_REQUIRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::req:unbounded_targets::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::req:unbounded_targets::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF728_OPERATOR_FULL_MATRIX_UNAUTHORIZED (got ['WF728_OPERATOR_FULL_MATRIX_UNAUTHORIZED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::res:nonzero_exit_pass::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::res:nonzero_exit_pass::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF730_OPERATOR_COMMAND_RESULT_INVALID (got ['WF730_OPERATOR_COMMAND_RESULT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::res:pass_no_outputs::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::res:pass_no_outputs::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF730_OPERATOR_COMMAND_RESULT_INVALID (got ['WF730_OPERATOR_COMMAND_RESULT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::res:pass_with_failure_codes::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::res:pass_with_failure_codes::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF730_OPERATOR_COMMAND_RESULT_INVALID (got ['WF730_OPERATOR_COMMAND_RESULT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::dif:same_run::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::dif:same_run::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF731_OPERATOR_DIFF_INVALID (got ['WF731_OPERATOR_DIFF_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::dif:malformed_new_failure::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::dif:malformed_new_failure::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF715_OPERATOR_UNKNOWN_FAILURE_CODE (got ['WF715_OPERATOR_UNKNOWN_FAILURE_CODE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::reg:active_no_repro::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::reg:active_no_repro::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF732_OPERATOR_REGRESSION_REGISTRY_INVALID (got ['WF732_OPERATOR_REGRESSION_REGISTRY_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::reg:resolved_no_notes::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::reg:resolved_no_notes::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF732_OPERATOR_REGRESSION_REGISTRY_INVALID (got ['WF732_OPERATOR_REGRESSION_REGISTRY_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorReportIndex::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorPackCard::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorScenarioCard::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::EvidenceTrace::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::FailureCodeIndex::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::AssetOwnershipView::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::RouteWalkabilityView::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorCommandRequest::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorCommandResult::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorDiffReport::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::KnownRegressionRegistry::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 82,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "operator-negative-fixtures",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "488051e5a7bc2e4b76d3cd7c9a591eb389aaa394",
+    "timestamp": "2026-07-10T22:51:45.503521+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.operator.negatives.v1",
+    "report_id": "wf.operator.negatives.v1:67bd0cfff116",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 35,
+    "records_total": 35,
+    "records_passed": 35,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}
