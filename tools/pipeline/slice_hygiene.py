@@ -57,13 +57,16 @@ def main(argv=None):
     scen_files = {p.stem for p in scen_dir.glob("vs_*.json")}
     manifest_scen = set(manifest.get("scenarios", []))
 
-    # counts agree at 24 everywhere
-    rep.check("contract_count_24", contract.get("scenario_count") == 24,
-              "contract scenario_count != 24", code=F.SLICE_ARTIFACT_HYGIENE_FAILED)
-    rep.check("manifest_count_24", manifest.get("scenario_count") == 24,
-              "manifest scenario_count != 24", code=F.SLICE_ARTIFACT_HYGIENE_FAILED)
-    rep.check("scenario_files_24", len(scen_files) == 24,
-              "expected 24 scenario files, got {}".format(len(scen_files)),
+    # counts agree at EXPECTED_SCENARIOS everywhere — this also ties the canonical
+    # SX.EXPECTED_SCENARIOS constant to the committed contract, so a dimension
+    # change that desyncs the constant from the contract fails here.
+    exp = SX.EXPECTED_SCENARIOS
+    rep.check("contract_count_matches", contract.get("scenario_count") == exp,
+              "contract scenario_count != {}".format(exp), code=F.SLICE_ARTIFACT_HYGIENE_FAILED)
+    rep.check("manifest_count_matches", manifest.get("scenario_count") == exp,
+              "manifest scenario_count != {}".format(exp), code=F.SLICE_ARTIFACT_HYGIENE_FAILED)
+    rep.check("scenario_files_count_matches", len(scen_files) == exp,
+              "expected {} scenario files, got {}".format(exp, len(scen_files)),
               code=F.SLICE_ARTIFACT_HYGIENE_FAILED)
 
     # no orphan / no missing: scenario files set == manifest scenarios set

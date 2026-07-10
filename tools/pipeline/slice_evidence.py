@@ -22,7 +22,8 @@ from pathlib import Path
 import slice_contracts as SX
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-EXPECTED_SCENARIOS = 24
+# single source of truth (slice_contracts) — no bare literal here.
+EXPECTED_SCENARIOS = SX.EXPECTED_SCENARIOS
 
 RUNTIME_DIR = REPO_ROOT / SX.SLICE_RUNTIME_REPORTS_REL
 SAVE_LOAD_DIR = REPO_ROOT / SX.SLICE_SAVE_LOAD_REPORTS_REL

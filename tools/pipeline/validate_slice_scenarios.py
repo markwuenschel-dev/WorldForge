@@ -128,8 +128,9 @@ def main(argv=None):
     scenarios = [json.loads(f.read_text(encoding="utf-8")) for f in scen_files]
 
     # 1. exactly 24, matching contract scenario_count
-    rep.check("scenario_count_is_24", len(scenarios) == 24,
-              "expected 24 scenarios, got {}".format(len(scenarios)), code=F.SLICE_PARTIAL_MATRIX)
+    rep.check("scenario_count_full", len(scenarios) == SX.EXPECTED_SCENARIOS,
+              "expected {} scenarios, got {}".format(SX.EXPECTED_SCENARIOS, len(scenarios)),
+              code=F.SLICE_PARTIAL_MATRIX)
     rep.check("count_matches_contract", contract.get("scenario_count") == len(scenarios),
               "contract scenario_count != file count", code=F.SLICE_SCENARIO_SET_INVALID)
 

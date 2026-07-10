@@ -87,6 +87,15 @@ RUNTIME_SYSTEM_FLAGS = (
 # authoring records; runtime/package evidence uses created_at == "live" + real sha.
 AUTHORING_TS = "2026-07-10T00:00:00+00:00"
 
+# Canonical slice matrix counts — the ONE place these live. Every gate imports
+# SX.EXPECTED_SCENARIOS / SX.EXPECTED_MAPS instead of a bare literal, and
+# slice_hygiene ties EXPECTED_SCENARIOS to the committed contract's scenario_count
+# so a dimension change cannot silently desync the gates.
+#   matrix = 2 biomes x 3 archetypes x 2 profiles x 2 seeds = 24 scenarios,
+#   over 12 maps (maps are profile-agnostic: 24 / 2 profiles = 12).
+EXPECTED_SCENARIOS = 24
+EXPECTED_MAPS = 12
+
 # --------------------------------------------------------------------------- #
 # Generated / report roots (repo-relative). Slice evidence is independently
 # inspectable and is NOT mixed into the combat/npc/reward/ground trees — it may

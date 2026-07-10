@@ -61,8 +61,8 @@ def main(argv=None):
     biomes = set(contract.get("biomes", []))
 
     maps = _slice_maps()
-    rep.check("maps_present", len(maps) == 12,
-              "expected 12 unique slice maps, got {}".format(len(maps)),
+    rep.check("maps_present", len(maps) == SX.EXPECTED_MAPS,
+              "expected {} unique slice maps, got {}".format(SX.EXPECTED_MAPS, len(maps)),
               code=F.SLICE_ENVIRONMENT_INVALID)
 
     for map_id, biome in sorted(maps.items()):
