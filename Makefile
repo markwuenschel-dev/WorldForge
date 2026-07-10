@@ -1414,3 +1414,80 @@ v1-8-shield:
 	run-combat-forge-alpha validate-combat-telemetry validate-combat-completion validate-combat-save-load \
 	classify-combat-balance validate-combat-balance combat-negative-validators combat-torture \
 	combat-report-integrity combat-fuzz v1-8-shield
+
+# ======================================================================
+# v1.9 LoadoutForge + RewardForge + ProgressionForge Alpha (Agent 0)
+# ----------------------------------------------------------------------
+# Turns mission/combat completion into durable loadout, reward, inventory,
+# unlock, and progression consequence. FAIL-CLOSED: a gate whose script is
+# not yet built turns v1-9-shield RED until it exists (no fake green).
+# NOTE: `make` is not installed in this environment; these targets document
+# the canonical command surface — run the mapped `python tools/pipeline/*.py`
+# directly. Wave 1 ships the contract spine + fail-closed shield; Waves 2/R/7
+# fill the authoring, runtime, and hostile gates.
+#
+#   make v1-9-shield PACK=encounter_loop_world STRICT=1 REWARDS=1 PROGRESSION=1
+# ======================================================================
+REWARD_PACK ?= encounter_loop_world
+
+# --- Contract spine ----------------------------------------------------
+loadout-contracts:
+	$(PYTHON) tools/pipeline/validate_loadout_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+reward-contracts:
+	$(PYTHON) tools/pipeline/validate_reward_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+progression-contracts:
+	$(PYTHON) tools/pipeline/validate_progression_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Reward-table / catalog authoring (Wave 2/3) -----------------------
+reward-tables:
+	$(PYTHON) tools/pipeline/generate_reward_tables.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-reward-tables:
+	$(PYTHON) tools/pipeline/validate_reward_tables.py --pack $(PACK) $(if $(STRICT),--strict,)
+classify-risk-reward:
+	$(PYTHON) tools/pipeline/classify_risk_reward.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-risk-reward:
+	$(PYTHON) tools/pipeline/validate_risk_reward.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Progression / inventory / unlock state + persistence (Wave 2/R) ---
+progression-state:
+	$(PYTHON) tools/pipeline/generate_progression_state.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-progression-state:
+	$(PYTHON) tools/pipeline/validate_progression_state.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-unlock-state:
+	$(PYTHON) tools/pipeline/validate_unlock_state.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-inventory-save-load:
+	$(PYTHON) tools/pipeline/validate_inventory_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-progression-save-load:
+	$(PYTHON) tools/pipeline/validate_progression_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-next-mission-state:
+	$(PYTHON) tools/pipeline/validate_next_mission_state.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Runtime reward bridge (Wave R) ------------------------------------
+run-reward-forge-alpha:
+	$(PYTHON) tools/pipeline/run_reward_forge_alpha.py --gate --scenarios $(if $(SCENARIOS),$(SCENARIOS),120) $(if $(STRICT),--strict,)
+validate-reward-bridge:
+	$(PYTHON) tools/pipeline/validate_reward_bridge.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Hostile validation (Wave 7) ---------------------------------------
+reward-negative-validators:
+	$(PYTHON) tools/pipeline/reward_negatives.py $(if $(STRICT),--strict,)
+reward-fuzz:
+	$(PYTHON) tools/pipeline/reward_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+reward-torture:
+	$(PYTHON) tools/pipeline/reward_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+reward-report-integrity:
+	$(PYTHON) tools/pipeline/reward_report_integrity.py --pack $(PACK) $(if $(STRICT),--strict,)
+reward-hygiene:
+	$(PYTHON) tools/pipeline/reward_hygiene.py $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v1-9-shield:
+	$(PYTHON) tools/pipeline/v1_9_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(REWARDS),--rewards,) $(if $(PROGRESSION),--progression,) $(if $(TORTURE),--torture,) \
+	  $(if $(REQUIRE_LIVE),--require-live,) $(if $(SCENARIOS),--scenarios $(SCENARIOS),)
+
+.PHONY: loadout-contracts reward-contracts progression-contracts reward-tables validate-reward-tables \
+	classify-risk-reward validate-risk-reward progression-state validate-progression-state \
+	validate-unlock-state validate-inventory-save-load validate-progression-save-load \
+	validate-next-mission-state run-reward-forge-alpha validate-reward-bridge \
+	reward-negative-validators reward-fuzz reward-torture reward-report-integrity reward-hygiene v1-9-shield

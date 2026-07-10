@@ -1,0 +1,202 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "unlock-catalog::is_list": {
+      "ok": true,
+      "detail": "catalog must carry a non-empty unlocks list (got list)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::0_id_nonempty": {
+      "ok": true,
+      "detail": "unlock_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_scout_slot_type_known": {
+      "ok": true,
+      "detail": "unlock_type 'loadout_slot' not in ('loadout_slot', 'equipment', 'mission_archetype', 'biome', 'modifier')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_scout_slot_affects_generation_bool": {
+      "ok": true,
+      "detail": "affects_generation must be an explicit boolean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::1_id_nonempty": {
+      "ok": true,
+      "detail": "unlock_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_heavy_rifle_type_known": {
+      "ok": true,
+      "detail": "unlock_type 'equipment' not in ('loadout_slot', 'equipment', 'mission_archetype', 'biome', 'modifier')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_heavy_rifle_affects_generation_bool": {
+      "ok": true,
+      "detail": "affects_generation must be an explicit boolean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::2_id_nonempty": {
+      "ok": true,
+      "detail": "unlock_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_hazard_missions_type_known": {
+      "ok": true,
+      "detail": "unlock_type 'mission_archetype' not in ('loadout_slot', 'equipment', 'mission_archetype', 'biome', 'modifier')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_hazard_missions_affects_generation_bool": {
+      "ok": true,
+      "detail": "affects_generation must be an explicit boolean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::3_id_nonempty": {
+      "ok": true,
+      "detail": "unlock_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_badlands_biome_type_known": {
+      "ok": true,
+      "detail": "unlock_type 'biome' not in ('loadout_slot', 'equipment', 'mission_archetype', 'biome', 'modifier')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_badlands_biome_affects_generation_bool": {
+      "ok": true,
+      "detail": "affects_generation must be an explicit boolean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::4_id_nonempty": {
+      "ok": true,
+      "detail": "unlock_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_hardened_mod_type_known": {
+      "ok": true,
+      "detail": "unlock_type 'modifier' not in ('loadout_slot', 'equipment', 'mission_archetype', 'biome', 'modifier')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_hardened_mod_affects_generation_bool": {
+      "ok": true,
+      "detail": "affects_generation must be an explicit boolean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::5_id_nonempty": {
+      "ok": true,
+      "detail": "unlock_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_marksman_access_type_known": {
+      "ok": true,
+      "detail": "unlock_type 'equipment' not in ('loadout_slot', 'equipment', 'mission_archetype', 'biome', 'modifier')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::unl_marksman_access_affects_generation_bool": {
+      "ok": true,
+      "detail": "affects_generation must be an explicit boolean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "unlock-catalog::ids_unique": {
+      "ok": true,
+      "detail": "unlock_id must be unique across the catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 20,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "generate-unlock-catalog",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
+    "timestamp": "2026-07-10T00:30:54.519461+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.unlock_catalog.v1",
+    "report_id": "wf.reward.unlock_catalog.v1:1958368445df",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 6,
+    "records_total": 6,
+    "records_passed": 6,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::valid_passes": {
+      "ok": true,
+      "detail": "valid progression state passes strict (0 fail)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::hash_mismatch_rejected": {
+      "ok": true,
+      "detail": "progression state with mismatched progression_hash is rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "progression::present": {
+      "ok": true,
+      "detail": "no generated progression states found (run generate_progression_state.py)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "progression::all_valid": {
+      "ok": true,
+      "detail": "0/12 progression states invalid",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 4,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-progression-state",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
+    "timestamp": "2026-07-10T00:30:55.103588+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.progression_state_report.v1",
+    "report_id": "wf.reward.progression_state_report.v1:4a59bbb9f450",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 12,
+    "records_total": 12,
+    "records_passed": 12,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

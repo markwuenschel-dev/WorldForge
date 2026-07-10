@@ -1,0 +1,74 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "generate-equipment-catalog::nonzero": {
+      "ok": true,
+      "detail": "generator produced 8 records (no zero-record success)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "generate-equipment-catalog::all_valid": {
+      "ok": true,
+      "detail": "0/8 records invalid",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "equipment-catalog::loadouts_nonzero": {
+      "ok": true,
+      "detail": "expected >=1 loadout profile, got 1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "equipment-catalog::loadouts_valid": {
+      "ok": true,
+      "detail": "loadout profiles failed their own contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 4,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "generate-equipment-catalog",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
+    "timestamp": "2026-07-10T00:30:54.419545+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.equipment_item.v1",
+    "report_id": "wf.reward.equipment_item.v1:9dd932e5d40f",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 8,
+    "records_total": 8,
+    "records_passed": 8,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

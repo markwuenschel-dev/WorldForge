@@ -1,0 +1,48 @@
+{
+  "scenario_id": "rs_auth_04_rwt_survey_landmark_baseline",
+  "save_load_key": "WFProgression_State",
+  "kind": "progression",
+  "roundtrip_ok": true,
+  "checks": [
+    {
+      "name": "roundtrip_stable",
+      "ok": true,
+      "detail": "progression save/load: roundtrip progression hash stable"
+    },
+    {
+      "name": "dedicated_slot",
+      "ok": true,
+      "detail": "progression save_load_key must be 'WFProgression_State' (got 'WFProgression_State')"
+    },
+    {
+      "name": "not_forbidden_slot",
+      "ok": true,
+      "detail": "progression save slot must not reuse a combat/mission/npc slot"
+    }
+  ],
+  "meta": {
+    "command": "validate-progression-save-load",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
+    "timestamp": "2026-07-10T00:30:55.600463+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.progression_save_load_proof.v1",
+    "report_id": "wf.reward.progression_save_load_proof.v1:5d7dcf842f1e",
+    "status": "pass",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 1,
+    "records_total": 1,
+    "records_passed": 1,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

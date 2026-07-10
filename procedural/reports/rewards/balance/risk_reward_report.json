@@ -1,0 +1,557 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "risk-reward::nonzero": {
+      "ok": true,
+      "detail": "expected >=1 authoring scenario, got 12",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_00_rwt_disable_site_baseline::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'baseline_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_00_rwt_disable_site_baseline::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_00_rwt_disable_site_baseline::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_00_rwt_disable_site_baseline::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'baseline' expected class 'baseline_reward', got 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_01_rwt_disable_site_high::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'high_risk_high_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_01_rwt_disable_site_high::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_01_rwt_disable_site_high::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_01_rwt_disable_site_high::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'high' expected class 'high_risk_high_reward', got 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_02_rwt_recover_resource_baseline::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'baseline_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_02_rwt_recover_resource_baseline::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_02_rwt_recover_resource_baseline::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_02_rwt_recover_resource_baseline::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'baseline' expected class 'baseline_reward', got 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_03_rwt_recover_resource_high::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'high_risk_high_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_03_rwt_recover_resource_high::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_03_rwt_recover_resource_high::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_03_rwt_recover_resource_high::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'high' expected class 'high_risk_high_reward', got 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_04_rwt_survey_landmark_baseline::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'baseline_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_04_rwt_survey_landmark_baseline::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_04_rwt_survey_landmark_baseline::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_04_rwt_survey_landmark_baseline::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'baseline' expected class 'baseline_reward', got 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_05_rwt_survey_landmark_high::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'high_risk_high_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_05_rwt_survey_landmark_high::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_05_rwt_survey_landmark_high::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_05_rwt_survey_landmark_high::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'high' expected class 'high_risk_high_reward', got 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_06_rwt_clear_hazard_baseline::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'baseline_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_06_rwt_clear_hazard_baseline::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_06_rwt_clear_hazard_baseline::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_06_rwt_clear_hazard_baseline::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'baseline' expected class 'baseline_reward', got 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_07_rwt_clear_hazard_high::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'high_risk_high_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_07_rwt_clear_hazard_high::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_07_rwt_clear_hazard_high::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_07_rwt_clear_hazard_high::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'high' expected class 'high_risk_high_reward', got 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_08_rwt_restore_power_baseline::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'baseline_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_08_rwt_restore_power_baseline::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_08_rwt_restore_power_baseline::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_08_rwt_restore_power_baseline::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'baseline' expected class 'baseline_reward', got 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_09_rwt_restore_power_high::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'high_risk_high_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_09_rwt_restore_power_high::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_09_rwt_restore_power_high::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_09_rwt_restore_power_high::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'high' expected class 'high_risk_high_reward', got 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_10_rwt_extract_cache_baseline::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'baseline_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_10_rwt_extract_cache_baseline::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_10_rwt_extract_cache_baseline::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_10_rwt_extract_cache_baseline::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'baseline' expected class 'baseline_reward', got 'baseline_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_11_rwt_extract_cache_high::class_known": {
+      "ok": true,
+      "detail": "risk_reward_class 'high_risk_high_reward' not in registry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_11_rwt_extract_cache_high::not_blocking": {
+      "ok": true,
+      "detail": "scenario classifies as blocking class 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_11_rwt_extract_cache_high::exploit_clean": {
+      "ok": true,
+      "detail": "exploit_result 'clean' not clean/known",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "risk-reward::rs_auth_11_rwt_extract_cache_high::band_class_match": {
+      "ok": true,
+      "detail": "risk_band 'high' expected class 'high_risk_high_reward', got 'high_risk_high_reward'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 49,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "classify-risk-reward",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
+    "timestamp": "2026-07-10T00:30:54.807768+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.risk_reward_balance.v1",
+    "report_id": "wf.reward.risk_reward_balance.v1:f5b62a054fc2",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 12,
+    "records_total": 12,
+    "records_passed": 12,
+    "records_failed": 0,
+    "records_skipped": 0
+  },
+  "report_type": "wf.reward.risk_reward_balance.v1",
+  "scenarios": [
+    {
+      "scenario_id": "rs_auth_00_rwt_disable_site_baseline",
+      "reward_table_id": "rwt_disable_site_baseline",
+      "risk_band": "baseline",
+      "reward_value": 178.0,
+      "budget_min": 50.0,
+      "budget_max": 200.0,
+      "risk_reward_class": "baseline_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_01_rwt_disable_site_high",
+      "reward_table_id": "rwt_disable_site_high",
+      "risk_band": "high",
+      "reward_value": 360.0,
+      "budget_min": 120.0,
+      "budget_max": 360.0,
+      "risk_reward_class": "high_risk_high_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_02_rwt_recover_resource_baseline",
+      "reward_table_id": "rwt_recover_resource_baseline",
+      "risk_band": "baseline",
+      "reward_value": 178.0,
+      "budget_min": 50.0,
+      "budget_max": 200.0,
+      "risk_reward_class": "baseline_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_03_rwt_recover_resource_high",
+      "reward_table_id": "rwt_recover_resource_high",
+      "risk_band": "high",
+      "reward_value": 360.0,
+      "budget_min": 120.0,
+      "budget_max": 360.0,
+      "risk_reward_class": "high_risk_high_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_04_rwt_survey_landmark_baseline",
+      "reward_table_id": "rwt_survey_landmark_baseline",
+      "risk_band": "baseline",
+      "reward_value": 178.0,
+      "budget_min": 50.0,
+      "budget_max": 200.0,
+      "risk_reward_class": "baseline_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_05_rwt_survey_landmark_high",
+      "reward_table_id": "rwt_survey_landmark_high",
+      "risk_band": "high",
+      "reward_value": 360.0,
+      "budget_min": 120.0,
+      "budget_max": 360.0,
+      "risk_reward_class": "high_risk_high_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_06_rwt_clear_hazard_baseline",
+      "reward_table_id": "rwt_clear_hazard_baseline",
+      "risk_band": "baseline",
+      "reward_value": 178.0,
+      "budget_min": 50.0,
+      "budget_max": 200.0,
+      "risk_reward_class": "baseline_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_07_rwt_clear_hazard_high",
+      "reward_table_id": "rwt_clear_hazard_high",
+      "risk_band": "high",
+      "reward_value": 360.0,
+      "budget_min": 120.0,
+      "budget_max": 360.0,
+      "risk_reward_class": "high_risk_high_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_08_rwt_restore_power_baseline",
+      "reward_table_id": "rwt_restore_power_baseline",
+      "risk_band": "baseline",
+      "reward_value": 178.0,
+      "budget_min": 50.0,
+      "budget_max": 200.0,
+      "risk_reward_class": "baseline_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_09_rwt_restore_power_high",
+      "reward_table_id": "rwt_restore_power_high",
+      "risk_band": "high",
+      "reward_value": 360.0,
+      "budget_min": 120.0,
+      "budget_max": 360.0,
+      "risk_reward_class": "high_risk_high_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_10_rwt_extract_cache_baseline",
+      "reward_table_id": "rwt_extract_cache_baseline",
+      "risk_band": "baseline",
+      "reward_value": 178.0,
+      "budget_min": 50.0,
+      "budget_max": 200.0,
+      "risk_reward_class": "baseline_reward",
+      "exploit_result": "clean"
+    },
+    {
+      "scenario_id": "rs_auth_11_rwt_extract_cache_high",
+      "reward_table_id": "rwt_extract_cache_high",
+      "risk_band": "high",
+      "reward_value": 360.0,
+      "budget_min": 120.0,
+      "budget_max": 360.0,
+      "risk_reward_class": "high_risk_high_reward",
+      "exploit_result": "clean"
+    }
+  ]
+}

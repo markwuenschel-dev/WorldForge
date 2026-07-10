@@ -455,6 +455,9 @@ void AWFEncounterManager::BeginPlay()
 		SetupCombat(Start, Goal);
 	}
 
+	// --- v1.9 reward layer: grant/persist reward on completion (if enabled) -----
+	bRewardEnabled = WFEnvInt(TEXT("WF_REWARD_ENABLED"), 0) == 1;
+
 	if (Spawned == 0)
 	{
 		FinalizeFailure(TEXT("no_npc_spawned"));
@@ -634,6 +637,12 @@ void AWFEncounterManager::FinalizeCompletion()
 		FinalizeCombat(true);
 	}
 
+	// v1.9: grant reward + persist inventory/progression and emit reward markers.
+	if (bRewardEnabled)
+	{
+		FinalizeReward(true, bCombatEnabled);
+	}
+
 	// The objective owns the process exit (it schedules a graceful exit on arrival);
 	// we do not race it. If the objective is gone, request exit ourselves.
 	if (!Objective)
@@ -721,6 +730,171 @@ void AWFEncounterManager::FinalizeCombat(bool bMissionDone)
 		UE_LOG(LogWFRuntime, Warning,
 			TEXT("WF_COMBAT_FAIL combat_chain_broken scenario=%s saved=%d verified=%d events=%d final=%.1f mission=%d"),
 			*ScenarioId, bSaved ? 1 : 0, bVerified ? 1 : 0, Events, FinalH, bMissionDone ? 1 : 0);
+	}
+}
+
+// XP -> level, matching reward_forge.py LEVEL_XP_CURVE exactly (so runtime and
+// authoring derive the same level from the same xp_total).
+static int32 WFLevelForXp(float XpTotal)
+{
+	static const float Curve[] = {0.f, 100.f, 300.f, 600.f, 1000.f, 1500.f, 2100.f, 2800.f, 3600.f, 4500.f};
+	int32 Level = 1;
+	for (int32 i = 0; i < UE_ARRAY_COUNT(Curve); ++i)
+	{
+		if (XpTotal >= Curve[i]) { Level = i + 1; }
+	}
+	return Level;
+}
+
+void AWFEncounterManager::FinalizeReward(bool bMissionDone, bool bCombatDone)
+{
+	if (bRewardFinalized) { return; }
+	bRewardFinalized = true;
+
+	const FString Scn = ScenarioId;
+	const FString TableId = WFEnvStr(TEXT("WF_REWARD_TABLE_ID"), TEXT("none"));
+	const float Xp = WFEnvFloat(TEXT("WF_REWARD_XP"), 0.f);
+	const float PreXp = WFEnvFloat(TEXT("WF_REWARD_PRE_XP"), 0.f);
+	TArray<FString> Items, Unlocks;
+	WFEnvStr(TEXT("WF_REWARD_ITEMS"), TEXT("")).ParseIntoArray(Items, TEXT(","), true);
+	WFEnvStr(TEXT("WF_REWARD_UNLOCKS"), TEXT("")).ParseIntoArray(Unlocks, TEXT(","), true);
+
+	UE_LOG(LogWFRuntime, Display,
+		TEXT("WF_REWARD_START scenario=%s table=%s xp=%.1f items=%d unlocks=%d mission=%d combat=%d"),
+		*Scn, *TableId, Xp, Items.Num(), Unlocks.Num(), bMissionDone ? 1 : 0, bCombatDone ? 1 : 0);
+
+	// Reward requires completion — never grant on an unfinished mission.
+	if (!bMissionDone)
+	{
+		UE_LOG(LogWFRuntime, Warning, TEXT("WF_REWARD_FAIL reward_without_completion scenario=%s"), *Scn);
+		return;
+	}
+
+	// --- grant events (one marker per granted reward) ---------------------------
+	int32 Events = 0;
+	if (Xp > 0.f)
+	{
+		UE_LOG(LogWFRuntime, Display, TEXT("WF_REWARD_GRANT scenario=%s type=xp id=xp amount=%.1f"), *Scn, Xp);
+		++Events;
+	}
+	for (const FString& It : Items)
+	{
+		UE_LOG(LogWFRuntime, Display, TEXT("WF_REWARD_GRANT scenario=%s type=item id=%s amount=1.0"), *Scn, *It);
+		++Events;
+	}
+	for (const FString& Un : Unlocks)
+	{
+		UE_LOG(LogWFRuntime, Display, TEXT("WF_REWARD_GRANT scenario=%s type=unlock id=%s amount=1.0"), *Scn, *Un);
+		++Events;
+	}
+
+	// --- inventory state (distinct WFInventory_State slot) ----------------------
+	const FString InvSlot = TEXT("WFInventory_State");
+	UWFInventorySaveGame* Inv = Cast<UWFInventorySaveGame>(
+		UGameplayStatics::CreateSaveGameObject(UWFInventorySaveGame::StaticClass()));
+	bool bInvSaved = false;
+	if (Inv)
+	{
+		Inv->ScenarioId = Scn;
+		for (const FString& It : Items) { Inv->ItemInstanceIds.Add(FString::Printf(TEXT("ii_%s_%s"), *Scn, *It)); }
+		Inv->ItemCount = Inv->ItemInstanceIds.Num();
+		bInvSaved = UGameplayStatics::SaveGameToSlot(Inv, InvSlot, 0);
+	}
+	const bool bInvMutated = Items.Num() > 0;
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_REWARD_INVENTORY_MUTATED mutated=%d items=%d slot=%s"),
+		bInvMutated ? 1 : 0, Inv ? Inv->ItemCount : 0, *InvSlot);
+
+	// --- progression state (distinct WFProgression_State slot) ------------------
+	const FString ProgSlot = TEXT("WFProgression_State");
+	const float XpTotal = PreXp + Xp;
+	const int32 Level = WFLevelForXp(XpTotal);
+	UWFProgressionSaveGame* Prog = Cast<UWFProgressionSaveGame>(
+		UGameplayStatics::CreateSaveGameObject(UWFProgressionSaveGame::StaticClass()));
+	bool bProgSaved = false;
+	if (Prog)
+	{
+		Prog->ScenarioId = Scn;
+		Prog->XpTotal = XpTotal;
+		Prog->Level = Level;
+		Prog->Unlocks = Unlocks;
+		Prog->CompletedMissions.Add(FString::Printf(TEXT("m_%s"), *Scn));
+		bProgSaved = UGameplayStatics::SaveGameToSlot(Prog, ProgSlot, 0);
+	}
+	const bool bProgMutated = (Xp > 0.f) || (Unlocks.Num() > 0);
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_REWARD_PROGRESSION_MUTATED mutated=%d level=%d xp_total=%.1f unlocks=%d slot=%s"),
+		bProgMutated ? 1 : 0, Level, XpTotal, Unlocks.Num(), *ProgSlot);
+
+	// --- reward summary (distinct WFReward_State slot) --------------------------
+	const FString RewSlot = TEXT("WFReward_State");
+	UWFRewardSaveGame* Rew = Cast<UWFRewardSaveGame>(
+		UGameplayStatics::CreateSaveGameObject(UWFRewardSaveGame::StaticClass()));
+	bool bRewSaved = false;
+	if (Rew)
+	{
+		Rew->ScenarioId = Scn;
+		Rew->RewardTableId = TableId;
+		Rew->RewardEventsGranted = Events;
+		Rew->XpGranted = Xp;
+		Rew->ItemsGranted = Items;
+		Rew->UnlocksGranted = Unlocks;
+		bRewSaved = UGameplayStatics::SaveGameToSlot(Rew, RewSlot, 0);
+	}
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_REWARD_SAVE saved=%d slot=%s events=%d"),
+		bRewSaved ? 1 : 0, *RewSlot, Events);
+
+	// --- reload-verify all three slots from disk in-process ---------------------
+	int32 LoadedInvItems = -1, LoadedProgLevel = -1, LoadedRewEvents = -1;
+	float LoadedProgXp = -1.f;
+	bool bInvOk = false, bProgOk = false, bRewOk = false;
+	if (bInvSaved && UGameplayStatics::DoesSaveGameExist(InvSlot, 0))
+	{
+		if (UWFInventorySaveGame* L = Cast<UWFInventorySaveGame>(UGameplayStatics::LoadGameFromSlot(InvSlot, 0)))
+		{
+			LoadedInvItems = L->ItemCount;
+			bInvOk = (L->ItemCount == (Inv ? Inv->ItemCount : -1)) && (L->ScenarioId == Scn);
+		}
+	}
+	if (bProgSaved && UGameplayStatics::DoesSaveGameExist(ProgSlot, 0))
+	{
+		if (UWFProgressionSaveGame* L = Cast<UWFProgressionSaveGame>(UGameplayStatics::LoadGameFromSlot(ProgSlot, 0)))
+		{
+			LoadedProgLevel = L->Level;
+			LoadedProgXp = L->XpTotal;
+			bProgOk = (L->Level == Level) && FMath::IsNearlyEqual(L->XpTotal, XpTotal) && (L->Unlocks.Num() == Unlocks.Num());
+		}
+	}
+	if (bRewSaved && UGameplayStatics::DoesSaveGameExist(RewSlot, 0))
+	{
+		if (UWFRewardSaveGame* L = Cast<UWFRewardSaveGame>(UGameplayStatics::LoadGameFromSlot(RewSlot, 0)))
+		{
+			LoadedRewEvents = L->RewardEventsGranted;
+			bRewOk = (L->RewardEventsGranted == Events) && (L->ScenarioId == Scn);
+		}
+	}
+	const bool bVerified = bInvOk && bProgOk && bRewOk;
+	UE_LOG(LogWFRuntime, Display,
+		TEXT("WF_REWARD_VERIFY persisted_%s inv_items=%d prog_level=%d prog_xp=%.1f reward_events=%d"),
+		bVerified ? TEXT("true") : TEXT("false"), LoadedInvItems, LoadedProgLevel, LoadedProgXp, LoadedRewEvents);
+
+	// --- next-mission state handoff: enabled generation-affecting unlocks -------
+	const int32 UnlocksEnabled = Unlocks.Num();  // every granted unlock is enabled + affects generation
+	UE_LOG(LogWFRuntime, Display, TEXT("WF_REWARD_NEXT_MISSION written=1 unlocks_enabled=%d level=%d xp_total=%.1f"),
+		UnlocksEnabled, Level, XpTotal);
+
+	// --- done: real durable consequence (>=1 grant + a mutation + persisted) ----
+	const bool bMutated = bInvMutated || bProgMutated;
+	const bool bAllSaved = bInvSaved && bProgSaved && bRewSaved;
+	if (bAllSaved && bVerified && Events >= 1 && bMutated && bMissionDone)
+	{
+		UE_LOG(LogWFRuntime, Display,
+			TEXT("WF_REWARD_DONE scenario.completed scenario=%s events=%d items=%d xp=%.1f unlocks=%d inv_mutated=%d prog_mutated=%d level=%d xp_total=%.1f"),
+			*Scn, Events, Items.Num(), Xp, Unlocks.Num(), bInvMutated ? 1 : 0, bProgMutated ? 1 : 0, Level, XpTotal);
+	}
+	else
+	{
+		UE_LOG(LogWFRuntime, Warning,
+			TEXT("WF_REWARD_FAIL reward_chain_broken scenario=%s saved=%d verified=%d events=%d mutated=%d mission=%d"),
+			*Scn, bAllSaved ? 1 : 0, bVerified ? 1 : 0, Events, bMutated ? 1 : 0, bMissionDone ? 1 : 0);
 	}
 }
 

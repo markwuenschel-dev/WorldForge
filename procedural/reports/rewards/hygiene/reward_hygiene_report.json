@@ -1,0 +1,130 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::clean_no_orphans": {
+      "ok": true,
+      "detail": "a generatable evidence file must not be flagged as orphan",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::clean_no_leaks": {
+      "ok": true,
+      "detail": "a clean evidence file must report no leaks",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::clean_no_junk": {
+      "ok": true,
+      "detail": "a clean tree must report no junk",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::orphan_flagged": {
+      "ok": true,
+      "detail": "a scenario with no generated state must be flagged as orphan (got [('reward_completion_rs_totally_orphan.json', 'rs_totally_orphan')])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::abs_path_leak_flagged": {
+      "ok": true,
+      "detail": "an absolute filesystem path must be flagged (got [('reward_completion_rs_leak_abs.json', 'absolute filesystem path leaked into evidence'), ('reward_completion_rs_leak_slot.json', \"forbidden save slot 'WFCombat_State' leaked into evidence\")])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::save_slot_leak_flagged": {
+      "ok": true,
+      "detail": "a forbidden save slot must be flagged (got [('reward_completion_rs_leak_abs.json', 'absolute filesystem path leaked into evidence'), ('reward_completion_rs_leak_slot.json', \"forbidden save slot 'WFCombat_State' leaked into evidence\")])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::junk_flagged": {
+      "ok": true,
+      "detail": "UE transients / crash logs / save slots must be flagged (got ['rewards/completion/WFReward.log', 'rewards/completion/WFReward_State.sav', 'rewards/Saved/autosave.json'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::generatable_known": {
+      "ok": true,
+      "detail": "no generatable scenario ids resolved from procedural/generated/progression/inventory — cannot validate orphans",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::no_orphan_evidence": {
+      "ok": true,
+      "detail": "orphan/stray reward evidence (scenario has no generated state): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::no_path_or_save_slot_leak": {
+      "ok": true,
+      "detail": "absolute-path / forbidden-save-slot leak in reward evidence: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::no_ue_transients_or_junk": {
+      "ok": true,
+      "detail": "UE transients / crash logs / save-slot junk under the reward trees: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 11,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "reward-hygiene",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "8a67d10aa66a1d4354b6d40992e3d4bf1b3ef932",
+    "timestamp": "2026-07-10T01:33:02.269209+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.hygiene.v1",
+    "report_id": "wf.reward.hygiene.v1:d9dbc78f3ce5",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 132,
+    "records_total": 132,
+    "records_passed": 132,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

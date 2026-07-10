@@ -1,0 +1,364 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::coherent_chain_unbroken": {
+      "ok": true,
+      "detail": "authoritative authoring chain is unbroken",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::broken_chain_detected": {
+      "ok": true,
+      "detail": "a tampered prev_progression_hash is detected as a broken hand-off",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::min_scenarios": {
+      "ok": true,
+      "detail": "need >= 2 scenarios to prove a next-mission hand-off (got 12)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_00_rwt_disable_site_baseline::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_00_rwt_disable_site_baseline disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_01_rwt_disable_site_high::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_01_rwt_disable_site_high disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_01_rwt_disable_site_high::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:9ac196ab5d7d3078' for rs_auth_01_rwt_disable_site_high must equal prior scenario hash 'prog:9ac196ab5d7d3078'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_02_rwt_recover_resource_baseline::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_02_rwt_recover_resource_baseline disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_02_rwt_recover_resource_baseline::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:58b0d97c71cf83b6' for rs_auth_02_rwt_recover_resource_baseline must equal prior scenario hash 'prog:58b0d97c71cf83b6'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_03_rwt_recover_resource_high::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_03_rwt_recover_resource_high disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_03_rwt_recover_resource_high::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:3d4f08e71d691674' for rs_auth_03_rwt_recover_resource_high must equal prior scenario hash 'prog:3d4f08e71d691674'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_04_rwt_survey_landmark_baseline::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_04_rwt_survey_landmark_baseline disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_04_rwt_survey_landmark_baseline::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:f45f9631d78e4816' for rs_auth_04_rwt_survey_landmark_baseline must equal prior scenario hash 'prog:f45f9631d78e4816'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_05_rwt_survey_landmark_high::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_05_rwt_survey_landmark_high disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_05_rwt_survey_landmark_high::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:42bb6df6d7edfa5d' for rs_auth_05_rwt_survey_landmark_high must equal prior scenario hash 'prog:42bb6df6d7edfa5d'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_06_rwt_clear_hazard_baseline::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_06_rwt_clear_hazard_baseline disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_06_rwt_clear_hazard_baseline::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:995e0984223334d7' for rs_auth_06_rwt_clear_hazard_baseline must equal prior scenario hash 'prog:995e0984223334d7'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_07_rwt_clear_hazard_high::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_07_rwt_clear_hazard_high disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_07_rwt_clear_hazard_high::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:391cdb64614fb741' for rs_auth_07_rwt_clear_hazard_high must equal prior scenario hash 'prog:391cdb64614fb741'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_08_rwt_restore_power_baseline::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_08_rwt_restore_power_baseline disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_08_rwt_restore_power_baseline::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:b6e95dc8e743a85d' for rs_auth_08_rwt_restore_power_baseline must equal prior scenario hash 'prog:b6e95dc8e743a85d'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_09_rwt_restore_power_high::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_09_rwt_restore_power_high disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_09_rwt_restore_power_high::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:07be6ae949703833' for rs_auth_09_rwt_restore_power_high must equal prior scenario hash 'prog:07be6ae949703833'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_10_rwt_extract_cache_baseline::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_10_rwt_extract_cache_baseline disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_10_rwt_extract_cache_baseline::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:4d4458d4166c0913' for rs_auth_10_rwt_extract_cache_baseline must equal prior scenario hash 'prog:4d4458d4166c0913'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_11_rwt_extract_cache_high::disk_hash_matches": {
+      "ok": true,
+      "detail": "on-disk progression_hash for rs_auth_11_rwt_extract_cache_high disagrees with authoritative chain",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "chain::rs_auth_11_rwt_extract_cache_high::prev_hash_links": {
+      "ok": true,
+      "detail": "prev_progression_hash 'prog:69ec44e52601a876' for rs_auth_11_rwt_extract_cache_high must equal prior scenario hash 'prog:69ec44e52601a876'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::final_disk_present": {
+      "ok": true,
+      "detail": "final scenario rs_auth_11_rwt_extract_cache_high progression state must be on disk",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::final_unlocks_nonempty": {
+      "ok": true,
+      "detail": "final scenario progression must carry >= 1 unlock for the next mission to read",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_badlands_biome::present": {
+      "ok": true,
+      "detail": "generation-affecting unlock unl_badlands_biome has no on-disk UnlockState",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_badlands_biome::enabled": {
+      "ok": true,
+      "detail": "unlock unl_badlands_biome must be enabled and affects_generation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_hardened_mod::present": {
+      "ok": true,
+      "detail": "generation-affecting unlock unl_hardened_mod has no on-disk UnlockState",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_hardened_mod::enabled": {
+      "ok": true,
+      "detail": "unlock unl_hardened_mod must be enabled and affects_generation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_hazard_missions::present": {
+      "ok": true,
+      "detail": "generation-affecting unlock unl_hazard_missions has no on-disk UnlockState",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_hazard_missions::enabled": {
+      "ok": true,
+      "detail": "unlock unl_hazard_missions must be enabled and affects_generation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_heavy_rifle::present": {
+      "ok": true,
+      "detail": "generation-affecting unlock unl_heavy_rifle has no on-disk UnlockState",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_heavy_rifle::enabled": {
+      "ok": true,
+      "detail": "unlock unl_heavy_rifle must be enabled and affects_generation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_marksman_access::present": {
+      "ok": true,
+      "detail": "generation-affecting unlock unl_marksman_access has no on-disk UnlockState",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_marksman_access::enabled": {
+      "ok": true,
+      "detail": "unlock unl_marksman_access must be enabled and affects_generation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_scout_slot::present": {
+      "ok": true,
+      "detail": "generation-affecting unlock unl_scout_slot has no on-disk UnlockState",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "next_mission::unlock::unl_scout_slot::enabled": {
+      "ok": true,
+      "detail": "unlock unl_scout_slot must be enabled and affects_generation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 40,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-next-mission-state",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
+    "timestamp": "2026-07-10T00:30:55.794842+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.next_mission_state_report.v1",
+    "report_id": "wf.reward.next_mission_state_report.v1:a9f53dbf03d3",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 12,
+    "records_total": 12,
+    "records_passed": 12,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "final_scenario": "rs_auth_11_rwt_extract_cache_high",
+    "final_unlock_count": 6
+  }
+}
