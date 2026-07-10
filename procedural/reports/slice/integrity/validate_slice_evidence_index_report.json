@@ -35,6 +35,14 @@
       "code": null,
       "blocking": false
     },
+    "dogfood::rejects_duplicate_ids": {
+      "ok": true,
+      "detail": "'duplicate_ids' index must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "index_present": {
       "ok": true,
       "detail": "evidence index missing — run Wave R to produce it (slice_evidence_index_worldforge_vertical_slice.json)",
@@ -315,9 +323,17 @@
       "code": null,
       "blocking": false
     },
+    "index::ei::runtime_reports_distinct_full": {
+      "ok": true,
+      "detail": "runtime_reports must list 24 DISTINCT scenario ids (got 24 distinct)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "index::ei::runtime_reports_covers_all": {
       "ok": true,
-      "detail": "runtime_reports must carry one entry per expected scenario (24 != 24)",
+      "detail": "runtime_reports must cover the 24 distinct scenarios in runtime_reports (24 distinct, same_set=True)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -325,7 +341,7 @@
     },
     "index::ei::traversal_reports_covers_all": {
       "ok": true,
-      "detail": "traversal_reports must carry one entry per expected scenario (24 != 24)",
+      "detail": "traversal_reports must cover the 24 distinct scenarios in runtime_reports (24 distinct, same_set=True)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -333,7 +349,7 @@
     },
     "index::ei::npc_reports_covers_all": {
       "ok": true,
-      "detail": "npc_reports must carry one entry per expected scenario (24 != 24)",
+      "detail": "npc_reports must cover the 24 distinct scenarios in runtime_reports (24 distinct, same_set=True)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -341,7 +357,7 @@
     },
     "index::ei::combat_reports_covers_all": {
       "ok": true,
-      "detail": "combat_reports must carry one entry per expected scenario (24 != 24)",
+      "detail": "combat_reports must cover the 24 distinct scenarios in runtime_reports (24 distinct, same_set=True)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -349,7 +365,7 @@
     },
     "index::ei::reward_reports_covers_all": {
       "ok": true,
-      "detail": "reward_reports must carry one entry per expected scenario (24 != 24)",
+      "detail": "reward_reports must cover the 24 distinct scenarios in runtime_reports (24 distinct, same_set=True)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -357,7 +373,7 @@
     },
     "index::ei::save_load_reports_covers_all": {
       "ok": true,
-      "detail": "save_load_reports must carry one entry per expected scenario (24 != 24)",
+      "detail": "save_load_reports must cover the 24 distinct scenarios in runtime_reports (24 distinct, same_set=True)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -382,7 +398,7 @@
   },
   "failures": [],
   "counts": {
-    "PASS": 47,
+    "PASS": 49,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -397,8 +413,8 @@
     "deep": false,
     "torture": false,
     "seeds": null,
-    "git_sha": "69103050d1d4e24470c1b6a3c5f67dae35ad2f31",
-    "timestamp": "2026-07-10T19:02:22.103514+00:00",
+    "git_sha": "f639d67c8cf1383811b85fea66d585d951ef85e3",
+    "timestamp": "2026-07-10T19:29:45.039758+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
