@@ -277,6 +277,11 @@ def do_index(strict):
     ssids = sorted({d["slice_scenario_id"] for d in completed})
     expected = set(SE.manifest_scenario_ids())
     missing = sorted(expected - set(ssids))
+    # save_load_reports is a DERIVED subset: the scenarios whose runtime report
+    # actually proved save_load_result==roundtrip_ok — not a blind copy of ssids,
+    # so a scenario that completed but failed save/load would drop out here.
+    sl_reports = sorted({d["slice_scenario_id"] for d in completed
+                         if d.get("save_load_result") == SX.SAVE_LOAD_ROUNDTRIP_OK})
     # reference the package report in the index if Wave P has produced one.
     pkg_path = SE.PACKAGE_DIR / "slice_package_{}.json".format(SLICE_ID)
     pkg_reports = ["slice_package_{}".format(SLICE_ID)] if pkg_path.is_file() else []
@@ -285,11 +290,7 @@ def do_index(strict):
         "scenario_count_expected": SE.EXPECTED_SCENARIOS,
         "scenario_count_seen": len(ssids),
         "runtime_reports": list(ssids),
-        "traversal_reports": list(ssids),
-        "npc_reports": list(ssids),
-        "combat_reports": list(ssids),
-        "reward_reports": list(ssids),
-        "save_load_reports": list(ssids),
+        "save_load_reports": sl_reports,
         "package_reports": pkg_reports,
         "missing_evidence": missing,
         "stale_evidence": [],

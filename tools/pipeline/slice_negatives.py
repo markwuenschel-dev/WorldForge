@@ -125,9 +125,7 @@ def cases():
     # lists are the same id repeated, so distinct count < expected (the C1 hole).
     c.append(("idx:duplicate_ids_not_coverage", IDX,
               e_idx(scenario_count_expected=2, scenario_count_seen=2,
-                    runtime_reports=["s", "s"], traversal_reports=["s", "s"],
-                    npc_reports=["s", "s"], combat_reports=["s", "s"],
-                    reward_reports=["s", "s"], save_load_reports=["s", "s"]),
+                    runtime_reports=["s", "s"], save_load_reports=["s", "s"]),
               F.SLICE_PARTIAL_MATRIX))
     return c
 

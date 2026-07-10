@@ -596,16 +596,23 @@ def _example_slice_package_report(**over):
 # --------------------------------------------------------------------------- #
 SLICE_EVIDENCE_INDEX_REQUIRED = (
     "slice_id", "scenario_count_expected", "scenario_count_seen",
-    "runtime_reports", "traversal_reports", "npc_reports", "combat_reports",
-    "reward_reports", "save_load_reports", "package_reports",
+    "runtime_reports", "save_load_reports", "package_reports",
     "missing_evidence", "stale_evidence", "integrity_result", "schema_version",
 )
 SLICE_EVIDENCE_INDEX_ALLOWED = SLICE_EVIDENCE_INDEX_REQUIRED + (
     "meta", "report_type", "created_by", "created_at", "duplicate_reports", "notes",
 )
+# Evidence categories carried by the index. Only categories backed by a real,
+# independently-inspectable artifact are listed: runtime_reports (one
+# slice_runtime_<ssid>.json per scenario), save_load_reports (the scenarios whose
+# runtime report proved save_load_result==roundtrip_ok — a DERIVED subset, not a
+# blind copy), and package_reports (the SlicePackageReport). The traversal / npc /
+# combat / reward facets are proven INSIDE each SliceRuntimeReport and by the
+# per-facet validators (validate_slice_traversal/npc_combat/rewards) — they are
+# not separate evidence files, so listing them here (as copies of the runtime
+# ssids) claimed independence the index did not have. Audit candidate C4.
 _EVIDENCE_LIST_FIELDS = (
-    "runtime_reports", "traversal_reports", "npc_reports", "combat_reports",
-    "reward_reports", "save_load_reports", "package_reports",
+    "runtime_reports", "save_load_reports", "package_reports",
 )
 
 
@@ -671,10 +678,6 @@ def _example_slice_evidence_index(**over):
         "scenario_count_expected": 1,
         "scenario_count_seen": 1,
         "runtime_reports": list(one),
-        "traversal_reports": list(one),
-        "npc_reports": list(one),
-        "combat_reports": list(one),
-        "reward_reports": list(one),
         "save_load_reports": list(one),
         "package_reports": ["slice_package_worldforge_vertical_slice"],
         "missing_evidence": [],
