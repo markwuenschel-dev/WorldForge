@@ -171,7 +171,7 @@ def build_report(scn, text):
     if not fac["npc_behavior_seen"]:
         fc.append(F.SLICE_NPC_EVIDENCE_MISSING)
     if not fac["combat_damage_seen"]:
-        fc.append(F.SLICE_NPC_NO_DAMAGE)
+        fc.append(F.SLICE_COMBAT_EVIDENCE_MISSING)
     if not fac["mission_completed"]:
         fc.append(F.SLICE_MISSION_INCOMPLETE)
     if not reward_granted:
