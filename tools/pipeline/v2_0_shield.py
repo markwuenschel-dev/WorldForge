@@ -87,6 +87,10 @@ def main(argv=None):
         results.append(run("slice:npc-combat", "validate_slice_npc_combat.py", *P, *s))
         results.append(run("slice:rewards", "validate_slice_rewards.py", *P, *s))
         results.append(run("slice:save-load", "validate_slice_save_load.py", *P, *s))
+        # build the evidence index from the certified runtime reports BEFORE
+        # validating it, so the runtime lane is self-contained (the index is a
+        # produced artifact, not a manual --index prerequisite).
+        results.append(run("slice:evidence-index-build", "run_slice_forge_alpha.py", "--index", *s))
         results.append(run("slice:evidence-index", "validate_slice_evidence_index.py", *P, *s))
 
     # --- Package proof (--package) -----------------------------------------

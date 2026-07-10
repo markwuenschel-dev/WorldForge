@@ -1536,6 +1536,8 @@ validate-slice-rewards:
 	$(PYTHON) tools/pipeline/validate_slice_rewards.py --pack $(PACK) $(if $(STRICT),--strict,)
 validate-slice-save-load:
 	$(PYTHON) tools/pipeline/validate_slice_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+build-slice-evidence-index:
+	$(PYTHON) tools/pipeline/run_slice_forge_alpha.py --index $(if $(STRICT),--strict,)
 validate-slice-evidence-index:
 	$(PYTHON) tools/pipeline/validate_slice_evidence_index.py --pack $(PACK) $(if $(STRICT),--strict,)
 
@@ -1567,7 +1569,7 @@ v2-0-shield:
 .PHONY: vertical-slice-contracts validate-makefile-refs generate-slice-scenarios validate-slice-scenarios \
 	validate-slice-environment validate-slice-assets build-vertical-slice \
 	run-vertical-slice-runtime validate-slice-traversal validate-slice-npc-combat \
-	validate-slice-rewards validate-slice-save-load validate-slice-evidence-index \
+	validate-slice-rewards validate-slice-save-load build-slice-evidence-index validate-slice-evidence-index \
 	package-slice validate-slice-package vertical-slice-negative-validators \
 	vertical-slice-fuzz vertical-slice-torture vertical-slice-report-integrity \
 	vertical-slice-hygiene v2-0-shield
