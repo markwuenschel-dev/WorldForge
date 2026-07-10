@@ -110,14 +110,25 @@ PYTHONUTF8=1 STRICT=1 python tools/pipeline/v2_0_shield.py --pack encounter_loop
 PYTHONUTF8=1 STRICT=1 python tools/pipeline/v2_0_shield.py --pack encounter_loop_world --strict --slices --require-live --package --torture
 ```
 
-### Authoring / runtime / package / hostile (Waves 2–P — fail-closed until built)
+### Authoring (Wave 2, GREEN)
 `generate_slice_scenarios.py` · `validate_slice_scenarios.py` ·
-`validate_slice_environment.py` · `validate_slice_assets.py` ·
-`run_slice_forge_alpha.py` · `validate_slice_traversal.py` ·
+`validate_slice_environment.py` · `validate_slice_assets.py`
+
+### Hostile (GREEN — certify the machinery without engine evidence)
+`slice_negatives.py` · `slice_fuzz.py` · `slice_torture.py` · `slice_hygiene.py`
+
+### Runtime / package (BUILT, fail-closed RED until Wave R/P produce UE evidence)
+`run_slice_forge_alpha.py --gate` · `validate_slice_traversal.py` ·
 `validate_slice_npc_combat.py` · `validate_slice_rewards.py` ·
 `validate_slice_save_load.py` · `validate_slice_evidence_index.py` ·
-`validate_slice_package.py` · `slice_fuzz.py` · `slice_torture.py` ·
-`slice_report_integrity.py` · `slice_hygiene.py`
+`validate_slice_package.py` · `slice_report_integrity.py`
+
+Every gate is implemented. Full shield state today: **RED 10/18** — GREEN =
+failure-codes, contracts, generate, scenarios, environment, assets, negatives,
+fuzz-300, torture, hygiene; RED (awaiting UE runtime/package evidence) =
+runtime-matrix, traversal, npc-combat, rewards, save-load, evidence-index,
+package, report-integrity. Each RED gate dogfoods its checker (so its logic is
+proven now) and prints a "run Wave R/P" message — never fake-green.
 
 ---
 
