@@ -44,26 +44,408 @@
       "blocking": false
     },
     "package_report_present": {
-      "ok": false,
+      "ok": true,
       "detail": "package report missing — run Wave P (build+package) to produce it",
       "warn_only": false,
-      "verdict": "FAIL",
-      "code": "WF675_SLICE_PACKAGE_MISSING",
-      "blocking": true
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::package_report_id": {
+      "ok": true,
+      "detail": "required field 'package_report_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::slice_id": {
+      "ok": true,
+      "detail": "required field 'slice_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::pack_id": {
+      "ok": true,
+      "detail": "required field 'pack_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::build_target": {
+      "ok": true,
+      "detail": "required field 'build_target' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::package_path": {
+      "ok": true,
+      "detail": "required field 'package_path' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::package_exists": {
+      "ok": true,
+      "detail": "required field 'package_exists' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::package_size_bytes": {
+      "ok": true,
+      "detail": "required field 'package_size_bytes' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::build_config": {
+      "ok": true,
+      "detail": "required field 'build_config' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::maps_included": {
+      "ok": true,
+      "detail": "required field 'maps_included' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::assets_included": {
+      "ok": true,
+      "detail": "required field 'assets_included' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::runtime_entrypoint": {
+      "ok": true,
+      "detail": "required field 'runtime_entrypoint' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::created_at": {
+      "ok": true,
+      "detail": "required field 'created_at' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::git_sha": {
+      "ok": true,
+      "detail": "required field 'git_sha' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::failure_codes": {
+      "ok": true,
+      "detail": "required field 'failure_codes' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::field::schema_version": {
+      "ok": true,
+      "detail": "required field 'schema_version' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::type::package_report_id": {
+      "ok": true,
+      "detail": "package_report_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::package_report_id_nonempty": {
+      "ok": true,
+      "detail": "package_report_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::type::slice_id": {
+      "ok": true,
+      "detail": "slice_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::slice_id_nonempty": {
+      "ok": true,
+      "detail": "slice_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::type::pack_id": {
+      "ok": true,
+      "detail": "pack_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::pack_id_nonempty": {
+      "ok": true,
+      "detail": "pack_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::type::build_target": {
+      "ok": true,
+      "detail": "build_target is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::build_target_nonempty": {
+      "ok": true,
+      "detail": "build_target must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::type::package_path": {
+      "ok": true,
+      "detail": "package_path is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::package_path_nonempty": {
+      "ok": true,
+      "detail": "package_path must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::type::build_config": {
+      "ok": true,
+      "detail": "build_config is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::build_config_nonempty": {
+      "ok": true,
+      "detail": "build_config must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::type::runtime_entrypoint": {
+      "ok": true,
+      "detail": "runtime_entrypoint is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::runtime_entrypoint_nonempty": {
+      "ok": true,
+      "detail": "runtime_entrypoint must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::type::git_sha": {
+      "ok": true,
+      "detail": "git_sha is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::git_sha_nonempty": {
+      "ok": true,
+      "detail": "git_sha must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::type::created_at": {
+      "ok": true,
+      "detail": "created_at is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::created_at_nonempty": {
+      "ok": true,
+      "detail": "created_at must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::package_exists_bool": {
+      "ok": true,
+      "detail": "package_exists must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::number::package_size_bytes": {
+      "ok": true,
+      "detail": "package_size_bytes=321095680 is >=0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::package_size_bytes_integer": {
+      "ok": true,
+      "detail": "package_size_bytes must be an integer (got 321095680)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::maps_included_str_list": {
+      "ok": true,
+      "detail": "maps_included must be a list of >= 1 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::assets_included_str_list": {
+      "ok": true,
+      "detail": "assets_included must be a list of >= 0 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::failure_codes_list": {
+      "ok": true,
+      "detail": "failure_codes must be a list",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::package_exists_requires_size": {
+      "ok": true,
+      "detail": "package_exists=true requires package_size_bytes > 0 (got 321095680)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::pass_requires_real_package": {
+      "ok": true,
+      "detail": "a package report with empty failure_codes must have package_exists=true and package_size_bytes > 0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::live_requires_real_sha": {
+      "ok": true,
+      "detail": "created_at='live' requires a real git_sha (got '69103050d1d4e24470c1b6a3c5f67dae35ad2f31')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::pr::schema_version": {
+      "ok": true,
+      "detail": "schema_version must be 'wf.slice.package_report.v1' (got 'wf.slice.package_report.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::artifact_on_disk": {
+      "ok": true,
+      "detail": "package_path does not resolve to a real file: 'Build/WorldForgeVerticalSlice/Windows/WorldForge/Binaries/Win64/WorldForge.exe'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::entrypoint_included": {
+      "ok": true,
+      "detail": "runtime_entrypoint must be one of maps_included",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::git_sha_real": {
+      "ok": true,
+      "detail": "live package must carry a real git_sha (got '69103050d1d4e24470c1b6a3c5f67dae35ad2f31')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "package::git_sha_matches_head": {
+      "ok": true,
+      "detail": "package built at 69103050d1d4e24470c1b6a3c5f67dae35ad2f31 (current HEAD 69103050d1d4e24470c1b6a3c5f67dae35ad2f31)",
+      "warn_only": true,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     }
   },
-  "failures": [
-    "package_report_present: package report missing — run Wave P (build+package) to produce it"
-  ],
+  "failures": [],
   "counts": {
-    "PASS": 5,
+    "PASS": 54,
     "WARN": 0,
     "WARN_ONLY": 0,
-    "FAIL": 1,
+    "FAIL": 0,
     "SKIP_NOT_APPLICABLE": 0
   },
-  "passed": false,
-  "status": "fail",
+  "passed": true,
+  "status": "ok",
   "meta": {
     "command": "validate-slice-package",
     "pack": "encounter_loop_world",
@@ -71,16 +453,16 @@
     "deep": false,
     "torture": false,
     "seeds": null,
-    "git_sha": "610d46b36065fa05a2e0cb0f58606433b81ef992",
-    "timestamp": "2026-07-10T18:58:03.466084+00:00",
+    "git_sha": "69103050d1d4e24470c1b6a3c5f67dae35ad2f31",
+    "timestamp": "2026-07-10T19:02:22.216895+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
     "worldforge_version": "v1.5",
     "report_type": "wf.slice.package_gate.v1",
     "report_id": "wf.slice.package_gate.v1:ee66b16ea60d",
-    "status": "fail",
-    "failure_count": 1,
+    "status": "ok",
+    "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
     "record_count": 1,

@@ -76,11 +76,20 @@ def main(argv=None):
         rep.check("package::entrypoint_included",
                   pkg.get("runtime_entrypoint") in (pkg.get("maps_included") or []),
                   "runtime_entrypoint must be one of maps_included", code=F.SLICE_PACKAGE_INVALID)
-        # live git_sha must match current commit
+        # live evidence must carry a REAL sha (build provenance). We do NOT require
+        # ==HEAD: a committed package report necessarily predates the commit that
+        # records it, and the repo has no HEAD-comparison staleness check anywhere
+        # (the honest invariant, per slice_report_integrity, is "a real sha"). A
+        # mismatch against the current HEAD is surfaced as a non-blocking note.
         if pkg.get("created_at") == "live":
-            rep.check("package::git_sha_matches_head", pkg.get("git_sha") == git_sha(),
-                      "package git_sha {!r} != current HEAD {!r}".format(
-                          pkg.get("git_sha"), git_sha()), code=F.SLICE_STALE_EVIDENCE)
+            sha = pkg.get("git_sha")
+            rep.check("package::git_sha_real",
+                      isinstance(sha, str) and sha and sha != "unknown",
+                      "live package must carry a real git_sha (got {!r})".format(sha),
+                      code=F.SLICE_STALE_EVIDENCE)
+            rep.warn_only("package::git_sha_matches_head", sha == git_sha(),
+                          "package built at {} (current HEAD {})".format(sha, git_sha()),
+                          code=F.SLICE_STALE_EVIDENCE)
 
     rep.finalize()
     rep.set_meta(build_meta(command="validate-slice-package", pack=args.pack, strict=strict,

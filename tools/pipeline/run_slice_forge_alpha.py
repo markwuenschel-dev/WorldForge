@@ -277,6 +277,9 @@ def do_index(strict):
     ssids = sorted({d["slice_scenario_id"] for d in completed})
     expected = set(SE.manifest_scenario_ids())
     missing = sorted(expected - set(ssids))
+    # reference the package report in the index if Wave P has produced one.
+    pkg_path = SE.PACKAGE_DIR / "slice_package_{}.json".format(SLICE_ID)
+    pkg_reports = ["slice_package_{}".format(SLICE_ID)] if pkg_path.is_file() else []
     idx = {
         "slice_id": SLICE_ID,
         "scenario_count_expected": SE.EXPECTED_SCENARIOS,
@@ -287,7 +290,7 @@ def do_index(strict):
         "combat_reports": list(ssids),
         "reward_reports": list(ssids),
         "save_load_reports": list(ssids),
-        "package_reports": [],
+        "package_reports": pkg_reports,
         "missing_evidence": missing,
         "stale_evidence": [],
         "integrity_result": "ok" if len(ssids) == SE.EXPECTED_SCENARIOS and not missing else "fail",
