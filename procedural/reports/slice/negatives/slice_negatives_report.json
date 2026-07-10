@@ -1,0 +1,546 @@
+{
+  "suite": "slice_negatives",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "neg::case_count_nonzero": {
+      "ok": true,
+      "detail": "negative suite must not be vacuous",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::vsc:count_not_matrix_product::rejected": {
+      "ok": true,
+      "detail": "known-bad 'vsc:count_not_matrix_product' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::vsc:count_not_matrix_product::owning_code": {
+      "ok": true,
+      "detail": "'vsc:count_not_matrix_product' must be rejected for owning code WF672_SLICE_SCENARIO_SET_INVALID (got ['WF672_SLICE_SCENARIO_SET_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::vsc:duplicate_biome::rejected": {
+      "ok": true,
+      "detail": "known-bad 'vsc:duplicate_biome' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::vsc:duplicate_biome::owning_code": {
+      "ok": true,
+      "detail": "'vsc:duplicate_biome' must be rejected for owning code WF671_SLICE_CONTRACT_INVALID (got ['WF671_SLICE_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::vsc:requires_flag_not_bool::rejected": {
+      "ok": true,
+      "detail": "known-bad 'vsc:requires_flag_not_bool' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::vsc:requires_flag_not_bool::owning_code": {
+      "ok": true,
+      "detail": "'vsc:requires_flag_not_bool' must be rejected for owning code WF671_SLICE_CONTRACT_INVALID (got ['WF671_SLICE_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::vsc:empty_biomes::rejected": {
+      "ok": true,
+      "detail": "known-bad 'vsc:empty_biomes' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::vsc:empty_biomes::owning_code": {
+      "ok": true,
+      "detail": "'vsc:empty_biomes' must be rejected for owning code WF671_SLICE_CONTRACT_INVALID (got ['WF671_SLICE_CONTRACT_INVALID', 'WF672_SLICE_SCENARIO_SET_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::vsc:wrong_schema_version::rejected": {
+      "ok": true,
+      "detail": "known-bad 'vsc:wrong_schema_version' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::vsc:wrong_schema_version::owning_code": {
+      "ok": true,
+      "detail": "'vsc:wrong_schema_version' must be rejected for owning code WF671_SLICE_CONTRACT_INVALID (got ['WF671_SLICE_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:missing_route_binding::rejected": {
+      "ok": true,
+      "detail": "known-bad 'scn:missing_route_binding' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:missing_route_binding::owning_code": {
+      "ok": true,
+      "detail": "'scn:missing_route_binding' must be rejected for owning code WF698_SLICE_ROUTE_BINDING_INVALID (got ['WF696_SLICE_SCENARIO_INVALID', 'WF698_SLICE_ROUTE_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:missing_reward_binding::rejected": {
+      "ok": true,
+      "detail": "known-bad 'scn:missing_reward_binding' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:missing_reward_binding::owning_code": {
+      "ok": true,
+      "detail": "'scn:missing_reward_binding' must be rejected for owning code WF699_SLICE_REWARD_TABLE_BINDING_INVALID (got ['WF696_SLICE_SCENARIO_INVALID', 'WF699_SLICE_REWARD_TABLE_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:missing_map_id::rejected": {
+      "ok": true,
+      "detail": "known-bad 'scn:missing_map_id' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::scn:missing_map_id::owning_code": {
+      "ok": true,
+      "detail": "'scn:missing_map_id' must be rejected for owning code WF696_SLICE_SCENARIO_INVALID (got ['WF696_SLICE_SCENARIO_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::man:duplicate_scenarios::rejected": {
+      "ok": true,
+      "detail": "known-bad 'man:duplicate_scenarios' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::man:duplicate_scenarios::owning_code": {
+      "ok": true,
+      "detail": "'man:duplicate_scenarios' must be rejected for owning code WF707_SLICE_DUPLICATE_SCENARIO_REPORT (got ['WF707_SLICE_DUPLICATE_SCENARIO_REPORT'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::man:count_mismatch::rejected": {
+      "ok": true,
+      "detail": "known-bad 'man:count_mismatch' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::man:count_mismatch::owning_code": {
+      "ok": true,
+      "detail": "'man:count_mismatch' must be rejected for owning code WF697_SLICE_MANIFEST_INVALID (got ['WF697_SLICE_MANIFEST_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_no_state_mutation::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:completed_no_state_mutation' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_no_state_mutation::owning_code": {
+      "ok": true,
+      "detail": "'run:completed_no_state_mutation' must be rejected for owning code WF704_SLICE_REWARD_WITHOUT_MUTATION (got ['WF704_SLICE_REWARD_WITHOUT_MUTATION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_forbidden_save_slot::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:completed_forbidden_save_slot' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_forbidden_save_slot::owning_code": {
+      "ok": true,
+      "detail": "'run:completed_forbidden_save_slot' must be rejected for owning code WF705_SLICE_SAVE_LOAD_WRONG_SLOT (got ['WF705_SLICE_SAVE_LOAD_WRONG_SLOT'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_save_load_failed::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:completed_save_load_failed' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_save_load_failed::owning_code": {
+      "ok": true,
+      "detail": "'run:completed_save_load_failed' must be rejected for owning code WF684_SLICE_SAVE_LOAD_FAILED (got ['WF684_SLICE_SAVE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_mission_incomplete::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:completed_mission_incomplete' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_mission_incomplete::owning_code": {
+      "ok": true,
+      "detail": "'run:completed_mission_incomplete' must be rejected for owning code WF702_SLICE_MISSION_INCOMPLETE (got ['WF702_SLICE_MISSION_INCOMPLETE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_no_combat_damage::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:completed_no_combat_damage' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_no_combat_damage::owning_code": {
+      "ok": true,
+      "detail": "'run:completed_no_combat_damage' must be rejected for owning code WF703_SLICE_NPC_NO_DAMAGE (got ['WF703_SLICE_NPC_NO_DAMAGE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_no_traversal::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:completed_no_traversal' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_no_traversal::owning_code": {
+      "ok": true,
+      "detail": "'run:completed_no_traversal' must be rejected for owning code WF679_SLICE_TRAVERSAL_MISSING (got ['WF679_SLICE_TRAVERSAL_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_no_npc::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:completed_no_npc' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_no_npc::owning_code": {
+      "ok": true,
+      "detail": "'run:completed_no_npc' must be rejected for owning code WF680_SLICE_NPC_EVIDENCE_MISSING (got ['WF680_SLICE_NPC_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_not_launched::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:completed_not_launched' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_not_launched::owning_code": {
+      "ok": true,
+      "detail": "'run:completed_not_launched' must be rejected for owning code WF677_SLICE_LAUNCH_FAILED (got ['WF677_SLICE_LAUNCH_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_with_failure_codes::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:completed_with_failure_codes' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_with_failure_codes::owning_code": {
+      "ok": true,
+      "detail": "'run:completed_with_failure_codes' must be rejected for owning code WF686_SLICE_PARTIAL_MATRIX (got ['WF686_SLICE_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_no_telemetry::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:completed_no_telemetry' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:completed_no_telemetry::owning_code": {
+      "ok": true,
+      "detail": "'run:completed_no_telemetry' must be rejected for owning code WF679_SLICE_TRAVERSAL_MISSING (got ['WF679_SLICE_TRAVERSAL_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:incomplete_but_no_failure_codes::rejected": {
+      "ok": true,
+      "detail": "known-bad 'run:incomplete_but_no_failure_codes' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::run:incomplete_but_no_failure_codes::owning_code": {
+      "ok": true,
+      "detail": "'run:incomplete_but_no_failure_codes' must be rejected for owning code WF678_SLICE_RUNTIME_REPORT_MISSING (got ['WF678_SLICE_RUNTIME_REPORT_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pkg:pass_but_no_package::rejected": {
+      "ok": true,
+      "detail": "known-bad 'pkg:pass_but_no_package' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pkg:pass_but_no_package::owning_code": {
+      "ok": true,
+      "detail": "'pkg:pass_but_no_package' must be rejected for owning code WF675_SLICE_PACKAGE_MISSING (got ['WF675_SLICE_PACKAGE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pkg:exists_but_zero_size::rejected": {
+      "ok": true,
+      "detail": "known-bad 'pkg:exists_but_zero_size' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pkg:exists_but_zero_size::owning_code": {
+      "ok": true,
+      "detail": "'pkg:exists_but_zero_size' must be rejected for owning code WF675_SLICE_PACKAGE_MISSING (got ['WF675_SLICE_PACKAGE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pkg:live_without_real_sha::rejected": {
+      "ok": true,
+      "detail": "known-bad 'pkg:live_without_real_sha' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pkg:live_without_real_sha::owning_code": {
+      "ok": true,
+      "detail": "'pkg:live_without_real_sha' must be rejected for owning code WF687_SLICE_STALE_EVIDENCE (got ['WF687_SLICE_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pkg:no_maps_included::rejected": {
+      "ok": true,
+      "detail": "known-bad 'pkg:no_maps_included' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::pkg:no_maps_included::owning_code": {
+      "ok": true,
+      "detail": "'pkg:no_maps_included' must be rejected for owning code WF674_SLICE_BUILD_MANIFEST_INVALID (got ['WF674_SLICE_BUILD_MANIFEST_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:partial_matrix::rejected": {
+      "ok": true,
+      "detail": "known-bad 'idx:partial_matrix' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:partial_matrix::owning_code": {
+      "ok": true,
+      "detail": "'idx:partial_matrix' must be rejected for owning code WF686_SLICE_PARTIAL_MATRIX (got ['WF686_SLICE_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:stale_evidence_present::rejected": {
+      "ok": true,
+      "detail": "known-bad 'idx:stale_evidence_present' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:stale_evidence_present::owning_code": {
+      "ok": true,
+      "detail": "'idx:stale_evidence_present' must be rejected for owning code WF687_SLICE_STALE_EVIDENCE (got ['WF687_SLICE_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:missing_evidence_present::rejected": {
+      "ok": true,
+      "detail": "known-bad 'idx:missing_evidence_present' must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::idx:missing_evidence_present::owning_code": {
+      "ok": true,
+      "detail": "'idx:missing_evidence_present' must be rejected for owning code WF686_SLICE_PARTIAL_MATRIX (got ['WF686_SLICE_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::VerticalSliceContract::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::SliceScenario::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::SliceManifest::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::SliceRuntimeReport::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::SlicePackageReport::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::SliceEvidenceIndex::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 63,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "slice-negative-validators",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "96c4161ad8c84eb5404a4e0669e46c368dcbf6a1",
+    "timestamp": "2026-07-10T10:10:14.344517+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.slice.negatives.v1",
+    "report_id": "wf.slice.negatives.v1:7082e650486f",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 28,
+    "records_total": 28,
+    "records_passed": 28,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

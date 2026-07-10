@@ -1,0 +1,194 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::VerticalSliceContract::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::VerticalSliceContract::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::VerticalSliceContract::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF672_SLICE_SCENARIO_SET_INVALID (got ['WF672_SLICE_SCENARIO_SET_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceScenario::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceScenario::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceScenario::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF699_SLICE_REWARD_TABLE_BINDING_INVALID (got ['WF696_SLICE_SCENARIO_INVALID', 'WF699_SLICE_REWARD_TABLE_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceManifest::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceManifest::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceManifest::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF707_SLICE_DUPLICATE_SCENARIO_REPORT (got ['WF707_SLICE_DUPLICATE_SCENARIO_REPORT'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceRuntimeReport::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceRuntimeReport::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceRuntimeReport::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF704_SLICE_REWARD_WITHOUT_MUTATION (got ['WF704_SLICE_REWARD_WITHOUT_MUTATION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SlicePackageReport::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SlicePackageReport::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SlicePackageReport::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF675_SLICE_PACKAGE_MISSING (got ['WF675_SLICE_PACKAGE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceEvidenceIndex::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceEvidenceIndex::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::SliceEvidenceIndex::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF686_SLICE_PARTIAL_MATRIX (got ['WF686_SLICE_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::registry_nonempty": {
+      "ok": true,
+      "detail": "CONTRACTS registry must not be empty",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 19,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "vertical-slice-contracts",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "96c4161ad8c84eb5404a4e0669e46c368dcbf6a1",
+    "timestamp": "2026-07-10T10:10:14.562078+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.slice.contract_spine.v1",
+    "report_id": "wf.slice.contract_spine.v1:1ba49a447a9e",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 6,
+    "records_total": 6,
+    "records_passed": 6,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}
