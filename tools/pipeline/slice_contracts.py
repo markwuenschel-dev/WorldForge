@@ -107,7 +107,18 @@ SLICE_INTEGRITY_REPORTS_REL = "procedural/reports/slice/integrity"
 # small local helpers (mirror reward_contracts.py)
 # --------------------------------------------------------------------------- #
 def _str(obj, field, code, prefix):
-    return RS.check_type(obj, field, str, code, prefix=prefix)
+    """A required id/path/version string: present, a str, and non-empty.
+
+    RS.check_type accepts "" as a valid str and RS.check_required accepts "" as
+    non-None, so an empty id would otherwise slip through — every field routed
+    here is an identifier/path/version that must carry a real value.
+    """
+    ch = RS.check_type(obj, field, str, code, prefix=prefix)
+    v = obj.get(field) if isinstance(obj, dict) else None
+    ch.append(("{}{}_nonempty".format(prefix, field),
+               isinstance(v, str) and bool(v.strip()),
+               "{} must be a non-empty string".format(field), code))
+    return ch
 
 
 def _bool(obj, field, code, prefix):
@@ -118,7 +129,17 @@ def _bool(obj, field, code, prefix):
 
 
 def _int(obj, field, code, prefix, allow_zero=True):
-    return RS.check_positive_number(obj, field, code, prefix=prefix, allow_zero=allow_zero)
+    """A required integer field: a real number, integer-valued, and >=0 (or >0).
+
+    RS.check_positive_number accepts any non-negative float (e.g. 3.14159), so an
+    explicit integer-value check is added — counts/seeds/sizes must be integers.
+    """
+    ch = RS.check_positive_number(obj, field, code, prefix=prefix, allow_zero=allow_zero)
+    v = obj.get(field) if isinstance(obj, dict) else None
+    is_int = RS.is_number(v) and float(v).is_integer()
+    ch.append(("{}{}_integer".format(prefix, field), is_int,
+               "{} must be an integer (got {!r})".format(field, v), code))
+    return ch
 
 
 def _list_of_str(obj, field, code, prefix, min_len=0):
@@ -370,6 +391,7 @@ def validate_slice_runtime_report(obj, strict=False):
               "mission_id", "biome", "mission_archetype", "encounter_profile",
               "package_build_id", "save_slot"):
         ch += _str(obj, f, code, "sr::")
+    ch += _int(obj, "seed", code, "sr::", allow_zero=True)
     for f in RUNTIME_SYSTEM_FLAGS + ("inventory_mutated", "progression_mutated",
                                      "slice_completed_runtime"):
         ch += _bool(obj, f, code, "sr::")
@@ -499,7 +521,8 @@ def validate_slice_package_report(obj, strict=False):
     ch = RS.check_required(obj, SLICE_PACKAGE_REPORT_REQUIRED, code)
     ch += RS.check_no_unknown(obj, SLICE_PACKAGE_REPORT_ALLOWED, code, strict)
     for f in ("package_report_id", "slice_id", "pack_id", "build_target",
-              "package_path", "build_config", "runtime_entrypoint", "git_sha"):
+              "package_path", "build_config", "runtime_entrypoint", "git_sha",
+              "created_at"):
         ch += _str(obj, f, code, "pr::")
     ch += _bool(obj, "package_exists", C.SLICE_PACKAGE_MISSING, "pr::")
     ch += _int(obj, "package_size_bytes", C.SLICE_PACKAGE_INVALID, "pr::", allow_zero=True)

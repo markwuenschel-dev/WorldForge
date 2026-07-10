@@ -1,0 +1,2642 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "contract_present": {
+      "ok": true,
+      "detail": "run generate_slice_scenarios.py first",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "manifest_present": {
+      "ok": true,
+      "detail": "manifest.json missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenario_count_is_24": {
+      "ok": true,
+      "detail": "expected 24 scenarios, got 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "count_matches_contract": {
+      "ok": true,
+      "detail": "contract scenario_count != file count",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_clear_hazard_baseline_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'clear_hazard' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_GlacialBasin_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_GlacialBasin_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_GlacialBasin_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_GlacialBasin_Scatter_Perf_01__clear_hazard' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_clear_hazard_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_clear_hazard_baseline_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'clear_hazard' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_SnowyRidge_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_SnowyRidge_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_SnowyRidge_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_SnowyRidge_Scatter_Perf_01__clear_hazard' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_clear_hazard_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_baseline_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_clear_hazard_high_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'clear_hazard' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_GlacialBasin_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_GlacialBasin_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_GlacialBasin_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_GlacialBasin_Scatter_Perf_01__clear_hazard' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_clear_hazard_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_clear_hazard_high_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'clear_hazard' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_SnowyRidge_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_SnowyRidge_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_SnowyRidge_Scatter_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_SnowyRidge_Scatter_Perf_01__clear_hazard' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_clear_hazard_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_clear_hazard_high_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_recover_resource_baseline_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'recover_resource' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_GlacialBasin_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_GlacialBasin_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_GlacialBasin_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_GlacialBasin_Debris_Photoreal_01__recover_resource' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_recover_resource_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_recover_resource_baseline_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'recover_resource' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_SnowyRidge_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_SnowyRidge_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_SnowyRidge_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_SnowyRidge_Debris_Photoreal_01__recover_resource' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_recover_resource_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_baseline_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_recover_resource_high_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'recover_resource' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_GlacialBasin_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_GlacialBasin_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_GlacialBasin_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_GlacialBasin_Debris_Photoreal_01__recover_resource' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_recover_resource_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_recover_resource_high_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'recover_resource' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_SnowyRidge_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_SnowyRidge_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_SnowyRidge_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_SnowyRidge_Debris_Photoreal_01__recover_resource' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_recover_resource_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_recover_resource_high_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_survey_landmark_baseline_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'survey_landmark' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_GlacialBasin_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_GlacialBasin_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_GlacialBasin_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_GlacialBasin_Debris_Stylized_01__survey_landmark' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_survey_landmark_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_survey_landmark_baseline_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'survey_landmark' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_SnowyRidge_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_SnowyRidge_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_SnowyRidge_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_SnowyRidge_Debris_Stylized_01__survey_landmark' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_survey_landmark_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_baseline_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_survey_landmark_high_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'survey_landmark' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_GlacialBasin_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_GlacialBasin_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_GlacialBasin_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_GlacialBasin_Debris_Stylized_01__survey_landmark' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_survey_landmark_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_alpine_snow_survey_landmark_high_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'alpine_snow' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'survey_landmark' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Alpine_SnowyRidge_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Alpine_SnowyRidge_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Alpine_SnowyRidge_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Alpine_SnowyRidge_Debris_Stylized_01__survey_landmark' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_survey_landmark_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_alpine_snow_survey_landmark_high_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_clear_hazard_baseline_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'clear_hazard' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_AshRavine_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_AshRavine_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_AshRavine_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_AshRavine_Scar_Perf_01__clear_hazard' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_clear_hazard_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_clear_hazard_baseline_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'clear_hazard' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_BasaltFlats_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_BasaltFlats_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_BasaltFlats_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_BasaltFlats_Scar_Perf_01__clear_hazard' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_clear_hazard_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_baseline_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_clear_hazard_high_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'clear_hazard' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_AshRavine_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_AshRavine_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_AshRavine_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_AshRavine_Scar_Perf_01__clear_hazard' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_clear_hazard_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_clear_hazard_high_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'clear_hazard' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_BasaltFlats_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_BasaltFlats_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_BasaltFlats_Scar_Perf_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_BasaltFlats_Scar_Perf_01__clear_hazard' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_clear_hazard_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_clear_hazard_high_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_recover_resource_baseline_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'recover_resource' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_AshRavine_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_AshRavine_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_AshRavine_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_AshRavine_Debris_Photoreal_01__recover_resource' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_recover_resource_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_recover_resource_baseline_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'recover_resource' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_BasaltFlats_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_BasaltFlats_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_BasaltFlats_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_BasaltFlats_Debris_Photoreal_01__recover_resource' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_recover_resource_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_baseline_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_recover_resource_high_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'recover_resource' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_AshRavine_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_AshRavine_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_AshRavine_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_AshRavine_Debris_Photoreal_01__recover_resource' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_recover_resource_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_recover_resource_high_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'recover_resource' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_BasaltFlats_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_BasaltFlats_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_BasaltFlats_Debris_Photoreal_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_BasaltFlats_Debris_Photoreal_01__recover_resource' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_recover_resource_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_recover_resource_high_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_survey_landmark_baseline_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'survey_landmark' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_AshRavine_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_AshRavine_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_AshRavine_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_AshRavine_Debris_Stylized_01__survey_landmark' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_survey_landmark_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_survey_landmark_baseline_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'survey_landmark' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'baseline' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_BasaltFlats_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_BasaltFlats_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_BasaltFlats_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_BasaltFlats_Debris_Stylized_01__survey_landmark' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_survey_landmark_baseline' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_baseline_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'baseline'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_survey_landmark_high_s1": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'survey_landmark' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 1 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_AshRavine_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_AshRavine_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_AshRavine_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_AshRavine_Debris_Stylized_01__survey_landmark' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_survey_landmark_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s1::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "schema::vs_volcanic_ashlands_survey_landmark_high_s2": {
+      "ok": true,
+      "detail": "schema failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::biome_in_contract": {
+      "ok": true,
+      "detail": "biome 'volcanic_ashlands' not in contract biomes",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::archetype_in_contract": {
+      "ok": true,
+      "detail": "archetype 'survey_landmark' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::profile_in_contract": {
+      "ok": true,
+      "detail": "profile 'high' not in contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::seed_in_contract": {
+      "ok": true,
+      "detail": "seed 2 not in contract seeds",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::umap_exists": {
+      "ok": true,
+      "detail": "map .umap missing for 'Ashlands_BasaltFlats_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::mission_exists": {
+      "ok": true,
+      "detail": "mission dir missing for 'Ashlands_BasaltFlats_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::encounter_exists": {
+      "ok": true,
+      "detail": "encounter dir missing for 'Ashlands_BasaltFlats_Debris_Stylized_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::route_resolves": {
+      "ok": true,
+      "detail": "route 'route_Ashlands_BasaltFlats_Debris_Stylized_01__survey_landmark' not in route catalog",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::reward_table_resolves": {
+      "ok": true,
+      "detail": "reward table 'rwt_survey_landmark_high' not found",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::mission_id_matches_map": {
+      "ok": true,
+      "detail": "mission_id must be mission_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::encounter_id_matches_map": {
+      "ok": true,
+      "detail": "encounter_id must be enc_lp_<map_id>",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "res::vs_volcanic_ashlands_survey_landmark_high_s2::reward_band_matches_profile": {
+      "ok": true,
+      "detail": "reward table band must match profile 'high'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "matrix_no_duplicate_cell": {
+      "ok": true,
+      "detail": "duplicate scenario dimension tuple present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "matrix_fully_covered": {
+      "ok": true,
+      "detail": "matrix cells 24 != expected 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenario_ids_unique": {
+      "ok": true,
+      "detail": "duplicate slice_scenario_id",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::good_scenario_resolves": {
+      "ok": true,
+      "detail": "reference scenario failed resolution: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::unknown_biome_rejected": {
+      "ok": true,
+      "detail": "bad scenario 'unknown_biome' must be rejected by resolution",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::unknown_archetype_rejected": {
+      "ok": true,
+      "detail": "bad scenario 'unknown_archetype' must be rejected by resolution",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::unknown_profile_rejected": {
+      "ok": true,
+      "detail": "bad scenario 'unknown_profile' must be rejected by resolution",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::unresolvable_map_rejected": {
+      "ok": true,
+      "detail": "bad scenario 'unresolvable_map' must be rejected by resolution",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::wrong_reward_band_rejected": {
+      "ok": true,
+      "detail": "bad scenario 'wrong_reward_band' must be rejected by resolution",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 325,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-slice-scenarios",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "2973944a0312147279f8fdaaaa9f10a080121539",
+    "timestamp": "2026-07-10T10:23:02.159345+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.slice.scenarios.v1",
+    "report_id": "wf.slice.scenarios.v1:2e9c8b93b5c7",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 24,
+    "records_total": 24,
+    "records_passed": 24,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -154,11 +154,739 @@
       "verdict": "PASS",
       "code": null,
       "blocking": false
+    },
+    "real::contract::field::slice_id": {
+      "ok": true,
+      "detail": "required field 'slice_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::pack_id": {
+      "ok": true,
+      "detail": "required field 'pack_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::biomes": {
+      "ok": true,
+      "detail": "required field 'biomes' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::mission_archetypes": {
+      "ok": true,
+      "detail": "required field 'mission_archetypes' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::encounter_profiles": {
+      "ok": true,
+      "detail": "required field 'encounter_profiles' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::seeds": {
+      "ok": true,
+      "detail": "required field 'seeds' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::scenario_count": {
+      "ok": true,
+      "detail": "required field 'scenario_count' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::requires_package": {
+      "ok": true,
+      "detail": "required field 'requires_package' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::requires_runtime": {
+      "ok": true,
+      "detail": "required field 'requires_runtime' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::requires_traversal": {
+      "ok": true,
+      "detail": "required field 'requires_traversal' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::requires_npc": {
+      "ok": true,
+      "detail": "required field 'requires_npc' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::requires_combat": {
+      "ok": true,
+      "detail": "required field 'requires_combat' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::requires_rewards": {
+      "ok": true,
+      "detail": "required field 'requires_rewards' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::requires_save_load": {
+      "ok": true,
+      "detail": "required field 'requires_save_load' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::requires_evidence_index": {
+      "ok": true,
+      "detail": "required field 'requires_evidence_index' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::field::schema_version": {
+      "ok": true,
+      "detail": "required field 'schema_version' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::type::slice_id": {
+      "ok": true,
+      "detail": "slice_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::slice_id_nonempty": {
+      "ok": true,
+      "detail": "slice_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::type::pack_id": {
+      "ok": true,
+      "detail": "pack_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::pack_id_nonempty": {
+      "ok": true,
+      "detail": "pack_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::biomes_str_list": {
+      "ok": true,
+      "detail": "biomes must be a list of >= 1 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::mission_archetypes_str_list": {
+      "ok": true,
+      "detail": "mission_archetypes must be a list of >= 1 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::encounter_profiles_str_list": {
+      "ok": true,
+      "detail": "encounter_profiles must be a list of >= 1 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::seeds_int_list": {
+      "ok": true,
+      "detail": "seeds must be a list of >= 1 integers (deterministic seeds)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::number::scenario_count": {
+      "ok": true,
+      "detail": "scenario_count=24 is >0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::scenario_count_integer": {
+      "ok": true,
+      "detail": "scenario_count must be an integer (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::requires_package_bool": {
+      "ok": true,
+      "detail": "requires_package must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::requires_runtime_bool": {
+      "ok": true,
+      "detail": "requires_runtime must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::requires_traversal_bool": {
+      "ok": true,
+      "detail": "requires_traversal must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::requires_npc_bool": {
+      "ok": true,
+      "detail": "requires_npc must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::requires_combat_bool": {
+      "ok": true,
+      "detail": "requires_combat must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::requires_rewards_bool": {
+      "ok": true,
+      "detail": "requires_rewards must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::requires_save_load_bool": {
+      "ok": true,
+      "detail": "requires_save_load must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::requires_evidence_index_bool": {
+      "ok": true,
+      "detail": "requires_evidence_index must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::scenario_count_is_matrix_product": {
+      "ok": true,
+      "detail": "scenario_count (24) must equal biomes*archetypes*profiles*seeds = 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::biomes_unique": {
+      "ok": true,
+      "detail": "biomes must contain no duplicate values",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::mission_archetypes_unique": {
+      "ok": true,
+      "detail": "mission_archetypes must contain no duplicate values",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::encounter_profiles_unique": {
+      "ok": true,
+      "detail": "encounter_profiles must contain no duplicate values",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::seeds_unique": {
+      "ok": true,
+      "detail": "seeds must contain no duplicate values",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::contract::vsc::schema_version": {
+      "ok": true,
+      "detail": "schema_version must be 'wf.slice.vertical_slice_contract.v1' (got 'wf.slice.vertical_slice_contract.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::field::slice_id": {
+      "ok": true,
+      "detail": "required field 'slice_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::field::pack_id": {
+      "ok": true,
+      "detail": "required field 'pack_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::field::scenario_count": {
+      "ok": true,
+      "detail": "required field 'scenario_count' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::field::scenarios": {
+      "ok": true,
+      "detail": "required field 'scenarios' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::field::maps": {
+      "ok": true,
+      "detail": "required field 'maps' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::field::biomes": {
+      "ok": true,
+      "detail": "required field 'biomes' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::field::mission_archetypes": {
+      "ok": true,
+      "detail": "required field 'mission_archetypes' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::field::encounter_profiles": {
+      "ok": true,
+      "detail": "required field 'encounter_profiles' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::field::seeds": {
+      "ok": true,
+      "detail": "required field 'seeds' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::field::schema_version": {
+      "ok": true,
+      "detail": "required field 'schema_version' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::type::slice_id": {
+      "ok": true,
+      "detail": "slice_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::slice_id_nonempty": {
+      "ok": true,
+      "detail": "slice_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::type::pack_id": {
+      "ok": true,
+      "detail": "pack_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::pack_id_nonempty": {
+      "ok": true,
+      "detail": "pack_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::number::scenario_count": {
+      "ok": true,
+      "detail": "scenario_count=24 is >0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::scenario_count_integer": {
+      "ok": true,
+      "detail": "scenario_count must be an integer (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::scenarios_str_list": {
+      "ok": true,
+      "detail": "scenarios must be a list of >= 1 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::maps_str_list": {
+      "ok": true,
+      "detail": "maps must be a list of >= 1 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::biomes_str_list": {
+      "ok": true,
+      "detail": "biomes must be a list of >= 1 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::mission_archetypes_str_list": {
+      "ok": true,
+      "detail": "mission_archetypes must be a list of >= 1 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::encounter_profiles_str_list": {
+      "ok": true,
+      "detail": "encounter_profiles must be a list of >= 1 strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::seeds_int_list": {
+      "ok": true,
+      "detail": "seeds must be a list of >= 1 integers (deterministic seeds)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::scenarios_len_matches_count": {
+      "ok": true,
+      "detail": "scenarios list length (24) must equal scenario_count (24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::scenarios_unique": {
+      "ok": true,
+      "detail": "scenarios must contain no duplicate ids",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::manifest::sm::schema_version": {
+      "ok": true,
+      "detail": "schema_version must be 'wf.slice.slice_manifest.v1' (got 'wf.slice.slice_manifest.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_clear_hazard_baseline_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_clear_hazard_baseline_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_clear_hazard_high_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_clear_hazard_high_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_recover_resource_baseline_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_recover_resource_baseline_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_recover_resource_high_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_recover_resource_high_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_survey_landmark_baseline_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_survey_landmark_baseline_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_survey_landmark_high_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_alpine_snow_survey_landmark_high_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_clear_hazard_baseline_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_clear_hazard_baseline_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_clear_hazard_high_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_clear_hazard_high_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_recover_resource_baseline_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_recover_resource_baseline_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_recover_resource_high_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_recover_resource_high_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_survey_landmark_baseline_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_survey_landmark_baseline_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_survey_landmark_high_s1::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::scenario::vs_volcanic_ashlands_survey_landmark_high_s2::valid": {
+      "ok": true,
+      "detail": "0 failing checks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     }
   },
   "failures": [],
   "counts": {
-    "PASS": 19,
+    "PASS": 110,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -173,8 +901,8 @@
     "deep": false,
     "torture": false,
     "seeds": null,
-    "git_sha": "96c4161ad8c84eb5404a4e0669e46c368dcbf6a1",
-    "timestamp": "2026-07-10T10:10:14.562078+00:00",
+    "git_sha": "2973944a0312147279f8fdaaaa9f10a080121539",
+    "timestamp": "2026-07-10T10:23:01.960124+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
