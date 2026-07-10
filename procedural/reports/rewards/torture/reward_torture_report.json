@@ -1,0 +1,522 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "torture::example_valid::LoadoutProfile": {
+      "ok": true,
+      "detail": "canonical LoadoutProfile example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::EquipmentItem": {
+      "ok": true,
+      "detail": "canonical EquipmentItem example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::RewardTable": {
+      "ok": true,
+      "detail": "canonical RewardTable example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::RewardGrantEvent": {
+      "ok": true,
+      "detail": "canonical RewardGrantEvent example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::RewardCompletionReport": {
+      "ok": true,
+      "detail": "canonical RewardCompletionReport example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::InventoryState": {
+      "ok": true,
+      "detail": "canonical InventoryState example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::ProgressionState": {
+      "ok": true,
+      "detail": "canonical ProgressionState example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::UnlockState": {
+      "ok": true,
+      "detail": "canonical UnlockState example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::example_valid::RewardTelemetry": {
+      "ok": true,
+      "detail": "canonical RewardTelemetry example must validate clean, got 0 failing check(s)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::adversarial::duplicate_grant_once": {
+      "ok": true,
+      "detail": "duplicate grant_once must classify exploit_suspected (got exploit_suspected)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::adversarial::over_reward": {
+      "ok": true,
+      "detail": "reward_value > budget_max must classify over_rewarded (got over_rewarded)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::adversarial::save_load_drift::inventory": {
+      "ok": true,
+      "detail": "inventory save/load drift must be caught (clean=True, drifted=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::adversarial::save_load_drift::progression": {
+      "ok": true,
+      "detail": "progression save/load drift must be caught (clean=True, drifted=False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::adversarial::capacity_overflow": {
+      "ok": true,
+      "detail": "inventory items > capacity must be rejected owning INVENTORY_CAPACITY_EXCEEDED (codes={'WF658_INVENTORY_CAPACITY_EXCEEDED'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::adversarial::reward_without_completion": {
+      "ok": true,
+      "detail": "grant without source_completion_report must be rejected owning REWARD_WITHOUT_COMPLETION (codes={'WF648_REWARD_WITHOUT_COMPLETION'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::adversarial::completion_without_reward": {
+      "ok": true,
+      "detail": "success completion with no state mutation must be rejected owning COMPLETION_WITHOUT_REWARD (codes={'WF647_COMPLETION_WITHOUT_REWARD'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::LoadoutProfile": {
+      "ok": true,
+      "detail": "LoadoutProfile known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::EquipmentItem": {
+      "ok": true,
+      "detail": "EquipmentItem known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::RewardTable": {
+      "ok": true,
+      "detail": "RewardTable known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::RewardGrantEvent": {
+      "ok": true,
+      "detail": "RewardGrantEvent known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::RewardCompletionReport": {
+      "ok": true,
+      "detail": "RewardCompletionReport known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::InventoryState": {
+      "ok": true,
+      "detail": "InventoryState known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::ProgressionState": {
+      "ok": true,
+      "detail": "ProgressionState known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::UnlockState": {
+      "ok": true,
+      "detail": "UnlockState known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::known_bad_rejected::RewardTelemetry": {
+      "ok": true,
+      "detail": "RewardTelemetry known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::LoadoutProfile": {
+      "ok": true,
+      "detail": "LoadoutProfile validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::LoadoutProfile": {
+      "ok": true,
+      "detail": "LoadoutProfile validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::EquipmentItem": {
+      "ok": true,
+      "detail": "EquipmentItem validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::EquipmentItem": {
+      "ok": true,
+      "detail": "EquipmentItem validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::RewardTable": {
+      "ok": true,
+      "detail": "RewardTable validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::RewardTable": {
+      "ok": true,
+      "detail": "RewardTable validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::RewardGrantEvent": {
+      "ok": true,
+      "detail": "RewardGrantEvent validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::RewardGrantEvent": {
+      "ok": true,
+      "detail": "RewardGrantEvent validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::RewardCompletionReport": {
+      "ok": true,
+      "detail": "RewardCompletionReport validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::RewardCompletionReport": {
+      "ok": true,
+      "detail": "RewardCompletionReport validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::InventoryState": {
+      "ok": true,
+      "detail": "InventoryState validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::InventoryState": {
+      "ok": true,
+      "detail": "InventoryState validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::ProgressionState": {
+      "ok": true,
+      "detail": "ProgressionState validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::ProgressionState": {
+      "ok": true,
+      "detail": "ProgressionState validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::UnlockState": {
+      "ok": true,
+      "detail": "UnlockState validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::UnlockState": {
+      "ok": true,
+      "detail": "UnlockState validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::valid::RewardTelemetry": {
+      "ok": true,
+      "detail": "RewardTelemetry validator verdict on valid record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::determinism::bad::RewardTelemetry": {
+      "ok": true,
+      "detail": "RewardTelemetry validator verdict on known-bad record is non-deterministic",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::LoadoutProfile": {
+      "ok": true,
+      "detail": "full LoadoutProfile record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::LoadoutProfile": {
+      "ok": true,
+      "detail": "a LoadoutProfile record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::EquipmentItem": {
+      "ok": true,
+      "detail": "full EquipmentItem record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::EquipmentItem": {
+      "ok": true,
+      "detail": "a EquipmentItem record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::RewardTable": {
+      "ok": true,
+      "detail": "full RewardTable record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::RewardTable": {
+      "ok": true,
+      "detail": "a RewardTable record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::RewardGrantEvent": {
+      "ok": true,
+      "detail": "full RewardGrantEvent record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::RewardGrantEvent": {
+      "ok": true,
+      "detail": "a RewardGrantEvent record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::RewardCompletionReport": {
+      "ok": true,
+      "detail": "full RewardCompletionReport record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::RewardCompletionReport": {
+      "ok": true,
+      "detail": "a RewardCompletionReport record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::InventoryState": {
+      "ok": true,
+      "detail": "full InventoryState record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::InventoryState": {
+      "ok": true,
+      "detail": "a InventoryState record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::ProgressionState": {
+      "ok": true,
+      "detail": "full ProgressionState record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::ProgressionState": {
+      "ok": true,
+      "detail": "a ProgressionState record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::full_valid::UnlockState": {
+      "ok": true,
+      "detail": "full UnlockState record must validate clean",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::UnlockState": {
+      "ok": true,
+      "detail": "a UnlockState record missing a required field must not validate as full",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_not_full::RewardTelemetry": {
+      "ok": true,
+      "detail": "completion telemetry missing required events must not pass as complete",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 60,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "reward-torture",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "e20adfd416761b4c762905eb3ccf60f20e58338f",
+    "timestamp": "2026-07-10T00:44:01.121802+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.torture.v1",
+    "report_id": "wf.reward.torture.v1:794d887e63b2",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 9,
+    "records_total": 9,
+    "records_passed": 9,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

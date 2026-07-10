@@ -1,0 +1,668 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::real_completion_passes": {
+      "ok": true,
+      "detail": "a real reward completion with a valid telemetry file must pass; got []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::zero_events_success_flagged": {
+      "ok": true,
+      "detail": "a reward_granted_runtime with reward_events_seen=0 must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::unmutated_success_flagged": {
+      "ok": true,
+      "detail": "a reward_granted_runtime with no state mutation must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::live_without_sha_flagged": {
+      "ok": true,
+      "detail": "a created_at='live' report without a real git sha must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_00_rwt_disable_site_baseline.json::honest": {
+      "ok": false,
+      "detail": "reward completion evidence violations: ['reward_granted_runtime with reward_events_seen=0 (zero-record success)']",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF651_REWARD_REPORT_INTEGRITY_FAILED",
+      "blocking": true
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_01_rwt_disable_site_high.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_02_rwt_recover_resource_baseline.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_03_rwt_recover_resource_high.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_04_rwt_survey_landmark_baseline.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_05_rwt_survey_landmark_high.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_06_rwt_clear_hazard_baseline.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_07_rwt_clear_hazard_high.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_08_rwt_restore_power_baseline.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_09_rwt_restore_power_high.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_10_rwt_extract_cache_baseline.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_11_rwt_extract_cache_high.json::honest": {
+      "ok": true,
+      "detail": "reward completion evidence violations: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_00_rwt_disable_site_baseline.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_01_rwt_disable_site_high.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_02_rwt_recover_resource_baseline.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_03_rwt_recover_resource_high.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_04_rwt_survey_landmark_baseline.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_05_rwt_survey_landmark_high.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_06_rwt_clear_hazard_baseline.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_07_rwt_clear_hazard_high.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_08_rwt_restore_power_baseline.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_09_rwt_restore_power_high.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_10_rwt_extract_cache_baseline.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/telemetry/reward_telemetry_rs_auth_11_rwt_extract_cache_high.json::valid_events": {
+      "ok": true,
+      "detail": "reward telemetry must carry a non-empty valid events list: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_00_rwt_disable_site_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_00_rwt_disable_site_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_01_rwt_disable_site_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_01_rwt_disable_site_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_02_rwt_recover_resource_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_02_rwt_recover_resource_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_03_rwt_recover_resource_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_03_rwt_recover_resource_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_04_rwt_survey_landmark_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_04_rwt_survey_landmark_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_05_rwt_survey_landmark_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_05_rwt_survey_landmark_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_06_rwt_clear_hazard_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_06_rwt_clear_hazard_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_07_rwt_clear_hazard_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_07_rwt_clear_hazard_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_08_rwt_restore_power_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_08_rwt_restore_power_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_09_rwt_restore_power_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_09_rwt_restore_power_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_10_rwt_extract_cache_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_10_rwt_extract_cache_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_11_rwt_extract_cache_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/rewards/save_load/inventory_save_load_rs_auth_11_rwt_extract_cache_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_00_rwt_disable_site_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_00_rwt_disable_site_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_01_rwt_disable_site_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_01_rwt_disable_site_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_02_rwt_recover_resource_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_02_rwt_recover_resource_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_03_rwt_recover_resource_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_03_rwt_recover_resource_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_04_rwt_survey_landmark_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_04_rwt_survey_landmark_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_05_rwt_survey_landmark_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_05_rwt_survey_landmark_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_06_rwt_clear_hazard_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_06_rwt_clear_hazard_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_07_rwt_clear_hazard_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_07_rwt_clear_hazard_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_08_rwt_restore_power_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_08_rwt_restore_power_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_09_rwt_restore_power_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_09_rwt_restore_power_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_10_rwt_extract_cache_baseline.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_10_rwt_extract_cache_baseline.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_11_rwt_extract_cache_high.json::roundtrip_ok": {
+      "ok": true,
+      "detail": "save/load proof must show roundtrip_ok=true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ri::procedural/reports/progression/save_load/progression_save_load_rs_auth_11_rwt_extract_cache_high.json::meta_status_ok": {
+      "ok": true,
+      "detail": "save/load proof meta status must be ok/pass (got 'pass')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::completion_nonempty": {
+      "ok": true,
+      "detail": "reward completion evidence tree is empty (procedural/reports/rewards/completion) — nothing to prove",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::telemetry_nonempty": {
+      "ok": true,
+      "detail": "reward telemetry evidence tree is empty (procedural/reports/rewards/telemetry)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [
+    "ri::procedural/reports/rewards/completion/reward_completion_rs_auth_00_rwt_disable_site_baseline.json::honest: reward completion evidence violations: ['reward_granted_runtime with reward_events_seen=0 (zero-record success)']"
+  ],
+  "counts": {
+    "PASS": 77,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 1,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail",
+  "meta": {
+    "command": "reward-report-integrity",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "e20adfd416761b4c762905eb3ccf60f20e58338f",
+    "timestamp": "2026-07-10T00:44:01.372156+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.report_integrity.v1",
+    "report_id": "wf.reward.report_integrity.v1:c7b88d495249",
+    "status": "fail",
+    "failure_count": 1,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 48,
+    "records_total": 48,
+    "records_passed": 48,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}
