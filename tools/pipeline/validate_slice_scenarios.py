@@ -160,26 +160,24 @@ def main(argv=None):
               len({s.get("slice_scenario_id") for s in scenarios}) == len(scenarios),
               "duplicate slice_scenario_id", code=F.SLICE_DUPLICATE_SCENARIO_REPORT)
 
-    # 4. hostile dogfood: resolution MUST reject bad scenarios ------------------
-    good = SX._example_slice_scenario(
-        biome="alpine_snow", mission_archetype="survey_landmark",
-        encounter_profile="baseline", seed=1,
-        map_id="Alpine_GlacialBasin_Debris_Stylized_01",
-        mission_id="mission_Alpine_GlacialBasin_Debris_Stylized_01",
-        encounter_id="enc_lp_Alpine_GlacialBasin_Debris_Stylized_01",
-        expected_route_id="route_Alpine_GlacialBasin_Debris_Stylized_01__survey_landmark",
-        expected_reward_table_id="rwt_survey_landmark_baseline")
-    gfails = [c for c in resolve_scenario(good, ctx, contract) if not c[1]]
-    rep.check("dogfood::good_scenario_resolves", len(gfails) == 0,
-              "reference scenario failed resolution: {}".format([c[0] for c in gfails][:4]),
-              code=F.SLICE_REPORT_INTEGRITY_FAILED)
-    for label, override in (
+    # 4. hostile dogfood: resolution MUST reject bad scenarios. The good fixture is
+    #    a REAL current scenario (not a hardcoded literal), so this schema self-test
+    #    cannot rot when the generator renames maps/routes/tables.
+    if scenarios:
+      good = dict(scenarios[0])
+      gfails = [c for c in resolve_scenario(good, ctx, contract) if not c[1]]
+      rep.check("dogfood::good_scenario_resolves", len(gfails) == 0,
+                "reference scenario failed resolution: {}".format([c[0] for c in gfails][:4]),
+                code=F.SLICE_REPORT_INTEGRITY_FAILED)
+      # flip to the opposite pressure band so the reward-table binding mismatches.
+      other_profile = "high" if good.get("encounter_profile") == "baseline" else "baseline"
+      for label, override in (
         ("unknown_biome", {"biome": "mars"}),
         ("unknown_archetype", {"mission_archetype": "hack_terminal"}),
         ("unknown_profile", {"encounter_profile": "extreme"}),
         ("unresolvable_map", {"map_id": "Nonexistent_Map_99"}),
-        ("wrong_reward_band", {"encounter_profile": "high"}),  # band no longer matches
-    ):
+        ("wrong_reward_band", {"encounter_profile": other_profile}),  # band no longer matches
+      ):
         bad = dict(good)
         bad.update(override)
         bfails = [c for c in resolve_scenario(bad, ctx, contract) if not c[1]]
