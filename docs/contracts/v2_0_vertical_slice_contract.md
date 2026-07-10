@@ -123,12 +123,13 @@ PYTHONUTF8=1 STRICT=1 python tools/pipeline/v2_0_shield.py --pack encounter_loop
 `validate_slice_save_load.py` · `validate_slice_evidence_index.py` ·
 `validate_slice_package.py` · `slice_report_integrity.py`
 
-Every gate is implemented. Full shield state today: **RED 10/18** — GREEN =
-failure-codes, contracts, generate, scenarios, environment, assets, negatives,
-fuzz-300, torture, hygiene; RED (awaiting UE runtime/package evidence) =
-runtime-matrix, traversal, npc-combat, rewards, save-load, evidence-index,
-package, report-integrity. Each RED gate dogfoods its checker (so its logic is
-proven now) and prints a "run Wave R/P" message — never fake-green.
+Every gate is implemented and **GREEN — v2.0 shield 18/18** (Waves R + P
+complete). The runtime lane is proven by 24/24 GENUINE `slice_completed_runtime`
+from real headless `-game` boots (grounded traversal + NPC pressure + combat
+damage 9–13/scenario + mission completion + reward grant with inventory/
+progression mutation + save/load roundtrip on `WFReward_State`); the package lane
+by a real 321 MB `WorldForge.exe` (RunUAT BuildCookRun over the 12 slice maps).
+Regressions GREEN: v1.9 16/16, v1.8 18/18, v1.7 20/20, v1.6z 16/16.
 
 ---
 
