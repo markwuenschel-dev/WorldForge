@@ -3,33 +3,33 @@
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
-    "LoadoutProfile::valid_passes": {
+    "generate-equipment-catalog::nonzero": {
       "ok": true,
-      "detail": "valid LoadoutProfile passes strict (0 fail)",
+      "detail": "generator produced 8 records (no zero-record success)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "LoadoutProfile::known_bad_fails": {
+    "generate-equipment-catalog::all_valid": {
       "ok": true,
-      "detail": "known-bad LoadoutProfile is rejected",
+      "detail": "0/8 records invalid",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "EquipmentItem::valid_passes": {
+    "equipment-catalog::loadouts_nonzero": {
       "ok": true,
-      "detail": "valid EquipmentItem passes strict (0 fail)",
+      "detail": "expected >=1 loadout profile, got 1",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "EquipmentItem::known_bad_fails": {
+    "equipment-catalog::loadouts_valid": {
       "ok": true,
-      "detail": "known-bad EquipmentItem is rejected",
+      "detail": "loadout profiles failed their own contract: []",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -47,27 +47,27 @@
   "passed": true,
   "status": "ok",
   "meta": {
-    "command": "validate-loadout-contracts",
+    "command": "generate-equipment-catalog",
     "pack": "encounter_loop_world",
     "strict": true,
     "deep": false,
     "torture": false,
     "seeds": null,
     "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
-    "timestamp": "2026-07-10T00:30:54.123176+00:00",
+    "timestamp": "2026-07-10T00:30:54.419545+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
     "worldforge_version": "v1.5",
-    "report_type": "wf.v1_9.loadout_schema_check.v1",
-    "report_id": "wf.v1_9.loadout_schema_check.v1:3971035785f0",
+    "report_type": "wf.reward.equipment_item.v1",
+    "report_id": "wf.reward.equipment_item.v1:9dd932e5d40f",
     "status": "ok",
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 2,
-    "records_total": 2,
-    "records_passed": 2,
+    "record_count": 8,
+    "records_total": 8,
+    "records_passed": 8,
     "records_failed": 0,
     "records_skipped": 0
   }

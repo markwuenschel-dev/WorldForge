@@ -1,0 +1,394 @@
+{
+  "pack": "encounter_loop_world",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "reward-tables::nonzero": {
+      "ok": true,
+      "detail": "found 12 reward table(s) under procedural/generated/rewards/tables (run generate_reward_tables.py first)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::unlock_catalog_present": {
+      "ok": true,
+      "detail": "unlock catalog missing/unparseable at procedural/generated/rewards/unlock_catalog.json (run generate_unlock_catalog.py)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_clear_hazard_baseline::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_clear_hazard_baseline::budget_range": {
+      "ok": true,
+      "detail": "budget_min (50.0) must be <= budget_max (200.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_clear_hazard_baseline::re_clear_hazard_baseline_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_marksman' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_clear_hazard_high::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_clear_hazard_high::budget_range": {
+      "ok": true,
+      "detail": "budget_min (120.0) must be <= budget_max (360.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_clear_hazard_high::re_clear_hazard_high_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_rifle_hv' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_clear_hazard_high::re_clear_hazard_high_unlock::unlock_ref": {
+      "ok": true,
+      "detail": "entry unlock_id 'unl_badlands_biome' not present in unlock catalog procedural/generated/rewards/unlock_catalog.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_disable_site_baseline::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_disable_site_baseline::budget_range": {
+      "ok": true,
+      "detail": "budget_min (50.0) must be <= budget_max (200.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_disable_site_baseline::re_disable_site_baseline_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_marksman' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_disable_site_high::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_disable_site_high::budget_range": {
+      "ok": true,
+      "detail": "budget_min (120.0) must be <= budget_max (360.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_disable_site_high::re_disable_site_high_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_rifle_hv' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_disable_site_high::re_disable_site_high_unlock::unlock_ref": {
+      "ok": true,
+      "detail": "entry unlock_id 'unl_scout_slot' not present in unlock catalog procedural/generated/rewards/unlock_catalog.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_extract_cache_baseline::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_extract_cache_baseline::budget_range": {
+      "ok": true,
+      "detail": "budget_min (50.0) must be <= budget_max (200.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_extract_cache_baseline::re_extract_cache_baseline_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_marksman' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_extract_cache_high::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_extract_cache_high::budget_range": {
+      "ok": true,
+      "detail": "budget_min (120.0) must be <= budget_max (360.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_extract_cache_high::re_extract_cache_high_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_rifle_hv' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_extract_cache_high::re_extract_cache_high_unlock::unlock_ref": {
+      "ok": true,
+      "detail": "entry unlock_id 'unl_marksman_access' not present in unlock catalog procedural/generated/rewards/unlock_catalog.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_recover_resource_baseline::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_recover_resource_baseline::budget_range": {
+      "ok": true,
+      "detail": "budget_min (50.0) must be <= budget_max (200.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_recover_resource_baseline::re_recover_resource_baseline_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_marksman' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_recover_resource_high::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_recover_resource_high::budget_range": {
+      "ok": true,
+      "detail": "budget_min (120.0) must be <= budget_max (360.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_recover_resource_high::re_recover_resource_high_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_rifle_hv' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_recover_resource_high::re_recover_resource_high_unlock::unlock_ref": {
+      "ok": true,
+      "detail": "entry unlock_id 'unl_heavy_rifle' not present in unlock catalog procedural/generated/rewards/unlock_catalog.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_restore_power_baseline::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_restore_power_baseline::budget_range": {
+      "ok": true,
+      "detail": "budget_min (50.0) must be <= budget_max (200.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_restore_power_baseline::re_restore_power_baseline_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_marksman' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_restore_power_high::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_restore_power_high::budget_range": {
+      "ok": true,
+      "detail": "budget_min (120.0) must be <= budget_max (360.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_restore_power_high::re_restore_power_high_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_rifle_hv' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_restore_power_high::re_restore_power_high_unlock::unlock_ref": {
+      "ok": true,
+      "detail": "entry unlock_id 'unl_hardened_mod' not present in unlock catalog procedural/generated/rewards/unlock_catalog.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_survey_landmark_baseline::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_survey_landmark_baseline::budget_range": {
+      "ok": true,
+      "detail": "budget_min (50.0) must be <= budget_max (200.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_survey_landmark_baseline::re_survey_landmark_baseline_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_marksman' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_survey_landmark_high::contract_valid": {
+      "ok": true,
+      "detail": "contract failures: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_survey_landmark_high::budget_range": {
+      "ok": true,
+      "detail": "budget_min (120.0) must be <= budget_max (360.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_survey_landmark_high::re_survey_landmark_high_item::item_ref": {
+      "ok": true,
+      "detail": "entry item_id 'eq_rifle_hv' does not resolve to a file under procedural/generated/rewards/equipment",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reward-tables::rwt_survey_landmark_high::re_survey_landmark_high_unlock::unlock_ref": {
+      "ok": true,
+      "detail": "entry unlock_id 'unl_hazard_missions' not present in unlock catalog procedural/generated/rewards/unlock_catalog.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 44,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-reward-tables",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
+    "timestamp": "2026-07-10T00:30:54.706802+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.reward_table_check.v1",
+    "report_id": "wf.reward.reward_table_check.v1:0ea6c2da01c3",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 12,
+    "records_total": 12,
+    "records_passed": 12,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

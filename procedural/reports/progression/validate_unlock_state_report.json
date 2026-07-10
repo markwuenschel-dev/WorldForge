@@ -3,33 +3,33 @@
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
-    "LoadoutProfile::valid_passes": {
+    "dogfood::valid_passes": {
       "ok": true,
-      "detail": "valid LoadoutProfile passes strict (0 fail)",
+      "detail": "valid unlock state passes strict (0 fail)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "LoadoutProfile::known_bad_fails": {
+    "dogfood::known_bad_rejected": {
       "ok": true,
-      "detail": "known-bad LoadoutProfile is rejected",
+      "detail": "unlock state with non-boolean affects_generation is rejected",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "EquipmentItem::valid_passes": {
+    "unlocks::present": {
       "ok": true,
-      "detail": "valid EquipmentItem passes strict (0 fail)",
+      "detail": "no generated unlock states found (run generate_progression_state.py)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "EquipmentItem::known_bad_fails": {
+    "unlocks::all_valid": {
       "ok": true,
-      "detail": "known-bad EquipmentItem is rejected",
+      "detail": "0/6 unlock states invalid",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -47,27 +47,27 @@
   "passed": true,
   "status": "ok",
   "meta": {
-    "command": "validate-loadout-contracts",
+    "command": "validate-unlock-state",
     "pack": "encounter_loop_world",
     "strict": true,
     "deep": false,
     "torture": false,
     "seeds": null,
     "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
-    "timestamp": "2026-07-10T00:30:54.123176+00:00",
+    "timestamp": "2026-07-10T00:30:55.191539+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
     "worldforge_version": "v1.5",
-    "report_type": "wf.v1_9.loadout_schema_check.v1",
-    "report_id": "wf.v1_9.loadout_schema_check.v1:3971035785f0",
+    "report_type": "wf.reward.unlock_state_report.v1",
+    "report_id": "wf.reward.unlock_state_report.v1:7ad644271fa9",
     "status": "ok",
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 2,
-    "records_total": 2,
-    "records_passed": 2,
+    "record_count": 6,
+    "records_total": 6,
+    "records_passed": 6,
     "records_failed": 0,
     "records_skipped": 0
   }

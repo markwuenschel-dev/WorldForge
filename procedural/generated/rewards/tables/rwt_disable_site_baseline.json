@@ -1,0 +1,46 @@
+{
+  "reward_table_id": "rwt_disable_site_baseline",
+  "pack_id": "encounter_loop_world",
+  "mission_archetype": "disable_site",
+  "biome": "alien_crystal_badlands",
+  "combat_profile_id": "cp_ambush_pressure_ambush_choke",
+  "risk_band": "baseline",
+  "reward_entries": [
+    {
+      "reward_entry_id": "re_disable_site_baseline_xp",
+      "reward_type": "xp",
+      "item_id": null,
+      "xp_amount": 100.0,
+      "unlock_id": null,
+      "currency_amount": 0.0,
+      "weight": 2.0,
+      "min_mission_result": "completed",
+      "max_repeat_count": 5,
+      "grant_once": false
+    },
+    {
+      "reward_entry_id": "re_disable_site_baseline_item",
+      "reward_type": "item",
+      "item_id": "eq_marksman",
+      "xp_amount": 0.0,
+      "unlock_id": null,
+      "currency_amount": 0.0,
+      "weight": 1.0,
+      "min_mission_result": "completed",
+      "max_repeat_count": 1,
+      "grant_once": true
+    }
+  ],
+  "budget_min": 50.0,
+  "budget_max": 200.0,
+  "anti_exploit_rules": [
+    "grant_once_stable",
+    "budget_capped",
+    "min_result_completed"
+  ],
+  "seed": 0,
+  "created_by": "worldforge.v1.9",
+  "created_at": "2026-07-09T00:00:00+00:00",
+  "schema_version": "wf.reward.reward_table.v1",
+  "report_type": "wf.reward.reward_table.v1"
+}

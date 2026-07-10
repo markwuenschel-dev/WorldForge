@@ -1,0 +1,48 @@
+{
+  "scenario_id": "rs_auth_01_rwt_disable_site_high",
+  "save_load_key": "WFInventory_State",
+  "kind": "inventory",
+  "roundtrip_ok": true,
+  "checks": [
+    {
+      "name": "roundtrip_stable",
+      "ok": true,
+      "detail": "inventory save/load: roundtrip inventory hash stable"
+    },
+    {
+      "name": "dedicated_slot",
+      "ok": true,
+      "detail": "inventory save_load_key must be 'WFInventory_State' (got 'WFInventory_State')"
+    },
+    {
+      "name": "not_forbidden_slot",
+      "ok": true,
+      "detail": "inventory save slot must not reuse a combat/mission/npc slot"
+    }
+  ],
+  "meta": {
+    "command": "validate-inventory-save-load",
+    "pack": "encounter_loop_world",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
+    "timestamp": "2026-07-10T00:30:55.295686+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.reward.inventory_save_load_proof.v1",
+    "report_id": "wf.reward.inventory_save_load_proof.v1:0028cf5c80ce",
+    "status": "pass",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 1,
+    "records_total": 1,
+    "records_passed": 1,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

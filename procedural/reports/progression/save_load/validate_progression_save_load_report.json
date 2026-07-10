@@ -3,33 +3,33 @@
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
-    "LoadoutProfile::valid_passes": {
+    "dogfood::valid_roundtrip_passes": {
       "ok": true,
-      "detail": "valid LoadoutProfile passes strict (0 fail)",
+      "detail": "coherent progression round-trips stable (0 fail)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "LoadoutProfile::known_bad_fails": {
+    "dogfood::hash_drift_rejected": {
       "ok": true,
-      "detail": "known-bad LoadoutProfile is rejected",
+      "detail": "progression with mismatched progression_hash fails round-trip",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "EquipmentItem::valid_passes": {
+    "progression_save_load::present": {
       "ok": true,
-      "detail": "valid EquipmentItem passes strict (0 fail)",
+      "detail": "no generated progression states found (run generate_progression_state.py)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "EquipmentItem::known_bad_fails": {
+    "progression_save_load::all_verified": {
       "ok": true,
-      "detail": "known-bad EquipmentItem is rejected",
+      "detail": "0 progression save/load failure(s) across 12 state(s)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -47,28 +47,29 @@
   "passed": true,
   "status": "ok",
   "meta": {
-    "command": "validate-loadout-contracts",
+    "command": "validate-progression-save-load",
     "pack": "encounter_loop_world",
     "strict": true,
     "deep": false,
     "torture": false,
     "seeds": null,
     "git_sha": "054bbf300fa6cd2e2c178b70c15e916b4d0a0987",
-    "timestamp": "2026-07-10T00:30:54.123176+00:00",
+    "timestamp": "2026-07-10T00:30:55.703555+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
     "worldforge_version": "v1.5",
-    "report_type": "wf.v1_9.loadout_schema_check.v1",
-    "report_id": "wf.v1_9.loadout_schema_check.v1:3971035785f0",
+    "report_type": "wf.reward.progression_save_load_report.v1",
+    "report_id": "wf.reward.progression_save_load_report.v1:4b28e8e6568f",
     "status": "ok",
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 2,
-    "records_total": 2,
-    "records_passed": 2,
+    "record_count": 12,
+    "records_total": 12,
+    "records_passed": 12,
     "records_failed": 0,
-    "records_skipped": 0
+    "records_skipped": 0,
+    "verified": 12
   }
 }
