@@ -1491,3 +1491,79 @@ v1-9-shield:
 	validate-unlock-state validate-inventory-save-load validate-progression-save-load \
 	validate-next-mission-state run-reward-forge-alpha validate-reward-bridge \
 	reward-negative-validators reward-fuzz reward-torture reward-report-integrity reward-hygiene v1-9-shield
+
+# ======================================================================
+# v2.0 VerticalSliceForge — Vertical Slice (Agent 0)
+# ----------------------------------------------------------------------
+# Integrates the v1.5-v1.9 substrates into one generated playable slice.
+# FAIL-CLOSED: a gate whose script is not yet built turns v2-0-shield RED
+# until it exists (no fake green). NOTE: `make` is not installed in this
+# environment; these targets document the canonical command surface — run
+# the mapped `python tools/pipeline/*.py` directly (PYTHONUTF8=1 on Windows).
+#   python tools/pipeline/v2_0_shield.py --pack encounter_loop_world \
+#     --strict --slices --require-live --package --torture
+# ======================================================================
+SLICE_PACK ?= encounter_loop_world
+
+# --- Contract spine (Wave 1, GREEN) ------------------------------------
+vertical-slice-contracts:
+	$(PYTHON) tools/pipeline/validate_vertical_slice_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Slice authoring (Wave 2) ------------------------------------------
+generate-slice-scenarios:
+	$(PYTHON) tools/pipeline/generate_slice_scenarios.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-slice-scenarios:
+	$(PYTHON) tools/pipeline/validate_slice_scenarios.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-slice-environment:
+	$(PYTHON) tools/pipeline/validate_slice_environment.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-slice-assets:
+	$(PYTHON) tools/pipeline/validate_slice_assets.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Runtime slice matrix (Wave R) -------------------------------------
+build-vertical-slice:
+	$(PYTHON) tools/pipeline/build_vertical_slice.py --pack $(PACK) $(if $(STRICT),--strict,)
+run-vertical-slice-runtime:
+	$(PYTHON) tools/pipeline/run_slice_forge_alpha.py --pack $(PACK) $(if $(SCENARIOS),--scenarios $(SCENARIOS),--scenarios 24) $(if $(STRICT),--strict,)
+validate-slice-traversal:
+	$(PYTHON) tools/pipeline/validate_slice_traversal.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-slice-npc-combat:
+	$(PYTHON) tools/pipeline/validate_slice_npc_combat.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-slice-rewards:
+	$(PYTHON) tools/pipeline/validate_slice_rewards.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-slice-save-load:
+	$(PYTHON) tools/pipeline/validate_slice_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-slice-evidence-index:
+	$(PYTHON) tools/pipeline/validate_slice_evidence_index.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Package proof (Wave P) --------------------------------------------
+package-slice:
+	$(PYTHON) tools/pipeline/package_slice.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-slice-package:
+	$(PYTHON) tools/pipeline/validate_slice_package.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Hostile validation (Agent 7) --------------------------------------
+vertical-slice-negative-validators:
+	$(PYTHON) tools/pipeline/slice_negatives.py $(if $(STRICT),--strict,)
+vertical-slice-fuzz:
+	$(PYTHON) tools/pipeline/slice_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+vertical-slice-torture:
+	$(PYTHON) tools/pipeline/slice_torture.py --pack $(PACK) $(if $(STRICT),--strict,)
+vertical-slice-report-integrity:
+	$(PYTHON) tools/pipeline/slice_report_integrity.py --pack $(PACK) $(if $(STRICT),--strict,)
+vertical-slice-hygiene:
+	$(PYTHON) tools/pipeline/slice_hygiene.py $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v2-0-shield:
+	$(PYTHON) tools/pipeline/v2_0_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(SLICES),--slices,) $(if $(REQUIRE_LIVE),--require-live,) \
+	  $(if $(PACKAGE),--package,) $(if $(TORTURE),--torture,) \
+	  $(if $(REGRESSIONS),--regressions,) $(if $(SCENARIOS),--scenarios $(SCENARIOS),)
+
+.PHONY: vertical-slice-contracts generate-slice-scenarios validate-slice-scenarios \
+	validate-slice-environment validate-slice-assets build-vertical-slice \
+	run-vertical-slice-runtime validate-slice-traversal validate-slice-npc-combat \
+	validate-slice-rewards validate-slice-save-load validate-slice-evidence-index \
+	package-slice validate-slice-package vertical-slice-negative-validators \
+	vertical-slice-fuzz vertical-slice-torture vertical-slice-report-integrity \
+	vertical-slice-hygiene v2-0-shield

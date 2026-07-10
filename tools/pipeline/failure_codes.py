@@ -769,6 +769,70 @@ class FailureCode:
     # -- taxonomy self-check (665) --
     V1_9_TAXONOMY_FAILURE = "WF665_V1_9_TAXONOMY_FAILURE"
 
+    # === v2.0 VerticalSliceForge — Vertical Slice (WF671–710) ===
+    # Integrates the v1.5–v1.9 substrates into one generated playable slice and
+    # guards the *integration* honesty invariants — NOT a re-litigation of the
+    # per-system codes (combat WF605–630, reward WF631–670 still own those). A
+    # slice-level failure means: the coherent loop (generate -> launch -> traverse
+    # -> NPC/combat -> complete -> reward -> save/load -> package -> inspect) did
+    # not actually hold end to end. The invariants block: partial matrices claiming
+    # pass (must be exactly the matrix product, default 24), stale/orphan/duplicate
+    # evidence, success reports whose telemetry paths do not exist, a "completed"
+    # slice missing any required system's proof, a package report with no package,
+    # and any fake-green where a report asserts success its cross-linked evidence
+    # cannot back. The backfill (bottom of file) auto-fills SEVERITY +
+    # GATE_TAXONOMY for these. Do NOT reuse/renumber an earlier band (WF666–670 are
+    # unused v1.9 headroom — leave them) — this band starts cleanly at WF671.
+    # -- contracts / scenario / manifest schema (671–674, 685, 696–697) --
+    SLICE_CONTRACT_INVALID = "WF671_SLICE_CONTRACT_INVALID"
+    SLICE_SCENARIO_SET_INVALID = "WF672_SLICE_SCENARIO_SET_INVALID"
+    SLICE_MISSION_MANIFEST_INVALID = "WF673_SLICE_MISSION_MANIFEST_INVALID"
+    SLICE_BUILD_MANIFEST_INVALID = "WF674_SLICE_BUILD_MANIFEST_INVALID"
+    # -- package (675–676) --
+    SLICE_PACKAGE_MISSING = "WF675_SLICE_PACKAGE_MISSING"
+    SLICE_PACKAGE_INVALID = "WF676_SLICE_PACKAGE_INVALID"
+    # -- launch / runtime evidence (677–684) --
+    SLICE_LAUNCH_FAILED = "WF677_SLICE_LAUNCH_FAILED"
+    SLICE_RUNTIME_REPORT_MISSING = "WF678_SLICE_RUNTIME_REPORT_MISSING"
+    SLICE_TRAVERSAL_MISSING = "WF679_SLICE_TRAVERSAL_MISSING"
+    SLICE_NPC_EVIDENCE_MISSING = "WF680_SLICE_NPC_EVIDENCE_MISSING"
+    SLICE_COMBAT_EVIDENCE_MISSING = "WF681_SLICE_COMBAT_EVIDENCE_MISSING"
+    SLICE_REWARD_EVIDENCE_MISSING = "WF682_SLICE_REWARD_EVIDENCE_MISSING"
+    SLICE_SAVE_LOAD_MISSING = "WF683_SLICE_SAVE_LOAD_MISSING"
+    SLICE_SAVE_LOAD_FAILED = "WF684_SLICE_SAVE_LOAD_FAILED"
+    # -- evidence index / coverage / staleness (685–688) --
+    SLICE_EVIDENCE_INDEX_INVALID = "WF685_SLICE_EVIDENCE_INDEX_INVALID"
+    SLICE_PARTIAL_MATRIX = "WF686_SLICE_PARTIAL_MATRIX"
+    SLICE_STALE_EVIDENCE = "WF687_SLICE_STALE_EVIDENCE"
+    SLICE_REPORT_INTEGRITY_FAILED = "WF688_SLICE_REPORT_INTEGRITY_FAILED"
+    # -- hostile validation (689–691) --
+    SLICE_NEGATIVE_ACCEPTED = "WF689_SLICE_NEGATIVE_ACCEPTED"
+    SLICE_FUZZ_ACCEPTED = "WF690_SLICE_FUZZ_ACCEPTED"
+    SLICE_TORTURE_FAILED = "WF691_SLICE_TORTURE_FAILED"
+    # -- regression / hygiene / budget / performance (692–695) --
+    SLICE_REGRESSION_FAILED = "WF692_SLICE_REGRESSION_FAILED"
+    SLICE_ARTIFACT_HYGIENE_FAILED = "WF693_SLICE_ARTIFACT_HYGIENE_FAILED"
+    SLICE_BUDGET_EXCEEDED = "WF694_SLICE_BUDGET_EXCEEDED"
+    SLICE_PERFORMANCE_INVALID = "WF695_SLICE_PERFORMANCE_INVALID"
+    # -- per-scenario / manifest / binding schema (696–701) --
+    SLICE_SCENARIO_INVALID = "WF696_SLICE_SCENARIO_INVALID"
+    SLICE_MANIFEST_INVALID = "WF697_SLICE_MANIFEST_INVALID"
+    SLICE_ROUTE_BINDING_INVALID = "WF698_SLICE_ROUTE_BINDING_INVALID"
+    SLICE_REWARD_TABLE_BINDING_INVALID = "WF699_SLICE_REWARD_TABLE_BINDING_INVALID"
+    SLICE_ENVIRONMENT_INVALID = "WF700_SLICE_ENVIRONMENT_INVALID"
+    SLICE_ASSET_OWNERSHIP_INVALID = "WF701_SLICE_ASSET_OWNERSHIP_INVALID"
+    # -- integration honesty invariants (702–709) --
+    SLICE_MISSION_INCOMPLETE = "WF702_SLICE_MISSION_INCOMPLETE"
+    SLICE_NPC_NO_DAMAGE = "WF703_SLICE_NPC_NO_DAMAGE"
+    SLICE_REWARD_WITHOUT_MUTATION = "WF704_SLICE_REWARD_WITHOUT_MUTATION"
+    SLICE_SAVE_LOAD_WRONG_SLOT = "WF705_SLICE_SAVE_LOAD_WRONG_SLOT"
+    SLICE_NEXT_MISSION_STATE_MISSING = "WF706_SLICE_NEXT_MISSION_STATE_MISSING"
+    SLICE_DUPLICATE_SCENARIO_REPORT = "WF707_SLICE_DUPLICATE_SCENARIO_REPORT"
+    SLICE_UNKNOWN_SCENARIO_ID = "WF708_SLICE_UNKNOWN_SCENARIO_ID"
+    SLICE_ORPHAN_REPORT = "WF709_SLICE_ORPHAN_REPORT"
+    # -- taxonomy self-check (710) --
+    V2_0_TAXONOMY_FAILURE = "WF710_V2_0_TAXONOMY_FAILURE"
+
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
 # This is the *default* nature of the code; a validator may still choose a

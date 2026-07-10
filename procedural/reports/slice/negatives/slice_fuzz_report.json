@@ -1,51 +1,67 @@
 {
-  "registry": "failure_codes",
+  "suite": "slice_fuzz",
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
-    "codes_well_formed": {
+    "fuzz::zero_invalid_accepted": {
       "ok": true,
-      "detail": "malformed: []",
+      "detail": "0 invalid fuzz cases accepted",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "wf_numbers_unique": {
+    "fuzz::case_count": {
       "ok": true,
-      "detail": "",
+      "detail": "must run >0 cases",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "every_code_has_severity": {
+    "fuzz::valid::VerticalSliceContract": {
       "ok": true,
-      "detail": "no severity: []",
+      "detail": "valid example rejected",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "severity_values_valid": {
+    "fuzz::valid::SliceScenario": {
       "ok": true,
-      "detail": "bad severity: []",
+      "detail": "valid example rejected",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "every_code_in_gate_taxonomy": {
+    "fuzz::valid::SliceManifest": {
       "ok": true,
-      "detail": "missing from taxonomy: []",
+      "detail": "valid example rejected",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "v1_5_bands_present": {
+    "fuzz::valid::SliceRuntimeReport": {
       "ok": true,
-      "detail": "missing v1.5 anchor codes: []",
+      "detail": "valid example rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::valid::SlicePackageReport": {
+      "ok": true,
+      "detail": "valid example rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::valid::SliceEvidenceIndex": {
+      "ok": true,
+      "detail": "valid example rejected",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -54,7 +70,7 @@
   },
   "failures": [],
   "counts": {
-    "PASS": 6,
+    "PASS": 8,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -63,27 +79,29 @@
   "passed": true,
   "status": "ok",
   "meta": {
-    "command": "validate-failure-codes",
+    "command": "slice-fuzz",
     "pack": null,
     "strict": true,
     "deep": false,
     "torture": false,
-    "seeds": null,
-    "git_sha": "96c4161ad8c84eb5404a4e0669e46c368dcbf6a1",
-    "timestamp": "2026-07-10T10:10:14.475813+00:00",
+    "seeds": [
+      1337
+    ],
+    "git_sha": "69103050d1d4e24470c1b6a3c5f67dae35ad2f31",
+    "timestamp": "2026-07-10T19:02:22.432187+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
     "worldforge_version": "v1.5",
-    "report_type": "wf.v1_5.failure_codes.v1",
-    "report_id": "wf.v1_5.failure_codes.v1:aa6806dba54e",
+    "report_type": "wf.slice.fuzz.v1",
+    "report_id": "wf.slice.fuzz.v1:3f03660cc2ad",
     "status": "ok",
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 533,
-    "records_total": 533,
-    "records_passed": 533,
+    "record_count": 300,
+    "records_total": 300,
+    "records_passed": 300,
     "records_failed": 0,
     "records_skipped": 0
   }
