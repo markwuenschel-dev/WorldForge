@@ -75,15 +75,20 @@ def main(argv=None):
     results.append(run("progression-contracts", "validate_progression_contracts.py", *P, *s))
 
     # --- Reward-table / catalog authoring + classification lane ---------
+    # Generators FIRST (catalogs + tables), then validators — validate_reward_tables
+    # cross-refs the equipment/unlock catalogs, so they must exist first.
     if args.rewards:
-        results.append(run("reward:tables", "generate_reward_tables.py", *P, *s))
-        results.append(run("reward:validate-tables", "validate_reward_tables.py", *P, *s))
         results.append(run("reward:equipment-catalog", "generate_equipment_catalog.py", *P, *s))
         results.append(run("reward:unlock-catalog", "generate_unlock_catalog.py", *P, *s))
+        results.append(run("reward:tables", "generate_reward_tables.py", *P, *s))
+        results.append(run("reward:validate-tables", "validate_reward_tables.py", *P, *s))
         results.append(run("reward:classify-risk-reward", "classify_risk_reward.py", *P, *s))
         results.append(run("reward:validate-risk-reward", "validate_risk_reward.py", *P, *s))
 
     # --- Progression / inventory / unlock state + persistence lane ------
+    # generate_progression_state writes the full authoring scenario evidence
+    # (grant events, inventory/progression/unlock states, completion, telemetry)
+    # that every validator below consumes, so it runs first.
     if args.progression:
         results.append(run("progression:state", "generate_progression_state.py", *P, *s))
         results.append(run("progression:validate-state", "validate_progression_state.py", *P, *s))
@@ -92,13 +97,13 @@ def main(argv=None):
         results.append(run("progression:progression-save-load", "validate_progression_save_load.py", *P, *s))
         results.append(run("progression:next-mission-state", "validate_next_mission_state.py", *P, *s))
 
-    # --- Runtime reward bridge (P2) -------------------------------------
+    # --- Runtime reward bridge (P2, Wave R) — UE-realized, --require-live only.
+    # Wave 2 proves the authoring substrate WITHOUT the engine; the runtime matrix
+    # is a separate, explicitly-gated lane so Wave 2 green never implies runtime.
     if args.require_live:
         results.append(run("reward:matrix-P2", "run_reward_forge_alpha.py",
                            "--gate", "--scenarios", args.scenarios, *s))
         results.append(run("reward:validate-bridge", "validate_reward_bridge.py", *P, *s))
-    elif args.rewards or args.progression:
-        results.append(run("reward:sample", "run_reward_forge_alpha.py", "--scenarios", "12", *s))
 
     # --- Hostile validation suite ---------------------------------------
     if args.torture:

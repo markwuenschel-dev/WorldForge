@@ -48,10 +48,28 @@ C = FailureCode
 # Taxonomy — the reward/progression vocabulary. One source of truth for every
 # generator / validator / shield.
 # --------------------------------------------------------------------------- #
-# The 8 v1.4/v1.8 encounter (mission) archetypes rewards layer onto.
+# The v1.3 MISSION archetypes rewards key off (mirrors mission_contract.
+# MISSION_ARCHETYPES — the vocabulary real missions and v1.8 combat completion
+# reports use for `mission_archetype`). Redefined locally, house style.
 MISSION_ARCHETYPES = (
+    "disable_site", "recover_resource", "survey_landmark",
+    "clear_hazard", "restore_power", "extract_cache",
+)
+
+# The 8 v1.4/v1.8 ENCOUNTER archetypes — combat pressure shape, referenced only
+# indirectly by a reward table via its combat_profile_id (a CombatProfile carries
+# the encounter_archetype). Kept for linkage/reference; NOT the reward-table key.
+ENCOUNTER_ARCHETYPES = (
     "guarded_objective", "patrol_route", "ambush_choke", "hazard_field",
     "resource_contest", "defensive_holdout", "roaming_threat", "extraction_pressure",
+)
+
+# The 5 real biome families in encounter_loop_world (grounded in v1.8 combat
+# evidence). Biome is validated as a non-empty string, not enum-locked, so packs
+# with additional biomes stay valid; this set drives deterministic generation.
+KNOWN_BIOMES = (
+    "alien_crystal_badlands", "alpine_snow", "volcanic_ashlands",
+    "temperate_forest", "wetland_mire",
 )
 
 # Equipment slots a loadout exposes. Bounded and explicit — no arbitrary slots.
@@ -90,6 +108,24 @@ BLOCKING_RISK_REWARD_CLASSES = ("over_rewarded", "exploit_suspected", "invalid")
 EXPLOIT_RESULTS = ("clean", "suspected", "confirmed")
 
 RESULT_STATUS = ("pass", "fail", "skipped", "not_implemented")
+
+# Reward telemetry event vocabulary — the runtime event stream proving a reward
+# was actually granted and persisted (not just claimed in a report).
+REWARD_EVENT_TYPES = (
+    "reward.scenario.started", "reward.mission.completion.read", "reward.combat.completion.read",
+    "reward.table.selected", "reward.grant.applied", "reward.inventory.mutated",
+    "reward.progression.mutated", "reward.unlock.granted", "reward.state.saved",
+    "reward.state.reload.verified", "reward.next_mission.state.written",
+    "reward.risk_reward.classified", "reward.scenario.completed", "reward.scenario.failed",
+    "reward.scenario.no_reward",
+)
+# The event set a genuine reward_granted_runtime run must contain — proof the
+# grant happened, mutated state, and persisted through reload.
+COMPLETION_REQUIRED_REWARD_EVENTS = (
+    "reward.scenario.started", "reward.mission.completion.read", "reward.table.selected",
+    "reward.grant.applied", "reward.state.saved", "reward.state.reload.verified",
+    "reward.scenario.completed",
+)
 
 # RewardCompletionReport completion classes. The one success class is
 # reward_granted_runtime — everything else names an owned failure surface.
@@ -237,8 +273,8 @@ def _example_loadout_profile(**over):
     d = {
         "loadout_profile_id": "lo_scout_std", "player_id": "player_M", "scenario_id": "rs_M_s0",
         "primary_slot": "eq_rifle_std", "secondary_slot": "eq_sidearm_std", "tool_slot": "eq_scanner",
-        "consumable_slots": ["eq_medkit"], "allowed_mission_archetypes": ["guarded_objective", "patrol_route"],
-        "allowed_biomes": ["volcanic_ashlands", "arid_desert"], "power_budget": 100.0, "risk_budget": 60.0,
+        "consumable_slots": ["eq_medkit"], "allowed_mission_archetypes": ["disable_site", "recover_resource"],
+        "allowed_biomes": ["volcanic_ashlands", "alpine_snow"], "power_budget": 100.0, "risk_budget": 60.0,
         "source": "generated",
     }
     d.update(over)
@@ -285,7 +321,7 @@ def _example_equipment_item(**over):
     d = {
         "item_id": "eq_rifle_std", "item_type": "weapon", "display_name": "Standard Rifle",
         "slot": "primary", "rarity_band": "common", "power_value": 20.0, "risk_value": 5.0,
-        "allowed_loadout_profiles": ["lo_scout_std"], "allowed_mission_archetypes": ["guarded_objective"],
+        "allowed_loadout_profiles": ["lo_scout_std"], "allowed_mission_archetypes": ["disable_site"],
         "tags": ["ranged", "starter"], "ownership_class": "generated_owned",
         "provenance": {"generator": "reward_forge", "seed": 0},
     }
@@ -389,8 +425,8 @@ def _example_reward_entry(**over):
 
 def _example_reward_table(**over):
     d = {
-        "reward_table_id": "rwt_guarded_ash_baseline", "pack_id": "encounter_loop_world",
-        "mission_archetype": "guarded_objective", "biome": "volcanic_ashlands",
+        "reward_table_id": "rwt_disable_site_ash_baseline", "pack_id": "encounter_loop_world",
+        "mission_archetype": "disable_site", "biome": "volcanic_ashlands",
         "combat_profile_id": "cp_guard_pressure", "risk_band": "baseline",
         "reward_entries": [
             _example_reward_entry(),
@@ -463,7 +499,7 @@ def _hash_differs(a, b):
 def _example_reward_grant_event(**over):
     d = {
         "event_id": "rge_M_s0_0001", "scenario_id": "rs_M_s0", "mission_id": "m_M", "player_id": "player_M",
-        "reward_table_id": "rwt_guarded_ash_baseline", "reward_entry_id": "re_xp_base", "reward_type": "xp",
+        "reward_table_id": "rwt_disable_site_ash_baseline", "reward_entry_id": "re_xp_base", "reward_type": "xp",
         "granted_item_id": None, "xp_amount": 100.0, "unlock_id": None,
         "pre_inventory_hash": "inv:aaaa", "post_inventory_hash": "inv:aaaa",
         "pre_progression_hash": "prog:0001", "post_progression_hash": "prog:0002",
@@ -793,7 +829,7 @@ def _example_reward_completion(**over):
         "report_id": "reward_cmp:rs_M_s0", "scenario_id": "rs_M_s0", "map_id": "M", "mission_id": "m_M",
         "encounter_id": "enc_M_guarded_objective", "biome": "volcanic_ashlands",
         "combat_profile_id": "cp_guard_pressure", "mission_completed": True, "combat_completed": True,
-        "reward_table_id": "rwt_guarded_ash_baseline", "reward_events_seen": 2, "items_granted": ["eq_rifle_std"],
+        "reward_table_id": "rwt_disable_site_ash_baseline", "reward_events_seen": 2, "items_granted": ["eq_rifle_std"],
         "xp_granted": 100.0, "unlocks_granted": ["unl_scout_slot"], "inventory_mutated": True,
         "progression_mutated": True, "next_mission_state_written": True, "save_load_result": "pass",
         "risk_reward_class": "baseline_reward", "exploit_result": "clean", "status": "pass",
@@ -802,6 +838,48 @@ def _example_reward_completion(**over):
         "evidence_paths": ["procedural/reports/rewards/telemetry/reward_telemetry_rs_M_s0.json"],
         "failure_owner": None, "failure_codes": [], "created_at": "live", "git_commit": "unknown",
     }
+    d.update(over)
+    return d
+
+
+# --------------------------------------------------------------------------- #
+# RewardTelemetry — the runtime event stream proving a reward grant occurred.
+# --------------------------------------------------------------------------- #
+RT_REWARD_TELEMETRY = "wf.reward.telemetry.v1"
+
+
+def validate_reward_telemetry(obj, strict=False, require_completion=False):
+    ch = []
+    ok_top = isinstance(obj, dict) and isinstance(obj.get("events"), list)
+    ch.append(("rtel::has_events", ok_top, "telemetry must carry an events list",
+               C.REWARD_TELEMETRY_MISSING))
+    if not ok_top:
+        return ch
+    evs = obj["events"]
+    ch.append(("rtel::events_nonempty", len(evs) > 0, "telemetry events must be non-empty",
+               C.REWARD_TELEMETRY_MISSING))
+    seen = set()
+    for i, e in enumerate(evs):
+        et = e.get("event_type") if isinstance(e, dict) else None
+        ok = et in REWARD_EVENT_TYPES
+        ch.append(("rtel::event{}_type".format(i), ok,
+                   "event {} type {!r} not in registry".format(i, et), C.REWARD_TELEMETRY_MISSING))
+        if ok:
+            seen.add(et)
+    if require_completion:
+        missing = [e for e in COMPLETION_REQUIRED_REWARD_EVENTS if e not in seen]
+        ch.append(("rtel::completion_events_present", not missing,
+                   "reward completion telemetry missing events: {}".format(missing),
+                   C.REWARD_TELEMETRY_MISSING))
+        ch.append(("rtel::has_grant_event", "reward.grant.applied" in seen,
+                   "completion telemetry has no reward.grant.applied event (no real grant)",
+                   C.REWARD_GRANT_INVALID))
+    return ch
+
+
+def _example_reward_telemetry(**over):
+    d = {"report_type": RT_REWARD_TELEMETRY, "scenario_id": "rs_M_s0",
+         "events": [{"event_type": t, "frame": i} for i, t in enumerate(COMPLETION_REQUIRED_REWARD_EVENTS)]}
     d.update(over)
     return d
 
@@ -846,10 +924,16 @@ CONTRACTS = {
         validate_unlock_state, _example_unlock_state,
         # affects_generation not an explicit bool, rejected.
         lambda: _example_unlock_state(affects_generation="yes")),
+    "RewardTelemetry": (
+        lambda o, strict=False: validate_reward_telemetry(o, strict=strict, require_completion=True),
+        _example_reward_telemetry,
+        # completion telemetry missing the grant.applied event.
+        lambda: {"events": [{"event_type": "reward.scenario.started"},
+                            {"event_type": "reward.scenario.completed"}]}),
 }
 
 CONTRACT_GROUPS = {
     "loadout": ("LoadoutProfile", "EquipmentItem"),
-    "reward": ("RewardTable", "RewardGrantEvent", "RewardCompletionReport"),
+    "reward": ("RewardTable", "RewardGrantEvent", "RewardCompletionReport", "RewardTelemetry"),
     "progression": ("InventoryState", "ProgressionState", "UnlockState"),
 }
