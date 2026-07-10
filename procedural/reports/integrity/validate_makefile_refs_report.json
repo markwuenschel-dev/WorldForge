@@ -1,0 +1,66 @@
+{
+  "repo": "makefile_refs",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "refs_found": {
+      "ok": true,
+      "detail": "no pipeline refs parsed from Makefile",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "no_new_missing_refs": {
+      "ok": true,
+      "detail": "Makefile references nonexistent script(s): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "allowlist_not_stale": {
+      "ok": true,
+      "detail": "KNOWN_MISSING entries now exist (remove from allowlist): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 3,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-makefile-refs",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "d4410a180501c21b859264aa9e1e7d89646501cb",
+    "timestamp": "2026-07-10T19:46:55.275969+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.integrity.makefile_refs.v1",
+    "report_id": "wf.integrity.makefile_refs.v1:d2b8f91b5ac3",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 344,
+    "records_total": 344,
+    "records_passed": 344,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

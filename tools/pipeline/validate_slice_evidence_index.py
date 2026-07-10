@@ -34,9 +34,7 @@ def _dogfood(rep):
     ids = ["vs_scn_{:02d}".format(i) for i in range(24)]  # 24 DISTINCT ids
     good = SX._example_slice_evidence_index(
         scenario_count_expected=24, scenario_count_seen=24,
-        runtime_reports=list(ids), traversal_reports=list(ids),
-        npc_reports=list(ids), combat_reports=list(ids),
-        reward_reports=list(ids), save_load_reports=list(ids))
+        runtime_reports=list(ids), save_load_reports=list(ids))
     gfails = [c for c in SX.validate_slice_evidence_index(good, strict=True) if not c[1]]
     rep.check("dogfood::good_index_passes", len(gfails) == 0,
               "reference index rejected: {}".format([c[0] for c in gfails][:4]),
@@ -46,9 +44,7 @@ def _dogfood(rep):
             ("stale", {"stale_evidence": ["vs_x"]}),
             ("missing", {"missing_evidence": ["vs_x"]}),
             # coverage by DUPLICATE ids is not coverage (the C1 fake-green class):
-            ("duplicate_ids", {"runtime_reports": ["s"] * 24, "traversal_reports": ["s"] * 24,
-                               "npc_reports": ["s"] * 24, "combat_reports": ["s"] * 24,
-                               "reward_reports": ["s"] * 24, "save_load_reports": ["s"] * 24})):
+            ("duplicate_ids", {"runtime_reports": ["s"] * 24, "save_load_reports": ["s"] * 24})):
         bad = dict(good)
         bad.update(over)
         bfails = [c for c in SX.validate_slice_evidence_index(bad, strict=True) if not c[1]]

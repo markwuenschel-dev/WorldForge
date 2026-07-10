@@ -60,8 +60,8 @@ def main(argv=None):
         sys.exit(rep.exit_code)
 
     maps = _slice_maps()
-    rep.check("maps_present", len(maps) == 12,
-              "expected 12 unique slice maps, got {}".format(len(maps)),
+    rep.check("maps_present", len(maps) == SX.EXPECTED_MAPS,
+              "expected {} unique slice maps, got {}".format(SX.EXPECTED_MAPS, len(maps)),
               code=F.SLICE_ASSET_OWNERSHIP_INVALID)
 
     for map_id in maps:

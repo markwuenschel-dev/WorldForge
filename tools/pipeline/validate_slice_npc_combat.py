@@ -59,7 +59,7 @@ def main(argv=None):
 
     _dogfood(rep)
     passed = SE.facet_gate(rep, _facet, SE.EXPECTED_SCENARIOS,
-                           F.SLICE_NPC_NO_DAMAGE, F.SLICE_PARTIAL_MATRIX)
+                           F.SLICE_COMBAT_EVIDENCE_MISSING, F.SLICE_PARTIAL_MATRIX)
 
     rep.finalize()
     rep.set_meta(build_meta(command="validate-slice-npc-combat", pack=args.pack, strict=strict,

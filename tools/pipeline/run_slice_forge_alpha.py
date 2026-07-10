@@ -171,7 +171,7 @@ def build_report(scn, text):
     if not fac["npc_behavior_seen"]:
         fc.append(F.SLICE_NPC_EVIDENCE_MISSING)
     if not fac["combat_damage_seen"]:
-        fc.append(F.SLICE_NPC_NO_DAMAGE)
+        fc.append(F.SLICE_COMBAT_EVIDENCE_MISSING)
     if not fac["mission_completed"]:
         fc.append(F.SLICE_MISSION_INCOMPLETE)
     if not reward_granted:
@@ -277,6 +277,11 @@ def do_index(strict):
     ssids = sorted({d["slice_scenario_id"] for d in completed})
     expected = set(SE.manifest_scenario_ids())
     missing = sorted(expected - set(ssids))
+    # save_load_reports is a DERIVED subset: the scenarios whose runtime report
+    # actually proved save_load_result==roundtrip_ok — not a blind copy of ssids,
+    # so a scenario that completed but failed save/load would drop out here.
+    sl_reports = sorted({d["slice_scenario_id"] for d in completed
+                         if d.get("save_load_result") == SX.SAVE_LOAD_ROUNDTRIP_OK})
     # reference the package report in the index if Wave P has produced one.
     pkg_path = SE.PACKAGE_DIR / "slice_package_{}.json".format(SLICE_ID)
     pkg_reports = ["slice_package_{}".format(SLICE_ID)] if pkg_path.is_file() else []
@@ -285,11 +290,7 @@ def do_index(strict):
         "scenario_count_expected": SE.EXPECTED_SCENARIOS,
         "scenario_count_seen": len(ssids),
         "runtime_reports": list(ssids),
-        "traversal_reports": list(ssids),
-        "npc_reports": list(ssids),
-        "combat_reports": list(ssids),
-        "reward_reports": list(ssids),
-        "save_load_reports": list(ssids),
+        "save_load_reports": sl_reports,
         "package_reports": pkg_reports,
         "missing_evidence": missing,
         "stale_evidence": [],
@@ -298,8 +299,9 @@ def do_index(strict):
         "schema_version": SX.RT_SLICE_EVIDENCE_INDEX,
         "report_type": SX.RT_SLICE_EVIDENCE_INDEX,
     }
-    fails = [c for c in SX.validate_slice_evidence_index(idx, strict=True) if not c[1]]
-    for name, ok, detail, code in SX.validate_slice_evidence_index(idx, strict=True):
+    checks = SX.validate_slice_evidence_index(idx, strict=True)
+    fails = [c for c in checks if not c[1]]
+    for name, ok, detail, code in checks:
         if not ok:
             rep.check("index::{}".format(name), ok, detail, code=code)
     _write_json(INTEGRITY_DIR / "slice_evidence_index_{}.json".format(SLICE_ID), idx)
