@@ -74,13 +74,14 @@ def main(argv=None):
         # Wave 2 — report index + evidence graph
         results.append(run("operator-index-reports", OP + "/index_reports.py", *s))
         results.append(run("validate-operator-index", OP + "/validate_operator_index.py", *s))
-        # Wave 3 — static dashboard + per-view builders + smoke
+        # Wave 3 — static dashboard + per-view builders, THEN smoke last (its
+        # broken-link check needs every linked view page to exist first).
         results.append(run("operator-dashboard", OP + "/build_dashboard.py", *s))
-        results.append(run("operator-smoke", OP + "/operator_smoke.py", *s))
         results.append(run("operator-evidence-view", OP + "/validate_operator_evidence.py", *s))
         results.append(run("operator-failure-index", OP + "/build_failure_index.py", *s))
         results.append(run("operator-asset-ownership", OP + "/build_asset_ownership.py", *s))
         results.append(run("operator-route-view", OP + "/build_route_view.py", *s))
+        results.append(run("operator-smoke", OP + "/operator_smoke.py", *s))
         # Wave 4 — safe command launcher + diff + command negatives
         results.append(run("operator-command-dry-run", OP + "/operator_command.py",
                            "--dry-run", "--command", "operator-index-reports", *s))
