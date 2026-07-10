@@ -138,7 +138,7 @@ def _write_json(path, obj):
         fh.write("\n")
 
 
-def build_report(scn, text):
+def build_report(scn, text, emit_telemetry=True):
     """Parse UE stdout into a SliceRuntimeReport (validated by caller)."""
     ssid = scn["slice_scenario_id"]
     fac = parse_facets(text)
@@ -147,16 +147,22 @@ def build_report(scn, text):
     inv = bool(ev["inv_mutated"])
     prog = bool(ev["prog_mutated"])
     persisted = bool(ev["persisted"])
-    save_slot = SX.REWARD_SAVE_SLOT  # v1.9 reward slot, never mission/combat
+    # Use the slot the engine actually emitted (WF_REWARD_SAVE slot=...), so a run
+    # that saved to the wrong slot is caught by the WF705 invariant; fall back to
+    # the v1.9 reward slot only when no reward-save marker fired (C7).
+    _slot = ev.get("save_slot")
+    save_slot = _slot if isinstance(_slot, str) and _slot else SX.REWARD_SAVE_SLOT
 
-    # write telemetry sidecar so telemetry_paths points at a real file
+    # write telemetry sidecar so telemetry_paths points at a real file (skipped
+    # under emit_telemetry=False, e.g. --selftest, so no evidence file is left).
     tel_rel = "{}/slice_telemetry_{}.json".format(SX.SLICE_RUNTIME_REPORTS_REL, ssid)
-    _write_json(REPO_ROOT / tel_rel, {
-        "slice_scenario_id": ssid, "map_id": scn["map_id"],
-        "reward_verdict": ev["reason"], "grant_count": ev["grant_count"],
-        "xp_granted": ev["xp_granted"], "damage_events": fac["damage_events"],
-        "npc_spawn_count": fac["npc_spawn_count"],
-        "schema_version": "wf.slice.telemetry.v1"})
+    if emit_telemetry:
+        _write_json(REPO_ROOT / tel_rel, {
+            "slice_scenario_id": ssid, "map_id": scn["map_id"],
+            "reward_verdict": ev["reason"], "grant_count": ev["grant_count"],
+            "xp_granted": ev["xp_granted"], "damage_events": fac["damage_events"],
+            "npc_spawn_count": fac["npc_spawn_count"],
+            "schema_version": "wf.slice.telemetry.v1"})
 
     save_load_result = SX.SAVE_LOAD_ROUNDTRIP_OK if persisted else "failed"
 
@@ -372,6 +378,71 @@ def do_gate(pack, scenarios_arg, strict):
     return rep.exit_code
 
 
+_SELFTEST_BASE = "\n".join([
+    "WF_AUTOSPAWN spawned scenario=x pawn=1 obj=1 mgr=1 start=Origin",
+    "WF_GBEGIN grounded_pawn controller=BP_PC mode=Walk spawnZ=100 gravity=-980.0",
+    "WF_NPC_SPAWN count=3 requested=3",
+    "WF_COMBAT_DAMAGE source=npc src_id=npc0 type=hit amount=6.0 before=100.0 after=94.0 at=1.50",
+    "WF_GARRIVE grounded=1 distXY=10.0 secs=5.0 grounded_samples=50 airborne=0",
+    "WF_DONE mission.completed scenario=x",
+    "WF_REWARD_START scenario=x table=rwt_x xp=100 items=1 unlocks=0 mission=1 combat=1",
+    "WF_REWARD_GRANT scenario=x type=xp id=xp_main amount=100",
+    "WF_REWARD_INVENTORY_MUTATED mutated=1 items=1 slot=WFInventory_State",
+    "WF_REWARD_PROGRESSION_MUTATED mutated=1 level=2 xp_total=100 unlocks=0 slot=WFProgression_State",
+    "WF_REWARD_VERIFY persisted_true inv_items=1 prog_level=2 prog_xp=100 reward_events=3",
+    "WF_REWARD_NEXT_MISSION written=1 unlocks_enabled=0 level=2 xp_total=100",
+    "WF_REWARD_DONE scenario.completed scenario=x events=3 items=1 xp=100 unlocks=0 "
+    "inv_mutated=1 prog_mutated=1 level=2 xp_total=100",
+])
+
+
+def do_selftest():
+    """UE-free proof that build_report sources save_slot from the WF_REWARD_SAVE
+    marker (C7) and that the WF705 wrong-slot invariant fires on a produced-style
+    report. Builds in memory (emit_telemetry=False) — leaves zero evidence files."""
+    scns = load_scenarios()
+    if not scns:
+        print("[selftest] FAIL: no slice scenarios authored")
+        return 1
+    scn = scns[0]
+
+    def save_line(slot):
+        return "WF_REWARD_SAVE saved=1 slot={} events=3".format(slot)
+
+    def wf705_present(doc):
+        codes = {str(c[3]) for c in SX.validate_slice_runtime_report(doc, strict=True) if not c[1]}
+        return str(F.SLICE_SAVE_LOAD_WRONG_SLOT) in codes
+
+    fails = []
+    # (a) correct slot -> PARSED, completed, schema-clean.
+    doc_a, comp_a = build_report(scn, _SELFTEST_BASE + "\n" + save_line("WFReward_State"),
+                                 emit_telemetry=False)
+    if doc_a["save_slot"] != "WFReward_State":
+        fails.append("a: save_slot not parsed ({})".format(doc_a["save_slot"]))
+    if not comp_a:
+        fails.append("a: expected slice_completed_runtime, got {}".format(doc_a["failure_codes"]))
+    if [c for c in SX.validate_slice_runtime_report(doc_a, strict=True) if not c[1]]:
+        fails.append("a: schema not clean")
+    # (b) forbidden slot -> CARRIED (parse path) and WF705 fires on the completed claim.
+    doc_b, _ = build_report(scn, _SELFTEST_BASE + "\n" + save_line("WFCombat_State"),
+                            emit_telemetry=False)
+    if doc_b["save_slot"] != "WFCombat_State":
+        fails.append("b: forbidden slot not carried ({})".format(doc_b["save_slot"]))
+    if not wf705_present(doc_b):
+        fails.append("b: WF705 did NOT fire on a wrong-slot completed report (the vacuous bug)")
+    # (c) no reward-save marker -> safe fallback to the v1.9 reward slot.
+    doc_c, _ = build_report(scn, _SELFTEST_BASE, emit_telemetry=False)
+    if doc_c["save_slot"] != SX.REWARD_SAVE_SLOT:
+        fails.append("c: fallback wrong ({})".format(doc_c["save_slot"]))
+
+    if fails:
+        print("[selftest] FAIL: {}".format(fails))
+        return 1
+    print("[selftest] PASS — save_slot parsed from WF_REWARD_SAVE; a forbidden slot "
+          "trips WF705 on a produced report; absent marker falls back")
+    return 0
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="v2.0 runtime slice matrix (produce + certify).")
     ap.add_argument("--pack", default="encounter_loop_world")
@@ -379,6 +450,7 @@ def main(argv=None):
     ap.add_argument("--run", action="store_true", help="drive UE headless, produce evidence")
     ap.add_argument("--smoke", action="store_true", help="run exactly one scenario")
     ap.add_argument("--index", action="store_true", help="build the SliceEvidenceIndex")
+    ap.add_argument("--selftest", action="store_true", help="UE-free build_report self-test (C7)")
     ap.add_argument("--only", default=None, help="run only this slice_scenario_id")
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--force", action="store_true", help="re-run even if already completed")
@@ -394,6 +466,8 @@ def main(argv=None):
         sys.exit(do_run(only=args.only, limit=args.limit, timeout=args.timeout, force=args.force))
     if args.index:
         sys.exit(do_index(strict))
+    if args.selftest:
+        sys.exit(do_selftest())
     sys.exit(do_gate(args.pack, args.scenarios, strict))
 
 
