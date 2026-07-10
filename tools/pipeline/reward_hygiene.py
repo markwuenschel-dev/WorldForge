@@ -90,6 +90,34 @@ def generatable_scenarios(state_dir=GENERATED_STATE_DIR):
     return {p.stem for p in d.glob("*.json") if not _is_validator_output(p)}
 
 
+RUNTIME_SL_DIR = REPO_ROOT / "procedural" / "reports" / "rewards" / "save_load"
+
+
+def runtime_backed_scenarios(sl_dir=RUNTIME_SL_DIR):
+    """Scenario ids backed by a genuine RUNTIME save/load proof (roundtrip_ok=true).
+
+    A runtime ``reward_granted_runtime`` completion writes no ``generated/`` state —
+    its durable state lives in the engine save slots (WFReward/Inventory/
+    Progression_State), attested by the in-engine reload-verify these proofs record.
+    So a runtime proof grounds a scenario exactly as generated state grounds an
+    authoring scenario; both count as "not orphan". An actual orphan (a completion
+    with neither generated state nor a runtime proof) is still rejected."""
+    d = Path(sl_dir)
+    if not d.is_dir():
+        return set()
+    out = set()
+    for p in d.glob("inventory_save_load_*.json"):
+        if _is_validator_output(p):
+            continue
+        try:
+            doc = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            continue
+        if isinstance(doc, dict) and doc.get("roundtrip_ok") is True and isinstance(doc.get("scenario_id"), str):
+            out.add(doc["scenario_id"])
+    return out
+
+
 def _iter_evidence(root):
     """Yield (path, doc) for every scenario-scoped JSON evidence file under root
     (one that carries a ``scenario_id``). Robust to unparseable files (doc=None)."""
@@ -244,7 +272,7 @@ def main(argv=None):
     _dogfood(rep)
 
     # ---- scan the real reward/progression trees ----
-    generatable = generatable_scenarios()
+    generatable = generatable_scenarios() | runtime_backed_scenarios()
     rep.check("hygiene::generatable_known", len(generatable) > 0,
               "no generatable scenario ids resolved from {} — cannot validate orphans".format(
                   GENERATED_STATE_DIR.relative_to(REPO_ROOT).as_posix()),
