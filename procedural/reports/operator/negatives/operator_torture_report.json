@@ -1,0 +1,218 @@
+{
+  "suite": "operator_torture",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "torture::fake_pass_index_rejected": {
+      "ok": true,
+      "detail": "integrity=pass over missing evidence must reject",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::stale_index_rejected": {
+      "ok": true,
+      "detail": "live index with unknown sha must reject",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::overclaim_card_rejected": {
+      "ok": true,
+      "detail": "runtime-pass card with no report paths must reject",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::proved_navmesh_rejected": {
+      "ok": true,
+      "detail": "proved grounded_navmesh must reject",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::collapsed_ownership_rejected": {
+      "ok": true,
+      "detail": "third-party regenerate must reject",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::fake_command_result_rejected": {
+      "ok": true,
+      "detail": "nonzero-exit pass result must reject",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::self_diff_rejected": {
+      "ok": true,
+      "detail": "diff of a run against itself must reject",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::fake_pass_trace_rejected": {
+      "ok": true,
+      "detail": "verdict-pass trace with no supporting report must reject",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::command_unallowlisted_refused": {
+      "ok": true,
+      "detail": "unsafe command rm-repo must be refused for WF726_OPERATOR_COMMAND_NOT_ALLOWLISTED",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::command_destructive_refused": {
+      "ok": true,
+      "detail": "unsafe command git-clean must be refused for WF729_OPERATOR_DESTRUCTIVE_COMMAND_BLOCKED",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::command_full_matrix_refused": {
+      "ok": true,
+      "detail": "unsafe command vertical-slice-runtime-matrix must be refused for WF728_OPERATOR_FULL_MATRIX_UNAUTHORIZED",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::OperatorReportIndex": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::OperatorPackCard": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::OperatorScenarioCard": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::EvidenceTrace": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::FailureCodeIndex": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::AssetOwnershipView": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::RouteWalkabilityView": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::OperatorCommandRequest": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::OperatorCommandResult": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::OperatorDiffReport": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::valid::KnownRegressionRegistry": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 22,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "operator-torture",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "488051e5a7bc2e4b76d3cd7c9a591eb389aaa394",
+    "timestamp": "2026-07-10T22:51:45.704876+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.operator.torture.v1",
+    "report_id": "wf.operator.torture.v1:17412742bcb9",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 11,
+    "records_total": 11,
+    "records_passed": 11,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

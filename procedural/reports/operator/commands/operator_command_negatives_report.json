@@ -1,0 +1,154 @@
+{
+  "suite": "operator_command_negatives",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "suite_nonempty": {
+      "ok": true,
+      "detail": "command-negative suite must carry >= 5 fixtures (got 6)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::unallowlisted_allowed::refused": {
+      "ok": true,
+      "detail": "unsafe command was ALLOWED (fake green): rm-the-repo",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::unallowlisted_allowed::refusal_code": {
+      "ok": true,
+      "detail": "refused for WF726_OPERATOR_COMMAND_NOT_ALLOWLISTED but expected WF726_OPERATOR_COMMAND_NOT_ALLOWLISTED",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::destructive_git_reset::refused": {
+      "ok": true,
+      "detail": "unsafe command was ALLOWED (fake green): git-reset-hard",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::destructive_git_reset::refusal_code": {
+      "ok": true,
+      "detail": "refused for WF729_OPERATOR_DESTRUCTIVE_COMMAND_BLOCKED but expected WF729_OPERATOR_DESTRUCTIVE_COMMAND_BLOCKED",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::destructive_delete_asset::refused": {
+      "ok": true,
+      "detail": "unsafe command was ALLOWED (fake green): delete-asset",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::destructive_delete_asset::refusal_code": {
+      "ok": true,
+      "detail": "refused for WF729_OPERATOR_DESTRUCTIVE_COMMAND_BLOCKED but expected WF729_OPERATOR_DESTRUCTIVE_COMMAND_BLOCKED",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::full_matrix_no_reason::refused": {
+      "ok": true,
+      "detail": "unsafe command was ALLOWED (fake green): vertical-slice-runtime-matrix",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::full_matrix_no_reason::refusal_code": {
+      "ok": true,
+      "detail": "refused for WF728_OPERATOR_FULL_MATRIX_UNAUTHORIZED but expected WF728_OPERATOR_FULL_MATRIX_UNAUTHORIZED",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::write_command_real_run_no_reason::refused": {
+      "ok": true,
+      "detail": "unsafe command was ALLOWED (fake green): v2-0-shield",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::write_command_real_run_no_reason::refusal_code": {
+      "ok": true,
+      "detail": "refused for WF727_OPERATOR_COMMAND_DRY_RUN_REQUIRED but expected WF727_OPERATOR_COMMAND_DRY_RUN_REQUIRED",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::unbounded_targets::refused": {
+      "ok": true,
+      "detail": "unsafe command was ALLOWED (fake green): validate-slice-scenarios",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::unbounded_targets::refusal_code": {
+      "ok": true,
+      "detail": "refused for WF728_OPERATOR_FULL_MATRIX_UNAUTHORIZED but expected WF728_OPERATOR_FULL_MATRIX_UNAUTHORIZED",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "pos::read_only_dry_run_allowed": {
+      "ok": true,
+      "detail": "a legitimate read-only dry-run must be allowed (got allowed=True, code=None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 14,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "operator-command-negatives",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "488051e5a7bc2e4b76d3cd7c9a591eb389aaa394",
+    "timestamp": "2026-07-10T22:51:45.407641+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.operator.command_negatives.v1",
+    "report_id": "wf.operator.command_negatives.v1:43e5a0b92a5e",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 6,
+    "records_total": 6,
+    "records_passed": 6,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}
