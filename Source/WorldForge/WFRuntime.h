@@ -92,6 +92,54 @@ public:
 	UPROPERTY() bool bIsAlive = true;
 };
 
+// ===========================================================================
+// v1.9 RewardForge — persisted reward / inventory / progression state.
+//
+// Three DISTINCT save slots (WFReward_State / WFInventory_State /
+// WFProgression_State), independent of the mission (WFRuntime_Complete), NPC
+// (WFNPC_State) and combat (WFCombat_State) slots, so durable reward consequence
+// is proven INDEPENDENTLY of every prior save. Inert unless WF_REWARD_ENABLED=1.
+// ===========================================================================
+
+/** Per-scenario reward-grant summary (the reward save/load unit). */
+UCLASS()
+class UWFRewardSaveGame : public USaveGame
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY() FString ScenarioId;
+	UPROPERTY() FString RewardTableId;
+	UPROPERTY() int32 RewardEventsGranted = 0;
+	UPROPERTY() float XpGranted = 0.f;
+	UPROPERTY() TArray<FString> ItemsGranted;
+	UPROPERTY() TArray<FString> UnlocksGranted;
+};
+
+/** Durable inventory (the inventory save/load unit). */
+UCLASS()
+class UWFInventorySaveGame : public USaveGame
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY() FString ScenarioId;
+	UPROPERTY() TArray<FString> ItemInstanceIds;
+	UPROPERTY() int32 ItemCount = 0;
+};
+
+/** Durable progression (the progression save/load unit). XP -> level uses the
+ *  same LEVEL_XP_CURVE as reward_forge.py so authoring and runtime agree. */
+UCLASS()
+class UWFProgressionSaveGame : public USaveGame
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY() FString ScenarioId;
+	UPROPERTY() int32 Level = 1;
+	UPROPERTY() float XpTotal = 0.f;
+	UPROPERTY() TArray<FString> Unlocks;
+	UPROPERTY() TArray<FString> CompletedMissions;
+};
+
 /** v1.6y grounded pawn. Walks (gravity ON, capsule collision ON, MOVE_Walking)
  *  toward the objective and records genuine grounded evidence — is-on-ground
  *  samples, movement mode, a navmesh path probe, and fall-through detection — so
@@ -333,11 +381,17 @@ private:
 	float PlayerMaxHealth = 100.f;
 	UPROPERTY() TArray<AWFHazardVolume*> Hazards;
 
+	// v1.9 reward layer (active only when WF_REWARD_ENABLED=1; otherwise a pure
+	// v1.7/v1.8 run — this is what keeps the prior regressions green).
+	bool bRewardEnabled = false;
+	bool bRewardFinalized = false;
+
 	int32 TotalPressure() const;
 	int32 TotalDamageEvents() const;                 // v1.8: player pawn's damage-event count
 	AWFGroundedRuntimePawn* FindPlayerPawn() const;  // v1.8
 	void SetupCombat(const FVector& Start, const FVector& Goal);  // v1.8: enable NPC damage + spawn hazards
 	void FinalizeCombat(bool bMissionDone);          // v1.8: combat save/verify + WF_COMBAT_DONE
+	void FinalizeReward(bool bMissionDone, bool bCombatDone);  // v1.9: grant/save/verify + WF_REWARD_DONE
 	void FinalizeCompletion();
 	void FinalizeFailure(const TCHAR* Why);
 };
