@@ -1,51 +1,51 @@
 {
-  "registry": "failure_codes",
+  "pack": "encounter_loop_world",
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
-    "codes_well_formed": {
+    "RewardTable::valid_passes": {
       "ok": true,
-      "detail": "malformed: []",
+      "detail": "valid RewardTable passes strict (0 fail)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "wf_numbers_unique": {
+    "RewardTable::known_bad_fails": {
       "ok": true,
-      "detail": "",
+      "detail": "known-bad RewardTable is rejected",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "every_code_has_severity": {
+    "RewardGrantEvent::valid_passes": {
       "ok": true,
-      "detail": "no severity: []",
+      "detail": "valid RewardGrantEvent passes strict (0 fail)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "severity_values_valid": {
+    "RewardGrantEvent::known_bad_fails": {
       "ok": true,
-      "detail": "bad severity: []",
+      "detail": "known-bad RewardGrantEvent is rejected",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "every_code_in_gate_taxonomy": {
+    "RewardCompletionReport::valid_passes": {
       "ok": true,
-      "detail": "missing from taxonomy: []",
+      "detail": "valid RewardCompletionReport passes strict (0 fail)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "v1_5_bands_present": {
+    "RewardCompletionReport::known_bad_fails": {
       "ok": true,
-      "detail": "missing v1.5 anchor codes: []",
+      "detail": "known-bad RewardCompletionReport is rejected",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -63,27 +63,27 @@
   "passed": true,
   "status": "ok",
   "meta": {
-    "command": "validate-failure-codes",
-    "pack": null,
+    "command": "validate-reward-contracts",
+    "pack": "encounter_loop_world",
     "strict": true,
     "deep": false,
     "torture": false,
     "seeds": null,
     "git_sha": "f6d80230245a7324c3450f477109bbd6de85a578",
-    "timestamp": "2026-07-10T00:06:03.108319+00:00",
+    "timestamp": "2026-07-10T00:06:03.290674+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
     "worldforge_version": "v1.5",
-    "report_type": "wf.v1_5.failure_codes.v1",
-    "report_id": "wf.v1_5.failure_codes.v1:aa6806dba54e",
+    "report_type": "wf.v1_9.reward_schema_check.v1",
+    "report_id": "wf.v1_9.reward_schema_check.v1:754d43aeba06",
     "status": "ok",
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 493,
-    "records_total": 493,
-    "records_passed": 493,
+    "record_count": 3,
+    "records_total": 3,
+    "records_passed": 3,
     "records_failed": 0,
     "records_skipped": 0
   }

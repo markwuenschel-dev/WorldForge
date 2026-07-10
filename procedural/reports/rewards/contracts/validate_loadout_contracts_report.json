@@ -1,51 +1,35 @@
 {
-  "registry": "failure_codes",
+  "pack": "encounter_loop_world",
   "schema_version": "v0.9",
   "strict": true,
   "checks": {
-    "codes_well_formed": {
+    "LoadoutProfile::valid_passes": {
       "ok": true,
-      "detail": "malformed: []",
+      "detail": "valid LoadoutProfile passes strict (0 fail)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "wf_numbers_unique": {
+    "LoadoutProfile::known_bad_fails": {
       "ok": true,
-      "detail": "",
+      "detail": "known-bad LoadoutProfile is rejected",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "every_code_has_severity": {
+    "EquipmentItem::valid_passes": {
       "ok": true,
-      "detail": "no severity: []",
+      "detail": "valid EquipmentItem passes strict (0 fail)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
       "blocking": false
     },
-    "severity_values_valid": {
+    "EquipmentItem::known_bad_fails": {
       "ok": true,
-      "detail": "bad severity: []",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "every_code_in_gate_taxonomy": {
-      "ok": true,
-      "detail": "missing from taxonomy: []",
-      "warn_only": false,
-      "verdict": "PASS",
-      "code": null,
-      "blocking": false
-    },
-    "v1_5_bands_present": {
-      "ok": true,
-      "detail": "missing v1.5 anchor codes: []",
+      "detail": "known-bad EquipmentItem is rejected",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -54,7 +38,7 @@
   },
   "failures": [],
   "counts": {
-    "PASS": 6,
+    "PASS": 4,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -63,27 +47,27 @@
   "passed": true,
   "status": "ok",
   "meta": {
-    "command": "validate-failure-codes",
-    "pack": null,
+    "command": "validate-loadout-contracts",
+    "pack": "encounter_loop_world",
     "strict": true,
     "deep": false,
     "torture": false,
     "seeds": null,
     "git_sha": "f6d80230245a7324c3450f477109bbd6de85a578",
-    "timestamp": "2026-07-10T00:06:03.108319+00:00",
+    "timestamp": "2026-07-10T00:06:03.196872+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
     "worldforge_version": "v1.5",
-    "report_type": "wf.v1_5.failure_codes.v1",
-    "report_id": "wf.v1_5.failure_codes.v1:aa6806dba54e",
+    "report_type": "wf.v1_9.loadout_schema_check.v1",
+    "report_id": "wf.v1_9.loadout_schema_check.v1:3971035785f0",
     "status": "ok",
     "failure_count": 0,
     "warning_count": 0,
     "skipped_count": 0,
-    "record_count": 493,
-    "records_total": 493,
-    "records_passed": 493,
+    "record_count": 2,
+    "records_total": 2,
+    "records_passed": 2,
     "records_failed": 0,
     "records_skipped": 0
   }

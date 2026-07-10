@@ -714,6 +714,61 @@ class FailureCode:
     COMBAT_REPORT_INTEGRITY_FAILURE = "WF629_COMBAT_REPORT_INTEGRITY_FAILURE"
     COMBAT_FAKE_SUCCESS = "WF630_COMBAT_FAKE_SUCCESS"
 
+    # === v1.9 LoadoutForge + RewardForge + ProgressionForge Alpha (WF631–670) ===
+    # Turns mission/combat completion into durable loadout, reward, inventory,
+    # unlock, and progression consequence. This is the persistence-and-consequence
+    # substrate, NOT a loot game — the honesty invariants guard against reward that
+    # appears only in a report (never mutating/persisting state), reward without
+    # completion, completion without reward (unless explicitly no_reward), duplicate
+    # grant_once, and over-/under-reward exploits. The backfill (bottom of file)
+    # auto-fills SEVERITY + GATE_TAXONOMY for these. Do NOT reuse/renumber an
+    # earlier band — extend cleanly here.
+    # -- contracts / schema (631–637, 655–657) --
+    REWARD_CONTRACT_INVALID = "WF631_REWARD_CONTRACT_INVALID"
+    LOADOUT_CONTRACT_INVALID = "WF632_LOADOUT_CONTRACT_INVALID"
+    INVENTORY_STATE_INVALID = "WF633_INVENTORY_STATE_INVALID"
+    PROGRESSION_STATE_INVALID = "WF634_PROGRESSION_STATE_INVALID"
+    UNLOCK_STATE_INVALID = "WF635_UNLOCK_STATE_INVALID"
+    REWARD_TABLE_INVALID = "WF636_REWARD_TABLE_INVALID"
+    REWARD_GRANT_INVALID = "WF637_REWARD_GRANT_INVALID"
+    # -- reward grant / exploit (638–639) --
+    REWARD_DUPLICATE_GRANT = "WF638_REWARD_DUPLICATE_GRANT"
+    REWARD_EXPLOIT_DETECTED = "WF639_REWARD_EXPLOIT_DETECTED"
+    # -- save/load persistence (640–643) --
+    REWARD_SAVE_LOAD_MISSING = "WF640_REWARD_SAVE_LOAD_MISSING"
+    REWARD_SAVE_LOAD_FAILED = "WF641_REWARD_SAVE_LOAD_FAILED"
+    INVENTORY_SAVE_LOAD_FAILED = "WF642_INVENTORY_SAVE_LOAD_FAILED"
+    PROGRESSION_SAVE_LOAD_FAILED = "WF643_PROGRESSION_SAVE_LOAD_FAILED"
+    # -- next-mission state handoff (644–645) --
+    NEXT_MISSION_STATE_MISSING = "WF644_NEXT_MISSION_STATE_MISSING"
+    NEXT_MISSION_STATE_MISMATCH = "WF645_NEXT_MISSION_STATE_MISMATCH"
+    # -- risk/reward classification + completion coupling (646–648) --
+    RISK_REWARD_CLASSIFICATION_INVALID = "WF646_RISK_REWARD_CLASSIFICATION_INVALID"
+    COMPLETION_WITHOUT_REWARD = "WF647_COMPLETION_WITHOUT_REWARD"
+    REWARD_WITHOUT_COMPLETION = "WF648_REWARD_WITHOUT_COMPLETION"
+    # -- evidence / telemetry / report integrity (649–651) --
+    STALE_REWARD_EVIDENCE = "WF649_STALE_REWARD_EVIDENCE"
+    REWARD_TELEMETRY_MISSING = "WF650_REWARD_TELEMETRY_MISSING"
+    REWARD_REPORT_INTEGRITY_FAILED = "WF651_REWARD_REPORT_INTEGRITY_FAILED"
+    # -- hostile validation (652–654) --
+    REWARD_NEGATIVE_ACCEPTED = "WF652_REWARD_NEGATIVE_ACCEPTED"
+    REWARD_FUZZ_ACCEPTED = "WF653_REWARD_FUZZ_ACCEPTED"
+    REWARD_TORTURE_FAILED = "WF654_REWARD_TORTURE_FAILED"
+    # -- schema-specific contract codes (655–657) --
+    EQUIPMENT_ITEM_INVALID = "WF655_EQUIPMENT_ITEM_INVALID"
+    REWARD_GRANT_EVENT_INVALID = "WF656_REWARD_GRANT_EVENT_INVALID"
+    REWARD_COMPLETION_REPORT_INVALID = "WF657_REWARD_COMPLETION_REPORT_INVALID"
+    # -- state-integrity invariants (658–664) --
+    INVENTORY_CAPACITY_EXCEEDED = "WF658_INVENTORY_CAPACITY_EXCEEDED"
+    INVENTORY_HASH_MISMATCH = "WF659_INVENTORY_HASH_MISMATCH"
+    PROGRESSION_HASH_MISMATCH = "WF660_PROGRESSION_HASH_MISMATCH"
+    XP_DELTA_MISMATCH = "WF661_XP_DELTA_MISMATCH"
+    LEVEL_CURVE_MISMATCH = "WF662_LEVEL_CURVE_MISMATCH"
+    UNLOCK_SOURCE_UNRESOLVED = "WF663_UNLOCK_SOURCE_UNRESOLVED"
+    REWARD_BUDGET_EXCEEDED = "WF664_REWARD_BUDGET_EXCEEDED"
+    # -- taxonomy self-check (665) --
+    V1_9_TAXONOMY_FAILURE = "WF665_V1_9_TAXONOMY_FAILURE"
+
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
 # This is the *default* nature of the code; a validator may still choose a
