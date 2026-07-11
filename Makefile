@@ -1686,6 +1686,16 @@ generate-factions:
 validate-generated-factions:
 	$(PYTHON) tools/pipeline/validate_generated_factions.py --pack $(PACK) $(if $(STRICT),--strict,)
 
+# --- Runtime quest/faction proof (Wave 3) ------------------------------
+run-quest-faction-smoke:
+	$(PYTHON) tools/pipeline/run_quest_faction_alpha.py --smoke $(if $(STRICT),--strict,)
+run-quest-faction-runtime:
+	$(PYTHON) tools/pipeline/run_quest_faction_alpha.py --gate --scenarios $(if $(SCENARIOS),$(SCENARIOS),24) $(if $(STRICT),--strict,)
+validate-quest-faction-runtime:
+	$(PYTHON) tools/pipeline/validate_quest_faction_runtime.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-quest-faction-save-load:
+	$(PYTHON) tools/pipeline/validate_quest_faction_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-2-shield:
 	$(PYTHON) tools/pipeline/v2_2_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1694,4 +1704,6 @@ v2-2-shield:
 
 .PHONY: quest-contracts faction-contracts quest-faction-contracts \
 	quest-faction-negative-fixtures generate-quests validate-generated-quests \
-	generate-factions validate-generated-factions v2-2-shield
+	generate-factions validate-generated-factions run-quest-faction-smoke \
+	run-quest-faction-runtime validate-quest-faction-runtime \
+	validate-quest-faction-save-load v2-2-shield
