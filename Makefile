@@ -1730,3 +1730,87 @@ v2-2-shield:
 	operator-quest-faction-dashboard operator-quest-faction-smoke \
 	quest-faction-negative-validators quest-faction-fuzz quest-faction-torture \
 	quest-faction-report-integrity quest-faction-hygiene v2-2-shield
+
+# ======================================================================
+# v2.3 StreamingForge / WorldScaleForge — cross-tile generated regions
+# ----------------------------------------------------------------------
+# The first cross-tile generated-region substrate: bounded regions composed
+# of streamable tiles connected by stable cross-tile anchors + routes, with
+# runtime tile lifecycle, cross-tile save/load continuity, and declared
+# streaming/package budgets — over the v2.0 slice + v2.2 quest/faction stack.
+# NOT a full open world / multiplayer / final World Partition (handoff §4).
+# FAIL-CLOSED: a gate whose script is not yet built turns v2-3-shield RED
+# until it exists. Targets added per wave as their scripts land
+# (validate_makefile_refs asserts every tools/pipeline ref resolves).
+# NOTE: `make` is not installed here; these targets document the canonical
+# surface — run the mapped `python tools/pipeline|operator/*.py` directly
+# (PYTHONUTF8=1 on Windows). e.g.
+#   python tools/pipeline/v2_3_shield.py --strict --streaming --worldscale
+# ======================================================================
+STREAMING_PACK ?= worldforge_vertical_slice
+
+# --- Contract spine (Wave 1, GREEN) ------------------------------------
+streaming-contracts:
+	$(PYTHON) tools/pipeline/validate_streaming_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+streaming-negative-fixtures:
+	$(PYTHON) tools/pipeline/streaming_negatives.py $(if $(STRICT),--strict,)
+
+# --- Authoring generators (Wave 2) -------------------------------------
+generate-streaming-regions:
+	$(PYTHON) tools/pipeline/generate_streaming_regions.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-cross-tile-anchors:
+	$(PYTHON) tools/pipeline/generate_cross_tile_anchors.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-cross-tile-routes:
+	$(PYTHON) tools/pipeline/generate_cross_tile_routes.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-streamed-bindings:
+	$(PYTHON) tools/pipeline/generate_streamed_bindings.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-streaming-authoring:
+	$(PYTHON) tools/pipeline/validate_streaming_authoring.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Runtime + lifecycle (Wave 3) --------------------------------------
+run-streaming-smoke:
+	$(PYTHON) tools/pipeline/run_streaming_forge_alpha.py --smoke $(if $(STRICT),--strict,)
+run-streaming-runtime:
+	$(PYTHON) tools/pipeline/run_streaming_forge_alpha.py --gate --scenarios $(if $(SCENARIOS),$(SCENARIOS),24) $(if $(STRICT),--strict,)
+validate-streaming-runtime:
+	$(PYTHON) tools/pipeline/validate_streaming_runtime.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Cross-tile save/load + budgets (Wave 4) ---------------------------
+validate-streaming-save-load:
+	$(PYTHON) tools/pipeline/validate_streaming_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-streaming-budgets:
+	$(PYTHON) tools/pipeline/validate_streaming_budgets.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- OperatorForge region/tile views (Wave 5) --------------------------
+operator-streaming-index:
+	$(PYTHON) tools/operator/build_streaming_index.py $(if $(STRICT),--strict,)
+operator-streaming-dashboard:
+	$(PYTHON) tools/operator/build_streaming_dashboard.py $(if $(STRICT),--strict,)
+operator-streaming-smoke:
+	$(PYTHON) tools/operator/streaming_operator_smoke.py $(if $(STRICT),--strict,)
+
+# --- Hostile validation (Wave R) ---------------------------------------
+streaming-negative-validators:
+	$(PYTHON) tools/pipeline/streaming_negative_validators.py $(if $(STRICT),--strict,)
+streaming-fuzz:
+	$(PYTHON) tools/pipeline/streaming_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+streaming-torture:
+	$(PYTHON) tools/pipeline/streaming_torture.py $(if $(STRICT),--strict,)
+streaming-report-integrity:
+	$(PYTHON) tools/pipeline/streaming_report_integrity.py $(if $(STRICT),--strict,)
+streaming-hygiene:
+	$(PYTHON) tools/pipeline/streaming_hygiene.py $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v2-3-shield:
+	$(PYTHON) tools/pipeline/v2_3_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(STREAMING),--streaming,) $(if $(WORLDSCALE),--worldscale,) \
+	  $(if $(SCENARIOS),--scenarios $(SCENARIOS),) $(if $(REGRESSIONS),--regressions,)
+
+.PHONY: streaming-contracts streaming-negative-fixtures generate-streaming-regions \
+	generate-cross-tile-anchors generate-cross-tile-routes generate-streamed-bindings \
+	validate-streaming-authoring run-streaming-smoke run-streaming-runtime \
+	validate-streaming-runtime validate-streaming-save-load validate-streaming-budgets \
+	operator-streaming-index operator-streaming-dashboard operator-streaming-smoke \
+	streaming-negative-validators streaming-fuzz streaming-torture \
+	streaming-report-integrity streaming-hygiene v2-3-shield

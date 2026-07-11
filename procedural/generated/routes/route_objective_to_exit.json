@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-07-11T00:00:00+00:00",
+  "created_by": "worldforge.v2.3",
+  "failure_codes": [],
+  "objective_access_status": "pass",
+  "region_id": "region_volcanic_chain",
+  "report_type": "wf.streaming.cross_tile_route.v1",
+  "route_id": "route_objective_to_exit",
+  "route_segments": [
+    {
+      "from": "anchor_tile_volcanic_objective_to_exit",
+      "length": 25600.0,
+      "to": "anchor_tile_volcanic_exit_from_objective"
+    }
+  ],
+  "route_width": 384.0,
+  "schema_version": "wf.streaming.cross_tile_route.v1",
+  "source_anchor_id": "anchor_tile_volcanic_objective_to_exit",
+  "stream_transition_points": [
+    {
+      "at_tile_boundary": [
+        "tile_volcanic_objective",
+        "tile_volcanic_exit"
+      ],
+      "location": [
+        51200.0,
+        12800.0,
+        512.0
+      ]
+    }
+  ],
+  "target_anchor_id": "anchor_tile_volcanic_exit_from_objective",
+  "tile_sequence": [
+    "tile_volcanic_objective",
+    "tile_volcanic_exit"
+  ],
+  "traversal_mode": "grounded_worldforge_route"
+}
