@@ -1676,6 +1676,16 @@ quest-faction-contracts:
 quest-faction-negative-fixtures:
 	$(PYTHON) tools/pipeline/quest_faction_negatives.py $(if $(STRICT),--strict,)
 
+# --- Authoring generators (Wave 2) -------------------------------------
+generate-quests:
+	$(PYTHON) tools/pipeline/generate_quests.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-generated-quests:
+	$(PYTHON) tools/pipeline/validate_generated_quests.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-factions:
+	$(PYTHON) tools/pipeline/generate_factions.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-generated-factions:
+	$(PYTHON) tools/pipeline/validate_generated_factions.py --pack $(PACK) $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-2-shield:
 	$(PYTHON) tools/pipeline/v2_2_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1683,4 +1693,5 @@ v2-2-shield:
 	  $(if $(SCENARIOS),--scenarios $(SCENARIOS),) $(if $(REGRESSIONS),--regressions,)
 
 .PHONY: quest-contracts faction-contracts quest-faction-contracts \
-	quest-faction-negative-fixtures v2-2-shield
+	quest-faction-negative-fixtures generate-quests validate-generated-quests \
+	generate-factions validate-generated-factions v2-2-shield

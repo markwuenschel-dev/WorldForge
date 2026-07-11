@@ -1,0 +1,92 @@
+{
+  "affected_faction_ids": [
+    "outriders",
+    "wardens"
+  ],
+  "biome": "volcanic_ashlands",
+  "created_at": "2026-07-11T00:00:00+00:00",
+  "created_by": "worldforge.v2.2",
+  "faction_delta_rules": [
+    {
+      "alarm_delta": -2,
+      "influence_delta": 5,
+      "on_outcome": "success",
+      "reason_code": "resource_recovered",
+      "relationship_deltas": {},
+      "resources_delta": {
+        "salvage": 15
+      },
+      "standing_delta": 12,
+      "target_faction_id": "salvagers",
+      "trust_delta": 10
+    },
+    {
+      "alarm_delta": 6,
+      "influence_delta": -3,
+      "on_outcome": "failure",
+      "reason_code": "quest_failure",
+      "relationship_deltas": {},
+      "resources_delta": {},
+      "standing_delta": -6,
+      "target_faction_id": "salvagers",
+      "trust_delta": -5
+    },
+    {
+      "alarm_delta": -2,
+      "influence_delta": 3,
+      "on_outcome": "success",
+      "reason_code": "ally_boosted",
+      "relationship_deltas": {
+        "salvagers": 4
+      },
+      "resources_delta": {
+        "salvage": 6
+      },
+      "standing_delta": 6,
+      "target_faction_id": "outriders",
+      "trust_delta": 4
+    },
+    {
+      "alarm_delta": -2,
+      "influence_delta": 3,
+      "on_outcome": "success",
+      "reason_code": "ally_boosted",
+      "relationship_deltas": {
+        "salvagers": 4
+      },
+      "resources_delta": {
+        "salvage": 6
+      },
+      "standing_delta": 6,
+      "target_faction_id": "wardens",
+      "trust_delta": 4
+    }
+  ],
+  "failure_conditions": [
+    "required_step_failed",
+    "pawn_incapacitated"
+  ],
+  "next_mission_hooks": [
+    "unlock_followup_recovery_volcanic_ashlands"
+  ],
+  "pressure_profile": "baseline",
+  "quest_archetype": "Recovery",
+  "quest_id": "qf_volcanic_ashlands_recover_resource_baseline_s1",
+  "quest_steps": [
+    "qf_volcanic_ashlands_recover_resource_baseline_s1_step1",
+    "qf_volcanic_ashlands_recover_resource_baseline_s1_step2",
+    "qf_volcanic_ashlands_recover_resource_baseline_s1_step3"
+  ],
+  "report_type": "wf.quest_faction.quest_definition.v1",
+  "requesting_faction_id": "salvagers",
+  "reward_binding": "rwt_recover_resource_baseline",
+  "scenario_bindings": [
+    "vs_volcanic_ashlands_recover_resource_baseline_s1"
+  ],
+  "schema_version": "wf.quest_faction.quest_definition.v1",
+  "seed": 1,
+  "success_conditions": [
+    "all_required_steps_completed"
+  ],
+  "title_key": "quest.recovery.ashlands_ashravine_debris_photoreal_01"
+}

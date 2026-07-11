@@ -1,0 +1,112 @@
+{
+  "created_by": "worldforge.v2.2",
+  "report_type": "wf.quest_faction.initial_faction_state.v1",
+  "schema_version": "wf.quest_faction.initial_faction_state.v1",
+  "states": {
+    "outriders": {
+      "active_quest_ids": [],
+      "alarm": 5,
+      "completed_quest_ids": [],
+      "created_at": "2026-07-11T00:00:00+00:00",
+      "created_by": "worldforge.v2.2",
+      "faction_id": "outriders",
+      "failed_quest_ids": [],
+      "influence": 40,
+      "relationships": {
+        "salvagers": 0,
+        "surveyors": 5,
+        "wardens": 15
+      },
+      "report_type": "wf.quest_faction.faction_state.v1",
+      "resources": {
+        "route_marker": 10,
+        "supply_cache": 10
+      },
+      "run_id": "initial_faction_state",
+      "schema_version": "wf.quest_faction.faction_state.v1",
+      "standing": 0,
+      "state_hash": "sha256:initial:outriders",
+      "territory_pressure": 10,
+      "trust": 50
+    },
+    "salvagers": {
+      "active_quest_ids": [],
+      "alarm": 5,
+      "completed_quest_ids": [],
+      "created_at": "2026-07-11T00:00:00+00:00",
+      "created_by": "worldforge.v2.2",
+      "faction_id": "salvagers",
+      "failed_quest_ids": [],
+      "influence": 40,
+      "relationships": {
+        "outriders": 0,
+        "surveyors": -10,
+        "wardens": -5
+      },
+      "report_type": "wf.quest_faction.faction_state.v1",
+      "resources": {
+        "ore": 10,
+        "relic": 10,
+        "salvage": 10
+      },
+      "run_id": "initial_faction_state",
+      "schema_version": "wf.quest_faction.faction_state.v1",
+      "standing": 0,
+      "state_hash": "sha256:initial:salvagers",
+      "territory_pressure": 10,
+      "trust": 50
+    },
+    "surveyors": {
+      "active_quest_ids": [],
+      "alarm": 5,
+      "completed_quest_ids": [],
+      "created_at": "2026-07-11T00:00:00+00:00",
+      "created_by": "worldforge.v2.2",
+      "faction_id": "surveyors",
+      "failed_quest_ids": [],
+      "influence": 35,
+      "relationships": {
+        "outriders": 5,
+        "salvagers": -10,
+        "wardens": 10
+      },
+      "report_type": "wf.quest_faction.faction_state.v1",
+      "resources": {
+        "landmark_scan": 10,
+        "survey_data": 10
+      },
+      "run_id": "initial_faction_state",
+      "schema_version": "wf.quest_faction.faction_state.v1",
+      "standing": 0,
+      "state_hash": "sha256:initial:surveyors",
+      "territory_pressure": 10,
+      "trust": 50
+    },
+    "wardens": {
+      "active_quest_ids": [],
+      "alarm": 5,
+      "completed_quest_ids": [],
+      "created_at": "2026-07-11T00:00:00+00:00",
+      "created_by": "worldforge.v2.2",
+      "faction_id": "wardens",
+      "failed_quest_ids": [],
+      "influence": 45,
+      "relationships": {
+        "outriders": 15,
+        "salvagers": -5,
+        "surveyors": 10
+      },
+      "report_type": "wf.quest_faction.faction_state.v1",
+      "resources": {
+        "shelter_kit": 10,
+        "ward_beacon": 10
+      },
+      "run_id": "initial_faction_state",
+      "schema_version": "wf.quest_faction.faction_state.v1",
+      "standing": 0,
+      "state_hash": "sha256:initial:wardens",
+      "territory_pressure": 10,
+      "trust": 50
+    }
+  }
+}

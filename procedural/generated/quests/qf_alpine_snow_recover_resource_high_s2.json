@@ -1,0 +1,93 @@
+{
+  "affected_faction_ids": [
+    "outriders",
+    "wardens"
+  ],
+  "biome": "alpine_snow",
+  "created_at": "2026-07-11T00:00:00+00:00",
+  "created_by": "worldforge.v2.2",
+  "faction_delta_rules": [
+    {
+      "alarm_delta": -2,
+      "influence_delta": 5,
+      "on_outcome": "success",
+      "reason_code": "resource_recovered",
+      "relationship_deltas": {},
+      "resources_delta": {
+        "salvage": 15
+      },
+      "standing_delta": 12,
+      "target_faction_id": "salvagers",
+      "trust_delta": 10
+    },
+    {
+      "alarm_delta": 6,
+      "influence_delta": -3,
+      "on_outcome": "failure",
+      "reason_code": "quest_failure",
+      "relationship_deltas": {},
+      "resources_delta": {},
+      "standing_delta": -6,
+      "target_faction_id": "salvagers",
+      "trust_delta": -5
+    },
+    {
+      "alarm_delta": -2,
+      "influence_delta": 3,
+      "on_outcome": "success",
+      "reason_code": "ally_boosted",
+      "relationship_deltas": {
+        "salvagers": 4
+      },
+      "resources_delta": {
+        "salvage": 6
+      },
+      "standing_delta": 6,
+      "target_faction_id": "outriders",
+      "trust_delta": 4
+    },
+    {
+      "alarm_delta": -2,
+      "influence_delta": 3,
+      "on_outcome": "success",
+      "reason_code": "ally_boosted",
+      "relationship_deltas": {
+        "salvagers": 4
+      },
+      "resources_delta": {
+        "salvage": 6
+      },
+      "standing_delta": 6,
+      "target_faction_id": "wardens",
+      "trust_delta": 4
+    }
+  ],
+  "failure_conditions": [
+    "required_step_failed",
+    "pawn_incapacitated"
+  ],
+  "next_mission_hooks": [
+    "unlock_followup_recovery_alpine_snow"
+  ],
+  "pressure_profile": "high",
+  "quest_archetype": "Recovery",
+  "quest_id": "qf_alpine_snow_recover_resource_high_s2",
+  "quest_steps": [
+    "qf_alpine_snow_recover_resource_high_s2_step1",
+    "qf_alpine_snow_recover_resource_high_s2_step2",
+    "qf_alpine_snow_recover_resource_high_s2_step3",
+    "qf_alpine_snow_recover_resource_high_s2_step4"
+  ],
+  "report_type": "wf.quest_faction.quest_definition.v1",
+  "requesting_faction_id": "salvagers",
+  "reward_binding": "rwt_recover_resource_high",
+  "scenario_bindings": [
+    "vs_alpine_snow_recover_resource_high_s2"
+  ],
+  "schema_version": "wf.quest_faction.quest_definition.v1",
+  "seed": 2,
+  "success_conditions": [
+    "all_required_steps_completed"
+  ],
+  "title_key": "quest.recovery.alpine_snowyridge_debris_photoreal_01"
+}
