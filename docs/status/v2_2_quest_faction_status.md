@@ -12,11 +12,33 @@ Failure-code band: **WF771–WF850** `QUEST_FACTION_*`
 
 | Wave | Scope | State |
 |------|-------|-------|
-| 1 | Contracts + fail-closed shield | ✅ **DONE** — spine GREEN, downstream honestly RED |
-| 2 | Authoring generators (quests + factions) | ⏳ pending |
-| 3 | Runtime quest/faction proof (24 scenarios) | ⏳ pending |
-| 4 | OperatorForge integration | ⏳ pending |
-| R | Hostile closure + v2.2 shield green | ⏳ pending |
+| 1 | Contracts + fail-closed shield | ✅ **DONE** |
+| 2 | Authoring generators (quests + factions) | ✅ **DONE** — 24 quests / 4 factions |
+| 3 | Runtime quest/faction proof (24 scenarios) | ✅ **DONE** — 16/6/2 success/partial/failure |
+| 4 | OperatorForge integration | ✅ **DONE** — 24 quest + 4 faction views |
+| R | Hostile closure + v2.2 shield green | ✅ **DONE** — shield GREEN 22/22 |
+
+## Final result — v2.2 shield GREEN 22/22 (24/24 with regressions)
+
+```
+PYTHONUTF8=1 python tools/pipeline/v2_2_shield.py --strict --quests --factions               # GREEN 22/22
+PYTHONUTF8=1 python tools/pipeline/v2_2_shield.py --strict --quests --factions --regressions  # GREEN 24/24
+```
+
+Runtime matrix: 24/24 complete. Outcomes 16 success / 6 partial_success / 2 failure
+(all outcome-bearing → all mutate faction state). 24 consequence ledgers (all
+post-hash != pre-hash). Save/load roundtrip_ok on all 24 (saved state == ledger post
+hash). World faction state accumulated across runs (e.g. wardens standing 0→100).
+Regressions: v2.1 GREEN 20/20, v2.0 GREEN. v1.9/v1.8/v1.7/v1.6z NOT rerun — v2.2
+changed none of their semantics (handoff §14: no full-matrix reruns by default; the
+live-UE regressions run via their own shields with --require-live).
+
+## Deferred (honest caveats)
+
+* Live in-editor UE quest/faction run — Wave 3 is a deterministic simulation
+  consuming the generated datasets + v2.0 slice matrix, producing genuine
+  contract-valid consequence evidence (same posture as v1.9 reward / v2.0 slice).
+* Quest text is keyed placeholder metadata; factions are bounded state vectors.
 
 ## Wave 1 — delivered
 

@@ -1704,6 +1704,18 @@ operator-quest-faction-dashboard:
 operator-quest-faction-smoke:
 	$(PYTHON) tools/operator/quest_faction_operator_smoke.py $(if $(STRICT),--strict,)
 
+# --- Hostile validation (Wave R) ---------------------------------------
+quest-faction-negative-validators:
+	$(PYTHON) tools/pipeline/quest_faction_negative_validators.py $(if $(STRICT),--strict,)
+quest-faction-fuzz:
+	$(PYTHON) tools/pipeline/quest_faction_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+quest-faction-torture:
+	$(PYTHON) tools/pipeline/quest_faction_torture.py $(if $(STRICT),--strict,)
+quest-faction-report-integrity:
+	$(PYTHON) tools/pipeline/quest_faction_report_integrity.py $(if $(STRICT),--strict,)
+quest-faction-hygiene:
+	$(PYTHON) tools/pipeline/quest_faction_hygiene.py $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-2-shield:
 	$(PYTHON) tools/pipeline/v2_2_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1715,4 +1727,6 @@ v2-2-shield:
 	generate-factions validate-generated-factions run-quest-faction-smoke \
 	run-quest-faction-runtime validate-quest-faction-runtime \
 	validate-quest-faction-save-load operator-quest-faction-index \
-	operator-quest-faction-dashboard operator-quest-faction-smoke v2-2-shield
+	operator-quest-faction-dashboard operator-quest-faction-smoke \
+	quest-faction-negative-validators quest-faction-fuzz quest-faction-torture \
+	quest-faction-report-integrity quest-faction-hygiene v2-2-shield

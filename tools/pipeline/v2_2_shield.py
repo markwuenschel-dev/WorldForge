@@ -23,7 +23,7 @@ Wave 1 state: contract spine + negatives GREEN; the whole downstream surface is
 honestly RED until its waves build the scripts. So a spine-only shield (just
 --strict) is GREEN and the full shield (--quests --factions) is honestly RED.
 
-Acceptance (canonical command surface — `make` is not installed, run directly):
+Acceptance: (canonical command surface — `make` is not installed, run directly)
     PYTHONUTF8=1 STRICT=1 python tools/pipeline/v2_2_shield.py --strict --quests --factions
 """
 

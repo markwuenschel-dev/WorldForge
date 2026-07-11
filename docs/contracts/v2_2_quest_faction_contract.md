@@ -1,6 +1,6 @@
 # WorldForge v2.2 — QuestForge + FactionStateForge Contract
 
-Status: **Wave 1 (contracts + fail-closed shield) — in progress**
+Status: **COMPLETE — all waves done; v2.2 shield GREEN 22/22**
 Branch: `worldforge/v2.2-quest-faction`
 Failure-code band: **WF771–WF850** (`QUEST_FACTION_*`), WF805–850 reserved.
 
