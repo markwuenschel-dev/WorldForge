@@ -1696,6 +1696,14 @@ validate-quest-faction-runtime:
 validate-quest-faction-save-load:
 	$(PYTHON) tools/pipeline/validate_quest_faction_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
 
+# --- OperatorForge quest/faction views (Wave 4) ------------------------
+operator-quest-faction-index:
+	$(PYTHON) tools/operator/build_quest_faction_index.py $(if $(STRICT),--strict,)
+operator-quest-faction-dashboard:
+	$(PYTHON) tools/operator/build_quest_faction_dashboard.py $(if $(STRICT),--strict,)
+operator-quest-faction-smoke:
+	$(PYTHON) tools/operator/quest_faction_operator_smoke.py $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-2-shield:
 	$(PYTHON) tools/pipeline/v2_2_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1706,4 +1714,5 @@ v2-2-shield:
 	quest-faction-negative-fixtures generate-quests validate-generated-quests \
 	generate-factions validate-generated-factions run-quest-faction-smoke \
 	run-quest-faction-runtime validate-quest-faction-runtime \
-	validate-quest-faction-save-load v2-2-shield
+	validate-quest-faction-save-load operator-quest-faction-index \
+	operator-quest-faction-dashboard operator-quest-faction-smoke v2-2-shield
