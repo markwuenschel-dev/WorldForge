@@ -1858,6 +1858,14 @@ generate-tactical-bindings:
 validate-tactical-bindings:
 	$(PYTHON) tools/pipeline/validate_tactical_bindings.py --pack $(PACK) $(if $(STRICT),--strict,)
 
+# --- Runtime + decision proof (Wave 4) ---------------------------------
+run-tactical-smoke:
+	$(PYTHON) tools/pipeline/run_tactical_behavior_alpha.py --smoke $(if $(STRICT),--strict,)
+run-tactical-runtime:
+	$(PYTHON) tools/pipeline/run_tactical_behavior_alpha.py --gate --scenarios $(if $(SCENARIOS),$(SCENARIOS),24) $(if $(STRICT),--strict,)
+validate-tactical-runtime:
+	$(PYTHON) tools/pipeline/validate_tactical_runtime.py --pack $(PACK) $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-4-shield:
 	$(PYTHON) tools/pipeline/v2_4_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1866,4 +1874,5 @@ v2-4-shield:
 
 .PHONY: tactical-contracts tactical-negative-fixtures generate-tactical-profiles \
 	validate-tactical-profiles generate-tactical-affordances validate-tactical-affordances \
-	generate-tactical-bindings validate-tactical-bindings v2-4-shield
+	generate-tactical-bindings validate-tactical-bindings run-tactical-smoke \
+	run-tactical-runtime validate-tactical-runtime v2-4-shield
