@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-07-11T00:00:00+00:00",
+  "created_by": "worldforge.v2.3",
+  "failure_codes": [],
+  "objective_access_status": "pass",
+  "region_id": "region_alpine_hub",
+  "report_type": "wf.streaming.cross_tile_route.v1",
+  "route_id": "route_entry_to_b",
+  "route_segments": [
+    {
+      "from": "anchor_tile_alpine_hub_entry_to_b",
+      "length": 25600.0,
+      "to": "anchor_tile_alpine_objective_b_from_entry"
+    }
+  ],
+  "route_width": 384.0,
+  "schema_version": "wf.streaming.cross_tile_route.v1",
+  "source_anchor_id": "anchor_tile_alpine_hub_entry_to_b",
+  "stream_transition_points": [
+    {
+      "at_tile_boundary": [
+        "tile_alpine_hub_entry",
+        "tile_alpine_objective_b"
+      ],
+      "location": [
+        12800.0,
+        25600.0,
+        512.0
+      ]
+    }
+  ],
+  "target_anchor_id": "anchor_tile_alpine_objective_b_from_entry",
+  "tile_sequence": [
+    "tile_alpine_hub_entry",
+    "tile_alpine_objective_b"
+  ],
+  "traversal_mode": "grounded_worldforge_route"
+}

@@ -361,10 +361,11 @@ def validate_cross_tile_anchor(obj, strict=False):
                "world_location must be a finite [x,y,z]", C.STREAMING_ANCHOR_INVALID))
     ch.append(("an::linked_anchor_ids_list", _is_list(obj, "linked_anchor_ids"),
                "linked_anchor_ids must be a list", C.STREAMING_ANCHOR_LINK_BROKEN))
-    # honesty: a transition/handoff/exit anchor MUST link at least one other anchor
-    # (it is a boundary crossing); an anchor may not link itself.
+    # honesty: an INTERNAL boundary-crossing anchor (transition/handoff) MUST link at
+    # least one partner anchor across the tile boundary. entry/exit are region
+    # termini and may legitimately have no partner. An anchor may not link itself.
     linked = obj.get("linked_anchor_ids") if _is_list(obj, "linked_anchor_ids") else []
-    if obj.get("anchor_type") in ("transition", "handoff", "exit", "entry"):
+    if obj.get("anchor_type") in ("transition", "handoff"):
         ch.append(("an::boundary_anchor_links",
                    isinstance(linked, list) and len(linked) >= 1,
                    "a {} anchor must link >=1 partner anchor".format(obj.get("anchor_type")),

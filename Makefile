@@ -1755,10 +1755,24 @@ streaming-contracts:
 streaming-negative-fixtures:
 	$(PYTHON) tools/pipeline/streaming_negatives.py $(if $(STRICT),--strict,)
 
+# --- Authoring generators (Wave 2) -------------------------------------
+generate-streaming-regions:
+	$(PYTHON) tools/pipeline/generate_streaming_regions.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-cross-tile-anchors:
+	$(PYTHON) tools/pipeline/generate_cross_tile_anchors.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-cross-tile-routes:
+	$(PYTHON) tools/pipeline/generate_cross_tile_routes.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-streamed-bindings:
+	$(PYTHON) tools/pipeline/generate_streamed_bindings.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-streaming-authoring:
+	$(PYTHON) tools/pipeline/validate_streaming_authoring.py --pack $(PACK) $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-3-shield:
 	$(PYTHON) tools/pipeline/v2_3_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
 	  $(if $(STREAMING),--streaming,) $(if $(WORLDSCALE),--worldscale,) \
 	  $(if $(SCENARIOS),--scenarios $(SCENARIOS),) $(if $(REGRESSIONS),--regressions,)
 
-.PHONY: streaming-contracts streaming-negative-fixtures v2-3-shield
+.PHONY: streaming-contracts streaming-negative-fixtures generate-streaming-regions \
+	generate-cross-tile-anchors generate-cross-tile-routes generate-streamed-bindings \
+	validate-streaming-authoring v2-3-shield
