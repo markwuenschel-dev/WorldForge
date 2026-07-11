@@ -1814,3 +1814,38 @@ v2-3-shield:
 	operator-streaming-index operator-streaming-dashboard operator-streaming-smoke \
 	streaming-negative-validators streaming-fuzz streaming-torture \
 	streaming-report-integrity streaming-hygiene v2-3-shield
+
+# ======================================================================
+# v2.4 AdvancedAIForge / TacticalBehaviorForge — bounded tactical behavior
+# ----------------------------------------------------------------------
+# The first bounded tactical-behavior substrate: generated NPCs making
+# BOUNDED, INSPECTABLE tactical decisions over terrain, routes, cover,
+# objectives, mission/quest/faction context, and streaming tile scope —
+# over the v2.3 streaming regions + v2.2 quest/faction stack. Every tactical
+# decision records its inputs, options, constraints, selected action,
+# execution result, and state mutation, and validates against contracts.
+# NOT AAA combat AI, a GOAP planner, a behavior-tree editor, EQS, RL, or an
+# LLM-driven NPC (handoff §4).
+# FAIL-CLOSED: a gate whose script is not yet built turns v2-4-shield RED
+# until it exists. Targets are added per wave as their scripts land
+# (validate_makefile_refs asserts every tools/pipeline ref resolves).
+# NOTE: `make` is not installed here; these targets document the canonical
+# surface — run the mapped `python tools/pipeline|operator/*.py` directly
+# (PYTHONUTF8=1 on Windows). e.g.
+#   python tools/pipeline/v2_4_shield.py --strict --tactical --advanced-ai
+# ======================================================================
+TACTICAL_PACK ?= worldforge_vertical_slice
+
+# --- Contract spine (Wave 1, GREEN) ------------------------------------
+tactical-contracts:
+	$(PYTHON) tools/pipeline/validate_tactical_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+tactical-negative-fixtures:
+	$(PYTHON) tools/pipeline/tactical_negatives.py $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v2-4-shield:
+	$(PYTHON) tools/pipeline/v2_4_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(TACTICAL),--tactical,) $(if $(ADVANCED_AI),--advanced-ai,) \
+	  $(if $(SCENARIOS),--scenarios $(SCENARIOS),) $(if $(REGRESSIONS),--regressions,)
+
+.PHONY: tactical-contracts tactical-negative-fixtures v2-4-shield
