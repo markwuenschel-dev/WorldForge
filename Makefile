@@ -1789,6 +1789,18 @@ operator-streaming-dashboard:
 operator-streaming-smoke:
 	$(PYTHON) tools/operator/streaming_operator_smoke.py $(if $(STRICT),--strict,)
 
+# --- Hostile validation (Wave R) ---------------------------------------
+streaming-negative-validators:
+	$(PYTHON) tools/pipeline/streaming_negative_validators.py $(if $(STRICT),--strict,)
+streaming-fuzz:
+	$(PYTHON) tools/pipeline/streaming_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+streaming-torture:
+	$(PYTHON) tools/pipeline/streaming_torture.py $(if $(STRICT),--strict,)
+streaming-report-integrity:
+	$(PYTHON) tools/pipeline/streaming_report_integrity.py $(if $(STRICT),--strict,)
+streaming-hygiene:
+	$(PYTHON) tools/pipeline/streaming_hygiene.py $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-3-shield:
 	$(PYTHON) tools/pipeline/v2_3_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1800,4 +1812,5 @@ v2-3-shield:
 	validate-streaming-authoring run-streaming-smoke run-streaming-runtime \
 	validate-streaming-runtime validate-streaming-save-load validate-streaming-budgets \
 	operator-streaming-index operator-streaming-dashboard operator-streaming-smoke \
-	v2-3-shield
+	streaming-negative-validators streaming-fuzz streaming-torture \
+	streaming-report-integrity streaming-hygiene v2-3-shield

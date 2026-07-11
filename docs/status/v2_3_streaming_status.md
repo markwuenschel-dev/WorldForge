@@ -11,12 +11,26 @@ Failure-code band: **WF851–WF930** `STREAMING_*`
 
 | Wave | Scope | State |
 |------|-------|-------|
-| 1 | Contracts + fail-closed shield | ✅ **DONE** — spine GREEN, downstream honestly RED |
-| 2 | Region/tile/anchor/route/binding authoring | ⏳ pending |
-| 3 | Streaming runtime + tile lifecycle | ⏳ pending |
-| 4 | Cross-tile save/load + budgets | ⏳ pending |
-| 5 | OperatorForge region/tile views | ⏳ pending |
-| R | Hostile closure + v2.3 shield green | ⏳ pending |
+| 1 | Contracts + fail-closed shield | ✅ **DONE** |
+| 2 | Region/tile/anchor/route/binding authoring | ✅ **DONE** — 2 regions / 6 tiles / 26 anchors / 4 routes / 48 bindings |
+| 3 | Streaming runtime + tile lifecycle | ✅ **DONE** — 24 runs, 48 lifecycle |
+| 4 | Cross-tile save/load + budgets | ✅ **DONE** — 24 save states + 24 budgets |
+| 5 | OperatorForge region/tile views | ✅ **DONE** — 2 region + 6 tile views |
+| R | Hostile closure + v2.3 shield green | ✅ **DONE** — shield GREEN 22/22 |
+
+## Final result — v2.3 shield GREEN 22/22 (25/25 with regressions)
+
+```
+python tools/pipeline/v2_3_shield.py --strict --streaming --worldscale               # GREEN 22/22
+python tools/pipeline/v2_3_shield.py --strict --streaming --worldscale --regressions  # GREEN 25/25
+```
+
+Runtime matrix: 24/24. Each scenario crosses ≥1 tile boundary with ≥1 stream
+transition, completes its cross-tile route + mission, preserves tile state across
+unload/reload, round-trips cross-tile save/load (tile+actor+mission+quest+faction
+hashes), and stays inside budget. Runtime mode = `simulated_streaming_lifecycle`
+(honest). Regressions: v2.2 22/22, v2.1 20/20, v2.0 green. v1.9/1.8/1.7/1.6z NOT
+rerun (v2.3 changed none of their semantics — handoff §14).
 
 ## Wave 1 — delivered
 

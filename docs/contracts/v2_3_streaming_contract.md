@@ -1,6 +1,6 @@
 # WorldForge v2.3 — StreamingForge / WorldScaleForge Contract
 
-Status: **Wave 1 (contracts + fail-closed shield) — in progress**
+Status: **COMPLETE — all waves done; v2.3 shield GREEN 22/22**
 Branch: `worldforge/v2.3-streamingforge`
 Failure-code band: **WF851–WF930** (`STREAMING_*`), WF895–930 reserved.
 
