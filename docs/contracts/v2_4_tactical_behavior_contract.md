@@ -1,6 +1,6 @@
 # WorldForge v2.4 — AdvancedAIForge / TacticalBehaviorForge Contract
 
-Status: **IN PROGRESS — Wave 1 done (contract spine + fail-closed shield GREEN)**
+Status: **COMPLETE — all waves done; v2.4 shield GREEN 23/23**
 Branch: `worldforge/v2.4-tacticalbehaviorforge`
 Failure-code band: **WF931–WF1010** (`TACTICAL_*`), WF975–1010 reserved.
 

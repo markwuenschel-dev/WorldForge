@@ -7,42 +7,56 @@ Failure-code band: **WF931–WF1010** `TACTICAL_*` (WF931–974 defined, WF975�
 
 * v2.3 shield GREEN 22/22 · v2.2 GREEN 22/22 · v2.1 GREEN 20/20 · v2.0 GREEN 20/20
 
-## Wave status
+## Wave status — ALL DONE
 
 | Wave | Scope | State |
 |------|-------|-------|
-| 1 | Tactical contracts + fail-closed shield | ✅ **DONE** — spine + negatives GREEN, downstream RED |
-| 2 | Profiles / roles / affordance authoring | ⏳ pending |
-| 3 | Tactical NPC / group bindings | ⏳ pending |
-| 4 | Tactical runtime / decision proof (24 scenarios) | ⏳ pending |
-| 5 | Tactical save/load + budgets | ⏳ pending |
-| 6 | OperatorForge tactical views | ⏳ pending |
-| R | Hostile closure + v2.4 shield green + regressions | ⏳ pending |
+| 1 | Tactical contracts + fail-closed shield | ✅ **DONE** — 15 contracts + 51 negatives GREEN |
+| 2 | Profiles / roles / affordance authoring | ✅ **DONE** — 3 roles / 2 profiles / 24 affordance maps |
+| 3 | Tactical NPC / group bindings | ✅ **DONE** — 48 NPC bindings / 24 group states |
+| 4 | Tactical runtime / decision proof (24 scenarios) | ✅ **DONE** — 24 runtime reports + 24 decision bundles |
+| 5 | Tactical save/load + budgets | ✅ **DONE** — 24 save states + 24 budget reports |
+| 6 | OperatorForge tactical views | ✅ **DONE** — 24 scenario + 48 NPC views + dashboard |
+| R | Hostile closure + v2.4 shield green + regressions | ✅ **DONE** — shield GREEN 23/23 |
 
-## Wave 1 result — contract spine GREEN, downstream fail-closed RED
+## Final result — v2.4 shield GREEN 23/23
 
 ```
-python tools/pipeline/validate_tactical_contracts.py --strict   # PASS (15 contracts dogfooded)
-python tools/pipeline/tactical_negatives.py --strict            # PASS (51 known-bads, each owning-code)
-python tools/pipeline/v2_4_shield.py --strict                   # GREEN 4/4 (always-lane)
-python tools/pipeline/v2_4_shield.py --strict --tactical --advanced-ai   # RED 4/23 (fail-closed, correct)
+python tools/pipeline/v2_4_shield.py --strict --tactical --advanced-ai   # GREEN 23/23
 ```
 
-Delivered in Wave 1:
+Runtime matrix: 24/24 GENUINE tactical evidence in `deterministic_tactical_simulation`
+mode (labeled honestly; NOT live UE AI). Each scenario runs a 2-NPC coordinated squad
+through a scripted decision loop over the REAL v2.3 region/route/cover + v2.2 quest/faction
+evidence — every decision has an input, considered options, a selected VALID option, an
+execution result, and a state delta; the matrix covers every required action class
+(hold_position, advance/retreat_to_anchor, flank_via_route, use_cover, pressure_objective).
+Tactical state round-trips save/load (content-derived hashes); budgets classify honestly.
 
-* `tools/pipeline/failure_codes.py` — WF931–974 `TACTICAL_*` band (44 codes; backfill
-  auto-registers SEVERITY + GATE_TAXONOMY; `validate_failure_codes` GREEN)
-* `tools/pipeline/tactical_contracts.py` — 15 schema-only contracts, `CONTRACTS` registry,
-  `CONTRACT_GROUPS`, `KNOWN_BAD_OWNING_CODE`, `TACTICAL_CODES`
-* `tools/pipeline/validate_tactical_contracts.py` — dogfood gate (valid passes, known-bad
-  rejected for owning code, registry coherent)
-* `tools/pipeline/tactical_negatives.py` — 51 hostile negative fixtures, one honesty
-  invariant each, all rejected for the owning code
-* `tools/pipeline/v2_4_shield.py` — fail-closed aggregator (`--tactical` / `--advanced-ai`
-  / `--regressions`)
-* `Makefile` — v2.4 section (Wave-1 targets: `tactical-contracts`,
-  `tactical-negative-fixtures`, `v2-4-shield`; later targets land per wave)
-* `docs/contracts/v2_4_tactical_behavior_contract.md`, this status doc
+### Regressions (shield-level) — all GREEN
+
+```
+v2.3 shield --streaming --worldscale  → GREEN 22/22
+v2.2 shield --quests --factions       → GREEN 22/22
+v2.1 shield --operator                → GREEN 20/20
+v2.0 shield --package                 → GREEN 4/4
+```
+
+v1.9/v1.8/v1.7/v1.6z live-UE regressions were **not** re-run: they require `--require-live`
+engine runtime and are unaffected by v2.4, which is purely additive authoring/simulation
+over the v2.3 substrate (no v1.x combat/NPC/reward code touched).
+
+### Delivered (7 commits)
+
+* `failure_codes.py` — WF931–974 `TACTICAL_*` band (44 codes)
+* `tactical_contracts.py` (15 contracts) · `tactical_spec.py` · `tactical_runtime.py`
+* validators/generators: profiles, affordances, bindings, runtime, save-load, budgets
+* operator: `build_tactical_index.py`, `build_tactical_dashboard.py`, `tactical_operator_smoke.py`
+* hostile: negatives (51) · negative-validators · fuzz-300 · torture (24) · report-integrity
+  (+ real TacticalEvidenceIndex) · hygiene
+* `v2_4_shield.py` · Makefile v2.4 section · contract + status docs
+* generated artifacts: 3 roles / 2 profiles / 24 affordances / 48 bindings / 24 groups;
+  evidence: 24 runtime / 24 decisions / 24 save / 24 budget / 24 scenario + 48 NPC views
 
 ## Honest caveats (carried into the PR)
 
