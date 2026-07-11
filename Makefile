@@ -1647,3 +1647,40 @@ v2-1-shield:
 	operator-command-dry-run operator-diff-runs operator-command-negative-validators \
 	operator-negative-validators operator-fuzz operator-torture \
 	operator-report-integrity operator-hygiene v2-1-shield
+
+# ======================================================================
+# v2.2 QuestForge + FactionStateForge — stateful quest/faction consequence
+# ----------------------------------------------------------------------
+# The first stateful narrative-consequence substrate for WorldForge: bounded
+# quests (a validated state machine over v2.0 scenario actions), factions
+# (persistent bounded state vectors), and consequence continuity (deltas +
+# ledgers + next-mission state) over the 24-scenario vertical-slice matrix.
+# NOT a story campaign / dialogue / lore system (handoff §4).
+# FAIL-CLOSED: a gate whose script is not yet built turns v2-2-shield RED
+# until it exists (no fake green). Targets are added per wave as their scripts
+# land (validate_makefile_refs asserts every tools/pipeline ref resolves).
+# NOTE: `make` is not installed in this environment; these targets document the
+# canonical command surface — run the mapped `python tools/pipeline/*.py` (or
+# tools/operator/*.py) directly (PYTHONUTF8=1 on Windows). e.g.
+#   python tools/pipeline/v2_2_shield.py --strict --quests --factions
+# ======================================================================
+QUEST_FACTION_PACK ?= worldforge_vertical_slice
+
+# --- Contract spine (Wave 1, GREEN) ------------------------------------
+quest-contracts:
+	$(PYTHON) tools/pipeline/validate_quest_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+faction-contracts:
+	$(PYTHON) tools/pipeline/validate_faction_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+quest-faction-contracts:
+	$(PYTHON) tools/pipeline/validate_quest_faction_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+quest-faction-negative-fixtures:
+	$(PYTHON) tools/pipeline/quest_faction_negatives.py $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v2-2-shield:
+	$(PYTHON) tools/pipeline/v2_2_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(QUESTS),--quests,) $(if $(FACTIONS),--factions,) \
+	  $(if $(SCENARIOS),--scenarios $(SCENARIOS),) $(if $(REGRESSIONS),--regressions,)
+
+.PHONY: quest-contracts faction-contracts quest-faction-contracts \
+	quest-faction-negative-fixtures v2-2-shield
