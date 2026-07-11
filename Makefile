@@ -1814,3 +1814,94 @@ v2-3-shield:
 	operator-streaming-index operator-streaming-dashboard operator-streaming-smoke \
 	streaming-negative-validators streaming-fuzz streaming-torture \
 	streaming-report-integrity streaming-hygiene v2-3-shield
+
+# ======================================================================
+# v2.4 AdvancedAIForge / TacticalBehaviorForge — bounded tactical behavior
+# ----------------------------------------------------------------------
+# The first bounded tactical-behavior substrate: generated NPCs making
+# BOUNDED, INSPECTABLE tactical decisions over terrain, routes, cover,
+# objectives, mission/quest/faction context, and streaming tile scope —
+# over the v2.3 streaming regions + v2.2 quest/faction stack. Every tactical
+# decision records its inputs, options, constraints, selected action,
+# execution result, and state mutation, and validates against contracts.
+# NOT AAA combat AI, a GOAP planner, a behavior-tree editor, EQS, RL, or an
+# LLM-driven NPC (handoff §4).
+# FAIL-CLOSED: a gate whose script is not yet built turns v2-4-shield RED
+# until it exists. Targets are added per wave as their scripts land
+# (validate_makefile_refs asserts every tools/pipeline ref resolves).
+# NOTE: `make` is not installed here; these targets document the canonical
+# surface — run the mapped `python tools/pipeline|operator/*.py` directly
+# (PYTHONUTF8=1 on Windows). e.g.
+#   python tools/pipeline/v2_4_shield.py --strict --tactical --advanced-ai
+# ======================================================================
+TACTICAL_PACK ?= worldforge_vertical_slice
+
+# --- Contract spine (Wave 1, GREEN) ------------------------------------
+tactical-contracts:
+	$(PYTHON) tools/pipeline/validate_tactical_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+tactical-negative-fixtures:
+	$(PYTHON) tools/pipeline/tactical_negatives.py $(if $(STRICT),--strict,)
+
+# --- Profile/role/affordance authoring (Wave 2) ------------------------
+generate-tactical-profiles:
+	$(PYTHON) tools/pipeline/generate_tactical_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-tactical-profiles:
+	$(PYTHON) tools/pipeline/validate_tactical_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-tactical-affordances:
+	$(PYTHON) tools/pipeline/generate_tactical_affordances.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-tactical-affordances:
+	$(PYTHON) tools/pipeline/validate_tactical_affordances.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- NPC/group bindings (Wave 3) ---------------------------------------
+generate-tactical-bindings:
+	$(PYTHON) tools/pipeline/generate_tactical_bindings.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-tactical-bindings:
+	$(PYTHON) tools/pipeline/validate_tactical_bindings.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Runtime + decision proof (Wave 4) ---------------------------------
+run-tactical-smoke:
+	$(PYTHON) tools/pipeline/run_tactical_behavior_alpha.py --smoke $(if $(STRICT),--strict,)
+run-tactical-runtime:
+	$(PYTHON) tools/pipeline/run_tactical_behavior_alpha.py --gate --scenarios $(if $(SCENARIOS),$(SCENARIOS),24) $(if $(STRICT),--strict,)
+validate-tactical-runtime:
+	$(PYTHON) tools/pipeline/validate_tactical_runtime.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Save/load + budgets (Wave 5) --------------------------------------
+validate-tactical-save-load:
+	$(PYTHON) tools/pipeline/validate_tactical_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-tactical-budgets:
+	$(PYTHON) tools/pipeline/validate_tactical_budgets.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- OperatorForge tactical views (Wave 6) -----------------------------
+operator-tactical-index:
+	$(PYTHON) tools/operator/build_tactical_index.py $(if $(STRICT),--strict,)
+operator-tactical-dashboard:
+	$(PYTHON) tools/operator/build_tactical_dashboard.py $(if $(STRICT),--strict,)
+operator-tactical-smoke:
+	$(PYTHON) tools/operator/tactical_operator_smoke.py $(if $(STRICT),--strict,)
+
+# --- Hostile validation (Wave R) ---------------------------------------
+tactical-negative-validators:
+	$(PYTHON) tools/pipeline/tactical_negative_validators.py $(if $(STRICT),--strict,)
+tactical-fuzz:
+	$(PYTHON) tools/pipeline/tactical_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+tactical-torture:
+	$(PYTHON) tools/pipeline/tactical_torture.py $(if $(STRICT),--strict,)
+tactical-report-integrity:
+	$(PYTHON) tools/pipeline/tactical_report_integrity.py $(if $(STRICT),--strict,)
+tactical-hygiene:
+	$(PYTHON) tools/pipeline/tactical_hygiene.py $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v2-4-shield:
+	$(PYTHON) tools/pipeline/v2_4_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(TACTICAL),--tactical,) $(if $(ADVANCED_AI),--advanced-ai,) \
+	  $(if $(SCENARIOS),--scenarios $(SCENARIOS),) $(if $(REGRESSIONS),--regressions,)
+
+.PHONY: tactical-contracts tactical-negative-fixtures generate-tactical-profiles \
+	validate-tactical-profiles generate-tactical-affordances validate-tactical-affordances \
+	generate-tactical-bindings validate-tactical-bindings run-tactical-smoke \
+	run-tactical-runtime validate-tactical-runtime validate-tactical-save-load \
+	validate-tactical-budgets operator-tactical-index operator-tactical-dashboard \
+	operator-tactical-smoke tactical-negative-validators tactical-fuzz tactical-torture \
+	tactical-report-integrity tactical-hygiene v2-4-shield

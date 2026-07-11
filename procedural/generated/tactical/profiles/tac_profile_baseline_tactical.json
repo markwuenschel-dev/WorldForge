@@ -1,0 +1,52 @@
+{
+  "actions_allowed": [
+    "hold_position",
+    "advance_to_anchor",
+    "retreat_to_anchor",
+    "flank_via_route",
+    "use_cover",
+    "leave_cover",
+    "pressure_objective",
+    "protect_objective",
+    "pursue_player",
+    "break_pursuit",
+    "call_reinforcement",
+    "disengage"
+  ],
+  "aggression": 0.45,
+  "budget_profile_id": "tac_budget_standard",
+  "cover_preference": 0.6,
+  "created_at": "2026-07-11T00:00:00+00:00",
+  "created_by": "worldforge.v2.4",
+  "decision_cadence_ms": 750,
+  "display_key": "tactical.profile.baseline",
+  "flank_preference": 0.35,
+  "max_active_tactical_npcs": 8,
+  "max_decisions_per_minute": 80,
+  "objective_pressure_weight": 0.5,
+  "profile_id": "tac_profile_baseline_tactical",
+  "reinforcement_threshold": 0.4,
+  "report_type": "wf.tactical.behavior_profile.v1",
+  "retreat_health_threshold": 0.3,
+  "roles_allowed": [
+    "sentinel",
+    "skirmisher",
+    "suppressor"
+  ],
+  "schema_version": "wf.tactical.behavior_profile.v1",
+  "stimuli_allowed": [
+    "player_seen",
+    "player_lost",
+    "damage_taken",
+    "ally_damaged",
+    "objective_threatened",
+    "quest_objective_active",
+    "faction_priority_changed",
+    "tile_transition_started",
+    "tile_unload_pending",
+    "health_low",
+    "cover_available",
+    "route_blocked"
+  ],
+  "tactical_pressure_profile": "baseline_tactical"
+}
