@@ -1852,6 +1852,12 @@ generate-tactical-affordances:
 validate-tactical-affordances:
 	$(PYTHON) tools/pipeline/validate_tactical_affordances.py --pack $(PACK) $(if $(STRICT),--strict,)
 
+# --- NPC/group bindings (Wave 3) ---------------------------------------
+generate-tactical-bindings:
+	$(PYTHON) tools/pipeline/generate_tactical_bindings.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-tactical-bindings:
+	$(PYTHON) tools/pipeline/validate_tactical_bindings.py --pack $(PACK) $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-4-shield:
 	$(PYTHON) tools/pipeline/v2_4_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1860,4 +1866,4 @@ v2-4-shield:
 
 .PHONY: tactical-contracts tactical-negative-fixtures generate-tactical-profiles \
 	validate-tactical-profiles generate-tactical-affordances validate-tactical-affordances \
-	v2-4-shield
+	generate-tactical-bindings validate-tactical-bindings v2-4-shield

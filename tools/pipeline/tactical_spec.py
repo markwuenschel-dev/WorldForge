@@ -204,6 +204,103 @@ def region_of(scenario):
 
 
 # --------------------------------------------------------------------------- #
+# NPC / group bindings (handoff §8.4/§8.9) — bound to real v1.7 archetypes,
+# v2.2 quests + factions, and this milestone's roles/profiles/affordances.
+# --------------------------------------------------------------------------- #
+# Real v1.7 NPC archetype per tactical role (npc_profile_id resolves on disk).
+_ARCHETYPE_BY_ROLE = {
+    "sentinel": "npc_ranged_sentry",
+    "skirmisher": "npc_scout_chaser",
+    "suppressor": "npc_heavy_blocker",
+}
+_SUPPORT_ARCHETYPE = "npc_grunt_patroller"
+# Real v2.2 faction per region (faction_context_id resolves on disk).
+_FACTION_BY_REGION = {
+    "region_alpine_hub": "wardens",
+    "region_volcanic_chain": "outriders",
+}
+# Real v2.2 quest archetype per tactical role, and quest tier per pressure profile.
+_QUEST_ARCHETYPE_BY_ROLE = {
+    "sentinel": "survey_landmark",
+    "skirmisher": "clear_hazard",
+    "suppressor": "recover_resource",
+}
+_QUEST_TIER_BY_PROFILE = {"baseline_tactical": "baseline", "high_pressure_tactical": "high"}
+# The secondary squad member per scenario role — chosen so each squad can prove
+# coordination (≥2), and so suppressor/skirmisher composition is honest.
+_SECONDARY_ROLE = {"sentinel": "suppressor", "skirmisher": "skirmisher", "suppressor": "skirmisher"}
+
+
+def quest_context(scenario):
+    return "qf_{}_{}_{}_s{}".format(
+        scenario["biome"], _QUEST_ARCHETYPE_BY_ROLE[scenario["role"]],
+        _QUEST_TIER_BY_PROFILE[scenario["profile"]], scenario["seed"])
+
+
+def faction_context(scenario):
+    return _FACTION_BY_REGION[scenario["region_id"]]
+
+
+def squad_for(scenario):
+    """The bounded 2-NPC squad for a scenario: primary role + a complementary member."""
+    sid = scenario["scenario_id"]
+    primary = scenario["role"]
+    secondary = _SECONDARY_ROLE[primary]
+    arch_secondary = (_ARCHETYPE_BY_ROLE.get(secondary, _SUPPORT_ARCHETYPE)
+                      if secondary != primary else _SUPPORT_ARCHETYPE)
+    return [
+        {"npc_id": "{}_npc00".format(sid), "role": primary,
+         "npc_profile_id": _ARCHETYPE_BY_ROLE[primary]},
+        {"npc_id": "{}_npc01".format(sid), "role": secondary,
+         "npc_profile_id": arch_secondary},
+    ]
+
+
+def npc_binding(scenario, npc):
+    region = region_of(scenario)
+    tile = scenario["objective_tile_id"]
+    return TC._example_tactical_npc_binding(
+        binding_id="tnb_" + npc["npc_id"],
+        scenario_id=scenario["scenario_id"],
+        region_id=scenario["region_id"],
+        tile_id=tile,
+        npc_profile_id=npc["npc_profile_id"],
+        tactical_role_id=npc["role"],
+        behavior_profile_id=scenario["profile_id"],
+        spawn_anchor_id=scenario["spawn_anchor_id"],
+        allowed_tile_ids=[tile, scenario["entry_tile_id"]],
+        allowed_route_ids=[scenario["flank_route_id"]],
+        allowed_cover_ids=list(scenario["cover_ids"]),
+        quest_context_id=quest_context(scenario),
+        faction_context_id=faction_context(scenario),
+        streaming_scope={"region_id": scenario["region_id"], "allowed_tile_ids": [tile]},
+        save_load_key="sl_" + npc["npc_id"],
+        group_id="tacgrp_" + scenario["scenario_id"],
+        seed=scenario["seed"],
+    )
+
+
+def group_state(scenario, squad=None):
+    squad = squad or squad_for(scenario)
+    roles_present = [n["role"] for n in squad]
+    return TC._example_tactical_group_state(
+        group_id="tacgrp_" + scenario["scenario_id"],
+        scenario_id=scenario["scenario_id"],
+        npc_ids=[n["npc_id"] for n in squad],
+        group_role="fireteam",
+        shared_target_id="player",
+        shared_objective_id=scenario["objective_anchor_id"],
+        coordination_state="coordinated",
+        suppression_active="suppressor" in roles_present,
+        flank_active="skirmisher" in roles_present,
+        reinforcement_requested=False,
+        retreat_called=False,
+        roles_present=roles_present,
+        flank_route_id=scenario["flank_route_id"],
+    )
+
+
+# --------------------------------------------------------------------------- #
 # Affordance map (one per scenario, over the scenario's objective tile).
 # --------------------------------------------------------------------------- #
 def affordance_for(scenario):
