@@ -1767,6 +1767,20 @@ generate-streamed-bindings:
 validate-streaming-authoring:
 	$(PYTHON) tools/pipeline/validate_streaming_authoring.py --pack $(PACK) $(if $(STRICT),--strict,)
 
+# --- Runtime + lifecycle (Wave 3) --------------------------------------
+run-streaming-smoke:
+	$(PYTHON) tools/pipeline/run_streaming_forge_alpha.py --smoke $(if $(STRICT),--strict,)
+run-streaming-runtime:
+	$(PYTHON) tools/pipeline/run_streaming_forge_alpha.py --gate --scenarios $(if $(SCENARIOS),$(SCENARIOS),24) $(if $(STRICT),--strict,)
+validate-streaming-runtime:
+	$(PYTHON) tools/pipeline/validate_streaming_runtime.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Cross-tile save/load + budgets (Wave 4) ---------------------------
+validate-streaming-save-load:
+	$(PYTHON) tools/pipeline/validate_streaming_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-streaming-budgets:
+	$(PYTHON) tools/pipeline/validate_streaming_budgets.py --pack $(PACK) $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-3-shield:
 	$(PYTHON) tools/pipeline/v2_3_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1775,4 +1789,6 @@ v2-3-shield:
 
 .PHONY: streaming-contracts streaming-negative-fixtures generate-streaming-regions \
 	generate-cross-tile-anchors generate-cross-tile-routes generate-streamed-bindings \
-	validate-streaming-authoring v2-3-shield
+	validate-streaming-authoring run-streaming-smoke run-streaming-runtime \
+	validate-streaming-runtime validate-streaming-save-load validate-streaming-budgets \
+	v2-3-shield
