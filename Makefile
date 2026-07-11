@@ -1872,6 +1872,14 @@ validate-tactical-save-load:
 validate-tactical-budgets:
 	$(PYTHON) tools/pipeline/validate_tactical_budgets.py --pack $(PACK) $(if $(STRICT),--strict,)
 
+# --- OperatorForge tactical views (Wave 6) -----------------------------
+operator-tactical-index:
+	$(PYTHON) tools/operator/build_tactical_index.py $(if $(STRICT),--strict,)
+operator-tactical-dashboard:
+	$(PYTHON) tools/operator/build_tactical_dashboard.py $(if $(STRICT),--strict,)
+operator-tactical-smoke:
+	$(PYTHON) tools/operator/tactical_operator_smoke.py $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-4-shield:
 	$(PYTHON) tools/pipeline/v2_4_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1882,4 +1890,5 @@ v2-4-shield:
 	validate-tactical-profiles generate-tactical-affordances validate-tactical-affordances \
 	generate-tactical-bindings validate-tactical-bindings run-tactical-smoke \
 	run-tactical-runtime validate-tactical-runtime validate-tactical-save-load \
-	validate-tactical-budgets v2-4-shield
+	validate-tactical-budgets operator-tactical-index operator-tactical-dashboard \
+	operator-tactical-smoke v2-4-shield
