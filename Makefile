@@ -1730,3 +1730,35 @@ v2-2-shield:
 	operator-quest-faction-dashboard operator-quest-faction-smoke \
 	quest-faction-negative-validators quest-faction-fuzz quest-faction-torture \
 	quest-faction-report-integrity quest-faction-hygiene v2-2-shield
+
+# ======================================================================
+# v2.3 StreamingForge / WorldScaleForge — cross-tile generated regions
+# ----------------------------------------------------------------------
+# The first cross-tile generated-region substrate: bounded regions composed
+# of streamable tiles connected by stable cross-tile anchors + routes, with
+# runtime tile lifecycle, cross-tile save/load continuity, and declared
+# streaming/package budgets — over the v2.0 slice + v2.2 quest/faction stack.
+# NOT a full open world / multiplayer / final World Partition (handoff §4).
+# FAIL-CLOSED: a gate whose script is not yet built turns v2-3-shield RED
+# until it exists. Targets added per wave as their scripts land
+# (validate_makefile_refs asserts every tools/pipeline ref resolves).
+# NOTE: `make` is not installed here; these targets document the canonical
+# surface — run the mapped `python tools/pipeline|operator/*.py` directly
+# (PYTHONUTF8=1 on Windows). e.g.
+#   python tools/pipeline/v2_3_shield.py --strict --streaming --worldscale
+# ======================================================================
+STREAMING_PACK ?= worldforge_vertical_slice
+
+# --- Contract spine (Wave 1, GREEN) ------------------------------------
+streaming-contracts:
+	$(PYTHON) tools/pipeline/validate_streaming_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+streaming-negative-fixtures:
+	$(PYTHON) tools/pipeline/streaming_negatives.py $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v2-3-shield:
+	$(PYTHON) tools/pipeline/v2_3_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(STREAMING),--streaming,) $(if $(WORLDSCALE),--worldscale,) \
+	  $(if $(SCENARIOS),--scenarios $(SCENARIOS),) $(if $(REGRESSIONS),--regressions,)
+
+.PHONY: streaming-contracts streaming-negative-fixtures v2-3-shield
