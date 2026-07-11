@@ -1647,3 +1647,86 @@ v2-1-shield:
 	operator-command-dry-run operator-diff-runs operator-command-negative-validators \
 	operator-negative-validators operator-fuzz operator-torture \
 	operator-report-integrity operator-hygiene v2-1-shield
+
+# ======================================================================
+# v2.2 QuestForge + FactionStateForge — stateful quest/faction consequence
+# ----------------------------------------------------------------------
+# The first stateful narrative-consequence substrate for WorldForge: bounded
+# quests (a validated state machine over v2.0 scenario actions), factions
+# (persistent bounded state vectors), and consequence continuity (deltas +
+# ledgers + next-mission state) over the 24-scenario vertical-slice matrix.
+# NOT a story campaign / dialogue / lore system (handoff §4).
+# FAIL-CLOSED: a gate whose script is not yet built turns v2-2-shield RED
+# until it exists (no fake green). Targets are added per wave as their scripts
+# land (validate_makefile_refs asserts every tools/pipeline ref resolves).
+# NOTE: `make` is not installed in this environment; these targets document the
+# canonical command surface — run the mapped `python tools/pipeline/*.py` (or
+# tools/operator/*.py) directly (PYTHONUTF8=1 on Windows). e.g.
+#   python tools/pipeline/v2_2_shield.py --strict --quests --factions
+# ======================================================================
+QUEST_FACTION_PACK ?= worldforge_vertical_slice
+
+# --- Contract spine (Wave 1, GREEN) ------------------------------------
+quest-contracts:
+	$(PYTHON) tools/pipeline/validate_quest_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+faction-contracts:
+	$(PYTHON) tools/pipeline/validate_faction_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+quest-faction-contracts:
+	$(PYTHON) tools/pipeline/validate_quest_faction_contracts.py --pack $(PACK) $(if $(STRICT),--strict,)
+quest-faction-negative-fixtures:
+	$(PYTHON) tools/pipeline/quest_faction_negatives.py $(if $(STRICT),--strict,)
+
+# --- Authoring generators (Wave 2) -------------------------------------
+generate-quests:
+	$(PYTHON) tools/pipeline/generate_quests.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-generated-quests:
+	$(PYTHON) tools/pipeline/validate_generated_quests.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-factions:
+	$(PYTHON) tools/pipeline/generate_factions.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-generated-factions:
+	$(PYTHON) tools/pipeline/validate_generated_factions.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- Runtime quest/faction proof (Wave 3) ------------------------------
+run-quest-faction-smoke:
+	$(PYTHON) tools/pipeline/run_quest_faction_alpha.py --smoke $(if $(STRICT),--strict,)
+run-quest-faction-runtime:
+	$(PYTHON) tools/pipeline/run_quest_faction_alpha.py --gate --scenarios $(if $(SCENARIOS),$(SCENARIOS),24) $(if $(STRICT),--strict,)
+validate-quest-faction-runtime:
+	$(PYTHON) tools/pipeline/validate_quest_faction_runtime.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-quest-faction-save-load:
+	$(PYTHON) tools/pipeline/validate_quest_faction_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# --- OperatorForge quest/faction views (Wave 4) ------------------------
+operator-quest-faction-index:
+	$(PYTHON) tools/operator/build_quest_faction_index.py $(if $(STRICT),--strict,)
+operator-quest-faction-dashboard:
+	$(PYTHON) tools/operator/build_quest_faction_dashboard.py $(if $(STRICT),--strict,)
+operator-quest-faction-smoke:
+	$(PYTHON) tools/operator/quest_faction_operator_smoke.py $(if $(STRICT),--strict,)
+
+# --- Hostile validation (Wave R) ---------------------------------------
+quest-faction-negative-validators:
+	$(PYTHON) tools/pipeline/quest_faction_negative_validators.py $(if $(STRICT),--strict,)
+quest-faction-fuzz:
+	$(PYTHON) tools/pipeline/quest_faction_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+quest-faction-torture:
+	$(PYTHON) tools/pipeline/quest_faction_torture.py $(if $(STRICT),--strict,)
+quest-faction-report-integrity:
+	$(PYTHON) tools/pipeline/quest_faction_report_integrity.py $(if $(STRICT),--strict,)
+quest-faction-hygiene:
+	$(PYTHON) tools/pipeline/quest_faction_hygiene.py $(if $(STRICT),--strict,)
+
+# --- Shield ------------------------------------------------------------
+v2-2-shield:
+	$(PYTHON) tools/pipeline/v2_2_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
+	  $(if $(QUESTS),--quests,) $(if $(FACTIONS),--factions,) \
+	  $(if $(SCENARIOS),--scenarios $(SCENARIOS),) $(if $(REGRESSIONS),--regressions,)
+
+.PHONY: quest-contracts faction-contracts quest-faction-contracts \
+	quest-faction-negative-fixtures generate-quests validate-generated-quests \
+	generate-factions validate-generated-factions run-quest-faction-smoke \
+	run-quest-faction-runtime validate-quest-faction-runtime \
+	validate-quest-faction-save-load operator-quest-faction-index \
+	operator-quest-faction-dashboard operator-quest-faction-smoke \
+	quest-faction-negative-validators quest-faction-fuzz quest-faction-torture \
+	quest-faction-report-integrity quest-faction-hygiene v2-2-shield

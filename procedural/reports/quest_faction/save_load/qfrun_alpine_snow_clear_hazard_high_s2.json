@@ -1,0 +1,137 @@
+{
+  "faction_state": {
+    "outriders": {
+      "active_quest_ids": [],
+      "alarm": 0,
+      "completed_quest_ids": [
+        "qf_alpine_snow_clear_hazard_baseline_s1",
+        "qf_alpine_snow_clear_hazard_baseline_s2",
+        "qf_alpine_snow_clear_hazard_high_s2"
+      ],
+      "created_at": "2026-07-11T00:00:00+00:00",
+      "created_by": "worldforge.v2.2",
+      "faction_id": "outriders",
+      "failed_quest_ids": [
+        "qf_alpine_snow_clear_hazard_high_s1"
+      ],
+      "influence": 48,
+      "relationships": {
+        "salvagers": 0,
+        "surveyors": 5,
+        "wardens": 25
+      },
+      "report_type": "wf.quest_faction.faction_state.v1",
+      "resources": {
+        "route_marker": 10,
+        "supply_cache": 10,
+        "ward_beacon": 15
+      },
+      "run_id": "qfrun_alpine_snow_clear_hazard_high_s2",
+      "schema_version": "wf.quest_faction.faction_state.v1",
+      "standing": 15,
+      "state_hash": "sha256:initial:outriders",
+      "territory_pressure": 10,
+      "trust": 60
+    },
+    "surveyors": {
+      "active_quest_ids": [],
+      "alarm": 30,
+      "completed_quest_ids": [
+        "qf_alpine_snow_clear_hazard_baseline_s1",
+        "qf_alpine_snow_clear_hazard_baseline_s2",
+        "qf_alpine_snow_clear_hazard_high_s2"
+      ],
+      "created_at": "2026-07-11T00:00:00+00:00",
+      "created_by": "worldforge.v2.2",
+      "faction_id": "surveyors",
+      "failed_quest_ids": [
+        "qf_alpine_snow_clear_hazard_high_s1"
+      ],
+      "influence": 30,
+      "relationships": {
+        "outriders": 5,
+        "salvagers": -10,
+        "wardens": -2
+      },
+      "report_type": "wf.quest_faction.faction_state.v1",
+      "resources": {
+        "landmark_scan": 10,
+        "survey_data": 10
+      },
+      "run_id": "qfrun_alpine_snow_clear_hazard_high_s2",
+      "schema_version": "wf.quest_faction.faction_state.v1",
+      "standing": -20,
+      "state_hash": "sha256:initial:surveyors",
+      "territory_pressure": 10,
+      "trust": 35
+    },
+    "wardens": {
+      "active_quest_ids": [],
+      "alarm": 6,
+      "completed_quest_ids": [
+        "qf_alpine_snow_clear_hazard_baseline_s1",
+        "qf_alpine_snow_clear_hazard_baseline_s2",
+        "qf_alpine_snow_clear_hazard_high_s2"
+      ],
+      "created_at": "2026-07-11T00:00:00+00:00",
+      "created_by": "worldforge.v2.2",
+      "faction_id": "wardens",
+      "failed_quest_ids": [
+        "qf_alpine_snow_clear_hazard_high_s1"
+      ],
+      "influence": 54,
+      "relationships": {
+        "outriders": 15,
+        "salvagers": -5,
+        "surveyors": 10
+      },
+      "report_type": "wf.quest_faction.faction_state.v1",
+      "resources": {
+        "shelter_kit": 10,
+        "ward_beacon": 48
+      },
+      "run_id": "qfrun_alpine_snow_clear_hazard_high_s2",
+      "schema_version": "wf.quest_faction.faction_state.v1",
+      "standing": 24,
+      "state_hash": "sha256:initial:wardens",
+      "territory_pressure": 10,
+      "trust": 70
+    }
+  },
+  "quest_state": {
+    "active_step_id": "",
+    "completed_steps": [
+      "qf_alpine_snow_clear_hazard_high_s2_step1",
+      "qf_alpine_snow_clear_hazard_high_s2_step2",
+      "qf_alpine_snow_clear_hazard_high_s2_step3"
+    ],
+    "created_at": "live",
+    "created_by": "worldforge.v2.2",
+    "faction_deltas_applied": true,
+    "failed_steps": [],
+    "outcome": "partial_success",
+    "quest_id": "qf_alpine_snow_clear_hazard_high_s2",
+    "report_type": "wf.quest_faction.quest_runtime_state.v1",
+    "required_steps": [
+      "qf_alpine_snow_clear_hazard_high_s2_step1",
+      "qf_alpine_snow_clear_hazard_high_s2_step2",
+      "qf_alpine_snow_clear_hazard_high_s2_step3"
+    ],
+    "reward_binding": "rwt_clear_hazard_high",
+    "reward_granted": true,
+    "run_id": "qfrun_alpine_snow_clear_hazard_high_s2",
+    "runtime_claims": [
+      "combat",
+      "objective",
+      "reward",
+      "save_load",
+      "traversal"
+    ],
+    "save_slot": "quest_faction_slot_c",
+    "scenario_id": "vs_alpine_snow_clear_hazard_high_s2",
+    "schema_version": "wf.quest_faction.quest_runtime_state.v1",
+    "state": "completed"
+  },
+  "run_id": "qfrun_alpine_snow_clear_hazard_high_s2",
+  "save_slot": "quest_faction_slot_c"
+}
