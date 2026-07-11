@@ -636,7 +636,7 @@ def validate_tactical_decision_option(obj, strict=False):
     # honesty: a VALID option that selects a target-requiring action must carry a real
     # (non-"none") target reference; a missing target is the specific missing-affordance
     # failure for that action class.
-    if valid is True and action in ACTION_TARGET_REQUIREMENT:
+    if valid is True and isinstance(action, str) and action in ACTION_TARGET_REQUIREMENT:
         tfield, tcode = ACTION_TARGET_REQUIREMENT[action]
         ch.append(("op::valid_{}_has_target".format(action),
                    not _is_none_ref(obj.get(tfield)),

@@ -1880,6 +1880,18 @@ operator-tactical-dashboard:
 operator-tactical-smoke:
 	$(PYTHON) tools/operator/tactical_operator_smoke.py $(if $(STRICT),--strict,)
 
+# --- Hostile validation (Wave R) ---------------------------------------
+tactical-negative-validators:
+	$(PYTHON) tools/pipeline/tactical_negative_validators.py $(if $(STRICT),--strict,)
+tactical-fuzz:
+	$(PYTHON) tools/pipeline/tactical_fuzz.py --cases $(if $(CASES),$(CASES),300) --seed $(if $(SEED),$(SEED),1337) $(if $(STRICT),--strict,)
+tactical-torture:
+	$(PYTHON) tools/pipeline/tactical_torture.py $(if $(STRICT),--strict,)
+tactical-report-integrity:
+	$(PYTHON) tools/pipeline/tactical_report_integrity.py $(if $(STRICT),--strict,)
+tactical-hygiene:
+	$(PYTHON) tools/pipeline/tactical_hygiene.py $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-4-shield:
 	$(PYTHON) tools/pipeline/v2_4_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1891,4 +1903,5 @@ v2-4-shield:
 	generate-tactical-bindings validate-tactical-bindings run-tactical-smoke \
 	run-tactical-runtime validate-tactical-runtime validate-tactical-save-load \
 	validate-tactical-budgets operator-tactical-index operator-tactical-dashboard \
-	operator-tactical-smoke v2-4-shield
+	operator-tactical-smoke tactical-negative-validators tactical-fuzz tactical-torture \
+	tactical-report-integrity tactical-hygiene v2-4-shield
