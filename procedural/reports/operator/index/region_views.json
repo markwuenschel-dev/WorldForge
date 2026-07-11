@@ -1,0 +1,128 @@
+[
+  {
+    "anchors": [
+      "anchor_region_alpine_hub_entry",
+      "anchor_tile_alpine_hub_entry_npc",
+      "anchor_tile_alpine_hub_entry_objective",
+      "anchor_tile_alpine_hub_entry_save",
+      "anchor_tile_alpine_hub_entry_to_a",
+      "anchor_tile_alpine_hub_entry_to_b",
+      "anchor_tile_alpine_objective_a_from_entry",
+      "anchor_tile_alpine_objective_a_npc",
+      "anchor_tile_alpine_objective_a_objective",
+      "anchor_tile_alpine_objective_a_save",
+      "anchor_tile_alpine_objective_b_from_entry",
+      "anchor_tile_alpine_objective_b_npc",
+      "anchor_tile_alpine_objective_b_objective",
+      "anchor_tile_alpine_objective_b_save"
+    ],
+    "budget_status_summary": "pass",
+    "created_at": "live",
+    "created_by": "worldforge.v2.3",
+    "cross_tile_routes": [
+      "route_entry_to_a",
+      "route_entry_to_b"
+    ],
+    "failure_codes": [],
+    "quest_faction_status_summary": "updated",
+    "region_definition_path": "procedural/generated/regions/region_alpine_hub.json",
+    "region_id": "region_alpine_hub",
+    "report_type": "wf.streaming.operator_region_view.v1",
+    "runtime_status_summary": "pass",
+    "save_load_status_summary": "roundtrip_ok",
+    "schema_version": "wf.streaming.operator_region_view.v1",
+    "streaming_scenarios": [
+      "st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1",
+      "st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2",
+      "st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1",
+      "st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2",
+      "st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1",
+      "st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2",
+      "st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1",
+      "st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2",
+      "st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1",
+      "st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2",
+      "st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1",
+      "st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2"
+    ],
+    "tile_graph": {
+      "tile_alpine_hub_entry": [
+        "tile_alpine_objective_a",
+        "tile_alpine_objective_b"
+      ],
+      "tile_alpine_objective_a": [
+        "tile_alpine_hub_entry"
+      ],
+      "tile_alpine_objective_b": [
+        "tile_alpine_hub_entry"
+      ]
+    },
+    "tile_ids": [
+      "tile_alpine_hub_entry",
+      "tile_alpine_objective_a",
+      "tile_alpine_objective_b"
+    ]
+  },
+  {
+    "anchors": [
+      "anchor_region_volcanic_chain_entry",
+      "anchor_tile_volcanic_entry_npc",
+      "anchor_tile_volcanic_entry_save",
+      "anchor_tile_volcanic_entry_to_objective",
+      "anchor_tile_volcanic_exit_exit",
+      "anchor_tile_volcanic_exit_from_objective",
+      "anchor_tile_volcanic_exit_save",
+      "anchor_tile_volcanic_objective_from_entry",
+      "anchor_tile_volcanic_objective_npc",
+      "anchor_tile_volcanic_objective_objective",
+      "anchor_tile_volcanic_objective_save",
+      "anchor_tile_volcanic_objective_to_exit"
+    ],
+    "budget_status_summary": "pass",
+    "created_at": "live",
+    "created_by": "worldforge.v2.3",
+    "cross_tile_routes": [
+      "route_entry_to_objective",
+      "route_objective_to_exit"
+    ],
+    "failure_codes": [],
+    "quest_faction_status_summary": "updated",
+    "region_definition_path": "procedural/generated/regions/region_volcanic_chain.json",
+    "region_id": "region_volcanic_chain",
+    "report_type": "wf.streaming.operator_region_view.v1",
+    "runtime_status_summary": "pass",
+    "save_load_status_summary": "roundtrip_ok",
+    "schema_version": "wf.streaming.operator_region_view.v1",
+    "streaming_scenarios": [
+      "st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1",
+      "st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2",
+      "st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1",
+      "st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2",
+      "st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1",
+      "st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2",
+      "st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1",
+      "st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2",
+      "st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1",
+      "st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2",
+      "st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1",
+      "st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2"
+    ],
+    "tile_graph": {
+      "tile_volcanic_entry": [
+        "tile_volcanic_objective"
+      ],
+      "tile_volcanic_exit": [
+        "tile_volcanic_objective"
+      ],
+      "tile_volcanic_objective": [
+        "tile_volcanic_entry",
+        "tile_volcanic_exit"
+      ]
+    },
+    "tile_ids": [
+      "tile_volcanic_entry",
+      "tile_volcanic_objective",
+      "tile_volcanic_exit"
+    ]
+  }
+]

@@ -1781,6 +1781,14 @@ validate-streaming-save-load:
 validate-streaming-budgets:
 	$(PYTHON) tools/pipeline/validate_streaming_budgets.py --pack $(PACK) $(if $(STRICT),--strict,)
 
+# --- OperatorForge region/tile views (Wave 5) --------------------------
+operator-streaming-index:
+	$(PYTHON) tools/operator/build_streaming_index.py $(if $(STRICT),--strict,)
+operator-streaming-dashboard:
+	$(PYTHON) tools/operator/build_streaming_dashboard.py $(if $(STRICT),--strict,)
+operator-streaming-smoke:
+	$(PYTHON) tools/operator/streaming_operator_smoke.py $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-3-shield:
 	$(PYTHON) tools/pipeline/v2_3_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1791,4 +1799,5 @@ v2-3-shield:
 	generate-cross-tile-anchors generate-cross-tile-routes generate-streamed-bindings \
 	validate-streaming-authoring run-streaming-smoke run-streaming-runtime \
 	validate-streaming-runtime validate-streaming-save-load validate-streaming-budgets \
+	operator-streaming-index operator-streaming-dashboard operator-streaming-smoke \
 	v2-3-shield
