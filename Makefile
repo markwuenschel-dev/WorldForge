@@ -1842,10 +1842,22 @@ tactical-contracts:
 tactical-negative-fixtures:
 	$(PYTHON) tools/pipeline/tactical_negatives.py $(if $(STRICT),--strict,)
 
+# --- Profile/role/affordance authoring (Wave 2) ------------------------
+generate-tactical-profiles:
+	$(PYTHON) tools/pipeline/generate_tactical_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-tactical-profiles:
+	$(PYTHON) tools/pipeline/validate_tactical_profiles.py --pack $(PACK) $(if $(STRICT),--strict,)
+generate-tactical-affordances:
+	$(PYTHON) tools/pipeline/generate_tactical_affordances.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-tactical-affordances:
+	$(PYTHON) tools/pipeline/validate_tactical_affordances.py --pack $(PACK) $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-4-shield:
 	$(PYTHON) tools/pipeline/v2_4_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
 	  $(if $(TACTICAL),--tactical,) $(if $(ADVANCED_AI),--advanced-ai,) \
 	  $(if $(SCENARIOS),--scenarios $(SCENARIOS),) $(if $(REGRESSIONS),--regressions,)
 
-.PHONY: tactical-contracts tactical-negative-fixtures v2-4-shield
+.PHONY: tactical-contracts tactical-negative-fixtures generate-tactical-profiles \
+	validate-tactical-profiles generate-tactical-affordances validate-tactical-affordances \
+	v2-4-shield
