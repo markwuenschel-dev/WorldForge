@@ -1866,6 +1866,12 @@ run-tactical-runtime:
 validate-tactical-runtime:
 	$(PYTHON) tools/pipeline/validate_tactical_runtime.py --pack $(PACK) $(if $(STRICT),--strict,)
 
+# --- Save/load + budgets (Wave 5) --------------------------------------
+validate-tactical-save-load:
+	$(PYTHON) tools/pipeline/validate_tactical_save_load.py --pack $(PACK) $(if $(STRICT),--strict,)
+validate-tactical-budgets:
+	$(PYTHON) tools/pipeline/validate_tactical_budgets.py --pack $(PACK) $(if $(STRICT),--strict,)
+
 # --- Shield ------------------------------------------------------------
 v2-4-shield:
 	$(PYTHON) tools/pipeline/v2_4_shield.py --pack $(PACK) $(if $(STRICT),--strict,) \
@@ -1875,4 +1881,5 @@ v2-4-shield:
 .PHONY: tactical-contracts tactical-negative-fixtures generate-tactical-profiles \
 	validate-tactical-profiles generate-tactical-affordances validate-tactical-affordances \
 	generate-tactical-bindings validate-tactical-bindings run-tactical-smoke \
-	run-tactical-runtime validate-tactical-runtime v2-4-shield
+	run-tactical-runtime validate-tactical-runtime validate-tactical-save-load \
+	validate-tactical-budgets v2-4-shield
