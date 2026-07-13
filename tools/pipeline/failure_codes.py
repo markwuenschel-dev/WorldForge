@@ -1061,6 +1061,62 @@ class FailureCode:
     TACTICAL_HYGIENE_FAILED = "WF973_TACTICAL_HYGIENE_FAILED"
     TACTICAL_REGRESSION_FAILED = "WF974_TACTICAL_REGRESSION_FAILED"
 
+    # ======================================================================
+    # v2.5 ContractForge / UE58 Transition band (1011–1060; uses 1011–1039) ---
+    # ----------------------------------------------------------------------
+    # The first UE 5.7 -> 5.8 transition + adapter-portability + Gloamstead
+    # bridge substrate. v2.5 proves the engine move and cross-repo bridge are
+    # HONEST: an adapter must declare its real capability surface (and admit the
+    # transactional-mutation gap instead of overclaiming); an engine identity,
+    # conversion manifest, and cross-engine regression comparison must be
+    # recorded and self-consistent; and a Gloamstead bridge invocation must
+    # target a RELATIVE/identity path (never an absolute machine path), echo its
+    # operation id, and carry real evidence. Honesty invariants reject: an
+    # unavailable/mismatched capability, an engine-version mismatch, silent actor
+    # loss on conversion, an incomplete manifest, unexpected binary churn, a
+    # failed build / plugin load / map load, a stale plugin binary, an
+    # unclassified cross-engine diff, a WorldForge regression, a bridge pointed at
+    # the wrong engine/project, an absent/stale bridge plugin, a missing bridge
+    # map, an empty-evidence bridge result, an absolute-path leak, an operation-id
+    # mismatch, evidence copied from / contaminated by the OLD (5.7) engine, and
+    # the hostile-suite integrity codes. The backfill auto-fills SEVERITY +
+    # GATE_TAXONOMY. WF1040–1060 reserved. Band is disjoint from the tactical
+    # band (<=1010) — no collision.
+    # -- adapter capability (1011–1012) --
+    CAPABILITY_UNAVAILABLE = "WF1011_CAPABILITY_UNAVAILABLE"
+    CAPABILITY_VERSION_MISMATCH = "WF1012_CAPABILITY_VERSION_MISMATCH"
+    # -- engine / conversion (1013–1020) --
+    ENGINE_VERSION_MISMATCH = "WF1013_ENGINE_VERSION_MISMATCH"
+    CONVERSION_ACTOR_LOSS = "WF1014_CONVERSION_ACTOR_LOSS"
+    CONVERSION_MANIFEST_INCOMPLETE = "WF1015_CONVERSION_MANIFEST_INCOMPLETE"
+    CONVERSION_UNEXPECTED_CHURN = "WF1016_CONVERSION_UNEXPECTED_CHURN"
+    BUILD_FAILED = "WF1017_BUILD_FAILED"
+    PLUGIN_LOAD_FAILED = "WF1018_PLUGIN_LOAD_FAILED"
+    STALE_PLUGIN_BINARY = "WF1019_STALE_PLUGIN_BINARY"
+    MAP_LOAD_FAILED = "WF1020_MAP_LOAD_FAILED"
+    # -- regression (1021–1022) --
+    REGRESSION_UNCLASSIFIED_DIFF = "WF1021_REGRESSION_UNCLASSIFIED_DIFF"
+    REGRESSION_WORLDFORGE_REGRESSION = "WF1022_REGRESSION_WORLDFORGE_REGRESSION"
+    # -- Gloamstead bridge (1023–1030) --
+    BRIDGE_WRONG_ENGINE = "WF1023_BRIDGE_WRONG_ENGINE"
+    BRIDGE_WRONG_PROJECT = "WF1024_BRIDGE_WRONG_PROJECT"
+    BRIDGE_ABSENT_PLUGIN = "WF1025_BRIDGE_ABSENT_PLUGIN"
+    BRIDGE_STALE_PLUGIN = "WF1026_BRIDGE_STALE_PLUGIN"
+    BRIDGE_MAP_MISSING = "WF1027_BRIDGE_MAP_MISSING"
+    BRIDGE_EMPTY_EVIDENCE = "WF1028_BRIDGE_EMPTY_EVIDENCE"
+    BRIDGE_ABSOLUTE_PATH_LEAK = "WF1029_BRIDGE_ABSOLUTE_PATH_LEAK"
+    BRIDGE_OPERATION_ID_MISMATCH = "WF1030_BRIDGE_OPERATION_ID_MISMATCH"
+    # -- evidence / integrity / hostile (1031–1039) --
+    EVIDENCE_ENGINE_MISMATCH = "WF1031_EVIDENCE_ENGINE_MISMATCH"
+    EVIDENCE_5_7_CONTAMINATION = "WF1032_EVIDENCE_5_7_CONTAMINATION"
+    EVIDENCE_COPIED_FROM_OLD_ENGINE = "WF1033_EVIDENCE_COPIED_FROM_OLD_ENGINE"
+    TRANSITION_REPORT_INTEGRITY_FAILED = "WF1034_TRANSITION_REPORT_INTEGRITY_FAILED"
+    TRANSITION_NEGATIVE_ACCEPTED = "WF1035_TRANSITION_NEGATIVE_ACCEPTED"
+    TRANSITION_FUZZ_ACCEPTED = "WF1036_TRANSITION_FUZZ_ACCEPTED"
+    TRANSITION_HYGIENE_FAILED = "WF1037_TRANSITION_HYGIENE_FAILED"
+    TRANSITION_REGRESSION_FAILED = "WF1038_TRANSITION_REGRESSION_FAILED"
+    TRANSITION_UNKNOWN_FAILURE_CODE = "WF1039_TRANSITION_UNKNOWN_FAILURE_CODE"
+
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
 # This is the *default* nature of the code; a validator may still choose a
