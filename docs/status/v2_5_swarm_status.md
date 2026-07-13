@@ -78,4 +78,15 @@ as shield flags (shield refinement TODO — add `--identity`/`--isolation`).
 - **One-time full baseline (Wave 8):** requires all targeted smokes GREEN + conversion audit
   GREEN + plugin load GREEN + report integrity GREEN + zero unresolved `unknown`.
 
+## Wave 5 — authoritative conversion (USER-AUTHORIZED 2026-07-13, commander sole writer)
+- Actor-census method: `wf_map_actor_census.py` run in-editor under each engine (read-only load+count).
+- **5.8 pre-resave census: 123 maps, ALL loaded (0 failures), 2797 actors.** Every 5.7-authored
+  map opens under 5.8 with actors intact — strongest possible pre-resave signal.
+- **5.7 authoritative census: 131 maps (123 committed + 8 untracked test), all loaded, 2799 actors.**
+- **ACTOR-LOSS VERDICT: CLEAN.** 123 common committed maps, all load under both engines, ZERO
+  actor losses (5.8 count ≥ 5.7 count on every map). The 2-actor total delta is entirely in the
+  8 untracked 5.7-only test maps (not authoritative content). No unexplained loss, no load failures.
+- ResavePackages under 5.8 running (the on-disk 5.7→5.8 format upgrade; frozen 5.7 worktree untouched).
+- Next: post-resave census → build authoritative `conversion_manifest.json` → validate + audit → flip gate.
+
 ## Stop conditions active? — NONE (see plan §Stop conditions). Update if any trip.

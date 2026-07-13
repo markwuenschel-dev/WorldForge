@@ -306,7 +306,11 @@ CONVERSION_MANIFEST_REQUIRED = (
     "schema_version",
 )
 CONVERSION_MANIFEST_ALLOWED = CONVERSION_MANIFEST_REQUIRED + (
-    "meta", "report_type", "created_by", "created_at", "notes")
+    "meta", "report_type", "created_by", "created_at", "notes",
+    # conversion_status is the authoritative-manifest completeness flag the --conversion
+    # gate keys on ("complete"); it is a legitimate optional field, so the strict
+    # no-unknown-fields check must permit it. Per-map churn notes ride "notes".
+    "conversion_status")
 _CONVERSION_MAP_REQUIRED = (
     "map_path", "actors_before", "actors_after", "accounted_deletions", "churn_class",
 )
