@@ -1,0 +1,290 @@
+{
+  "suite": "transition_hygiene",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::clean_passes": {
+      "ok": true,
+      "detail": "clean record must pass: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_absolute_leak_drive": {
+      "ok": true,
+      "detail": "dirty record (absolute_leak_drive) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_absolute_leak_root": {
+      "ok": true,
+      "detail": "dirty record (absolute_leak_root) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_ue5_7_ref": {
+      "ok": true,
+      "detail": "dirty record (ue5_7_ref) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_saved_transient": {
+      "ok": true,
+      "detail": "dirty record (saved_transient) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_sav_file": {
+      "ok": true,
+      "detail": "dirty record (sav_file) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/baseline/validate_transition_baseline_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/ci/transition_ci_summary_ue5_7.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/ci/transition_ci_summary_ue5_8.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/gloam/gloam_bridge_probe_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/gloam/validate_gloam_bridge_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/hostile/run_transition_known_bads_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/hostile/run_transition_torture_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/hostile/transition_fuzz_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/hostile/transition_hygiene_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/hostile/transition_negatives_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/hostile/transition_report_integrity_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/hostile/validate_transition_integrity_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/plugin/plugin_capability_handshake.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/plugin/plugin_load_evidence.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/plugin/validate_plugin_build_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/regression/transition_regression_gate_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/regression/transition_regression_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/regression/validate_transition_regression_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/validate_capability_manifest_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/validate_conversion_manifest_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/validate_engine_identity_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/validate_track_isolation_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/validate_transition_contracts_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::procedural/reports/ue5_8/validate_transition_topology_report.json": {
+      "ok": true,
+      "detail": "hygiene problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::non_vacuous": {
+      "ok": true,
+      "detail": "must scan >= 1 real report under procedural/reports/ue5_8 (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 31,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "transition-hygiene",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "fa922a372aba396672014c19e191562e50623e31",
+    "timestamp": "2026-07-13T22:19:30.160262+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.hygiene.v1",
+    "report_id": "wf.transition.hygiene.v1:9fff8e9f456c",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 24,
+    "records_total": 24,
+    "records_passed": 24,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

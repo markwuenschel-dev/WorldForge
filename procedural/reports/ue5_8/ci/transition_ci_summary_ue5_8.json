@@ -1,0 +1,227 @@
+{
+  "report_type": "wf.transition.ci_summary.v1",
+  "declared_target_engine": "5.8",
+  "python_only": true,
+  "build_meta": {
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": false,
+    "runtime_executed": false,
+    "engine_discovery": {
+      "engine_root": "D:\\UE_5.8",
+      "engine_exe": "D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+      "build_bat": "D:\\UE_5.8\\Engine\\Build\\BatchFiles\\Build.bat",
+      "build_id": "55116800@++UE5+Release-5.8"
+    },
+    "cache_isolation": {
+      "key_5_7": "wf-transition|ue5.7|build=51494982@++UE5+Release-5.7|plugin=2940a5afd71828c336d918356fb71ff9aa6a1c81|project=fa922a372aba396672014c19e191562e50623e31",
+      "key_5_8": "wf-transition|ue5.8|build=55116800@++UE5+Release-5.8|plugin=2940a5afd71828c336d918356fb71ff9aa6a1c81|project=fa922a372aba396672014c19e191562e50623e31",
+      "isolated": true
+    }
+  },
+  "gate_results": [
+    {
+      "gate": "transition-contracts",
+      "kind": "python",
+      "status": "PASS",
+      "detail": "[transition-contracts] PASS \u2014 worldforge_vertical_slice (0 failure(s), 0 warning(s), strict=on)",
+      "returncode": 0,
+      "command": "python tools/pipeline/validate_transition_contracts.py --strict"
+    },
+    {
+      "gate": "transition-topology",
+      "kind": "python",
+      "status": "PASS",
+      "detail": "[transition-topology] PASS \u2014 transition_topology (0 failure(s), 0 warning(s), strict=on)",
+      "returncode": 0,
+      "command": "python tools/pipeline/validate_transition_topology.py --strict"
+    },
+    {
+      "gate": "capability-manifest",
+      "kind": "python",
+      "status": "SKIPPED",
+      "detail": "sibling script not yet built (tools/pipeline/validate_capability_manifest.py) \u2014 pending a later wave",
+      "returncode": null,
+      "command": null
+    },
+    {
+      "gate": "gloam-bridge",
+      "kind": "python",
+      "status": "PASS",
+      "detail": "[gloam-bridge] PASS \u2014 worldforge_vertical_slice (0 failure(s), 0 warning(s), strict=on)",
+      "returncode": 0,
+      "command": "python tools/pipeline/validate_gloam_bridge.py --strict"
+    },
+    {
+      "gate": "transition-negatives",
+      "kind": "python",
+      "status": "SKIPPED",
+      "detail": "sibling script not yet built (tools/pipeline/transition_negatives.py) \u2014 pending a later wave",
+      "returncode": null,
+      "command": null
+    },
+    {
+      "gate": "transition-fuzz",
+      "kind": "python",
+      "status": "SKIPPED",
+      "detail": "sibling script not yet built (tools/pipeline/transition_fuzz.py) \u2014 pending a later wave",
+      "returncode": null,
+      "command": null
+    },
+    {
+      "gate": "transition-report-integrity",
+      "kind": "python",
+      "status": "SKIPPED",
+      "detail": "sibling script not yet built (tools/pipeline/transition_report_integrity.py) \u2014 pending a later wave",
+      "returncode": null,
+      "command": null
+    },
+    {
+      "gate": "transition-hygiene",
+      "kind": "python",
+      "status": "SKIPPED",
+      "detail": "sibling script not yet built (tools/pipeline/transition_hygiene.py) \u2014 pending a later wave",
+      "returncode": null,
+      "command": null
+    },
+    {
+      "gate": "plugin-compile",
+      "kind": "ue_build",
+      "status": "GATED",
+      "detail": "requires UE run (install/compile); command printed, not executed",
+      "returncode": null,
+      "command": "\"D:\\UE_5.8\\Engine\\Build\\BatchFiles\\Build.bat\" WorldForgeEditor Win64 Development -Project=\"D:\\Unreal Projects\\WorldForge-UE58\\WorldForge.uproject\" -waitmutex",
+      "requires_engine": true,
+      "requires_runtime": false
+    },
+    {
+      "gate": "editor-smoke",
+      "kind": "ue_runtime",
+      "status": "GATED",
+      "detail": "requires UE run (runtime); command printed, not executed",
+      "returncode": null,
+      "command": "\"D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe\" \"D:\\Unreal Projects\\WorldForge-UE58\\WorldForge.uproject\" /Game/Maps/encounter_loop_world -unattended -nullrhi -nosplash -nosound -stdout -log",
+      "requires_engine": true,
+      "requires_runtime": true
+    },
+    {
+      "gate": "commandlet-smoke",
+      "kind": "ue_runtime",
+      "status": "GATED",
+      "detail": "requires UE run (runtime); command printed, not executed",
+      "returncode": null,
+      "command": "\"D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe\" \"D:\\Unreal Projects\\WorldForge-UE58\\WorldForge.uproject\" -run=WorldForgeRuntimeSmoke -unattended -nullrhi -stdout -log",
+      "requires_engine": true,
+      "requires_runtime": true
+    },
+    {
+      "gate": "conversion-manifest",
+      "kind": "ue_runtime",
+      "status": "GATED",
+      "detail": "requires UE run (runtime); command printed, not executed",
+      "returncode": null,
+      "command": "\"D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe\" \"D:\\Unreal Projects\\WorldForge-UE58\\WorldForge.uproject\" -run=ResavePackages -unattended -nullrhi -stdout   # then: PYTHONUTF8=1 python tools/pipeline/validate_conversion_manifest.py --strict",
+      "requires_engine": true,
+      "requires_runtime": true
+    },
+    {
+      "gate": "transition-regression",
+      "kind": "ue_runtime",
+      "status": "GATED",
+      "detail": "requires UE run (runtime); command printed, not executed",
+      "returncode": null,
+      "command": "\"D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe\" \"D:\\Unreal Projects\\WorldForge-UE58\\WorldForge.uproject\" -run=WorldForgeRuntimeSmoke -unattended -nullrhi -stdout   # then: PYTHONUTF8=1 python tools/pipeline/transition_regression.py --strict",
+      "requires_engine": true,
+      "requires_runtime": true
+    },
+    {
+      "gate": "new-features",
+      "kind": "ue_runtime",
+      "status": "GATED",
+      "detail": "requires UE run (runtime); command printed, not executed",
+      "returncode": null,
+      "command": "\"D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe\" \"D:\\Unreal Projects\\WorldForge-UE58\\WorldForge.uproject\" -run=WorldForgeRuntimeSmoke -unattended -nullrhi -stdout   # v2.5 net-new runtime feature proof on 55116800@++UE5+Release-5.8",
+      "requires_engine": true,
+      "requires_runtime": true
+    },
+    {
+      "gate": "full-baseline",
+      "kind": "ue_runtime",
+      "status": "GATED",
+      "detail": "requires UE run (runtime); command printed, not executed",
+      "returncode": null,
+      "command": "\"D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe\" \"D:\\Unreal Projects\\WorldForge-UE58\\WorldForge.uproject\" -unattended -nullrhi -stdout   # then: PYTHONUTF8=1 python tools/pipeline/build_transition_baseline.py --strict && validate_transition_baseline.py --strict",
+      "requires_engine": true,
+      "requires_runtime": true
+    },
+    {
+      "gate": "final-shield",
+      "kind": "aggregate",
+      "status": "GATED",
+      "detail": "requires UE run (runtime); command printed, not executed",
+      "returncode": null,
+      "command": "PYTHONUTF8=1 python tools/pipeline/v2_5_shield.py --strict --topology --conversion --plugin --capability --regression --baseline --bridge --hostile --regressions",
+      "requires_engine": true,
+      "requires_runtime": true
+    }
+  ],
+  "summary": {
+    "python_ran": 3,
+    "python_passed": 3,
+    "python_failed": 0,
+    "skipped_pending": 5,
+    "ue_gated": 8
+  },
+  "status": "ok",
+  "meta": {
+    "command": "run-transition-ci",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "fa922a372aba396672014c19e191562e50623e31",
+    "timestamp": "2026-07-13T22:00:16.965244+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.ci_summary.v1",
+    "report_id": "wf.transition.ci_summary.v1:bc4285468e56",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 16,
+    "records_total": 16,
+    "records_passed": 3,
+    "records_failed": 0,
+    "records_skipped": 13,
+    "engine_major": 5,
+    "engine_minor": 7,
+    "engine_patch": 4,
+    "engine_build_id": "51494982@++UE5+Release-5.7",
+    "project_commit": "fa922a372aba396672014c19e191562e50623e31",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "731a1b255046:WorldForge-UE58",
+    "engine_root": "C:\\Program Files\\Epic Games\\UE_5.7",
+    "_resolution": "uproject EngineAssociation 5.7 -> known install; read C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Build\\Build.version",
+    "build_meta": {
+      "declared_target_engine": "5.8",
+      "observed_runtime_engine": null,
+      "runtime_execution_required": false,
+      "runtime_executed": false,
+      "engine_discovery": {
+        "engine_root": "D:\\UE_5.8",
+        "engine_exe": "D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+        "build_bat": "D:\\UE_5.8\\Engine\\Build\\BatchFiles\\Build.bat",
+        "build_id": "55116800@++UE5+Release-5.8"
+      },
+      "cache_isolation": {
+        "key_5_7": "wf-transition|ue5.7|build=51494982@++UE5+Release-5.7|plugin=2940a5afd71828c336d918356fb71ff9aa6a1c81|project=fa922a372aba396672014c19e191562e50623e31",
+        "key_5_8": "wf-transition|ue5.8|build=55116800@++UE5+Release-5.8|plugin=2940a5afd71828c336d918356fb71ff9aa6a1c81|project=fa922a372aba396672014c19e191562e50623e31",
+        "isolated": true
+      }
+    }
+  }
+}

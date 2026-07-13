@@ -118,6 +118,8 @@ def main(argv=None):
         results.append(run("transition-report-integrity", PL + "/transition_report_integrity.py",
                            "procedural/reports/ue5_8", "--strict"))
         results.append(run("transition-hygiene", PL + "/transition_hygiene.py", *s))
+        results.append(run("transition-known-bads", PL + "/run_transition_known_bads.py", *s))
+        results.append(run("transition-torture", PL + "/run_transition_torture.py", *s))
 
     # --- Regression lane (opt-in prior authoring shields) ------------------
     if args.regressions:

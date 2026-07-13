@@ -1,0 +1,315 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::valid_example_passes": {
+      "ok": true,
+      "detail": "valid regression example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::registry_known_bad_rejected_for_owning_code": {
+      "ok": true,
+      "detail": "registry known-bad must be rejected for WF1022_REGRESSION_WORLDFORGE_REGRESSION (got ['WF1022_REGRESSION_WORLDFORGE_REGRESSION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::regression_free_with_worldforge_regression": {
+      "ok": true,
+      "detail": "known-bad 'regression_free_with_worldforge_regression' must be rejected for WF1022_REGRESSION_WORLDFORGE_REGRESSION (got ['WF1022_REGRESSION_WORLDFORGE_REGRESSION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::regression_free_with_maps_loaded_short": {
+      "ok": true,
+      "detail": "known-bad 'regression_free_with_maps_loaded_short' must be rejected for WF1020_MAP_LOAD_FAILED (got ['WF1020_MAP_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::regression_free_with_unclassified_diff": {
+      "ok": true,
+      "detail": "known-bad 'regression_free_with_unclassified_diff' must be rejected for WF1021_REGRESSION_UNCLASSIFIED_DIFF (got ['WF1021_REGRESSION_UNCLASSIFIED_DIFF'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::report_exists": {
+      "ok": true,
+      "detail": "procedural\\reports\\ue5_8\\regression\\transition_regression_report.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::report_parseable": {
+      "ok": true,
+      "detail": "parsed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::report_id": {
+      "ok": true,
+      "detail": "required field 'report_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::engine_minor": {
+      "ok": true,
+      "detail": "required field 'engine_minor' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::suites": {
+      "ok": true,
+      "detail": "required field 'suites' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::maps_checked": {
+      "ok": true,
+      "detail": "required field 'maps_checked' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::maps_loaded": {
+      "ok": true,
+      "detail": "required field 'maps_loaded' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::diffs": {
+      "ok": true,
+      "detail": "required field 'diffs' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::regression_free": {
+      "ok": true,
+      "detail": "required field 'regression_free' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::schema_version": {
+      "ok": true,
+      "detail": "required field 'schema_version' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::type::report_id": {
+      "ok": true,
+      "detail": "report_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::report_id_nonempty": {
+      "ok": true,
+      "detail": "report_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::engine_minor_target": {
+      "ok": true,
+      "detail": "regression must run on the target engine (engine_minor=8, got 8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::suites_nonempty_str_list": {
+      "ok": true,
+      "detail": "suites must be a non-empty list of shield names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::number::maps_checked": {
+      "ok": true,
+      "detail": "maps_checked=24 is >0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::maps_checked_integer": {
+      "ok": true,
+      "detail": "maps_checked must be an integer (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::number::maps_loaded": {
+      "ok": false,
+      "detail": "maps_loaded=0 must be >0",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF1038_TRANSITION_REGRESSION_FAILED",
+      "blocking": true
+    },
+    "present::rg::maps_loaded_integer": {
+      "ok": true,
+      "detail": "maps_loaded must be an integer (got 0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::diffs_list": {
+      "ok": true,
+      "detail": "diffs must be a list (may be empty)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::regression_free_bool": {
+      "ok": true,
+      "detail": "regression_free must be an explicit boolean (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::free_implies_all_loaded": {
+      "ok": true,
+      "detail": "regression_free=True but only 0/24 maps loaded",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::free_implies_classified": {
+      "ok": true,
+      "detail": "regression_free=True but an unclassified diff remains",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::free_implies_no_regression": {
+      "ok": true,
+      "detail": "regression_free=True but a worldforge_regression diff is present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::rg::schema_version": {
+      "ok": true,
+      "detail": "schema_version must be 'wf.transition.regression_report.v1' (got 'wf.transition.regression_report.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::runtime_executed": {
+      "ok": false,
+      "detail": "regression report has runtime_executed=False — honest RED (no UE 5.8 run)",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF1038_TRANSITION_REGRESSION_FAILED",
+      "blocking": true
+    },
+    "present::regression_free": {
+      "ok": false,
+      "detail": "regression report regression_free=False — honest RED",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF1038_TRANSITION_REGRESSION_FAILED",
+      "blocking": true
+    }
+  },
+  "failures": [
+    "present::rg::number::maps_loaded: maps_loaded=0 must be >0",
+    "present::runtime_executed: regression report has runtime_executed=False — honest RED (no UE 5.8 run)",
+    "present::regression_free: regression report regression_free=False — honest RED"
+  ],
+  "counts": {
+    "PASS": 29,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 3,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail",
+  "meta": {
+    "command": "validate-transition-regression",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "fa922a372aba396672014c19e191562e50623e31",
+    "timestamp": "2026-07-13T21:58:51.795221+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.regression_validate.v1",
+    "report_id": "wf.transition.regression_validate.v1:286d8df76770",
+    "status": "fail",
+    "failure_count": 3,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 32,
+    "records_total": 32,
+    "records_passed": 32,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 7,
+    "engine_patch": 4,
+    "engine_build_id": "51494982@++UE5+Release-5.7",
+    "project_commit": "fa922a372aba396672014c19e191562e50623e31",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "731a1b255046:WorldForge-UE58",
+    "engine_root": "C:\\Program Files\\Epic Games\\UE_5.7",
+    "_resolution": "uproject EngineAssociation 5.7 -> known install; read C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": true,
+    "runtime_executed": false
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "suite": "transition_report_integrity",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::clean_passes": {
+      "ok": true,
+      "detail": "clean synthetic report must pass: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_meta": {
+      "ok": true,
+      "detail": "tampered report (no_meta) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_unknown_sha": {
+      "ok": true,
+      "detail": "tampered report (unknown_sha) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_short_sha": {
+      "ok": true,
+      "detail": "tampered report (short_sha) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_timestamp": {
+      "ok": true,
+      "detail": "tampered report (no_timestamp) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_bad_report_type": {
+      "ok": true,
+      "detail": "tampered report (bad_report_type) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_bad_status": {
+      "ok": true,
+      "detail": "tampered report (bad_status) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_ok_with_failures": {
+      "ok": true,
+      "detail": "tampered report (ok_with_failures) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_tally_mismatch": {
+      "ok": true,
+      "detail": "tampered report (tally_mismatch) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_partial_convention": {
+      "ok": true,
+      "detail": "tampered report (partial_convention) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_contamination_runtime_engine": {
+      "ok": true,
+      "detail": "tampered report (contamination_runtime_engine) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_mislabel_executed_no_observed": {
+      "ok": true,
+      "detail": "tampered report (mislabel_executed_no_observed) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_evidence_5_7_entry": {
+      "ok": true,
+      "detail": "tampered report (evidence_5_7_entry) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_ue5_7_path_ref": {
+      "ok": true,
+      "detail": "tampered report (ue5_7_path_ref) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/baseline/validate_transition_baseline_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/gloam/gloam_bridge_probe_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/gloam/validate_gloam_bridge_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/hostile/run_transition_known_bads_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/hostile/run_transition_torture_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/hostile/transition_fuzz_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/hostile/transition_hygiene_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/hostile/transition_negatives_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/hostile/transition_report_integrity_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/hostile/validate_transition_integrity_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/plugin/validate_plugin_build_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/regression/transition_regression_gate_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/regression/transition_regression_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/regression/validate_transition_regression_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/validate_capability_manifest_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/validate_conversion_manifest_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/validate_engine_identity_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/validate_track_isolation_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/validate_transition_contracts_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::procedural/reports/ue5_8/validate_transition_topology_report.json": {
+      "ok": true,
+      "detail": "report-integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::non_vacuous": {
+      "ok": true,
+      "detail": "must scan >= 1 real report under procedural/reports/ue5_8 (got 20)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 35,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "transition-report-integrity",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "fa922a372aba396672014c19e191562e50623e31",
+    "timestamp": "2026-07-13T22:19:30.012296+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.report_integrity.v1",
+    "report_id": "wf.transition.report_integrity.v1:a21720b82a57",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 20,
+    "records_total": 20,
+    "records_passed": 20,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

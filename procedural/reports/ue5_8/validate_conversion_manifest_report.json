@@ -1,0 +1,91 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::ConversionManifest::valid_example_passes": {
+      "ok": true,
+      "detail": "canonical valid manifest rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::ConversionManifest::actor_loss_rejected": {
+      "ok": true,
+      "detail": "actor-loss known-bad must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::ConversionManifest::rejected_for_actor_loss": {
+      "ok": true,
+      "detail": "actor-loss known-bad must be rejected for WF1014_CONVERSION_ACTOR_LOSS (got ['WF1014_CONVERSION_ACTOR_LOSS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "conversion::authoritative_manifest_present": {
+      "ok": false,
+      "detail": "authoritative conversion not yet performed: expected procedural/manifests/ue5_8_conversion/conversion_manifest.json (commander's serial UE 5.8 resave job). The pre-conversion inventory is NOT a substitute.",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF1015_CONVERSION_MANIFEST_INCOMPLETE",
+      "blocking": true
+    }
+  },
+  "failures": [
+    "conversion::authoritative_manifest_present: authoritative conversion not yet performed: expected procedural/manifests/ue5_8_conversion/conversion_manifest.json (commander's serial UE 5.8 resave job). The pre-conversion inventory is NOT a substitute."
+  ],
+  "counts": {
+    "PASS": 3,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 1,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail",
+  "meta": {
+    "command": "validate-conversion-manifest",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "fa922a372aba396672014c19e191562e50623e31",
+    "timestamp": "2026-07-13T22:19:28.366742+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.conversion_gate.v1",
+    "report_id": "wf.transition.conversion_gate.v1:71ba6a95aec0",
+    "status": "fail",
+    "failure_count": 1,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 4,
+    "records_total": 4,
+    "records_passed": 4,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 7,
+    "engine_patch": 4,
+    "engine_build_id": "51494982@++UE5+Release-5.7",
+    "project_commit": "fa922a372aba396672014c19e191562e50623e31",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "731a1b255046:WorldForge-UE58",
+    "engine_root": "C:\\Program Files\\Epic Games\\UE_5.7",
+    "_resolution": "uproject EngineAssociation 5.7 -> known install; read C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": false,
+    "runtime_executed": false,
+    "authoritative_manifest_path": "procedural/manifests/ue5_8_conversion/conversion_manifest.json",
+    "completeness_flag": "conversion_status=complete"
+  }
+}

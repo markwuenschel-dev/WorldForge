@@ -1,0 +1,129 @@
+{
+  "gate": "capability_manifest",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::CapabilityManifest::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::CapabilityManifest::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::CapabilityManifest::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for WF1011_CAPABILITY_UNAVAILABLE (got ['WF1011_CAPABILITY_UNAVAILABLE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "capability::ue58_install_present": {
+      "ok": true,
+      "detail": "UE 5.8 install root missing at D:\\UE_5.8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "capability::disk_present::PCGFramework": {
+      "ok": true,
+      "detail": "engine capability PCGFramework not found on disk at Engine/Plugins/PCG",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "capability::disk_present::WorldPartition": {
+      "ok": true,
+      "detail": "engine capability WorldPartition not found on disk at Engine/Source/Runtime/Engine/Private/WorldPartition",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "capability::disk_present::UnrealBuildTool": {
+      "ok": true,
+      "detail": "engine capability UnrealBuildTool not found on disk at Engine/Binaries/DotNET/UnrealBuildTool/UnrealBuildTool.exe",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "capability::worldforge_plugin_declared_only": {
+      "ok": true,
+      "detail": "WorldForge plugin must be declared-only (pending Lane 1), not claimed available",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "capability::real_manifest_valid": {
+      "ok": true,
+      "detail": "real 5.8 capability manifest rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 9,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-capability-manifest",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "fa922a372aba396672014c19e191562e50623e31",
+    "timestamp": "2026-07-13T22:19:28.834962+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.capability_manifest_gate.v1",
+    "report_id": "wf.transition.capability_manifest_gate.v1:57b6287b0fc1",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 9,
+    "records_total": 9,
+    "records_passed": 9,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 7,
+    "engine_patch": 4,
+    "engine_build_id": "51494982@++UE5+Release-5.7",
+    "project_commit": "fa922a372aba396672014c19e191562e50623e31",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "731a1b255046:WorldForge-UE58",
+    "engine_root": "C:\\Program Files\\Epic Games\\UE_5.7",
+    "_resolution": "uproject EngineAssociation 5.7 -> known install; read C:\\Program Files\\Epic Games\\UE_5.7\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": false,
+    "runtime_executed": false,
+    "repository_identifier": "a805848229ff",
+    "worktree_identifier": "731a1b255046:WorldForge-UE58"
+  }
+}
