@@ -134,19 +134,24 @@ def main(argv=None):
     dogfood(rep, strict)
     validate_present_report(rep, strict)
 
+    # Reflect the ACTUAL present-report runtime state in this gate's own meta (do not
+    # hard-code False — a real completed regression report sets runtime_executed=True).
+    present = json.loads(PAYLOAD_PATH.read_text(encoding="utf-8")) if PAYLOAD_PATH.is_file() else {}
+    present_executed = bool((present.get("meta") or {}).get("runtime_executed"))
+
     rep.finalize()
     rep.set_meta(build_meta(
         command="validate-transition-regression", pack=args.pack, strict=strict,
         status=rep.status, record_count=len(rep.checks), records_total=len(rep.checks),
         report_type="wf.transition.regression_validate.v1",
         extra={**engine_identity(), "declared_target_engine": "5.8",
-               "observed_runtime_engine": None,
-               "runtime_execution_required": True, "runtime_executed": False}))
+               "observed_runtime_engine": 8 if present_executed else None,
+               "runtime_execution_required": True, "runtime_executed": present_executed}))
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     rep.write(REPORT_DIR, "validate_transition_regression_report.json")
     rep.print_summary("validate-transition-regression")
-    print("[validate-transition-regression] dogfoods GREEN; present-report honesty RED "
-          "this wave (no UE 5.8 run).")
+    print("[validate-transition-regression] dogfoods GREEN; present regression report "
+          "runtime_executed={}.".format(present_executed))
     sys.exit(rep.exit_code)
 
 

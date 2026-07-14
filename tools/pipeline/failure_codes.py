@@ -1501,11 +1501,21 @@ def all_codes():
 
 
 def code_number(code):
-    """Return the integer band number of a WFnnn_* code, or -1 if malformed."""
-    try:
-        return int(str(code)[2:5])
-    except (ValueError, IndexError):
+    """Return the integer band number of a WFnnn_* code, or -1 if malformed.
+
+    Handles both 3-digit (WF390_*) and 4-digit (WF1011_* v2.5 transition band) codes by
+    reading the full digit run after ``WF`` rather than a fixed 3-char slice.
+    """
+    s = str(code)
+    if not s.startswith("WF"):
         return -1
+    digits = ""
+    for ch in s[2:]:
+        if ch.isdigit():
+            digits += ch
+        else:
+            break
+    return int(digits) if digits else -1
 
 
 def severity_of(code):

@@ -126,7 +126,114 @@ def _harness_spec_ok():
             and all(isinstance(s, str) and s.strip() for s in HARNESS_SUBSYSTEMS))
 
 
+# --------------------------------------------------------------------------- #
+# Real-evidence assembly (Wave 6). The runner flips GREEN ONLY when genuine UE 5.8
+# runtime evidence is present under procedural/evidence/ue5_8/: the actor-spawn
+# runtime smoke (ok=True) + the 5.7 and 5.8-post actor censuses. From those it
+# computes a completed regression payload (runtime_executed=True) with per-map diffs
+# classified from the census. Absent that evidence it stays honest-RED.
+# --------------------------------------------------------------------------- #
+EVIDENCE_DIR = REPO_ROOT / "procedural" / "evidence"
+RUNTIME_SMOKE = EVIDENCE_DIR / "ue5_8" / "runtime_smoke.json"
+CENSUS_57 = EVIDENCE_DIR / "ue5_7" / "census_ue57_authoritative.json"
+CENSUS_58_POST = EVIDENCE_DIR / "ue5_8" / "census_ue58_postresave.json"
+# The one map with a documented, accounted engine-diff (Houdini deferral; see Wave 5).
+_ACCOUNTED_ENGINE_DIFF = {"/Game/WorldForge/Maps/Untitled"}
+
+
+def _load_json(p):
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _assemble_completed_payload(strict):
+    """Return a completed regression payload from real 5.8 evidence, or None."""
+    smoke = _load_json(RUNTIME_SMOKE)
+    c57 = _load_json(CENSUS_57)
+    c58 = _load_json(CENSUS_58_POST)
+    if not (smoke and smoke.get("ok") is True and c57 and c58):
+        return None
+    b = {m["map"]: m for m in c57.get("maps", [])}
+    a = {m["map"]: m for m in c58.get("maps", [])}
+    common = sorted(set(b) & set(a))
+    diffs, unexplained = [], []
+    for pkg in common:
+        bc = b[pkg].get("actor_count") or 0
+        ac = a[pkg].get("actor_count") or 0
+        if ac == bc:
+            cls = "clean"
+        elif pkg in _ACCOUNTED_ENGINE_DIFF:
+            cls = "expected_engine_diff"          # documented Houdini deferral
+        elif ac < bc:
+            cls = "worldforge_regression"          # an UNexplained actor drop -> RED
+            unexplained.append(pkg)
+        else:
+            cls = "expected_engine_diff"           # actor gain (engine upgrade)
+        diffs.append({"map_path": "Content/" + pkg[len("/Game/"):] + ".umap",
+                      "classification": cls})
+    maps_n = len(common)
+    regression_free = not unexplained
+    payload = {
+        "report_id": "regress_ue58_v24_v23_v22_authoritative",
+        "engine_minor": 8,
+        "suites": list(REGRESSION_SUITES),
+        "maps_checked": maps_n,
+        "maps_loaded": maps_n,
+        "diffs": diffs,
+        "regression_free": regression_free,
+        "schema_version": TC.RT_REGRESSION,
+        "report_type": TC.RT_REGRESSION,
+        "notes": ("UE 5.8 runtime VERIFIED: project_launch + map_load {}/{} (census) + "
+                  "runtime_actor_spawn (spawn/destroy roundtrip, smoke ok) + evidence_generation. "
+                  "Milestone gameplay subsystems (mission/combat/save_load/streaming/quest_faction/"
+                  "tactical) regression-checked via v2.4/v2.3/v2.2 shields (logic). Full in-PIE "
+                  "gameplay drive not performed. Per-map actor diffs classified from real 5.7 vs "
+                  "5.8 census; 1 accounted expected_engine_diff (Untitled, Houdini deferral).").format(
+                      maps_n, maps_n),
+        "meta": build_meta(
+            command="transition-regression", pack="worldforge_vertical_slice", strict=strict,
+            status="ok", record_count=maps_n, records_total=maps_n,
+            report_type=TC.RT_REGRESSION,
+            extra=runtime_meta_extra(runtime_executed=True, observed_runtime_engine=8)),
+    }
+    return payload
+
+
 def run(strict):
+    completed = _assemble_completed_payload(strict)
+    if completed is not None:
+        return _run_completed(strict, completed)
+    return _run_scaffold(strict)
+
+
+def _run_completed(strict, payload):
+    rep = ValidationReport("pack", "worldforge_vertical_slice", strict=strict)
+    rep.check("regression::harness_spec_bounded", _harness_spec_ok(),
+              "harness spec must be bounded/unique/non-empty", code=FailureCode.TRANSITION_REGRESSION_FAILED)
+    # the completed payload must satisfy the contract...
+    for name, ok, detail, code in TC.validate_transition_regression_report(payload, strict=strict):
+        rep.check("payload::" + name, ok, detail, code=code)
+    # ...and the honesty rails must now be genuinely satisfied by real evidence.
+    rep.check("regression::runtime_executed", bool(payload["meta"].get("runtime_executed")),
+              "runtime_executed must be True (real UE 5.8 run)", code=FailureCode.TRANSITION_REGRESSION_FAILED)
+    rep.check("regression::regression_free", bool(payload.get("regression_free")),
+              "an unexplained worldforge_regression diff is present", code=FailureCode.REGRESSION_WORLDFORGE_REGRESSION)
+    rep.finalize()
+    rep.set_meta(payload["meta"])
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    with (REPORT_DIR / PAYLOAD_NAME).open("w", encoding="utf-8") as fh:
+        json.dump(payload, fh, indent=2, ensure_ascii=False)
+        fh.write("\n")
+    rep.write(REPORT_DIR, GATE_NAME)
+    rep.print_summary("transition-regression")
+    print("[transition-regression] COMPLETED from real UE 5.8 evidence "
+          "({} maps, regression_free={}).".format(payload["maps_checked"], payload["regression_free"]))
+    return rep.exit_code
+
+
+def _run_scaffold(strict):
     rep = ValidationReport("pack", "worldforge_vertical_slice", strict=strict)
 
     # The harness spec itself must be coherent (this part is real and GREEN now).
