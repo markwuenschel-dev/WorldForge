@@ -45,6 +45,7 @@ Run:
 import argparse
 import hashlib
 import json
+import re
 import struct
 import subprocess
 import sys
@@ -53,6 +54,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT / "tools" / "pipeline"))
 
+from build_conversion_manifest import CONTENT_ROOTS, classify as _classify  # noqa: E402
 from report_meta import build_meta  # noqa: E402
 
 SOURCE_TAG = "worldforge-v2.4-ue5.7-final"
@@ -81,8 +83,27 @@ def package_path_for(repo_path):
     return None
 
 
+_ENGINE_BRANCH_RE = re.compile(rb"\+\+UE5\+Release-(\d+)\.(\d+)")
+
+
 def read_package_versions(raw):
-    """Parse the .uasset package file summary. Returns dict or None if not a package."""
+    """Parse the .uasset package file summary. Returns dict or None if not a package.
+
+    IMPORTANT — why this reads more than the core versions:
+
+    An earlier revision of this parser read only legacy/UE4/UE5/licensee and concluded
+    "zero package-version changes across all 176 packages". That was an artifact of
+    looking at too few fields. UE 5.7 and 5.8 genuinely share FileVersionUE5=1018
+    (same last ObjectVersion enum), so the CORE versions never move across this
+    transition — but the CUSTOM version block and the engine stamp do:
+
+        MPC_WorldState : ++UE5+Release-5.7 -> ++UE5+Release-5.8
+        M_Terrain_Master: FortniteMain 225->268, UE5-Main 121->123, UE5-Release 61->68
+
+    Classifying on the core versions alone therefore cannot distinguish "no observable
+    difference" from "written by a different engine". Both are read here so the
+    classifier can tell them apart on evidence.
+    """
     if raw is None or len(raw) < 24:
         return None
     tag = struct.unpack_from("<I", raw, 0)[0]
@@ -96,10 +117,32 @@ def read_package_versions(raw):
         ue4 = struct.unpack_from("<i", raw, off)[0]
         ue5 = struct.unpack_from("<i", raw, off + 4)[0]
         licensee = struct.unpack_from("<i", raw, off + 8)[0]
+        off += 12
+        # FCustomVersionContainer: int32 count, then count x {FGuid(16), int32 version}
+        custom = {}
+        count = struct.unpack_from("<i", raw, off)[0]
+        off += 4
+        if 0 <= count <= 512:  # sanity bound; a real package has tens, not thousands
+            for _ in range(count):
+                guid = raw[off:off + 16].hex()
+                ver = struct.unpack_from("<i", raw, off + 16)[0]
+                custom[guid] = ver
+                off += 20
+        else:
+            custom = None  # unparseable -> UNKNOWN, never silently {}
     except struct.error:
         return None
+
+    # SavedByEngineVersion's branch string sits later in the summary. Extracted by a
+    # bounded search of the header region rather than a full summary walk: documented
+    # heuristic, and None when not found (never guessed).
+    m = _ENGINE_BRANCH_RE.search(raw[:8192])
+    stamp = "{}.{}".format(m.group(1).decode(), m.group(2).decode()) if m else None
+
     return {"legacy": legacy, "file_version_ue4": ue4,
-            "file_version_ue5": ue5, "licensee": licensee}
+            "file_version_ue5": ue5, "licensee": licensee,
+            "custom_versions": custom,
+            "saved_by_engine_branch": stamp}
 
 
 def _git_show_smudged(ref, repo_path):
@@ -133,14 +176,46 @@ def _census_actor_counts(path):
     return out
 
 
-def build(pre_manifest_path=PRE_MANIFEST):
-    pre = json.loads(Path(pre_manifest_path).read_text(encoding="utf-8"))
+def _asset_class(repo_path):
+    """Asset taxonomy for a repo path, reusing build_conversion_manifest.classify()."""
+    return _classify(repo_path, b"")
+
+
+def _enumerate_repo_paths():
+    """Union of package files at the 5.7 tag and in the working tree, under CONTENT_ROOTS.
+
+    Deliberately does NOT read pre_conversion_manifest.json. That manifest is a stale
+    artifact: commit e1b65e3c widened CONTENT_ROOTS to include
+    Plugins/CoreTerrainMaterials/Content but never regenerated the output, so the
+    committed file still records only 2 roots (meta.git_sha fa922a37) and omits every
+    CoreTerrainMaterials package. Sourcing the package list from it silently inherited
+    that hole — which is exactly how the two CoreTerrainMaterials resaves went unseen.
+
+    Enumerating the UNION of both sides (rather than either alone) is what lets a
+    deletion (source-only) or an addition (converted-only) be observed at all.
+    """
+    out = set()
+    ls = subprocess.run(["git", "ls-tree", "-r", "--name-only", SOURCE_TAG],
+                        cwd=str(REPO_ROOT), capture_output=True, text=True)
+    tag_files = ls.stdout.splitlines() if ls.returncode == 0 else []
+    for root in CONTENT_ROOTS:
+        for f in tag_files:
+            if f.startswith(root + "/"):
+                out.add(f)
+        live = REPO_ROOT / root
+        if live.is_dir():
+            for p in live.rglob("*"):
+                if p.is_file():
+                    out.add(p.relative_to(REPO_ROOT).as_posix())
+    return sorted(out)
+
+
+def build():
     a57 = _census_actor_counts(CENSUS_57)
     a58 = _census_actor_counts(CENSUS_58)
 
     packages, skipped = [], []
-    for e in pre.get("assets", []):
-        repo_path = e["path"]
+    for repo_path in _enumerate_repo_paths():
         pkg = package_path_for(repo_path)
         if pkg is None:
             # Non-package files (.gitkeep, .hda, ...) are recorded as skipped rather
@@ -159,7 +234,7 @@ def build(pre_manifest_path=PRE_MANIFEST):
         packages.append({
             "package_path": pkg,
             "repo_path": repo_path,
-            "asset_class": e.get("type"),
+            "asset_class": _asset_class(repo_path),
             "package_kind": "map" if is_map else "asset",
             "source_hash": _sha(src),
             "converted_hash": _sha(dst),
@@ -187,6 +262,16 @@ def build(pre_manifest_path=PRE_MANIFEST):
         "target_engine": TARGET_ENGINE,
         "source_ref": SOURCE_TAG,
         "keyspace": "package_path",
+        # Root coverage is RECORDED so drift is detectable. pre_conversion_manifest.json
+        # declared 2 roots while the script declared 3 (e1b65e3c widened the script but
+        # never regenerated the output) and no gate noticed — which is precisely how the
+        # CoreTerrainMaterials packages stayed invisible. validate_inventory_root_coverage
+        # now fails closed on that mismatch.
+        "content_roots": list(CONTENT_ROOTS),
+        "packages_per_root": {
+            root: sum(1 for p in packages if p["repo_path"].startswith(root + "/"))
+            for root in CONTENT_ROOTS
+        },
         "package_count": len(packages),
         "map_count": sum(1 for p in packages if p["package_kind"] == "map"),
         "asset_count": sum(1 for p in packages if p["package_kind"] == "asset"),
