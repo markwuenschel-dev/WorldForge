@@ -210,6 +210,22 @@ _UNDECIDABLE = {
 }
 
 
+import pathlib
+
+def _repo_relative(p):
+    """Repo-relative POSIX path for a manifest location.
+
+    Recorded paths must be portable: an absolute Windows path leaks the author's
+    machine into evidence and trips the hygiene rail (WF1037) — correctly. The
+    manifest always lives inside the repo, so relativise it; fall back to the bare
+    filename rather than emit an absolute path.
+    """
+    try:
+        return pathlib.Path(p).resolve().relative_to(REPO_ROOT).as_posix()
+    except (ValueError, OSError):
+        return pathlib.Path(p).name
+
+
 def undecidable_label_leak(results):
     """Return any refused label that leaked into results — must always be empty."""
     emitted = {r["label"] for r in results}
@@ -810,7 +826,7 @@ def main(argv=None):
     result = audit(manifest)
     real_ok, real_reasons = is_real_canonical_manifest(manifest)
     key_ok, key_reasons = common_keyspace(manifest)
-    result["manifest_path"] = str(Path(args.manifest))
+    result["manifest_path"] = _repo_relative(args.manifest)
     result["real_manifest"] = real_ok
     result["real_manifest_reasons"] = real_reasons
     result["common_keyspace"] = key_ok

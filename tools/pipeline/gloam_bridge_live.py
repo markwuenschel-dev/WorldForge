@@ -142,7 +142,15 @@ def run_live(args):
 
     # Evidence lands inside the TARGET project, keyed by operation — the far side
     # writes it, we read it back across the boundary.
-    evidence_rel = "Saved/WorldForgeBridge/{}/far_side_response.json".format(operation_id)
+    #
+    # Content/, NOT Saved/. Both are FIXTURE_ROOT_DIRS, so the belongs-to-target rail is
+    # satisfied either way — but Saved/ is a UE transient, and transition_hygiene forbids
+    # transient paths in evidence fields (WF1037). It is right to: evidence whose only
+    # copy lives in Saved/ can be erased by a UE clean, after which the gate re-hashes
+    # nothing and the live claim is unverifiable. The two rails genuinely conflicted here;
+    # the fix is to put the evidence somewhere durable rather than to exempt Saved/ from
+    # hygiene, which would have suppressed a real finding to make a gate green.
+    evidence_rel = "Content/WorldForgeBridge/{}/far_side_response.json".format(operation_id)
     evidence_abs = (Path(info["fixture_root"]) / evidence_rel)
     if evidence_abs.exists():
         evidence_abs.unlink()  # never let a previous run's file masquerade as this one's

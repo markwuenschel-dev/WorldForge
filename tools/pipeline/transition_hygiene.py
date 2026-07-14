@@ -28,6 +28,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT / "tools" / "pipeline"))
 
+from build_conversion_manifest import CONTENT_ROOTS  # noqa: E402
 from failure_codes import FailureCode as C  # noqa: E402
 from report_meta import build_meta, strict_from_env  # noqa: E402
 from transition_report_integrity import path_strings  # noqa: E402  (shared extractor)
@@ -37,6 +38,46 @@ REPORT_DIR = REPO_ROOT / "procedural" / "reports" / "ue5_8" / "hostile"
 DEFAULT_SCAN = "procedural/reports/ue5_8"
 
 _ABS_PATH_RE = re.compile(r"^([A-Za-z]:[\\/]|[\\/])")
+
+# A UE PACKAGE PATH IS NOT A MACHINE PATH.
+#
+# `/Game/Maps/X` and `/CoreTerrainMaterials/State/Y` are UE *mount* paths: fully
+# machine-independent, and exactly what a portable report SHOULD carry. This rail predates
+# v2.5.1's `package_path` keyspace and so flagged 179 of them as absolute-path leaks.
+#
+# Widening the regex to tolerate a leading `/` was the tempting fix and the wrong one: it
+# would also have laundered the two GENUINE leaks hiding among the false positives (a real
+# `D:\...` manifest_path, and a Saved/ evidence entry). The rail is narrowed by MEANING
+# instead — exempt what is provably a mount path, keep everything else failing.
+#
+# The mount set is DERIVED from CONTENT_ROOTS, never guessed:
+#     Content                 -> /Game
+#     Plugins/<Name>/Content  -> /<Name>
+# plus engine-owned mounts. Adding a content root therefore cannot silently desync this
+# rail, and `/home/user/x` or `/tmp/y` still read as leaks — `home` and `tmp` are not mounts.
+_ENGINE_MOUNTS = ("Engine", "Script", "Temp")
+
+
+def _ue_mounts():
+    mounts = {"Game"} | set(_ENGINE_MOUNTS)
+    for root in CONTENT_ROOTS:
+        parts = root.split("/")
+        if len(parts) == 3 and parts[0] == "Plugins" and parts[2] == "Content":
+            mounts.add(parts[1])
+    return mounts
+
+
+def is_ue_package_path(s):
+    """True for a UE mount path (/Game/..., /<Plugin>/...) — portable, not a machine path."""
+    s = s.strip()
+    if "\\" in s or ":" in s:
+        return False  # a drive letter or Windows separator is never a package path
+    if not s.startswith("/"):
+        return False
+    seg = s.strip("/").split("/")
+    return len(seg) >= 2 and seg[0] in _ue_mounts()
+
+
 _UE5_7_FRAG = "procedural/reports/ue5_7"
 # Forbidden UE-transient path SEGMENTS (matched as whole segments, not substrings, so a
 # legitimately-named report like build_x_report.json does not trip "Build").
@@ -49,7 +90,7 @@ def hygiene_findings_for_record(rec):
     f = []
     for s in path_strings(rec):
         norm = s.replace("\\", "/")
-        if _ABS_PATH_RE.match(s.strip()):
+        if _ABS_PATH_RE.match(s.strip()) and not is_ue_package_path(s):
             f.append(("absolute_path_leak:{}".format(s[:60]), C.TRANSITION_HYGIENE_FAILED))
         if _UE5_7_FRAG in norm:
             f.append(("ue5_7_path_referenced:{}".format(s[:60]), C.TRANSITION_HYGIENE_FAILED))

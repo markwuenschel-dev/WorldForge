@@ -6,26 +6,51 @@ RED. Later waves turn unbuilt gates green; the verdict always tracks the real st
 unbuilt topology/conversion/plugin/capability/regression/baseline/bridge/hostile gate is
 honestly RED.
 
-This is the Wave-0 SKELETON. Only the always-on transition contract spine has a real
-script (Lane 4). Every flag-gated lane below points at a script a later wave must create;
-until then each such gate reports "(gate not yet implemented)" and the shield is RED by
-design. Do NOT stub the missing gates green.
+Do NOT stub a missing gate green: a gate whose script or evidence report is absent is
+honestly RED, and the verdict always tracks the real state.
 
 Gate lanes:
   (always)         transition contract spine   → validate_transition_contracts.py --strict
   --topology       transition topology         → validate_transition_topology.py
   --conversion     conversion manifest         → validate_conversion_manifest.py
+                   inventory root coverage     → validate_inventory_root_coverage.py
+                   conversion audit            → validate_conversion_audit.py
+                   map census reconciliation   → validate_map_census_reconciliation.py
   --plugin         plugin build                → validate_plugin_build.py
   --capability     capability manifest         → validate_capability_manifest.py
   --regression     transition regression       → transition_regression.py --strict
   --baseline       transition baseline         → validate_transition_baseline.py --strict
-  --bridge         Gloamstead bridge           → validate_gloam_bridge.py --strict
+  --bridge         Gloamstead bridge (DRY)     → validate_gloam_bridge.py --strict
+                   Gloamstead bridge (LIVE)    → validate_gloam_bridge_live.py --strict
   --hostile        hostile suite               → transition_negatives.py
                                                + transition_fuzz.py --strict
                                                + transition_report_integrity.py
                                                    procedural/reports/ue5_8 --strict
                                                + transition_hygiene.py
+                                               + run_transition_known_bads.py
+                                               + run_transition_torture.py
+                                               + run_v2_5_1_known_bads.py
   --regressions    prior authoring shields (opt-in): v2.4/v2.3/v2.2
+
+v2.5.1 — WHY THE NEW GATES CARRY NO NEW FLAGS
+---------------------------------------------
+The four v2.5.1 gates ride the EXISTING flags whose claims they prove, rather than
+opt-in flags of their own. `--conversion` already claims "the conversion is sound" and
+`--bridge` already claims "the bridge is ready"; the v2.5.1 gates are what makes those
+claims true. Behind a new flag they would be optional — and an anti-fake-green gate you
+can forget to pass is not a gate. Anyone running the documented v2.5 acceptance command
+below now gets the v2.5.1 hardening automatically, with no command change.
+
+THE BRIDGE, SPECIFICALLY. v2.5's `--bridge` was satisfied by `validate_gloam_bridge.py`
+alone — a gate over a REJECTING DRY PROBE. A dry probe asserts that NOTHING ran: it is
+green precisely when no far side was touched, which makes it a NEGATIVE test, and a
+negative test can never satisfy the POSITIVE claim "the bridge works against a separate
+UE 5.8 project". `--bridge` now requires BOTH gates, so the dry probe alone can no longer
+green the lane. The live gate demands execution_mode=live, runtime_executed=true,
+observed_runtime_engine=5.8, plugin_loaded=true, operation_completed=true and
+evidence_count>0, and re-derives the evidence hashes from the bytes on disk. The dry probe
+is KEPT, unchanged, as the negative test it always was — and is additionally submitted to
+the live gate as a known-bad, where it must go RED.
 
 Honors a global --strict, threaded to gate scripts that accept it, exactly as
 v2_4_shield.py threads its flags. Uses argparse with parse_known_args.
@@ -88,8 +113,20 @@ def main(argv=None):
         results.append(run("transition-topology", PL + "/validate_transition_topology.py", *s))
 
     # --- Conversion manifest (--conversion) --------------------------------
+    # Four gates, in evidence order: is the inventory the real artifact, does it cover
+    # every content root, is every package classified from real evidence, and is the
+    # map-count delta explained? A green here is the whole v2.5.1 conversion claim.
     if args.conversion:
         results.append(run("conversion-manifest", PL + "/validate_conversion_manifest.py", *s))
+        # Root drift: an inventory that silently omits a content root under-reports the
+        # conversion and every downstream count inherits the omission.
+        results.append(run("root-coverage", PL + "/validate_inventory_root_coverage.py", *s))
+        # real_manifest / common_keyspace / unclassified=0 / unaccounted_deletions=0,
+        # plus the v2.5 guard that no version claim is made without a version delta.
+        results.append(run("conversion-audit", PL + "/validate_conversion_audit.py", *s))
+        # The 131-vs-124 map delta: every 5.7-only package carries an evidence-backed
+        # classification, or unclassified != 0 and this stays RED.
+        results.append(run("census-reconcile", PL + "/validate_map_census_reconciliation.py", *s))
 
     # --- Plugin build (--plugin) -------------------------------------------
     if args.plugin:
@@ -108,8 +145,15 @@ def main(argv=None):
         results.append(run("transition-baseline", PL + "/validate_transition_baseline.py", "--strict"))
 
     # --- Gloamstead bridge (--bridge) --------------------------------------
+    # BOTH gates are required. The dry probe is the NEGATIVE (green when nothing ran);
+    # the live gate is the POSITIVE (green only when a real UE 5.8 editor really executed
+    # in a separate repository). Requiring only the first is the v2.5 bug: it let a
+    # rejecting dry probe stand in for a live run. Keeping both means the negative keeps
+    # its value and can no longer be mistaken for the positive.
     if args.bridge:
         results.append(run("gloam-bridge", PL + "/validate_gloam_bridge.py", "--strict"))
+        results.append(run("gloam-bridge-live", PL + "/validate_gloam_bridge_live.py",
+                           "--strict"))
 
     # --- Hostile suite (--hostile) -----------------------------------------
     if args.hostile:
@@ -120,6 +164,9 @@ def main(argv=None):
         results.append(run("transition-hygiene", PL + "/transition_hygiene.py", *s))
         results.append(run("transition-known-bads", PL + "/run_transition_known_bads.py", *s))
         results.append(run("transition-torture", PL + "/run_transition_torture.py", *s))
+        # v2.5.1 hostile catalogue: the 9 vectors that must never recur, each driven
+        # through the REAL validator and required to be rejected BY ITS OWNING CHECK.
+        results.append(run("v2.5.1-known-bads", PL + "/run_v2_5_1_known_bads.py", *s))
 
     # --- Regression lane (opt-in prior authoring shields) ------------------
     if args.regressions:

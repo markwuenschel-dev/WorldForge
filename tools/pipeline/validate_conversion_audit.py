@@ -63,6 +63,22 @@ from validation_report import ValidationReport  # noqa: E402
 REPORT_DIR = REPO_ROOT / "procedural" / "reports" / "ue5_8" / "audit"
 
 
+import pathlib
+
+def _repo_relative(p):
+    """Repo-relative POSIX path for a manifest location.
+
+    Recorded paths must be portable: an absolute Windows path leaks the author's
+    machine into evidence and trips the hygiene rail (WF1037) — correctly. The
+    manifest always lives inside the repo, so relativise it; fall back to the bare
+    filename rather than emit an absolute path.
+    """
+    try:
+        return pathlib.Path(p).resolve().relative_to(REPO_ROOT).as_posix()
+    except (ValueError, OSError):
+        return pathlib.Path(p).name
+
+
 def run(rep, manifest_path):
     # 0. The manifest must exist at all. Absent input => ERROR, never a green.
     path = Path(manifest_path)
@@ -237,7 +253,7 @@ def main(argv=None):
     # the gate went green. Full per-package evidence lives in the audit report.
     extra = transition_identity("5.8", runtime_required=False,
                                 runtime_executed=False, observed_runtime_engine=None)
-    extra["manifest_path"] = str(Path(args.manifest))
+    extra["manifest_path"] = _repo_relative(args.manifest)
     if result is not None:
         extra["package_count"] = result["package_count"]
         extra["counts_by_label"] = result["counts_by_label"]
