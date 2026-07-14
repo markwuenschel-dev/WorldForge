@@ -1,0 +1,3776 @@
+{
+  "package_count": 178,
+  "counts_by_label": {
+    "unchanged": 2,
+    "package_version_changed": 0,
+    "actor_graph_changed": 0,
+    "engine_resave_only": 176,
+    "unclassified": 0
+  },
+  "labels_refused_as_undecidable": {
+    "serialized_content_changed": "only a whole-file sha256 is available; a hash delta cannot be localized to serialized object data as opposed to header/summary/metadata bytes. Deciding this needs per-export payload digests the manifest does not carry.",
+    "metadata_only_changed": "the manifest carries no metadata surface at all (no package flags, no asset registry tags, no timestamps, no sizes) — there is nothing to compare, so 'metadata only' can never be affirmed.",
+    "reference_graph_changed": "critical_references is null for every package (needs a loaded UWorld). Null is UNKNOWN; emitting this label on null evidence would be a fabrication, and emitting its absence would be a fake green.",
+    "plugin_class_restored": "REFUSAL SURVIVES actor_class_inventory being plumbed in. The named candidate /Game/WorldForge/Maps/Untitled reads {HoudiniAssetActor:1, StaticMeshActor:1} on BOTH sides, so source-vs-converted does not witness the reclaim at all: it was a historical event against an intermediate state, not a property of this diff. No field present can decide it, and the class inventory — the one thing that could have — positively shows there is nothing to see. Confirmed with Lane 1, who records that the refusal stands."
+  },
+  "undecidable_label_leak": [],
+  "unclassified_packages": [],
+  "unaccounted_deletions": [],
+  "actor_loss_packages": [],
+  "class_loss_packages": [],
+  "class_inventory_known": 124,
+  "unconverted_packages": [
+    "/CoreTerrainMaterials/Materials/Masters/M_Terrain_Master",
+    "/CoreTerrainMaterials/State/MPC_WorldState"
+  ],
+  "version_evidence": {
+    "package_count": 178,
+    "core_version_known": 178,
+    "custom_versions_known": 178,
+    "engine_stamp_known": 178,
+    "custom_versions_systematically_absent": false
+  },
+  "release_blocking": false,
+  "blocking_packages": [],
+  "results": [
+    {
+      "label": "unchanged",
+      "blocking": false,
+      "reason": "bytes identical on both sides and still stamped 5.7 while the record declares converted_engine=5.8: NOT CONVERTED",
+      "evidence": [
+        "hash identical",
+        "stamp 5.7 != declared converted_engine 5.8"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": true,
+      "package_path": "/CoreTerrainMaterials/Materials/Masters/M_Terrain_Master",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "unchanged",
+      "blocking": false,
+      "reason": "bytes identical on both sides and still stamped 5.7 while the record declares converted_engine=5.8: NOT CONVERTED",
+      "evidence": [
+        "hash identical",
+        "stamp 5.7 != declared converted_engine 5.8"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": true,
+      "package_path": "/CoreTerrainMaterials/State/MPC_WorldState",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Maps/DesertValley/MI_WF_TerrainProof",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Maps/DesertValley/MI_WF_Veg_dead_scrub",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Maps/DesertValley/MI_WF_Veg_reclaimed_grass",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Maps/DesertValley/MI_WF_Veg_young_tree",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: None->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Maps/DesertValley/M_WF_TerrainProof",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: None->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Maps/DesertValley/M_WF_Veg",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "actor_count 234->234",
+        "actor_class_inventory known (7 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Maps/Desert_Valley_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions identical"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Materials/Terrain/DA_Terrain_Rock_Desert_Ash_01",
+      "package_kind": "asset",
+      "asset_class": "data_asset"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions identical"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Materials/Terrain/DA_Terrain_Sand_Desert_01",
+      "package_kind": "asset",
+      "asset_class": "data_asset"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Materials/Terrain/MI_Terrain_Rock_Desert_01",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Materials/Terrain/MI_Terrain_Rock_Desert_Ash_01",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Materials/Terrain/MI_Terrain_Sand_Desert_01",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 620327c1: None->1, 686308e7: 17->20, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Procedural/PCG/PCG_FoliageScatter",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Procedural/Placement/DA_ReclaimedDesert_Foliage",
+      "package_kind": "asset",
+      "asset_class": "data_asset"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_AO",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_BC",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_H",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_N",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_01_R",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_AO",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_BC",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_H",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_N",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Rock_Desert_Ash_01_R",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Sand_Desert_01_AO",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Sand_Desert_01_BC",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Sand_Desert_01_H",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Sand_Desert_01_N",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/Textures/Terrain/T_Terrain_Sand_Desert_01_R",
+      "package_kind": "asset",
+      "asset_class": "texture"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Houdini/Rocks/SM_RockGenerator_Desert_01",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_AlienCrystal_01",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Alpine_01",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Ashlands_01",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Forest_01",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 3 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Materials/Terrain/MI_Terrain_Wetland_01",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: None->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Materials/Terrain/M_WF_TerrainBiome",
+      "package_kind": "asset",
+      "asset_class": "material"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_encounter_cover_full_height",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_encounter_cover_half_height",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_encounter_cover_low",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_industrial_debris_full_height",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_industrial_debris_half_height",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_industrial_debris_low",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_rock_outcrop_full_height",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_rock_outcrop_half_height",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Meshes/OwnedCover/SM_Owned_rock_outcrop_low",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Placement/DA_AlienCrystal_Scatter",
+      "package_kind": "asset",
+      "asset_class": "data_asset"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Placement/DA_Alpine_Scatter",
+      "package_kind": "asset",
+      "asset_class": "data_asset"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Placement/DA_Ashlands_Scatter",
+      "package_kind": "asset",
+      "asset_class": "data_asset"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Placement/DA_Wetland_Foliage",
+      "package_kind": "asset",
+      "asset_class": "data_asset"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (86181d60: 225->268)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 1 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Generated/Placement/DA_Woodland_Foliage",
+      "package_kind": "asset",
+      "asset_class": "data_asset"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Debris_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 26->26",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Debris_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 31->31",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Debris_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 30->30",
+        "actor_class_inventory known (14 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Scatter_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Scatter_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 27->27",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Scatter_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Debris_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 26->26",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Debris_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 31->31",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Debris_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 30->30",
+        "actor_class_inventory known (14 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Scatter_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Scatter_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 27->27",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Scatter_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Debris_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 26->26",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Debris_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 31->31",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Debris_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 30->30",
+        "actor_class_inventory known (14 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Scatter_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Scatter_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 27->27",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Scatter_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Debris_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 26->26",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Debris_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 31->31",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Debris_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 30->30",
+        "actor_class_inventory known (14 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Scatter_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Scatter_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 27->27",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Scatter_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Debris_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 26->26",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Debris_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 31->31",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Debris_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 30->30",
+        "actor_class_inventory known (14 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Scar_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 38->38",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Scar_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 27->27",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Scar_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Debris_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 26->26",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Debris_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 31->31",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Debris_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 30->30",
+        "actor_class_inventory known (14 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Scar_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 38->38",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Scar_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 27->27",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Scar_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_CleanScrub_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_CleanScrub_Industrialized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_DeadScrub_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_DeadScrub_Industrialized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_DebrisCheckpoint_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_IndustrialDebris_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_IndustrialDebris_Industrialized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_IndustrialYard_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_MiningCamp_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_Outpost_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_Outpost_02",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_Outpost_03",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_RidgeLookout_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_ScrubNode_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_ShrineRuin_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Cracked_Ridge_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Cracked_Ridge_02",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Cracked_Ridge_03",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_CleanScrub_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_CleanScrub_Industrialized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_DeadScrub_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_DeadScrub_Industrialized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_IndustrialDebris_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_IndustrialDebris_Industrialized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_Yard_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_Yard_02",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_Yard_03",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 14->14",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 15->15",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_CleanScrub_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_CleanScrub_Industrialized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_DeadScrub_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_DeadScrub_Industrialized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_Field_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_Field_02",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_Field_03",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_IndustrialDebris_Clean_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 10->10",
+        "actor_class_inventory known (10 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_IndustrialDebris_Industrialized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Debris_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 26->26",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Debris_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 31->31",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Debris_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 30->30",
+        "actor_class_inventory known (14 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Scatter_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Scatter_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 27->27",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Scatter_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Debris_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 26->26",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Debris_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 31->31",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Debris_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 30->30",
+        "actor_class_inventory known (14 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Scatter_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Scatter_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 27->27",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Scatter_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "actor_count 2->2",
+        "actor_class_inventory known (2 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Untitled",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Debris_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 26->26",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Debris_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 31->31",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Debris_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 30->30",
+        "actor_class_inventory known (14 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Scatter_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Scatter_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 27->27",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Scatter_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Debris_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 26->26",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Debris_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 31->31",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Debris_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 30->30",
+        "actor_class_inventory known (14 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Scatter_Perf_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 33->33",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 7e154a13: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "actor_count 27->27",
+        "actor_class_inventory known (13 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 5 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Scatter_Stylized_01",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (425e9bd8: 61->68, 686308e7: 17->20, 81d57d69: 121->123, 86181d60: 225->268)",
+      "evidence": [
+        "actor_count 1->1",
+        "actor_class_inventory known (1 source class(es))",
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 4 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/Terrain/Terrain_AshFlats_01_Preview",
+      "package_kind": "map",
+      "asset_class": "map"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (438c7392: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 2 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/ThirdParty/Materials/coast_land_rocks_01_Diffuse_1k",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (438c7392: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 2 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/ThirdParty/Materials/coast_sand_03_Diffuse_1k",
+      "package_kind": "asset",
+      "asset_class": "other"
+    },
+    {
+      "label": "engine_resave_only",
+      "blocking": false,
+      "reason": "a different engine wrote the bytes (5.7->5.8); core version identical; actor graph not contradicting; custom versions bumped as expected (438c7392: 3->5, 81d57d69: 121->123)",
+      "evidence": [
+        "hash differs",
+        "CORE version identical",
+        "engine stamp MOVED 5.7->5.8",
+        "custom_versions moved on 2 guid(s) — consistent with, and explained by, the engine change"
+      ],
+      "unknown": [
+        "component_count=null(needs UWorld)",
+        "critical_references=null(needs UWorld)",
+        "actor_count=null(kind=asset)",
+        "actor_class_inventory=null(kind=asset)"
+      ],
+      "unconverted": false,
+      "package_path": "/Game/WorldForge/ThirdParty/Materials/coast_sand_05_Diffuse_1k",
+      "package_kind": "asset",
+      "asset_class": "other"
+    }
+  ],
+  "manifest_path": "D:\\Unreal Projects\\WorldForge-v251\\procedural\\manifests\\ue5_8_conversion\\canonical_conversion_manifest.json",
+  "real_manifest": true,
+  "real_manifest_reasons": [],
+  "common_keyspace": true,
+  "common_keyspace_reasons": []
+}
