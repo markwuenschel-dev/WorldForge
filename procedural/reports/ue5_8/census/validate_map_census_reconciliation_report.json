@@ -1,0 +1,337 @@
+{
+  "gate": "map_census_reconciliation",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::valid_example_classifies": {
+      "ok": true,
+      "detail": "baseline scratch evidence should classify generated_or_transient, got 'generated_or_transient'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::no_probe_explains_absence": {
+      "ok": true,
+      "detail": "known-bad 'no_probe_explains_absence' must classify 'unclassified' (got 'unclassified': no evidence probe explains this package's absence from the 5.8 census (evidence: {'actor_count_5_7': 12, 'class_histogra)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::on_disk_under_roots_but_uninventoried": {
+      "ok": true,
+      "detail": "known-bad 'on_disk_under_roots_but_uninventoried' must classify 'unclassified' (got 'unclassified': package is on disk UNDER CONTENT_ROOTS yet missing from the manifest — build_conversion_manifest rglob()s every file und)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::tracked_at_5_7_tag_then_deleted_is_not_scratch": {
+      "ok": true,
+      "detail": "known-bad 'tracked_at_5_7_tag_then_deleted_is_not_scratch' must classify 'stale_or_invalid_5_7' (got 'stale_or_invalid_5_7': package was tracked at worldforge-v2.4-ue5.7-final but is absent at HEAD (deleted_in_history=True) — it was retired betw)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::actor_bearing_map_is_not_transient": {
+      "ok": true,
+      "detail": "known-bad 'actor_bearing_map_is_not_transient' must classify 'unclassified' (got 'unclassified': no evidence probe explains this package's absence from the 5.8 census (evidence: {'actor_count_5_7': 87, 'class_histogra)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::vocabulary_closed": {
+      "ok": true,
+      "detail": "resolved reasons must be a subset of the closed vocabulary",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::only_5_7_is_not_a_resolved_reason": {
+      "ok": true,
+      "detail": "only_5_7 is a membership label; accepting it as a resolved reason would let an unexplained package pass the gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::report_exists": {
+      "ok": true,
+      "detail": "procedural\\reports\\ue5_8\\census\\map_census_reconciliation.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::report_parseable": {
+      "ok": true,
+      "detail": "parsed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::entries_present": {
+      "ok": true,
+      "detail": "131 entries",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::classification_vocabulary_closed": {
+      "ok": true,
+      "detail": "classifications outside the closed vocabulary: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::no_unclassified_entries": {
+      "ok": true,
+      "detail": "0 entry(ies) remain unclassified — the census delta is NOT explained: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::only_5_7_not_used_as_resolution": {
+      "ok": true,
+      "detail": "0 5.7-only entry(ies) carry classification 'only_5_7', which is a membership label, not a reason: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::resolved::/Game/Maps/_wf_lit_lit_mi_ash": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_lit_lit_mi_ash has classification 'generated_or_transient', not one of the resolved reasons ['renamed_or_redirected', 'excluded_by_inventory_rule', 'plugin_or_engine_sample', 'generated_or_transient', 'stale_or_invalid_5_7']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::evidence_backed::/Game/Maps/_wf_lit_lit_mi_ash": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_lit_lit_mi_ash must carry an evidence record and a rationale — a bare classification is an assertion, not proof",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::resolved::/Game/Maps/_wf_lit_lit_mi_sand": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_lit_lit_mi_sand has classification 'generated_or_transient', not one of the resolved reasons ['renamed_or_redirected', 'excluded_by_inventory_rule', 'plugin_or_engine_sample', 'generated_or_transient', 'stale_or_invalid_5_7']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::evidence_backed::/Game/Maps/_wf_lit_lit_mi_sand": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_lit_lit_mi_sand must carry an evidence record and a rationale — a bare classification is an assertion, not proof",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::resolved::/Game/Maps/_wf_test_lvl": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_test_lvl has classification 'generated_or_transient', not one of the resolved reasons ['renamed_or_redirected', 'excluded_by_inventory_rule', 'plugin_or_engine_sample', 'generated_or_transient', 'stale_or_invalid_5_7']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::evidence_backed::/Game/Maps/_wf_test_lvl": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_test_lvl must carry an evidence record and a rationale — a bare classification is an assertion, not proof",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::resolved::/Game/Maps/_wf_test_lvl_ash": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_test_lvl_ash has classification 'generated_or_transient', not one of the resolved reasons ['renamed_or_redirected', 'excluded_by_inventory_rule', 'plugin_or_engine_sample', 'generated_or_transient', 'stale_or_invalid_5_7']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::evidence_backed::/Game/Maps/_wf_test_lvl_ash": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_test_lvl_ash must carry an evidence record and a rationale — a bare classification is an assertion, not proof",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::resolved::/Game/Maps/_wf_test_lvl_mi_ash": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_test_lvl_mi_ash has classification 'generated_or_transient', not one of the resolved reasons ['renamed_or_redirected', 'excluded_by_inventory_rule', 'plugin_or_engine_sample', 'generated_or_transient', 'stale_or_invalid_5_7']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::evidence_backed::/Game/Maps/_wf_test_lvl_mi_ash": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_test_lvl_mi_ash must carry an evidence record and a rationale — a bare classification is an assertion, not proof",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::resolved::/Game/Maps/_wf_test_lvl_mi_sand": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_test_lvl_mi_sand has classification 'generated_or_transient', not one of the resolved reasons ['renamed_or_redirected', 'excluded_by_inventory_rule', 'plugin_or_engine_sample', 'generated_or_transient', 'stale_or_invalid_5_7']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::evidence_backed::/Game/Maps/_wf_test_lvl_mi_sand": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_test_lvl_mi_sand must carry an evidence record and a rationale — a bare classification is an assertion, not proof",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::resolved::/Game/Maps/_wf_test_lvl_sand": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_test_lvl_sand has classification 'generated_or_transient', not one of the resolved reasons ['renamed_or_redirected', 'excluded_by_inventory_rule', 'plugin_or_engine_sample', 'generated_or_transient', 'stale_or_invalid_5_7']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::evidence_backed::/Game/Maps/_wf_test_lvl_sand": {
+      "ok": true,
+      "detail": "5.7-only package /Game/Maps/_wf_test_lvl_sand must carry an evidence record and a rationale — a bare classification is an assertion, not proof",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::force_hook_disabled": {
+      "ok": true,
+      "detail": "payload was produced with --force-unclassified=[] — the fail-closed proof hook must never be left on in a real run",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::censuses_readable": {
+      "ok": true,
+      "detail": "re-read both censuses",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::set_algebra::only_5_7": {
+      "ok": true,
+      "detail": "payload counts.only_5_7=7 but recomputing from the raw censuses gives 7",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::set_algebra::only_5_8": {
+      "ok": true,
+      "detail": "payload counts.only_5_8=0 but recomputing from the raw censuses gives 0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::set_algebra::present_both": {
+      "ok": true,
+      "detail": "payload counts.present_both=124 but recomputing from the raw censuses gives 124",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::every_census_map_covered": {
+      "ok": true,
+      "detail": "payload has 131 entries but the union of both censuses is 131 maps — some map is unaccounted for",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::only_5_7_maps_are_actor_free": {
+      "ok": true,
+      "detail": "5.7-only maps carry 0 actor(s) — dropping them from the 5.8 census is real actor loss, not a classification",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::actor_totals_match": {
+      "ok": true,
+      "detail": "5.7 total_actor_count=2799 != 5.8 total_actor_count=2799 — the map delta is not actor-neutral",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 35,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-map-census-reconciliation",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "153dbdfcf797c1878cebe5eee750afd29abd925c",
+    "timestamp": "2026-07-14T20:47:11.137125+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.map_census_reconciliation_gate.v1",
+    "report_id": "wf.transition.map_census_reconciliation_gate.v1:cd6a9c42bf41",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 35,
+    "records_total": 35,
+    "records_passed": 35,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "153dbdfcf797c1878cebe5eee750afd29abd925c",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "3262cccbb35c:WorldForge-v251",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": false,
+    "runtime_executed": false,
+    "repository_identifier": "a805848229ff",
+    "worktree_identifier": "3262cccbb35c:WorldForge-v251"
+  }
+}

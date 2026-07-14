@@ -1,0 +1,69 @@
+{
+  "fixtures": {
+    "disjoint_manifest_keyspaces": {
+      "driver": "conversion_audit_gate",
+      "expected_check": "audit::common_keyspace",
+      "expected_code": "WF1015_CONVERSION_MANIFEST_INCOMPLETE",
+      "fixture": "disjoint_manifest_keyspaces.json",
+      "vector": "5.7 and 5.8 inventories keyed disjointly \u2014 one side has no record"
+    },
+    "dry_probe_satisfies_live_gate": {
+      "driver": "live_bridge_contract",
+      "expected_check": null,
+      "expected_code": "WF1034_TRANSITION_REPORT_INTEGRITY_FAILED",
+      "fixture": "dry_probe_satisfies_live_gate.json",
+      "vector": "the v2.5 rejecting dry probe offered as proof of a live 5.8 run"
+    },
+    "foreign_project_evidence": {
+      "driver": "live_bridge_gate",
+      "expected_check": "real::evidence_belongs_to_target",
+      "expected_code": "WF1024_BRIDGE_WRONG_PROJECT",
+      "fixture": "foreign_project_evidence.json",
+      "vector": "evidence rooted in another project passed off as the target's"
+    },
+    "identical_versions_labelled_version_upgrade": {
+      "driver": "conversion_audit_gate",
+      "expected_check": "audit::unclassified_packages_zero",
+      "expected_code": "WF1021_REGRESSION_UNCLASSIFIED_DIFF",
+      "fixture": "identical_versions_labelled_version_upgrade.json",
+      "vector": "identical package versions on both sides, declared a version upgrade"
+    },
+    "manually_modified_audit_report": {
+      "driver": "report_integrity",
+      "expected_check": "manual_edit_ok_with_failures",
+      "expected_code": "WF1034_TRANSITION_REPORT_INTEGRITY_FAILED",
+      "fixture": "manually_modified_audit_report.json",
+      "vector": "a conversion-audit report edited by hand to hide its own failure"
+    },
+    "map_count_discrepancy_unclassified": {
+      "driver": "census_reconcile_gate",
+      "expected_check": "present::no_unclassified_entries",
+      "expected_code": "WF1021_REGRESSION_UNCLASSIFIED_DIFF",
+      "fixture": "map_count_discrepancy_unclassified.json",
+      "vector": "a 5.7-only map left unexplained \u2014 the census delta is not accounted for"
+    },
+    "stale_evidence_reuse": {
+      "driver": "live_bridge_contract",
+      "expected_check": null,
+      "expected_code": "WF1026_BRIDGE_STALE_PLUGIN",
+      "fixture": "stale_evidence_reuse.json",
+      "vector": "evidence from a previous operation replayed as this run's proof"
+    },
+    "synthetic_audit_presented_as_real": {
+      "driver": "conversion_audit_gate",
+      "expected_check": "audit::real_manifest",
+      "expected_code": "WF1015_CONVERSION_MANIFEST_INCOMPLETE",
+      "fixture": "synthetic_audit_presented_as_real.json",
+      "vector": "a fabricated manifest presented as the real canonical conversion manifest"
+    },
+    "zero_exit_bridge_no_evidence": {
+      "driver": "live_bridge_contract",
+      "expected_check": null,
+      "expected_code": "WF1028_BRIDGE_EMPTY_EVIDENCE",
+      "fixture": "zero_exit_bridge_no_evidence.json",
+      "vector": "bridge process exits zero having produced no evidence at all"
+    }
+  },
+  "note": "Fixtures are PURE artifacts: catalogue metadata lives here, never inside a fixture, because the live bridge contract rejects unknown fields and a fixture rejected for carrying harness metadata would prove nothing.",
+  "schema_version": "wf.transition.known_bads_index.v1"
+}

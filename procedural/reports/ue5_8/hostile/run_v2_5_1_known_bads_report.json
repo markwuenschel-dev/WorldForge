@@ -1,0 +1,281 @@
+{
+  "suite": "v2_5_1_known_bads",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "kb::disjoint_manifest_keyspaces::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED — 5.7 and 5.8 inventories keyed disjointly — one side has no record",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::disjoint_manifest_keyspaces::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1015_CONVERSION_MANIFEST_INCOMPLETE (got ['WF1015_CONVERSION_MANIFEST_INCOMPLETE', 'WF1016_CONVERSION_UNEXPECTED_CHURN', 'WF1021_REGRESSION_UNCLASSIFIED_DIFF'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::disjoint_manifest_keyspaces::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY audit::common_keyspace — rejection by any other rail is collateral, not proof of this vector (failed: ['audit::common_keyspace', 'audit::unaccounted_deletions_zero', 'audit::unclassified_packages_zero'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::dry_probe_satisfies_live_gate::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED — the v2.5 rejecting dry probe offered as proof of a live 5.8 run",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::dry_probe_satisfies_live_gate::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1011_CAPABILITY_UNAVAILABLE', 'WF1018_PLUGIN_LOAD_FAILED', 'WF1023_BRIDGE_WRONG_ENGINE', 'WF1024_BRIDGE_WRONG_PROJECT', 'WF1025_BRIDGE_ABSENT_PLUGIN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::foreign_project_evidence::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED — evidence rooted in another project passed off as the target's",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::foreign_project_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1024_BRIDGE_WRONG_PROJECT (got ['WF1024_BRIDGE_WRONG_PROJECT', 'WF1028_BRIDGE_EMPTY_EVIDENCE', 'WF1031_EVIDENCE_ENGINE_MISMATCH', 'WF1034_TRANSITION_REPORT_INTEGRITY_FAILED', 'WF1037_TRANSITION_HYGIENE_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::foreign_project_evidence::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY real::evidence_belongs_to_target — rejection by any other rail is collateral, not proof of this vector (failed: ['real::evidence_belongs_to_target', 'real::evidence_exists_on_disk', 'real::meta_declared_engine', 'real::meta_observed_runtime_engine', 'real::meta_runtime_executed'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::identical_versions_labelled_version_upgrade::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED — identical package versions on both sides, declared a version upgrade",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::identical_versions_labelled_version_upgrade::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1021_REGRESSION_UNCLASSIFIED_DIFF (got ['WF1021_REGRESSION_UNCLASSIFIED_DIFF'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::identical_versions_labelled_version_upgrade::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY audit::unclassified_packages_zero — rejection by any other rail is collateral, not proof of this vector (failed: ['audit::unclassified_packages_zero'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::manually_modified_audit_report::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED — a conversion-audit report edited by hand to hide its own failure",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::manually_modified_audit_report::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::manually_modified_audit_report::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY manual_edit_ok_with_failures — rejection by any other rail is collateral, not proof of this vector (failed: ['manual_edit_ok_with_failures'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::map_count_discrepancy_unclassified::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED — a 5.7-only map left unexplained — the census delta is not accounted for",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::map_count_discrepancy_unclassified::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1021_REGRESSION_UNCLASSIFIED_DIFF (got ['WF1015_CONVERSION_MANIFEST_INCOMPLETE', 'WF1021_REGRESSION_UNCLASSIFIED_DIFF', 'WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::map_count_discrepancy_unclassified::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY present::no_unclassified_entries — rejection by any other rail is collateral, not proof of this vector (failed: ['present::every_census_map_covered', 'present::evidence_backed::/Game/Maps/_wf_test_lvl', 'present::no_unclassified_entries', 'present::resolved::/Game/Maps/_wf_test_lvl'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::stale_evidence_reuse::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED — evidence from a previous operation replayed as this run's proof",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::stale_evidence_reuse::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1026_BRIDGE_STALE_PLUGIN (got ['WF1026_BRIDGE_STALE_PLUGIN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::synthetic_audit_presented_as_real::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED — a fabricated manifest presented as the real canonical conversion manifest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::synthetic_audit_presented_as_real::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1015_CONVERSION_MANIFEST_INCOMPLETE (got ['WF1015_CONVERSION_MANIFEST_INCOMPLETE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::synthetic_audit_presented_as_real::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY audit::real_manifest — rejection by any other rail is collateral, not proof of this vector (failed: ['audit::real_manifest'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::zero_exit_bridge_no_evidence::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED — bridge process exits zero having produced no evidence at all",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::zero_exit_bridge_no_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1028_BRIDGE_EMPTY_EVIDENCE (got ['WF1028_BRIDGE_EMPTY_EVIDENCE', 'WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "control::conversion_audit_accepts_real_manifest": {
+      "ok": true,
+      "detail": "the REAL canonical manifest must pass the conversion-audit gate, or this driver rejects everything and its known-bads prove nothing: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "control::live_contract_accepts_valid_report": {
+      "ok": true,
+      "detail": "a valid live report must be accepted, or the live driver rejects everything: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "control::report_integrity_accepts_clean_report": {
+      "ok": true,
+      "detail": "an untampered report must be accepted: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::catalogue_complete": {
+      "ok": true,
+      "detail": "the v2.5.1 catalogue must carry >= 9 fixtures, one per mission vector (got 9)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 28,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "v2-5-1-known-bads",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "153dbdfcf797c1878cebe5eee750afd29abd925c",
+    "timestamp": "2026-07-14T20:47:13.015261+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.known_bads_v2_5_1.v1",
+    "report_id": "wf.transition.known_bads_v2_5_1.v1:90eb64832b4a",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 9,
+    "records_total": 9,
+    "records_passed": 9,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "153dbdfcf797c1878cebe5eee750afd29abd925c",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "3262cccbb35c:WorldForge-v251",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": false,
+    "runtime_executed": false,
+    "repository_identifier": "a805848229ff",
+    "worktree_identifier": "3262cccbb35c:WorldForge-v251"
+  }
+}

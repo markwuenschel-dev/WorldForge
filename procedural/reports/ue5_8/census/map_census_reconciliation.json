@@ -1,0 +1,1398 @@
+{
+  "reconciliation_status": "map_census_reconciliation",
+  "generated_by": "tools/pipeline/reconcile_map_census.py",
+  "source_engine": "5.7",
+  "target_engine": "5.8",
+  "classification_vocabulary": [
+    "only_5_7",
+    "only_5_8",
+    "present_both",
+    "renamed_or_redirected",
+    "excluded_by_inventory_rule",
+    "plugin_or_engine_sample",
+    "generated_or_transient",
+    "stale_or_invalid_5_7",
+    "unclassified"
+  ],
+  "inputs": {
+    "census_5_7": {
+      "path": "procedural/evidence/ue5_7/census_ue57_authoritative.json",
+      "tag": "ue57_authoritative",
+      "engine_version": "5.7.4-51494982+++UE5+Release-5.7",
+      "map_count": 131,
+      "total_actor_count": 2799
+    },
+    "census_5_8": {
+      "path": "procedural/evidence/ue5_8/census_ue58_postresave_houdini.json",
+      "tag": "ue58_postresave_houdini_present",
+      "engine_version": "5.8.0-55116800+++UE5+Release-5.8",
+      "map_count": 124,
+      "total_actor_count": 2799
+    },
+    "conversion_manifest": {
+      "path": "procedural/manifests/ue5_8_conversion/pre_conversion_manifest.json",
+      "present": true,
+      "map_count": 124
+    },
+    "uncontrolled_changelist_probe_available": false
+  },
+  "counts": {
+    "census_5_7_maps": 131,
+    "census_5_8_maps": 124,
+    "only_5_7": 7,
+    "only_5_8": 0,
+    "present_both": 124,
+    "by_classification": {
+      "only_5_7": 0,
+      "only_5_8": 0,
+      "present_both": 124,
+      "renamed_or_redirected": 0,
+      "excluded_by_inventory_rule": 0,
+      "plugin_or_engine_sample": 0,
+      "generated_or_transient": 7,
+      "stale_or_invalid_5_7": 0,
+      "unclassified": 0
+    }
+  },
+  "actor_accounting": {
+    "total_actor_count_5_7": 2799,
+    "total_actor_count_5_8": 2799,
+    "actors_in_only_5_7_maps": 0,
+    "actor_delta": 0,
+    "note": "the map-count delta is actor-neutral iff actors_in_only_5_7_maps == 0 and actor_delta == 0"
+  },
+  "forced_unclassified": [],
+  "entries": [
+    {
+      "package_path": "/Game/Maps/Desert_Valley_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 234,
+      "actor_count_5_8": 234,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/Maps/_wf_lit_lit_mi_ash",
+      "membership": "only_5_7",
+      "classification": "generated_or_transient",
+      "rationale": "never tracked in git (absent at HEAD and at worldforge-v2.4-ue5.7-final, never deleted -> never committed), absent from this worktree on disk, absent from the pre-conversion manifest, and empty in the 5.7 census (actor_count=0, empty class_histogram). This is editor scratch that the 5.7 AssetRegistry walk picked up from the primary worktree's working directory; it carries no actors, so nothing was lost",
+      "actor_count_5_7": 0,
+      "actor_count_5_8": null,
+      "evidence": {
+        "package_path": "/Game/Maps/_wf_lit_lit_mi_ash",
+        "repo_relative_path": "Content/Maps/_wf_lit_lit_mi_ash.umap",
+        "actor_count_5_7": 0,
+        "class_histogram_5_7_empty": true,
+        "loaded_5_7": true,
+        "error_5_7": null,
+        "on_disk_in_worktree": false,
+        "tracked_at_head": false,
+        "tracked_at_5_7_tag": false,
+        "deleted_in_history": false,
+        "in_conversion_manifest": false,
+        "under_content_roots": true,
+        "plugin_or_engine_path": false,
+        "redirector_referencing": [],
+        "uncontrolled_changelist_listed": null
+      }
+    },
+    {
+      "package_path": "/Game/Maps/_wf_lit_lit_mi_sand",
+      "membership": "only_5_7",
+      "classification": "generated_or_transient",
+      "rationale": "never tracked in git (absent at HEAD and at worldforge-v2.4-ue5.7-final, never deleted -> never committed), absent from this worktree on disk, absent from the pre-conversion manifest, and empty in the 5.7 census (actor_count=0, empty class_histogram). This is editor scratch that the 5.7 AssetRegistry walk picked up from the primary worktree's working directory; it carries no actors, so nothing was lost",
+      "actor_count_5_7": 0,
+      "actor_count_5_8": null,
+      "evidence": {
+        "package_path": "/Game/Maps/_wf_lit_lit_mi_sand",
+        "repo_relative_path": "Content/Maps/_wf_lit_lit_mi_sand.umap",
+        "actor_count_5_7": 0,
+        "class_histogram_5_7_empty": true,
+        "loaded_5_7": true,
+        "error_5_7": null,
+        "on_disk_in_worktree": false,
+        "tracked_at_head": false,
+        "tracked_at_5_7_tag": false,
+        "deleted_in_history": false,
+        "in_conversion_manifest": false,
+        "under_content_roots": true,
+        "plugin_or_engine_path": false,
+        "redirector_referencing": [],
+        "uncontrolled_changelist_listed": null
+      }
+    },
+    {
+      "package_path": "/Game/Maps/_wf_test_lvl",
+      "membership": "only_5_7",
+      "classification": "generated_or_transient",
+      "rationale": "never tracked in git (absent at HEAD and at worldforge-v2.4-ue5.7-final, never deleted -> never committed), absent from this worktree on disk, absent from the pre-conversion manifest, and empty in the 5.7 census (actor_count=0, empty class_histogram). This is editor scratch that the 5.7 AssetRegistry walk picked up from the primary worktree's working directory; it carries no actors, so nothing was lost",
+      "actor_count_5_7": 0,
+      "actor_count_5_8": null,
+      "evidence": {
+        "package_path": "/Game/Maps/_wf_test_lvl",
+        "repo_relative_path": "Content/Maps/_wf_test_lvl.umap",
+        "actor_count_5_7": 0,
+        "class_histogram_5_7_empty": true,
+        "loaded_5_7": true,
+        "error_5_7": null,
+        "on_disk_in_worktree": false,
+        "tracked_at_head": false,
+        "tracked_at_5_7_tag": false,
+        "deleted_in_history": false,
+        "in_conversion_manifest": false,
+        "under_content_roots": true,
+        "plugin_or_engine_path": false,
+        "redirector_referencing": [],
+        "uncontrolled_changelist_listed": null
+      }
+    },
+    {
+      "package_path": "/Game/Maps/_wf_test_lvl_ash",
+      "membership": "only_5_7",
+      "classification": "generated_or_transient",
+      "rationale": "never tracked in git (absent at HEAD and at worldforge-v2.4-ue5.7-final, never deleted -> never committed), absent from this worktree on disk, absent from the pre-conversion manifest, and empty in the 5.7 census (actor_count=0, empty class_histogram). This is editor scratch that the 5.7 AssetRegistry walk picked up from the primary worktree's working directory; it carries no actors, so nothing was lost",
+      "actor_count_5_7": 0,
+      "actor_count_5_8": null,
+      "evidence": {
+        "package_path": "/Game/Maps/_wf_test_lvl_ash",
+        "repo_relative_path": "Content/Maps/_wf_test_lvl_ash.umap",
+        "actor_count_5_7": 0,
+        "class_histogram_5_7_empty": true,
+        "loaded_5_7": true,
+        "error_5_7": null,
+        "on_disk_in_worktree": false,
+        "tracked_at_head": false,
+        "tracked_at_5_7_tag": false,
+        "deleted_in_history": false,
+        "in_conversion_manifest": false,
+        "under_content_roots": true,
+        "plugin_or_engine_path": false,
+        "redirector_referencing": [],
+        "uncontrolled_changelist_listed": null
+      }
+    },
+    {
+      "package_path": "/Game/Maps/_wf_test_lvl_mi_ash",
+      "membership": "only_5_7",
+      "classification": "generated_or_transient",
+      "rationale": "never tracked in git (absent at HEAD and at worldforge-v2.4-ue5.7-final, never deleted -> never committed), absent from this worktree on disk, absent from the pre-conversion manifest, and empty in the 5.7 census (actor_count=0, empty class_histogram). This is editor scratch that the 5.7 AssetRegistry walk picked up from the primary worktree's working directory; it carries no actors, so nothing was lost",
+      "actor_count_5_7": 0,
+      "actor_count_5_8": null,
+      "evidence": {
+        "package_path": "/Game/Maps/_wf_test_lvl_mi_ash",
+        "repo_relative_path": "Content/Maps/_wf_test_lvl_mi_ash.umap",
+        "actor_count_5_7": 0,
+        "class_histogram_5_7_empty": true,
+        "loaded_5_7": true,
+        "error_5_7": null,
+        "on_disk_in_worktree": false,
+        "tracked_at_head": false,
+        "tracked_at_5_7_tag": false,
+        "deleted_in_history": false,
+        "in_conversion_manifest": false,
+        "under_content_roots": true,
+        "plugin_or_engine_path": false,
+        "redirector_referencing": [],
+        "uncontrolled_changelist_listed": null
+      }
+    },
+    {
+      "package_path": "/Game/Maps/_wf_test_lvl_mi_sand",
+      "membership": "only_5_7",
+      "classification": "generated_or_transient",
+      "rationale": "never tracked in git (absent at HEAD and at worldforge-v2.4-ue5.7-final, never deleted -> never committed), absent from this worktree on disk, absent from the pre-conversion manifest, and empty in the 5.7 census (actor_count=0, empty class_histogram). This is editor scratch that the 5.7 AssetRegistry walk picked up from the primary worktree's working directory; it carries no actors, so nothing was lost",
+      "actor_count_5_7": 0,
+      "actor_count_5_8": null,
+      "evidence": {
+        "package_path": "/Game/Maps/_wf_test_lvl_mi_sand",
+        "repo_relative_path": "Content/Maps/_wf_test_lvl_mi_sand.umap",
+        "actor_count_5_7": 0,
+        "class_histogram_5_7_empty": true,
+        "loaded_5_7": true,
+        "error_5_7": null,
+        "on_disk_in_worktree": false,
+        "tracked_at_head": false,
+        "tracked_at_5_7_tag": false,
+        "deleted_in_history": false,
+        "in_conversion_manifest": false,
+        "under_content_roots": true,
+        "plugin_or_engine_path": false,
+        "redirector_referencing": [],
+        "uncontrolled_changelist_listed": null
+      }
+    },
+    {
+      "package_path": "/Game/Maps/_wf_test_lvl_sand",
+      "membership": "only_5_7",
+      "classification": "generated_or_transient",
+      "rationale": "never tracked in git (absent at HEAD and at worldforge-v2.4-ue5.7-final, never deleted -> never committed), absent from this worktree on disk, absent from the pre-conversion manifest, and empty in the 5.7 census (actor_count=0, empty class_histogram). This is editor scratch that the 5.7 AssetRegistry walk picked up from the primary worktree's working directory; it carries no actors, so nothing was lost",
+      "actor_count_5_7": 0,
+      "actor_count_5_8": null,
+      "evidence": {
+        "package_path": "/Game/Maps/_wf_test_lvl_sand",
+        "repo_relative_path": "Content/Maps/_wf_test_lvl_sand.umap",
+        "actor_count_5_7": 0,
+        "class_histogram_5_7_empty": true,
+        "loaded_5_7": true,
+        "error_5_7": null,
+        "on_disk_in_worktree": false,
+        "tracked_at_head": false,
+        "tracked_at_5_7_tag": false,
+        "deleted_in_history": false,
+        "in_conversion_manifest": false,
+        "under_content_roots": true,
+        "plugin_or_engine_path": false,
+        "redirector_referencing": [],
+        "uncontrolled_changelist_listed": null
+      }
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Debris_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Debris_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 26,
+      "actor_count_5_8": 26,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Debris_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 31,
+      "actor_count_5_8": 31,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Scatter_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 30,
+      "actor_count_5_8": 30,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Scatter_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_CrystalField_Scatter_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 27,
+      "actor_count_5_8": 27,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Debris_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Debris_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 26,
+      "actor_count_5_8": 26,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Debris_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 31,
+      "actor_count_5_8": 31,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Scatter_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 30,
+      "actor_count_5_8": 30,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Scatter_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alien_Plateau_Scatter_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 27,
+      "actor_count_5_8": 27,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Debris_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Debris_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 26,
+      "actor_count_5_8": 26,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Debris_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 31,
+      "actor_count_5_8": 31,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Scatter_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 30,
+      "actor_count_5_8": 30,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Scatter_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_GlacialBasin_Scatter_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 27,
+      "actor_count_5_8": 27,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Debris_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Debris_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 26,
+      "actor_count_5_8": 26,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Debris_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 31,
+      "actor_count_5_8": 31,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Scatter_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 30,
+      "actor_count_5_8": 30,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Scatter_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Alpine_SnowyRidge_Scatter_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 27,
+      "actor_count_5_8": 27,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Debris_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Debris_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 26,
+      "actor_count_5_8": 26,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Debris_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 31,
+      "actor_count_5_8": 31,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Scar_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 30,
+      "actor_count_5_8": 30,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Scar_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 38,
+      "actor_count_5_8": 38,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_AshRavine_Scar_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 27,
+      "actor_count_5_8": 27,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Debris_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Debris_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 26,
+      "actor_count_5_8": 26,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Debris_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 31,
+      "actor_count_5_8": 31,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Scar_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 30,
+      "actor_count_5_8": 30,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Scar_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 38,
+      "actor_count_5_8": 38,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Ashlands_BasaltFlats_Scar_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 27,
+      "actor_count_5_8": 27,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_CleanScrub_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Ind_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_DebrisCheckpoint_Light_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Heavy_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_IndustrialYard_Ruined_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_MiningCamp_Ruined_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_RidgeLookout_Heavy_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Ind_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Light_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_ScrubNode_Survey_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_AshFlats_ShrineRuin_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_CleanScrub_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_CleanScrub_Industrialized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_DeadScrub_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_DeadScrub_Industrialized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_DebrisCheckpoint_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_IndustrialDebris_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_IndustrialDebris_Industrialized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_IndustrialYard_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_MiningCamp_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_Outpost_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_Outpost_02",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_Outpost_03",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_RidgeLookout_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_ScrubNode_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Ash_ShrineRuin_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_CleanScrub_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_DebrisCheckpoint_Heavy_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_MiningCamp_Ruined_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_RidgeLookout_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_ScrubNode_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_CrackedRidge_ShrineRuin_Light_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Cracked_Ridge_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Cracked_Ridge_02",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Cracked_Ridge_03",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_CleanScrub_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_CleanScrub_Industrialized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_DeadScrub_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_DeadScrub_Industrialized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_IndustrialDebris_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_IndustrialDebris_Industrialized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_Yard_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_Yard_02",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_HeavyIndustrial_Yard_03",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_DebrisCheckpoint_Ind_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_IndustrialYard_Ind_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_MiningCamp_Light_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_RidgeLookout_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_ScrubNode_Survey_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 14,
+      "actor_count_5_8": 14,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_SandyBasin_ShrineRuin_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 15,
+      "actor_count_5_8": 15,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_CleanScrub_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_CleanScrub_Industrialized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_DeadScrub_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_DeadScrub_Industrialized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_Field_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_Field_02",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_Field_03",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_IndustrialDebris_Clean_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Desert_Sandy_IndustrialDebris_Industrialized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 10,
+      "actor_count_5_8": 10,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Debris_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Debris_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 26,
+      "actor_count_5_8": 26,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Debris_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 31,
+      "actor_count_5_8": 31,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Scatter_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 30,
+      "actor_count_5_8": 30,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Scatter_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_ErodedGully_Scatter_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 27,
+      "actor_count_5_8": 27,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Debris_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Debris_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 26,
+      "actor_count_5_8": 26,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Debris_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 31,
+      "actor_count_5_8": 31,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Scatter_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 30,
+      "actor_count_5_8": 30,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Scatter_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Forest_RollingWoodland_Scatter_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 27,
+      "actor_count_5_8": 27,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Untitled",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 2,
+      "actor_count_5_8": 2,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Debris_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Debris_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 26,
+      "actor_count_5_8": 26,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Debris_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 31,
+      "actor_count_5_8": 31,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Scatter_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 30,
+      "actor_count_5_8": 30,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Scatter_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_MudFlat_Scatter_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 27,
+      "actor_count_5_8": 27,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Debris_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Debris_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 26,
+      "actor_count_5_8": 26,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Debris_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 31,
+      "actor_count_5_8": 31,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Scatter_Perf_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 30,
+      "actor_count_5_8": 30,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Scatter_Photoreal_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 33,
+      "actor_count_5_8": 33,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Maps/Wetland_ReedMarsh_Scatter_Stylized_01",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 27,
+      "actor_count_5_8": 27,
+      "evidence": null
+    },
+    {
+      "package_path": "/Game/WorldForge/Terrain/Terrain_AshFlats_01_Preview",
+      "membership": "present_both",
+      "classification": "present_both",
+      "rationale": "present in both the 5.7 and 5.8 censuses",
+      "actor_count_5_7": 1,
+      "actor_count_5_8": 1,
+      "evidence": null
+    }
+  ],
+  "meta": {
+    "command": "reconcile-map-census",
+    "pack": "worldforge_vertical_slice",
+    "strict": false,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "4b99b6ae2c3471689fbbe4b7711f5df7bd9a3a0f",
+    "timestamp": "2026-07-14T19:33:02.911311+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": "908607729bcde1deb1f23cc169fc1eef7fc449bcc031c5c19a6d7bc1bd11e07e",
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.map_census_reconciliation.v1",
+    "report_id": "wf.transition.map_census_reconciliation.v1:246591aad6d1",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 131,
+    "records_total": 131,
+    "records_passed": 131,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "4b99b6ae2c3471689fbbe4b7711f5df7bd9a3a0f",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "3262cccbb35c:WorldForge-v251",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": false,
+    "runtime_executed": false,
+    "repository_identifier": "a805848229ff",
+    "worktree_identifier": "3262cccbb35c:WorldForge-v251"
+  }
+}

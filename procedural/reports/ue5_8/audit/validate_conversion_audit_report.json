@@ -1,0 +1,182 @@
+{
+  "gate": "conversion_audit",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "audit::real_manifest": {
+      "ok": true,
+      "detail": "not the real canonical manifest: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::common_keyspace": {
+      "ok": true,
+      "detail": "keyspace is not common across both sides: ",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::unclassified_packages_zero": {
+      "ok": true,
+      "detail": "0 package(s) unexplained by any evidence rule: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::unaccounted_deletions_zero": {
+      "ok": true,
+      "detail": "0 package(s) present pre-conversion and absent post: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::no_actor_loss": {
+      "ok": true,
+      "detail": "0 map(s) lost actors across conversion: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::no_actor_class_loss": {
+      "ok": true,
+      "detail": "0 map(s) lost an actor CLASS across conversion (silent damage the total actor count does not reveal): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::no_undecidable_label_leak": {
+      "ok": true,
+      "detail": "classifier emitted label(s) it cannot decide from real evidence: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::classifier_negative_controls": {
+      "ok": true,
+      "detail": "classifier negative controls failed: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::version_claims_are_earned": {
+      "ok": true,
+      "detail": "0 package(s) claim a version change with no real CORE or CUSTOM version delta (the v2.5 asset_version_upgrade bug): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::stamp_not_diffed_as_version": {
+      "ok": true,
+      "detail": "0 package(s) claim a version change on engine-stamp evidence alone: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::version_evidence_complete": {
+      "ok": true,
+      "detail": "custom_versions is null for ALL 178 packages — the producer never successfully parsed the FCustomVersionContainer, so 'no version change' is UNKNOWN, not observed. Root cause: read_package_versions() reads the array count at header offset 24; the array really begins at offset 32, so the count parses as 0x5C149824 and trips the 0<=count<=512 bound -> custom=None for every package.",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "audit::no_unconverted_packages": {
+      "ok": false,
+      "detail": "2 package(s) are byte-identical and still carry the 5.7 engine stamp while declaring converted_engine=5.8 — present in the tree but never converted: ['/CoreTerrainMaterials/Materials/Masters/M_Terrain_Master', '/CoreTerrainMaterials/State/MPC_WorldState']",
+      "warn_only": true,
+      "verdict": "WARN_ONLY",
+      "code": "WF1037_TRANSITION_HYGIENE_FAILED",
+      "blocking": false
+    },
+    "audit::every_package_labelled": {
+      "ok": true,
+      "detail": "tally 178 != 178 packages — a package fell through the rules",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "warnings": [
+    "audit::no_unconverted_packages: 2 package(s) are byte-identical and still carry the 5.7 engine stamp while declaring converted_engine=5.8 — present in the tree but never converted: ['/CoreTerrainMaterials/Materials/Masters/M_Terrain_Master', '/CoreTerrainMaterials/State/MPC_WorldState']"
+  ],
+  "counts": {
+    "PASS": 12,
+    "WARN": 0,
+    "WARN_ONLY": 1,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "warn",
+  "meta": {
+    "command": "validate-conversion-audit",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "153dbdfcf797c1878cebe5eee750afd29abd925c",
+    "timestamp": "2026-07-14T20:47:10.986312+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.conversion_audit_gate.v1",
+    "report_id": "wf.transition.conversion_audit_gate.v1:22de84962020",
+    "status": "warn",
+    "failure_count": 0,
+    "warning_count": 1,
+    "skipped_count": 0,
+    "record_count": 13,
+    "records_total": 13,
+    "records_passed": 13,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "153dbdfcf797c1878cebe5eee750afd29abd925c",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "3262cccbb35c:WorldForge-v251",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": false,
+    "runtime_executed": false,
+    "repository_identifier": "a805848229ff",
+    "worktree_identifier": "3262cccbb35c:WorldForge-v251",
+    "manifest_path": "procedural/manifests/ue5_8_conversion/canonical_conversion_manifest.json",
+    "package_count": 178,
+    "counts_by_label": {
+      "unchanged": 2,
+      "package_version_changed": 0,
+      "actor_graph_changed": 0,
+      "engine_resave_only": 176,
+      "unclassified": 0
+    },
+    "unclassified_packages": [],
+    "unaccounted_deletions": [],
+    "actor_loss_packages": [],
+    "labels_refused_as_undecidable": [
+      "metadata_only_changed",
+      "plugin_class_restored",
+      "reference_graph_changed",
+      "serialized_content_changed"
+    ]
+  }
+}
