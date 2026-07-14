@@ -1,0 +1,1255 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "regression::harness_spec_bounded": {
+      "ok": true,
+      "detail": "harness spec must be bounded/unique/non-empty",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::field::report_id": {
+      "ok": true,
+      "detail": "required field 'report_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::field::engine_minor": {
+      "ok": true,
+      "detail": "required field 'engine_minor' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::field::suites": {
+      "ok": true,
+      "detail": "required field 'suites' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::field::maps_checked": {
+      "ok": true,
+      "detail": "required field 'maps_checked' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::field::maps_loaded": {
+      "ok": true,
+      "detail": "required field 'maps_loaded' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::field::diffs": {
+      "ok": true,
+      "detail": "required field 'diffs' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::field::regression_free": {
+      "ok": true,
+      "detail": "required field 'regression_free' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::field::schema_version": {
+      "ok": true,
+      "detail": "required field 'schema_version' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::type::report_id": {
+      "ok": true,
+      "detail": "report_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::report_id_nonempty": {
+      "ok": true,
+      "detail": "report_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::engine_minor_target": {
+      "ok": true,
+      "detail": "regression must run on the target engine (engine_minor=8, got 8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::suites_nonempty_str_list": {
+      "ok": true,
+      "detail": "suites must be a non-empty list of shield names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::number::maps_checked": {
+      "ok": true,
+      "detail": "maps_checked=124 is >0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::maps_checked_integer": {
+      "ok": true,
+      "detail": "maps_checked must be an integer (got 124)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::number::maps_loaded": {
+      "ok": true,
+      "detail": "maps_loaded=124 is >0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::maps_loaded_integer": {
+      "ok": true,
+      "detail": "maps_loaded must be an integer (got 124)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::diffs_list": {
+      "ok": true,
+      "detail": "diffs must be a list (may be empty)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[0]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[1]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[2]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[3]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[4]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[5]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[6]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[7]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[8]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[9]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[10]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[11]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[12]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[13]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[14]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[15]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[16]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[17]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[18]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[19]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[20]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[21]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[22]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[23]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[24]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[25]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[26]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[27]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[28]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[29]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[30]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[31]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[32]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[33]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[34]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[35]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[36]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[37]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[38]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[39]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[40]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[41]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[42]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[43]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[44]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[45]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[46]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[47]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[48]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[49]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[50]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[51]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[52]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[53]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[54]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[55]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[56]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[57]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[58]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[59]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[60]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[61]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[62]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[63]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[64]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[65]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[66]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[67]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[68]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[69]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[70]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[71]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[72]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[73]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[74]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[75]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[76]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[77]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[78]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[79]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[80]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[81]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[82]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[83]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[84]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[85]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[86]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[87]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[88]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[89]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[90]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[91]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[92]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[93]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[94]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[95]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[96]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[97]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[98]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[99]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[100]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[101]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[102]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[103]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[104]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[105]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[106]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[107]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[108]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[109]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[110]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[111]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[112]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[113]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[114]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[115]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[116]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[117]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[118]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[119]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[120]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[121]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[122]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::[123]::class_known": {
+      "ok": true,
+      "detail": "diff classification must be in ('clean', 'expected_engine_diff', 'unclassified', 'worldforge_regression') (got 'clean')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::regression_free_bool": {
+      "ok": true,
+      "detail": "regression_free must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::free_implies_all_loaded": {
+      "ok": true,
+      "detail": "regression_free=True but only 124/124 maps loaded",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::free_implies_classified": {
+      "ok": true,
+      "detail": "regression_free=True but an unclassified diff remains",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::free_implies_no_regression": {
+      "ok": true,
+      "detail": "regression_free=True but a worldforge_regression diff is present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "payload::rg::schema_version": {
+      "ok": true,
+      "detail": "schema_version must be 'wf.transition.regression_report.v1' (got 'wf.transition.regression_report.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "regression::runtime_executed": {
+      "ok": true,
+      "detail": "runtime_executed must be True (real UE 5.8 run)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "regression::regression_free": {
+      "ok": true,
+      "detail": "an unexplained worldforge_regression diff is present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 150,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "transition-regression",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "03583aac0f973b39f9acd8100a95e28f7781a21d",
+    "timestamp": "2026-07-14T19:12:41.887184+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.regression_report.v1",
+    "report_id": "wf.transition.regression_report.v1:04b4b4417f63",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 124,
+    "records_total": 124,
+    "records_passed": 124,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "03583aac0f973b39f9acd8100a95e28f7781a21d",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "731a1b255046:WorldForge-UE58",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": 8,
+    "runtime_execution_required": true,
+    "runtime_executed": true
+  }
+}

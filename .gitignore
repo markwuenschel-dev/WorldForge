@@ -89,6 +89,16 @@ Saved/Crashes/
 # Third-party engine plugins may be installed locally for development,
 # but are not part of the WorldForge source payload unless explicitly
 # added by a dedicated feature PR with validation gates.
+#
+# v2.5 addendum — EXCEPTION, deliberate and gated: `Plugins/5.8/` (Houdini
+# Engine / Niagara / LiveLink, H21.0.753 builds for UE 5.8) IS tracked. The
+# UE 5.8 uproject marks HoudiniNiagara required (not Optional), so a clean
+# checkout must carry the plugin source or the project will not load. Only
+# Source/Content/Config/Resources are tracked; `Plugins/**/Binaries/` and
+# `Plugins/**/Intermediate/` above still exclude ~190MB of build output, which
+# UE regenerates. NOTE: Houdini Engine additionally requires a local Houdini
+# install (HAPI) at runtime — the tracked payload alone is not self-contained.
+# Covered by the v2.5 capability manifest. The 5.7-era paths below stay ignored.
 Plugins/HoudiniEngine/
 Plugins/HoudiniNiagara/
 Plugins/HoudiniLiveLink/

@@ -1,0 +1,306 @@
+{
+  "suite": "transition_known_bads",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "kb::absolute_path_leak_conversion::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::absolute_path_leak_conversion::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1015_CONVERSION_MANIFEST_INCOMPLETE (got ['WF1015_CONVERSION_MANIFEST_INCOMPLETE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::actor_count_silent_decrease::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::actor_count_silent_decrease::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1014_CONVERSION_ACTOR_LOSS (got ['WF1014_CONVERSION_ACTOR_LOSS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::baseline_references_stale_report::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::baseline_references_stale_report::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1033_EVIDENCE_COPIED_FROM_OLD_ENGINE (got ['WF1033_EVIDENCE_COPIED_FROM_OLD_ENGINE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binary_churn_not_in_manifest::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binary_churn_not_in_manifest::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1016_CONVERSION_UNEXPECTED_CHURN (got ['WF1016_CONVERSION_UNEXPECTED_CHURN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::bridge_foreign_evidence_abs_path::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::bridge_foreign_evidence_abs_path::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1029_BRIDGE_ABSOLUTE_PATH_LEAK (got ['WF1029_BRIDGE_ABSOLUTE_PATH_LEAK'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::missing_conversion_asset::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::missing_conversion_asset::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1015_CONVERSION_MANIFEST_INCOMPLETE (got ['WF1015_CONVERSION_MANIFEST_INCOMPLETE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::plugin_dll_predates_source::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::plugin_dll_predates_source::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1019_STALE_PLUGIN_BINARY (got ['WF1019_STALE_PLUGIN_BINARY'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::required_capability_unavailable::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::required_capability_unavailable::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1011_CAPABILITY_UNAVAILABLE (got ['WF1011_CAPABILITY_UNAVAILABLE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::runtime_free_mislabeled_as_5_8::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::runtime_free_mislabeled_as_5_8::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1033_EVIDENCE_COPIED_FROM_OLD_ENGINE (got ['WF1033_EVIDENCE_COPIED_FROM_OLD_ENGINE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::stale_plugin_dll::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::stale_plugin_dll::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1019_STALE_PLUGIN_BINARY (got ['WF1019_STALE_PLUGIN_BINARY'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::success_exit_missing_evidence::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::success_exit_missing_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1028_BRIDGE_EMPTY_EVIDENCE (got ['WF1028_BRIDGE_EMPTY_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::ue57_report_in_ue58_baseline::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::ue57_report_in_ue58_baseline::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1032_EVIDENCE_5_7_CONTAMINATION (got ['WF1031_EVIDENCE_ENGINE_MISMATCH', 'WF1032_EVIDENCE_5_7_CONTAMINATION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::unknown_regression_classification::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::unknown_regression_classification::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1021_REGRESSION_UNCLASSIFIED_DIFF (got ['WF1021_REGRESSION_UNCLASSIFIED_DIFF'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::wrong_engine_identity::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::wrong_engine_identity::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1013_ENGINE_VERSION_MISMATCH (got ['WF1013_ENGINE_VERSION_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::wrong_map_opened::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::wrong_map_opened::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1027_BRIDGE_MAP_MISSING (got ['WF1027_BRIDGE_MAP_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::wrong_project_opened::rejected": {
+      "ok": true,
+      "detail": "on-disk known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::wrong_project_opened::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1024_BRIDGE_WRONG_PROJECT (got ['WF1024_BRIDGE_WRONG_PROJECT'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::catalogue_nonempty": {
+      "ok": true,
+      "detail": "known-bad catalogue must carry >= 16 fixtures (got 16)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 33,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "transition-known-bads",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "03583aac0f973b39f9acd8100a95e28f7781a21d",
+    "timestamp": "2026-07-14T19:12:42.652881+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.known_bads.v1",
+    "report_id": "wf.transition.known_bads.v1:506d1ec253ee",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 16,
+    "records_total": 16,
+    "records_passed": 16,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

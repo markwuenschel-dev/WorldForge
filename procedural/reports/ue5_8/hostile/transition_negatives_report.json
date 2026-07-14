@@ -1,0 +1,594 @@
+{
+  "suite": "transition_negatives",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "contract::EngineIdentity::known_bad_rejected": {
+      "ok": true,
+      "detail": "contract known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::EngineIdentity::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1013_ENGINE_VERSION_MISMATCH (got ['WF1013_ENGINE_VERSION_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::EngineIdentity::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::CapabilityManifest::known_bad_rejected": {
+      "ok": true,
+      "detail": "contract known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::CapabilityManifest::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1011_CAPABILITY_UNAVAILABLE (got ['WF1011_CAPABILITY_UNAVAILABLE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::CapabilityManifest::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::ConversionManifest::known_bad_rejected": {
+      "ok": true,
+      "detail": "contract known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::ConversionManifest::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1014_CONVERSION_ACTOR_LOSS (got ['WF1014_CONVERSION_ACTOR_LOSS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::ConversionManifest::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::PluginBuildReport::known_bad_rejected": {
+      "ok": true,
+      "detail": "contract known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::PluginBuildReport::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1017_BUILD_FAILED (got ['WF1017_BUILD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::PluginBuildReport::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::TransitionRegressionReport::known_bad_rejected": {
+      "ok": true,
+      "detail": "contract known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::TransitionRegressionReport::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1022_REGRESSION_WORLDFORGE_REGRESSION (got ['WF1022_REGRESSION_WORLDFORGE_REGRESSION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::TransitionRegressionReport::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::GloamBridgeProbe::known_bad_rejected": {
+      "ok": true,
+      "detail": "contract known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::GloamBridgeProbe::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1025_BRIDGE_ABSENT_PLUGIN (got ['WF1025_BRIDGE_ABSENT_PLUGIN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::GloamBridgeProbe::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::TransitionBaseline::known_bad_rejected": {
+      "ok": true,
+      "detail": "contract known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::TransitionBaseline::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1032_EVIDENCE_5_7_CONTAMINATION (got ['WF1031_EVIDENCE_ENGINE_MISMATCH', 'WF1032_EVIDENCE_5_7_CONTAMINATION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "contract::TransitionBaseline::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1011_capability_unavailable::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1011_capability_unavailable::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1011_CAPABILITY_UNAVAILABLE (got ['WF1011_CAPABILITY_UNAVAILABLE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1012_capability_version_mismatch::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1012_capability_version_mismatch::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1012_CAPABILITY_VERSION_MISMATCH (got ['WF1012_CAPABILITY_VERSION_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1013_engine_version_mismatch::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1013_engine_version_mismatch::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1013_ENGINE_VERSION_MISMATCH (got ['WF1013_ENGINE_VERSION_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1014_conversion_actor_loss::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1014_conversion_actor_loss::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1014_CONVERSION_ACTOR_LOSS (got ['WF1014_CONVERSION_ACTOR_LOSS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1015_conversion_manifest_incomplete::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1015_conversion_manifest_incomplete::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1015_CONVERSION_MANIFEST_INCOMPLETE (got ['WF1015_CONVERSION_MANIFEST_INCOMPLETE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1016_conversion_unexpected_churn::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1016_conversion_unexpected_churn::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1016_CONVERSION_UNEXPECTED_CHURN (got ['WF1016_CONVERSION_UNEXPECTED_CHURN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1017_build_failed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1017_build_failed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1017_BUILD_FAILED (got ['WF1017_BUILD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1018_plugin_load_failed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1018_plugin_load_failed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1018_PLUGIN_LOAD_FAILED (got ['WF1018_PLUGIN_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1019_stale_plugin_binary::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1019_stale_plugin_binary::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1019_STALE_PLUGIN_BINARY (got ['WF1019_STALE_PLUGIN_BINARY'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1020_map_load_failed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1020_map_load_failed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1020_MAP_LOAD_FAILED (got ['WF1020_MAP_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1021_regression_unclassified_diff::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1021_regression_unclassified_diff::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1021_REGRESSION_UNCLASSIFIED_DIFF (got ['WF1021_REGRESSION_UNCLASSIFIED_DIFF'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1022_regression_worldforge_regression::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1022_regression_worldforge_regression::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1022_REGRESSION_WORLDFORGE_REGRESSION (got ['WF1022_REGRESSION_WORLDFORGE_REGRESSION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1023_bridge_wrong_engine::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1023_bridge_wrong_engine::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1023_BRIDGE_WRONG_ENGINE (got ['WF1023_BRIDGE_WRONG_ENGINE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1024_bridge_wrong_project::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1024_bridge_wrong_project::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1024_BRIDGE_WRONG_PROJECT (got ['WF1024_BRIDGE_WRONG_PROJECT'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1025_bridge_absent_plugin::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1025_bridge_absent_plugin::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1025_BRIDGE_ABSENT_PLUGIN (got ['WF1025_BRIDGE_ABSENT_PLUGIN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1026_bridge_stale_plugin::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1026_bridge_stale_plugin::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1026_BRIDGE_STALE_PLUGIN (got ['WF1026_BRIDGE_STALE_PLUGIN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1027_bridge_map_missing::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1027_bridge_map_missing::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1027_BRIDGE_MAP_MISSING (got ['WF1027_BRIDGE_MAP_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1028_bridge_empty_evidence::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1028_bridge_empty_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1028_BRIDGE_EMPTY_EVIDENCE (got ['WF1028_BRIDGE_EMPTY_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1029_bridge_absolute_path_leak::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1029_bridge_absolute_path_leak::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1029_BRIDGE_ABSOLUTE_PATH_LEAK (got ['WF1029_BRIDGE_ABSOLUTE_PATH_LEAK'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1030_bridge_operation_id_mismatch::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1030_bridge_operation_id_mismatch::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1030_BRIDGE_OPERATION_ID_MISMATCH (got ['WF1030_BRIDGE_OPERATION_ID_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1031_evidence_engine_mismatch::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1031_evidence_engine_mismatch::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1031_EVIDENCE_ENGINE_MISMATCH (got ['WF1031_EVIDENCE_ENGINE_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1032_evidence_5_7_contamination::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1032_evidence_5_7_contamination::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1032_EVIDENCE_5_7_CONTAMINATION (got ['WF1031_EVIDENCE_ENGINE_MISMATCH', 'WF1032_EVIDENCE_5_7_CONTAMINATION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1033_evidence_copied_from_old_engine::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::WF1033_evidence_copied_from_old_engine::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1033_EVIDENCE_COPIED_FROM_OLD_ENGINE (got ['WF1033_EVIDENCE_COPIED_FROM_OLD_ENGINE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::band_coverage_complete": {
+      "ok": true,
+      "detail": "WF1011-1033 codes with no owning known-bad: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::suite_nonempty": {
+      "ok": true,
+      "detail": "negative suite must carry >= 23 owning fixtures (got 23)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 69,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "transition-negatives",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "03583aac0f973b39f9acd8100a95e28f7781a21d",
+    "timestamp": "2026-07-14T19:12:42.252335+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.negatives.v1",
+    "report_id": "wf.transition.negatives.v1:1784085945d5",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 23,
+    "records_total": 23,
+    "records_passed": 23,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,343 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::valid_report_passes": {
+      "ok": true,
+      "detail": "valid PluginBuildReport rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::neg::wrong_engine": {
+      "ok": true,
+      "detail": "negative wrong_engine must be rejected for ENGINE_VERSION_MISMATCH (got ['WF1013_ENGINE_VERSION_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::neg::build_failed_but_ok": {
+      "ok": true,
+      "detail": "negative build_failed_but_ok must be rejected for BUILD_FAILED (got ['WF1017_BUILD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::neg::module_not_loaded": {
+      "ok": true,
+      "detail": "negative module_not_loaded must be rejected for PLUGIN_LOAD_FAILED (got ['WF1018_PLUGIN_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::neg::binary_predates_source": {
+      "ok": true,
+      "detail": "negative binary_predates_source must be rejected for STALE_PLUGIN_BINARY (got ['WF1019_STALE_PLUGIN_BINARY'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::neg::missing_module": {
+      "ok": true,
+      "detail": "negative missing_module must be rejected for BUILD_FAILED (got ['WF1017_BUILD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::field::report_id": {
+      "ok": true,
+      "detail": "required field 'report_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::field::plugin_name": {
+      "ok": true,
+      "detail": "required field 'plugin_name' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::field::target_engine": {
+      "ok": true,
+      "detail": "required field 'target_engine' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::field::build_result": {
+      "ok": true,
+      "detail": "required field 'build_result' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::field::plugin_loaded": {
+      "ok": true,
+      "detail": "required field 'plugin_loaded' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::field::overall_ok": {
+      "ok": true,
+      "detail": "required field 'overall_ok' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::field::binary_mtime": {
+      "ok": true,
+      "detail": "required field 'binary_mtime' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::field::newest_source_mtime": {
+      "ok": true,
+      "detail": "required field 'newest_source_mtime' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::field::modules": {
+      "ok": true,
+      "detail": "required field 'modules' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::field::schema_version": {
+      "ok": true,
+      "detail": "required field 'schema_version' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::type::report_id": {
+      "ok": true,
+      "detail": "report_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::report_id_nonempty": {
+      "ok": true,
+      "detail": "report_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::type::plugin_name": {
+      "ok": true,
+      "detail": "plugin_name is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::plugin_name_nonempty": {
+      "ok": true,
+      "detail": "plugin_name must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::target_engine": {
+      "ok": true,
+      "detail": "target_engine must be '5.8'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::enum::build_result": {
+      "ok": true,
+      "detail": "build_result='succeeded' is a known value",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::plugin_loaded_bool": {
+      "ok": true,
+      "detail": "plugin_loaded must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::overall_ok_bool": {
+      "ok": true,
+      "detail": "overall_ok must be an explicit boolean (got True)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::modules_nonempty_str_list": {
+      "ok": true,
+      "detail": "modules must be a non-empty list of module-name strings",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::binary_mtime_epoch": {
+      "ok": true,
+      "detail": "binary_mtime must be a non-negative epoch number (got 1783979902.332546)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::newest_source_mtime_epoch": {
+      "ok": true,
+      "detail": "newest_source_mtime must be a non-negative epoch number (got 1783979730.7847753)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::ok_implies_built": {
+      "ok": true,
+      "detail": "overall_ok=True but build_result='succeeded'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::ok_implies_loaded": {
+      "ok": true,
+      "detail": "overall_ok=True but plugin_loaded is not True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::binary_not_stale": {
+      "ok": true,
+      "detail": "overall_ok=True but binary_mtime 1783979902.332546 < newest_source_mtime 1783979730.7847753 (stale)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin_build::pb::schema_version": {
+      "ok": true,
+      "detail": "schema_version must be 'wf.transition.plugin_build_report.v1' (got 'wf.transition.plugin_build_report.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin::engine_is_5_8": {
+      "ok": true,
+      "detail": "engine identity must resolve to 5.8 (got 8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin::modules_loaded": {
+      "ok": true,
+      "detail": "required modules must load from fresh binaries: ['WorldForgeCore', 'WorldForgeEd']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin::not_stale": {
+      "ok": true,
+      "detail": "binaries must not predate newest C++ source (stale)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "plugin::overall_ok": {
+      "ok": true,
+      "detail": "plugin build+load overall_ok must be True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 36,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "plugin-build",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "03583aac0f973b39f9acd8100a95e28f7781a21d",
+    "timestamp": "2026-07-14T19:12:41.587673+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.plugin_build_gate.v1",
+    "report_id": "wf.transition.plugin_build_gate.v1:62e404a572d2",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 0,
+    "records_total": 0,
+    "records_passed": 0,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "03583aac0f973b39f9acd8100a95e28f7781a21d",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "731a1b255046:WorldForge-UE58",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "explicit engine_root argument; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": 8,
+    "runtime_execution_required": true,
+    "runtime_executed": true
+  }
+}

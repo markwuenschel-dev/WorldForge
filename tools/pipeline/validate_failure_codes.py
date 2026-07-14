@@ -28,7 +28,7 @@ from validation_report import ValidationReport, strict_from_env
 REPO_ROOT = Path(__file__).resolve().parents[2]
 REPORT_DIR = REPO_ROOT / "procedural" / "reports" / "failure_codes"
 
-_CODE_RE = re.compile(r"^WF\d{3}_[A-Z0-9_]+$")
+_CODE_RE = re.compile(r"^WF\d{3,4}_[A-Z0-9_]+$")  # 3-digit + v2.5 4-digit transition band
 
 # Spot-check anchors: at least one code from each v1.5 band must exist.
 V1_5_ANCHORS = (

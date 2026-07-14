@@ -1,0 +1,113 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::ConversionManifest::valid_example_passes": {
+      "ok": true,
+      "detail": "canonical valid manifest rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::ConversionManifest::actor_loss_rejected": {
+      "ok": true,
+      "detail": "actor-loss known-bad must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::ConversionManifest::rejected_for_actor_loss": {
+      "ok": true,
+      "detail": "actor-loss known-bad must be rejected for WF1014_CONVERSION_ACTOR_LOSS (got ['WF1014_CONVERSION_ACTOR_LOSS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "conversion::authoritative_manifest_present": {
+      "ok": true,
+      "detail": "authoritative conversion not yet performed: expected procedural/manifests/ue5_8_conversion/conversion_manifest.json (commander's serial UE 5.8 resave job). The pre-conversion inventory is NOT a substitute.",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "conversion::authoritative_manifest_parses": {
+      "ok": true,
+      "detail": "parsed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "conversion::marked_complete": {
+      "ok": true,
+      "detail": "authoritative manifest conversion_status must be 'complete' (got 'complete')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "conversion::authoritative_manifest_valid": {
+      "ok": true,
+      "detail": "authoritative manifest fails ConversionManifest contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 7,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-conversion-manifest",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "03583aac0f973b39f9acd8100a95e28f7781a21d",
+    "timestamp": "2026-07-14T19:12:41.436077+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.conversion_gate.v1",
+    "report_id": "wf.transition.conversion_gate.v1:71ba6a95aec0",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 7,
+    "records_total": 7,
+    "records_passed": 7,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "03583aac0f973b39f9acd8100a95e28f7781a21d",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "731a1b255046:WorldForge-UE58",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": false,
+    "runtime_executed": false,
+    "authoritative_manifest_path": "procedural/manifests/ue5_8_conversion/conversion_manifest.json",
+    "completeness_flag": "conversion_status=complete"
+  }
+}

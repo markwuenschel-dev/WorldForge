@@ -1,0 +1,177 @@
+{
+  "gate": "engine_identity",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::EngineIdentity::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::EngineIdentity::known_bad_rejected": {
+      "ok": true,
+      "detail": "EngineIdentity known-bad must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::EngineIdentity::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "EngineIdentity known-bad must be rejected for WF1013_ENGINE_VERSION_MISMATCH (got ['WF1013_ENGINE_VERSION_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::EngineIdentity::live_block_passes": {
+      "ok": true,
+      "detail": "live engine_identity block rejected by contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "convention::real_runtime_free_meta_passes": {
+      "ok": true,
+      "detail": "honest runtime-free meta rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::declared_5_8_observed_5_7::rejected": {
+      "ok": true,
+      "detail": "known-bad convention meta must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::declared_5_8_observed_5_7::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1031_EVIDENCE_ENGINE_MISMATCH (got ['WF1031_EVIDENCE_ENGINE_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::required_but_observed_none::rejected": {
+      "ok": true,
+      "detail": "known-bad convention meta must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::required_but_observed_none::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1013_ENGINE_VERSION_MISMATCH (got ['WF1013_ENGINE_VERSION_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::free_but_pretends_executed::rejected": {
+      "ok": true,
+      "detail": "known-bad convention meta must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::free_but_pretends_executed::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1037_TRANSITION_HYGIENE_FAILED (got ['WF1037_TRANSITION_HYGIENE_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::abs_path_leak_in_identity::rejected": {
+      "ok": true,
+      "detail": "known-bad convention meta must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::abs_path_leak_in_identity::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1029_BRIDGE_ABSOLUTE_PATH_LEAK (got ['WF1029_BRIDGE_ABSOLUTE_PATH_LEAK', 'WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::wrong_worktree::rejected": {
+      "ok": true,
+      "detail": "known-bad convention meta must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::wrong_worktree::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 15,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-engine-identity",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "1fff2114eadd92a14ccc1986bff021f60d5cb115",
+    "timestamp": "2026-07-14T10:05:34.960513+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.engine_identity_gate.v1",
+    "report_id": "wf.transition.engine_identity_gate.v1:d0beecd4454b",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 15,
+    "records_total": 15,
+    "records_passed": 15,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "1fff2114eadd92a14ccc1986bff021f60d5cb115",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "731a1b255046:WorldForge-UE58",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": false,
+    "runtime_executed": false,
+    "repository_identifier": "a805848229ff",
+    "worktree_identifier": "731a1b255046:WorldForge-UE58"
+  }
+}

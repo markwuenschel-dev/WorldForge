@@ -1,0 +1,169 @@
+{
+  "gate": "track_isolation",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "iso::real::roots_distinct": {
+      "ok": true,
+      "detail": "the two tracks share a worktree root: d:/unreal projects/worldforge",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "iso::real::Saved_isolated": {
+      "ok": true,
+      "detail": "tracks share writable Saved dir: d:/unreal projects/worldforge/saved vs d:/unreal projects/worldforge-ue58/saved",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "iso::real::Intermediate_isolated": {
+      "ok": true,
+      "detail": "tracks share writable Intermediate dir: d:/unreal projects/worldforge/intermediate vs d:/unreal projects/worldforge-ue58/intermediate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "iso::real::Binaries_isolated": {
+      "ok": true,
+      "detail": "tracks share writable Binaries dir: d:/unreal projects/worldforge/binaries vs d:/unreal projects/worldforge-ue58/binaries",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "iso::real::DerivedDataCache_isolated": {
+      "ok": true,
+      "detail": "tracks share writable DerivedDataCache dir: d:/unreal projects/worldforge/deriveddatacache vs d:/unreal projects/worldforge-ue58/deriveddatacache",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "iso::report_subtrees_disjoint": {
+      "ok": true,
+      "detail": "ue5_7 and ue5_8 report subtrees overlap: d:/unreal projects/worldforge-ue58/procedural/reports/ue5_7 vs d:/unreal projects/worldforge-ue58/procedural/reports/ue5_8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "iso::track_5_7_worktree_present": {
+      "ok": true,
+      "detail": "frozen 5.7 worktree missing at D:\\Unreal Projects\\WorldForge",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "iso::track_5_8_worktree_present": {
+      "ok": true,
+      "detail": "active 5.8 worktree missing at D:\\Unreal Projects\\WorldForge-UE58",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "preservation::branch_present": {
+      "ok": true,
+      "detail": "preservation branch release/ue5.7-v2.4-lts exists",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "preservation::tag_present": {
+      "ok": true,
+      "detail": "preservation tag worldforge-v2.4-ue5.7-final exists",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::shared_writable_dirs_rejected": {
+      "ok": true,
+      "detail": "a shared writable Saved/Intermediate/Binaries path must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::shared_writable_owning_code": {
+      "ok": true,
+      "detail": "shared-writable negative must be rejected for WF1037_TRANSITION_HYGIENE_FAILED (got ['WF1037_TRANSITION_HYGIENE_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::wrong_worktree_report_rejected": {
+      "ok": true,
+      "detail": "a report from the wrong worktree must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::wrong_worktree_owning_code": {
+      "ok": true,
+      "detail": "wrong-worktree negative must be rejected for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 14,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-track-isolation",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "1fff2114eadd92a14ccc1986bff021f60d5cb115",
+    "timestamp": "2026-07-14T10:05:35.175866+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.track_isolation_gate.v1",
+    "report_id": "wf.transition.track_isolation_gate.v1:a32e7e32c7a3",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 14,
+    "records_total": 14,
+    "records_passed": 14,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "1fff2114eadd92a14ccc1986bff021f60d5cb115",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "731a1b255046:WorldForge-UE58",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": false,
+    "runtime_executed": false,
+    "repository_identifier": "a805848229ff",
+    "worktree_identifier": "731a1b255046:WorldForge-UE58"
+  }
+}

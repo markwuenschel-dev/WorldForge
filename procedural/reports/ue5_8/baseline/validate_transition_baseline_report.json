@@ -1,0 +1,847 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::valid_example_passes": {
+      "ok": true,
+      "detail": "valid baseline example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::registry_known_bad_rejected_for_owning_code": {
+      "ok": true,
+      "detail": "registry known-bad must be rejected for WF1032_EVIDENCE_5_7_CONTAMINATION (got ['WF1031_EVIDENCE_ENGINE_MISMATCH', 'WF1032_EVIDENCE_5_7_CONTAMINATION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::entry_engine_minor_not_8": {
+      "ok": true,
+      "detail": "known-bad 'entry_engine_minor_not_8' must be rejected for WF1031_EVIDENCE_ENGINE_MISMATCH (got ['WF1031_EVIDENCE_ENGINE_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::entry_path_under_ue5_7_tree": {
+      "ok": true,
+      "detail": "known-bad 'entry_path_under_ue5_7_tree' must be rejected for WF1033_EVIDENCE_COPIED_FROM_OLD_ENGINE (got ['WF1033_EVIDENCE_COPIED_FROM_OLD_ENGINE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::entry_count_mismatch": {
+      "ok": true,
+      "detail": "known-bad 'entry_count_mismatch' must be rejected for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad::entry_absolute_path": {
+      "ok": true,
+      "detail": "known-bad 'entry_absolute_path' must be rejected for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::baseline_exists": {
+      "ok": true,
+      "detail": "procedural\\reports\\ue5_8\\baseline\\baseline_index.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::baseline_parseable": {
+      "ok": true,
+      "detail": "parsed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::index_id": {
+      "ok": true,
+      "detail": "required field 'index_id' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::engine_minor": {
+      "ok": true,
+      "detail": "required field 'engine_minor' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::entries": {
+      "ok": true,
+      "detail": "required field 'entries' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::entry_count": {
+      "ok": true,
+      "detail": "required field 'entry_count' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::field::schema_version": {
+      "ok": true,
+      "detail": "required field 'schema_version' present",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::no_unknown_fields": {
+      "ok": true,
+      "detail": "no unknown fields",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::type::index_id": {
+      "ok": true,
+      "detail": "index_id is str",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::index_id_nonempty": {
+      "ok": true,
+      "detail": "index_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::engine_minor_8": {
+      "ok": true,
+      "detail": "baseline engine_minor must be 8 (got 8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::entries_nonempty": {
+      "ok": true,
+      "detail": "entries must be a non-empty list",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[0]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[0]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[0]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[0]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[0]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[0]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/ci/transition_ci_summary_ue5_8.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[0]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/ci/transition_ci_summary_ue5_8.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[1]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[1]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[1]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[1]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[1]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[1]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/plugin/validate_plugin_build_report.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[1]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/plugin/validate_plugin_build_report.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[2]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[2]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[2]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[2]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[2]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[2]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/regression/transition_regression_gate_report.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[2]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/regression/transition_regression_gate_report.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[3]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[3]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[3]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[3]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[3]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[3]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/regression/transition_regression_report.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[3]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/regression/transition_regression_report.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[4]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[4]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[4]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[4]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[4]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[4]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/regression/validate_transition_regression_report.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[4]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/regression/validate_transition_regression_report.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[5]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[5]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[5]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[5]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[5]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[5]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/validate_capability_manifest_report.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[5]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/validate_capability_manifest_report.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[6]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[6]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[6]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[6]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[6]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[6]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/validate_conversion_manifest_report.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[6]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/validate_conversion_manifest_report.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[7]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[7]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[7]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[7]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[7]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[7]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/validate_engine_identity_report.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[7]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/validate_engine_identity_report.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[8]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[8]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[8]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[8]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[8]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[8]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/validate_track_isolation_report.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[8]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/validate_track_isolation_report.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[9]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[9]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[9]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[9]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[9]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[9]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/validate_transition_contracts_report.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[9]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/validate_transition_contracts_report.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[10]::report_path_present": {
+      "ok": true,
+      "detail": "entry missing report_path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[10]::engine_minor_present": {
+      "ok": true,
+      "detail": "entry missing engine_minor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[10]::report_type_present": {
+      "ok": true,
+      "detail": "entry missing report_type",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[10]::engine_matches_index": {
+      "ok": true,
+      "detail": "entry engine_minor 8 != baseline 8",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[10]::not_5_7_tagged": {
+      "ok": true,
+      "detail": "5.8 baseline contaminated with a 5.7-tagged report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[10]::path_rel": {
+      "ok": true,
+      "detail": "report_path must be relative (got 'procedural/reports/ue5_8/validate_transition_topology_report.json')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::[10]::not_from_ue5_7_tree": {
+      "ok": true,
+      "detail": "baseline entry copied from the ue5_7 evidence tree: 'procedural/reports/ue5_8/validate_transition_topology_report.json'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::number::entry_count": {
+      "ok": true,
+      "detail": "entry_count=11 is >0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::entry_count_integer": {
+      "ok": true,
+      "detail": "entry_count must be an integer (got 11)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::count_matches": {
+      "ok": true,
+      "detail": "entry_count 11 != len(entries) 11",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "present::bl::schema_version": {
+      "ok": true,
+      "detail": "schema_version must be 'wf.transition.baseline_index.v1' (got 'wf.transition.baseline_index.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 99,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-transition-baseline",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "03583aac0f973b39f9acd8100a95e28f7781a21d",
+    "timestamp": "2026-07-14T19:12:42.016984+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.baseline_validate.v1",
+    "report_id": "wf.transition.baseline_validate.v1:24c2990c1034",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 99,
+    "records_total": 99,
+    "records_passed": 99,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "03583aac0f973b39f9acd8100a95e28f7781a21d",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "731a1b255046:WorldForge-UE58",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": null,
+    "runtime_execution_required": true,
+    "runtime_executed": false
+  }
+}
