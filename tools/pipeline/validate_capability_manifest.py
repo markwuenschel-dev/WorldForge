@@ -23,6 +23,7 @@ Acceptance: PYTHONUTF8=1 STRICT=1 python tools/pipeline/validate_capability_mani
 """
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
@@ -52,6 +53,48 @@ def _present(rel):
     return (UE58_ROOT / rel).exists()
 
 
+# v2.5: Houdini plugin payload tracked IN-REPO under Plugins/5.8/ (see .gitignore
+# addendum). These anchors are repo-relative, not engine-relative: the uproject marks
+# HoudiniNiagara required (not Optional), so a clean checkout MUST carry the source or
+# the project will not load. Missing payload -> available=False -> WF1011.
+_REPO_ANCHORS = {
+    "HoudiniNiagara": "Plugins/5.8/HoudiniNiagara/HoudiniNiagara.uplugin",
+    "HoudiniEngine": "Plugins/5.8/HoudiniEngine/HoudiniEngine.uplugin",
+}
+
+
+def _repo_present(rel):
+    return (REPO_ROOT / rel).exists()
+
+
+def _uplugin_version(rel):
+    """Read VersionName out of a .uplugin, or None when the payload is absent."""
+    p = REPO_ROOT / rel
+    if not p.is_file():
+        return None
+    try:
+        return json.loads(p.read_text(encoding="utf-8")).get("VersionName")
+    except (ValueError, OSError):
+        return None
+
+
+def _uproject_requires(plugin_name):
+    """True when the uproject enables plugin_name WITHOUT Optional=true.
+
+    This is the honesty link: the capability manifest's `required` flag is derived
+    from the uproject itself rather than asserted, so flipping Optional back on can
+    never silently disagree with the declared capability.
+    """
+    try:
+        data = json.loads((REPO_ROOT / "WorldForge.uproject").read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        return False
+    for entry in data.get("Plugins", []):
+        if entry.get("Name") == plugin_name:
+            return bool(entry.get("Enabled")) and not entry.get("Optional", False)
+    return False
+
+
 def build_real_manifest():
     """Author the REAL declared 5.8 capability manifest with disk-verified entries."""
     caps = [
@@ -76,6 +119,25 @@ def build_real_manifest():
          "required_version": "2.5.0", "actual_version": None,
          "availability_state": "declared_pending_lane1",
          "note": "pending Lane 1 load handshake; NOT proven available by Lane 2"},
+        # Houdini payload tracked in-repo (v2.5). `required` is READ FROM the uproject,
+        # not asserted, so the manifest cannot drift from the Optional flag.
+        {"capability_id": "HoudiniNiagara", "kind": "plugin_module",
+         "required": _uproject_requires("HoudiniNiagara"),
+         "available": _repo_present(_REPO_ANCHORS["HoudiniNiagara"]),
+         "required_version": "2.6.0",
+         "actual_version": _uplugin_version(_REPO_ANCHORS["HoudiniNiagara"]),
+         "verified_on_disk": _REPO_ANCHORS["HoudiniNiagara"],
+         "note": "uproject-required for 5.8; payload tracked under Plugins/5.8/"},
+        # HoudiniEngine is NOT enabled in the uproject — present but not required.
+        # Needs a local Houdini (HAPI) install at runtime; the tracked source alone
+        # is not self-contained, so it is never claimed proven-available here.
+        {"capability_id": "HoudiniEngine", "kind": "plugin_module",
+         "required": _uproject_requires("HoudiniEngine"),
+         "available": _repo_present(_REPO_ANCHORS["HoudiniEngine"]),
+         "required_version": "3.0 - H21.0.753",
+         "actual_version": _uplugin_version(_REPO_ANCHORS["HoudiniEngine"]),
+         "verified_on_disk": _REPO_ANCHORS["HoudiniEngine"],
+         "note": "payload tracked; runtime additionally requires a local Houdini/HAPI install"},
     ]
     return {
         "manifest_id": "capman_ue58_transition_lane2",
