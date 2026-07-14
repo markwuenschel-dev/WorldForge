@@ -9,7 +9,7 @@
       "accounted_deletions": 0,
       "actors_after": 234,
       "actors_before": 234,
-      "churn_class": "asset_version_upgrade",
+      "churn_class": "expected_resave",
       "map_path": "Content/Maps/Desert_Valley_01.umap"
     },
     {
@@ -776,8 +776,8 @@
       "map_path": "Content/WorldForge/Maps/Forest_RollingWoodland_Scatter_Stylized_01.umap"
     },
     {
-      "accounted_deletions": 1,
-      "actors_after": 1,
+      "accounted_deletions": 0,
+      "actors_after": 2,
       "actors_before": 2,
       "churn_class": "asset_version_upgrade",
       "map_path": "Content/WorldForge/Maps/Untitled.umap"
@@ -870,11 +870,11 @@
       "accounted_deletions": 0,
       "actors_after": 1,
       "actors_before": 1,
-      "churn_class": "asset_version_upgrade",
+      "churn_class": "expected_resave",
       "map_path": "Content/WorldForge/Terrain/Terrain_AshFlats_01_Preview.umap"
     }
   ],
-  "notes": "5.7->5.8 authoritative resave (ResavePackages, 178 packages). All actor changes classified. Accounted deletions on ['Content/WorldForge/Maps/Untitled.umap']: HoudiniAssetActor sub-objects dropped because the Houdini* plugins are intentionally absent under 5.8 (deferred-Houdini posture; HoudiniNiagara marked Optional). Not a WorldForge runtime regression; explained + accounted, not silent loss.",
+  "notes": "5.7->5.8 authoritative resave (ResavePackages, 178 packages). All actor changes classified. Accounted deletions on none: HoudiniAssetActor sub-objects dropped because the Houdini* plugins are intentionally absent under 5.8 (deferred-Houdini posture; HoudiniNiagara marked Optional). Not a WorldForge runtime regression; explained + accounted, not silent loss.",
   "report_type": "wf.transition.conversion_manifest.v1",
   "schema_version": "wf.transition.conversion_manifest.v1",
   "source_engine": "5.7",

@@ -136,9 +136,19 @@ def _harness_spec_ok():
 EVIDENCE_DIR = REPO_ROOT / "procedural" / "evidence"
 RUNTIME_SMOKE = EVIDENCE_DIR / "ue5_8" / "runtime_smoke.json"
 CENSUS_57 = EVIDENCE_DIR / "ue5_7" / "census_ue57_authoritative.json"
-CENSUS_58_POST = EVIDENCE_DIR / "ue5_8" / "census_ue58_postresave.json"
-# The one map with a documented, accounted engine-diff (Houdini deferral; see Wave 5).
-_ACCOUNTED_ENGINE_DIFF = {"/Game/WorldForge/Maps/Untitled"}
+CENSUS_58_POST = EVIDENCE_DIR / "ue5_8" / "census_ue58_postresave_houdini.json"
+# No map carries an accounted engine-diff exemption any more.
+#
+# Wave 5 exempted Untitled.umap because its HoudiniAssetActor was dropped when the
+# Houdini plugins were absent under 5.8. That premise expired once the 5.8 Houdini
+# payload landed (Plugins/5.8, capability-gated): re-converting the 5.7 original with
+# Houdini loaded PRESERVES the actor (2 -> 2), so the loss was never engine
+# incompatibility — it was the resave running without the plugin. The census now shows
+# zero actor loss across all 124 maps and accounted_deletions=0 everywhere.
+#
+# Kept empty rather than deleted: a future exemption must be added deliberately, with
+# evidence. An unexplained actor drop classifies as worldforge_regression and goes RED.
+_ACCOUNTED_ENGINE_DIFF = frozenset()
 
 
 def _load_json(p):
