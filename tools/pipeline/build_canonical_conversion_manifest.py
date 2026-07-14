@@ -29,10 +29,21 @@ EVIDENCE, NOT ASSUMPTION
   frozen 5.7 tag (``worldforge-v2.4-ue5.7-final``), LFS-smudged; converted bytes come
   from the working tree.
 * source_package_version / converted_package_version — parsed from the real .uasset
-  package file summary (legacy / FileVersionUE4 / FileVersionUE5). This is what makes
-  the v2.5.1 classifier honest: UE 5.7 and UE 5.8 share FileVersionUE5=1018, so a
-  package resaved by 5.8 does NOT get a version bump, and calling it an
-  "asset_version_upgrade" was never earned.
+  package file summary. THREE independent kinds of version evidence, deliberately kept
+  separate because they answer different questions:
+    - CORE (legacy / FileVersionUE4 / FileVersionUE5): the serialisation format. Does
+      NOT move across 5.7->5.8 — both engines are FileVersionUE5=1018 (same last
+      ObjectVersion enum, IMPORT_TYPE_HIERARCHIES). So "asset_version_upgrade" was never
+      earned by any package, which is the v2.5 bug this file exists to disprove.
+    - CUSTOM (FCustomVersionContainer): per-subsystem bookkeeping. DOES move —
+      e.g. FFortniteMain 225->268, FUE5MainStream 121->123, FUE5Release 61->68.
+    - STAMP (saved_by_engine_branch): which engine actually wrote the bytes. The
+      primary evidence — cause, not effect. 2 DataAssets here carry a 5.7->5.8 stamp
+      with NO custom-version move, so keying "was this resaved by 5.8" off custom
+      versions would misclassify them.
+  Reading only CORE reports "no version change" and is technically true but misleading;
+  reading the whole dict as one blob fires a bogus version-change on every stamp move.
+  Consumers must compare the three separately.
 * actor_count — from the real UE censuses (maps only). Non-maps get None, not 0.
 * component_count / critical_references — NOT extractable without a loaded UWorld.
   Emitted as None with an explicit note rather than faked. A consumer that needs them
@@ -68,6 +79,12 @@ CENSUS_58 = REPO_ROOT / "procedural/evidence/ue5_8/census_ue58_postresave_houdin
 OUT = REPO_ROOT / "procedural/manifests/ue5_8_conversion/canonical_conversion_manifest.json"
 
 _UASSET_MAGIC = 0x9E2A83C1
+
+# EUnrealEngineObjectUE5Version::PACKAGE_SAVED_HASH, resolved from UE 5.8
+# Engine/Source/Runtime/Core/Public/UObject/ObjectVersion.h (INITIAL_VERSION=1000 + ordinal).
+# At or above this, the summary carries FIoHash SavedHash + int32 TotalHeaderSize before
+# the custom-version array. Our packages are 1018, so the block IS present.
+_PACKAGE_SAVED_HASH = 1016
 
 
 def package_path_for(repo_path):
@@ -118,18 +135,40 @@ def read_package_versions(raw):
         ue5 = struct.unpack_from("<i", raw, off + 4)[0]
         licensee = struct.unpack_from("<i", raw, off + 8)[0]
         off += 12
-        # FCustomVersionContainer: int32 count, then count x {FGuid(16), int32 version}
-        custom = {}
-        count = struct.unpack_from("<i", raw, off)[0]
-        off += 4
-        if 0 <= count <= 512:  # sanity bound; a real package has tens, not thousands
-            for _ in range(count):
-                guid = raw[off:off + 16].hex()
-                ver = struct.unpack_from("<i", raw, off + 16)[0]
-                custom[guid] = ver
-                off += 20
-        else:
-            custom = None  # unparseable -> UNKNOWN, never silently {}
+
+        # FPackageFileSummary serialisation order, per UE 5.8
+        # Engine/Source/Runtime/CoreUObject/Private/UObject/PackageFileSummary.cpp:176-184:
+        #
+        #     if (Sum.GetFileVersionUE() >= EUnrealEngineObjectUE5Version::PACKAGE_SAVED_HASH)
+        #     {
+        #         Record << SA_VALUE(TEXT("SavedHash"), Sum.SavedHash);          // FIoHash, 20B
+        #         Record << SA_VALUE(TEXT("TotalHeaderSize"), Sum.TotalHeaderSize); // int32
+        #     }
+        #     if (LegacyFileVersion <= -2) { Sum.CustomVersionContainer.Serialize(...); }
+        #
+        # An earlier revision read the custom-version count immediately after the licensee
+        # version, 24 bytes early — landing inside SavedHash. The count parsed as
+        # 0x5C149824, blew the sanity bound, and returned custom=None for EVERY package.
+        # The manifest then reported "custom versions changed: 0/178", which was a NULL
+        # being read as a ZERO: the true values do move (FFortniteMain 225->268,
+        # FUE5MainStream 121->123, FUE5Release 61->68). Certifying "no version change
+        # observed" off that would have been the mirror image of the v2.5 bug — v2.5
+        # claimed an upgrade that never happened; this would have denied one that did.
+        if ue5 >= _PACKAGE_SAVED_HASH:
+            off += 20 + 4  # FIoHash SavedHash + int32 TotalHeaderSize
+        custom = None
+        if legacy <= -2:
+            # legacy <= -5 => Optimized format: {FGuid(16), int32 version} per entry.
+            count = struct.unpack_from("<i", raw, off)[0]
+            off += 4
+            if 0 <= count <= 512:  # sanity bound; a real package carries tens
+                custom = {}
+                for _ in range(count):
+                    guid = raw[off:off + 16].hex()
+                    ver = struct.unpack_from("<i", raw, off + 16)[0]
+                    custom[guid] = ver
+                    off += 20
+            # else: leave None -> UNKNOWN. Never silently {}.
     except struct.error:
         return None
 
@@ -176,6 +215,25 @@ def _census_actor_counts(path):
     return out
 
 
+def _census_class_histograms(path):
+    """Per-map {class_name: count} from a census, for class-replacement evidence.
+
+    actor_count alone cannot see a class SWAP: 234 -> 234 with a HoudiniAssetActor
+    silently becoming a StaticMeshActor is invisible to a count comparison, and
+    "class replacement" is a real bin in the conversion brief. The censuses already
+    carry class_histogram; this surfaces it so the classifier can decide on evidence
+    instead of being structurally blind to it.
+    """
+    out = {}
+    try:
+        d = json.loads(Path(path).read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return out
+    for m in d.get("maps", []):
+        out[m.get("map")] = m.get("class_histogram")
+    return out
+
+
 def _asset_class(repo_path):
     """Asset taxonomy for a repo path, reusing build_conversion_manifest.classify()."""
     return _classify(repo_path, b"")
@@ -213,6 +271,8 @@ def _enumerate_repo_paths():
 def build():
     a57 = _census_actor_counts(CENSUS_57)
     a58 = _census_actor_counts(CENSUS_58)
+    h57 = _census_class_histograms(CENSUS_57)
+    h58 = _census_class_histograms(CENSUS_58)
 
     packages, skipped = [], []
     for repo_path in _enumerate_repo_paths():
@@ -244,6 +304,10 @@ def build():
             "converted_package_version": dv,
             "actor_count": {"source": a57.get(pkg), "converted": a58.get(pkg)}
                            if is_map else {"source": None, "converted": None},
+            # {class_name: count} both sides. Lets a class SWAP at equal actor count be
+            # seen; None for non-maps (no census), which means UNKNOWN, never "empty".
+            "actor_class_inventory": {"source": h57.get(pkg), "converted": h58.get(pkg)}
+                                     if is_map else {"source": None, "converted": None},
             # Honest nulls: no loaded UWorld here. None != zero.
             "component_count": None,
             "critical_references": None,
