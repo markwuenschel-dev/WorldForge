@@ -1,0 +1,20 @@
+WorldForge v2.5 — UE 5.8 one-time transition baseline AUTHORIZATION
+====================================================================
+
+Wave 8 (one-time full baseline) authorized by commander (Lane 0) on 2026-07-14.
+
+Preconditions verified before authorization:
+  * Plugin build + module load GREEN under UE 5.8 (Wave 1/2).
+  * Authoritative asset conversion complete (Wave 5), conversion-manifest GREEN.
+  * Runtime regression COMPLETED from real UE 5.8 evidence (Wave 6):
+      runtime_executed=True, regression_free=True, 124/124 maps loaded,
+      actor-spawn roundtrip smoke ok, per-map diffs classified from real
+      5.7 vs 5.8 census (1 accounted expected_engine_diff).
+  * WorldForge.uproject EngineAssociation flipped 5.7 -> 5.8 so engine_identity
+    resolves minor=8 natively (D:\UE_5.8); ue5_8 host reports regenerated to
+    carry meta.engine_minor==8 (no laundering of 5.7-tagged evidence).
+  * Hostile suite + report-integrity GREEN.
+
+This file is the Gate-1 authorization sentinel required by
+build_transition_baseline.py. Its presence, plus a completed regression report
+(Gate 2), permits the one-time baseline index build.

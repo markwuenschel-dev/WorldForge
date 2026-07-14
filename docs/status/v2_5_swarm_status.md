@@ -57,18 +57,26 @@ Last updated: 2026-07-13.
 | 1 | **DONE** | **UE 5.8 compile GREEN + load GREEN**: build#3 exit 0; headless boot loaded WorldForgeCore+WorldForgeEd from fresh 5.8 DLLs, engine-init reached; `--plugin` gate PASS (engine 5.8.0/55116800, plugin v0.1.0, not-stale, 5 negatives reject). Port = Target.cs V6→V7 + include 5.7→5.8 + HoudiniNiagara optional. | — | `procedural/reports/ue5_8/plugin/` |
 | 2 | READY_FOR_REVIEW | 4 gates GREEN (topology/capability/engine-identity/track-isolation); preservation refs `release/ue5.7-v2.4-lts` + tag EXIST | — | `procedural/reports/ue5_8/` |
 | 3 | READY_FOR_REVIEW | 179 assets/124 maps inventoried (hash 0a9b6987…); dogfood+audit GREEN; conversion gate honest-RED | authoritative conversion (Wave 5) | `procedural/manifests/ue5_8_conversion/pre_conversion_manifest.json` |
-| 4 | READY_FOR_REVIEW | regression+baseline validators dogfood GREEN (5/5,6/6); gates honest-RED; Wave-8 auth contract defined (AUTHORIZED file + completed regression) | serial UE runtime (Wave 6/8) | `procedural/reports/ue5_8/regression/` |
+| 4 | **DONE** | Wave 6 runtime smokes COMPLETED (real UE 5.8 evidence): regression `runtime_executed=True`, `regression_free=True`, 124/124 maps. Wave 8 one-time baseline BUILT (11 entries, all engine_minor==8, indexes the runtime regression). `transition-regression` + `transition-baseline` gates GREEN. | — | `procedural/reports/ue5_8/regression/`, `procedural/reports/ue5_8/baseline/` |
 
-**Commander integration TODO (post-lanes):** flip `WorldForge.uproject` EngineAssociation `5.7→5.8` on this branch (build proven) so `engine_identity()` resolves minor=8 natively; then regenerate host reports. Deferred to avoid churning in-flight lanes.
+**Commander integration TODO — DONE (2026-07-14):** `WorldForge.uproject` EngineAssociation flipped `5.7→5.8` (build proven) so `engine_identity()` resolves minor=8 natively against `D:\UE_5.8`; the 6 host reports still host-resolved to minor=7 were regenerated → 11 ue5_8 reports now carry `meta.engine_minor==8`. (The 5.7 CI summary legitimately stays minor=7 and is correctly excluded from the 5.8 baseline.)
 | 5 | READY_FOR_REVIEW | discover_unreal_engine + run_transition_ci GREEN (python-only exit 0); 5.7=51494982@5.7.4, 5.8=55116800@5.8.0; cache isolation proven; Makefile/CI blocks proposed for cmd | commander applies Makefile/CI | `procedural/reports/ue5_8/ci/` |
 | 6 | READY_FOR_REVIEW | **bridge gate GREEN** (--bridge 2/2, dry-probe contract, 8 negatives→WF1023-1030); no live run | live fixture (later gated wave) | `procedural/reports/ue5_8/gloam/` |
 | 7 | READY_FOR_REVIEW | 4 hostile gates GREEN (subagent, re-verified); umbrella+known-bads+torture commander-completed after subagent auth-death; integrity umbrella 6/6 GREEN; fixed a torture false-positive (advisory/nullable fields) honestly | — | `procedural/reports/ue5_8/hostile/` |
 
-## SHIELD STATUS (2026-07-13, post Wave-2 integration)
-Full shield all-flags: **GREEN 11/14**, honest-RED on exactly `conversion-manifest`,
-`transition-regression`, `transition-baseline` (the 3 gates requiring the serial UE work,
-gated behind commander authorization). Green: contracts, topology, plugin-build(+load),
-capability, gloam-bridge, negatives, fuzz, report-integrity, hygiene, known-bads, torture.
+## SHIELD STATUS (2026-07-14, post Wave-8 baseline)
+Full shield all-flags: **GREEN 14/14** — all gates pass, including the 3 formerly
+honest-RED gates now genuinely satisfied by real UE 5.8 work: `conversion-manifest`
+(Wave 5), `transition-regression` (Wave 6 runtime smokes), `transition-baseline` (Wave 8).
+Downstream regressions GREEN: v2.4 (`--tactical`), v2.3 (`--streaming --worldscale`),
+v2.2 (`--quests --factions`).
+
+```
+python tools/pipeline/v2_5_shield.py --strict --topology --conversion --plugin \
+  --capability --regression --baseline --bridge --hostile   # GREEN 14/14
+python tools/pipeline/v2_5_shield.py --strict --regressions                    # GREEN 4/4
+```
+
 NOTE: Lane 2's engine-identity + track-isolation gates pass standalone but are not yet wired
 as shield flags (shield refinement TODO — add `--identity`/`--isolation`).
 
@@ -88,5 +96,21 @@ as shield flags (shield refinement TODO — add `--identity`/`--isolation`).
   8 untracked 5.7-only test maps (not authoritative content). No unexplained loss, no load failures.
 - ResavePackages under 5.8 running (the on-disk 5.7→5.8 format upgrade; frozen 5.7 worktree untouched).
 - Next: post-resave census → build authoritative `conversion_manifest.json` → validate + audit → flip gate.
+
+## Wave 6 — runtime smokes (real UE 5.8 evidence) + Wave 8 — one-time baseline (USER-AUTHORIZED 2026-07-14)
+- **Runtime evidence (Wave 6):** `procedural/evidence/ue5_8/runtime_smoke.json` (actor spawn/destroy
+  roundtrip, ok) + the 5.7/5.8 post-resave censuses drive `transition_regression.py`, which
+  reassembles a COMPLETED report (`runtime_executed=True`, `regression_free=True`, 124/124 maps
+  loaded, 1 accounted `expected_engine_diff`). No fabricated greens — the runner stays honest-RED
+  without this evidence.
+- **Engine-identity honesty (integration TODO closed):** uproject flipped `5.7→5.8` so
+  `engine_identity()` resolves minor=8 natively (`D:\UE_5.8`); regenerated the 6 host reports that
+  were still host-resolved to minor=7. Result: 11 ue5_8 reports at `meta.engine_minor==8`.
+- **Baseline (Wave 8, double-gated):** Gate 1 = `procedural/reports/ue5_8/baseline/AUTHORIZED`
+  (commander-created; the builder NEVER creates it). Gate 2 = the completed regression above.
+  `build_transition_baseline.py` scanned the ue5_8 tree and wrote `baseline_index.json` with
+  **11 engine_minor==8 entries**, including the runtime regression itself. Contract-valid
+  (every entry engine_minor==8, no 5.7 contamination, no ue5_7-tree paths).
+- **Result: v2.5 shield GREEN 14/14 + regressions GREEN 4/4.**
 
 ## Stop conditions active? — NONE (see plan §Stop conditions). Update if any trip.
