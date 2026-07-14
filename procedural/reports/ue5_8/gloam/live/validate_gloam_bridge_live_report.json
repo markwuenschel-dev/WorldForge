@@ -1,0 +1,825 @@
+{
+  "gate": "gloam_bridge_live",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::valid_example_passes": {
+      "ok": true,
+      "detail": "valid live example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::live_schema_distinct_from_dry": {
+      "ok": true,
+      "detail": "live schema must differ from the dry-probe schema",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "live::report_written": {
+      "ok": true,
+      "detail": "run tools/pipeline/gloam_bridge_live.py first (missing gloam_bridge_live_report.json)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::required_fields": {
+      "ok": true,
+      "detail": "missing required field(s): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::no_unknown_fields": {
+      "ok": true,
+      "detail": "unknown field(s): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::schema_version": {
+      "ok": true,
+      "detail": "schema_version must be 'wf.transition.gloam_bridge_live.v1' (got 'wf.transition.gloam_bridge_live.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::execution_mode_live": {
+      "ok": true,
+      "detail": "execution_mode must be 'live' (got 'live') — a dry probe cannot satisfy a live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::runtime_executed": {
+      "ok": true,
+      "detail": "runtime_executed must be True — no live editor run, no live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::target_repository_resolved": {
+      "ok": true,
+      "detail": "far side must resolve the target repository",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::target_repository_matches": {
+      "ok": true,
+      "detail": "resolved_target_repository 'WF-BridgeFixture58' != requested 'WF-BridgeFixture58'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::target_commit_resolved": {
+      "ok": true,
+      "detail": "far side must resolve target_commit to a real 40-hex SHA (got 'db6fb371ffe6ec71a2dea2492a12a268799e39f4')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::uproject_selected": {
+      "ok": true,
+      "detail": "resolved_uproject must name the .uproject the editor actually opened (got 'WFBridgeFixture58.uproject')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::uproject_is_target_project": {
+      "ok": true,
+      "detail": "editor opened 'WFBridgeFixture58.uproject', which is not target_project 'WFBridgeFixture58'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::uproject_relative": {
+      "ok": true,
+      "detail": "resolved_uproject must be target-project-relative (no machine path)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::observed_engine_present": {
+      "ok": true,
+      "detail": "observed_runtime_engine must be reported by the running editor",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::observed_engine_is_5_8": {
+      "ok": true,
+      "detail": "observed_runtime_engine must be UE 5.8 (got '5.8.0-55116800+++UE5+Release-5.8')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::declared_engine_is_5_8": {
+      "ok": true,
+      "detail": "declared_target_engine must be '5.8' (got '5.8')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::observed_matches_declared": {
+      "ok": true,
+      "detail": "observed runtime engine '5.8.0-55116800+++UE5+Release-5.8' contradicts declared target '5.8'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::plugin_present": {
+      "ok": true,
+      "detail": "required plugin must be present in the target project",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::plugin_loaded": {
+      "ok": true,
+      "detail": "required plugin must be LOADED in the running editor (present on disk is not loaded)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::capability_manifest_list": {
+      "ok": true,
+      "detail": "plugin_capability_manifest must be a list",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::capability_manifest_nonempty": {
+      "ok": true,
+      "detail": "capability handshake must return >= 1 capability",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::capabilities_available": {
+      "ok": true,
+      "detail": "capability handshake reported unavailable capabilities: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::capability_handshake_ok": {
+      "ok": true,
+      "detail": "plugin capability handshake must succeed",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::operation_completed": {
+      "ok": true,
+      "detail": "the requested operation must actually complete on the far side",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::process_exit_success": {
+      "ok": true,
+      "detail": "process_exit_status must be 'success' (got 'success')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::process_exit_code_zero": {
+      "ok": true,
+      "detail": "process_exit_code must be 0 (got 0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::evidence_list": {
+      "ok": true,
+      "detail": "evidence_entries and evidence_hashes must be lists",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::evidence_nonempty": {
+      "ok": true,
+      "detail": "a completed live operation must return >= 1 evidence entry",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::evidence_count_matches": {
+      "ok": true,
+      "detail": "evidence_count 2 != len(evidence_entries) 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::evidence_count_positive": {
+      "ok": true,
+      "detail": "evidence_count must be > 0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::evidence_hashes_paired": {
+      "ok": true,
+      "detail": "every evidence entry must carry a hash (2 entries vs 2 hashes)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::evidence_hashes_wellformed": {
+      "ok": true,
+      "detail": "evidence hashes must be sha256 digests",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::evidence_project_relative": {
+      "ok": true,
+      "detail": "evidence must be target-project-relative; leaks: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::evidence_fresh": {
+      "ok": true,
+      "detail": "evidence_operation_id 'op_v2_5_1_gloam_bridge_live_0001' != operation_id 'op_v2_5_1_gloam_bridge_live_0001' (stale/reused evidence)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::operation_id_echoed": {
+      "ok": true,
+      "detail": "far side echoed operation_id 'op_v2_5_1_gloam_bridge_live_0001' != requested 'op_v2_5_1_gloam_bridge_live_0001'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::operation_id_wellformed": {
+      "ok": true,
+      "detail": "operation_id must be a non-empty string",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::live::fixture_standin_declared": {
+      "ok": true,
+      "detail": "the live report must declare the far side a fixture stand-in and NOT claim a Gloamstead target",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dod17::execution_mode_live": {
+      "ok": true,
+      "detail": "execution_mode must be live",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dod17::runtime_executed": {
+      "ok": true,
+      "detail": "runtime_executed must be true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dod17::observed_runtime_engine_5_8": {
+      "ok": true,
+      "detail": "observed_runtime_engine must be 5.8 (got '5.8.0-55116800+++UE5+Release-5.8')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dod17::plugin_loaded": {
+      "ok": true,
+      "detail": "plugin_loaded must be true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dod17::operation_completed": {
+      "ok": true,
+      "detail": "operation_completed must be true",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dod17::evidence_count_positive": {
+      "ok": true,
+      "detail": "evidence_count must be > 0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::meta_declared_engine": {
+      "ok": true,
+      "detail": "meta.declared_target_engine must be '5.8'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::meta_runtime_required": {
+      "ok": true,
+      "detail": "meta.runtime_execution_required must be True for a LIVE bridge",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::meta_runtime_executed": {
+      "ok": true,
+      "detail": "meta.runtime_executed must be True",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::meta_observed_runtime_engine": {
+      "ok": true,
+      "detail": "meta.observed_runtime_engine must be 8 (got 8)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::fixture_outside_repo": {
+      "ok": true,
+      "detail": "the far-side project must live outside the WorldForge repo to be a separate repository (got D:\\Unreal Projects\\WF-BridgeFixture58)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::fixture_is_own_repo": {
+      "ok": true,
+      "detail": "the far-side project must be its own git repository",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::resolved_commit_is_fixture_head": {
+      "ok": true,
+      "detail": "resolved_target_commit 'db6fb371ffe6ec71a2dea2492a12a268799e39f4' != the fixture repo's real HEAD 'db6fb371ffe6ec71a2dea2492a12a268799e39f4'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::target_repo_is_not_worldforge": {
+      "ok": true,
+      "detail": "the bridge must target a SEPARATE repository, not WorldForge itself",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::evidence_exists_on_disk": {
+      "ok": true,
+      "detail": "evidence claimed but not present in the target project: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::evidence_hashes_reproduce": {
+      "ok": true,
+      "detail": "evidence hash does not reproduce from the bytes on disk (tampered or stale): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::evidence_belongs_to_target": {
+      "ok": true,
+      "detail": "evidence rooted outside the target project: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::resolution_sources_recorded": {
+      "ok": true,
+      "detail": "the report must record how every path was resolved (got ['engine_root', 'fixture_root', 'plugin_source', 'ue_cmd'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::paths_parameterised": {
+      "ok": true,
+      "detail": "every path must resolve from arg/env/discovery, not a baked constant (offenders: {})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "real::no_machine_path_in_evidence": {
+      "ok": true,
+      "detail": "evidence leaks an absolute path: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::dry_probe_submitted_to_live_gate::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::dry_probe_submitted_to_live_gate::code": {
+      "ok": true,
+      "detail": "must reject for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1011_CAPABILITY_UNAVAILABLE', 'WF1018_PLUGIN_LOAD_FAILED', 'WF1023_BRIDGE_WRONG_ENGINE', 'WF1024_BRIDGE_WRONG_PROJECT', 'WF1025_BRIDGE_ABSENT_PLUGIN', 'WF1026_BRIDGE_STALE_PLUGIN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::dry_probe_relabelled_as_live::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::dry_probe_relabelled_as_live::code": {
+      "ok": true,
+      "detail": "must reject for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1011_CAPABILITY_UNAVAILABLE', 'WF1018_PLUGIN_LOAD_FAILED', 'WF1023_BRIDGE_WRONG_ENGINE', 'WF1024_BRIDGE_WRONG_PROJECT', 'WF1025_BRIDGE_ABSENT_PLUGIN', 'WF1026_BRIDGE_STALE_PLUGIN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::exit_zero_but_evidence_missing::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::exit_zero_but_evidence_missing::code": {
+      "ok": true,
+      "detail": "must reject for WF1028_BRIDGE_EMPTY_EVIDENCE (got ['WF1028_BRIDGE_EMPTY_EVIDENCE', 'WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::evidence_count_lies::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::evidence_count_lies::code": {
+      "ok": true,
+      "detail": "must reject for WF1028_BRIDGE_EMPTY_EVIDENCE (got ['WF1028_BRIDGE_EMPTY_EVIDENCE', 'WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::wrong_engine_observed::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::wrong_engine_observed::code": {
+      "ok": true,
+      "detail": "must reject for WF1023_BRIDGE_WRONG_ENGINE (got ['WF1023_BRIDGE_WRONG_ENGINE', 'WF1031_EVIDENCE_ENGINE_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::engine_not_observed_at_all::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::engine_not_observed_at_all::code": {
+      "ok": true,
+      "detail": "must reject for WF1023_BRIDGE_WRONG_ENGINE (got ['WF1023_BRIDGE_WRONG_ENGINE', 'WF1031_EVIDENCE_ENGINE_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::plugin_absent::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::plugin_absent::code": {
+      "ok": true,
+      "detail": "must reject for WF1025_BRIDGE_ABSENT_PLUGIN (got ['WF1018_PLUGIN_LOAD_FAILED', 'WF1025_BRIDGE_ABSENT_PLUGIN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::plugin_present_but_not_loaded::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::plugin_present_but_not_loaded::code": {
+      "ok": true,
+      "detail": "must reject for WF1018_PLUGIN_LOAD_FAILED (got ['WF1018_PLUGIN_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::operation_id_mismatch::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::operation_id_mismatch::code": {
+      "ok": true,
+      "detail": "must reject for WF1030_BRIDGE_OPERATION_ID_MISMATCH (got ['WF1030_BRIDGE_OPERATION_ID_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::evidence_absolute_path_leak::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::evidence_absolute_path_leak::code": {
+      "ok": true,
+      "detail": "must reject for WF1029_BRIDGE_ABSOLUTE_PATH_LEAK (got ['WF1029_BRIDGE_ABSOLUTE_PATH_LEAK'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::stale_evidence_reused::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::stale_evidence_reused::code": {
+      "ok": true,
+      "detail": "must reject for WF1026_BRIDGE_STALE_PLUGIN (got ['WF1026_BRIDGE_STALE_PLUGIN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::runtime_not_executed::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::runtime_not_executed::code": {
+      "ok": true,
+      "detail": "must reject for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::operation_not_completed::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::operation_not_completed::code": {
+      "ok": true,
+      "detail": "must reject for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::execution_mode_dry::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::execution_mode_dry::code": {
+      "ok": true,
+      "detail": "must reject for WF1034_TRANSITION_REPORT_INTEGRITY_FAILED (got ['WF1034_TRANSITION_REPORT_INTEGRITY_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::capability_unavailable::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::capability_unavailable::code": {
+      "ok": true,
+      "detail": "must reject for WF1011_CAPABILITY_UNAVAILABLE (got ['WF1011_CAPABILITY_UNAVAILABLE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::capability_handshake_empty::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::capability_handshake_empty::code": {
+      "ok": true,
+      "detail": "must reject for WF1011_CAPABILITY_UNAVAILABLE (got ['WF1011_CAPABILITY_UNAVAILABLE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::wrong_project_opened::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::wrong_project_opened::code": {
+      "ok": true,
+      "detail": "must reject for WF1024_BRIDGE_WRONG_PROJECT (got ['WF1024_BRIDGE_WRONG_PROJECT'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::commit_not_resolved::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::commit_not_resolved::code": {
+      "ok": true,
+      "detail": "must reject for WF1025_BRIDGE_ABSENT_PLUGIN (got ['WF1025_BRIDGE_ABSENT_PLUGIN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::false_gloamstead_claim::rejected": {
+      "ok": true,
+      "detail": "fixture must be rejected by the live gate",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "negative::false_gloamstead_claim::code": {
+      "ok": true,
+      "detail": "must reject for WF1037_TRANSITION_HYGIENE_FAILED (got ['WF1037_TRANSITION_HYGIENE_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 96,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "gloam-bridge-live",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "379f5555f3ea6199d4169eef3e7fbff4e5a659f5",
+    "timestamp": "2026-07-14T19:50:21.422720+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.gloam_bridge_live_gate.v1",
+    "report_id": "wf.transition.gloam_bridge_live_gate.v1:c02e41efa2f4",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 96,
+    "records_total": 96,
+    "records_passed": 96,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "379f5555f3ea6199d4169eef3e7fbff4e5a659f5",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "3262cccbb35c:WorldForge-v251",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": 8,
+    "runtime_execution_required": true,
+    "runtime_executed": true,
+    "repository_identifier": "a805848229ff",
+    "worktree_identifier": "3262cccbb35c:WorldForge-v251"
+  }
+}

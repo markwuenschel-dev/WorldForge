@@ -1,0 +1,161 @@
+{
+  "probe_id": "gloam_bridge_live_run",
+  "operation_id": "op_v2_5_1_gloam_bridge_live_0001",
+  "execution_mode": "live",
+  "target_repository": "WF-BridgeFixture58",
+  "resolved_target_repository": "WF-BridgeFixture58",
+  "target_commit": "db6fb371ffe6ec71a2dea2492a12a268799e39f4",
+  "resolved_target_commit": "db6fb371ffe6ec71a2dea2492a12a268799e39f4",
+  "target_project": "WFBridgeFixture58",
+  "resolved_uproject": "WFBridgeFixture58.uproject",
+  "declared_target_engine": "5.8",
+  "observed_runtime_engine": "5.8.0-55116800+++UE5+Release-5.8",
+  "plugin_present": true,
+  "plugin_loaded": true,
+  "capability_handshake_ok": true,
+  "plugin_capability_manifest": [
+    {
+      "capability_id": "WorldForgeCore.MaterialRecipeDataAsset",
+      "available": true,
+      "evidence": "unreal.MaterialRecipeDataAsset present in reflection registry"
+    },
+    {
+      "capability_id": "WorldForgeCore.PlacementRulesDataAsset",
+      "available": true,
+      "evidence": "unreal.PlacementRulesDataAsset present in reflection registry"
+    },
+    {
+      "capability_id": "WorldForgeCore.WorldStateSubsystem",
+      "available": true,
+      "evidence": "unreal.WorldStateSubsystem present in reflection registry"
+    }
+  ],
+  "requested_operation": "materialize_recipe_asset",
+  "operation_completed": true,
+  "operation_detail": {
+    "package_path": "/Game/WFBridge/WFBridgeRecipe_op_v2_5_1_gloam_bridge_live_0001",
+    "class": "MaterialRecipeDataAsset",
+    "roundtrip_source_commit": "op_v2_5_1_gloam_bridge_live_0001",
+    "roundtrip_recipe_id": "wf_bridge_live"
+  },
+  "process_exit_status": "success",
+  "process_exit_code": 0,
+  "evidence_entries": [
+    "Content/WFBridge/WFBridgeRecipe_op_v2_5_1_gloam_bridge_live_0001.uasset",
+    "Saved/WorldForgeBridge/op_v2_5_1_gloam_bridge_live_0001/far_side_response.json"
+  ],
+  "evidence_hashes": [
+    "ebe508e0bb3c25bea137ddc9edf2e0a0d40c0cd3af44acd57dfe68c49f04cd1f",
+    "34702f51bcac29b0da5ab611f170f69dfba04edde9a3cf94a88865525768fe41"
+  ],
+  "evidence_count": 2,
+  "evidence_operation_id": "op_v2_5_1_gloam_bridge_live_0001",
+  "runtime_executed": true,
+  "is_gloamstead_target": false,
+  "fixture_standin": true,
+  "resolution_sources": {
+    "engine_root": {
+      "value": "D:/UE_5.8",
+      "source": "registry"
+    },
+    "ue_cmd": {
+      "value": "D:/UE_5.8/Engine/Binaries/Win64/UnrealEditor-Cmd.exe",
+      "source": "discovered"
+    },
+    "plugin_source": {
+      "value": "D:/Unreal Projects/WorldForge-UE58/Plugins/WorldForge",
+      "source": "discovered"
+    },
+    "fixture_root": {
+      "value": "D:/Unreal Projects/WF-BridgeFixture58",
+      "source": "discovered"
+    }
+  },
+  "far_side_evidence": {
+    "marker": "WF_BRIDGE_FAR_SIDE",
+    "operation_id": "op_v2_5_1_gloam_bridge_live_0001",
+    "requested_operation": "materialize_recipe_asset",
+    "observed_engine": "5.8.0-55116800+++UE5+Release-5.8",
+    "observed_project": "WFBridgeFixture58",
+    "resolved_uproject": "WFBridgeFixture58.uproject",
+    "resolved_target_repository": "WF-BridgeFixture58",
+    "resolved_target_commit": "db6fb371ffe6ec71a2dea2492a12a268799e39f4",
+    "plugin_present": true,
+    "plugin_loaded": true,
+    "plugin_capability_manifest": [
+      {
+        "capability_id": "WorldForgeCore.MaterialRecipeDataAsset",
+        "available": true,
+        "evidence": "unreal.MaterialRecipeDataAsset present in reflection registry"
+      },
+      {
+        "capability_id": "WorldForgeCore.PlacementRulesDataAsset",
+        "available": true,
+        "evidence": "unreal.PlacementRulesDataAsset present in reflection registry"
+      },
+      {
+        "capability_id": "WorldForgeCore.WorldStateSubsystem",
+        "available": true,
+        "evidence": "unreal.WorldStateSubsystem present in reflection registry"
+      }
+    ],
+    "capability_handshake_ok": true,
+    "operation_completed": true,
+    "operation_detail": {
+      "package_path": "/Game/WFBridge/WFBridgeRecipe_op_v2_5_1_gloam_bridge_live_0001",
+      "class": "MaterialRecipeDataAsset",
+      "roundtrip_source_commit": "op_v2_5_1_gloam_bridge_live_0001",
+      "roundtrip_recipe_id": "wf_bridge_live"
+    },
+    "artifacts": [
+      "Content/WFBridge/WFBridgeRecipe_op_v2_5_1_gloam_bridge_live_0001.uasset",
+      "Saved/WorldForgeBridge/op_v2_5_1_gloam_bridge_live_0001/far_side_response.json"
+    ],
+    "error": null
+  },
+  "notes": "live run against a SEPARATE UE 5.8 project (WF-BridgeFixture58) in its own git repository; fixture stand-in for Gloamstead, no Gloamstead compatibility claimed. wall_seconds=12.99 foreign_artifacts=[]",
+  "schema_version": "wf.transition.gloam_bridge_live.v1",
+  "report_type": "wf.transition.gloam_bridge_live.v1",
+  "created_by": "worldforge.v2.5.1",
+  "created_at": "2026-07-14T19:47:48.178011+00:00",
+  "meta": {
+    "command": "gloam-bridge-live",
+    "pack": "worldforge_vertical_slice",
+    "strict": false,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "379f5555f3ea6199d4169eef3e7fbff4e5a659f5",
+    "timestamp": "2026-07-14T19:47:48.247655+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.transition.gloam_bridge_live.v1",
+    "report_id": "wf.transition.gloam_bridge_live.v1:fdd617ed5dde",
+    "status": "pass",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 1,
+    "records_total": 1,
+    "records_passed": 1,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "engine_major": 5,
+    "engine_minor": 8,
+    "engine_patch": 0,
+    "engine_build_id": "55116800@++UE5+Release-5.8",
+    "project_commit": "379f5555f3ea6199d4169eef3e7fbff4e5a659f5",
+    "plugin_commit": "2940a5afd71828c336d918356fb71ff9aa6a1c81",
+    "project_path_identity": "3262cccbb35c:WorldForge-v251",
+    "engine_root": "D:\\UE_5.8",
+    "_resolution": "uproject EngineAssociation 5.8 -> known install; read D:\\UE_5.8\\Engine\\Build\\Build.version",
+    "declared_target_engine": "5.8",
+    "observed_runtime_engine": 8,
+    "runtime_execution_required": true,
+    "runtime_executed": true,
+    "repository_identifier": "a805848229ff",
+    "worktree_identifier": "3262cccbb35c:WorldForge-v251"
+  }
+}
