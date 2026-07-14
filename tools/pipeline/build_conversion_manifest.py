@@ -39,7 +39,18 @@ sys.path.insert(0, str(REPO_ROOT / "tools" / "pipeline"))
 from report_meta import build_meta  # noqa: E402
 
 # Content roots the conversion will touch (repo-relative). Read-only walk.
-CONTENT_ROOTS = ("Content", "Plugins/WorldForge/Content")
+#
+# v2.5 scope fix: `Plugins/CoreTerrainMaterials/Content` was originally omitted, so a
+# 5.8 editor resave of M_Terrain_Master / MPC_WorldState produced binary churn with no
+# before/after basis to classify it against — invisible to the conversion audit rather
+# than classified by it. Any project-loaded plugin that OWNS content belongs here.
+# Plugins/5.8 (Houdini) is deliberately NOT listed: it is vendor content, never resaved
+# by the WorldForge conversion, and is gated by the capability manifest instead.
+CONTENT_ROOTS = (
+    "Content",
+    "Plugins/WorldForge/Content",
+    "Plugins/CoreTerrainMaterials/Content",
+)
 
 # Output — MACHINE-GENERATED ONLY. Never hand-edit.
 MANIFEST_DIR = REPO_ROOT / "procedural" / "manifests" / "ue5_8_conversion"
