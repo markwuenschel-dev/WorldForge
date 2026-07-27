@@ -178,6 +178,12 @@ def _report_fields():
         "evidence_paths": _s_array_of(_s_str_any()),
         "failure_codes": _s_array_of(_s_enum(known_codes)),
         "status": _s_enum(SS.SURVEY_STATUS),
+        # Acceptance eligibility. The reason MUST be nullable-encoded: a plain enum
+        # would reject the null an eligible report carries, and the false-rejection
+        # rail would fire on the module's own valid example.
+        "acceptance_eligible": _s_bool(),
+        "acceptance_ineligibility_reason": _s_nullable(
+            _s_enum(SS.ACCEPTANCE_INELIGIBILITY_REASONS)),
         "schema_version": _s_const(SS.RT_SURVEY_REPORT),
     }
 

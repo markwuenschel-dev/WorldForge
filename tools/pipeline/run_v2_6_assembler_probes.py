@@ -269,6 +269,69 @@ def main(argv=None):
                   sorted(_codes(cased_report))),
               code=C.SCENE_SURVEY_SUBJECT_MISMATCH)
 
+    # -------------------------------------------- acceptance eligibility -------
+    # The invariant is enforced in the shared predicate and its rails; what these
+    # probes cover is the ASSEMBLER WIRING — that _build_report actually calls it
+    # and publishes the verdict. A correct predicate that nothing invokes would
+    # leave every live report silently claiming the default.
+    rep.check("asm::explicit_transform_never_eligible",
+              honest.get("acceptance_eligible") is False,
+              "an explicit_transform survey must NEVER be acceptance-eligible: only "
+              "the world is independently observed, the anchor is the caller's own "
+              "input handed back (got {!r})".format(honest.get("acceptance_eligible")),
+              code=C.SCENE_SURVEY_SUBJECT_INFERRED)
+    rep.check("asm::ineligible_carries_reason",
+              honest.get("acceptance_ineligibility_reason")
+              == "independent_subject_anchor_not_observable",
+              "an ineligible survey must name WHY, with the identifiability reason "
+              "(got {!r})".format(honest.get("acceptance_ineligibility_reason")),
+              code=C.SCENE_SURVEY_SUBJECT_INFERRED)
+
+    # actor_object_path — the only acceptance-eligible mode. All three observation
+    # components vary independently of the request, so mismatches are detectable.
+    APATH = "/Game/Fixture/Lvl_Fixture.Lvl_Fixture:PersistentLevel.Anchor_0"
+    aop_subject = SS._example_scene_survey_subject(
+        anchor_mode="actor_object_path", anchor_object_path=APATH,
+        anchor_location=None, anchor_rotation=None)
+    aop_far = _far(observed_anchor_object_path=APATH,
+                   anchor_mode="actor_object_path",
+                   anchor_detail="resolved the caller's exact object path")
+    aop_report, aop_fails = _build(aop_far, subject=aop_subject)
+    rep.check("asm::actor_object_path_can_be_eligible",
+              aop_report.get("acceptance_eligible") is True,
+              "an actor_object_path survey with observed world, observed actor path "
+              "and an executed run MUST be able to reach eligible — if this can never "
+              "pass, the acceptance gate is unreachable and the invariant is a wall, "
+              "not a rail (eligible={!r}, reason={!r}, failed={!r})".format(
+                  aop_report.get("acceptance_eligible"),
+                  aop_report.get("acceptance_ineligibility_reason"),
+                  (aop_report.get("meta") or {}).get("acceptance_failed_components")),
+              code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+    rep.check("asm::eligible_carries_null_reason",
+              aop_report.get("acceptance_ineligibility_reason") is None,
+              "an eligible survey must carry a null reason (got {!r})".format(
+                  aop_report.get("acceptance_ineligibility_reason")),
+              code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+    # ...and eligibility must collapse the moment an observation goes missing.
+    aop_wrong_world, _ = _build(
+        _far(observed_world_package=OTHER_MAP, observed_anchor_object_path=APATH,
+             anchor_mode="actor_object_path"), subject=aop_subject)
+    rep.check("asm::eligibility_collapses_on_wrong_world",
+              aop_wrong_world.get("acceptance_eligible") is False,
+              "an actor_object_path survey of the WRONG world must lose eligibility "
+              "(got {!r})".format(aop_wrong_world.get("acceptance_eligible")),
+              code=C.SCENE_SURVEY_WORLD_IDENTITY_UNVERIFIED)
+    aop_unresolved, _ = _build(
+        _far(observed_anchor_object_path=None, anchor_mode="actor_object_path",
+             subject_resolved=False,
+             error="anchor_object_path did not resolve among the placed actors"),
+        subject=aop_subject)
+    rep.check("asm::eligibility_collapses_on_unresolved_actor",
+              aop_unresolved.get("acceptance_eligible") is False,
+              "an unresolved anchor actor must lose eligibility (got {!r})".format(
+                  aop_unresolved.get("acceptance_eligible")),
+              code=C.SCENE_SURVEY_SUBJECT_UNRESOLVED)
+
     # ------------------------------------------------- honest classification ----
     # These two rails are NOT observations and this suite must not pretend otherwise.
     # WorldForge has no channel that could ever observe a different subject_id or a

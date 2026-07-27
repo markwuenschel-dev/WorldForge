@@ -62,6 +62,25 @@
   ],
   "description": "The machine-readable result of a scene survey. Necessary but not sufficient: see x-worldforge-rails for the constraints JSON Schema cannot express.",
   "properties": {
+    "acceptance_eligible": {
+      "type": "boolean"
+    },
+    "acceptance_ineligibility_reason": {
+      "anyOf": [
+        {
+          "enum": [
+            "independent_subject_anchor_not_observable",
+            "observed_world_identity_unverified",
+            "observed_actor_identity_unverified",
+            "observed_actor_transform_unobserved",
+            "survey_not_bound_to_observed_actor"
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "actor_bounds_valid": {
       "type": "boolean"
     },
@@ -989,6 +1008,8 @@
     }
   },
   "required": [
+    "acceptance_eligible",
+    "acceptance_ineligibility_reason",
     "actor_bounds_valid",
     "camera_capture_ok",
     "captures_requested",
@@ -1019,7 +1040,7 @@
   ],
   "title": "SceneSurveyReport",
   "type": "object",
-  "x-worldforge-contract-version": "wf.scene_survey.contract.v2_6.0",
+  "x-worldforge-contract-version": "wf.scene_survey.contract.v2_6.1",
   "x-worldforge-rails": [
     {
       "code": "WF1062_SCENE_SURVEY_REPORT_INVALID",

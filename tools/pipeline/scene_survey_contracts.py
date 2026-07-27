@@ -34,6 +34,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO_ROOT / "tools" / "pipeline"))
 
 import runtime_schema as RS  # noqa: E402
+import scene_survey_evidence as EV  # noqa: E402
 from failure_codes import FailureCode as C  # noqa: E402
 
 # --------------------------------------------------------------------------- #
@@ -81,6 +82,11 @@ LIVE_RUNTIME_MODES = ("live_survey_runtime",)
 # Report / evidence-index verdicts.
 SURVEY_STATUS = ("pass", "fail", "blocked")
 INTEGRITY_RESULTS = ("pass", "fail", "blocked")
+# Acceptance eligibility vocabulary. Defined ONCE in the evidence model (where the
+# derivation lives) and re-exported here so the contract surface, the exporter and
+# the validator lane all read the same tuple instead of three copies that drift.
+ACCEPTANCE_COMPONENTS = EV.ACCEPTANCE_COMPONENTS
+ACCEPTANCE_INELIGIBILITY_REASONS = EV.ACCEPTANCE_INELIGIBILITY_REASONS
 
 # The shared deterministic authoring timestamp (NOT wall-clock).
 AUTHORING_TS = "2026-07-19T00:00:00+00:00"
@@ -171,7 +177,7 @@ _META_FIELDS = ("meta", "report_type", "created_by", "created_at", "notes", "dis
 # and their rails) — distinct from the per-record RT_* schema_version strings, which
 # version one record shape each. Exported artifacts carry this so a caller can state
 # which surface it generated against. Bump when a field or rail changes meaning.
-CONTRACT_VERSION = "wf.scene_survey.contract.v2_6.0"
+CONTRACT_VERSION = "wf.scene_survey.contract.v2_6.1"
 
 
 # =========================================================================== #
@@ -647,13 +653,23 @@ REPORT_REQUIRED = (
     "proxy_owners", "proxies_disabled", "temporary_placements_grounded",
     "overlap_count", "player_clearance_valid", "cleanup_verified",
     "determinism_hash", "runtime_mode", "runtime_executed", "evidence_paths",
-    "failure_codes", "status", "schema_version",
+    "failure_codes", "status",
+    # Whether this survey is eligible to back an ACCEPTANCE decision, and — when
+    # it is not — which of the five identifiability components denied it. See
+    # evaluate_acceptance_eligibility below; the claim is required (never absent)
+    # because "makes no acceptance claim" and "claims ineligible" must not be the
+    # same document.
+    "acceptance_eligible", "acceptance_ineligibility_reason",
+    "schema_version",
 )
 REPORT_ALLOWED = REPORT_REQUIRED + _META_FIELDS
 # Mode-dependent observations: the key must be PRESENT, but a run that never
 # executed has nothing to report as observed (sr::observed_anchor_present below
-# is what makes an executed run carry it).
-_REPORT_NULLABLE = ("observed_anchor_location", "observed_anchor_object_path")
+# is what makes an executed run carry it). acceptance_ineligibility_reason is
+# nullable in the same sense: None is the ONLY legal value when eligible=True, and
+# the key is still required so an absent reason cannot pass for "no problem".
+_REPORT_NULLABLE = ("observed_anchor_location", "observed_anchor_object_path",
+                    "acceptance_ineligibility_reason")
 
 
 def validate_scene_survey_report(obj, strict=False):
@@ -744,7 +760,76 @@ def validate_scene_survey_report(obj, strict=False):
                "live_survey_runtime requires runtime_executed=True and non-empty "
                "evidence (a simulation must not be labeled live)",
                C.SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM))
+    ch += _acceptance_claim_checks(obj)
     ch += _schema_version(obj, RT_SURVEY_REPORT, code, "sr::")
+    return ch
+
+
+def _acceptance_claim_checks(obj):
+    """Report-LOCAL rails on the acceptance-eligibility claim.
+
+    These are the rails a single report can carry on its own back. They cannot see
+    the subject, so they cannot re-derive the verdict — that is the pair validator's
+    job (sb::acceptance_* in validate_subject_binding, which calls
+    evaluate_acceptance_eligibility). What they CAN do is reject a claim that
+    contradicts the report's own observation vector, and every one of them is
+    reachable:
+
+      * eligible=True on a report with no observed actor object path. Under
+        explicit_transform the subject carries no object path, so the report has
+        none to observe either (ss::explicit_transform_complete /
+        sb::object_path_match) — which makes this the report-local form of "an
+        explicit_transform pair may never claim acceptance eligibility".
+      * eligible=True with no observed transform, or with runtime_executed False:
+        an eligibility claim over an observation that was never taken.
+      * a reason carried alongside eligible=True (a document arguing with itself),
+        an absent/blank reason alongside eligible=False (an ineligibility with no
+        stated cause is unauditable), or a reason outside the closed enum.
+    """
+    code = C.SCENE_SURVEY_REPORT_INVALID
+    unsupported = C.SCENE_SURVEY_EVIDENCE_UNSUPPORTED_CLAIM
+    ch = _bool(obj, "acceptance_eligible", code, "sr::")
+    eligible = obj.get("acceptance_eligible") is True if isinstance(obj, dict) else False
+    reason = obj.get("acceptance_ineligibility_reason") if isinstance(obj, dict) else None
+    obs_loc = obj.get("observed_anchor_location") if isinstance(obj, dict) else None
+    obs_path = obj.get("observed_anchor_object_path") if isinstance(obj, dict) else None
+    has_path = isinstance(obs_path, str) and bool(obs_path.strip())
+
+    ch.append(("sr::acceptance_requires_observed_actor_path",
+               (not eligible) or has_path,
+               "acceptance_eligible=True requires a non-empty "
+               "observed_anchor_object_path — only an actor_object_path survey "
+               "observes the subject's anchor independently of the request; an "
+               "explicit_transform survey copies it and can never be eligible",
+               unsupported))
+    ch.append(("sr::acceptance_requires_observed_transform",
+               (not eligible) or _finite_vec(obs_loc, 3),
+               "acceptance_eligible=True requires a finite vec3 "
+               "observed_anchor_location (an eligibility claim over a transform "
+               "that was never observed)", unsupported))
+    ch.append(("sr::acceptance_requires_executed",
+               (not eligible) or obj.get("runtime_executed") is True,
+               "acceptance_eligible=True requires runtime_executed=True — a survey "
+               "that never ran observed nothing to be identifiable from",
+               unsupported))
+    ch.append(("sr::acceptance_eligible_reason_null",
+               (not eligible) or reason is None,
+               "acceptance_eligible=True requires acceptance_ineligibility_reason="
+               "None (got {!r}) — a report must not claim eligibility and a reason "
+               "for ineligibility at once".format(reason), code))
+    ineligible = (isinstance(obj, dict)
+                  and obj.get("acceptance_eligible") is False)
+    ch.append(("sr::acceptance_ineligible_reason_present",
+               (not ineligible)
+               or (isinstance(reason, str) and bool(reason.strip())),
+               "acceptance_eligible=False requires a non-empty "
+               "acceptance_ineligibility_reason (got {!r}) — an ineligibility with "
+               "no stated cause cannot be audited or lifted".format(reason), code))
+    ch.append(("sr::acceptance_reason_known",
+               reason is None or reason in ACCEPTANCE_INELIGIBILITY_REASONS,
+               "acceptance_ineligibility_reason must be None or one of {} (got "
+               "{!r}) — the reason is a closed enum, not free text".format(
+                   list(ACCEPTANCE_INELIGIBILITY_REASONS), reason), code))
     return ch
 
 
@@ -779,6 +864,12 @@ def _example_scene_survey_report(**over):
         ],
         "failure_codes": [],
         "status": "pass",
+        # The fixture subject is explicit_transform, so this otherwise-clean survey
+        # is honestly INELIGIBLE for acceptance: its anchor was copied from the
+        # request, never observed. A valid survey that cannot back an acceptance
+        # decision is exactly the state the invariant exists to make sayable.
+        "acceptance_eligible": False,
+        "acceptance_ineligibility_reason": EV.REASON_ANCHOR_NOT_OBSERVABLE,
         "created_by": "worldforge.v2.6",
         "created_at": AUTHORING_TS,
         "schema_version": RT_SURVEY_REPORT,
@@ -845,6 +936,98 @@ def _example_scene_survey_evidence_index(**over):
 # =========================================================================== #
 # 9. subject <-> report PAIR invariants (WF1107) — not visible from one object.
 # =========================================================================== #
+def evaluate_acceptance_eligibility(subject, report):
+    """THE definition of acceptance eligibility. One function, no second copy.
+
+        acceptance_eligible = anchor_mode == "actor_object_path"
+                              AND observed_world_identity_valid
+                              AND observed_actor_identity_valid
+                              AND observed_actor_transform_valid
+                              AND survey_bound_to_observed_actor
+
+        explicit_transform -> survey_valid MAY be true, but
+                              acceptance_eligible is ALWAYS false, with
+                              reason "independent_subject_anchor_not_observable".
+
+    WHY THE MODE DECIDES THIS — IDENTIFIABILITY, NOT POLICY
+    -------------------------------------------------------
+    A survey's observation vector about its subject is (observed world package,
+    resolved actor object path, observed actor transform).
+
+    Under ``actor_object_path`` all three coordinates are MEASURED on the far side
+    and vary independently of the request: the editor may open a different world,
+    resolve a different actor, or report a transform the caller never mentioned,
+    and each disagreement is visible from the pair. Subject identity is therefore
+    identifiable from the observation, and a wrong subject is detectable.
+
+    Under ``explicit_transform`` only the world is independently observed. The
+    anchor components are COPIED from the caller's input — the far side is handed
+    a location and hands the same location back — so the observation map is
+    rank-deficient with respect to subject identity. Comparing observed to
+    requested compares a value to a copy of itself, and NO comparison over such a
+    vector can distinguish correct subject coordinates from arbitrary
+    caller-supplied ones. The survey can still be VALID (its samples, bounds and
+    cleanup are real measurements); what it can never be is acceptance-eligible,
+    because acceptance is a claim about the SUBJECT and the subject's coordinates
+    were never observed.
+
+    This is why the rule must not be "simplified" into a mode allow-list: a later
+    reader seeing two enum values with one blessed will helpfully bless the other.
+
+    Args:
+        subject: a SceneSurveySubject dict (caller-resolved).
+        report:  a SceneSurveyReport dict.
+    Both are plain dicts on purpose: this predicate must be callable by the
+    assembler, the validator and any caller-side tool with nothing but the two
+    JSON documents in hand.
+
+    Returns a structured verdict (JSON-portable, no objects):
+        {"eligible": bool,
+         "reason": str | None,              # a member of ACCEPTANCE_INELIGIBILITY_REASONS
+         "components": {name: bool, ...},   # per-component verdicts
+         "failed_components": [name, ...],  # in precedence order
+         "anchor_mode": str | None,
+         "sufficient": bool,                # False only for a malformed bundle
+         "detail": str}
+    A malformed input is never a confident answer: ``sufficient`` goes False and
+    ``eligible`` is False with the first-component reason, i.e. fail-closed.
+    """
+    raw = EV.acceptance_raw(subject, report)
+    enough, value, inputs, detail = EV.derive("acceptance_eligible", raw)
+    if not enough:
+        return {"eligible": False,
+                "reason": EV.ACCEPTANCE_INELIGIBILITY_REASONS[0],
+                "components": {c: False for c in EV.ACCEPTANCE_COMPONENTS},
+                "failed_components": list(EV.ACCEPTANCE_COMPONENTS),
+                "anchor_mode": None,
+                "sufficient": False,
+                "detail": detail}
+    return {"eligible": bool(value),
+            "reason": inputs["reason"],
+            "components": dict(inputs["components"]),
+            "failed_components": list(inputs["failed_components"]),
+            "anchor_mode": inputs["anchor_mode"],
+            "sufficient": True,
+            "detail": detail}
+
+
+def acceptance_eligibility_record(subject, report, stage="assemble",
+                                  collector="assembler", refs=None):
+    """The same verdict as an EVIDENCE RECORD, so it is never a free-floating bool.
+
+    Carries its classification (derived_from_observed), the derivation name, the
+    raw records it was computed from, and the per-component verdicts under
+    ``inputs``. A validator can re-derive it with
+    ``scene_survey_evidence.rederive_and_compare("acceptance_eligible", rec, raw)``
+    where ``raw`` is rebuilt independently from the same pair.
+    """
+    raw = EV.acceptance_raw(subject, report)
+    if refs is None:
+        refs = ["binding#requested", "binding#observed", "binding#echoed"]
+    return EV.derived_record("acceptance_eligible", raw, stage=stage,
+                             collector=collector, refs=refs)
+
+
 def validate_subject_binding(subject, report, strict=False, tolerance_cm=1.0):
     """Return a list of (name, ok, detail, code) subject<->report pair checks.
 
@@ -904,6 +1087,37 @@ def validate_subject_binding(subject, report, strict=False, tolerance_cm=1.0):
                "— WorldForge must never resolve the survey subject itself".format(
                    s.get("resolved_by"), r.get("subject_resolved_by")),
                C.SCENE_SURVEY_SUBJECT_INFERRED))
+    # acceptance eligibility: re-derived from the pair, never read off the claim.
+    # DIRECTIONAL, and deliberately so. Only the OVER-claim is rejected here — a
+    # report claiming eligibility the observation vector does not support. The
+    # symmetric rail (claimed False while the evidence supports True) is NOT
+    # installed: under-claiming cannot cause a false accept, so it fails safe, and
+    # installing exact equality today would red an existing positive control that
+    # this lane does not own (scene_survey_fuzz.py:203-215 builds a matched
+    # actor_object_path pair out of the default report example, whose acceptance
+    # claim is the explicit_transform one). The correct end state IS exact
+    # equality, once that fixture states its own acceptance claim.
+    verdict = evaluate_acceptance_eligibility(s, r)
+    claimed = r.get("acceptance_eligible")
+    ch.append(("sb::acceptance_not_overclaimed",
+               claimed is not True or verdict["eligible"] is True,
+               "report claims acceptance_eligible=True but the subject<->report "
+               "pair re-derives ineligible ({}): failed component(s) {}".format(
+                   verdict["reason"], verdict["failed_components"]),
+               C.SCENE_SURVEY_EVIDENCE_UNSUPPORTED_CLAIM))
+    # An ineligible report must state the reason the evidence actually gives. A
+    # true verdict with a false cause sends the caller to fix the wrong thing —
+    # e.g. an explicit_transform survey blaming world identity would have someone
+    # chasing a map bug that does not exist. Scoped to pairs the re-derivation also
+    # finds ineligible, so it never fires on a conservative under-claim.
+    ch.append(("sb::acceptance_reason_matches_evidence",
+               claimed is not False or verdict["eligible"] is True
+               or r.get("acceptance_ineligibility_reason") == verdict["reason"],
+               "report states acceptance_ineligibility_reason={!r} but the pair "
+               "re-derives {!r} (failed component(s) {})".format(
+                   r.get("acceptance_ineligibility_reason"), verdict["reason"],
+                   verdict["failed_components"]),
+               C.SCENE_SURVEY_EVIDENCE_REDERIVATION_MISMATCH))
     return ch
 
 
@@ -1026,6 +1240,152 @@ if __name__ == "__main__":
     if C.SCENE_SURVEY_SUBJECT_MISMATCH not in {c[3] for c in _pair_bad}:
         print("DOGFOOD FAIL SubjectBinding: mismatched pair not rejected for {} (got {})".format(
             C.SCENE_SURVEY_SUBJECT_MISMATCH, sorted({c[3] for c in _pair_bad}))); ok = False
+    # ---- acceptance eligibility: the ONE definition, positive AND negative ---- #
+    # Vocabulary agreement: the evidence model holds the strings, this module holds
+    # the enums they must be members of. Two copies that drift silently is the
+    # failure this pair of checks exists to prevent.
+    if EV.CALLER_RESOLVER not in SUBJECT_RESOLVERS:
+        print("VOCAB FAIL: EV.CALLER_RESOLVER {!r} not in SUBJECT_RESOLVERS {}".format(
+            EV.CALLER_RESOLVER, SUBJECT_RESOLVERS)); ok = False
+    if EV.OBSERVABLE_ANCHOR_MODE not in ANCHOR_MODES:
+        print("VOCAB FAIL: EV.OBSERVABLE_ANCHOR_MODE {!r} not in ANCHOR_MODES {}".format(
+            EV.OBSERVABLE_ANCHOR_MODE, ANCHOR_MODES)); ok = False
+
+    _PATH_A = ("/Game/Fixture/Lvl_Fixture.Lvl_Fixture:PersistentLevel."
+               "Fixture_Subject_0")
+
+    def _path_subject(**over):
+        return _example_scene_survey_subject(
+            subject_kind="actor", anchor_mode="actor_object_path",
+            anchor_location=None, anchor_object_path=_PATH_A, **over)
+
+    def _eligible_report(**over):
+        base = {"observed_anchor_object_path": _PATH_A, "acceptance_eligible": True,
+                "acceptance_ineligibility_reason": None}
+        base.update(over)
+        return _example_scene_survey_report(**base)
+
+    def _rails(subject, report):
+        """Failing rail names across BOTH the report contract and the pair."""
+        return ([c[0] for c in validate_scene_survey_report(report, strict=True)
+                 if not c[1]]
+                + [c[0] for c in validate_subject_binding(subject, report, strict=True)
+                   if not c[1]])
+
+    def _expect_clean(label, subject, report):
+        bad = _rails(subject, report)
+        if bad:
+            print("ACCEPTANCE FAIL {}: expected clean, got {}".format(label, bad))
+            return False
+        return True
+
+    def _expect_rail(label, subject, report, rail):
+        bad = _rails(subject, report)
+        if rail not in bad:
+            print("ACCEPTANCE FAIL {}: rail {!r} did not fire (got {})".format(
+                label, rail, bad))
+            return False
+        return True
+
+    # POSITIVE 1 — the fixture explicit_transform pair: valid survey, honestly
+    # ineligible, with the identifiability reason. Must be clean on both sides.
+    _v = evaluate_acceptance_eligibility(_example_scene_survey_subject(),
+                                         _example_scene_survey_report())
+    if _v["eligible"] is not False or _v["reason"] != EV.REASON_ANCHOR_NOT_OBSERVABLE:
+        print("ACCEPTANCE FAIL explicit_transform verdict: {}".format(_v)); ok = False
+    if not _expect_clean("explicit_transform_pair", _example_scene_survey_subject(),
+                         _example_scene_survey_report()):
+        ok = False
+    # POSITIVE 2 — a fully observable actor_object_path pair IS eligible, and a
+    # report claiming so with a null reason is clean. Without this the negatives
+    # below would pass trivially on a predicate that always says "ineligible".
+    _v = evaluate_acceptance_eligibility(_path_subject(), _eligible_report())
+    if _v["eligible"] is not True or _v["reason"] is not None:
+        print("ACCEPTANCE FAIL actor_object_path verdict: {}".format(_v)); ok = False
+    if not _expect_clean("actor_object_path_pair", _path_subject(), _eligible_report()):
+        ok = False
+    # POSITIVE 3 — the verdict is an evidence record, not a bare boolean.
+    _rec = acceptance_eligibility_record(_path_subject(), _eligible_report())
+    if (_rec.get("classification") != EV.DERIVED or _rec.get("value") is not True
+            or not _rec.get("raw_refs")):
+        print("ACCEPTANCE FAIL record shape: {}".format(_rec)); ok = False
+
+    # NEGATIVE — one per new rail. Each mutates a single field of an otherwise
+    # clean artifact, so the named rail is the reason it fails.
+    for _label, _subject, _report, _rail in (
+            # the locked rule: an explicit_transform pair may never claim eligible.
+            ("explicit_transform_claims_eligible",
+             _example_scene_survey_subject(),
+             _example_scene_survey_report(acceptance_eligible=True,
+                                          acceptance_ineligibility_reason=None),
+             "sr::acceptance_requires_observed_actor_path"),
+            # ...and the pair validator catches it independently of the report rail.
+            ("explicit_transform_claims_eligible_pair",
+             _example_scene_survey_subject(),
+             _example_scene_survey_report(acceptance_eligible=True,
+                                          acceptance_ineligibility_reason=None),
+             "sb::acceptance_not_overclaimed"),
+            # eligible with a reason: a document arguing with itself.
+            ("eligible_with_reason", _path_subject(),
+             _eligible_report(
+                 acceptance_ineligibility_reason=EV.REASON_ANCHOR_NOT_OBSERVABLE),
+             "sr::acceptance_eligible_reason_null"),
+            # ineligible with no stated cause, both shapes of "no cause".
+            ("ineligible_null_reason", _example_scene_survey_subject(),
+             _example_scene_survey_report(acceptance_ineligibility_reason=None),
+             "sr::acceptance_ineligible_reason_present"),
+            ("ineligible_blank_reason", _example_scene_survey_subject(),
+             _example_scene_survey_report(acceptance_ineligibility_reason="   "),
+             "sr::acceptance_ineligible_reason_present"),
+            # a reason outside the closed enum.
+            ("reason_off_enum", _example_scene_survey_subject(),
+             _example_scene_survey_report(
+                 acceptance_ineligibility_reason="the vibes were off"),
+             "sr::acceptance_reason_known"),
+            # a true verdict with a false cause: ineligible, wrong reason.
+            ("wrong_reason", _example_scene_survey_subject(),
+             _example_scene_survey_report(
+                 acceptance_ineligibility_reason=EV.REASON_WORLD_IDENTITY_UNVERIFIED),
+             "sb::acceptance_reason_matches_evidence"),
+            # eligibility claimed over observations that were never taken.
+            ("eligible_without_transform", _path_subject(),
+             _eligible_report(observed_anchor_location=None),
+             "sr::acceptance_requires_observed_transform"),
+            ("eligible_without_run", _path_subject(),
+             _eligible_report(runtime_executed=False),
+             "sr::acceptance_requires_executed"),
+            # eligibility claimed on the wrong world / wrong actor: the report is
+            # locally consistent, and only the PAIR can see it.
+            ("eligible_wrong_world", _path_subject(),
+             _eligible_report(map_asset_path="/Game/Fixture/Lvl_Other"),
+             "sb::acceptance_not_overclaimed"),
+            ("eligible_wrong_actor", _path_subject(),
+             _eligible_report(observed_anchor_object_path=_PATH_A + "_OTHER"),
+             "sb::acceptance_not_overclaimed"),
+            # a non-boolean claim is not a claim.
+            ("eligible_not_a_bool", _example_scene_survey_subject(),
+             _example_scene_survey_report(acceptance_eligible="yes",
+                                          acceptance_ineligibility_reason=None),
+             "sr::acceptance_eligible_bool")):
+        if not _expect_rail(_label, _subject, _report, _rail):
+            ok = False
+    # A report that drops the acceptance claim entirely must be rejected, not
+    # treated as "no claim, therefore fine".
+    _dropped = _example_scene_survey_report()
+    del _dropped["acceptance_eligible"]
+    if "field::acceptance_eligible" not in [
+            c[0] for c in validate_scene_survey_report(_dropped, strict=True)
+            if not c[1]]:
+        print("ACCEPTANCE FAIL dropped_claim: an absent acceptance_eligible was "
+              "accepted"); ok = False
+    _dropped = _example_scene_survey_report()
+    del _dropped["acceptance_ineligibility_reason"]
+    if "field::acceptance_ineligibility_reason" not in [
+            c[0] for c in validate_scene_survey_report(_dropped, strict=True)
+            if not c[1]]:
+        print("ACCEPTANCE FAIL dropped_reason: an absent reason key was accepted")
+        ok = False
+
     if not SCENE_SURVEY_CODES:
         print("BAND FAIL: SCENE_SURVEY_CODES is empty"); ok = False
     print("SELF-DOGFOOD: {} ({} contracts, {} owned codes)".format(

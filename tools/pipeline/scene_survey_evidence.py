@@ -396,7 +396,218 @@ def derive_temporary_actor_count(raw, which):
     return len(owned), {"operation_owned": sorted(owned)}
 
 
+# --------------------------------------------------------------------------- #
+# Acceptance eligibility — the identifiability invariant, as evidence.
+# --------------------------------------------------------------------------- #
+# Acceptance eligibility is NOT a policy switch and NOT a free-floating boolean.
+# It is a derived claim like any other in this module: it has raw inputs, a stated
+# derivation, and a sufficiency precondition, and it can be independently
+# re-derived by a validator that never reads the claim itself.
+#
+# WHY ONE ANCHOR MODE AND NOT THE OTHER
+# -------------------------------------
+# The reason is IDENTIFIABILITY, not preference. Consider the observation vector a
+# survey can produce about its subject:
+#
+#     (observed world package, resolved actor object path, observed actor transform)
+#
+# Under `actor_object_path` all three coordinates are measured on the far side and
+# vary INDEPENDENTLY of the request: the editor can open a different world, resolve
+# a different actor, or report a transform the caller never mentioned, and each of
+# those disagreements is visible from the pair. The map from subject identity to
+# observation is injective on the components that matter, so a wrong subject is
+# detectable.
+#
+# Under `explicit_transform` only the world is independently observed. The anchor
+# coordinates are COPIED from the caller's own input — the far side is handed a
+# location and reports back the location it was handed — so the observation map is
+# rank-deficient with respect to subject identity. Comparing the observed anchor to
+# the requested anchor compares a value to a copy of itself, and no comparison over
+# such a vector can distinguish correct subject coordinates from arbitrary
+# caller-supplied ones. A survey can still be VALID under this mode (its samples,
+# bounds and cleanup are real measurements); what it can never be is ACCEPTANCE-
+# eligible, because acceptance is a claim about the SUBJECT, and the subject's
+# coordinates were never independently observed.
+#
+# Do not "simplify" this into a mode allow-list without the reasoning: the next
+# reader will see two enum values and one of them arbitrarily blessed, and will
+# helpfully bless the other one too.
+
+# The resolver every honest side must declare. Mirrors
+# scene_survey_contracts.SUBJECT_RESOLVERS, which is ("caller",); the contracts
+# module dogfood asserts the two still agree.
+CALLER_RESOLVER = "caller"
+# The ONLY anchor mode whose subject coordinates are independently observable.
+# Mirrors a member of scene_survey_contracts.ANCHOR_MODES (same dogfood check).
+OBSERVABLE_ANCHOR_MODE = "actor_object_path"
+
+# Component verdicts, in PRECEDENCE order. The first False component names the
+# ineligibility reason, so this order is load-bearing: anchor-mode observability is
+# checked first because when it fails the remaining components are not merely
+# false, they are unaskable.
+ACCEPTANCE_COMPONENTS = (
+    "anchor_mode_observable",
+    "observed_world_identity_valid",
+    "observed_actor_identity_valid",
+    "observed_actor_transform_valid",
+    "survey_bound_to_observed_actor",
+)
+
+REASON_ANCHOR_NOT_OBSERVABLE = "independent_subject_anchor_not_observable"
+REASON_WORLD_IDENTITY_UNVERIFIED = "observed_world_identity_unverified"
+REASON_ACTOR_IDENTITY_UNVERIFIED = "observed_actor_identity_unverified"
+REASON_ACTOR_TRANSFORM_UNOBSERVED = "observed_actor_transform_unobserved"
+REASON_SURVEY_NOT_BOUND = "survey_not_bound_to_observed_actor"
+
+# component -> the reason emitted when that component is the first to fail.
+ACCEPTANCE_COMPONENT_REASON = (
+    ("anchor_mode_observable", REASON_ANCHOR_NOT_OBSERVABLE),
+    ("observed_world_identity_valid", REASON_WORLD_IDENTITY_UNVERIFIED),
+    ("observed_actor_identity_valid", REASON_ACTOR_IDENTITY_UNVERIFIED),
+    ("observed_actor_transform_valid", REASON_ACTOR_TRANSFORM_UNOBSERVED),
+    ("survey_bound_to_observed_actor", REASON_SURVEY_NOT_BOUND),
+)
+# The closed enum of legal ineligibility reasons. A reason outside this set is a
+# rejected report, not a free-text excuse.
+ACCEPTANCE_INELIGIBILITY_REASONS = tuple(r for _c, r in ACCEPTANCE_COMPONENT_REASON)
+
+
+def acceptance_raw(subject, report):
+    """Project a (subject, report) pair into the raw bundle the derivation reads.
+
+    THREE records, deliberately classified apart, because collapsing them is the
+    lie this whole module exists to prevent:
+
+      * ``requested`` — CALLER_SUPPLIED. The request vector. States intent; proves
+        nothing about execution.
+      * ``observed``  — OBSERVED when the report claims a completed run, otherwise
+        an honest ``failed`` record. These are the far side's measurements
+        (``scene_survey_far_side.py:295-301`` sets observed_world_package /
+        observed_anchor_location / observed_anchor_object_path from the live
+        editor), i.e. the only channel that can DISAGREE with the request.
+      * ``echoed``    — CALLER_SUPPLIED on both sides. subject_id and resolved_by
+        are caller vocabulary; WorldForge has no channel that could observe either
+        (``run_scene_survey_probe.py:311-316`` says so explicitly). They give
+        CONTINUITY — this report belongs to this request — and never evidence that
+        the right subject was surveyed.
+    """
+    s = subject if isinstance(subject, dict) else {}
+    r = report if isinstance(report, dict) else {}
+    requested = caller_supplied(
+        {"anchor_mode": s.get("anchor_mode"),
+         "map_asset_path": s.get("map_asset_path"),
+         "anchor_object_path": s.get("anchor_object_path")},
+        detail="the caller-resolved subject's request vector")
+    if r.get("runtime_executed") is True:
+        observed = record(
+            {"world_package": r.get("map_asset_path"),
+             "actor_object_path": r.get("observed_anchor_object_path"),
+             "actor_location": r.get("observed_anchor_location"),
+             "runtime_executed": True},
+            OBSERVED, stage="anchor_bind", collector="scene_survey_far_side",
+            collection_ok=True,
+            detail="observation vector measured on the far side and echoed by the "
+                   "report")
+    else:
+        observed = failed(
+            "the report does not claim a completed runtime run "
+            "(runtime_executed={!r}) — there is no observation vector to be "
+            "identifiable from".format(r.get("runtime_executed")),
+            stage="anchor_bind", collector="scene_survey_far_side")
+    echoed = caller_supplied(
+        {"subject_id_request": s.get("subject_id"),
+         "subject_id_report": r.get("subject_id"),
+         "resolved_by_request": s.get("resolved_by"),
+         "resolved_by_report": r.get("subject_resolved_by")},
+        detail="caller vocabulary echoed by both sides — continuity, never evidence")
+    return {"binding": {"requested": requested, "observed": observed,
+                        "echoed": echoed}}
+
+
+def sufficiency_acceptance_eligibility(raw):
+    """Eligibility needs all three binding records; a missing one is not a False.
+
+    Note what is NOT a sufficiency failure: an ``observed`` record that honestly
+    reports a failed collection IS sufficient — it answers the question (nothing
+    was observed, therefore nothing is identifiable, therefore ineligible). Only a
+    malformed bundle, which cannot answer the question at all, is insufficient.
+    """
+    b = (raw or {}).get("binding", {})
+    missing = [k for k in ("requested", "observed", "echoed")
+               if not isinstance(b.get(k), dict)]
+    if missing:
+        return False, ("acceptance eligibility needs the binding records {} — build "
+                       "the bundle with acceptance_raw(subject, report)".format(missing))
+    return True, "binding records present (observed classification={!r})".format(
+        b["observed"].get("classification"))
+
+
+def derive_acceptance_eligibility(raw):
+    """Return (eligible, inputs) — the five-component identifiability verdict.
+
+    Every component is a comparison between an INDEPENDENTLY OBSERVED value and the
+    request, except the last, which is stated honestly for what it is (see the
+    ``echoed`` note in ``acceptance_raw``). Under explicit_transform component 1
+    fails and the verdict is ineligible no matter how clean the rest of the survey
+    is — that is the locked invariant, and it is expressed here as ordinary
+    conjunction rather than as a special case, so there is no branch to forget.
+    """
+    b = (raw or {}).get("binding", {})
+    req = (b.get("requested") or {}).get("value") or {}
+    obs = (b.get("observed") or {}).get("value") or {}
+    ech = (b.get("echoed") or {}).get("value") or {}
+
+    want_map = req.get("map_asset_path")
+    got_map = obs.get("world_package")
+    want_path = req.get("anchor_object_path")
+    got_path = obs.get("actor_object_path")
+    sid_req, sid_rep = ech.get("subject_id_request"), ech.get("subject_id_report")
+
+    comp = {
+        # 1. is the subject's anchor observable AT ALL under this mode?
+        "anchor_mode_observable": req.get("anchor_mode") == OBSERVABLE_ANCHOR_MODE,
+        # 2. did the editor open the world the caller named? (measured, not copied)
+        "observed_world_identity_valid": (
+            isinstance(got_map, str) and bool(got_map.strip())
+            and isinstance(want_map, str) and got_map == want_map),
+        # 3. did it resolve the exact actor the caller named? (measured)
+        "observed_actor_identity_valid": (
+            isinstance(got_path, str) and bool(got_path.strip())
+            and isinstance(want_path, str) and got_path == want_path),
+        # 4. did it report a real transform for that actor? Under this mode the
+        #    caller supplied none, so a finite vector here can only have been read
+        #    off the resolved actor.
+        "observed_actor_transform_valid": _finite3(obs.get("actor_location")),
+        # 5. did a run actually happen, and is this report continuous with THIS
+        #    request? Weakest of the five and honestly so: continuity over caller
+        #    vocabulary proves the report belongs to the request, not that each
+        #    spatial sample was taken relative to the observed actor. No per-sample
+        #    anchor provenance exists in the report contract to check that with.
+        "survey_bound_to_observed_actor": (
+            obs.get("runtime_executed") is True
+            and isinstance(sid_req, str) and bool(sid_req.strip())
+            and sid_req == sid_rep
+            and ech.get("resolved_by_request") == CALLER_RESOLVER
+            and ech.get("resolved_by_report") == CALLER_RESOLVER),
+    }
+    failed_components = [c for c in ACCEPTANCE_COMPONENTS if not comp[c]]
+    reason = None
+    for name, why in ACCEPTANCE_COMPONENT_REASON:
+        if not comp[name]:
+            reason = why
+            break
+    eligible = not failed_components
+    return eligible, {"components": comp,
+                      "failed_components": failed_components,
+                      "reason": reason,
+                      "anchor_mode": req.get("anchor_mode"),
+                      "observed_classification":
+                          (b.get("observed") or {}).get("classification")}
+
+
 DERIVATIONS = {
+    "acceptance_eligible": (derive_acceptance_eligibility,
+                            sufficiency_acceptance_eligibility),
     "actor_bounds_valid": (derive_actor_bounds_valid, sufficiency_actor_bounds),
     "temporary_placements_requested": (derive_placements_requested, sufficiency_markers),
     "temporary_placements_accepted": (derive_placements_accepted, sufficiency_markers),
@@ -558,6 +769,109 @@ if __name__ == "__main__":
     _t("observed_can_satisfy",
        satisfies_rail(record(3, OBSERVED, stage="observe", collector="c",
                              collection_ok=True)))
+
+    # --- acceptance eligibility ------------------------------------------- #
+    # Vocabulary is closed and self-consistent.
+    _t("acceptance_reason_enum_closed",
+       len(ACCEPTANCE_INELIGIBILITY_REASONS) == len(ACCEPTANCE_COMPONENTS)
+       and all(isinstance(r, str) and r.strip()
+               for r in ACCEPTANCE_INELIGIBILITY_REASONS)
+       and len(set(ACCEPTANCE_INELIGIBILITY_REASONS))
+       == len(ACCEPTANCE_INELIGIBILITY_REASONS),
+       ACCEPTANCE_INELIGIBILITY_REASONS)
+    _t("acceptance_component_reason_covers_components",
+       tuple(c for c, _r in ACCEPTANCE_COMPONENT_REASON) == ACCEPTANCE_COMPONENTS)
+
+    _MAP = "/Game/Fixture/Lvl_Fixture"
+    _PATH = "/Game/Fixture/Lvl_Fixture.Lvl_Fixture:PersistentLevel.Fixture_Subject_0"
+
+    def _pair(anchor_mode=OBSERVABLE_ANCHOR_MODE, **over):
+        subject = {"subject_id": "s0", "map_asset_path": _MAP,
+                   "anchor_mode": anchor_mode, "resolved_by": CALLER_RESOLVER,
+                   "anchor_object_path": _PATH if anchor_mode == OBSERVABLE_ANCHOR_MODE
+                   else None,
+                   "anchor_location": None if anchor_mode == OBSERVABLE_ANCHOR_MODE
+                   else [1.0, 2.0, 3.0]}
+        report = {"subject_id": "s0", "map_asset_path": _MAP,
+                  "subject_resolved_by": CALLER_RESOLVER, "runtime_executed": True,
+                  "observed_anchor_object_path":
+                      _PATH if anchor_mode == OBSERVABLE_ANCHOR_MODE else None,
+                  "observed_anchor_location": [1.0, 2.0, 3.0]}
+        subject.update(over.pop("subject", {}))
+        report.update(over.pop("report", {}))
+        return acceptance_raw(subject, report)
+
+    # POSITIVE: a fully observable actor_object_path pair is eligible, no reason.
+    enough, v, inp, _d = derive("acceptance_eligible", _pair())
+    _t("acceptance_positive", enough and v is True and inp["reason"] is None,
+       (enough, v, inp))
+    # NEGATIVE, the locked rule: explicit_transform is NEVER eligible, and its
+    # reason is the identifiability one — even though every other component holds.
+    enough, v, inp, _d = derive("acceptance_eligible", _pair("explicit_transform"))
+    _t("acceptance_explicit_transform_never_eligible",
+       enough and v is False and inp["reason"] == REASON_ANCHOR_NOT_OBSERVABLE,
+       (enough, v, inp))
+    # NEGATIVE, one per remaining component — each must be able to fire alone.
+    for _label, _over, _want in (
+            ("world", {"report": {"map_asset_path": "/Game/Fixture/Lvl_Other"}},
+             REASON_WORLD_IDENTITY_UNVERIFIED),
+            ("world_unobserved", {"report": {"map_asset_path": ""}},
+             REASON_WORLD_IDENTITY_UNVERIFIED),
+            ("actor", {"report": {"observed_anchor_object_path": _PATH + "_OTHER"}},
+             REASON_ACTOR_IDENTITY_UNVERIFIED),
+            ("actor_absent", {"report": {"observed_anchor_object_path": None}},
+             REASON_ACTOR_IDENTITY_UNVERIFIED),
+            ("transform", {"report": {"observed_anchor_location": None}},
+             REASON_ACTOR_TRANSFORM_UNOBSERVED),
+            ("transform_short", {"report": {"observed_anchor_location": [1.0, 2.0]}},
+             REASON_ACTOR_TRANSFORM_UNOBSERVED),
+            ("subject_drift", {"report": {"subject_id": "s1"}},
+             REASON_SURVEY_NOT_BOUND),
+            ("self_resolved", {"report": {"subject_resolved_by": "worldforge"}},
+             REASON_SURVEY_NOT_BOUND)):
+        enough, v, inp, _d = derive("acceptance_eligible", _pair(**_over))
+        _t("acceptance_negative_" + _label,
+           enough and v is False and inp["reason"] == _want, (enough, v, inp))
+    # A report that never ran observed nothing: the observed record is `failed`,
+    # not a False, and the verdict is ineligible rather than insufficient.
+    _raw = _pair(report={"runtime_executed": False})
+    _t("acceptance_unexecuted_observation_is_failed",
+       _raw["binding"]["observed"]["classification"] == FAILED
+       and _raw["binding"]["observed"]["value"] is None)
+    enough, v, inp, _d = derive("acceptance_eligible", _raw)
+    _t("acceptance_unexecuted_ineligible", enough and v is False, (enough, v, inp))
+    # The echo channel is never classified as an observation.
+    _t("acceptance_echo_is_caller_supplied",
+       _pair()["binding"]["echoed"]["classification"] == CALLER_SUPPLIED
+       and not satisfies_rail(_pair()["binding"]["echoed"]))
+    # A malformed bundle is INSUFFICIENT, never a confident False.
+    enough, _v, _i, d = derive("acceptance_eligible", {"binding": {}})
+    _t("acceptance_malformed_bundle_insufficient", not enough, d)
+    # Re-derivation catches a forged eligibility claim on an ineligible pair.
+    _forged = record(True, DERIVED, stage="assemble", collector="assembler",
+                     raw_refs=["binding#observed"], collection_ok=True,
+                     derivation="acceptance_eligible")
+    r_ok, d = rederive_and_compare("acceptance_eligible", _forged,
+                                   _pair("explicit_transform"))
+    _t("acceptance_rederivation_catches_forgery", not r_ok, d)
+    # ...and accepts an honest one, or the rail above is just failing always.
+    _honest = record(True, DERIVED, stage="assemble", collector="assembler",
+                     raw_refs=["binding#observed"], collection_ok=True,
+                     derivation="acceptance_eligible")
+    r_ok, d = rederive_and_compare("acceptance_eligible", _honest, _pair())
+    _t("acceptance_rederivation_accepts_honest", r_ok, d)
+    # The wrapped record is a well-formed DERIVED claim (names its derivation and
+    # cites raw), so acceptance eligibility is an evidence record, not a bare bool.
+    _rec = derived_record("acceptance_eligible", _pair(), stage="assemble",
+                          collector="assembler", refs=["binding#observed",
+                                                       "binding#requested"])
+    _t("acceptance_record_is_derived",
+       _rec["classification"] == DERIVED and _rec["value"] is True
+       and _rec["derivation"] == "acceptance_eligible"
+       and not [c for c in validate_record(_rec, "acceptance_eligible", strict=True)
+                if not c[1]],
+       [c[0] for c in validate_record(_rec, "acceptance_eligible", strict=True)
+        if not c[1]])
 
     print("SCENE-SURVEY EVIDENCE MODEL SELF-DOGFOOD: {} ({} derivations)".format(
         "PASS" if ok else "FAIL", len(DERIVATIONS)))

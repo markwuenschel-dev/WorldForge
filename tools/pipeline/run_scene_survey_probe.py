@@ -358,6 +358,20 @@ def _build_report(args, subject, captures, runs, determinism_ok):
         },
     }
 
+    # ---- acceptance eligibility ------------------------------------------------
+    # Computed by the ONE shared predicate, never re-implemented here: the
+    # independent validator imports the same function and re-derives from the same
+    # pair, so a second implementation would be a second opinion rather than a
+    # check. An `explicit_transform` survey can be perfectly valid and is still
+    # never acceptance-eligible — only the world is independently observed, the
+    # anchor is the caller's own input handed back, so the observation cannot
+    # distinguish a correct subject from arbitrary coordinates.
+    _acc = SS.evaluate_acceptance_eligibility(subject, report)
+    report["acceptance_eligible"] = bool(_acc.get("eligible"))
+    report["acceptance_ineligibility_reason"] = _acc.get("reason")
+    report["meta"]["acceptance_components"] = _acc.get("components")
+    report["meta"]["acceptance_failed_components"] = _acc.get("failed_components")
+
     # ---- subject binding: did we survey the subject we were handed? ------------
     binding = SS.validate_subject_binding(subject, report, strict=True)
     binding_fails = [c for c in binding if not c[1]]
