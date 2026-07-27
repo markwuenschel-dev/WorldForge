@@ -63,6 +63,12 @@ def main(argv=None):
     results.append(run("makefile-refs", PL + "/validate_makefile_refs.py", *s))
     results.append(run("scene-survey-contracts", PL + "/validate_scene_survey_contracts.py", *P, *s))
     results.append(run("scene-survey-negative-fixtures", PL + "/scene_survey_negatives.py", *s))
+    # Wave 2A — the exported caller-facing contract artifacts must still match a
+    # fresh export from the Python spine. Rides the always-on lane: a schema that
+    # has silently drifted from its validator misleads the caller lane on every
+    # request it authors, which is not something you should be able to opt out of.
+    results.append(run("scene-survey-contract-export",
+                       PL + "/export_scene_survey_contracts.py", "--check"))
 
     # --- Survey lane (--scene-survey) --------------------------------------
     if args.scene_survey:

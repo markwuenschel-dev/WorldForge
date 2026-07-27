@@ -1,0 +1,164 @@
+{
+  "$id": "https://worldforge.local/specs/scene_survey/scene_survey_subject.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "The caller-resolved subject of a scene survey. WorldForge never produces one of these; it receives one and verifies it. Every field is caller-owned.",
+  "oneOf": [
+    {
+      "properties": {
+        "anchor_location": {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "anchor_mode": {
+          "const": "explicit_transform"
+        },
+        "anchor_object_path": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "anchor_mode",
+        "anchor_location",
+        "anchor_object_path"
+      ],
+      "title": "explicit_transform"
+    },
+    {
+      "properties": {
+        "anchor_location": {
+          "type": "null"
+        },
+        "anchor_mode": {
+          "const": "actor_object_path"
+        },
+        "anchor_object_path": {
+          "pattern": "\\S",
+          "type": "string"
+        }
+      },
+      "required": [
+        "anchor_mode",
+        "anchor_object_path",
+        "anchor_location"
+      ],
+      "title": "actor_object_path"
+    }
+  ],
+  "properties": {
+    "anchor_location": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "anchor_mode": {
+      "enum": [
+        "explicit_transform",
+        "actor_object_path"
+      ]
+    },
+    "anchor_object_path": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "anchor_rotation": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "created_at": {},
+    "created_by": {},
+    "display_key": {},
+    "map_asset_path": {
+      "pattern": "\\S",
+      "type": "string"
+    },
+    "meta": {},
+    "notes": {},
+    "report_type": {},
+    "resolved_by": {
+      "enum": [
+        "caller"
+      ]
+    },
+    "schema_version": {
+      "const": "wf.scene_survey.survey_subject.v1"
+    },
+    "subject_id": {
+      "pattern": "\\S",
+      "type": "string"
+    },
+    "subject_kind": {
+      "enum": [
+        "actor",
+        "area",
+        "point"
+      ]
+    }
+  },
+  "required": [
+    "anchor_location",
+    "anchor_mode",
+    "anchor_object_path",
+    "anchor_rotation",
+    "map_asset_path",
+    "resolved_by",
+    "schema_version",
+    "subject_id",
+    "subject_kind"
+  ],
+  "title": "SceneSurveySubject",
+  "type": "object",
+  "x-worldforge-contract-version": "wf.scene_survey.contract.v2_6.0",
+  "x-worldforge-rails": [
+    {
+      "code": "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+      "detail": "exactly one of anchor_location / anchor_object_path may carry a value; zero means the caller never resolved the subject, two means WorldForge would have to choose. Encoded above as oneOf.",
+      "expressible_in_json_schema": true,
+      "rail": "ss::mode_exclusive"
+    },
+    {
+      "code": "WF1108_SCENE_SURVEY_SUBJECT_INFERRED",
+      "detail": "resolved_by must be 'caller'. WorldForge refuses to run a survey whose subject it resolved itself.",
+      "expressible_in_json_schema": true,
+      "rail": "ss::resolved_by_caller"
+    },
+    {
+      "code": null,
+      "detail": "anchor_rotation is [pitch, yaw, roll] or null and is NOT part of the exclusivity rail; it may be present or null in either mode. It is never compared during binding.",
+      "expressible_in_json_schema": true,
+      "rail": "anchor_rotation"
+    }
+  ],
+  "x-worldforge-schema-version": "wf.scene_survey.survey_subject.v1"
+}

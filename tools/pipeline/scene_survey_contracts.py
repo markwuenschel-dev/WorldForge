@@ -167,6 +167,12 @@ def _nested(prefix, name):
 
 _META_FIELDS = ("meta", "report_type", "created_by", "created_at", "notes", "display_key")
 
+# Version of the caller-facing contract SURFACE (the set of records, their fields,
+# and their rails) — distinct from the per-record RT_* schema_version strings, which
+# version one record shape each. Exported artifacts carry this so a caller can state
+# which surface it generated against. Bump when a field or rail changes meaning.
+CONTRACT_VERSION = "wf.scene_survey.contract.v2_6.0"
+
 
 # =========================================================================== #
 # 1. SceneSurveySubject (WF1106) — the caller-resolved subject of the survey.
