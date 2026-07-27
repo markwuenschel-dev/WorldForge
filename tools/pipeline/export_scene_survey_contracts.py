@@ -163,11 +163,15 @@ def _report_fields():
         "camera_capture_ok": _s_bool(),
         "actor_bounds_valid": _s_bool(),
         "support_samples_total": _s_int_ge0(),
-        "support_samples_valid": _s_int_ge0(),
-        "unsupported_regions": _s_int_ge0(),
-        "edge_regions": _s_int_ge0(),
-        "proxy_owners": _s_int_ge0(),
-        "proxies_disabled": _s_bool(),
+        # Nullable: nothing in the current pass observes these, and a fabricated 0 /
+        # False would be a populated field with no observation chain. Null means
+        # unknown; sr::unobserved_forbids_pass makes unknown incompatible with a
+        # pass. Drop the nullable wrapper the moment a real channel exists.
+        "support_samples_valid": _s_nullable(_s_int_ge0()),
+        "unsupported_regions": _s_nullable(_s_int_ge0()),
+        "edge_regions": _s_nullable(_s_int_ge0()),
+        "proxy_owners": _s_nullable(_s_int_ge0()),
+        "proxies_disabled": _s_nullable(_s_bool()),
         "temporary_placements_grounded": _s_int_ge0(),
         "overlap_count": _s_int_ge0(),
         "player_clearance_valid": _s_bool(),

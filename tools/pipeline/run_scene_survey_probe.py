@@ -4,10 +4,55 @@ r"""run_scene_survey_probe.py — v2.6 SceneSurveyForge operator command.
 The single documented surface that runs a READ-ONLY scene survey against an external
 UE 5.8 project. It boots the target project's editor headless, executes
 tools/bridge/scene_survey_far_side.py inside it (which drives the compiled
-USceneSurveyStatics primitives over the caller's subject), then re-derives a
-SceneSurveyReport from the WF_SURVEY_* markers on stdout and the far-side JSON —
-without trusting the far side (runtime_executed=True only when a real process
-returned; observed engine comes from the running editor, never a config file).
+USceneSurveyStatics primitives over the caller's subject), then DERIVES a
+SceneSurveyReport from the far side's STRUCTURED ``raw_evidence`` bundle — without
+trusting the far side (runtime_executed only when a real process returned 0 AND the
+far side left its document behind; observed engine comes from the running editor,
+never a config file).
+
+WHERE REPORTED VALUES COME FROM (v2.6, changed)
+===============================================
+Every reported value is sourced from ``far["raw_evidence"]`` (the structured bundle
+addressed by tools/pipeline/scene_survey_evidence.py:245-258) or from a structured
+top-level far-side scalar. THE STDOUT ``WF_SURVEY_*`` MARKER LINES ARE DIAGNOSTIC
+ONLY. A regex over human-readable editor log text is the weakest observation chain
+available, and it may no longer SUPPLY a reported value — it survives solely as a
+corroboration signal (``_channel_disagreements``), which can only ever CONTRADICT
+the structured channel, never stand in for it.
+
+Consequently: WHEN A STRUCTURED RECORD IS ABSENT, THE VALUE IS ``unknown``. It is
+reported as ``None``, its evidence record is classified ``failed`` / ``unsupported``
+/ ``not_requested`` with ``value=None``, and it is NEVER reconstructed from log text
+and NEVER coerced to ``0`` or ``False``. ``meta.evidence`` carries the full
+tri-state record for every reported field; ``meta.evidence_unknown_fields``
+enumerates the ones nothing observed.
+
+KNOWN CROSS-LANE COLLISION (stated, not papered over): the report contract
+(scene_survey_contracts.REPORT_REQUIRED :647-664 / _REPORT_NULLABLE :671-672) still
+demands a non-null int for ``support_samples_valid`` / ``unsupported_regions`` /
+``edge_regions`` / ``proxy_owners`` and a non-null bool for ``proxies_disabled``,
+while this pass has no structured channel that observes any of them. An honest
+``unknown`` therefore makes the report fail its own contract, loudly and by name,
+which is the correct direction: the previous code satisfied the contract by
+asserting ``0`` / ``False`` / ``True``. Adding those fields to ``_REPORT_NULLABLE``
+belongs to the contract lane.
+
+OPERATION IDENTITY (v2.6, new)
+==============================
+Evidence is now published per OPERATION, not to one shared mutable filename:
+
+    procedural/reports/scene_survey/runtime/operations/<operation_id>/
+        far_side_run<N>.json        raw inputs
+        scene_survey_report.json    the derived report (AUTHORITATIVE)
+        operation_manifest.json     the seal, published LAST
+
+Publication order is temp -> flush/validate -> atomic rename -> manifest LAST: a
+manifest visible before its evidence would be a lie. The shared
+``runtime/scene_survey_report.json`` is still written, but as a NON-AUTHORITATIVE
+mirror for the existing runtime gate; the manifest binds the operation-scoped copy.
+A single-writer lock is taken BEFORE every refusal path (all of which used to fire
+before any cleanup ran) and released in a ``finally``. ``output_location`` is
+confined to the repository (WF1130) before anything is created under it.
 
 WHO CHOOSES THE SUBJECT (v2.6): the caller does, and only the caller. A survey is
 requested with --request <BridgeRequest.json>, whose ``subject`` is an
@@ -18,31 +63,23 @@ where to look is a command that can look somewhere the caller did not ask about.
 The far side VERIFIES that subject and echoes what it actually anchored on; this
 side BINDS the two with validate_subject_binding (WF1107/WF1108).
 
-TWO INDEPENDENT CHANNELS, CORROBORATED: the spatial result arrives twice — as
-WF_SURVEY_* marker lines emitted by the compiled C++ primitives (which the far-side
-Python cannot forge) and as the far-side JSON. They are asserted to agree; a
-divergence is WF1109 and fails the survey. Both channels are kept precisely because
-either alone would have to be taken on trust.
-
 Read-only w.r.t. the target: never saves the map, authors no permanent actor, and
 places no persistent marker (marker CLEARANCE is trace-probed, never spawned). This
-pass runs under -nullrhi and does the spatial work (enumeration + 6-class support +
-marker clearance). MeshForge proxy toggle needs a -game pass and is honestly reported
-as not-run-in-this-pass. Camera capture is OPT-IN (--capture, default none): a survey
-that was never asked to render is NOT failed for not rendering, so a clean -nullrhi
-spatial pass can and does exit 0. When captures ARE requested and cannot be produced,
-WF1068 fires and the status is "blocked" — the honesty rail is preserved exactly
-where it was earned.
+pass runs under -nullrhi and does the spatial work (enumeration + support sampling +
+marker clearance). MeshForge proxy toggle needs a -game pass and is honestly
+reported as UNOBSERVED — value None, never a zero. Camera capture is OPT-IN
+(--capture, default none).
 
 Before booting, the plugin SOURCE tree in the target project is hashed and compared
 against the request's required_plugin_source_hash; a mismatch (or an unstated pin) is
 WF1026 and the editor is NOT launched.
 
-Determinism: --repeat N runs the survey N times and proves the spatial results are
-byte-identical (determinism_hash); a mismatch is WF1094.
+Determinism: --repeat N runs the survey N times and proves the STRUCTURED spatial
+results are byte-identical (determinism_hash); a mismatch is WF1094.
 
 Acceptance:
-    PYTHONUTF8=1 python tools/pipeline/run_scene_survey_probe.py --smoke   (bootless self-check)
+    PYTHONUTF8=1 python tools/pipeline/run_scene_survey_probe.py --smoke
+    PYTHONUTF8=1 python tools/pipeline/run_v2_6_assembler_probes.py --strict
 Live (single-writer against a real project):
     PYTHONUTF8=1 python tools/pipeline/run_scene_survey_probe.py \
         --project "<abs>/<Target>.uproject" \
@@ -50,8 +87,6 @@ Live (single-writer against a real project):
         --capture "" \
         --sample-radius-cm 3000 --sample-step-cm 100 --temporary-markers 3 \
         --repeat 2 --strict
-Report   -> procedural/reports/scene_survey/runtime/scene_survey_report.json
-Response -> <request.output_location>/scene_survey_response_<operation_id>.json
 """
 
 import argparse
@@ -69,10 +104,17 @@ sys.path.insert(0, str(REPO_ROOT / "tools" / "pipeline"))
 sys.path.insert(0, str(REPO_ROOT / "tools"))
 
 import scene_survey_contracts as SS  # noqa: E402
+import scene_survey_evidence as SSE  # noqa: E402
+import scene_survey_operation as OP  # noqa: E402
 from failure_codes import FailureCode as C  # noqa: E402
 from report_meta import build_meta  # noqa: E402
 
+# The shared, mutable "latest" location. It is a MIRROR now, not the authority:
+# tools/pipeline/validate_scene_survey_runtime.py:49-50 still binds this one
+# filename, so it keeps being written — but the manifest seals the operation-scoped
+# copy under runtime/operations/<operation_id>/ and that is the evidence of record.
 REPORT_DIR = REPO_ROOT / "procedural" / "reports" / "scene_survey" / "runtime"
+LEGACY_REPORT = REPORT_DIR / "scene_survey_report.json"
 FAR_SIDE = REPO_ROOT / "tools" / "bridge" / "scene_survey_far_side.py"
 
 # The capability this command drives. The registry (tools/bridge/capability_ops.py)
@@ -80,6 +122,16 @@ FAR_SIDE = REPO_ROOT / "tools" / "bridge" / "scene_survey_far_side.py"
 # response builder); this module only asks it for the scene-survey entry.
 OPERATION = "scene_survey"
 
+# Collector names carried on evidence records, so every value states WHO measured it.
+FAR_COLLECTOR = "scene_survey_far_side"
+ASSEMBLER = "run_scene_survey_probe"
+PATHS_COLLECTOR = "bridge.paths"
+
+DEFAULT_OPERATION_ID = "op_v2_6_scene_survey_0001"
+
+# DIAGNOSTIC ONLY. These parse the editor's human-readable log text. Nothing below
+# may source a REPORTED value from them; they exist so the structured channel can be
+# contradicted (WF1109), which is the one thing a weak channel is good for.
 RE_SUPPORT = re.compile(
     r"WF_SURVEY_SUPPORT total=(\d+) valid=(\d+) unsupported=(\d+) edge=(\d+) "
     r"blocked=(\d+) trace_error=(\d+) unknown=(\d+)")
@@ -87,6 +139,14 @@ RE_ENUM = re.compile(r"WF_SURVEY_ENUM actors=(\d+) components=(\d+)")
 RE_MARKER = re.compile(
     r"WF_SURVEY_MARKER .*grounded=(\d) footprint=(\d) overlap=(\d) "
     r"clearance=(\d) accepted=(\d)")
+
+NO_STRUCTURED_SUPPORT_BREAKDOWN = (
+    "the far side emits no per-class support breakdown: USceneSurveyStatics."
+    "sample_survey_support returns only a TOTAL (scene_survey_far_side.py:1273) and "
+    "the raw_evidence bundle carries no per-sample records. The valid/unsupported/"
+    "edge split exists only in the WF_SURVEY_SUPPORT log line, which is a diagnostic "
+    "channel and may not supply a reported value. Unobserved, therefore unknown — "
+    "not zero.")
 
 
 def _resolve_paths(args):
@@ -118,12 +178,14 @@ def _run_editor(ue_cmd, uproject, script, env_extra, timeout):
 
 
 def _parse_markers(stdout):
-    """Extract the spatial result from the WF_SURVEY_* marker lines.
+    """DIAGNOSTIC parse of the WF_SURVEY_* marker lines. Never a value source.
 
-    This is the channel the far-side Python cannot forge: the lines are emitted by
-    the compiled C++ primitives themselves (SceneSurvey.cpp), so agreement between
-    this and the far-side JSON is real corroboration rather than one source quoted
-    twice.
+    The lines are emitted by the compiled C++ primitives (SceneSurvey.cpp), so they
+    can CORROBORATE the structured bundle — a disagreement between the two is real
+    information (WF1109). What they cannot do, and no longer do, is stand in for a
+    structured record that is missing: a regex over log text is not evidence, and an
+    absent measurement must read as unknown rather than as whatever the log happened
+    to print.
     """
     r = {"support": None, "enum": None, "markers": []}
     m = RE_SUPPORT.search(stdout or "")
@@ -140,15 +202,75 @@ def _parse_markers(stdout):
     return r
 
 
-def _spatial_hash(parsed):
-    """Deterministic hash over the spatial result (the determinism unit)."""
-    payload = json.dumps({"support": parsed["support"], "enum": parsed["enum"],
-                          "markers": parsed["markers"]}, sort_keys=True)
-    return "sha256:" + hashlib.sha256(payload.encode("utf-8")).hexdigest()[:32]
+# --------------------------------------------------------------------------- #
+# structured evidence access
+# --------------------------------------------------------------------------- #
+def _far_doc(run):
+    far = (run or {}).get("far") if isinstance(run, dict) else None
+    return far if isinstance(far, dict) else {}
+
+
+def _raw_bundle(far):
+    """The far side's structured raw-evidence bundle, or an empty one.
+
+    An empty bundle is NOT an empty world: it means nothing structured was
+    collected, and every derivation over it must come back insufficient rather than
+    confidently zero (scene_survey_evidence.py:268-305).
+    """
+    raw = (far or {}).get("raw_evidence")
+    return raw if isinstance(raw, dict) else {}
+
+
+def _refs(raw, kind):
+    """Every raw_ref of one kind, sorted. A derived claim must cite its inputs."""
+    d = (raw or {}).get(kind)
+    if not isinstance(d, dict):
+        return []
+    return [SSE.raw_ref(kind, k) for k in sorted(d)]
+
+
+def _projection(d, keys):
+    """Stable, key-sorted projection of one raw kind — the determinism preimage."""
+    if not isinstance(d, dict):
+        return {}
+    return {ident: {k: rec.get(k) for k in keys}
+            for ident, rec in sorted(d.items()) if isinstance(rec, dict)}
+
+
+def _spatial_hash(run):
+    """Deterministic hash over the STRUCTURED spatial result (the determinism unit).
+
+    Previously this hashed the stdout regex parse, which made determinism a property
+    of the log formatter rather than of the measurements. It now covers the far
+    side's structured scalars plus the per-actor and per-marker raw records, so two
+    runs agree only when the OBSERVATIONS agree.
+
+    Serialization is OP.canonical_json, which refuses NaN/Infinity outright rather
+    than emitting a token no other JSON parser accepts; an unhashable payload is
+    reported as such and can never masquerade as a stable hash.
+    """
+    far = _far_doc(run)
+    raw = _raw_bundle(far)
+    payload = {
+        "actor_count": far.get("actor_count"),
+        "support_total": far.get("support_total"),
+        "marker_total": far.get("marker_total"),
+        "marker_accepted": far.get("marker_accepted"),
+        "observed_world_package": far.get("observed_world_package"),
+        "actor": _projection(raw.get("actor"),
+                             ("path_name", "location", "bounds_origin", "bounds_extent")),
+        "marker": _projection(raw.get("marker"),
+                              ("location", "grounded", "footprint", "overlap",
+                               "capsule_clear", "accepted")),
+    }
+    canon = OP.canonical_json(payload)
+    if not canon.ok:
+        return "unhashable:{}".format(canon.reason or "not_canonicalizable")
+    return "sha256:" + OP.sha256_hex(canon.value.encode("utf-8"))[:32]
 
 
 def _channel_disagreements(parsed, far):
-    """Compare the stdout marker channel against the far-side JSON channel.
+    """Compare the DIAGNOSTIC stdout channel against the structured far-side JSON.
 
     Returns (disagreements, corroborated). A field is compared only when BOTH
     channels reported it; a field only one channel saw is not a disagreement, it is
@@ -158,17 +280,28 @@ def _channel_disagreements(parsed, far):
     the sample total and logs WF_SURVEY_SUPPORT total=N; probe_temp_marker returns the
     accepted bool and logs WF_SURVEY_MARKER accepted=d
     (Plugins/WorldForge/Source/WorldForgeCore/Private/SceneSurvey.cpp:75,183,233).
+
+    This function is the ONLY remaining consumer of the stdout parse. It can raise a
+    contradiction; it cannot supply a value.
     """
     far = far if isinstance(far, dict) else {}
     en = parsed.get("enum") or {}
     sup = parsed.get("support") or {}
     mks = parsed.get("markers") or []
     ran = far.get("actor_count") is not None
+    # Was the stdout channel PRESENT at all? This is the one thing len(markers)
+    # cannot tell us: an empty marker list means "no WF_SURVEY_MARKER lines", which
+    # is "zero markers" only if the channel was speaking. When no WF_SURVEY_* line
+    # parsed at all, the channel is ABSENT, and an absence compared as a zero is the
+    # exact coercion this file exists to remove — here it would manufacture a WF1109
+    # hard failure out of a missing log, on a value stdout is no longer allowed to
+    # supply in the first place.
+    stdout_live = bool(en) or bool(sup) or bool(mks)
     pairs = [
         ("actor_count", en.get("actors"), far.get("actor_count")),
         ("support_total", sup.get("total"), far.get("support_total")),
     ]
-    if ran:
+    if ran and stdout_live:
         # Marker counts are only comparable once the primitives ran at all; before
         # that both channels are legitimately zero/empty for the same reason.
         pairs.append(("marker_total", len(mks), far.get("marker_total")))
@@ -184,13 +317,22 @@ def _channel_disagreements(parsed, far):
     return out, corroborated
 
 
-def _one_run(args, subject, captures, request_path, ue_cmd, out_json):
+def _one_run(args, subject, captures, request_path, ue_cmd, out_json, request_hash=None):
     """Boot the editor once. The subject rides as inline JSON; the map comes from it."""
+    try:
+        subject_json = json.dumps(subject, sort_keys=True, allow_nan=False)
+    except ValueError as exc:
+        # allow_nan=False: a NaN/Infinity in the subject is REFUSED, not emitted as a
+        # non-standard JSON token the far side's parser would read back as a float.
+        return {"exit_code": None, "stdout": "", "secs": 0.0,
+                "far": {"error": "subject is not serializable without NaN/Infinity: "
+                                 "{}".format(exc)},
+                "parsed": _parse_markers("")}
     env_extra = {
         "WF_SURVEY_OUT": str(out_json).replace("\\", "/"),
         # PRIMARY subject channel. There is deliberately no WF_SURVEY_MAP: a second
         # map knob could disagree with the subject about what was surveyed.
-        "WF_SURVEY_SUBJECT": json.dumps(subject, sort_keys=True),
+        "WF_SURVEY_SUBJECT": subject_json,
         # FALLBACK channel, read by the far side only if WF_SURVEY_SUBJECT is empty.
         "WF_SURVEY_REQUEST": str(Path(request_path).resolve()).replace("\\", "/"),
         "WF_SURVEY_CAPTURES": ",".join(captures),
@@ -198,6 +340,10 @@ def _one_run(args, subject, captures, request_path, ue_cmd, out_json):
         "WF_SURVEY_STEP_CM": str(args.sample_step_cm),
         "WF_SURVEY_MARKERS": str(args.temporary_markers),
         "WF_SURVEY_OPERATION_ID": args.operation_id,
+        # The QUESTION this run answers, carried into the editor so a raw record can
+        # state which request it was produced for rather than being adoptable by any
+        # later asking (scene_survey_operation.hash_request).
+        "WF_SURVEY_REQUEST_HASH": str(request_hash or ""),
     }
     if out_json.exists():
         out_json.unlink()  # never let a prior run's file masquerade as this one's
@@ -249,23 +395,220 @@ def _norm_package(p):
     return c.lower() if c is not None else None
 
 
+# --------------------------------------------------------------------------- #
+# evidence records — one per reported field, tri-state, always stating its source
+# --------------------------------------------------------------------------- #
+def _observed_int(far, key, stage, detail):
+    """OBSERVED record from a structured top-level far-side integer, else `failed`."""
+    if not isinstance(far, dict) or key not in far:
+        return SSE.failed(
+            "the far-side document carries no {!r}; there is no structured record to "
+            "read and the stdout marker text may not stand in for one".format(key),
+            stage=stage, collector=FAR_COLLECTOR)
+    v = far.get(key)
+    if isinstance(v, bool) or not isinstance(v, int):
+        return SSE.failed(
+            "far-side {!r} is {!r}, which is not an integer measurement".format(key, v),
+            stage=stage, collector=FAR_COLLECTOR)
+    return SSE.record(v, SSE.OBSERVED, stage=stage, collector=FAR_COLLECTOR,
+                      collection_ok=True, detail=detail)
+
+
+def _observed_bool(far, key, stage, detail):
+    """OBSERVED record from a structured top-level far-side boolean, else `failed`."""
+    v = (far or {}).get(key)
+    if not isinstance(v, bool):
+        return SSE.failed(
+            "far-side {!r} is {!r}, which is not a boolean observation".format(key, v),
+            stage=stage, collector=FAR_COLLECTOR)
+    return SSE.record(v, SSE.OBSERVED, stage=stage, collector=FAR_COLLECTOR,
+                      collection_ok=True, detail=detail)
+
+
+def _proxy_owner_record(raw):
+    """MeshForge proxy owners: an OBSERVATION if one exists, otherwise UNSUPPORTED.
+
+    Replaces the asserted ``proxy_owners: 0``. A literal zero here was
+    indistinguishable from a real measurement of an empty set — which is exactly the
+    claim a -nullrhi editor pass cannot make, because runtime proxies spawn at game
+    BeginPlay and this pass never reaches it.
+    """
+    rec = (raw or {}).get("proxy", {})
+    rec = rec.get("runtime_proxies") if isinstance(rec, dict) else None
+    if not isinstance(rec, dict):
+        return SSE.failed(
+            "the far side emitted no proxy observation record at proxy#runtime_proxies",
+            stage="observe", collector=FAR_COLLECTOR)
+    stage = rec.get("stage") if rec.get("stage") in SSE.STAGES else "observe"
+    if rec.get("collection_ok") is True and rec.get("value") is not None:
+        return SSE.record(rec.get("value"), SSE.OBSERVED, stage=stage,
+                          collector=rec.get("collector") or FAR_COLLECTOR,
+                          collection_ok=True,
+                          raw_refs=[SSE.raw_ref("proxy", "runtime_proxies")],
+                          detail=rec.get("detail"))
+    return SSE.unsupported(
+        rec.get("detail") or "runtime proxies were not observed in this pass",
+        stage=stage, collector=rec.get("collector") or FAR_COLLECTOR)
+
+
+def _proxies_disabled_record(args, raw):
+    """Was the debug-proxy toggle verified? Replaces the asserted ``False``.
+
+    There is no observation channel for the toggle in an editor pass: the same
+    BeginPlay constraint that makes ``proxy_owners`` unobservable makes "they are
+    disabled" unverifiable. Asking for it (--disable-debug-proxies) and not being
+    able to check it is a FAILED collection; not asking is NOT_REQUESTED. Neither is
+    a False.
+    """
+    asked = bool(getattr(args, "disable_debug_proxies", False))
+    detail = ("MeshForge debug proxies spawn at game BeginPlay; a -nullrhi editor "
+              "pass never reaches BeginPlay, so neither their presence nor their "
+              "disablement is observable here (proxy raw record present={})".format(
+                  isinstance((raw or {}).get("proxy", {}).get("runtime_proxies"), dict)))
+    if asked:
+        return SSE.failed("--disable-debug-proxies was requested but " + detail,
+                          stage="observe", collector=FAR_COLLECTOR)
+    return SSE.not_requested(
+        "the caller did not request the debug-proxy toggle; " + detail, stage="observe")
+
+
+def _camera_record(far, captures):
+    """Camera capture: opt-in, and False here is a real observation, not a default."""
+    if not captures:
+        return SSE.record(False, SSE.OBSERVED, stage="observe", collector=FAR_COLLECTOR,
+                          collection_ok=True,
+                          detail="no captures were requested (capture is opt-in); the "
+                                 "far side reports camera_capture_ran={!r}".format(
+                                     (far or {}).get("camera_capture_ran")))
+    return _observed_bool(far, "camera_capture_ran", "observe",
+                          "structured far-side flag: did a camera capture actually run")
+
+
+def _engine_root_record(args):
+    """The engine root actually resolved by the bridge ladder — never "resolved"."""
+    resolved = getattr(args, "resolved_engine_root", None) or getattr(args, "engine_root", None)
+    if not resolved:
+        return SSE.failed(
+            "the engine root was not resolved in this context (bridge.paths."
+            "resolve_engine_root was not run), so no path can be stated. The literal "
+            "string 'resolved' that used to sit here was a status word wearing a "
+            "path's clothes.", stage="preparation", collector=PATHS_COLLECTOR)
+    return SSE.record(str(resolved), SSE.OBSERVED, stage="preparation",
+                      collector=PATHS_COLLECTOR, collection_ok=True,
+                      detail="resolved via the bridge ladder (arg -> env -> registry)")
+
+
+def _build_evidence(args, far, captures, runtime_executed):
+    """One evidence record per reported field, all sourced from the STRUCTURED channel.
+
+    Every derived value goes through scene_survey_evidence.derived_record, which
+    refuses to answer when the raw is insufficient and returns an honest ``failed``
+    record instead — so an empty bundle produces ``unknown`` rather than the
+    confident zero an ``all()``/``sum()`` over an empty list would produce.
+    """
+    raw = _raw_bundle(far)
+    actor_refs = _refs(raw, "actor")
+    marker_refs = _refs(raw, "marker")
+    inv = raw.get("inventory") if isinstance(raw.get("inventory"), dict) else {}
+    inv_refs = [SSE.raw_ref("inventory", k) for k in ("pre", "post")
+                if isinstance(inv.get(k), dict)]
+
+    ev = {}
+    # runtime_executed is an observation about OUR OWN process, not the far side's
+    # self-report: a real editor returned 0 and left its document behind.
+    ev["runtime_executed"] = SSE.record(
+        bool(runtime_executed), SSE.OBSERVED, stage="boot", collector=ASSEMBLER,
+        collection_ok=True,
+        detail="the editor subprocess returned exit code 0 AND the far side wrote a "
+               "document carrying its own operation_id. A non-zero exit, a timeout "
+               "(exit_code None) or an absent/unparseable document is NOT an "
+               "execution.")
+    ev["engine_root"] = _engine_root_record(args)
+
+    ev["actor_count"] = _observed_int(
+        far, "actor_count", "observe",
+        "USceneSurveyStatics.enumerate_survey_actors return value, read structurally "
+        "from the far-side document (never from WF_SURVEY_ENUM log text)")
+    ev["support_samples_total"] = _observed_int(
+        far, "support_total", "classify",
+        "USceneSurveyStatics.sample_survey_support return value, read structurally "
+        "from the far-side document (never from WF_SURVEY_SUPPORT log text)")
+    for name in ("support_samples_valid", "unsupported_regions", "edge_regions"):
+        ev[name] = SSE.unsupported(NO_STRUCTURED_SUPPORT_BREAKDOWN, stage="classify",
+                                   collector=FAR_COLLECTOR)
+
+    # ActorBoundsValid = (n>0) AND for every actor i: finite(min) AND finite(max) AND
+    # for every axis min<=max. derive_actor_bounds_valid checks a finite, non-
+    # degenerate extent per actor (scene_survey_evidence.py:284-296) and its
+    # sufficiency precondition refuses to answer from a COUNT (:270-281).
+    ev["actor_bounds_valid"] = SSE.derived_record(
+        "actor_bounds_valid", raw, "observe", ASSEMBLER, refs=actor_refs)
+    ev["temporary_placements_requested"] = SSE.derived_record(
+        "temporary_placements_requested", raw, "classify", ASSEMBLER, refs=marker_refs)
+    ev["temporary_placements_accepted"] = SSE.derived_record(
+        "temporary_placements_accepted", raw, "classify", ASSEMBLER, refs=marker_refs)
+    # GROUNDED, not accepted. accepted = grounded AND footprint AND clearance, so the
+    # old wiring reported the strictly stronger value under the weaker name and made
+    # the two fields incapable of disagreeing.
+    ev["temporary_placements_grounded"] = SSE.derived_record(
+        "temporary_placements_grounded", raw, "classify", ASSEMBLER, refs=marker_refs)
+    ev["overlap_count"] = SSE.derived_record(
+        "overlap_count", raw, "classify", ASSEMBLER, refs=marker_refs)
+    ev["player_clearance_valid"] = SSE.derived_record(
+        "player_clearance_valid", raw, "classify", ASSEMBLER, refs=marker_refs)
+    # cleanup_verified needs a pre AND a post inventory, and the post must be taken
+    # at or after the cleanup stage. "nothing was spawned, so nothing to clean" is a
+    # claim about the world, and a claim about the world needs two snapshots of it.
+    ev["cleanup_verified"] = SSE.derived_record(
+        "cleanup_verified", raw, "cleanup", ASSEMBLER, refs=inv_refs)
+
+    ev["proxy_owners"] = _proxy_owner_record(raw)
+    ev["proxies_disabled"] = _proxies_disabled_record(args, raw)
+    ev["camera_capture_ok"] = _camera_record(far, captures)
+    return ev
+
+
+def _reported(rec):
+    """Project an evidence record into the report. Unknown projects to None.
+
+    ``satisfies_rail`` is True only for observed/derived records whose collection
+    actually succeeded (scene_survey_evidence.py:233-237). Everything else —
+    unsupported, not_requested, failed — projects to None and NEVER to 0 or False.
+    That is the whole tri-state, enforced in one place.
+    """
+    if not isinstance(rec, dict):
+        return None
+    return rec.get("value") if SSE.satisfies_rail(rec) else None
+
+
+def _evidence_dir(args):
+    """Where THIS operation's raw far-side artifacts live."""
+    d = getattr(args, "artifact_dir", None)
+    return Path(d) if d else REPORT_DIR
+
+
 def _build_report(args, subject, captures, runs, determinism_ok):
     """Fold the runs into a SceneSurveyReport (per the v2.6 contract).
 
+    Every reported value comes from the far side's structured channel via
+    ``_build_evidence``; ``meta.evidence`` carries the record behind each one.
+
     Capture policy (v2.6): capture is OPT-IN. WF1068 is appended only when the
-    caller actually requested captures and none could be produced. A survey that was
-    never asked to render is not failed for not rendering, which is what makes a
-    clean -nullrhi pass able to exit 0.
+    caller actually requested captures and none could be produced.
     """
     last = runs[-1]
-    parsed, far = last["parsed"], last["far"]
-    sup = parsed.get("support") or {}
-    en = parsed.get("enum") or {}
-    runtime_executed = last["exit_code"] is not None
-    markers = parsed.get("markers") or []
-    grounded = sum(1 for mk in markers if mk.get("accepted"))
-    overlaps = sum(1 for mk in markers if mk.get("overlap"))
-    clearance_ok = all((not mk.get("accepted")) or mk.get("clearance") for mk in markers)
+    far = _far_doc(last)
+    parsed = last.get("parsed") or {"support": None, "enum": None, "markers": []}
+    raw = _raw_bundle(far)
+
+    # A REAL run: a process that returned 0 and a far side that left its document
+    # behind. The old predicate (exit_code is not None) was true for a crashed
+    # editor and for every non-zero exit — everything except a timeout.
+    runtime_executed = (last.get("exit_code") == 0
+                        and isinstance(far.get("operation_id"), str)
+                        and bool(far.get("operation_id")))
+
+    ev = _build_evidence(args, far, captures, runtime_executed)
 
     disagreements, corroborated = _channel_disagreements(parsed, far)
     subject_resolved = far.get("subject_resolved") is True
@@ -276,7 +619,7 @@ def _build_report(args, subject, captures, runs, determinism_ok):
     # Re-derived here from the far side's RAW observation, independently of whatever
     # the far side concluded. far["map"], far["subject_id"] and
     # far["subject_resolved_by"] are echoes of the subject (scene_survey_far_side.py
-    # :197-202), so consuming those instead of `subject` would compare a value to a
+    # :1187-1191), so consuming those instead of `subject` would compare a value to a
     # copy of itself just as surely. observed_world_package is measured from the live
     # editor, so it is the only one that can disagree.
     requested_map = subject.get("map_asset_path", "")
@@ -285,23 +628,24 @@ def _build_report(args, subject, captures, runs, determinism_ok):
     world_identity_ok = (map_loaded
                          and _norm_package(observed_pkg) is not None
                          and _norm_package(observed_pkg) == _norm_package(requested_map))
-    # The report's map_asset_path is now the OBSERVED world, not the requested one.
-    # That is what makes sb::map_match a real comparison instead of a tautology: if
-    # the editor opened a different world, the two sides now differ and the rail
-    # fires. When identity could not be established we emit "" rather than the
-    # request — an unobserved map must never be reported as an observed one.
+    # The report's map_asset_path is the OBSERVED world, not the requested one. That
+    # is what makes sb::map_match a real comparison instead of a tautology. When
+    # identity could not be established we emit "" rather than the request — an
+    # unobserved map must never be reported as an observed one.
     observed_map_asset_path = _canon_package(observed_pkg) if world_identity_ok else ""
 
-    evidence = []
+    ev_dir = _evidence_dir(args)
+    evidence_paths = []
     for i in range(1, len(runs) + 1):
-        p = REPORT_DIR / "far_side_run{}.json".format(i)
+        p = ev_dir / "far_side_run{}.json".format(i)
         if p.is_file():
-            evidence.append(p.relative_to(REPO_ROOT).as_posix())
+            try:
+                evidence_paths.append(p.resolve().relative_to(REPO_ROOT).as_posix())
+            except ValueError:
+                evidence_paths.append(p.as_posix())
 
-    # Capture is opt-in; nothing here can render under -nullrhi, so camera_capture_ok
-    # is only ever True if a future rendering pass populated it. It is never asserted.
-    camera_capture_ok = bool(far.get("camera_capture_ran"))
-    captures_missing = bool(captures) and not camera_capture_ok
+    camera_capture_ok = _reported(ev["camera_capture_ok"])
+    captures_missing = bool(captures) and camera_capture_ok is not True
 
     report = {
         "report_id": "scene_survey_report_{}".format(args.operation_id),
@@ -319,22 +663,23 @@ def _build_report(args, subject, captures, runs, determinism_ok):
         "observed_anchor_object_path": obs_path,
         "subject_resolved_by": subject.get("resolved_by"),
         "captures_requested": list(captures),
+        # ---- every value below is a projection of an evidence record -------------
         "camera_capture_ok": camera_capture_ok,
-        "actor_bounds_valid": bool(en.get("actors", 0) > 0 and not far.get("error")),
-        "support_samples_total": int(sup.get("total", 0)),
-        "support_samples_valid": int(sup.get("valid", 0)),
-        "unsupported_regions": int(sup.get("unsupported", 0)),
-        "edge_regions": int(sup.get("edge", 0)),
-        "proxy_owners": 0,
-        "proxies_disabled": False,
-        "temporary_placements_grounded": int(grounded),
-        "overlap_count": int(overlaps),
-        "player_clearance_valid": bool(clearance_ok),
-        "cleanup_verified": True,  # markers are trace-probed, never spawned: nothing to clean
-        "determinism_hash": _spatial_hash(parsed),
+        "actor_bounds_valid": _reported(ev["actor_bounds_valid"]),
+        "support_samples_total": _reported(ev["support_samples_total"]),
+        "support_samples_valid": _reported(ev["support_samples_valid"]),
+        "unsupported_regions": _reported(ev["unsupported_regions"]),
+        "edge_regions": _reported(ev["edge_regions"]),
+        "proxy_owners": _reported(ev["proxy_owners"]),
+        "proxies_disabled": _reported(ev["proxies_disabled"]),
+        "temporary_placements_grounded": _reported(ev["temporary_placements_grounded"]),
+        "overlap_count": _reported(ev["overlap_count"]),
+        "player_clearance_valid": _reported(ev["player_clearance_valid"]),
+        "cleanup_verified": _reported(ev["cleanup_verified"]),
+        "determinism_hash": _spatial_hash(last),
         "runtime_mode": "live_survey_runtime" if runtime_executed else "deterministic_survey_simulation",
         "runtime_executed": runtime_executed,
-        "evidence_paths": evidence,
+        "evidence_paths": evidence_paths,
         "failure_codes": [],
         "status": "fail",
         "schema_version": SS.RT_SURVEY_REPORT,
@@ -342,21 +687,46 @@ def _build_report(args, subject, captures, runs, determinism_ok):
         "created_by": "worldforge.v2.6",
         "created_at": SS.AUTHORING_TS,
         "meta": {
-            "engine_root": args.engine_root or "resolved",
+            "engine_root": _reported(ev["engine_root"]),
             "observed_engine_version": far.get("observed_engine_version"),
             "uproject": far.get("resolved_uproject") or str(args.project),
             "runtime_executed": runtime_executed,
             "repeat": args.repeat,
             "determinism_consistent": determinism_ok,
-            "per_run_hashes": [_spatial_hash(r["parsed"]) for r in runs],
+            "per_run_hashes": [_spatial_hash(r) for r in runs],
             "subject_source": far.get("subject_source"),
             "anchor_detail": far.get("anchor_detail"),
+            # The stdout channel is retained ONLY as corroboration. It supplies no
+            # reported value; it can only contradict the structured one.
+            "stdout_channel_role": "diagnostic_only",
             "channel_corroborated": corroborated,
             "channel_disagreements": disagreements,
             "camera_pass": far.get("camera_capture_reason"),
             "proxy_pass": far.get("proxy_pass_reason"),
+            "raw_evidence_schema": far.get("raw_evidence_schema"),
+            "raw_evidence_present": bool(raw),
+            "raw_evidence_counts": {k: len(v) for k, v in sorted(raw.items())
+                                    if isinstance(v, dict)},
+            "far_side_collection_errors": far.get("collection_errors") or [],
+            # The tri-state, in full: value + classification + stage + collector +
+            # derivation + the raw records each claim was computed from.
+            "evidence": ev,
         },
     }
+
+    # ---- what nothing observed -------------------------------------------------
+    # A field whose record may not satisfy a rail is UNKNOWN. It is listed by name so
+    # a reader never has to infer "unknown" from a suspicious-looking zero, and so
+    # the difference between "measured 0" and "never collected" survives to disk.
+    unknown_fields = sorted(n for n, rec in ev.items() if not SSE.satisfies_rail(rec))
+    report["meta"]["evidence_unknown_fields"] = unknown_fields
+    # The evidence records police themselves: a derived record with no raw_refs, or
+    # an "unsupported" one smuggling a usable value, is a defect in THIS assembler.
+    ev_record_failures = []
+    for name in sorted(ev):
+        ev_record_failures += [c[0] for c in SSE.validate_record(ev[name], name, strict=True)
+                               if not c[1]]
+    report["meta"]["evidence_record_failures"] = ev_record_failures
 
     # ---- acceptance eligibility ------------------------------------------------
     # Computed by the ONE shared predicate, never re-implemented here: the
@@ -402,14 +772,29 @@ def _build_report(args, subject, captures, runs, determinism_ok):
     # Capture: opt-in. Only a REQUESTED-but-absent capture is a shortfall.
     if captures_missing:
         fcodes.append(C.SCENE_SURVEY_CAMERA_CAPTURE_MISSING)
+    # Any field nothing observed. BLOCKED, not FAIL: an unobserved capability is an
+    # incomplete survey, not a wrong one — and the report says exactly which fields.
+    if unknown_fields:
+        fcodes.append(C.SCENE_SURVEY_EVIDENCE_RAW_MISSING)
+    if ev_record_failures:
+        fcodes.append(C.SCENE_SURVEY_EVIDENCE_CLASSIFICATION_INVALID)
+    if report["cleanup_verified"] is not True:
+        fcodes.append(C.SCENE_SURVEY_CLEANUP_UNVERIFIED)
+    if report["proxy_owners"] is None or report["proxies_disabled"] is None:
+        fcodes.append(C.SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED)
     # A survey that saw nothing cannot claim a pass, whatever else went right.
-    if not (report["actor_bounds_valid"] and report["support_samples_total"] > 0
-            and evidence):
+    # NOTE the isinstance guard: support_samples_total is now None when unobserved,
+    # and `None > 0` is a TypeError, not a False.
+    tot = report["support_samples_total"]
+    if not (report["actor_bounds_valid"] is True
+            and isinstance(tot, int) and tot > 0
+            and evidence_paths):
         fcodes.append(C.SCENE_SURVEY_EVIDENCE_MISSING)
 
     # A wrong/absent subject, a forged-looking channel, a non-deterministic or
-    # non-executed run are FAILURES. A merely incomplete one (capture pending, no
-    # spatial evidence yet) is BLOCKED. Neither is ever quietly a pass.
+    # non-executed run are FAILURES. A merely incomplete one (capture pending, an
+    # unobserved capability, no spatial evidence yet) is BLOCKED. Neither is ever
+    # quietly a pass.
     hard = (not runtime_executed or not determinism_ok or bool(far.get("error"))
             or not subject_resolved or bool(disagreements) or bool(binding_fails)
             # Independent of far["error"] on purpose: this side re-derives the world
@@ -472,7 +857,12 @@ def _sha256_file(path):
 
 
 def _emit_response(req, survey, far, out_dir):
-    """Write the BridgeResponse for this operation into the request's output_location."""
+    """Write the BridgeResponse ATOMICALLY into the request's CONFINED output_location.
+
+    Returns (dest_or_None, OpResult). ``out_dir`` must already be the confined
+    absolute directory from OP.confine_path — this function never joins a
+    caller-supplied string onto the repo root.
+    """
     from bridge import capability_ops as OPS
     op = OPS.get_op(OPERATION)
     paths, hashes = [], []
@@ -482,11 +872,12 @@ def _emit_response(req, survey, far, out_dir):
             paths.append(rel)
             hashes.append(_sha256_file(abs_p))
     resp = op.build_response(req, far, evidence_paths=paths, evidence_hashes=hashes)
-    out_dir.mkdir(parents=True, exist_ok=True)
-    dest = out_dir / "scene_survey_response_{}.json".format(req.operation_id)
-    dest.write_text(json.dumps(resp.to_dict(), indent=2, ensure_ascii=False) + "\n",
-                    encoding="utf-8")
-    return dest
+    dest = Path(out_dir) / "scene_survey_response_{}.json".format(req.operation_id)
+    # atomic_write_json refuses NaN/Infinity outright (scene_survey_operation.py
+    # :186-190) and publishes by same-directory temp + fsync + os.replace, so no
+    # reader ever sees a truncated response.
+    res = OP.atomic_write_json(dest, resp.to_dict(), repo_root=REPO_ROOT)
+    return (dest if res.ok else None), res
 
 
 # --------------------------------------------------------------------------- #
@@ -561,49 +952,182 @@ def _smoke():
         problems.append("a report bound to the wrong subject was not rejected for {}".format(
             C.SCENE_SURVEY_SUBJECT_MISMATCH))
 
+    problems += _smoke_evidence_sourcing()
+    problems += _smoke_operation_wiring()
+
     if problems:
         for p in problems:
             print("[scene-survey-smoke] FAIL — {}".format(p))
         return 1
     print("[scene-survey-smoke] PASS — operator surface wired (far-side present, "
           "capability registered, report contract satisfied, capture opt-in proven "
-          "both ways, subject binding enforced)")
+          "both ways, subject binding enforced, stdout demoted to diagnostic, "
+          "unknown never coerced to 0/False, operation manifest + confinement live)")
     return 0
 
 
-def main(argv=None):
-    ap = argparse.ArgumentParser(description="v2.6 SceneSurveyForge operator command.")
-    ap.add_argument("--smoke", action="store_true", help="bootless self-check; no UE launch")
-    ap.add_argument("--target-repository", default=None)
-    ap.add_argument("--project", default=None, help="external .uproject to survey")
-    ap.add_argument("--engine-root", default=None)
-    ap.add_argument("--ue-cmd", default=None)
-    ap.add_argument("--request", default=None,
-                    help="BridgeRequest JSON carrying the caller-resolved subject "
-                         "(the ONLY way to state a survey subject)")
-    # Retained ONLY so they can be REJECTED with a real explanation. Neither can
-    # express a caller-resolved subject, and silently honouring one would let
-    # WorldForge survey somewhere the caller never asked about. No default, no
-    # choices: any value at all is refused.
-    ap.add_argument("--map", default=None, help=argparse.SUPPRESS)
-    ap.add_argument("--anchor", default=None, help=argparse.SUPPRESS)
-    ap.add_argument("--capture", default="",
-                    help="comma-separated capture kinds to request; empty (default) "
-                         "requests none — capture is opt-in")
-    ap.add_argument("--sample-radius-cm", type=float, default=3000.0)
-    ap.add_argument("--sample-step-cm", type=float, default=100.0)
-    ap.add_argument("--temporary-markers", type=int, default=3)
-    ap.add_argument("--disable-debug-proxies", action="store_true")
-    ap.add_argument("--cleanup", action="store_true")
-    ap.add_argument("--repeat", type=int, default=2)
-    ap.add_argument("--strict", action="store_true")
-    ap.add_argument("--timeout", type=int, default=900)
-    ap.add_argument("--operation-id", default="op_v2_6_scene_survey_0001")
-    args, _ = ap.parse_known_args(argv)
+class _SmokeArgs(object):
+    """The argparse surface _build_report reads, for the bootless checks below."""
 
-    if args.smoke:
-        return _smoke()
+    def __init__(self):
+        self.operation_id = "op_smoke_scene_survey"
+        self.engine_root = None
+        self.resolved_engine_root = None
+        self.project = "smoke.uproject"
+        self.repeat = 1
+        self.disable_debug_proxies = False
+        self.artifact_dir = None
 
+
+def _smoke_evidence_sourcing():
+    """THE tri-state rails: no structured record => unknown, never a scrape, never 0.
+
+    Anti-vacuity: the same assembler is driven twice, once with an EMPTY structured
+    bundle and once with a populated one, so a "nothing is ever reported" regression
+    fails the second half just as loudly as a "log text was used" regression fails
+    the first.
+    """
+    problems = []
+    args = _SmokeArgs()
+
+    # (1) A run whose structured bundle is EMPTY while stdout is FULL of markers.
+    # Every spatial field must come back None. If any of them equals the log value,
+    # the regex is supplying evidence again.
+    loud_stdout = ("WF_SURVEY_SUPPORT total=158 valid=120 unsupported=20 edge=10 "
+                   "blocked=8 trace_error=0 unknown=0\n"
+                   "WF_SURVEY_ENUM actors=12 components=44\n"
+                   "WF_SURVEY_MARKER x grounded=1 footprint=1 overlap=0 clearance=1 "
+                   "accepted=1\n")
+    bare_far = {"operation_id": "op_smoke_scene_survey", "loaded": True,
+                "observed_world_package": "/Game/Fixture/Lvl_Fixture",
+                "camera_capture_ran": False}
+    bare_ev = _build_evidence(args, bare_far, [], True)
+    for field in ("actor_bounds_valid", "support_samples_valid", "unsupported_regions",
+                  "edge_regions", "temporary_placements_grounded", "overlap_count",
+                  "player_clearance_valid", "cleanup_verified", "proxy_owners",
+                  "proxies_disabled", "support_samples_total"):
+        rec = bare_ev[field]
+        if _reported(rec) is not None:
+            problems.append("{} was reported as {!r} from a run with NO structured "
+                            "record — a missing measurement must project to None".format(
+                                field, _reported(rec)))
+        if rec.get("value") is not None:
+            problems.append("{} carries value={!r} on a non-satisfying record; "
+                            "unknown must be None, never a zero or a False".format(
+                                field, rec.get("value")))
+        if rec.get("classification") not in SSE.NON_SATISFYING:
+            problems.append("{} classified {!r} with nothing to observe".format(
+                field, rec.get("classification")))
+    # ...and the diagnostic parse must still SEE those markers, so the check above is
+    # about wiring rather than about an unparseable string.
+    if (_parse_markers(loud_stdout).get("support") or {}).get("total") != 158:
+        problems.append("the diagnostic stdout parser stopped parsing; the "
+                        "no-scrape rails above would then be vacuous")
+
+    # (2) A populated structured bundle must actually produce values — otherwise the
+    # rails above would pass on an assembler that reports nothing at all, ever.
+    # The fixture must satisfy scene_survey_evidence.bundle_integrity: capsule_clear
+    # is the complement of overlap (far_side:946) and accepted implies grounded AND
+    # footprint AND clearance (SceneSurvey.cpp:230). m0 is decided-blocked, m1 is
+    # decided-clean, so grounded (2) and accepted (1) genuinely differ.
+    _inv = {"collection_ok": True, "actor_paths": ["/A"], "dirty_packages": [],
+            "operation_owned_actor_paths": [],
+            "map_identity": "/Game/Fixture/Lvl_Fixture",
+            "package_identity": "/Game/Fixture/Lvl_Fixture"}
+    rich_far = dict(bare_far)
+    rich_far.update({
+        "actor_count": 2, "support_total": 158,
+        "raw_evidence": {
+            "actor": {"/A": {"bounds_origin": [0.0, 0.0, 0.0],
+                             "bounds_extent": [10.0, 10.0, 10.0]},
+                      "/B": {"bounds_origin": [5.0, 5.0, 5.0],
+                             "bounds_extent": [1.0, 2.0, 3.0]}},
+            "marker": {"m0": {"grounded": True, "footprint": True, "accepted": False,
+                              "overlap": True, "capsule_clear": False},
+                       "m1": {"grounded": True, "footprint": True, "accepted": True,
+                              "overlap": False, "capsule_clear": True}},
+            "inventory": {"pre": dict(_inv, stage="anchor_bind"),
+                          "post": dict(_inv, stage="cleanup")},
+            "proxy": {"runtime_proxies": {"value": None, "collection_ok": False,
+                                          "stage": "observe", "detail": "no BeginPlay"}},
+        },
+    })
+    rich_ev = _build_evidence(args, rich_far, [], True)
+    expected = {"actor_bounds_valid": True, "support_samples_total": 158,
+                "temporary_placements_grounded": 2, "overlap_count": 1,
+                "player_clearance_valid": False, "cleanup_verified": True,
+                "temporary_placements_accepted": 1}
+    for field, want in sorted(expected.items()):
+        got = _reported(rich_ev[field])
+        if got != want:
+            problems.append("with a populated structured bundle, {} derived {!r}, "
+                            "expected {!r} ({})".format(field, got, want,
+                                                        rich_ev[field].get("detail")))
+    # grounded must not silently equal accepted — that was the discarded-value bug.
+    if _reported(rich_ev["temporary_placements_grounded"]) == \
+            _reported(rich_ev["temporary_placements_accepted"]):
+        problems.append("temporary_placements_grounded equals ..._accepted on a "
+                        "fixture built to make them differ; the grounded observation "
+                        "is being discarded again")
+    # every record must be a well-formed evidence record (derived ones cite raw).
+    for name in sorted(rich_ev):
+        bad = [c[0] for c in SSE.validate_record(rich_ev[name], name, strict=True)
+               if not c[1]]
+        if bad:
+            problems.append("evidence record {} is malformed: {}".format(name, bad))
+
+    # (3) runtime_executed must not be true on a failed exit code.
+    for code, want in ((0, True), (1, False), (None, False)):
+        run = {"exit_code": code, "stdout": "", "secs": 0.0, "far": rich_far,
+               "parsed": _parse_markers("")}
+        rep, _d, _c, _b = _build_report(args, SS._example_scene_survey_subject(), [],
+                                        [run], True)
+        if rep["runtime_executed"] is not want:
+            problems.append("runtime_executed is {!r} for exit_code={!r}; a non-zero "
+                            "exit is not an execution".format(rep["runtime_executed"], code))
+    return problems
+
+
+def _smoke_operation_wiring():
+    """The operation library must actually refuse what it exists to refuse."""
+    problems = []
+    for hostile in ("C:/evil", "../outside", "/etc/passwd", "\\\\server\\share",
+                    "procedural/../../escape"):
+        res = OP.confine_path(REPO_ROOT, hostile)
+        if res.ok:
+            problems.append("confine_path ACCEPTED the escaping output_location {!r} "
+                            "-> {}".format(hostile, res.value))
+    good = OP.confine_path(REPO_ROOT, "procedural/reports/scene_survey/runtime")
+    if not good.ok:
+        problems.append("confine_path refused a legitimate repo-relative "
+                        "output_location: [{}] {}".format(good.code, good.detail))
+    mp = OP.manifest_path_for(REPO_ROOT, "op_smoke_scene_survey")
+    rp = OP.report_path_for(REPO_ROOT, "op_smoke_scene_survey")
+    if not (mp.ok and rp.ok):
+        problems.append("operation-scoped artifact paths do not resolve: {} / {}".format(
+            mp.detail, rp.detail))
+    elif mp.value["absolute"].parent != rp.value["absolute"].parent:
+        problems.append("the manifest and the derived report are not in the same "
+                        "operation directory ({} vs {})".format(
+                            mp.value["absolute"].parent, rp.value["absolute"].parent))
+    # NaN must be refused at serialization, not emitted.
+    nan_res = OP.pretty_json_bytes({"x": float("nan")})
+    if nan_res.ok:
+        problems.append("pretty_json_bytes emitted NaN instead of refusing it")
+    return problems
+
+
+# --------------------------------------------------------------------------- #
+# the survey itself (everything here runs UNDER the single-writer lock)
+# --------------------------------------------------------------------------- #
+def _run_survey(args):
+    """Every refusal path below is inside main()'s try/finally, so the lock releases.
+
+    That is the whole reason this is a separate function: the eight early ``return
+    2`` guards all fire BEFORE any artifact work, and each one used to leave the
+    previous operation's report on disk. They now also each have to release a lock,
+    and eight hand-written releases is eight chances to forget one.
+    """
     # ---- exactly one way to state a subject ---------------------------------
     legacy = [n for n, v in (("--map", args.map), ("--anchor", args.anchor)) if v is not None]
     if legacy:
@@ -662,37 +1186,119 @@ def main(argv=None):
         return 2
     print("[scene-survey] plugin source preflight OK — {}".format(detail))
 
-    _engine_root, ue_cmd = _resolve_paths(args)
-    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    # ---- operation identity ----------------------------------------------------
+    # The request owns the operation id. A --operation-id that disagrees with it is a
+    # refusal, not a silent override: the two would name different operations and the
+    # manifest could only bind one of them.
+    if args.operation_id and args.operation_id != req.operation_id:
+        print("[scene-survey] FAIL — {} — --operation-id {!r} disagrees with the "
+              "request's operation_id {!r}. One asking, one id.".format(
+                  C.SCENE_SURVEY_OPERATION_ID_MISMATCH, args.operation_id, req.operation_id))
+        return 2
+    args.operation_id = req.operation_id
 
-    # Stale-artifact discipline: every artifact THIS operation writes is removed
-    # before launching, so nothing a prior run left behind can masquerade as this
-    # run's result (the per-run far-side JSON is also unlinked in _one_run).
-    out = REPORT_DIR / "scene_survey_report.json"
-    response_dir = REPO_ROOT / req.output_location
-    response_path = response_dir / "scene_survey_response_{}.json".format(req.operation_id)
-    for stale in [out, response_path] + sorted(REPORT_DIR.glob("far_side_run*.json")):
+    hashed = OP.hash_request(req)
+    if not hashed.ok:
+        print("[scene-survey] FAIL — {} — cannot hash the request ({}): {}".format(
+            hashed.code, hashed.reason, hashed.detail))
+        return 2
+    request_hash = hashed.value["request_hash"]
+
+    # ---- output_location confinement (WF1130) ----------------------------------
+    # Previously: response_dir = REPO_ROOT / req.output_location, straight into
+    # mkdir(parents=True). On Windows Path(r"D:\repo") / "C:/evil" IS "C:/evil", so a
+    # caller-supplied absolute path replaced the root and this command created
+    # directories outside the repository.
+    conf = OP.confine_path(REPO_ROOT, req.output_location)
+    if not conf.ok:
+        print("[scene-survey] FAIL — {} — output_location {!r} is refused ({}): {}".format(
+            conf.code, req.output_location, conf.reason, conf.detail))
+        return 2
+    response_dir = conf.value["absolute"]
+
+    man_res = OP.manifest_path_for(REPO_ROOT, args.operation_id)
+    rep_res = OP.report_path_for(REPO_ROOT, args.operation_id)
+    for res in (man_res, rep_res):
+        if not res.ok:
+            print("[scene-survey] FAIL — {} — {}".format(res.code, res.detail))
+            return 2
+    manifest_path = man_res.value["absolute"]
+    op_report_path = rep_res.value["absolute"]
+    op_dir = manifest_path.parent
+
+    # ---- refuse conflicting pre-existing operation output -----------------------
+    # An operation is one asking. If this id already published a manifest, either it
+    # answers a DIFFERENT question (a conflict) or it answers this one (a replay);
+    # overwriting either would destroy the evidence that made the distinction
+    # visible. A re-run needs a fresh operation_id.
+    if manifest_path.exists():
+        existing = OP.load_operation_manifest(manifest_path)
+        if not existing.ok:
+            print("[scene-survey] FAIL — {} — operation {!r} already has output at {} "
+                  "and it is unusable ({}): {}".format(
+                      existing.code, args.operation_id,
+                      manifest_path.relative_to(REPO_ROOT).as_posix(),
+                      existing.reason, existing.detail))
+            return 2
+        bound = OP.verify_operation_evidence(REPO_ROOT, existing.value, req,
+                                             check_files=False)
+        print("[scene-survey] FAIL — {} — operation {!r} has ALREADY published a "
+              "manifest at {}. {} Refusing to overwrite an operation's own evidence; "
+              "issue a new operation_id for a new asking.".format(
+                  C.SCENE_SURVEY_OPERATION_ID_MISMATCH, args.operation_id,
+                  manifest_path.relative_to(REPO_ROOT).as_posix(),
+                  ("It binds this exact request (a replay)." if bound.ok
+                   else "It does not bind this request ({}): {}".format(
+                       bound.reason, bound.detail))))
+        return 2
+
+    _engine_root, ue_cmd = _resolve_paths(args)
+    args.resolved_engine_root = str(getattr(_engine_root, "value", _engine_root))
+    args.artifact_dir = op_dir
+    try:
+        op_dir.mkdir(parents=True, exist_ok=True)
+        REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    except OSError as exc:
+        print("[scene-survey] FAIL — cannot create the operation directory {}: {}".format(
+            op_dir, exc))
+        return 2
+
+    # Stale-artifact discipline, now scoped to THIS operation's own directory. The
+    # shared "latest" path is no longer unlinked ahead of a run that might refuse:
+    # it is a mirror, republished atomically at the end or left exactly as it was.
+    for stale in sorted(op_dir.glob("far_side_run*.json")):
         if stale.is_file():
             stale.unlink()
 
     runs = []
     for i in range(1, max(1, args.repeat) + 1):
-        out_json = REPORT_DIR / "far_side_run{}.json".format(i)
+        out_json = op_dir / "far_side_run{}.json".format(i)
         print("[scene-survey] run {}/{} -> booting {} on {} (subject {})".format(
             i, args.repeat, Path(str(args.project)).name,
             subject.get("map_asset_path"), subject.get("subject_id")))
-        runs.append(_one_run(args, subject, captures, args.request, ue_cmd.value, out_json))
+        runs.append(_one_run(args, subject, captures, args.request, ue_cmd.value,
+                             out_json, request_hash))
 
-    hashes = [_spatial_hash(r["parsed"]) for r in runs]
-    determinism_ok = len(set(hashes)) == 1 and runs[0]["parsed"]["support"] is not None
+    hashes = [_spatial_hash(r) for r in runs]
+    # Determinism over the STRUCTURED channel, and never vacuous: identical hashes of
+    # two runs that both observed nothing prove nothing about determinism.
+    determinism_ok = (len(set(hashes)) == 1
+                      and _far_doc(runs[0]).get("support_total") is not None)
     survey, disagreements, corroborated, binding_fails = _build_report(
         args, subject, captures, runs, determinism_ok)
 
     # validate the domain SceneSurveyReport against its contract before writing.
     fails = [c for c in SS.validate_scene_survey_report(survey, strict=True) if not c[1]]
+    unknown_fields = survey["meta"]["evidence_unknown_fields"]
     if fails:
         print("[scene-survey] WARNING — survey failed self-validation: {}".format(
-            [c[0] for c in fails][:6]))
+            [c[0] for c in fails][:8]))
+        if unknown_fields:
+            print("[scene-survey]   this is EXPECTED while {} field(s) are unobserved: "
+                  "{}. The contract (scene_survey_contracts.REPORT_REQUIRED) demands a "
+                  "non-null int/bool for them; an honest 'unknown' is None. The fix is "
+                  "in the contract's _REPORT_NULLABLE, not a fabricated zero here."
+                  .format(len(unknown_fields), unknown_fields))
 
     # Evidence ownership: WorldForge may author only under procedural/ inside any
     # tree it writes to (tools/bridge/live.py:362-394). A leak here would mean this
@@ -704,6 +1310,7 @@ def main(argv=None):
     # scans *_report.json for a real meta block + checks + a bounded status) accepts
     # it. The domain SceneSurveyReport (with its own status vocab pass/fail/blocked)
     # rides under "survey"; the house wrapper carries build_meta + checks + ok/fail.
+    tot = survey["support_samples_total"]
     checks = [
         {"name": "runtime_executed", "verdict": "pass" if survey["runtime_executed"] else "fail"},
         {"name": "subject_resolved_by_caller",
@@ -711,11 +1318,16 @@ def main(argv=None):
         {"name": "subject_binding", "verdict": "pass" if not binding_fails else "fail"},
         {"name": "channels_corroborated",
          "verdict": "fail" if disagreements else ("pass" if corroborated else "warn")},
+        # An unobserved value is "unknown", never a silent fail and never a pass.
         {"name": "support_samples_present",
-         "verdict": "pass" if survey["support_samples_total"] > 0 else "fail"},
-        {"name": "actors_enumerated", "verdict": "pass" if survey["actor_bounds_valid"] else "fail"},
+         "verdict": ("pass" if tot > 0 else "fail") if isinstance(tot, int) else "unknown"},
+        {"name": "actors_enumerated",
+         "verdict": ("pass" if survey["actor_bounds_valid"] else "fail")
+                    if survey["actor_bounds_valid"] is not None else "unknown"},
         {"name": "deterministic", "verdict": "pass" if determinism_ok else "fail"},
-        {"name": "cleanup_verified", "verdict": "pass" if survey["cleanup_verified"] else "fail"},
+        {"name": "cleanup_verified",
+         "verdict": ("pass" if survey["cleanup_verified"] else "fail")
+                    if survey["cleanup_verified"] is not None else "unknown"},
         {"name": "contract_valid", "verdict": "pass" if not fails else "fail"},
         {"name": "evidence_ownership", "verdict": "fail" if foreign else "pass"},
         # Capture is opt-in: not-applicable when nobody asked, fail when they did.
@@ -734,17 +1346,85 @@ def main(argv=None):
         # binds these two with validate_subject_binding (WF1107/WF1108).
         "subject": subject,
         "survey": survey,
+        "operation": {
+            "operation_id": args.operation_id,
+            "request_hash": request_hash,
+            "request_hash_field_set_version": hashed.value["field_set_version"],
+            "manifest_path": manifest_path.relative_to(REPO_ROOT).as_posix(),
+            "authoritative_report_path": op_report_path.relative_to(REPO_ROOT).as_posix(),
+            "shared_mirror_path": LEGACY_REPORT.relative_to(REPO_ROOT).as_posix(),
+        },
         "meta": build_meta(
             command="run-scene-survey-probe", pack="worldforge_vertical_slice",
             strict=args.strict, status=house_status, record_count=1, records_total=1,
             report_type=SS.RT_SURVEY_REPORT),
     }
 
-    out.write_text(json.dumps(wrapped, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    response = _emit_response(req, survey, runs[-1]["far"], response_dir)
-    report = survey  # for the summary print below
+    # ======================= ATOMIC PUBLICATION ORDER ========================== #
+    # temp -> flush/fsync -> validate -> rename into final -> MANIFEST LAST.
+    # A manifest visible before its evidence is a lie, so the seal is the last thing
+    # that appears and every artifact it names is already durable when it does.
+    pub = OP.atomic_write_json(op_report_path, wrapped, repo_root=REPO_ROOT)
+    if not pub.ok:
+        print("[scene-survey] FAIL — {} — could not publish the derived report ({}): "
+              "{}".format(pub.code, pub.reason, pub.detail))
+        return 2
+    mirror = OP.atomic_write_json(LEGACY_REPORT, wrapped, repo_root=REPO_ROOT)
+    if not mirror.ok:
+        print("[scene-survey] WARNING — the shared mirror {} was not updated ({}): "
+              "{}".format(LEGACY_REPORT.name, mirror.reason, mirror.detail))
 
-    print("[scene-survey] -> {}".format(out.relative_to(REPO_ROOT).as_posix()))
+    response, resp_res = _emit_response(req, survey, _far_doc(runs[-1]), response_dir)
+    if response is None:
+        print("[scene-survey] FAIL — {} — could not publish the response ({}): {}".format(
+            resp_res.code, resp_res.reason, resp_res.detail))
+        return 2
+
+    # ---- the manifest, built over artifacts that are already on disk ------------
+    raw_entries = [{"path": rel, "role": "far_side_run"} for rel in survey["evidence_paths"]]
+    req_rel = OP.relative_posix(REPO_ROOT, Path(args.request))
+    if req_rel.ok:
+        raw_entries.append({"path": req_rel.value, "role": "request"})
+    resp_rel = OP.relative_posix(REPO_ROOT, response)
+    if resp_rel.ok:
+        raw_entries.append({"path": resp_rel.value, "role": "response"})
+
+    # Only CLAIM cleanup when the derivation was actually sufficient. Handing the
+    # library its default block would publish cleanup_verified=False as though it
+    # were a finding; handing it a fabricated True is what this whole change exists
+    # to stop. When cleanup is unknown, the manifest says nothing about it.
+    cleanup_block = None
+    if survey["cleanup_verified"] is not None:
+        inputs = (survey["meta"]["evidence"]["cleanup_verified"].get("inputs") or {})
+        cleanup_block = {
+            "cleanup_verified": bool(survey["cleanup_verified"]),
+            "temporary_placements": len(
+                (_raw_bundle(_far_doc(runs[-1])).get("temporary_placement") or {})),
+            "residual_actor_paths": list(inputs.get("leaked_actors") or []),
+        }
+
+    manifest = OP.build_operation_manifest(
+        REPO_ROOT, req, raw_evidence=raw_entries,
+        derived_report={"path": op_report_path.relative_to(REPO_ROOT).as_posix(),
+                        "role": "other"},
+        captures=[], cleanup=cleanup_block)
+    if not manifest.ok:
+        print("[scene-survey] FAIL — {} — could not build the operation manifest ({}): "
+              "{}".format(manifest.code, manifest.reason, manifest.detail))
+        return 2
+    sealed = OP.publish_operation_manifest(REPO_ROOT, manifest.value, dest=manifest_path)
+    if not sealed.ok:
+        print("[scene-survey] FAIL — {} — could not publish the operation manifest ({}): "
+              "{}".format(sealed.code, sealed.reason, sealed.detail))
+        return 2
+
+    report = survey  # for the summary print below
+    print("[scene-survey] -> {}  (AUTHORITATIVE)".format(
+        op_report_path.relative_to(REPO_ROOT).as_posix()))
+    print("[scene-survey] -> {}  (shared mirror, not the evidence of record)".format(
+        LEGACY_REPORT.relative_to(REPO_ROOT).as_posix()))
+    print("[scene-survey] -> {}  (manifest, published LAST)".format(
+        manifest_path.relative_to(REPO_ROOT).as_posix()))
     try:
         print("[scene-survey] -> {}".format(response.relative_to(REPO_ROOT).as_posix()))
     except ValueError:
@@ -754,18 +1434,75 @@ def main(argv=None):
               "support_samples_total", "support_samples_valid",
               "unsupported_regions", "edge_regions", "temporary_placements_grounded",
               "overlap_count", "player_clearance_valid", "cleanup_verified",
+              "proxy_owners", "proxies_disabled",
               "determinism_hash", "failure_codes"):
-        print("[scene-survey]   {:<28} = {}".format(k, report.get(k)))
+        v = report.get(k)
+        print("[scene-survey]   {:<28} = {}".format(
+            k, "unknown (nothing observed it)" if v is None and k in unknown_fields else v))
+    print("[scene-survey]   evidence_unknown_fields      = {}".format(unknown_fields or "none"))
     print("[scene-survey]   determinism_consistent       = {} ({})".format(
         determinism_ok, hashes))
-    print("[scene-survey]   channel_corroborated         = {} {}".format(
-        corroborated, disagreements or ""))
+    print("[scene-survey]   channel_corroborated         = {} {}  [stdout is "
+          "diagnostic only]".format(corroborated, disagreements or ""))
+    print("[scene-survey]   request_hash                 = {}".format(request_hash[:19]))
     print("[scene-survey]   plugin_source_hash           = {}".format(
         (observed_hash or "?")[:12]))
-    # A clean survey exits 0. "blocked" (incomplete but honest) and "fail" exit 1 —
-    # the caller can now gate on this, which it could not while every -nullrhi run
-    # was forced non-pass regardless of outcome.
+    # A clean survey exits 0. "blocked" (incomplete but honest) and "fail" exit 1.
     return 0 if report["status"] == "pass" else 1
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description="v2.6 SceneSurveyForge operator command.")
+    ap.add_argument("--smoke", action="store_true", help="bootless self-check; no UE launch")
+    ap.add_argument("--target-repository", default=None)
+    ap.add_argument("--project", default=None, help="external .uproject to survey")
+    ap.add_argument("--engine-root", default=None)
+    ap.add_argument("--ue-cmd", default=None)
+    ap.add_argument("--request", default=None,
+                    help="BridgeRequest JSON carrying the caller-resolved subject "
+                         "(the ONLY way to state a survey subject)")
+    # Retained ONLY so they can be REJECTED with a real explanation. Neither can
+    # express a caller-resolved subject, and silently honouring one would let
+    # WorldForge survey somewhere the caller never asked about. No default, no
+    # choices: any value at all is refused.
+    ap.add_argument("--map", default=None, help=argparse.SUPPRESS)
+    ap.add_argument("--anchor", default=None, help=argparse.SUPPRESS)
+    ap.add_argument("--capture", default="",
+                    help="comma-separated capture kinds to request; empty (default) "
+                         "requests none — capture is opt-in")
+    ap.add_argument("--sample-radius-cm", type=float, default=3000.0)
+    ap.add_argument("--sample-step-cm", type=float, default=100.0)
+    ap.add_argument("--temporary-markers", type=int, default=3)
+    ap.add_argument("--disable-debug-proxies", action="store_true")
+    ap.add_argument("--cleanup", action="store_true")
+    ap.add_argument("--repeat", type=int, default=2)
+    ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--timeout", type=int, default=900)
+    # No default: the REQUEST owns the operation id. Passing this is an assertion
+    # that the request agrees, and a disagreement is refused rather than resolved.
+    ap.add_argument("--operation-id", default=None)
+    args, _ = ap.parse_known_args(argv)
+
+    if args.smoke:
+        return _smoke()
+
+    # ---- single-writer lock, BEFORE every refusal path -------------------------
+    # All eight early `return 2` guards live inside _run_survey. Acquiring here and
+    # releasing in `finally` is what makes a refused run give the lock back: eight
+    # hand-written releases would be eight chances to leave it held for the full TTL
+    # (DEFAULT_LOCK_TTL_SECONDS = 3600).
+    lock = OP.acquire_operation_lock(REPO_ROOT, args.operation_id or DEFAULT_OPERATION_ID)
+    if not lock.ok:
+        print("[scene-survey] FAIL — {} — {}".format(lock.code, lock.detail))
+        return 2
+    print("[scene-survey] single-writer lock — {}".format(lock.detail))
+    try:
+        return _run_survey(args)
+    finally:
+        released = OP.release_operation_lock(lock.value)
+        if not released.ok:
+            print("[scene-survey] WARNING — {} — the operation lock was not released "
+                  "({}): {}".format(released.code, released.reason, released.detail))
 
 
 if __name__ == "__main__":

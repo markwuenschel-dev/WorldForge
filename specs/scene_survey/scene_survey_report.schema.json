@@ -108,9 +108,16 @@
     },
     "display_key": {},
     "edge_regions": {
-      "minimum": 0,
-      "multipleOf": 1,
-      "type": "number"
+      "anyOf": [
+        {
+          "minimum": 0,
+          "multipleOf": 1,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "evidence_paths": {
       "items": {
@@ -948,12 +955,26 @@
       "type": "boolean"
     },
     "proxies_disabled": {
-      "type": "boolean"
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "proxy_owners": {
-      "minimum": 0,
-      "multipleOf": 1,
-      "type": "number"
+      "anyOf": [
+        {
+          "minimum": 0,
+          "multipleOf": 1,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "report_id": {
       "pattern": "\\S",
@@ -992,9 +1013,16 @@
       "type": "number"
     },
     "support_samples_valid": {
-      "minimum": 0,
-      "multipleOf": 1,
-      "type": "number"
+      "anyOf": [
+        {
+          "minimum": 0,
+          "multipleOf": 1,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "temporary_placements_grounded": {
       "minimum": 0,
@@ -1002,9 +1030,16 @@
       "type": "number"
     },
     "unsupported_regions": {
-      "minimum": 0,
-      "multipleOf": 1,
-      "type": "number"
+      "anyOf": [
+        {
+          "minimum": 0,
+          "multipleOf": 1,
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ]
     }
   },
   "required": [

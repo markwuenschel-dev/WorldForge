@@ -108,15 +108,30 @@ def _str(obj, field, code, prefix):
     return ch
 
 
-def _bool(obj, field, code, prefix):
+def _bool(obj, field, code, prefix, nullable=False):
+    """Type rail for a boolean field.
+
+    ``nullable=True`` means None is a legal value carrying the meaning "unknown —
+    this was never observed". It is NOT a licence to omit the measurement: the
+    honesty rails (sr::unobserved_forbids_pass, sr::clean_requires_evidence) make an
+    unknown incompatible with a pass, so declining to measure costs a green result.
+    Without this, the only way to satisfy the type rail is a fabricated False, which
+    is a populated field with no observation chain behind it.
+    """
     v = obj.get(field) if isinstance(obj, dict) else None
+    if nullable and v is None:
+        return []
     return [("{}{}_bool".format(prefix, field), isinstance(v, bool),
              "{} must be an explicit boolean (got {!r})".format(field, v), code)]
 
 
-def _int(obj, field, code, prefix, allow_zero=True):
-    ch = RS.check_positive_number(obj, field, code, prefix=prefix, allow_zero=allow_zero)
+def _int(obj, field, code, prefix, allow_zero=True, nullable=False):
+    """Type rail for an integer field. See _bool for what ``nullable`` means and
+    why it does not weaken the contract."""
     v = obj.get(field) if isinstance(obj, dict) else None
+    if nullable and v is None:
+        return []
+    ch = RS.check_positive_number(obj, field, code, prefix=prefix, allow_zero=allow_zero)
     is_int = RS.is_number(v) and float(v).is_integer()
     ch.append(("{}{}_integer".format(prefix, field), is_int,
                "{} must be an integer (got {!r})".format(field, v), code))
@@ -668,8 +683,30 @@ REPORT_ALLOWED = REPORT_REQUIRED + _META_FIELDS
 # is what makes an executed run carry it). acceptance_ineligibility_reason is
 # nullable in the same sense: None is the ONLY legal value when eligible=True, and
 # the key is still required so an absent reason cannot pass for "no problem".
+# The five below are nullable for one reason only: NOTHING IN THE CURRENT PASS
+# OBSERVES THEM. sample_survey_support returns a bare total with no per-sample
+# records (scene_survey_far_side.py, sample_survey_support call site), and the
+# proxy pass needs a -game boot this editor pass never performs. Before this, the
+# contract demanded a non-null int/bool, so the ONLY way to satisfy it was to
+# fabricate 0/False/True — the exact "populated field without an observation
+# chain" the production standard forbids. Null here means "unknown", never
+# "measured zero".
+#
+# Nullability is NOT a licence to skip measurement: sr::unobserved_forbids_pass
+# below makes any null observation incompatible with status="pass", so the cost of
+# not measuring is a report that cannot claim success. Once a real observation
+# channel exists for one of these, REMOVE it from this tuple — leaving it nullable
+# after it becomes observable would let a regression pass as an unknown.
 _REPORT_NULLABLE = ("observed_anchor_location", "observed_anchor_object_path",
-                    "acceptance_ineligibility_reason")
+                    "acceptance_ineligibility_reason",
+                    "support_samples_valid", "unsupported_regions", "edge_regions",
+                    "proxy_owners", "proxies_disabled")
+
+# The subset of _REPORT_NULLABLE that represents an OBSERVATION rather than a
+# mode-dependent or by-construction-null field. A null in any of these means the
+# measurement did not happen.
+_UNOBSERVED_SENTINEL_FIELDS = ("support_samples_valid", "unsupported_regions",
+                               "edge_regions", "proxy_owners", "proxies_disabled")
 
 
 def validate_scene_survey_report(obj, strict=False):
@@ -704,13 +741,16 @@ def validate_scene_survey_report(obj, strict=False):
                obj.get("subject_resolved_by") == "caller" if isinstance(obj, dict) else False,
                "subject_resolved_by must be 'caller' — WorldForge must never resolve "
                "the survey subject itself", C.SCENE_SURVEY_SUBJECT_INFERRED))
+    # Nullability is driven by _REPORT_NULLABLE, never hand-listed here — a second
+    # list would drift from the first and silently re-forbid an honest unknown.
     for f in ("camera_capture_ok", "actor_bounds_valid", "proxies_disabled",
               "player_clearance_valid", "cleanup_verified", "runtime_executed"):
-        ch += _bool(obj, f, code, "sr::")
+        ch += _bool(obj, f, code, "sr::", nullable=(f in _REPORT_NULLABLE))
     for f in ("support_samples_total", "support_samples_valid", "unsupported_regions",
               "edge_regions", "proxy_owners", "temporary_placements_grounded",
               "overlap_count"):
-        ch += _int(obj, f, code, "sr::", allow_zero=True)
+        ch += _int(obj, f, code, "sr::", allow_zero=True,
+                   nullable=(f in _REPORT_NULLABLE))
     ch += _str(obj, "determinism_hash", code, "sr::")
     ch += RS.check_enum(obj, "runtime_mode", RUNTIME_MODES, code, prefix="sr::")
     ch += RS.check_enum(obj, "status", SURVEY_STATUS, code, prefix="sr::")
@@ -746,6 +786,20 @@ def validate_scene_survey_report(obj, strict=False):
                 and obj.get("cleanup_verified") is True
                 and isinstance(obj.get("evidence_paths"), list)
                 and len(obj.get("evidence_paths")) > 0)
+    # honesty: an unknown is not a pass. A null in any observation field means the
+    # measurement never happened, and a survey that did not measure cannot claim
+    # success — this is what stops nullability (added so honest unknowns are
+    # expressible) from becoming a cheaper route to green than measuring.
+    _unobs = [f for f in _UNOBSERVED_SENTINEL_FIELDS if obj.get(f) is None] \
+        if isinstance(obj, dict) else list(_UNOBSERVED_SENTINEL_FIELDS)
+    ch.append(("sr::unobserved_forbids_pass",
+               (obj.get("status") if isinstance(obj, dict) else None) != "pass"
+               or not _unobs,
+               "status='pass' is incompatible with unobserved field(s) {} — a null "
+               "here means the measurement did not happen, and a survey that did not "
+               "measure cannot claim success. Report 'blocked' instead."
+               .format(_unobs),
+               C.SCENE_SURVEY_EVIDENCE_MISSING))
     ch.append(("sr::clean_requires_evidence", (not clean) or positive,
                "a pass report with no failure codes must carry positive evidence "
                "(bounds, samples>0, cleanup, non-empty evidence_paths — plus cameras "
