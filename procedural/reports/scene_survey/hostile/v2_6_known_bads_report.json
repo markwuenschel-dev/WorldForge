@@ -1,0 +1,738 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "kb::catalogue_nonempty": {
+      "ok": true,
+      "detail": "the hostile catalogue must carry at least 21 fixtures (got 21)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_resolver_inverted::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_resolver_inverted::rejected": {
+      "ok": true,
+      "detail": "the report admits WorldForge resolved the subject — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_resolver_inverted::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1108_SCENE_SURVEY_SUBJECT_INFERRED — rejection for another reason proves nothing about this vector (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_resolver_inverted::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sb::resolver_not_worldforge — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sb::resolver_not_worldforge'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_substituted_anchor_actor::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_substituted_anchor_actor::rejected": {
+      "ok": true,
+      "detail": "WorldForge surveyed a different actor than the one named and reported success — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_substituted_anchor_actor::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH — rejection for another reason proves nothing about this vector (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_substituted_anchor_actor::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sb::object_path_match — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sb::object_path_match'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_substituted_map::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_substituted_map::rejected": {
+      "ok": true,
+      "detail": "right subject id, wrong level — still not the survey that was asked for — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_substituted_map::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH — rejection for another reason proves nothing about this vector (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_substituted_map::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sb::map_match — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sb::map_match'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_transform_beyond_tolerance::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_transform_beyond_tolerance::rejected": {
+      "ok": true,
+      "detail": "anchor drift of ~1.56cm Euclidean — under 1cm on every single axis, and still outside the L2 tolerance. The per-axis reading of this rail is the trap this fixture exists to catch — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_transform_beyond_tolerance::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH — rejection for another reason proves nothing about this vector (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_transform_beyond_tolerance::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sb::transform_within_tolerance — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sb::transform_within_tolerance'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_wrong_subject_id::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_wrong_subject_id::rejected": {
+      "ok": true,
+      "detail": "a real survey of the wrong subject, returned against this request — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_wrong_subject_id::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH — rejection for another reason proves nothing about this vector (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::binding_wrong_subject_id::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sb::subject_id_match — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sb::subject_id_match'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_clean_without_evidence::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_clean_without_evidence::rejected": {
+      "ok": true,
+      "detail": "a clean pass with no evidence behind it — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_clean_without_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1097_SCENE_SURVEY_EVIDENCE_MISSING — rejection for another reason proves nothing about this vector (got ['WF1095_SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_clean_without_evidence::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sr::clean_requires_evidence — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sr::clean_requires_evidence', 'sr::live_mode_executed'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_dry_probe_claims_runtime::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_dry_probe_claims_runtime::rejected": {
+      "ok": true,
+      "detail": "a report that never executed claiming live runtime truth — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_dry_probe_claims_runtime::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1095_SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM — rejection for another reason proves nothing about this vector (got ['WF1095_SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_dry_probe_claims_runtime::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sr::live_mode_executed — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sr::clean_requires_evidence', 'sr::live_mode_executed'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_executed_without_observed_anchor::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_executed_without_observed_anchor::rejected": {
+      "ok": true,
+      "detail": "an executed run that cannot say where it actually looked — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_executed_without_observed_anchor::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED — rejection for another reason proves nothing about this vector (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_executed_without_observed_anchor::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sr::observed_anchor_present — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sr::observed_anchor_present'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_pre_wave1_scratch_shape::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_pre_wave1_scratch_shape::rejected": {
+      "ok": true,
+      "detail": "the pre-Wave-1 report shape, which predates subject binding entirely and would silently satisfy a gate that only asked whether a report exists — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_pre_wave1_scratch_shape::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1062_SCENE_SURVEY_REPORT_INVALID — rejection for another reason proves nothing about this vector (got ['WF1062_SCENE_SURVEY_REPORT_INVALID', 'WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED', 'WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_resolver_inverted::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_resolver_inverted::rejected": {
+      "ok": true,
+      "detail": "a report asserting WorldForge chose the subject — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_resolver_inverted::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1108_SCENE_SURVEY_SUBJECT_INFERRED — rejection for another reason proves nothing about this vector (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_resolver_inverted::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sr::subject_resolved_by_caller — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sr::subject_resolved_by_caller'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_unknown_failure_code::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_unknown_failure_code::rejected": {
+      "ok": true,
+      "detail": "a failure code invented to look rigorous — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_unknown_failure_code::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1099_SCENE_SURVEY_UNKNOWN_FAILURE_CODE — rejection for another reason proves nothing about this vector (got ['WF1099_SCENE_SURVEY_UNKNOWN_FAILURE_CODE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_unknown_failure_code::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sr::failure_codes_known — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sr::failure_codes_known'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_valid_exceeds_total::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_valid_exceeds_total::rejected": {
+      "ok": true,
+      "detail": "more valid samples than were ever taken — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_valid_exceeds_total::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1062_SCENE_SURVEY_REPORT_INVALID — rejection for another reason proves nothing about this vector (got ['WF1062_SCENE_SURVEY_REPORT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_valid_exceeds_total::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sr::valid_le_total — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sr::valid_le_total'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_zero_support_samples_passed::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_zero_support_samples_passed::rejected": {
+      "ok": true,
+      "detail": "a pass built on zero probed support samples — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_zero_support_samples_passed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1097_SCENE_SURVEY_EVIDENCE_MISSING — rejection for another reason proves nothing about this vector (got ['WF1097_SCENE_SURVEY_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::report_zero_support_samples_passed::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY sr::clean_requires_evidence — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sr::clean_requires_evidence'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_both_anchor_channels::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_both_anchor_channels::rejected": {
+      "ok": true,
+      "detail": "both anchor channels populated — WorldForge would have to pick one — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_both_anchor_channels::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED — rejection for another reason proves nothing about this vector (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_both_anchor_channels::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY ss::mode_exclusive — rejection by any other rail is collateral, not proof of this vector (failed rails: ['ss::explicit_transform_complete', 'ss::mode_exclusive'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_empty_subject_id::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_empty_subject_id::rejected": {
+      "ok": true,
+      "detail": "a blank subject id — nothing to bind a report back to — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_empty_subject_id::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED — rejection for another reason proves nothing about this vector (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_missing_anchor_mode::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_missing_anchor_mode::rejected": {
+      "ok": true,
+      "detail": "a subject that never says how its anchor is expressed — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_missing_anchor_mode::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED — rejection for another reason proves nothing about this vector (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_missing_anchor_mode::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY field::anchor_mode — rejection by any other rail is collateral, not proof of this vector (failed rails: ['field::anchor_mode', 'ss::enum::anchor_mode'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_missing_map::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_missing_map::rejected": {
+      "ok": true,
+      "detail": "a subject with no map — WorldForge would have to choose the level — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_missing_map::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED — rejection for another reason proves nothing about this vector (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_missing_map::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY field::map_asset_path — rejection by any other rail is collateral, not proof of this vector (failed rails: ['field::map_asset_path', 'ss::map_asset_path_nonempty', 'ss::type::map_asset_path'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_neither_anchor_channel::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_neither_anchor_channel::rejected": {
+      "ok": true,
+      "detail": "neither anchor channel populated — the caller never resolved the subject — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_neither_anchor_channel::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED — rejection for another reason proves nothing about this vector (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_neither_anchor_channel::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY ss::mode_exclusive — rejection by any other rail is collateral, not proof of this vector (failed rails: ['ss::explicit_transform_complete', 'ss::mode_exclusive'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_resolved_by_worldforge::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_resolved_by_worldforge::rejected": {
+      "ok": true,
+      "detail": "a subject WorldForge claims to have resolved itself — the exact authority inversion v2.6 exists to refuse — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_resolved_by_worldforge::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1108_SCENE_SURVEY_SUBJECT_INFERRED — rejection for another reason proves nothing about this vector (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_resolved_by_worldforge::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY ss::resolved_by_caller — rejection by any other rail is collateral, not proof of this vector (failed rails: ['ss::enum::resolved_by', 'ss::resolved_by_caller'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_unknown_key::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_unknown_key::rejected": {
+      "ok": true,
+      "detail": "an extra key smuggled onto the subject — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_unknown_key::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED — rejection for another reason proves nothing about this vector (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_unknown_key::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY no_unknown_fields — rejection by any other rail is collateral, not proof of this vector (failed rails: ['no_unknown_fields'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_wrong_schema_version::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_wrong_schema_version::rejected": {
+      "ok": true,
+      "detail": "a subject claiming a schema version this build does not implement — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_wrong_schema_version::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED — rejection for another reason proves nothing about this vector (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::subject_wrong_schema_version::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY schema_version — rejection by any other rail is collateral, not proof of this vector (failed rails: ['ss::schema_version'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "positive::subject_contract": {
+      "ok": true,
+      "detail": "the honest artifact must still pass subject_contract — without this rail, a driver that rejected everything would satisfy this whole suite (failed: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "positive::report_contract": {
+      "ok": true,
+      "detail": "the honest artifact must still pass report_contract — without this rail, a driver that rejected everything would satisfy this whole suite (failed: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "positive::subject_binding": {
+      "ok": true,
+      "detail": "the honest artifact must still pass subject_binding — without this rail, a driver that rejected everything would satisfy this whole suite (failed: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::gaps_declared": {
+      "ok": true,
+      "detail": "vectors that cannot be tested at this commit are named in NOT_YET_TESTABLE (9 declared) rather than silently omitted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 87,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "run-v2-6-known-bads",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "50075827915e3dd68520687033ae573a47960ef8",
+    "timestamp": "2026-07-27T14:22:21.563978+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.scene_survey.hostile_fixtures.v1",
+    "report_id": "wf.scene_survey.hostile_fixtures.v1:85eb835feb2b",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 0,
+    "records_total": 21,
+    "records_passed": 21,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -76,6 +76,9 @@ def main(argv=None):
         results.append(run("scene-survey-fuzz", PL + "/scene_survey_fuzz.py",
                            "--cases", "300", "--seed", "1337", *s))
         results.append(run("scene-survey-torture", PL + "/scene_survey_torture.py", *s))
+        # Wave 2F — the mission's hostile scenario list as ON-DISK artifacts, each
+        # driven through the real validator and required to fail for its OWN rail.
+        results.append(run("scene-survey-known-bads", PL + "/run_v2_6_known_bads.py", *P, *s))
         results.append(run("scene-survey-report-integrity", PL + "/scene_survey_report_integrity.py", *s))
         results.append(run("scene-survey-hygiene", PL + "/scene_survey_hygiene.py", *s))
         # Waves 3/4 — runtime survey gates (fail-closed until the C++/boot/bridge

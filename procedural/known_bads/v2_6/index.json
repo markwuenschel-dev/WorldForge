@@ -1,0 +1,163 @@
+{
+  "contract_version": "wf.scene_survey.contract.v2_6.0",
+  "fixtures": {
+    "binding_resolver_inverted": {
+      "driver": "subject_binding",
+      "expected_check": "sb::resolver_not_worldforge",
+      "expected_code": "WF1108_SCENE_SURVEY_SUBJECT_INFERRED",
+      "fixture": "binding_resolver_inverted.json",
+      "vector": "the report admits WorldForge resolved the subject"
+    },
+    "binding_substituted_anchor_actor": {
+      "driver": "subject_binding",
+      "expected_check": "sb::object_path_match",
+      "expected_code": "WF1107_SCENE_SURVEY_SUBJECT_MISMATCH",
+      "fixture": "binding_substituted_anchor_actor.json",
+      "vector": "WorldForge surveyed a different actor than the one named and reported success"
+    },
+    "binding_substituted_map": {
+      "driver": "subject_binding",
+      "expected_check": "sb::map_match",
+      "expected_code": "WF1107_SCENE_SURVEY_SUBJECT_MISMATCH",
+      "fixture": "binding_substituted_map.json",
+      "vector": "right subject id, wrong level — still not the survey that was asked for"
+    },
+    "binding_transform_beyond_tolerance": {
+      "driver": "subject_binding",
+      "expected_check": "sb::transform_within_tolerance",
+      "expected_code": "WF1107_SCENE_SURVEY_SUBJECT_MISMATCH",
+      "fixture": "binding_transform_beyond_tolerance.json",
+      "vector": "anchor drift of ~1.56cm Euclidean — under 1cm on every single axis, and still outside the L2 tolerance. The per-axis reading of this rail is the trap this fixture exists to catch"
+    },
+    "binding_wrong_subject_id": {
+      "driver": "subject_binding",
+      "expected_check": "sb::subject_id_match",
+      "expected_code": "WF1107_SCENE_SURVEY_SUBJECT_MISMATCH",
+      "fixture": "binding_wrong_subject_id.json",
+      "vector": "a real survey of the wrong subject, returned against this request"
+    },
+    "report_clean_without_evidence": {
+      "driver": "report_contract",
+      "expected_check": "sr::clean_requires_evidence",
+      "expected_code": "WF1097_SCENE_SURVEY_EVIDENCE_MISSING",
+      "fixture": "report_clean_without_evidence.json",
+      "vector": "a clean pass with no evidence behind it"
+    },
+    "report_dry_probe_claims_runtime": {
+      "driver": "report_contract",
+      "expected_check": "sr::live_mode_executed",
+      "expected_code": "WF1095_SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM",
+      "fixture": "report_dry_probe_claims_runtime.json",
+      "vector": "a report that never executed claiming live runtime truth"
+    },
+    "report_executed_without_observed_anchor": {
+      "driver": "report_contract",
+      "expected_check": "sr::observed_anchor_present",
+      "expected_code": "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+      "fixture": "report_executed_without_observed_anchor.json",
+      "vector": "an executed run that cannot say where it actually looked"
+    },
+    "report_pre_wave1_scratch_shape": {
+      "driver": "report_contract",
+      "expected_code": "WF1062_SCENE_SURVEY_REPORT_INVALID",
+      "fixture": "report_pre_wave1_scratch_shape.json",
+      "vector": "the pre-Wave-1 report shape, which predates subject binding entirely and would silently satisfy a gate that only asked whether a report exists"
+    },
+    "report_resolver_inverted": {
+      "driver": "report_contract",
+      "expected_check": "sr::subject_resolved_by_caller",
+      "expected_code": "WF1108_SCENE_SURVEY_SUBJECT_INFERRED",
+      "fixture": "report_resolver_inverted.json",
+      "vector": "a report asserting WorldForge chose the subject"
+    },
+    "report_unknown_failure_code": {
+      "driver": "report_contract",
+      "expected_check": "sr::failure_codes_known",
+      "expected_code": "WF1099_SCENE_SURVEY_UNKNOWN_FAILURE_CODE",
+      "fixture": "report_unknown_failure_code.json",
+      "vector": "a failure code invented to look rigorous"
+    },
+    "report_valid_exceeds_total": {
+      "driver": "report_contract",
+      "expected_check": "sr::valid_le_total",
+      "expected_code": "WF1062_SCENE_SURVEY_REPORT_INVALID",
+      "fixture": "report_valid_exceeds_total.json",
+      "vector": "more valid samples than were ever taken"
+    },
+    "report_zero_support_samples_passed": {
+      "driver": "report_contract",
+      "expected_check": "sr::clean_requires_evidence",
+      "expected_code": "WF1097_SCENE_SURVEY_EVIDENCE_MISSING",
+      "fixture": "report_zero_support_samples_passed.json",
+      "vector": "a pass built on zero probed support samples"
+    },
+    "subject_both_anchor_channels": {
+      "driver": "subject_contract",
+      "expected_check": "ss::mode_exclusive",
+      "expected_code": "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+      "fixture": "subject_both_anchor_channels.json",
+      "vector": "both anchor channels populated — WorldForge would have to pick one"
+    },
+    "subject_empty_subject_id": {
+      "driver": "subject_contract",
+      "expected_code": "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+      "fixture": "subject_empty_subject_id.json",
+      "vector": "a blank subject id — nothing to bind a report back to"
+    },
+    "subject_missing_anchor_mode": {
+      "driver": "subject_contract",
+      "expected_check": "field::anchor_mode",
+      "expected_code": "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+      "fixture": "subject_missing_anchor_mode.json",
+      "vector": "a subject that never says how its anchor is expressed"
+    },
+    "subject_missing_map": {
+      "driver": "subject_contract",
+      "expected_check": "field::map_asset_path",
+      "expected_code": "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+      "fixture": "subject_missing_map.json",
+      "vector": "a subject with no map — WorldForge would have to choose the level"
+    },
+    "subject_neither_anchor_channel": {
+      "driver": "subject_contract",
+      "expected_check": "ss::mode_exclusive",
+      "expected_code": "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+      "fixture": "subject_neither_anchor_channel.json",
+      "vector": "neither anchor channel populated — the caller never resolved the subject"
+    },
+    "subject_resolved_by_worldforge": {
+      "driver": "subject_contract",
+      "expected_check": "ss::resolved_by_caller",
+      "expected_code": "WF1108_SCENE_SURVEY_SUBJECT_INFERRED",
+      "fixture": "subject_resolved_by_worldforge.json",
+      "vector": "a subject WorldForge claims to have resolved itself — the exact authority inversion v2.6 exists to refuse"
+    },
+    "subject_unknown_key": {
+      "driver": "subject_contract",
+      "expected_check": "no_unknown_fields",
+      "expected_code": "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+      "fixture": "subject_unknown_key.json",
+      "vector": "an extra key smuggled onto the subject"
+    },
+    "subject_wrong_schema_version": {
+      "driver": "subject_contract",
+      "expected_check": "schema_version",
+      "expected_code": "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+      "fixture": "subject_wrong_schema_version.json",
+      "vector": "a subject claiming a schema version this build does not implement"
+    }
+  },
+  "milestone": "v2.6",
+  "not_yet_testable": {
+    "nondeterministic_repeated_reports": "requires two real editor runs; determinism is enforced at runtime from per_run_hashes, which no static fixture can produce honestly",
+    "package_dirty_after_cleanup": "package_dirty_before / package_dirty_after are not observed or emitted",
+    "request_hash_mismatch": "the runtime report does not yet emit request_hash; there is nothing to mismatch against",
+    "runtime_report_copied_from_another_request": "replay detection needs request_hash in the report; without it the copy is indistinguishable from a legitimate re-run",
+    "screenshot_without_runtime_evidence": "no screenshot artifact is produced at all under the current -nullrhi pass, so the vector has no on-disk form yet",
+    "subject_binding_hash_mismatch": "the runtime report does not yet emit subject_binding_hash",
+    "temporary_markers_left_behind": "temporary_actor_count_* are not emitted; markers are trace-probed rather than spawned, so there is no count to leave dirty",
+    "wrong_target_commit": "target_commit is never compared; only a 40-hex shape check exists, and only on the live bridge path",
+    "wrong_target_repository": "the scene-survey path does not yet compare resolved_target_repository against the request (the live bridge gate does, the survey gate does not)"
+  },
+  "note": "Fixtures carry no harness metadata on purpose: an embedded _expected_code key would itself be rejected by the strict unknown-key rail, which looks green and proves nothing."
+}
