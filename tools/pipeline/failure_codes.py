@@ -1118,10 +1118,10 @@ class FailureCode:
     TRANSITION_UNKNOWN_FAILURE_CODE = "WF1039_TRANSITION_UNKNOWN_FAILURE_CODE"
 
     # ======================================================================
-    # v2.6 SceneSurveyForge band (1061–1130; uses 1061–1105) ----------------
+    # v2.6 SceneSurveyForge band (1061–1130; uses 1061–1109) ----------------
     # ----------------------------------------------------------------------
-    # The first read-only spatial survey of a real external UE 5.8 target
-    # (Gloamstead). v2.6 proves a WorldForge survey observes an existing map
+    # The first read-only spatial survey of a real external UE 5.8 target.
+    # v2.6 proves a WorldForge survey observes an existing map
     # and emits machine-readable spatial EVIDENCE — cameras, actor/component
     # bounds, downward-trace support classification, MeshForge proxy provenance,
     # and ground-snapped temporary markers — while staying fail-closed and never
@@ -1136,11 +1136,13 @@ class FailureCode:
     # capsule/Heart clearance violation, platform-edge crossing, or unsupported
     # footprint; a placement coordinate not backed by a trace (guessed); a proxy
     # with no owner/category binding; a proxies-disabled claim with proxies still
-    # present; a cleanup claim whose final state != initial; a dirtied
-    # Lvl_ThirdPerson / package; a determinism claim with mismatched repeat
+    # present; a cleanup claim whose final state != initial; a dirtied target map
+    # / package; a determinism claim with mismatched repeat
     # hashes; a simulated result mislabeled as live runtime; stale evidence; a
-    # "pass" report with no evidence paths; and the hostile-suite integrity
-    # codes. The backfill auto-fills SEVERITY + GATE_TAXONOMY. WF1106–1130
+    # "pass" report with no evidence paths; a survey subject WorldForge resolved
+    # for itself instead of receiving from the caller; a report anchored somewhere
+    # other than the subject it was handed; and the hostile-suite integrity
+    # codes. The backfill auto-fills SEVERITY + GATE_TAXONOMY. WF1110–1130
     # reserved. Band is disjoint from the transition band (<=1060) — no collision.
     # -- authoring contract invalidity (1061–1063) --
     SCENE_SURVEY_PROFILE_INVALID = "WF1061_SCENE_SURVEY_PROFILE_INVALID"
@@ -1197,6 +1199,13 @@ class FailureCode:
     SCENE_SURVEY_TORTURE_FAILED = "WF1103_SCENE_SURVEY_TORTURE_FAILED"
     SCENE_SURVEY_HYGIENE_FAILED = "WF1104_SCENE_SURVEY_HYGIENE_FAILED"
     SCENE_SURVEY_REGRESSION_FAILED = "WF1105_SCENE_SURVEY_REGRESSION_FAILED"
+    # -- caller-owned survey subject / binding (1106–1109) --
+    # The caller owns intent: it hands WorldForge an already-resolved subject and
+    # WorldForge's job is to verify and echo it, never to go find one itself.
+    SCENE_SURVEY_SUBJECT_UNRESOLVED = "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED"
+    SCENE_SURVEY_SUBJECT_MISMATCH = "WF1107_SCENE_SURVEY_SUBJECT_MISMATCH"
+    SCENE_SURVEY_SUBJECT_INFERRED = "WF1108_SCENE_SURVEY_SUBJECT_INFERRED"
+    SCENE_SURVEY_CHANNEL_DISAGREEMENT = "WF1109_SCENE_SURVEY_CHANNEL_DISAGREEMENT"
 
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).

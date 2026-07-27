@@ -13,6 +13,19 @@ deterministic — camera completeness is a separate rendering pass, not faked in
 pass. What is rejected: a missing report, an invalid report, a report that never
 executed, or a report whose repeat runs disagree (WF1094).
 
+SUBJECT BINDING (WF1106/1107/1108). A survey is only runtime truth about the thing
+the CALLER asked about. So the runtime envelope must carry the SceneSurveySubject it
+was handed alongside the report it produced, and the two must bind: same subject_id,
+same map, the observed anchor within tolerance of the requested one (or on the exact
+requested object), and resolved_by="caller" on both sides. A report that cannot be
+bound to a request is unfalsifiable — it could have surveyed anything — so its
+absence is a hard FAIL here, not a skip.
+
+PROBE DEPENDENCY (v2.6, in flight): this rail requires run_scene_survey_probe.py to
+write the resolved subject into the runtime envelope under "subject". Until it does,
+this gate stays honestly RED — which is the correct fail-closed state, not a defect
+in the rail. See the REPORT-BACK note.
+
 Dogfooded on a synthetic clean report + tamper mutations so the gate cannot fake-green.
 
 Acceptance:
@@ -56,6 +69,36 @@ def _validate_runtime_obj(rep, obj, tag):
               code=C.SCENE_SURVEY_DETERMINISM_MISMATCH)
 
 
+def _validate_runtime_binding(rep, subject, report, tag):
+    """The runtime report must bind to the subject the CALLER handed over."""
+    present = isinstance(subject, dict) and bool(subject)
+    rep.check("runtime::{}::subject_present".format(tag), present,
+              "the runtime envelope must carry the caller-resolved SceneSurveySubject "
+              "under 'subject' — a report that cannot be bound to a request is "
+              "unfalsifiable (run_scene_survey_probe.py must emit it)",
+              code=C.SCENE_SURVEY_SUBJECT_MISMATCH)
+    if not present:
+        return
+    sfails = [c for c in SS.validate_scene_survey_subject(subject, strict=True) if not c[1]]
+    rep.check("runtime::{}::subject_valid".format(tag), len(sfails) == 0,
+              "the handed-over subject must satisfy the SceneSurveySubject contract: "
+              "{}".format([c[0] for c in sfails][:4]),
+              code=C.SCENE_SURVEY_SUBJECT_UNRESOLVED)
+    bfails = [c for c in SS.validate_subject_binding(subject, report, strict=True)
+              if not c[1]]
+    rep.check("runtime::{}::binds_to_subject".format(tag), len(bfails) == 0,
+              "the survey did not bind to the subject it was handed: {}".format(
+                  [(c[0], c[2]) for c in bfails][:3]),
+              code=C.SCENE_SURVEY_SUBJECT_MISMATCH)
+    rep.check("runtime::{}::resolved_by_caller".format(tag),
+              subject.get("resolved_by") == "caller"
+              and report.get("subject_resolved_by") == "caller",
+              "both sides must declare resolved_by='caller' — WorldForge must never "
+              "resolve the survey subject itself (subject={!r}, report={!r})".format(
+                  subject.get("resolved_by"), report.get("subject_resolved_by")),
+              code=C.SCENE_SURVEY_SUBJECT_INFERRED)
+
+
 def _dogfood(rep):
     """Prove the runtime rails reject tampered reports (cannot fake-green)."""
     clean = SS._example_scene_survey_report()
@@ -75,6 +118,62 @@ def _dogfood(rep):
     rep.check("dogfood::valid_gt_total_rejected", len(t2fails) > 0,
               "valid>total must be rejected by the contract",
               code=C.SCENE_SURVEY_REPORT_INVALID)
+    # tamper: WorldForge resolved the subject for itself -> WF1108.
+    t3 = dict(clean, subject_resolved_by="worldforge")
+    t3codes = {c[3] for c in SS.validate_scene_survey_report(t3, strict=True) if not c[1]}
+    rep.check("dogfood::self_resolved_rejected",
+              C.SCENE_SURVEY_SUBJECT_INFERRED in t3codes,
+              "a report claiming WorldForge resolved the subject must be rejected for "
+              "{} (got {})".format(C.SCENE_SURVEY_SUBJECT_INFERRED, sorted(t3codes)[:4]),
+              code=C.SCENE_SURVEY_SUBJECT_INFERRED)
+    # tamper: executed but will not say where it anchored -> WF1106.
+    t4 = dict(clean, observed_anchor_location=None)
+    t4codes = {c[3] for c in SS.validate_scene_survey_report(t4, strict=True) if not c[1]}
+    rep.check("dogfood::no_observed_anchor_rejected",
+              C.SCENE_SURVEY_SUBJECT_UNRESOLVED in t4codes,
+              "an executed run with no observed anchor must be rejected for {} "
+              "(got {})".format(C.SCENE_SURVEY_SUBJECT_UNRESOLVED, sorted(t4codes)[:4]),
+              code=C.SCENE_SURVEY_SUBJECT_UNRESOLVED)
+
+    # --- the binding rails themselves must be able to FAIL --------------------
+    # A matched pair binds clean...
+    subject = SS._example_scene_survey_subject()
+    ok_pair = [c for c in SS.validate_subject_binding(subject, clean, strict=True)
+               if not c[1]]
+    rep.check("dogfood::matched_pair_binds", len(ok_pair) == 0,
+              "a matched subject<->report pair must bind clean: {}".format(
+                  [c[0] for c in ok_pair][:4]),
+              code=C.SCENE_SURVEY_REPORT_INTEGRITY_FAILED)
+    # ...and a report that surveyed a DIFFERENT subject must not (WF1107).
+    for tag, over, owning in (
+            ("wrong_subject_id", {"subject_id": "subject_fixture_beta"},
+             C.SCENE_SURVEY_SUBJECT_MISMATCH),
+            ("wrong_map", {"map_asset_path": "/Game/Fixture/Lvl_Other"},
+             C.SCENE_SURVEY_SUBJECT_MISMATCH),
+            ("anchor_drift", {"observed_anchor_location": [1200.0, -450.0, 97.5]},
+             C.SCENE_SURVEY_SUBJECT_MISMATCH),
+            ("self_resolved", {"subject_resolved_by": "worldforge"},
+             C.SCENE_SURVEY_SUBJECT_INFERRED)):
+        codes = {c[3] for c in SS.validate_subject_binding(
+            subject, dict(clean, **over), strict=True) if not c[1]}
+        rep.check("dogfood::binding_{}_rejected".format(tag), owning in codes,
+                  "an unbound survey must be rejected for {} (got {})".format(
+                      owning, sorted(codes)[:4]), code=owning)
+    # ...and the presence rail itself must FAIL on a missing subject rather than
+    # skipping it — run the real rail into a throwaway report and read its failures.
+    absent = ValidationReport("suite", "dogfood_binding_absent", strict=True)
+    _validate_runtime_binding(absent, None, clean, "dogfood")
+    rep.check("dogfood::absent_subject_rejected", len(absent.failures) > 0,
+              "an envelope with no 'subject' block must FAIL the binding rail, not skip it",
+              code=C.SCENE_SURVEY_SUBJECT_MISMATCH)
+    # positive control: the same rail on a real matched pair must be silent, or the
+    # rail above is just failing unconditionally.
+    bound = ValidationReport("suite", "dogfood_binding_present", strict=True)
+    _validate_runtime_binding(bound, subject, clean, "dogfood")
+    rep.check("dogfood::bound_subject_accepted", len(bound.failures) == 0,
+              "the binding rail must pass a genuinely matched pair (got {})".format(
+                  bound.failures[:3]),
+              code=C.SCENE_SURVEY_REPORT_INTEGRITY_FAILED)
 
 
 def main(argv=None):
@@ -97,9 +196,11 @@ def main(argv=None):
     if exists:
         try:
             obj = json.loads(RUNTIME_REPORT.read_text(encoding="utf-8"))
-            # The domain SceneSurveyReport rides under "survey" in the house wrapper.
+            # The domain SceneSurveyReport rides under "survey" in the house wrapper;
+            # the caller-resolved SceneSurveySubject it was handed rides under "subject".
             survey = obj.get("survey", obj)
             _validate_runtime_obj(rep, survey, "live")
+            _validate_runtime_binding(rep, obj.get("subject"), survey, "live")
         except ValueError as exc:
             rep.check("runtime::report_parseable", False,
                       "runtime report is not valid JSON: {}".format(exc),

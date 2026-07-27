@@ -103,7 +103,7 @@ def dogfood_contract(rep):
 
 def dogfood_bridge_package(rep):
     """(2) A valid request -> dry_probe report passes; the pair invariants hold."""
-    req = bridge.build_request()
+    req = bridge.build_request(target_map="")
     report = bridge.dry_probe(req)
     gfails, _ = _fails(report)
     rep.check("bridge::dry_probe_passes_contract", len(gfails) == 0,
@@ -194,7 +194,7 @@ def run_negatives(rep):
                 C.BRIDGE_ABSOLUTE_PATH_LEAK)
 
     # -- request<->response pair invariant negatives --------------------------
-    req = bridge.build_request()
+    req = bridge.build_request(target_map="")
     # operation_id mismatch: a response minted for a different operation (WF1030).
     resp_mismatch = bridge.build_response(req, operation_id="op_v2_5_gloam_bridge_9999")
     _reject_pair_for(rep, "operation_id_mismatch",

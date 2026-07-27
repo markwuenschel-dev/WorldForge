@@ -348,20 +348,47 @@ def example_live_report(**over):
     return d
 
 
-def evidence_belongs_to(entries, project_root_names):
-    """Return evidence entries that do NOT belong to the target project.
+# v2.6 — the ONLY top-level directory WorldForge may author into inside a caller's
+# project tree. WorldForge owns capability, the caller owns its own content; writing
+# a .uasset into a caller's Content/ is WorldForge authoring game content it does not
+# own, regardless of how durable that location is.
+#
+# This does NOT contradict the durability reasoning recorded at
+# tools/pipeline/gloam_bridge_live.py:146-152 (evidence must live somewhere durable,
+# never a UE transient like Saved/ — WF1037). ``procedural/`` is durable and tracked,
+# so that rail is fully satisfied. What changes is the *ownership* question, which is
+# orthogonal to durability: Content/ was rejected here for being the caller's, not for
+# being fragile. Saved/ remains forbidden under both rules at once.
+WORLDFORGE_EVIDENCE_ROOTS = frozenset({"procedural"})
 
-    ``project_root_names`` is the set of top-level directories the target project
-    legitimately owns (e.g. {"Content", "Saved", "Config", "Plugins"}). An entry
-    rooted anywhere else came from another project and must not be counted as this
-    operation's evidence (WF1024).
+
+def evidence_belongs_to(entries, project_root_names, worldforge_authored=False):
+    """Return evidence entries that do NOT belong where they claim to.
+
+    Two distinct questions, one traversal:
+
+    * ``worldforge_authored=False`` (default) — "does this belong to the TARGET
+      PROJECT?". ``project_root_names`` is the set of top-level directories the
+      target project legitimately owns (e.g. {"Content", "Saved", "Config",
+      "Plugins"}). An entry rooted anywhere else came from another project and must
+      not be counted as this operation's evidence (WF1024).
+
+    * ``worldforge_authored=True`` — "was WORLDFORGE allowed to write this?". The
+      permitted set narrows to :data:`WORLDFORGE_EVIDENCE_ROOTS` (``procedural/``
+      only) and ``project_root_names`` is ignored, because a caller declaring it
+      owns ``Content/`` does not thereby permit WorldForge to write there.
+
+    The default is unchanged behaviour, so no existing rail is weakened or relaxed;
+    the narrow mode is strictly additive and must be opted into by the caller that
+    knows WorldForge authored the entries.
     """
+    permitted = WORLDFORGE_EVIDENCE_ROOTS if worldforge_authored else project_root_names
     foreign = []
     for e in entries or []:
         if not isinstance(e, str):
             foreign.append(e)
             continue
         head = e.replace("\\", "/").strip("/").split("/", 1)[0]
-        if head not in project_root_names:
+        if head not in permitted:
             foreign.append(e)
     return foreign

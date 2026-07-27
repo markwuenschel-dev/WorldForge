@@ -7,7 +7,7 @@ primitives, and a per-record triplet (validate_X, _example_X) plus a registry ta
 (CONTRACTS / CONTRACT_GROUPS / KNOWN_BAD_OWNING_CODE / SCENE_SURVEY_CODES).
 
 The honesty invariants are the point, not the type checks. v2.6 is the first
-READ-ONLY spatial survey of a real external UE 5.8 target (Gloamstead). A record is
+READ-ONLY spatial survey of a real external UE 5.8 target. A record is
 rejected when it is shaped-but-dishonest: a camera "ok" with no image hash; a
 non-orthographic top-down passed off as true top-down; a support sample counted
 valid while classified unknown/trace_error (fail-closed); a coverage=complete claim
@@ -16,9 +16,17 @@ placement accepted despite an overlap / clearance / edge violation; a placement
 coordinate not backed by a trace (guessed); a proxy with no owner/category binding;
 a proxies-disabled claim with proxies still present; a cleanup claim whose final
 state != initial; a clean report with no evidence; a simulated result mislabeled as
-live runtime. Owning codes live in the WF1061–1105 band.
+live runtime; a survey subject WorldForge picked for itself; a report anchored
+somewhere other than the subject it was handed. Owning codes live in the
+WF1061–1109 band.
+
+Ownership boundary: the CALLER owns intent and hands WorldForge an already-resolved
+SceneSurveySubject; WorldForge owns execution and its job is to verify and echo that
+subject, never to go find one. Hence there is no anchor vocabulary here — the two
+anchor *modes* are storage shapes, not choices WorldForge is allowed to make.
 """
 
+import math
 import sys
 from pathlib import Path
 
@@ -32,6 +40,7 @@ from failure_codes import FailureCode as C  # noqa: E402
 # schema_version / report_type dotted namespaces (wf.scene_survey.<type>.v1)
 # --------------------------------------------------------------------------- #
 RT_PROFILE = "wf.scene_survey.survey_profile.v1"
+RT_SUBJECT = "wf.scene_survey.survey_subject.v1"
 RT_CAMERA = "wf.scene_survey.camera_capture.v1"
 RT_SUPPORT_MAP = "wf.scene_survey.support_map.v1"
 RT_PLACEMENT = "wf.scene_survey.temporary_placement.v1"
@@ -52,10 +61,17 @@ PROJECTIONS = ("perspective", "orthographic")
 SUPPORT_CLASSES = ("valid_support", "unsupported", "edge", "blocked",
                    "trace_error", "unknown")
 VALID_SUPPORT_CLASSES = ("valid_support",)
-# What the survey may anchor its capture frame + sample region on.
-SURVEY_ANCHORS = ("player", "heart")
-# MeshForge proxy categories (Gloamstead-owned; PathCue/CorruptionFeedback exist
-# in the enum but are not built by the current adapter — still bounded/known).
+# How the caller expressed the subject's anchor. Caller-declared: WorldForge stores
+# and echoes these; it must never interpret them or pick one for itself.
+ANCHOR_MODES = ("explicit_transform", "actor_object_path")
+# What kind of thing the caller resolved. Opaque to WorldForge beyond the enum.
+SUBJECT_KINDS = ("actor", "area", "point")
+# Provenance of the resolution. "caller" is the ONLY legal value in a production
+# run. Any other value means WorldForge resolved the subject itself => WF1108.
+SUBJECT_RESOLVERS = ("caller",)
+# Proxy categories — a bounded taxonomy supplied by the caller (PathCue /
+# CorruptionFeedback exist in the enum but are not built by the current adapter
+# — still bounded/known).
 PROXY_CATEGORIES = ("Heart", "RitualPoint", "LanternRestore", "InteractionRadius",
                     "NightFeedback", "PathCue", "CorruptionFeedback")
 # Honest runtime-mode labels: a deterministic simulation must NOT be labeled a live
@@ -138,14 +154,118 @@ def _schema_version(obj, expected, code, prefix):
              "schema_version must be {!r} (got {!r})".format(expected, sv), code)]
 
 
+def _nested(prefix, name):
+    """Re-prefix a delegated sub-record check name so it stays unique in the parent.
+
+    A sub-record's own rails already carry its 'xx::' namespace (swap it for the
+    parent's), while the shared runtime_schema checks (field::*, no_unknown_fields)
+    carry none and would otherwise collide with the parent's identically-named ones.
+    """
+    head, sep, tail = name.partition("::")
+    return prefix + (tail if sep and len(head) == 2 else name)
+
+
 _META_FIELDS = ("meta", "report_type", "created_by", "created_at", "notes", "display_key")
 
 
 # =========================================================================== #
-# 1. SceneSurveyProfile (WF1061) — the bounded survey configuration.
+# 1. SceneSurveySubject (WF1106) — the caller-resolved subject of the survey.
+# =========================================================================== #
+# WorldForge NEVER produces one of these; it receives one and verifies it. Every
+# field is caller-owned. subject_id is opaque here — WorldForge does not parse it,
+# it only echoes it back so the caller can prove the survey it got back is the
+# survey it asked for.
+SUBJECT_REQUIRED = (
+    "subject_id",           # opaque to WorldForge; non-empty str
+    "subject_kind",         # enum SUBJECT_KINDS
+    "map_asset_path",       # "/Game/..." package path, non-empty str
+    "anchor_mode",          # enum ANCHOR_MODES
+    "anchor_location",      # [x,y,z] finite numbers, or None
+    "anchor_rotation",      # [p,y,r] finite numbers, or None
+    "anchor_object_path",   # full object path str, or None
+    "resolved_by",          # enum SUBJECT_RESOLVERS
+    "schema_version",       # RT_SUBJECT
+)
+SUBJECT_ALLOWED = SUBJECT_REQUIRED + _META_FIELDS
+# These three are mode-dependent: the key must be PRESENT (an absent key is itself
+# a report-integrity smell) but exactly one of location/object_path carries a value.
+_SUBJECT_NULLABLE = ("anchor_location", "anchor_rotation", "anchor_object_path")
+
+
+def validate_scene_survey_subject(obj, strict=False):
+    code = C.SCENE_SURVEY_SUBJECT_UNRESOLVED
+    ch = RS.check_required(obj, SUBJECT_REQUIRED, code, nullable=_SUBJECT_NULLABLE)
+    ch += RS.check_no_unknown(obj, SUBJECT_ALLOWED, code, strict)
+    ch += _str(obj, "subject_id", code, "ss::")
+    ch += _str(obj, "map_asset_path", code, "ss::")
+    ch += RS.check_enum(obj, "subject_kind", SUBJECT_KINDS, code, prefix="ss::")
+    ch += RS.check_enum(obj, "anchor_mode", ANCHOR_MODES, code, prefix="ss::")
+    ch += RS.check_enum(obj, "resolved_by", SUBJECT_RESOLVERS,
+                        C.SCENE_SURVEY_SUBJECT_INFERRED, prefix="ss::")
+    mode = obj.get("anchor_mode") if isinstance(obj, dict) else None
+    loc = obj.get("anchor_location") if isinstance(obj, dict) else None
+    rot = obj.get("anchor_rotation") if isinstance(obj, dict) else None
+    opath = obj.get("anchor_object_path") if isinstance(obj, dict) else None
+    has_path = isinstance(opath, str) and bool(opath.strip())
+    # shape: the optional-valued anchor fields are either None or well-formed.
+    ch.append(("ss::anchor_location_shape", loc is None or _finite_vec(loc, 3),
+               "anchor_location must be a 3-element finite numeric vector or None "
+               "(got {!r})".format(loc), code))
+    ch.append(("ss::anchor_rotation_shape", rot is None or _finite_vec(rot, 3),
+               "anchor_rotation must be a 3-element finite numeric vector or None "
+               "(got {!r})".format(rot), code))
+    ch.append(("ss::anchor_object_path_shape", opath is None or isinstance(opath, str),
+               "anchor_object_path must be a string or None (got {!r})".format(opath), code))
+    # honesty: an explicit_transform subject must actually carry the transform, and
+    # must not smuggle an object path the caller expects WorldForge to go resolve.
+    ch.append(("ss::explicit_transform_complete",
+               mode != "explicit_transform" or (_finite_vec(loc, 3) and opath is None),
+               "anchor_mode=explicit_transform requires a finite vec3 anchor_location "
+               "and anchor_object_path=None (an unresolved subject)", code))
+    # honesty: an actor_object_path subject must carry the full object path, and must
+    # not also carry a transform (two channels that could disagree — see WF1109).
+    ch.append(("ss::object_path_complete",
+               mode != "actor_object_path" or (has_path and loc is None),
+               "anchor_mode=actor_object_path requires a non-empty anchor_object_path "
+               "and anchor_location=None (an unresolved subject)", code))
+    # honesty: exactly one anchor channel is populated. Zero means the caller never
+    # resolved the subject; two means WorldForge would have to choose — it may not.
+    ch.append(("ss::mode_exclusive", (loc is None) != (opath is None),
+               "exactly one of anchor_location / anchor_object_path must be non-None "
+               "(got location={!r}, object_path={!r})".format(loc, opath), code))
+    # honesty: a subject WorldForge resolved for itself is not a caller intent.
+    ch.append(("ss::resolved_by_caller", obj.get("resolved_by") == "caller"
+               if isinstance(obj, dict) else False,
+               "resolved_by must be 'caller' — WorldForge must never resolve the "
+               "survey subject itself", C.SCENE_SURVEY_SUBJECT_INFERRED))
+    ch += _schema_version(obj, RT_SUBJECT, code, "ss::")
+    return ch
+
+
+def _example_scene_survey_subject(**over):
+    d = {
+        "subject_id": "subject_fixture_alpha",
+        "subject_kind": "point",
+        "map_asset_path": "/Game/Fixture/Lvl_Fixture",
+        "anchor_mode": "explicit_transform",
+        "anchor_location": [1200.0, -450.0, 92.5],
+        "anchor_rotation": [0.0, 90.0, 0.0],
+        "anchor_object_path": None,
+        "resolved_by": "caller",
+        "created_by": "worldforge.v2.6",
+        "created_at": AUTHORING_TS,
+        "schema_version": RT_SUBJECT,
+        "report_type": RT_SUBJECT,
+    }
+    d.update(over)
+    return d
+
+
+# =========================================================================== #
+# 2. SceneSurveyProfile (WF1061) — the bounded survey configuration.
 # =========================================================================== #
 PROFILE_REQUIRED = (
-    "profile_id", "survey_mode", "anchor", "captures", "sample_radius_cm",
+    "profile_id", "survey_mode", "subject", "captures", "sample_radius_cm",
     "sample_step_cm", "temporary_markers", "disable_debug_proxies", "cleanup",
     "repeat", "strict", "schema_version",
 )
@@ -158,8 +278,21 @@ def validate_scene_survey_profile(obj, strict=False):
     ch += RS.check_no_unknown(obj, PROFILE_ALLOWED, code, strict)
     ch += _str(obj, "profile_id", code, "sp::")
     ch += RS.check_enum(obj, "survey_mode", SURVEY_MODES, C.SCENE_SURVEY_UNKNOWN_MODE, prefix="sp::")
-    ch += RS.check_enum(obj, "anchor", SURVEY_ANCHORS, code, prefix="sp::")
-    ch += _subset(obj, "captures", CAMERA_KINDS, C.SCENE_SURVEY_UNKNOWN_CAPTURE, "sp::", min_len=1)
+    # the caller-resolved subject rides nested inside the profile. There is no
+    # nesting precedent in this module, so we delegate to the record's own
+    # validator and re-prefix its check names (ss:: -> sp::subject::) so the
+    # combined list stays unique and the failing rail is still self-describing.
+    sub = obj.get("subject") if isinstance(obj, dict) else None
+    ch.append(("sp::subject_is_object", isinstance(sub, dict),
+               "subject must be a nested SceneSurveySubject object "
+               "(got {!r})".format(type(sub).__name__),
+               C.SCENE_SURVEY_SUBJECT_UNRESOLVED))
+    if isinstance(sub, dict):
+        ch += [(_nested("sp::subject::", n), ok, d, c)
+               for (n, ok, d, c) in validate_scene_survey_subject(sub, strict=strict)]
+    # capture is opt-in: an empty captures list is legal (a survey that was never
+    # asked to render must not be failed for not rendering).
+    ch += _subset(obj, "captures", CAMERA_KINDS, C.SCENE_SURVEY_UNKNOWN_CAPTURE, "sp::", min_len=0)
     ch += _num(obj, "sample_radius_cm", code, "sp::", allow_zero=False)
     ch += _num(obj, "sample_step_cm", code, "sp::", allow_zero=False)
     ch += _int(obj, "temporary_markers", code, "sp::", allow_zero=True)
@@ -173,9 +306,9 @@ def validate_scene_survey_profile(obj, strict=False):
 
 def _example_scene_survey_profile(**over):
     d = {
-        "profile_id": "survey_profile_gloam_courtyard_readonly",
+        "profile_id": "survey_profile_fixture_readonly",
         "survey_mode": "read_only_survey",
-        "anchor": "player",
+        "subject": _example_scene_survey_subject(),
         "captures": list(CAMERA_KINDS),
         "sample_radius_cm": 3000,
         "sample_step_cm": 100,
@@ -194,7 +327,7 @@ def _example_scene_survey_profile(**over):
 
 
 # =========================================================================== #
-# 2. SceneSurveyCameraCapture (WF1068–1071) — one deterministic fixed camera.
+# 3. SceneSurveyCameraCapture (WF1068–1071) — one deterministic fixed camera.
 # =========================================================================== #
 CAMERA_REQUIRED = (
     "camera_id", "capture_kind", "projection", "location", "rotation", "fov",
@@ -242,16 +375,16 @@ def validate_scene_survey_camera_capture(obj, strict=False):
 
 def _example_scene_survey_camera_capture(**over):
     d = {
-        "camera_id": "cam_gameplay_player",
+        "camera_id": "cam_gameplay_fixture",
         "capture_kind": "gameplay",
         "projection": "perspective",
         "location": [1200.0, -450.0, 260.0],
         "rotation": [0.0, -12.0, 90.0],
         "fov": 90.0,
         "aspect_ratio": 1.7778,
-        "anchor_actor": "BP_ThirdPersonCharacter_C_0",
+        "anchor_actor": "BP_FixtureSubject_C_0",
         "captured": True,
-        "image_path": "procedural/reports/scene_survey/captures/cam_gameplay_player.png",
+        "image_path": "procedural/reports/scene_survey/captures/cam_gameplay_fixture.png",
         "image_hash": "sha256:cam0001gameplay",
         "operation_id": "op_v2_6_scene_survey_0001",
         "perspective_fallback": False,
@@ -265,7 +398,7 @@ def _example_scene_survey_camera_capture(**over):
 
 
 # =========================================================================== #
-# 3. SceneSurveySupportMap (WF1075–1081) — downward-trace support classification.
+# 4. SceneSurveySupportMap (WF1075–1081) — downward-trace support classification.
 # =========================================================================== #
 SUPPORT_REQUIRED = (
     "support_map_id", "anchor", "sample_radius_cm", "sample_step_cm",
@@ -282,7 +415,10 @@ def validate_scene_survey_support_map(obj, strict=False):
     ch = RS.check_required(obj, SUPPORT_REQUIRED, code)
     ch += RS.check_no_unknown(obj, SUPPORT_ALLOWED, code, strict)
     ch += _str(obj, "support_map_id", code, "sm::")
-    ch += RS.check_enum(obj, "anchor", SURVEY_ANCHORS, code, prefix="sm::")
+    # the sampled region's anchor is the caller's opaque subject_id, echoed. It is
+    # deliberately NOT an enum: WorldForge has no vocabulary of subjects to check
+    # it against, and inventing one would be WorldForge choosing the subject.
+    ch += _str(obj, "anchor", code, "sm::")
     ch += _num(obj, "sample_radius_cm", code, "sm::", allow_zero=False)
     ch += _num(obj, "sample_step_cm", code, "sm::", allow_zero=False)
     ch += _int(obj, "samples_total", code, "sm::", allow_zero=True)
@@ -325,8 +461,8 @@ def validate_scene_survey_support_map(obj, strict=False):
 
 def _example_scene_survey_support_map(**over):
     d = {
-        "support_map_id": "support_map_gloam_courtyard_player",
-        "anchor": "player",
+        "support_map_id": "support_map_fixture_alpha",
+        "anchor": "subject_fixture_alpha",
         "sample_radius_cm": 3000,
         "sample_step_cm": 100,
         "samples_total": 158,
@@ -348,7 +484,7 @@ def _example_scene_survey_support_map(**over):
 
 
 # =========================================================================== #
-# 4. SceneSurveyTemporaryPlacement (WF1082–1088) — a runtime-only marker candidate.
+# 5. SceneSurveyTemporaryPlacement (WF1082–1088) — a runtime-only marker candidate.
 # =========================================================================== #
 PLACEMENT_REQUIRED = (
     "marker_id", "location", "trace_backed", "grounded", "ground_contact",
@@ -418,7 +554,7 @@ def _example_scene_survey_temporary_placement(**over):
 
 
 # =========================================================================== #
-# 5. SceneSurveyProxyReport (WF1089–1093) — MeshForge proxy provenance + toggle.
+# 6. SceneSurveyProxyReport (WF1089–1093) — MeshForge proxy provenance + toggle.
 # =========================================================================== #
 PROXY_REPORT_REQUIRED = (
     "proxy_report_id", "proxies", "proxies_before", "proxies_present_after",
@@ -471,14 +607,14 @@ def validate_scene_survey_proxy_report(obj, strict=False):
 
 def _example_scene_survey_proxy_report(**over):
     d = {
-        "proxy_report_id": "proxy_report_gloam_courtyard",
+        "proxy_report_id": "proxy_report_fixture_alpha",
         "proxies": [
-            {"proxy_id": "heart", "category": "Heart",
-             "owner_system": "VeilHeart", "owner_object": "AVeilHeart_0"},
-            {"proxy_id": "interaction_radius_heart", "category": "InteractionRadius",
-             "owner_system": "VeilHeart", "owner_object": "AVeilHeart_0"},
-            {"proxy_id": "ritual_0", "category": "RitualPoint",
-             "owner_system": "PCGSubsystem", "owner_object": "GloamsteadPCGSubsystem"},
+            {"proxy_id": "proxy_heart_0", "category": "Heart",
+             "owner_system": "FixtureHeartSystem", "owner_object": "AFixtureHeart_0"},
+            {"proxy_id": "proxy_interaction_radius_0", "category": "InteractionRadius",
+             "owner_system": "FixtureHeartSystem", "owner_object": "AFixtureHeart_0"},
+            {"proxy_id": "proxy_ritual_0", "category": "RitualPoint",
+             "owner_system": "PCGSubsystem", "owner_object": "FixturePCGSubsystem"},
         ],
         "proxies_before": 3,
         "proxies_present_after": 0,
@@ -494,10 +630,12 @@ def _example_scene_survey_proxy_report(**over):
 
 
 # =========================================================================== #
-# 6. SceneSurveyReport (WF1062) — the machine-readable survey result.
+# 7. SceneSurveyReport (WF1062) — the machine-readable survey result.
 # =========================================================================== #
 REPORT_REQUIRED = (
-    "report_id", "operation_id", "map_asset_path", "anchor",
+    "report_id", "operation_id", "map_asset_path", "subject_id",
+    "observed_anchor_location", "observed_anchor_object_path",
+    "subject_resolved_by", "captures_requested",
     "camera_capture_ok", "actor_bounds_valid", "support_samples_total",
     "support_samples_valid", "unsupported_regions", "edge_regions",
     "proxy_owners", "proxies_disabled", "temporary_placements_grounded",
@@ -506,16 +644,44 @@ REPORT_REQUIRED = (
     "failure_codes", "status", "schema_version",
 )
 REPORT_ALLOWED = REPORT_REQUIRED + _META_FIELDS
+# Mode-dependent observations: the key must be PRESENT, but a run that never
+# executed has nothing to report as observed (sr::observed_anchor_present below
+# is what makes an executed run carry it).
+_REPORT_NULLABLE = ("observed_anchor_location", "observed_anchor_object_path")
 
 
 def validate_scene_survey_report(obj, strict=False):
     code = C.SCENE_SURVEY_REPORT_INVALID
-    ch = RS.check_required(obj, REPORT_REQUIRED, code)
+    ch = RS.check_required(obj, REPORT_REQUIRED, code, nullable=_REPORT_NULLABLE)
     ch += RS.check_no_unknown(obj, REPORT_ALLOWED, code, strict)
     ch += _str(obj, "report_id", code, "sr::")
     ch += _str(obj, "operation_id", code, "sr::")
     ch += _str(obj, "map_asset_path", code, "sr::")
-    ch += RS.check_enum(obj, "anchor", SURVEY_ANCHORS, code, prefix="sr::")
+    # the caller-owned subject, echoed back so the caller can bind request<->result.
+    ch += _str(obj, "subject_id", C.SCENE_SURVEY_SUBJECT_UNRESOLVED, "sr::")
+    ch += _subset(obj, "captures_requested", CAMERA_KINDS,
+                  C.SCENE_SURVEY_UNKNOWN_CAPTURE, "sr::", min_len=0)
+    obs_loc = obj.get("observed_anchor_location") if isinstance(obj, dict) else None
+    obs_path = obj.get("observed_anchor_object_path") if isinstance(obj, dict) else None
+    ch.append(("sr::observed_anchor_location_shape",
+               obs_loc is None or _finite_vec(obs_loc, 3),
+               "observed_anchor_location must be a 3-element finite numeric vector "
+               "or None (got {!r})".format(obs_loc), C.SCENE_SURVEY_SUBJECT_UNRESOLVED))
+    ch.append(("sr::observed_anchor_object_path_shape",
+               obs_path is None or isinstance(obs_path, str),
+               "observed_anchor_object_path must be a string or None "
+               "(got {!r})".format(obs_path), C.SCENE_SURVEY_SUBJECT_UNRESOLVED))
+    # honesty: a run that actually executed must say where it actually anchored.
+    ch.append(("sr::observed_anchor_present",
+               obj.get("runtime_executed") is not True or _finite_vec(obs_loc, 3),
+               "runtime_executed=True requires a finite vec3 observed_anchor_location "
+               "(a survey that ran must report where it anchored)",
+               C.SCENE_SURVEY_SUBJECT_UNRESOLVED))
+    # honesty: a subject WorldForge resolved for itself is not a caller intent.
+    ch.append(("sr::subject_resolved_by_caller",
+               obj.get("subject_resolved_by") == "caller" if isinstance(obj, dict) else False,
+               "subject_resolved_by must be 'caller' — WorldForge must never resolve "
+               "the survey subject itself", C.SCENE_SURVEY_SUBJECT_INFERRED))
     for f in ("camera_capture_ok", "actor_bounds_valid", "proxies_disabled",
               "player_clearance_valid", "cleanup_verified", "runtime_executed"):
         ch += _bool(obj, f, code, "sr::")
@@ -547,7 +713,12 @@ def validate_scene_survey_report(obj, strict=False):
     # honesty: a clean report (status pass, no failure codes) must carry positive
     # evidence — you cannot pass a survey that saw nothing.
     clean = obj.get("status") == "pass" and isinstance(fcs, list) and len(fcs) == 0
-    positive = (obj.get("camera_capture_ok") is True
+    # capture is opt-in: camera_capture_ok is only demanded of a survey that was
+    # actually asked to render. This narrows an over-broad precondition — it does
+    # not relax any of the other evidence the rail has always required.
+    creq = obj.get("captures_requested")
+    captures_asked = isinstance(creq, list) and len(creq) > 0
+    positive = ((obj.get("camera_capture_ok") is True or not captures_asked)
                 and obj.get("actor_bounds_valid") is True
                 and RS.is_number(tot) and tot > 0
                 and obj.get("cleanup_verified") is True
@@ -555,7 +726,8 @@ def validate_scene_survey_report(obj, strict=False):
                 and len(obj.get("evidence_paths")) > 0)
     ch.append(("sr::clean_requires_evidence", (not clean) or positive,
                "a pass report with no failure codes must carry positive evidence "
-               "(cameras, bounds, samples>0, cleanup, non-empty evidence_paths)",
+               "(bounds, samples>0, cleanup, non-empty evidence_paths — plus cameras "
+               "whenever captures_requested is non-empty)",
                C.SCENE_SURVEY_EVIDENCE_MISSING))
     # honesty: a live_survey_runtime claim requires a real run + real evidence.
     live = obj.get("runtime_mode") in LIVE_RUNTIME_MODES
@@ -572,10 +744,14 @@ def validate_scene_survey_report(obj, strict=False):
 
 def _example_scene_survey_report(**over):
     d = {
-        "report_id": "scene_survey_report_gloam_courtyard_run1",
+        "report_id": "scene_survey_report_fixture_alpha_run1",
         "operation_id": "op_v2_6_scene_survey_0001",
-        "map_asset_path": "/Game/ThirdPerson/Lvl_ThirdPerson",
-        "anchor": "player",
+        "map_asset_path": "/Game/Fixture/Lvl_Fixture",
+        "subject_id": "subject_fixture_alpha",
+        "observed_anchor_location": [1200.0, -450.0, 92.5],
+        "observed_anchor_object_path": None,
+        "subject_resolved_by": "caller",
+        "captures_requested": list(CAMERA_KINDS),
         "camera_capture_ok": True,
         "actor_bounds_valid": True,
         "support_samples_total": 158,
@@ -592,8 +768,8 @@ def _example_scene_survey_report(**over):
         "runtime_mode": "live_survey_runtime",
         "runtime_executed": True,
         "evidence_paths": [
-            "procedural/reports/scene_survey/captures/cam_gameplay_player.png",
-            "procedural/reports/scene_survey/support_map_gloam_courtyard_player.json",
+            "procedural/reports/scene_survey/captures/cam_gameplay_fixture.png",
+            "procedural/reports/scene_survey/support_map_fixture_alpha.json",
         ],
         "failure_codes": [],
         "status": "pass",
@@ -607,7 +783,7 @@ def _example_scene_survey_report(**over):
 
 
 # =========================================================================== #
-# 7. SceneSurveyEvidenceIndex (WF1063) — the auditable capture/evidence matrix.
+# 8. SceneSurveyEvidenceIndex (WF1063) — the auditable capture/evidence matrix.
 # =========================================================================== #
 INDEX_REQUIRED = (
     "index_id", "integrity_result", "captures_expected", "captures_seen",
@@ -642,14 +818,14 @@ def validate_scene_survey_evidence_index(obj, strict=False):
 
 def _example_scene_survey_evidence_index(**over):
     d = {
-        "index_id": "scene_survey_evidence_index_gloam_courtyard",
+        "index_id": "scene_survey_evidence_index_fixture_alpha",
         "integrity_result": "pass",
         "captures_expected": 3,
         "captures_seen": 3,
         "evidence_entries": [
-            "procedural/reports/scene_survey/captures/cam_gameplay_player.png",
-            "procedural/reports/scene_survey/captures/cam_elevated_oblique_player.png",
-            "procedural/reports/scene_survey/captures/cam_top_down_player.png",
+            "procedural/reports/scene_survey/captures/cam_gameplay_fixture.png",
+            "procedural/reports/scene_survey/captures/cam_elevated_oblique_fixture.png",
+            "procedural/reports/scene_survey/captures/cam_top_down_fixture.png",
         ],
         "created_by": "worldforge.v2.6",
         "created_at": AUTHORING_TS,
@@ -660,10 +836,79 @@ def _example_scene_survey_evidence_index(**over):
     return d
 
 
+# =========================================================================== #
+# 9. subject <-> report PAIR invariants (WF1107) — not visible from one object.
+# =========================================================================== #
+def validate_subject_binding(subject, report, strict=False, tolerance_cm=1.0):
+    """Return a list of (name, ok, detail, code) subject<->report pair checks.
+
+    Mirrors the request<->response pair-validator precedent in
+    tools/bridge/probe.py:105 (validate_bridge_response), which owns WF1026/WF1030
+    for exactly this reason: a report that surveyed a DIFFERENT subject than the one
+    it was handed is shaped-perfectly on both sides and only the pair can see it.
+
+    ``strict`` is accepted for signature symmetry with the single-object validators;
+    every pair rail here is unconditional, so there are no strict-only pair checks
+    today. Each object's own strict-mode checks belong to its own validator.
+    """
+    code = C.SCENE_SURVEY_SUBJECT_MISMATCH
+    s = subject if isinstance(subject, dict) else {}
+    r = report if isinstance(report, dict) else {}
+    ch = []
+    # continuity: the report must echo the subject_id it was handed (WF1107).
+    sid = s.get("subject_id")
+    ch.append(("sb::subject_id_match",
+               isinstance(sid, str) and bool(sid.strip()) and r.get("subject_id") == sid,
+               "report subject_id {!r} != subject subject_id {!r}".format(
+                   r.get("subject_id"), sid), code))
+    # continuity: surveying the right subject in the wrong map is still the wrong survey.
+    smap = s.get("map_asset_path")
+    ch.append(("sb::map_match",
+               isinstance(smap, str) and bool(smap.strip()) and r.get("map_asset_path") == smap,
+               "report map_asset_path {!r} != subject map_asset_path {!r}".format(
+                   r.get("map_asset_path"), smap), code))
+    mode = s.get("anchor_mode")
+    # honesty: an explicit_transform subject must have been anchored where the caller
+    # said, within tolerance. Drift beyond tolerance means WorldForge moved the survey.
+    want = s.get("anchor_location")
+    got = r.get("observed_anchor_location")
+    if _finite_vec(want, 3) and _finite_vec(got, 3):
+        dist = math.sqrt(sum((float(a) - float(b)) ** 2 for a, b in zip(want, got)))
+    else:
+        dist = None
+    ch.append(("sb::transform_within_tolerance",
+               mode != "explicit_transform"
+               or (dist is not None and dist <= tolerance_cm),
+               "observed_anchor_location {!r} is {} from subject anchor_location {!r} "
+               "(tolerance {}cm)".format(got, "not comparable" if dist is None
+                                         else "{:.4f}cm".format(dist), want, tolerance_cm),
+               code))
+    # honesty: an actor_object_path subject must have been anchored on that exact object.
+    wpath = s.get("anchor_object_path")
+    ch.append(("sb::object_path_match",
+               mode != "actor_object_path"
+               or (isinstance(wpath, str) and bool(wpath.strip())
+                   and r.get("observed_anchor_object_path") == wpath),
+               "observed_anchor_object_path {!r} != subject anchor_object_path {!r}".format(
+                   r.get("observed_anchor_object_path"), wpath), code))
+    # ownership: neither side may claim a resolver other than the caller (WF1108).
+    ch.append(("sb::resolver_not_worldforge",
+               r.get("subject_resolved_by") == "caller" and s.get("resolved_by") == "caller",
+               "both sides must declare resolved_by='caller' (subject={!r}, report={!r}) "
+               "— WorldForge must never resolve the survey subject itself".format(
+                   s.get("resolved_by"), r.get("subject_resolved_by")),
+               C.SCENE_SURVEY_SUBJECT_INFERRED))
+    return ch
+
+
 # --------------------------------------------------------------------------- #
 # Registry tail — CONTRACTS / CONTRACT_GROUPS / KNOWN_BAD_OWNING_CODE / codes.
 # --------------------------------------------------------------------------- #
 CONTRACTS = {
+    "SceneSurveySubject": (
+        validate_scene_survey_subject, _example_scene_survey_subject,
+        # an empty subject_id -> the caller never resolved the subject (WF1106).
+        lambda: _example_scene_survey_subject(subject_id="")),
     "SceneSurveyProfile": (
         validate_scene_survey_profile, _example_scene_survey_profile,
         # unknown survey mode -> WF1064.
@@ -699,6 +944,7 @@ CONTRACTS = {
 }
 
 CONTRACT_GROUPS = {
+    "subject": ("SceneSurveySubject",),
     "profile": ("SceneSurveyProfile",),
     "capture": ("SceneSurveyCameraCapture",),
     "spatial": ("SceneSurveySupportMap", "SceneSurveyTemporaryPlacement"),
@@ -707,6 +953,7 @@ CONTRACT_GROUPS = {
 }
 
 KNOWN_BAD_OWNING_CODE = {
+    "SceneSurveySubject": C.SCENE_SURVEY_SUBJECT_UNRESOLVED,
     "SceneSurveyProfile": C.SCENE_SURVEY_UNKNOWN_MODE,
     "SceneSurveyCameraCapture": C.SCENE_SURVEY_CAMERA_CAPTURE_OVERCLAIM,
     "SceneSurveySupportMap": C.SCENE_SURVEY_SUPPORT_COVERAGE_OVERCLAIM,
@@ -723,11 +970,11 @@ def _all_wf_codes():
             if not k.startswith("_") and isinstance(v, str) and v.startswith("WF")}
 
 
-# The set of failure codes this milestone owns (WF1061–1105). Uses a 4-digit slice.
+# The set of failure codes this milestone owns (WF1061–1109). Uses a 4-digit slice.
 SCENE_SURVEY_CODES = tuple(
     v for k, v in vars(C).items()
     if not k.startswith("_") and isinstance(v, str)
-    and 1061 <= (int(v[2:6]) if v[2:6].isdigit() else -1) <= 1105
+    and 1061 <= (int(v[2:6]) if v[2:6].isdigit() else -1) <= 1109
 )
 
 
@@ -754,6 +1001,21 @@ if __name__ == "__main__":
         elif owning not in codes:
             print("DOGFOOD FAIL {}: known-bad not rejected for owning code {} (got {})".format(
                 name, owning, sorted(codes))); ok = False
+    # pair validator: the matched subject<->report pair is clean, and a report that
+    # surveyed a different subject is rejected FOR the pair's owning code (WF1107).
+    _pair_good = [c for c in validate_subject_binding(
+        _example_scene_survey_subject(), _example_scene_survey_report(),
+        strict=True) if not c[1]]
+    if _pair_good:
+        print("DOGFOOD FAIL SubjectBinding: matched pair has {} failing check(s): {}".format(
+            len(_pair_good), [c[0] for c in _pair_good])); ok = False
+    _pair_bad = [c for c in validate_subject_binding(
+        _example_scene_survey_subject(),
+        _example_scene_survey_report(subject_id="subject_fixture_beta"),
+        strict=True) if not c[1]]
+    if C.SCENE_SURVEY_SUBJECT_MISMATCH not in {c[3] for c in _pair_bad}:
+        print("DOGFOOD FAIL SubjectBinding: mismatched pair not rejected for {} (got {})".format(
+            C.SCENE_SURVEY_SUBJECT_MISMATCH, sorted({c[3] for c in _pair_bad}))); ok = False
     if not SCENE_SURVEY_CODES:
         print("BAND FAIL: SCENE_SURVEY_CODES is empty"); ok = False
     print("SELF-DOGFOOD: {} ({} contracts, {} owned codes)".format(

@@ -48,7 +48,9 @@ BRIDGE_META_EXTRA = {
 
 def build_probe_report(operation_id="op_v2_5_gloam_bridge_0001"):
     """Build the GloamBridgeProbe-shaped report dict (report + meta), offline."""
-    request = bridge.build_request(operation_id=operation_id)
+    # target_map is caller-owned and has no default (WorldForge must not choose a
+    # map). The dry probe never opens one, so it states that explicitly as "".
+    request = bridge.build_request(operation_id=operation_id, target_map="")
     report = bridge.dry_probe(request)
     report["meta"] = build_meta(
         command="gloam-bridge-probe",
