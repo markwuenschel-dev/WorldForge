@@ -38,6 +38,9 @@ registry to learn *which* operations exist without dragging the pipeline in.
 Self-contained: stdlib + (lazily) the shared pipeline contracts. Never launches a
 process and never writes a file.
 
+Discovery (what operations does this door accept?):
+    cd tools && PYTHONUTF8=1 python -m bridge.capability_ops --list
+
 Self-dogfood (relative imports, so it runs as a module, not a script):
     cd tools && PYTHONUTF8=1 python -m bridge.capability_ops
 """
@@ -208,7 +211,49 @@ def far_side_script_path(op, repo_root=None):
     return Path(repo_root or _REPO_ROOT) / op.far_side_script
 
 
+# ---------------------------------------------------------------------------
+# Discovery. Until now the only way to learn what this door accepts was to ask
+# for an operation that does NOT exist and read the name list out of the
+# resulting exception message. That is a diagnostic, not an API: a caller in
+# another repository should be able to enumerate the supported operations
+# without provoking a failure and without knowing a script filename.
+# ---------------------------------------------------------------------------
+def list_ops():
+    """Every registered operation name, sorted. Stdlib-only, import-cheap."""
+    return sorted(CAPABILITY_OPS)
+
+
+def describe_op(operation, repo_root=None):
+    """A JSON-serializable description of one registered operation.
+
+    Deliberately excludes the callables: a description is for a caller deciding
+    whether an operation exists and what it needs, not a handle to invoke it.
+    Invocation still goes through ``get_op``.
+    """
+    op = get_op(operation)
+    script = far_side_script_path(op, repo_root)
+    return {
+        "operation": op.operation,
+        "summary": op.summary,
+        "far_side_script": op.far_side_script,
+        "far_side_script_present": script.is_file(),
+        "payload_keys": list(op.payload_keys),
+    }
+
+
+def describe_ops(repo_root=None):
+    """Describe every registered operation, in sorted order."""
+    return [describe_op(name, repo_root) for name in list_ops()]
+
+
 if __name__ == "__main__":
+    # Discovery mode: enumerate the door's operations without provoking a failure.
+    # Kept above the dogfood so `--list` needs no pipeline import at all.
+    if "--list" in sys.argv[1:]:
+        import json as _json
+        print(_json.dumps(describe_ops(), indent=2, sort_keys=True))
+        sys.exit(0)
+
     # Self-dogfood: every registered op resolves, its far-side script exists on
     # disk, its validator accepts the contract's own valid example and REJECTS a
     # known-bad for the right owning code (rejection for the wrong reason is not
@@ -222,6 +267,25 @@ if __name__ == "__main__":
         if not far_side_script_path(_op).is_file():
             print("REGISTRY FAIL {}: far-side script missing: {}".format(
                 _name, _op.far_side_script))
+            _ok = False
+    # The discovery API must describe the registry it claims to describe — a
+    # catalogue that silently omits an operation is worse than none, because a
+    # caller would conclude the capability does not exist.
+    if list_ops() != sorted(CAPABILITY_OPS):
+        print("DISCOVERY FAIL: list_ops() {} != registry {}".format(
+            list_ops(), sorted(CAPABILITY_OPS)))
+        _ok = False
+    _desc = describe_ops()
+    if [d["operation"] for d in _desc] != list_ops():
+        print("DISCOVERY FAIL: describe_ops() does not cover list_ops()")
+        _ok = False
+    for _d in _desc:
+        if not _d["far_side_script_present"]:
+            print("DISCOVERY FAIL {}: described far-side script is absent: {}".format(
+                _d["operation"], _d["far_side_script"]))
+            _ok = False
+        if not _d["payload_keys"]:
+            print("DISCOVERY FAIL {}: no payload keys described".format(_d["operation"]))
             _ok = False
     _good = {"subject": _SS._example_scene_survey_subject(), "captures": []}
     _gf = [c for c in validate_scene_survey_payload(_good, strict=True) if not c[1]]
