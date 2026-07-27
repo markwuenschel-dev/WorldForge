@@ -976,11 +976,15 @@ def _all_wf_codes():
             if not k.startswith("_") and isinstance(v, str) and v.startswith("WF")}
 
 
-# The set of failure codes this milestone owns (WF1061–1109). Uses a 4-digit slice.
+# The set of failure codes this milestone owns (WF1061–1130). Uses a 4-digit slice.
+# Widened from 1109 to the full reserved band when the runtime evidence model
+# landed: codes defined outside this slice pass every gate but are silently absent
+# from the exported caller manifest, so the caller lane would never learn they
+# exist. Silent invisibility is the likelier bug here than a red gate.
 SCENE_SURVEY_CODES = tuple(
     v for k, v in vars(C).items()
     if not k.startswith("_") and isinstance(v, str)
-    and 1061 <= (int(v[2:6]) if v[2:6].isdigit() else -1) <= 1109
+    and 1061 <= (int(v[2:6]) if v[2:6].isdigit() else -1) <= 1130
 )
 
 

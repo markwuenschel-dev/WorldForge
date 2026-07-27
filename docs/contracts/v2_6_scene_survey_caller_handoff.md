@@ -3,9 +3,9 @@
 Status: **IN PROGRESS — v2.6 shield RED 10/11; the single red is `validate-scene-survey-runtime`, which is red until a caller-originated survey runs**
 Branch: `worldforge/v2.6-scene-survey`
 Contract version: **`wf.scene_survey.contract.v2_6.0`**
-Contract surface: `sha256:8c849191d69fa500135e7449557239e9834d540dc18a6321d56f85718135bdd6`
+Contract surface: `sha256:2bebaa594adb5de98e2140a6ae6517be77bf579e52047bc07ca1afcf83c390b0`
 Minimum WorldForge commit: **`99efe79a`**
-Failure-code band: **WF1061–WF1109** (`SCENE_SURVEY_*`), plus WF1011/WF1026 from the bridge band
+Failure-code band: **WF1061–WF1130** (`SCENE_SURVEY_*`, 65 codes), plus WF1011/WF1026 from the bridge band
 
 This document is the complete surface a caller needs to invoke a WorldForge scene
 survey. It is written so the caller can generate a valid request **without reading
