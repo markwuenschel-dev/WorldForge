@@ -598,6 +598,15 @@ def _settle(rec, collected, failure_code=None, evidence_class=None, detail=None)
     # An unrecognised class is not permitted to pass through as itself: "unknown
     # provenance" must never read as "fine" (scene_survey_evidence.py:70-72).
     rec["evidence_class"] = cls if cls in EVIDENCE_CLASSES else EC_FAILED
+    # The two axes are separate but not independent, and this is where they are
+    # reconciled. `not_requested` and `unsupported` both mean the collection DID NOT
+    # HAPPEN, so their mechanical status is `not_attempted` whatever the caller
+    # passed — a refusal reported as `failed` claims an attempt that was never made,
+    # and `failed` is the one status that reads as an incident.
+    if rec["evidence_class"] in (EC_NOT_REQUESTED, EC_UNSUPPORTED):
+        rec["collection_status"] = CS_NOT_ATTEMPTED
+    elif rec["evidence_class"] == EC_FAILED:
+        rec["collection_status"] = CS_FAILED
     # A failure code belongs to a FAILURE. not_requested and unsupported are not
     # failures — nothing broke; the question was never asked, or cannot be asked in
     # this pass — so attaching a code there would manufacture an incident.
