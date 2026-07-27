@@ -554,13 +554,41 @@ def unresolved_refs(bundle, refs):
     return [r for r in (refs or []) if resolve_raw(bundle, r) is None]
 
 
-# The kinds that carry MEASURED observations, as emitted by
-# `_new_raw_bundle` in tools/bridge/scene_survey_far_side.py. `binding` is absent:
-# it is a projection of a report, not a collector's output, and its finiteness is
-# policed by the component that needs it (with a far more specific reason) rather
-# than by the bundle-wide numeric gate.
-RAW_OBSERVATION_KINDS = ("world", "actor", "component", "trace", "marker",
-                         "proxy", "temporary_placement", "inventory")
+# Kinds EXEMPT from the bundle-wide numeric gate. This is a DENY-list, and the
+# direction is the entire point.
+#
+# It used to be an allow-list of eight kinds. The far side then grew
+# `overlap_query`, `capture` and `document` (`_new_raw_bundle` in
+# tools/bridge/scene_survey_far_side.py now pre-creates eleven), and all three were
+# silently skipped by `numeric_hygiene_ok`. `overlap_query` carries real
+# measurements, so a NaN there would have sailed through the gate that exists to
+# reject exactly that. An allow-list fails OPEN for anything added later, which is
+# the wrong shape for a safety gate: forgetting to update it costs an unchecked
+# value rather than a loud error.
+#
+# `binding` is exempt because it is a projection of a report rather than a
+# collector's output; its finiteness is policed by the component that consumes it,
+# with a far more specific reason than a bundle-wide sweep could give.
+RAW_NON_OBSERVATION_KINDS = ("binding",)
+
+# Retained for readability and for tests asserting the known surface. NOT used to
+# select what gets checked — see `observation_kinds_in`.
+RAW_OBSERVATION_KINDS = ("world", "actor", "component", "trace", "overlap_query",
+                         "marker", "proxy", "capture", "temporary_placement",
+                         "inventory", "document")
+
+
+def observation_kinds_in(bundle):
+    """Every dict-valued kind in `bundle` subject to the numeric gate.
+
+    Default-deny by construction: a kind the far side adds tomorrow is checked
+    today, with nobody having to remember a list. Scalar bundle metadata
+    (`schema_version`, `record_schema_version`) is excluded by the dict test rather
+    than by name — naming it would reintroduce the same staleness one level down.
+    """
+    b = bundle if isinstance(bundle, dict) else {}
+    return {k: v for k, v in b.items()
+            if isinstance(v, dict) and k not in RAW_NON_OBSERVATION_KINDS}
 
 
 def iter_refs(rec):
@@ -725,9 +753,7 @@ def bundle_integrity(bundle, operation_id=None):
     rail. That is the "fail closed" requirement stated as one function.
     """
     ok_refs, findings = check_reference_integrity(bundle, operation_id=operation_id)
-    numeric = {k: (bundle or {}).get(k) for k in RAW_OBSERVATION_KINDS
-               if isinstance((bundle or {}).get(k), dict)}
-    ok_num, num_detail = numeric_hygiene_ok(numeric)
+    ok_num, num_detail = numeric_hygiene_ok(observation_kinds_in(bundle))
     if ok_refs and ok_num:
         return True, "bundle integrity ok"
     parts = []
