@@ -163,8 +163,13 @@ def build_scene_survey_response(request, far_doc, **over):
     d = dict(
         observed_engine=far.get("observed_engine_version"),
         observed_project=observed_project,
-        observed_map=far.get("map") or None,
-        observed_map_asset_path=far.get("map") or None,
+        # far["map"] is the REQUEST echoed back (scene_survey_far_side.py:197 reads
+        # subject["map_asset_path"]), so reporting it as "observed" made this builder
+        # do exactly what the docstring above forbids and left the pair validators
+        # comparing a value to a copy of itself. observed_world_package is measured
+        # from the live editor and is the only map fact here that can disagree.
+        observed_map=far.get("observed_world_package") or None,
+        observed_map_asset_path=far.get("observed_world_package") or None,
         resolved_subject_id=far.get("subject_id"),
         observed_anchor_location=far.get("observed_anchor_location"),
         observed_anchor_object_path=far.get("observed_anchor_object_path"),

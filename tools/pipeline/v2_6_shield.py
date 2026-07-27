@@ -79,6 +79,13 @@ def main(argv=None):
         # Wave 2F — the mission's hostile scenario list as ON-DISK artifacts, each
         # driven through the real validator and required to fail for its OWN rail.
         results.append(run("scene-survey-known-bads", PL + "/run_v2_6_known_bads.py", *P, *s))
+        # Hostile tests for the report ASSEMBLER, which no artifact-level gate reaches.
+        # The known-bads drivers all take a finished document, so they stay green even
+        # when the assembler sources a "binding" field from the request — the exact
+        # vacuity that made three sb:: rails unfailable. These drive _build_report
+        # directly with a fabricated far-side document.
+        results.append(run("scene-survey-assembler-probes",
+                           PL + "/run_v2_6_assembler_probes.py", *P, *s))
         results.append(run("scene-survey-report-integrity", PL + "/scene_survey_report_integrity.py", *s))
         results.append(run("scene-survey-hygiene", PL + "/scene_survey_hygiene.py", *s))
         # Waves 3/4 — runtime survey gates (fail-closed until the C++/boot/bridge

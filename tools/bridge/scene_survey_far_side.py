@@ -62,6 +62,7 @@ There is deliberately NO map environment variable: the map is
 could disagree with the subject about what was surveyed.
 """
 import json
+import math
 import os
 import traceback
 
@@ -86,10 +87,53 @@ def _editor_world():
     return ues.get_editor_world()
 
 
+def _world_package_name(world):
+    """RAW observation: the package name of the world that is ACTUALLY open.
+
+    This is the only channel in this file that is not a restatement of the
+    caller's request. ``map``/``subject_id``/``subject_resolved_by`` are echoes of
+    the subject, so a near side that compares them to the subject compares a value
+    to a copy of itself. This one is measured from the live editor, which is what
+    makes an identity check falsifiable.
+
+    Returns the package name (e.g. ``/Game/Maps/Lvl_Foo``) or None if it cannot be
+    read. None is honest: it means "not observed", never "matched".
+    """
+    try:
+        return world.get_package().get_name()
+    except Exception:  # noqa: BLE001 — an unreadable world identity is not a match
+        return None
+
+
+def _norm_package(p):
+    """Normalise a package/object path for identity comparison.
+
+    ``/Game/Maps/Foo.Foo`` and ``/Game/Maps/Foo`` name the same package. Compare on
+    the package part only, case-insensitively, with trailing slashes removed.
+    """
+    if not isinstance(p, str):
+        return None
+    s = p.strip().rstrip("/")
+    if not s:
+        return None
+    head, sep, tail = s.rpartition("/")
+    if sep and "." in tail:
+        s = head + "/" + tail.split(".", 1)[0]
+    return s.lower()
+
+
 def _finite_vec3(v):
-    """True iff v is a 3-element list of real numbers (bools are not numbers here)."""
+    """True iff v is a 3-element list of FINITE real numbers (bools excluded).
+
+    math.isfinite is load-bearing, not decoration: NaN and Infinity are float
+    instances, so an isinstance-only check accepts them, they survive into
+    unreal.Vector, and json.dump then emits bare NaN/Infinity tokens — invalid JSON
+    that Python's own loads() accepts by default, so the poison propagates silently
+    to the near side instead of failing here.
+    """
     return (isinstance(v, list) and len(v) == 3
-            and all(isinstance(x, (int, float)) and not isinstance(x, bool) for x in v))
+            and all(isinstance(x, (int, float)) and not isinstance(x, bool)
+                    and math.isfinite(x) for x in v))
 
 
 def _load_subject():
@@ -207,6 +251,10 @@ def main():
         "observed_anchor_location": None,
         "observed_anchor_object_path": None,
         "loaded": False,
+        # RAW, measured from the live editor — NOT an echo of the request. The near
+        # side re-derives the identity verdict from this; the far side states no
+        # verdict of its own. None means "not observed", never "matched".
+        "observed_world_package": None,
         "observed_engine_version": unreal.SystemLibrary.get_engine_version(),
         "resolved_uproject": unreal.Paths.get_project_file_path(),
         "actor_count": None,
@@ -242,13 +290,38 @@ def main():
         les = unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
         doc["loaded"] = bool(les.load_level(map_path))
         world = _editor_world()
+        # Record the world identity BEFORE anything else reads the world, so the
+        # observation stands even if a later step throws.
+        doc["observed_world_package"] = _world_package_name(world)
         actors = unreal.EditorActorSubsystem().get_all_level_actors()
         ok, loc, opath, detail = _verify_anchor(subject, actors)
         doc["subject_resolved"] = bool(ok)
         doc["anchor_detail"] = detail
         doc["observed_anchor_location"] = loc
         doc["observed_anchor_object_path"] = opath
-        if not ok:
+        # A failed load leaves the PREVIOUS world open. In explicit_transform mode
+        # _verify_anchor never searches the level, so nothing downstream would ever
+        # notice: the survey would measure the wrong world and report it under the
+        # requested map path. Refuse before running any primitive, and say which of
+        # the two things went wrong so the near side can raise the matching code.
+        want_pkg = _norm_package(map_path)
+        got_pkg = _norm_package(doc["observed_world_package"])
+        if not doc["loaded"]:
+            doc["error"] = (
+                "load_level({!r}) returned False — the requested map was not opened; "
+                "the editor is still on {!r}. Refusing to survey a world the caller "
+                "did not ask for.".format(map_path, doc["observed_world_package"]))
+        elif got_pkg is None:
+            doc["error"] = (
+                "the identity of the loaded world could not be read, so it cannot be "
+                "confirmed to be {!r}. An unverifiable world is not a verified one."
+                .format(map_path))
+        elif want_pkg != got_pkg:
+            doc["error"] = (
+                "world identity mismatch: caller requested {!r} but the open world is "
+                "{!r}. Refusing to report measurements of one world under the name of "
+                "another.".format(map_path, doc["observed_world_package"]))
+        elif not ok:
             doc["error"] = detail
         elif not doc["survey_statics_available"]:
             doc["error"] = "USceneSurveyStatics not reflected — WorldForge plugin not loaded"
@@ -293,7 +366,8 @@ except Exception as _fatal:  # noqa: BLE001
                 "subject_kind": None, "anchor_mode": None, "subject_resolved_by": None,
                 "subject_source": None, "subject_resolved": False, "anchor_detail": None,
                 "observed_anchor_location": None, "observed_anchor_object_path": None,
-                "loaded": False, "observed_engine_version": None,
+                "loaded": False, "observed_world_package": None,
+                "observed_engine_version": None,
                 "resolved_uproject": None, "actor_count": None, "support_total": None,
                 "marker_total": 0, "marker_accepted": 0,
                 "captures_requested": list(CAPTURES), "camera_capture_ran": False,

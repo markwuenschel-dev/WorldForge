@@ -212,6 +212,43 @@ def _one_run(args, subject, captures, request_path, ue_cmd, out_json):
             "parsed": _parse_markers(stdout)}
 
 
+def _canon_package(p):
+    """Canonical PACKAGE form of a package/object path, case preserved, or None.
+
+    ``/Game/Maps/Foo.Foo`` names the object inside package ``/Game/Maps/Foo``; both
+    denote one package. Case is preserved because this value is EMITTED as the
+    observed map — lowercasing an observation to make a comparison succeed would be
+    doctoring the evidence to fit the rail.
+    """
+    if not isinstance(p, str):
+        return None
+    s = p.strip().rstrip("/")
+    if not s:
+        return None
+    head, sep, tail = s.rpartition("/")
+    if sep and "." in tail:
+        s = head + "/" + tail.split(".", 1)[0]
+    return s or None
+
+
+def _norm_package(p):
+    """Comparison key for package identity: canonical form, case-folded.
+
+    Mirrors ``scene_survey_far_side._norm_package``: the far side reports the raw
+    observation and this side re-derives the verdict, so both must agree on what
+    "the same package" means.
+
+    Case-folding here but not in ``_canon_package`` means a run whose engine returns
+    a different CASE than the caller requested satisfies the identity verdict while
+    still failing ``sb::map_match`` on exact equality. That combination fails closed
+    (binding failures are hard failures), which is the correct direction: it reports
+    a real disagreement rather than papering over it, just under WF1107 rather than
+    WF1122.
+    """
+    c = _canon_package(p)
+    return c.lower() if c is not None else None
+
+
 def _build_report(args, subject, captures, runs, determinism_ok):
     """Fold the runs into a SceneSurveyReport (per the v2.6 contract).
 
@@ -235,6 +272,26 @@ def _build_report(args, subject, captures, runs, determinism_ok):
     obs_loc = far.get("observed_anchor_location")
     obs_path = far.get("observed_anchor_object_path")
 
+    # ---- world identity: the ONE binding input that is not a copy of the request --
+    # Re-derived here from the far side's RAW observation, independently of whatever
+    # the far side concluded. far["map"], far["subject_id"] and
+    # far["subject_resolved_by"] are echoes of the subject (scene_survey_far_side.py
+    # :197-202), so consuming those instead of `subject` would compare a value to a
+    # copy of itself just as surely. observed_world_package is measured from the live
+    # editor, so it is the only one that can disagree.
+    requested_map = subject.get("map_asset_path", "")
+    observed_pkg = far.get("observed_world_package")
+    map_loaded = far.get("loaded") is True
+    world_identity_ok = (map_loaded
+                         and _norm_package(observed_pkg) is not None
+                         and _norm_package(observed_pkg) == _norm_package(requested_map))
+    # The report's map_asset_path is now the OBSERVED world, not the requested one.
+    # That is what makes sb::map_match a real comparison instead of a tautology: if
+    # the editor opened a different world, the two sides now differ and the rail
+    # fires. When identity could not be established we emit "" rather than the
+    # request — an unobserved map must never be reported as an observed one.
+    observed_map_asset_path = _canon_package(observed_pkg) if world_identity_ok else ""
+
     evidence = []
     for i in range(1, len(runs) + 1):
         p = REPORT_DIR / "far_side_run{}.json".format(i)
@@ -249,7 +306,14 @@ def _build_report(args, subject, captures, runs, determinism_ok):
     report = {
         "report_id": "scene_survey_report_{}".format(args.operation_id),
         "operation_id": args.operation_id,
-        "map_asset_path": subject.get("map_asset_path", ""),
+        # OBSERVED (world package read from the live editor), not the request.
+        "map_asset_path": observed_map_asset_path,
+        # CALLER_SUPPLIED, and honestly so: subject_id is caller vocabulary and
+        # subject_resolved_by is provenance metadata. WorldForge has no channel that
+        # could ever observe either, so sb::subject_id_match and
+        # sb::resolver_not_worldforge are continuity checks on the caller's own
+        # values — NOT evidence that the right subject was surveyed. Sourcing them
+        # from far[...] would not change that: the far side echoes the same subject.
         "subject_id": subject.get("subject_id", ""),
         "observed_anchor_location": obs_loc,
         "observed_anchor_object_path": obs_path,
@@ -309,6 +373,13 @@ def _build_report(args, subject, captures, runs, determinism_ok):
         fcodes.append(C.SCENE_SURVEY_REPORT_INVALID)
     if not subject_resolved:
         fcodes.append(C.SCENE_SURVEY_SUBJECT_UNRESOLVED)
+    # A survey of the wrong world is a wrong answer, not a partial one. These are
+    # distinct failures: the map never opened, vs it opened something we cannot
+    # confirm is the requested world.
+    if not map_loaded:
+        fcodes.append(C.SCENE_SURVEY_MAP_LOAD_FAILED)
+    elif not world_identity_ok:
+        fcodes.append(C.SCENE_SURVEY_WORLD_IDENTITY_UNVERIFIED)
     if disagreements:
         fcodes.append(C.SCENE_SURVEY_CHANNEL_DISAGREEMENT)
     for c in binding_fails:
@@ -326,7 +397,11 @@ def _build_report(args, subject, captures, runs, determinism_ok):
     # non-executed run are FAILURES. A merely incomplete one (capture pending, no
     # spatial evidence yet) is BLOCKED. Neither is ever quietly a pass.
     hard = (not runtime_executed or not determinism_ok or bool(far.get("error"))
-            or not subject_resolved or bool(disagreements) or bool(binding_fails))
+            or not subject_resolved or bool(disagreements) or bool(binding_fails)
+            # Independent of far["error"] on purpose: this side re-derives the world
+            # identity verdict from the raw observation, so a far side that failed to
+            # set its own error string cannot talk this gate into a pass.
+            or not world_identity_ok)
     fcodes = [str(x) for x in fcodes]
     report["failure_codes"] = fcodes
     report["status"] = "fail" if hard else ("blocked" if fcodes else "pass")
