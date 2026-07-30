@@ -1,0 +1,954 @@
+{
+  "suite": "scene_survey_negatives",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "suite_nonempty": {
+      "ok": true,
+      "detail": "negative suite must carry >= 45 fixtures (got 49)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "subject_lane_nonempty": {
+      "ok": true,
+      "detail": "the subject/binding negative lane must carry >= 15 fixtures (got 15)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:empty_id::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:empty_id::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:no_anchor_channel::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:no_anchor_channel::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:both_anchor_channels::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:both_anchor_channels::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:explicit_mode_only_path::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:explicit_mode_only_path::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:path_mode_only_transform::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:path_mode_only_transform::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:unknown_anchor_mode::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:unknown_anchor_mode::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:unknown_kind::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:unknown_kind::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:rotation_not_vec3::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:rotation_not_vec3::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:resolved_by_worldforge::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::subject:resolved_by_worldforge::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1108_SCENE_SURVEY_SUBJECT_INFERRED (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:subject_not_an_object::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:subject_not_an_object::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:nested_subject_unresolved::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:nested_subject_unresolved::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:nested_subject_no_anchor::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:nested_subject_no_anchor::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:nested_subject_self_resolved::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:nested_subject_self_resolved::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1108_SCENE_SURVEY_SUBJECT_INFERRED (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:unknown_mode::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:unknown_mode::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1064_SCENE_SURVEY_UNKNOWN_MODE (got ['WF1064_SCENE_SURVEY_UNKNOWN_MODE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:unknown_capture::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:unknown_capture::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1065_SCENE_SURVEY_UNKNOWN_CAPTURE (got ['WF1065_SCENE_SURVEY_UNKNOWN_CAPTURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:zero_radius::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::profile:zero_radius::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1061_SCENE_SURVEY_PROFILE_INVALID (got ['WF1061_SCENE_SURVEY_PROFILE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::camera:capture_overclaim::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::camera:capture_overclaim::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1070_SCENE_SURVEY_CAMERA_CAPTURE_OVERCLAIM (got ['WF1070_SCENE_SURVEY_CAMERA_CAPTURE_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::camera:top_down_perspective::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::camera:top_down_perspective::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1071_SCENE_SURVEY_CAMERA_PROJECTION_INVALID (got ['WF1071_SCENE_SURVEY_CAMERA_PROJECTION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::camera:unknown_kind::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::camera:unknown_kind::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1065_SCENE_SURVEY_UNKNOWN_CAPTURE (got ['WF1065_SCENE_SURVEY_UNKNOWN_CAPTURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::camera:no_provenance::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::camera:no_provenance::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1069_SCENE_SURVEY_CAMERA_PROVENANCE_INVALID (got ['WF1069_SCENE_SURVEY_CAMERA_PROVENANCE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::support:coverage_over_zero::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::support:coverage_over_zero::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1078_SCENE_SURVEY_SUPPORT_COVERAGE_OVERCLAIM (got ['WF1078_SCENE_SURVEY_SUPPORT_COVERAGE_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::support:counts_dont_sum::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::support:counts_dont_sum::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1076_SCENE_SURVEY_SUPPORT_MAP_INCOMPLETE (got ['WF1076_SCENE_SURVEY_SUPPORT_MAP_INCOMPLETE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::support:unknown_absorbed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::support:unknown_absorbed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1077_SCENE_SURVEY_SUPPORT_UNKNOWN_OVERCLAIM (got ['WF1076_SCENE_SURVEY_SUPPORT_MAP_INCOMPLETE', 'WF1077_SCENE_SURVEY_SUPPORT_UNKNOWN_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::support:navmesh_dependency::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::support:navmesh_dependency::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1081_SCENE_SURVEY_NAVMESH_OVERCLAIM (got ['WF1081_SCENE_SURVEY_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::placement:accepted_not_grounded::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::placement:accepted_not_grounded::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1083_SCENE_SURVEY_PLACEMENT_NOT_GROUNDED (got ['WF1083_SCENE_SURVEY_PLACEMENT_NOT_GROUNDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::placement:accepted_overlap::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::placement:accepted_overlap::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1084_SCENE_SURVEY_PLACEMENT_OVERLAP_ACCEPTED (got ['WF1084_SCENE_SURVEY_PLACEMENT_OVERLAP_ACCEPTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::placement:accepted_guessed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::placement:accepted_guessed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1088_SCENE_SURVEY_PLACEMENT_GUESSED_COORDINATES (got ['WF1088_SCENE_SURVEY_PLACEMENT_GUESSED_COORDINATES'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::placement:accepted_edge_violation::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::placement:accepted_edge_violation::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1086_SCENE_SURVEY_PLACEMENT_EDGE_VIOLATION (got ['WF1086_SCENE_SURVEY_PLACEMENT_EDGE_VIOLATION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::proxy:unattributed_owner::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::proxy:unattributed_owner::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1090_SCENE_SURVEY_PROXY_UNATTRIBUTED (got ['WF1090_SCENE_SURVEY_PROXY_UNATTRIBUTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::proxy:disable_unverified::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::proxy:disable_unverified::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED (got ['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::proxy:not_a_list::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::proxy:not_a_list::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1089_SCENE_SURVEY_PROXY_ENUMERATION_INVALID (got ['WF1089_SCENE_SURVEY_PROXY_ENUMERATION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:valid_exceeds_total::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:valid_exceeds_total::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1062_SCENE_SURVEY_REPORT_INVALID (got ['WF1062_SCENE_SURVEY_REPORT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:unknown_failure_code::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:unknown_failure_code::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1099_SCENE_SURVEY_UNKNOWN_FAILURE_CODE (got ['WF1099_SCENE_SURVEY_UNKNOWN_FAILURE_CODE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:live_not_executed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:live_not_executed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1095_SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM (got ['WF1095_SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:clean_no_evidence::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:clean_no_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1097_SCENE_SURVEY_EVIDENCE_MISSING (got ['WF1097_SCENE_SURVEY_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:empty_subject_id::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:empty_subject_id::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:executed_no_observed_anchor::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:executed_no_observed_anchor::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:observed_anchor_not_vec3::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:observed_anchor_not_vec3::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:resolved_by_worldforge::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:resolved_by_worldforge::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1108_SCENE_SURVEY_SUBJECT_INFERRED (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:unknown_capture_requested::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::report:unknown_capture_requested::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1065_SCENE_SURVEY_UNKNOWN_CAPTURE (got ['WF1065_SCENE_SURVEY_UNKNOWN_CAPTURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:subject_id_mismatch::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:subject_id_mismatch::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:map_mismatch::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:map_mismatch::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:transform_outside_tolerance::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:transform_outside_tolerance::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:object_path_mismatch::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:object_path_mismatch::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH', 'WF1112_SCENE_SURVEY_EVIDENCE_REDERIVATION_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:report_resolver_not_caller::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:report_resolver_not_caller::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1108_SCENE_SURVEY_SUBJECT_INFERRED (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:subject_resolver_not_caller::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::binding:subject_resolver_not_caller::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1108_SCENE_SURVEY_SUBJECT_INFERRED (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::index:partial_matrix::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::index:partial_matrix::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1063_SCENE_SURVEY_EVIDENCE_INDEX_INVALID (got ['WF1063_SCENE_SURVEY_EVIDENCE_INDEX_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::index:pass_no_entries::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::index:pass_no_entries::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1063_SCENE_SURVEY_EVIDENCE_INDEX_INVALID (got ['WF1063_SCENE_SURVEY_EVIDENCE_INDEX_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::index:unknown_integrity::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::index:unknown_integrity::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1063_SCENE_SURVEY_EVIDENCE_INDEX_INVALID (got ['WF1063_SCENE_SURVEY_EVIDENCE_INDEX_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::SceneSurveySubject::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::SceneSurveyProfile::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::SceneSurveyCameraCapture::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::SceneSurveySupportMap::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::SceneSurveyTemporaryPlacement::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::SceneSurveyProxyReport::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::SceneSurveyReport::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::SceneSurveyEvidenceIndex::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::binding::explicit_transform::matched_pair_passes": {
+      "ok": true,
+      "detail": "matched subject<->report pair rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::binding::explicit_transform::report_valid": {
+      "ok": true,
+      "detail": "paired report is not a valid SceneSurveyReport: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::binding::explicit_transform::subject_valid": {
+      "ok": true,
+      "detail": "paired subject is not a valid SceneSurveySubject: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::binding::actor_object_path::matched_pair_passes": {
+      "ok": true,
+      "detail": "matched subject<->report pair rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::binding::actor_object_path::report_valid": {
+      "ok": true,
+      "detail": "paired report is not a valid SceneSurveyReport: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::binding::actor_object_path::subject_valid": {
+      "ok": true,
+      "detail": "paired subject is not a valid SceneSurveySubject: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 114,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "scene-survey-negative-fixtures",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:33:57.865860+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.scene_survey.negatives.v1",
+    "report_id": "wf.scene_survey.negatives.v1:53c35fe635a4",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 49,
+    "records_total": 49,
+    "records_passed": 49,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -5,7 +5,7 @@
   "checks": {
     "kb::catalogue_nonempty": {
       "ok": true,
-      "detail": "the hostile catalogue must carry at least 21 fixtures (got 21)",
+      "detail": "the hostile catalogue must carry at least 27 fixtures (got 27)",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -61,7 +61,7 @@
     },
     "kb::binding_substituted_anchor_actor::owning_code": {
       "ok": true,
-      "detail": "must be rejected for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH — rejection for another reason proves nothing about this vector (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "detail": "must be rejected for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH — rejection for another reason proves nothing about this vector (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH', 'WF1112_SCENE_SURVEY_EVIDENCE_REDERIVATION_MISMATCH'])",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -69,7 +69,7 @@
     },
     "kb::binding_substituted_anchor_actor::owning_check": {
       "ok": true,
-      "detail": "must be rejected BY sb::object_path_match — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sb::object_path_match'])",
+      "detail": "must be rejected BY sb::object_path_match — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sb::acceptance_reason_matches_evidence', 'sb::object_path_match'])",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -166,6 +166,198 @@
     "kb::binding_wrong_subject_id::owning_check": {
       "ok": true,
       "detail": "must be rejected BY sb::subject_id_match — rejection by any other rail is collateral, not proof of this vector (failed rails: ['sb::subject_id_match'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::cleanup_package_dirty_after_cleanup::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::cleanup_package_dirty_after_cleanup::rejected": {
+      "ok": true,
+      "detail": "every temporary object was destroyed and witnessed gone, and the survey STILL left the map package dirty. The ledger conjunct is satisfied here, so a rejection proves the snapshot term is doing its own work — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::cleanup_package_dirty_after_cleanup::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED — rejection for another reason proves nothing about this vector (got ['WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::cleanup_package_dirty_after_cleanup::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY ce::packages_not_dirtied — rejection by any other rail is collateral, not proof of this vector (failed rails: ['ce::cleanup_verified', 'ce::packages_not_dirtied'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::cleanup_temporary_marker_left_behind::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::cleanup_temporary_marker_left_behind::rejected": {
+      "ok": true,
+      "detail": "a temporary object the survey spawned, reported destroyed, and then OBSERVED still present after cleanup. Both inventory snapshots agree — the object was created and removed between them as far as any set comparison can tell — so only the per-object ledger can see it — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::cleanup_temporary_marker_left_behind::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED — rejection for another reason proves nothing about this vector (got ['WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::cleanup_temporary_marker_left_behind::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY ce::no_objects_present_after_cleanup — rejection by any other rail is collateral, not proof of this vector (failed rails: ['ce::cleanup_verified', 'ce::no_objects_present_after_cleanup'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_replayed_from_another_request::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_replayed_from_another_request::rejected": {
+      "ok": true,
+      "detail": "a prior operation's report and manifest re-presented for a NEW asking. The question is byte-identical, so request_hash matches perfectly — only the operation id betrays the replay, which is precisely why it is excluded from the hash — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_replayed_from_another_request::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH — rejection for another reason proves nothing about this vector (got ['WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_replayed_from_another_request::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY oi::operation_id_mismatch — rejection by any other rail is collateral, not proof of this vector (failed rails: ['oi::operation_id_mismatch'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_request_hash_mismatch::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_request_hash_mismatch::rejected": {
+      "ok": true,
+      "detail": "evidence sealed against one question, presented against another — same operation id, different map. The manifest's own seal is intact; only the binding to THIS request is false — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_request_hash_mismatch::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH — rejection for another reason proves nothing about this vector (got ['WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_request_hash_mismatch::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY oi::request_hash_mismatch — rejection by any other rail is collateral, not proof of this vector (failed rails: ['oi::request_hash_mismatch'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_wrong_target_commit::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_wrong_target_commit::rejected": {
+      "ok": true,
+      "detail": "a survey of one commit handed back against a request naming another — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_wrong_target_commit::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH — rejection for another reason proves nothing about this vector (got ['WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_wrong_target_commit::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY oi::request_hash_mismatch — rejection by any other rail is collateral, not proof of this vector (failed rails: ['oi::request_hash_mismatch'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_wrong_target_repository::rejected_not_crashed": {
+      "ok": true,
+      "detail": "the validator must JUDGE hostile input, not raise on it (None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_wrong_target_repository::rejected": {
+      "ok": true,
+      "detail": "a survey of one repository handed back against a request naming another — must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_wrong_target_repository::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH — rejection for another reason proves nothing about this vector (got ['WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::operation_wrong_target_repository::owning_check": {
+      "ok": true,
+      "detail": "must be rejected BY oi::request_hash_mismatch — rejection by any other rail is collateral, not proof of this vector (failed rails: ['oi::request_hash_mismatch'])",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -691,9 +883,249 @@
       "code": null,
       "blocking": false
     },
+    "positive::operation_identity": {
+      "ok": true,
+      "detail": "the honest artifact must still pass operation_identity — without this rail, a driver that rejected everything would satisfy this whole suite (failed: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "positive::cleanup_evidence": {
+      "ok": true,
+      "detail": "the honest artifact must still pass cleanup_evidence — without this rail, a driver that rejected everything would satisfy this whole suite (failed: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::harness_ran": {
+      "ok": true,
+      "detail": "the mutation harness must complete, not abort (no stderr)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::exit_zero": {
+      "ok": true,
+      "detail": "acceptance_recompute_mutations must exit 0 — every acceptance term's input mutation RED, and that RED killed by the implementation mutation (rc=0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::all_terms_exercised": {
+      "ok": true,
+      "detail": "every acceptance term ['M', 'W', 'P', 'T', 'B', 'E'] must be exercised — a term silently dropped from the harness reports PASS for a rail nobody questioned (missing: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::M::input_red": {
+      "ok": true,
+      "detail": "term M (anchor_mode_observable): the input mutation must RED ['recompute::mut::acceptance_claim_matches_raw'] — a rail that stays green on a broken atom is not checking that atom",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::M::mutant_killed": {
+      "ok": true,
+      "detail": "term M: stubbing anchor_mode_observable to always-True must STOP that RED — otherwise the RED came from a bystander rail and proves nothing about M (survived: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::M::restored": {
+      "ok": true,
+      "detail": "term M: the implementation mutation on anchor_mode_observable must be reverted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::W::input_red": {
+      "ok": true,
+      "detail": "term W (world_identity_ok): the input mutation must RED ['recompute::mut::acceptance_claim_matches_raw'] — a rail that stays green on a broken atom is not checking that atom",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::W::mutant_killed": {
+      "ok": true,
+      "detail": "term W: stubbing world_identity_ok to always-True must STOP that RED — otherwise the RED came from a bystander rail and proves nothing about W (survived: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::W::restored": {
+      "ok": true,
+      "detail": "term W: the implementation mutation on world_identity_ok must be reverted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::P::input_red": {
+      "ok": true,
+      "detail": "term P (anchor_actor_resolution): the input mutation must RED ['recompute::mut::acceptance_claim_matches_raw'] — a rail that stays green on a broken atom is not checking that atom",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::P::mutant_killed": {
+      "ok": true,
+      "detail": "term P: stubbing anchor_actor_resolution to always-True must STOP that RED — otherwise the RED came from a bystander rail and proves nothing about P (survived: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::P::restored": {
+      "ok": true,
+      "detail": "term P: the implementation mutation on anchor_actor_resolution must be reverted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::T::input_red": {
+      "ok": true,
+      "detail": "term T (anchor_transform_bound): the input mutation must RED ['recompute::mut::acceptance_claim_matches_raw'] — a rail that stays green on a broken atom is not checking that atom",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::T::mutant_killed": {
+      "ok": true,
+      "detail": "term T: stubbing anchor_transform_bound to always-True must STOP that RED — otherwise the RED came from a bystander rail and proves nothing about T (survived: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::T::restored": {
+      "ok": true,
+      "detail": "term T: the implementation mutation on anchor_transform_bound must be reverted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::B::input_red": {
+      "ok": true,
+      "detail": "term B (survey_bound_to_anchor): the input mutation must RED ['recompute::mut::acceptance_claim_matches_raw'] — a rail that stays green on a broken atom is not checking that atom",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::B::mutant_killed": {
+      "ok": true,
+      "detail": "term B: stubbing survey_bound_to_anchor to always-True must STOP that RED — otherwise the RED came from a bystander rail and proves nothing about B (survived: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::B::restored": {
+      "ok": true,
+      "detail": "term B: the implementation mutation on survey_bound_to_anchor must be reverted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::E::input_red": {
+      "ok": true,
+      "detail": "term E (raw_observations_complete): the input mutation must RED ['recompute::mut::acceptance_claim_matches_raw', 'recompute::mut::acceptance_evidence_not_contradicted'] — a rail that stays green on a broken atom is not checking that atom",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::E::mutant_killed": {
+      "ok": true,
+      "detail": "term E: stubbing raw_observations_complete to always-True must STOP that RED — otherwise the RED came from a bystander rail and proves nothing about E (survived: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::E::restored": {
+      "ok": true,
+      "detail": "term E: the implementation mutation on raw_observations_complete must be reverted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::control::clean_control_green": {
+      "ok": true,
+      "detail": "the unmutated fixture must pass, or every RED above is unattributable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::control::restoration_green": {
+      "ok": true,
+      "detail": "the fixture must still pass after all mutations — a leaked stub would silently weaken every later run in this process",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::control::cross_check_double_catch": {
+      "ok": true,
+      "detail": "an incoherent world record must be caught by BOTH the acceptance and the evidence rail",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::control::symmetry_under_claim_red": {
+      "ok": true,
+      "detail": "a report UNDER-claiming against its own evidence must also be refused",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::mutations::control::anti_circularity_independent": {
+      "ok": true,
+      "detail": "the recompute rail must reject a wrong-world survey that the shared predicate accepts — if they agree, the rail is reading its own claim",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
     "kb::gaps_declared": {
       "ok": true,
-      "detail": "vectors that cannot be tested at this commit are named in NOT_YET_TESTABLE (9 declared) rather than silently omitted",
+      "detail": "vectors that cannot be tested at this commit are named in NOT_YET_TESTABLE (3 declared) rather than silently omitted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::gaps_not_contradicted": {
+      "ok": true,
+      "detail": "a vector cannot be listed in NOT_YET_TESTABLE and also carry a fixture — remove it from the gap list when it becomes testable (both: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "kb::residual_gaps_declared": {
+      "ok": true,
+      "detail": "every partially-covered vector must carry its residual_gap in the catalogue, naming the half its fixture does NOT reach (missing: [])",
       "warn_only": false,
       "verdict": "PASS",
       "code": null,
@@ -702,7 +1134,7 @@
   },
   "failures": [],
   "counts": {
-    "PASS": 87,
+    "PASS": 141,
     "WARN": 0,
     "WARN_ONLY": 0,
     "FAIL": 0,
@@ -717,8 +1149,8 @@
     "deep": false,
     "torture": false,
     "seeds": null,
-    "git_sha": "50075827915e3dd68520687033ae573a47960ef8",
-    "timestamp": "2026-07-27T14:22:21.563978+00:00",
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:33:58.736605+00:00",
     "input_spec_hash": null,
     "output_manifest_hash": null,
     "validator_version": "v1.0x",
@@ -730,8 +1162,8 @@
     "warning_count": 0,
     "skipped_count": 0,
     "record_count": 0,
-    "records_total": 21,
-    "records_passed": 21,
+    "records_total": 27,
+    "records_passed": 27,
     "records_failed": 0,
     "records_skipped": 0
   }

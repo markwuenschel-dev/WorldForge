@@ -1,0 +1,1322 @@
+{
+  "support_grid": "v2_6_support_grid",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "extent::r_lt_s::k": {
+      "ok": true,
+      "detail": "R=50.0 s=100.0: k=0 expected 0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_lt_s::N": {
+      "ok": true,
+      "detail": "R=50.0 s=100.0: N=1 expected 1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_eq_s::k": {
+      "ok": true,
+      "detail": "R=100.0 s=100.0: k=1 expected 1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_eq_s::N": {
+      "ok": true,
+      "detail": "R=100.0 s=100.0: N=9 expected 9",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_just_over_s::k": {
+      "ok": true,
+      "detail": "R=100.001 s=100.0: k=1 expected 1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_just_over_s::N": {
+      "ok": true,
+      "detail": "R=100.001 s=100.0: N=9 expected 9",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_just_under_s::k": {
+      "ok": true,
+      "detail": "R=99.999 s=100.0: k=0 expected 0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_just_under_s::N": {
+      "ok": true,
+      "detail": "R=99.999 s=100.0: N=1 expected 1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_eq_k_times_s::k": {
+      "ok": true,
+      "detail": "R=300.0 s=100.0: k=3 expected 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_eq_k_times_s::N": {
+      "ok": true,
+      "detail": "R=300.0 s=100.0: N=49 expected 49",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_just_under_ks::k": {
+      "ok": true,
+      "detail": "R=299.999 s=100.0: k=2 expected 2",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_just_under_ks::N": {
+      "ok": true,
+      "detail": "R=299.999 s=100.0: N=25 expected 25",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_just_over_ks::k": {
+      "ok": true,
+      "detail": "R=300.001 s=100.0: k=3 expected 3",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_just_over_ks::N": {
+      "ok": true,
+      "detail": "R=300.001 s=100.0: N=49 expected 49",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_much_lt_s::k": {
+      "ok": true,
+      "detail": "R=0.5 s=100.0: k=0 expected 0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_much_lt_s::N": {
+      "ok": true,
+      "detail": "R=0.5 s=100.0: N=1 expected 1",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::probe_default::k": {
+      "ok": true,
+      "detail": "R=3000.0 s=100.0: k=30 expected 30",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::probe_default::N": {
+      "ok": true,
+      "detail": "R=3000.0 s=100.0: N=3721 expected 3721",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::r_lt_s::single_centre_sample": {
+      "ok": true,
+      "detail": "R<s must yield exactly the centre sample; got ((0, 0),)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::no_sample_outside_half_extent": {
+      "ok": true,
+      "detail": "samples outside the requested half-extent: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::rejects_bad_params::R0.0_s100.0": {
+      "ok": true,
+      "detail": "R=0.0 s=100.0 must raise ContractViolation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::rejects_bad_params::R-1.0_s100.0": {
+      "ok": true,
+      "detail": "R=-1.0 s=100.0 must raise ContractViolation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::rejects_bad_params::R100.0_s0.0": {
+      "ok": true,
+      "detail": "R=100.0 s=0.0 must raise ContractViolation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "extent::rejects_bad_params::R100.0_s-5.0": {
+      "ok": true,
+      "detail": "R=100.0 s=-5.0 must raise ContractViolation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "order::count": {
+      "ok": true,
+      "detail": "expected 49 indices, got 49",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "order::row_major_i_outer_j_inner": {
+      "ok": true,
+      "detail": "i must be the OUTER loop and j the INNER one (contract §6)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "order::strictly_increasing": {
+      "ok": true,
+      "detail": "(i,j) < (i',j') iff i<i' or (i==i' and j<j') must hold pairwise",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "order::sort_is_stable_under_permutation": {
+      "ok": true,
+      "detail": "canonical_sort_key must recover the canonical order from any input order — raw records feed a determinism hash",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "order::derive_grid_emits_canonical": {
+      "ok": true,
+      "detail": "derive_grid must re-order to canonical; got ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 0), (0, 1), (1, -1), (1, 0), (1, 1))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neighbour::von_neumann_4_connected": {
+      "ok": true,
+      "detail": "neighbourhood must be 4-connected (contract §5.1); got ((1, 0), (-1, 0), (0, 1), (0, -1))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neighbour::off_grid_is_not_an_edge": {
+      "ok": true,
+      "detail": "a uniform flat grid must contain ZERO edges; off-grid neighbours are skipped, not treated as invalid (SceneSurvey.cpp:188). Got edges at []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neighbour::perimeter_not_edge": {
+      "ok": true,
+      "detail": "no perimeter cell may be an edge purely from the window shape",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neighbour::perimeter_asymmetry_corner_sees_2": {
+      "ok": true,
+      "detail": "corner cells are evaluated against 2 neighbours",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neighbour::perimeter_asymmetry_side_sees_3": {
+      "ok": true,
+      "detail": "non-corner perimeter cells are evaluated against 3 neighbours",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neighbour::perimeter_asymmetry_interior_sees_4": {
+      "ok": true,
+      "detail": "interior cells are evaluated against 4 neighbours; perimeter cells are therefore systematically LESS likely to be classified edge, and downstream evidence must not present them as equal evidence",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neighbour::unsupported_neighbour_does_fire": {
+      "ok": true,
+      "detail": "a supported cell beside a clean miss MUST be an edge; got edge=True terms=('neighbour_not_supported',)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neighbour::rejects_sample_outside_region": {
+      "ok": true,
+      "detail": "an observation outside [-k,k] must raise ContractViolation — that is how the R<s over-extension is caught at the seam",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tristate::hit_none_requires_failure": {
+      "ok": true,
+      "detail": "hit=None means the trace did not run and REQUIRES a failure reason",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tristate::ran_trace_has_no_failure": {
+      "ok": true,
+      "detail": "hit=False with a failure reason conflates 'missed' with 'never ran'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tristate::miss_carries_no_zero_vector": {
+      "ok": true,
+      "detail": "p_impact and n_hat are None on a clean miss, never a zero vector",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tristate::not_run_carries_no_geometry": {
+      "ok": true,
+      "detail": "a trace that did not run cannot carry an impact point",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tristate::miss_is_unsupported_and_decided": {
+      "ok": true,
+      "detail": "a clean miss is a real observation: unsupported, S=False; got unsupported False",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tristate::failure_is_trace_error_and_undecided": {
+      "ok": true,
+      "detail": "a trace that did not run is trace_error with S=None (UNKNOWN), never unsupported; got trace_error None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tristate::miss_and_failure_are_distinct": {
+      "ok": true,
+      "detail": "'missed' and 'never attempted' must not collapse to one state",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tristate::hit_is_supported": {
+      "ok": true,
+      "detail": "a clean flat hit with head clearance is support",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tristate::unknown_never_counts_valid": {
+      "ok": true,
+      "detail": "only valid_support counts as support; unknown and trace_error never do",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "support::slope_at_theta_max_is_supported": {
+      "ok": true,
+      "detail": "slope == theta_max is standable (the C++ blocks on Slope > MaxSlope, strictly); got valid_support",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "support::slope_over_theta_max_is_blocked": {
+      "ok": true,
+      "detail": "slope just over theta_max must be blocked",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "support::slope_under_theta_max_is_supported": {
+      "ok": true,
+      "detail": "slope just under theta_max must be supported",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "support::no_acos_roundtrip_in_predicate": {
+      "ok": true,
+      "detail": "classify_support must compare n_hat.z against cos(theta_max) directly; an acos/degrees round-trip is where two languages disagree in the last bits",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "support::head_window_is_50_to_176": {
+      "ok": true,
+      "detail": "head-clearance window must be [impact+50, impact+176] cm; got [50.0, 176.0]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "support::head_blocked_is_blocked": {
+      "ok": true,
+      "detail": "a head-blocked cell is blocked, never valid",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "support::nan_impact_is_trace_error": {
+      "ok": true,
+      "detail": "a NaN impact point is trace_error with S=None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "support::degenerate_normal_is_trace_error": {
+      "ok": true,
+      "detail": "a zero-length normal is trace_error with S=None",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "support::missing_head_observation_is_not_clear": {
+      "ok": true,
+      "detail": "an unattempted head trace must never read as clearance",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "support::sample_point_formula": {
+      "ok": true,
+      "detail": "p_ij = (a_x + i*s, a_y + j*s); got first=(-2, -2, 800.0, -700.0) last=(2, 2, 1200.0, -300.0)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_h_is_90cm": {
+      "ok": true,
+      "detail": "tau_h = 2 * h_step = 90 cm; got 90.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_h_not_fired_at_exactly_90": {
+      "ok": true,
+      "detail": "|dz| == tau_h is NOT an edge (the predicate is strictly >)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_h_fires_just_over_90": {
+      "ok": true,
+      "detail": "|dz| just over tau_h must be an edge",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::two_pass_no_propagation": {
+      "ok": true,
+      "detail": "an edge must not propagate: (1,0) edge=True (0,0) edge=False (-1,0) edge=False. Fusing the passes makes the result iteration-order dependent (contract §5.3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::order_independent": {
+      "ok": true,
+      "detail": "the result must not depend on observation input order",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::requires_S_ij": {
+      "ok": true,
+      "detail": "E_ij requires S_ij; an unsupported/blocked cell is never an edge",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_n_is_declared": {
+      "ok": true,
+      "detail": "tau_n must carry a declared value; got 44.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_n_is_derived_not_typed": {
+      "ok": true,
+      "detail": "tau_n must come from derive_tau_n_deg(theta_max), so 44.0 is typed once; got tau_n=44.0 vs derivation 44.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_n_ceiling_is_two_theta_max": {
+      "ok": true,
+      "detail": "two SUPPORTED normals each lie within theta_max of up, so they are at most 2*theta_max apart",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_n_is_not_vacuous": {
+      "ok": true,
+      "detail": "tau_n must sit strictly inside (0, 2*theta_max); at or above the ceiling it can never fire and the declaration would be a lie. tau_n=44.0 ceiling=88.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_n_at_ceiling_is_provably_vacuous": {
+      "ok": true,
+      "detail": "with two faces each at exactly theta_max in opposing directions — the largest separation two supported cells can exhibit — a tau_n of 2*theta_max still does not fire. That is why the ceiling is NOT the declaration",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::refused_tolerance_set_exists": {
+      "ok": true,
+      "detail": "a tolerance set with tau_n genuinely absent must remain constructible, or the refusal machinery is untestable and rots",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_n_evaluation_is_refused": {
+      "ok": true,
+      "detail": "reading cos(tau_n) on a set with no tau_n must RAISE, not return a default — a silently-chosen tau_n is exactly the cross-language drift this module exists to prevent",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::cannot_opt_out_of_the_refusal": {
+      "ok": true,
+      "detail": "asking for a full tau_n evaluation without a declared tau_n must raise; there is no default to fall back to",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::refused_tau_n_yields_indeterminate": {
+      "ok": true,
+      "detail": "with tau_n refused, no supported cell that has a neighbour can be proved NOT to be an edge; edge must be None, never False",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::refused_tau_n_never_false": {
+      "ok": true,
+      "detail": "a refused term must never be silently read as 'did not fire'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::indeterminate_resolves_to_unknown": {
+      "ok": true,
+      "detail": "fail-closed: an indeterminate edge collapses to unknown, not to valid_support",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_n_evaluated_flag_is_honest": {
+      "ok": true,
+      "detail": "GridResult must state whether the tau_n term was evaluated",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::declared_tau_n_resolves_a_flat_grid": {
+      "ok": true,
+      "detail": "with tau_n declared, a uniform flat grid must resolve to valid_support throughout instead of the r1 pile of `unknown`; got {'valid_support': 9, 'unsupported': 0, 'edge': 0, 'blocked': 0, 'trace_error': 0, 'unknown': 0}",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::refusal_does_not_block_a_proved_edge": {
+      "ok": true,
+      "detail": "a declared term that fires still proves an edge; only the NEGATIVE is unprovable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::single_cell_grid_is_provably_not_an_edge": {
+      "ok": true,
+      "detail": "with no neighbours at all, no term can fire, so edge=False is provable even with tau_n refused; got edge=False",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_n_term_bites_when_declared": {
+      "ok": true,
+      "detail": "with tau_n=30 deg declared, the ridge crest must produce normal_discontinuity edges; got 6",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "edge::tau_n_compare_avoids_acos": {
+      "ok": true,
+      "detail": "the tau_n comparison must use cos(tau_n), not acos of the dot product",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::matches_golden_k1": {
+      "ok": true,
+      "detail": "sample ids drifted from the written golden.\n  got  ('wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=-1|j=-1', 'wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=-1|j=+0', 'wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=-1|j=+1')\n  want ('wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=-1|j=-1', 'wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=-1|j=+0', 'wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=-1|j=+1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::version_is_carried": {
+      "ok": true,
+      "detail": "every id must carry the contract version; semantics changed between r1 (tau_n refused) and r2 (tau_n declared), so ids minted under the two must not compare equal",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::shape_name_is_not_abbreviated": {
+      "ok": true,
+      "detail": "contract §1.2 forbids square/disk from being silently substituted; the id carries the full declared NAME, never an abbreviation",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::unique_within_an_operation": {
+      "ok": true,
+      "detail": "ids must be pairwise distinct across the grid; got 9 unique of 9",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::stable_across_repeated_generation": {
+      "ok": true,
+      "detail": "sample ids must be a pure function of (version, shape, k, i, j); regeneration and input permutation must not move them",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::anchor_and_spacing_do_not_leak_in": {
+      "ok": true,
+      "detail": "the identity is operation-LOCAL: it names a cell within a grid, not a place in the world. Admitting the anchor or the spacing would put a float in the id, and floats are exactly what fails to round-trip across the language boundary (§1.3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::k_disambiguates_perimeter_from_interior": {
+      "ok": true,
+      "detail": "(1,0) is a 3-neighbour perimeter cell at k=1 and a 4-neighbour interior cell at k=2; without k in the id those two non-interchangeable observations would collide",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::zero_is_signed_exactly_one_way": {
+      "ok": true,
+      "detail": "the sign is always explicit and always '+' for zero; got wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=+0|j=+0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::round_trips": {
+      "ok": true,
+      "detail": "parse_sample_id must invert sample_id exactly",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::rejects::not_enough": {
+      "ok": true,
+      "detail": "parse_sample_id must reject 'nope' (not enough fields)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::rejects::wrong_contract": {
+      "ok": true,
+      "detail": "parse_sample_id must reject 'wf.support_grid.v2_6.r1|axis_aligned_square|k=1|i=+0|j=+0' (wrong contract revision)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::rejects::unsigned_index": {
+      "ok": true,
+      "detail": "parse_sample_id must reject 'wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=0|j=+0' (unsigned index)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::rejects::zero-padded_index": {
+      "ok": true,
+      "detail": "parse_sample_id must reject 'wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=+00|j=+0' (zero-padded index)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::rejects::index_outside": {
+      "ok": true,
+      "detail": "parse_sample_id must reject 'wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=+2|j=+0' (index outside k)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::rejects::float_index": {
+      "ok": true,
+      "detail": "parse_sample_id must reject 'wf.support_grid.v2_6.r2|axis_aligned_square|k=1|i=+0.0|j=+0' (float index)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::float_index_is_refused_not_rounded": {
+      "ok": true,
+      "detail": "sample_id(1, 0.0, 0) must raise; silently rounding a float index is how a float enters an identity that must not contain one",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::lexical_sort_is_NOT_canonical_order": {
+      "ok": true,
+      "detail": "if lexical sort happened to equal canonical order, somebody would rely on it. '+' (0x2B) sorts before '-' (0x2D), so \"i=+0\" precedes \"i=-1\" lexically while canonically -1 < 0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::sort_key_from_id_recovers_canonical_order": {
+      "ok": true,
+      "detail": "canonical order must be recoverable from ids via sort_key_from_sample_id — and only via it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::fixture_token_is_not_a_canonical_identity": {
+      "ok": true,
+      "detail": "run_v2_6_fixture_smoke.sample_id must not collide with the canonical identity space; got 'sample_0002_0001'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "identity::fixture_token_is_rejected_by_the_canonical_parser": {
+      "ok": true,
+      "detail": "the canonical parser must REFUSE a fixture ordering token ('sample_0002_0001'), so a fixture-local string can never be filed as evidence identity",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::extent::R_lt_s": {
+      "ok": true,
+      "detail": "R=50.0 s=100.0: k=0 expected 0 (a non-integral quotient must FLOOR, never round)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::extent::R_eq_s": {
+      "ok": true,
+      "detail": "R=100.0 s=100.0: k=1 expected 1 (a non-integral quotient must FLOOR, never round)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::extent::R_2p5_s": {
+      "ok": true,
+      "detail": "R=250.0 s=100.0: k=2 expected 2 (a non-integral quotient must FLOOR, never round)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::extent::R_3p33_s": {
+      "ok": true,
+      "detail": "R=100.0 s=30.0: k=3 expected 3 (a non-integral quotient must FLOOR, never round)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::extent::R_0p99_s": {
+      "ok": true,
+      "detail": "R=99.0 s=100.0: k=0 expected 0 (a non-integral quotient must FLOOR, never round)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::extent::R_7p9_s": {
+      "ok": true,
+      "detail": "R=79.0 s=10.0: k=7 expected 7 (a non-integral quotient must FLOOR, never round)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::R_lt_s_is_one_sample_at_the_anchor": {
+      "ok": true,
+      "detail": "R<s must yield exactly the centre sample, placed at the anchor; got ((0, 0, 11.0, -7.0),)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::R_eq_s_is_the_full_3x3": {
+      "ok": true,
+      "detail": "R==s must yield the full 3x3 in canonical order with exact coordinates",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::rejects::zero_spacing": {
+      "ok": true,
+      "detail": "R=100.0 s=0.0 (zero spacing) must raise ContractViolation, never be clamped or defaulted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::rejects::negative_spacing": {
+      "ok": true,
+      "detail": "R=100.0 s=-100.0 (negative spacing) must raise ContractViolation, never be clamped or defaulted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::rejects::tiny_negative_spacing": {
+      "ok": true,
+      "detail": "R=100.0 s=-1e-09 (tiny negative spacing) must raise ContractViolation, never be clamped or defaulted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::rejects::zero_radius": {
+      "ok": true,
+      "detail": "R=0.0 s=100.0 (zero radius) must raise ContractViolation, never be clamped or defaulted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::rejects::negative_radius": {
+      "ok": true,
+      "detail": "R=-100.0 s=100.0 (negative radius) must raise ContractViolation, never be clamped or defaulted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::rejects::NaN_radius": {
+      "ok": true,
+      "detail": "R=nan s=100.0 (NaN radius) must raise ContractViolation, never be clamped or defaulted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::rejects::infinite_radius": {
+      "ok": true,
+      "detail": "R=inf s=100.0 (infinite radius) must raise ContractViolation, never be clamped or defaulted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::rejects::NaN_spacing": {
+      "ok": true,
+      "detail": "R=100.0 s=nan (NaN spacing) must raise ContractViolation, never be clamped or defaulted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::square_and_disk_differ": {
+      "ok": true,
+      "detail": "at k=2 the square has 25 cells and the disk predicate i^2+j^2<=k^2 admits 13; 12 cells are the difference. got square=25 disk=13 excluded=[(-2, -2), (-2, -1), (-2, 1), (-2, 2), (-1, -2), (-1, 2), (1, -2), (1, 2), (2, -2), (2, -1), (2, 1), (2, 2)]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::disk_is_named_but_unimplemented": {
+      "ok": true,
+      "detail": "the disk mode must have a NAME (so it can be declared under) and must not be implemented (so it cannot be silently assumed)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::disk_request_raises": {
+      "ok": true,
+      "detail": "asking for the disk region must raise, never quietly run the square one",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::canonical_order_k1": {
+      "ok": true,
+      "detail": "i ascending OUTER, j ascending INNER (contract §6, SceneSurvey.cpp:111-113); got ((-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 0), (0, 1), (1, -1), (1, 0), (1, 1))",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::tau_n_below_threshold_is_not_an_edge": {
+      "ok": true,
+      "detail": "a 43 deg neighbour turn is below tau_n=44.0 and must NOT fire the normal term",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::tau_n_at_threshold_is_not_an_edge": {
+      "ok": true,
+      "detail": "a turn of exactly tau_n=44.0 must NOT fire — the predicate is strictly greater-than, matching tau_h at SceneSurvey.cpp:195",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::tau_n_above_threshold_is_an_edge": {
+      "ok": true,
+      "detail": "a 46 deg neighbour turn exceeds tau_n=44.0 and must fire the normal term; both faces are standable (23 deg < theta_max) so no other disjunct can be doing the work",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::tau_n_above_names_the_term_that_fired": {
+      "ok": true,
+      "detail": "exactly the normal-discontinuity term must be named, so a fired edge is attributable; got ('normal_discontinuity',)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "golden::XFAIL::cpp_cannot_reproduce_tau_n_edges": {
+      "ok": true,
+      "detail": "EXPECTED-TO-DIVERGE, and it must keep diverging exactly this way: on the 80.0 deg ridge crest the canonical authority proves 6 edges and the native pass finds 0. The C++ cannot be brought into line by adding a comparison — SceneSurvey.cpp:140 stores only ImpactPoint.Z into GridZ, so pass 2 (:184-200) has no per-cell normal to compare and needs a normal map first. HANDOFF ITEM for the native-collector promotion (§10); this lane may not edit C++.",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_source_present": {
+      "ok": true,
+      "detail": "cannot cross-check without D:\\Unreal Projects\\WorldForge\\Plugins\\WorldForge\\Source\\WorldForgeCore\\Private\\SceneSurvey.cpp",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_agrees::theta_max": {
+      "ok": true,
+      "detail": "python declares theta_max = 44.0; SceneSurvey.cpp has 44.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_agrees::h_step": {
+      "ok": true,
+      "detail": "python declares h_step = 45.0; SceneSurvey.cpp has 45.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_agrees::head_lo_offset": {
+      "ok": true,
+      "detail": "python declares head_lo_offset = 5.0; SceneSurvey.cpp has 5.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_agrees::head_hi": {
+      "ok": true,
+      "detail": "python declares head_hi = 176.0; SceneSurvey.cpp has 176.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_agrees::tau_h_multiplier": {
+      "ok": true,
+      "detail": "tau_h must be 2*h_step on both sides; cpp multiplier=2.0, python tau_h=90.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_uses_floor_extent": {
+      "ok": true,
+      "detail": "SceneSurvey.cpp must compute K = FMath::FloorToInt(RadiusCm/StepCm)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_dropped_max1_extent": {
+      "ok": true,
+      "detail": "the old FMath::Max(1, (int32)(RadiusCm/StepCm)) must be gone",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_marks_edge_diagnostic": {
+      "ok": true,
+      "detail": "the C++ edge flag must be marked diagnostic in the code AND in its log line, so it cannot be mistaken for the authoritative result",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_declares_square_region": {
+      "ok": true,
+      "detail": "the C++ must name its sample region shape so square and disk semantics stay distinguishable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_can_reach_trace_error": {
+      "ok": true,
+      "detail": "CLS_TRACE_ERROR must be assignable, else any 'valid excludes trace_error' rail downstream is vacuous",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_pass2_still_has_no_normal_term": {
+      "ok": true,
+      "detail": "SceneSurvey.cpp pass 2 must still contain NO normal term. If a tau_n was added natively, contract §5.2 and the tau_n_ridge_crest fixture are both stale and must be updated with it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_retains_no_per_cell_normal": {
+      "ok": true,
+      "detail": "pass 1 must still discard the normal (only GridZ is retained); if a normal map appeared, the native tau_n blocker in §5.2 is stale",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::cpp_has_no_tau_n_literal": {
+      "ok": true,
+      "detail": "tau_n must not appear as executable C++ while §5.2 says the native pass does not implement it",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::evidence_agrees::theta_max": {
+      "ok": true,
+      "detail": "scene_survey_evidence.GROUND_MAX_SLOPE_DEG=44.0 vs canonical theta_max=44.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::evidence_agrees::h_step": {
+      "ok": true,
+      "detail": "scene_survey_evidence.GROUND_DZ_TOLERANCE_CM=45.0 vs canonical h_step=45.0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::evidence_agrees::cos_theta_max": {
+      "ok": true,
+      "detail": "the precomputed cosines must be bit-identical: 0.7193398003386512 vs 0.7193398003386512",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::support_class_vocabulary_matches": {
+      "ok": true,
+      "detail": "canonical SUPPORT_CLASSES=('valid_support', 'unsupported', 'edge', 'blocked', 'trace_error', 'unknown') vs contract spine ('valid_support', 'unsupported', 'edge', 'blocked', 'trace_error', 'unknown')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::valid_support_classes_match": {
+      "ok": true,
+      "detail": "only valid_support may count as support on both sides",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::square_and_disk_are_named": {
+      "ok": true,
+      "detail": "both region modes must have names, and only the square one may be implemented",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tolerance::disk_mode_is_refused_not_aliased": {
+      "ok": true,
+      "detail": "asking for the disk region must raise, never silently run the square one",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::registry_non_empty": {
+      "ok": true,
+      "detail": "expected at least 6 documented divergences, got 7",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::extent_r_lt_s::still_holds": {
+      "ok": true,
+      "detail": "[resolved_by_lane5] R < s sampled a 3x3 block reaching +/-s, outside the half-extent | Plugins/WorldForge/Source/WorldForgeCore/Private/SceneSurvey.cpp:103 (was: FMath::Max(1, (int32)(RadiusCm/StepCm))) | R=50.0 s=100.0: pre-lane5 k=1 (N=9, reach +/-100.0cm, OUTSIDE the 50.0cm half-extent); post-lane5 k=0 (N=1); canonical k=0 (N=1)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::extent_r_lt_s::documented": {
+      "ok": true,
+      "detail": "every divergence needs native/canonical answers, a citation, and a stated consequence",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::float32_quotient::still_holds": {
+      "ok": true,
+      "detail": "[accepted_divergence] k is floored on a float32 quotient natively, float64 canonically | Plugins/WorldForge/Source/WorldForgeCore/Private/SceneSurvey.cpp:103 (float division) | 496 concrete witness(es) in the swept range; first: R=29.999999999999996 s=10.0 f64_k=2 f32_k=3; R=89.99999999999999 s=10.0 f64_k=8 f32_k=9; R=99.99999999999997 s=10.0 f64_k=9 f32_k=10",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::float32_quotient::documented": {
+      "ok": true,
+      "detail": "every divergence needs native/canonical answers, a citation, and a stated consequence",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::tau_n_ridge_crest::still_holds": {
+      "ok": true,
+      "detail": "[open_operator_decision] a sharp normal change with no height step is invisible NATIVELY | Plugins/WorldForge/Source/WorldForgeCore/Private/SceneSurvey.cpp:184-200 (no tau_n term in pass 2) and :140 (pass 1 stores only ImpactPoint.Z — the normal is discarded, so pass 2 has no data to compare) | ridge crest (|dz|=0, 80.0 deg between the 4-connected neighbours straddling the crest): native = 9 valid / 0 edge; canonical = 6 cells proved `edge` via normal_discontinuity. The normal step is invisible to the native predicate — SceneSurvey.cpp:184-200 has no tau_n term and :140 keeps no normal to build one from.",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::tau_n_ridge_crest::documented": {
+      "ok": true,
+      "detail": "every divergence needs native/canonical answers, a citation, and a stated consequence",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::blocked_neighbour_not_edge::still_holds": {
+      "ok": true,
+      "detail": "[open_operator_decision] native omits CLS_BLOCKED from the 'invalid neighbour' set | Plugins/WorldForge/Source/WorldForgeCore/Private/SceneSurvey.cpp:189 | cell (0,0) beside a 70 deg blocked cell at (1,0): native=valid (SceneSurvey.cpp:189 omits CLS_BLOCKED from the invalid set); canonical edge=True terms=('neighbour_not_supported',)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::blocked_neighbour_not_edge::documented": {
+      "ok": true,
+      "detail": "every divergence needs native/canonical answers, a citation, and a stated consequence",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::unknown_class_unreachable::still_holds": {
+      "ok": true,
+      "detail": "[accepted_divergence] CLS_UNKNOWN is structurally unreachable in the C++ | Plugins/WorldForge/Source/WorldForgeCore/Private/SceneSurvey.cpp:120,155 | unobserved cell (0,1): canonical resolved_class=unknown; native has no way to express it — SceneSurvey.cpp:155 writes a class for every index, so CLS_UNKNOWN is unreachable and its counter is always 0",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::unknown_class_unreachable::documented": {
+      "ok": true,
+      "detail": "every divergence needs native/canonical answers, a citation, and a stated consequence",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::head_trace_not_attempted::still_holds": {
+      "ok": true,
+      "detail": "[accepted_divergence] a head trace that did not run is indistinguishable from 'clear' | Plugins/WorldForge/Source/WorldForgeCore/Private/SceneSurvey.cpp:150-152 (bool return) | centre cell with head trace NOT attempted: canonical=trace_error (supported=None, fail-closed); native=valid — a bool return cannot distinguish 'did not run' from 'ran and was clear'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::head_trace_not_attempted::documented": {
+      "ok": true,
+      "detail": "every divergence needs native/canonical answers, a citation, and a stated consequence",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::non_unit_normal::still_holds": {
+      "ok": true,
+      "detail": "[accepted_divergence] native slope-tests the raw ImpactNormal.Z, canonical normalises | Plugins/WorldForge/Source/WorldForgeCore/Private/SceneSurvey.cpp:138-139 | |n|=0.5 tilted 30 deg: canonical normalises -> 30.0 deg -> valid_support; native reads raw n.Z=0.4330 -> 64.3 deg -> blocked",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "divergence::non_unit_normal::documented": {
+      "ok": true,
+      "detail": "every divergence needs native/canonical answers, a citation, and a stated consequence",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 160,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "python tools/pipeline/support_grid_conformance.py",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "8d46af4a15e735a9f8be7424a5d1e0f9214b1c9e",
+    "timestamp": "2026-07-30T20:13:34.990380+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.scene_survey.support_grid_conformance.v1",
+    "report_id": "wf.scene_survey.support_grid_conformance.v1:c5debf5c566d",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 160,
+    "records_total": 160,
+    "records_passed": 160,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

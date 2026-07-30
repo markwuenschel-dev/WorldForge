@@ -1,0 +1,442 @@
+{
+  "suite": "scene_survey_hygiene",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "hygiene::acceptance_rail_accepts": {
+      "ok": true,
+      "detail": "the Acceptance rail must accept a docstring that carries the line",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::acceptance_rail_rejects": {
+      "ok": true,
+      "detail": "the Acceptance rail must REJECT a docstring with no 'Acceptance:' line (a rail that cannot fail is not a rail)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::cli_rail_discriminates": {
+      "ok": true,
+      "detail": "the gate/library classifier must actually discriminate on CLI evidence",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::surface_present": {
+      "ok": true,
+      "detail": "expected the scene_survey source surface (got 16)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scripts_present": {
+      "ok": true,
+      "detail": "expected the scene_survey gate scripts (got 9)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::export_scene_survey_contracts.py::acceptance_doc": {
+      "ok": true,
+      "detail": "gate script must carry an 'Acceptance:' docstring line",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::run_scene_survey_probe.py::acceptance_doc": {
+      "ok": true,
+      "detail": "gate script must carry an 'Acceptance:' docstring line",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_fuzz.py::acceptance_doc": {
+      "ok": true,
+      "detail": "gate script must carry an 'Acceptance:' docstring line",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_hygiene.py::acceptance_doc": {
+      "ok": true,
+      "detail": "gate script must carry an 'Acceptance:' docstring line",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_negatives.py::acceptance_doc": {
+      "ok": true,
+      "detail": "gate script must carry an 'Acceptance:' docstring line",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_report_integrity.py::acceptance_doc": {
+      "ok": true,
+      "detail": "gate script must carry an 'Acceptance:' docstring line",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_torture.py::acceptance_doc": {
+      "ok": true,
+      "detail": "gate script must carry an 'Acceptance:' docstring line",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::validate_scene_survey_contracts.py::acceptance_doc": {
+      "ok": true,
+      "detail": "gate script must carry an 'Acceptance:' docstring line",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::validate_scene_survey_runtime.py::acceptance_doc": {
+      "ok": true,
+      "detail": "gate script must carry an 'Acceptance:' docstring line",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::vocab_exempt_is_self_only": {
+      "ok": true,
+      "detail": "only this gate may be exempt from its own vocabulary scan (it has to name the tokens it forbids); the exemption must never become a waiver list (got ['scene_survey_hygiene.py'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_far_side.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::export_scene_survey_contracts.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::run_scene_survey_probe.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_contracts.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_evidence.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_fuzz.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_negatives.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_operation.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_recompute.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_report_integrity.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::scene_survey_torture.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::test_negative_scene_survey_cleanup.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::test_negative_scene_survey_operation_resolution.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::validate_scene_survey_contracts.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::validate_scene_survey_runtime.py::no_target_game_vocabulary": {
+      "ok": true,
+      "detail": "target-game vocabulary in the scene_survey surface: [] — WorldForge owns capability, the CALLER owns the subject and its names",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::vocab_scan_non_vacuous": {
+      "ok": true,
+      "detail": "the vocabulary scan must cover the real surface, not an empty set (scanned 15)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::vocab_rail_catches_forbidden": {
+      "ok": true,
+      "detail": "the vocabulary rail must catch a forbidden proper noun",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::vocab_rail_catches_default": {
+      "ok": true,
+      "detail": "the vocabulary rail must catch a target-game production default",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::vocab_rail_allows_prose": {
+      "ok": true,
+      "detail": "the vocabulary rail must ALLOW a prose example (only defaults are banned) — a rail that fires on everything proves nothing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::rt_namespaces_present": {
+      "ok": true,
+      "detail": "scene_survey_contracts must expose RT_* report_type namespaces",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::namespace::RT_CAMERA": {
+      "ok": true,
+      "detail": "RT_CAMERA must be a 'wf.scene_survey.<type>.v1' triple (got 'wf.scene_survey.camera_capture.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::namespace::RT_EVIDENCE_INDEX": {
+      "ok": true,
+      "detail": "RT_EVIDENCE_INDEX must be a 'wf.scene_survey.<type>.v1' triple (got 'wf.scene_survey.evidence_index.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::namespace::RT_PLACEMENT": {
+      "ok": true,
+      "detail": "RT_PLACEMENT must be a 'wf.scene_survey.<type>.v1' triple (got 'wf.scene_survey.temporary_placement.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::namespace::RT_PROFILE": {
+      "ok": true,
+      "detail": "RT_PROFILE must be a 'wf.scene_survey.<type>.v1' triple (got 'wf.scene_survey.survey_profile.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::namespace::RT_PROXY_REPORT": {
+      "ok": true,
+      "detail": "RT_PROXY_REPORT must be a 'wf.scene_survey.<type>.v1' triple (got 'wf.scene_survey.proxy_report.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::namespace::RT_SUBJECT": {
+      "ok": true,
+      "detail": "RT_SUBJECT must be a 'wf.scene_survey.<type>.v1' triple (got 'wf.scene_survey.survey_subject.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::namespace::RT_SUPPORT_MAP": {
+      "ok": true,
+      "detail": "RT_SUPPORT_MAP must be a 'wf.scene_survey.<type>.v1' triple (got 'wf.scene_survey.support_map.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::namespace::RT_SURVEY_REPORT": {
+      "ok": true,
+      "detail": "RT_SURVEY_REPORT must be a 'wf.scene_survey.<type>.v1' triple (got 'wf.scene_survey.survey_report.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::authoring_ts_deterministic": {
+      "ok": true,
+      "detail": "AUTHORING_TS must be a deterministic midnight-UTC stamp, not wall-clock (got '2026-07-19T00:00:00+00:00')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::report_root_declared": {
+      "ok": true,
+      "detail": "SURVEY_REPORTS_REL must name the scene_survey report tree (got 'procedural/reports/scene_survey')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::profile_root_declared": {
+      "ok": true,
+      "detail": "SURVEY_PROFILES_REL must live under the scene_survey generated tree (got 'procedural/generated/scene_survey/profiles')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::core::contract_spine": {
+      "ok": true,
+      "detail": "core artifact missing/empty: validate_scene_survey_contracts_report.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::core::contract_spine::namespaced": {
+      "ok": true,
+      "detail": "core report_type must be scene_survey-namespaced (got 'wf.scene_survey.contract_spine.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::core::fuzz_negatives": {
+      "ok": true,
+      "detail": "core artifact missing/empty: scene_survey_fuzz_report.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "hygiene::core::fuzz_negatives::namespaced": {
+      "ok": true,
+      "detail": "core report_type must be scene_survey-namespaced (got 'wf.scene_survey.fuzz.v1')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 50,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "scene-survey-hygiene",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:33:59.172208+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.scene_survey.hygiene.v1",
+    "report_id": "wf.scene_survey.hygiene.v1:10b60781e4aa",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 9,
+    "records_total": 9,
+    "records_passed": 9,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

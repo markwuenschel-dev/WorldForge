@@ -1,0 +1,218 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "asm::control::honest_binds_clean": {
+      "ok": true,
+      "detail": "an honest far-side document must bind clean — a suite where nothing passes proves nothing (failed rails: [])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::control::honest_raises_no_world_code": {
+      "ok": true,
+      "detail": "an honest run must raise neither WF1121 nor WF1122 (got ['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED', 'WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING', 'WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::control::honest_status_not_fail": {
+      "ok": true,
+      "detail": "an honest run must not be a hard failure (status=blocked, codes=['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED', 'WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING', 'WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::map_is_observed_not_requested": {
+      "ok": true,
+      "detail": "report map_asset_path must come from the OBSERVED world, never from the subject or from far['map'] (both of which are the request echoed back). Got '' for a run whose open world was '/Game/Fixture/Lvl_SomewhereElse'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::wrong_world_breaks_binding": {
+      "ok": true,
+      "detail": "surveying a different world than the caller asked for must fail sb::map_match — this rail was vacuous while the assembler copied the subject's map into the report (failed rails: ['sb::map_match'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::wrong_world_raises_wf1122": {
+      "ok": true,
+      "detail": "a world-identity mismatch must raise WF1122 (got ['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED', 'WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING', 'WF1107_SCENE_SURVEY_SUBJECT_MISMATCH', 'WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING', 'WF1122_SCENE_SURVEY_WORLD_IDENTITY_UNVERIFIED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::wrong_world_is_hard_fail": {
+      "ok": true,
+      "detail": "a survey of the wrong world is a wrong answer, not a partial one (status=fail)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::load_failure_raises_wf1121": {
+      "ok": true,
+      "detail": "load_level returning False must raise WF1121 (got ['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED', 'WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING', 'WF1107_SCENE_SURVEY_SUBJECT_MISMATCH', 'WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING', 'WF1121_SCENE_SURVEY_MAP_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::load_failure_is_hard_fail": {
+      "ok": true,
+      "detail": "a failed map load must be a hard failure (status=fail)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::silent_load_failure_still_caught": {
+      "ok": true,
+      "detail": "a far side that failed to load and reported no error of its own must still fail here — the verdict is re-derived from raw, not inherited (status=fail, codes=['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED', 'WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING', 'WF1107_SCENE_SURVEY_SUBJECT_MISMATCH', 'WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING', 'WF1121_SCENE_SURVEY_MAP_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::unreadable_identity_raises_wf1122": {
+      "ok": true,
+      "detail": "a world whose identity could not be read is NOT a verified world and must raise WF1122 (got ['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED', 'WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING', 'WF1107_SCENE_SURVEY_SUBJECT_MISMATCH', 'WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING', 'WF1122_SCENE_SURVEY_WORLD_IDENTITY_UNVERIFIED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::unreadable_identity_not_reported_as_map": {
+      "ok": true,
+      "detail": "an unobserved map must never be reported as the observed one (got '')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::package_form_normalised": {
+      "ok": true,
+      "detail": "'/Game/Fixture/Lvl_Fixture.Lvl_Fixture' and '/Game/Fixture/Lvl_Fixture' name the same package and must compare equal (codes=['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED', 'WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING', 'WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING'], rails=[])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::normalisation_not_a_prefix_match": {
+      "ok": true,
+      "detail": "'/Game/Fixture/Lvl_Fixture_Backup' is a DIFFERENT map and must not be normalised into a match (got ['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED', 'WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING', 'WF1107_SCENE_SURVEY_SUBJECT_MISMATCH', 'WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING', 'WF1122_SCENE_SURVEY_WORLD_IDENTITY_UNVERIFIED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::case_difference_fails_closed": {
+      "ok": true,
+      "detail": "a world package differing only in case must not be silently accepted (status=fail, rails=['sb::map_match'], codes=['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED', 'WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING', 'WF1107_SCENE_SURVEY_SUBJECT_MISMATCH', 'WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::explicit_transform_never_eligible": {
+      "ok": true,
+      "detail": "an explicit_transform survey must NEVER be acceptance-eligible: only the world is independently observed, the anchor is the caller's own input handed back (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::ineligible_carries_reason": {
+      "ok": true,
+      "detail": "an ineligible survey must name WHY, with the identifiability reason (got 'independent_subject_anchor_not_observable')",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::actor_object_path_can_be_eligible": {
+      "ok": true,
+      "detail": "an actor_object_path survey with observed world, observed actor path and an executed run MUST be able to reach eligible — if this can never pass, the acceptance gate is unreachable and the invariant is a wall, not a rail (eligible=True, reason=None, failed=[])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::eligible_carries_null_reason": {
+      "ok": true,
+      "detail": "an eligible survey must carry a null reason (got None)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::eligibility_collapses_on_wrong_world": {
+      "ok": true,
+      "detail": "an actor_object_path survey of the WRONG world must lose eligibility (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::eligibility_collapses_on_unresolved_actor": {
+      "ok": true,
+      "detail": "an unresolved anchor actor must lose eligibility (got False)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "asm::subject_id_is_caller_supplied": {
+      "ok": true,
+      "detail": "subject_id is caller vocabulary echoed for continuity; there is no observation channel for it and this suite does not claim one",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 22,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "v2-6-assembler-probes",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:33:58.889592+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.scene_survey.assembler_probes.v1",
+    "report_id": "wf.scene_survey.assembler_probes.v1:5b3ac5710abd",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 0,
+    "records_total": 0,
+    "records_passed": 0,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

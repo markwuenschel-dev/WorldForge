@@ -1,0 +1,1130 @@
+{
+  "suite": "scene_survey_torture",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "torture::reject_nonempty": {
+      "ok": true,
+      "detail": "reject battery must carry >= 34 hostile modes (got 39)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept_nonempty": {
+      "ok": true,
+      "detail": "accept battery must carry >= 15 adversarial-but-honest modes (got 16)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::subject_lane_nonempty": {
+      "ok": true,
+      "detail": "the subject/binding reject lane must carry >= 13 modes (got 13)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_unknown_mode::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_unknown_mode::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1064_SCENE_SURVEY_UNKNOWN_MODE (got ['WF1064_SCENE_SURVEY_UNKNOWN_MODE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_unknown_mode::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_unknown_capture::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_unknown_capture::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1065_SCENE_SURVEY_UNKNOWN_CAPTURE (got ['WF1065_SCENE_SURVEY_UNKNOWN_CAPTURE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_unknown_capture::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_zero_repeat::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_zero_repeat::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1061_SCENE_SURVEY_PROFILE_INVALID (got ['WF1061_SCENE_SURVEY_PROFILE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_zero_repeat::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::camera_captured_no_hash::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::camera_captured_no_hash::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1070_SCENE_SURVEY_CAMERA_CAPTURE_OVERCLAIM (got ['WF1070_SCENE_SURVEY_CAMERA_CAPTURE_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::camera_captured_no_hash::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::camera_top_down_perspective_hidden::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::camera_top_down_perspective_hidden::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1071_SCENE_SURVEY_CAMERA_PROJECTION_INVALID (got ['WF1071_SCENE_SURVEY_CAMERA_PROJECTION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::camera_top_down_perspective_hidden::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::camera_provenance_blank_anchor::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::camera_provenance_blank_anchor::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1069_SCENE_SURVEY_CAMERA_PROVENANCE_INVALID (got ['WF1069_SCENE_SURVEY_CAMERA_PROVENANCE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::camera_provenance_blank_anchor::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_counts_dont_sum::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_counts_dont_sum::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1076_SCENE_SURVEY_SUPPORT_MAP_INCOMPLETE (got ['WF1076_SCENE_SURVEY_SUPPORT_MAP_INCOMPLETE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_counts_dont_sum::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_valid_absorbs_unknown::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_valid_absorbs_unknown::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1077_SCENE_SURVEY_SUPPORT_UNKNOWN_OVERCLAIM (got ['WF1076_SCENE_SURVEY_SUPPORT_MAP_INCOMPLETE', 'WF1077_SCENE_SURVEY_SUPPORT_UNKNOWN_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_valid_absorbs_unknown::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_coverage_over_zero_probes::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_coverage_over_zero_probes::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1078_SCENE_SURVEY_SUPPORT_COVERAGE_OVERCLAIM (got ['WF1078_SCENE_SURVEY_SUPPORT_COVERAGE_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_coverage_over_zero_probes::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_leans_on_navmesh::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_leans_on_navmesh::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1081_SCENE_SURVEY_NAVMESH_OVERCLAIM (got ['WF1081_SCENE_SURVEY_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::support_leans_on_navmesh::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_not_grounded::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_not_grounded::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1083_SCENE_SURVEY_PLACEMENT_NOT_GROUNDED (got ['WF1083_SCENE_SURVEY_PLACEMENT_NOT_GROUNDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_not_grounded::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_overlap::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_overlap::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1084_SCENE_SURVEY_PLACEMENT_OVERLAP_ACCEPTED (got ['WF1084_SCENE_SURVEY_PLACEMENT_OVERLAP_ACCEPTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_overlap::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_no_clearance::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_no_clearance::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1085_SCENE_SURVEY_PLACEMENT_CLEARANCE_MISSING (got ['WF1085_SCENE_SURVEY_PLACEMENT_CLEARANCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_no_clearance::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_edge_violation::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_edge_violation::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1086_SCENE_SURVEY_PLACEMENT_EDGE_VIOLATION (got ['WF1086_SCENE_SURVEY_PLACEMENT_EDGE_VIOLATION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_edge_violation::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_footprint_unsupported::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_footprint_unsupported::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1087_SCENE_SURVEY_PLACEMENT_FOOTPRINT_UNSUPPORTED (got ['WF1087_SCENE_SURVEY_PLACEMENT_FOOTPRINT_UNSUPPORTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_footprint_unsupported::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_guessed_coords::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_guessed_coords::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1088_SCENE_SURVEY_PLACEMENT_GUESSED_COORDINATES (got ['WF1088_SCENE_SURVEY_PLACEMENT_GUESSED_COORDINATES'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::placement_accepted_guessed_coords::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::proxy_mix_attributed_unattributed::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::proxy_mix_attributed_unattributed::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1090_SCENE_SURVEY_PROXY_UNATTRIBUTED (got ['WF1090_SCENE_SURVEY_PROXY_UNATTRIBUTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::proxy_mix_attributed_unattributed::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::proxy_disable_unverified::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::proxy_disable_unverified::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED (got ['WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::proxy_disable_unverified::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_valid_exceeds_total::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_valid_exceeds_total::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1062_SCENE_SURVEY_REPORT_INVALID (got ['WF1062_SCENE_SURVEY_REPORT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_valid_exceeds_total::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_unknown_failure_code::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_unknown_failure_code::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1099_SCENE_SURVEY_UNKNOWN_FAILURE_CODE (got ['WF1099_SCENE_SURVEY_UNKNOWN_FAILURE_CODE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_unknown_failure_code::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_clean_no_evidence::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_clean_no_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1097_SCENE_SURVEY_EVIDENCE_MISSING (got ['WF1097_SCENE_SURVEY_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_clean_no_evidence::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_simulation_mislabeled_live::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_simulation_mislabeled_live::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1095_SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM (got ['WF1095_SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM', 'WF1097_SCENE_SURVEY_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_simulation_mislabeled_live::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_no_captures_still_needs_evidence::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_no_captures_still_needs_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1097_SCENE_SURVEY_EVIDENCE_MISSING (got ['WF1097_SCENE_SURVEY_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_no_captures_still_needs_evidence::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_no_captures_still_needs_cleanup::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_no_captures_still_needs_cleanup::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1097_SCENE_SURVEY_EVIDENCE_MISSING (got ['WF1097_SCENE_SURVEY_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_no_captures_still_needs_cleanup::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_capture_requested_but_missing::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_capture_requested_but_missing::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1097_SCENE_SURVEY_EVIDENCE_MISSING (got ['WF1097_SCENE_SURVEY_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_capture_requested_but_missing::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_neither_anchor_channel::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_neither_anchor_channel::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_neither_anchor_channel::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_both_anchor_channels::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_both_anchor_channels::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_both_anchor_channels::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_mode_contradicts_channel::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_mode_contradicts_channel::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_mode_contradicts_channel::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_self_resolved::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_self_resolved::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1108_SCENE_SURVEY_SUBJECT_INFERRED (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::subject_self_resolved::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_nested_subject_self_resolved::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_nested_subject_self_resolved::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1108_SCENE_SURVEY_SUBJECT_INFERRED (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::profile_nested_subject_self_resolved::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_self_resolved::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_self_resolved::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1108_SCENE_SURVEY_SUBJECT_INFERRED (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_self_resolved::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_executed_without_observed_anchor::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_executed_without_observed_anchor::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_executed_without_observed_anchor::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_subject_id_blank::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_subject_id_blank::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED (got ['WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::report_subject_id_blank::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_surveyed_wrong_subject::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_surveyed_wrong_subject::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_surveyed_wrong_subject::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_right_subject_wrong_map::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_right_subject_wrong_map::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_right_subject_wrong_map::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_transform_drift_past_tolerance::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_transform_drift_past_tolerance::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_transform_drift_past_tolerance::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_anchored_on_other_object::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_anchored_on_other_object::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1107_SCENE_SURVEY_SUBJECT_MISMATCH (got ['WF1107_SCENE_SURVEY_SUBJECT_MISMATCH', 'WF1112_SCENE_SURVEY_EVIDENCE_REDERIVATION_MISMATCH'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_anchored_on_other_object::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_resolver_not_caller::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_resolver_not_caller::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1108_SCENE_SURVEY_SUBJECT_INFERRED (got ['WF1108_SCENE_SURVEY_SUBJECT_INFERRED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::binding_resolver_not_caller::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::index_partial_matrix_claimed_pass::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::index_partial_matrix_claimed_pass::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF1063_SCENE_SURVEY_EVIDENCE_INDEX_INVALID (got ['WF1063_SCENE_SURVEY_EVIDENCE_INDEX_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::reject::index_partial_matrix_claimed_pass::idempotent": {
+      "ok": true,
+      "detail": "validator is non-deterministic across repeated runs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::support_boundary_all_valid::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::support_valid_at_failclosed_margin::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::camera_top_down_true_orthographic::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::camera_top_down_honest_fallback::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::placement_rejected_violates_all_gates::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::proxy_no_disable_claim_present::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::report_valid_equals_total::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::report_honest_fail_real_code::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::index_blocked_partial_honest::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::subject_actor_object_path_mode::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::subject_explicit_transform_no_rotation::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::subject_anchor_at_world_origin::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::report_capture_optin_clean_without_camera::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::binding_matched_explicit_transform::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::binding_matched_object_path::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::accept::binding_transform_exactly_at_tolerance::clean": {
+      "ok": true,
+      "detail": "honest edge record was REJECTED (fake red): []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 136,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "scene-survey-torture",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:33:58.441463+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.scene_survey.torture.v1",
+    "report_id": "wf.scene_survey.torture.v1:b56af712302d",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 55,
+    "records_total": 55,
+    "records_passed": 55,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

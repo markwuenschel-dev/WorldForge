@@ -1,0 +1,386 @@
+{
+  "canonical_report_note": "this run did NOT produce live evidence, so it was written to v2_6_fixture_smoke_report.norun.json and the canonical report at v2_6_fixture_smoke_report.json was left untouched. If that canonical report exists it is OLDER than this attempt -- check its generated_at and run_nonce before trusting it.",
+  "canonical_report_present": false,
+  "command": [
+    "D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+    "D:/Unreal Projects/WorldForge/WorldForge.uproject",
+    "-ExecutePythonScript=D:/Unreal Projects/WorldForge/tools/pipeline/run_v2_6_fixture_smoke.py",
+    "-unattended",
+    "-nopause",
+    "-nosplash",
+    "-nullrhi",
+    "-stdout"
+  ],
+  "d18": {
+    "clock": null,
+    "collected": false,
+    "collector_errors": [],
+    "criteria": {
+      "c1_python_cannot_expose_data": {
+        "criterion": "Unreal Python cannot expose the required trace, collision, package, or component data reliably.",
+        "evidence": {
+          "verified_probes": [
+            "actor_bounds",
+            "actor_path_name",
+            "actor_transform",
+            "actor_world_membership",
+            "capsule_overlap_actors",
+            "capsule_overlap_components",
+            "component_bounds",
+            "dirty_content_packages",
+            "dirty_map_packages",
+            "hit_result_decomposition",
+            "line_trace_single",
+            "plugin_runtime_identity",
+            "plugin_survey_statics_reflected",
+            "survey_enumerate_actors",
+            "survey_probe_temp_marker",
+            "survey_sample_support",
+            "world_identity"
+          ]
+        },
+        "reason": "all 17 data-exposure probes returned usable trace, collision, package and component data",
+        "verdict": "measured_fail"
+      },
+      "c2_interop_dominates_trace": {
+        "criterion": "Python-Unreal interop overhead materially dominates trace execution (T_interop >> T_trace).",
+        "evidence": null,
+        "reason": "no configuration produced both an interop baseline and a grid median, so the two terms could not be separated",
+        "verdict": "not_measured"
+      },
+      "c3_max_grid_misses_budget": {
+        "criterion": "The maximum supported (R, s) combination cannot meet a declared runtime budget.",
+        "evidence": {
+          "n_budget": 6561
+        },
+        "reason": "no fit was produced (only 0 usable point(s); a fit needs at least 3), so T at the declared maximum cannot be predicted",
+        "verdict": "not_measured"
+      },
+      "c4_nondeterministic_or_incomplete": {
+        "criterion": "Python collection produces nondeterministic ordering or incomplete raw records that cannot be corrected cleanly.",
+        "evidence": null,
+        "reason": "no configuration was collected, so ordering and completeness were never observed",
+        "verdict": "not_measured"
+      },
+      "c5_cleanup_needs_native_ownership": {
+        "criterion": "Cleanup or world-lifetime correctness requires native scoped ownership.",
+        "evidence": {
+          "dirty_content_post": null,
+          "dirty_content_pre": null,
+          "dirty_maps_post": null,
+          "dirty_maps_pre": null,
+          "spawn_probe_status": null,
+          "target_map_dirty_after": null
+        },
+        "reason": "Python-side cleanup could not be re-observed as correct (spawn/destroy probe is None)",
+        "verdict": "measured_pass"
+      },
+      "c6_native_batch_trace_cheaper": {
+        "criterion": "A native batch trace materially reduces cost while preserving identical semantics.",
+        "evidence": null,
+        "reason": "no native batch grid was timed, so neither the cost side nor the semantics side of this criterion was observed",
+        "verdict": "not_measured"
+      }
+    },
+    "declared_thresholds": {
+      "batch_material_ratio": 2.0,
+      "budget_radius_cm": 4000.0,
+      "budget_seconds": 5.0,
+      "budget_step_cm": 100.0,
+      "equivalence_abs_tol": 1e-06,
+      "equivalence_rel_tol": 1e-09,
+      "interop_dominance_ratio": 2.0
+    },
+    "fit": {
+      "alpha": null,
+      "alpha_seconds": null,
+      "beta": null,
+      "beta_seconds_per_sample": null,
+      "distinct_x": 0,
+      "fitted": false,
+      "points": 0,
+      "r_squared": null,
+      "reason": "only 0 usable point(s); a fit needs at least 3",
+      "residual_std": null
+    },
+    "fit_basis": "every measured repetition of every configuration is one point; warm-up repetitions are EXCLUDED. alpha is the fixed per-operation cost, beta the marginal cost per sample.",
+    "grid_formula": null,
+    "interop_attribution": {
+      "basis_config_n": null,
+      "interop_estimate_seconds": null,
+      "model": "T_grid(N) = T_record(N) + T_interop(N) + T_trace(N); T_interop is MODELLED as 2 x the measured per-call reflected-call baseline (the grid makes two reflected calls per sample: line_trace_single and break_hit_result). This is an ATTRIBUTION MODEL, not a measured decomposition.",
+      "ratio": null,
+      "trace_estimate_seconds": null
+    },
+    "measurement_reps": null,
+    "ordering_stability": {
+      "all_configs_stable": null,
+      "unstable": []
+    },
+    "per_config": [],
+    "reason": null,
+    "record_completeness": {
+      "all_configs_complete": null,
+      "incomplete": []
+    },
+    "sample_order": null,
+    "verdict_semantics": {
+      "measured_fail": "measured; this promotion trigger is NOT met (the collector stays in Python on this criterion)",
+      "measured_pass": "measured; this promotion trigger IS met (argues for moving the collector to C++)",
+      "not_measured": "not answered by this run -- the promotion decision stays OPEN on this criterion. NEVER a default; always carries a reason.",
+      "unsupported": "this criterion cannot be expressed as a measurement by this harness; a different instrument is required"
+    },
+    "warmup_count": null
+  },
+  "d18_samples_path": null,
+  "editor_exit_code": 1,
+  "elapsed_seconds": 6.75,
+  "far_side_error": null,
+  "far_side_notes": [],
+  "gate_green": false,
+  "gate_integrity": {
+    "all_required_probes_verified": false,
+    "d18_criteria_complete": true,
+    "generated_at_present": true,
+    "geometry_surface_executed": false,
+    "group_coverage": {
+      "actor": false,
+      "bounds": false,
+      "geometry": false,
+      "measurement": false,
+      "ownership": false,
+      "packages": false,
+      "plugin": false,
+      "publication": false,
+      "world": false
+    },
+    "liveness_verified": false,
+    "malformed_d18_criteria": [],
+    "missing_d18_criteria": [],
+    "missing_probe_keys": [],
+    "plugin_surface_executed": false,
+    "probe_table_complete": true,
+    "publication_surface_executed": false,
+    "report_kind_is_live": false,
+    "stayed_read_only": true
+  },
+  "gate_reason": "GATE RED -- the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed. | GATE RED -- the geometry surface was not executed: 4 of 4 geometry probes are not runtime_verified. This gate cannot go green with trace/overlap unexercised.",
+  "generated_at": "2026-07-30T19:58:07Z",
+  "generated_at_epoch": 1785441487.476077,
+  "liveness": {
+    "challenge_expected": null,
+    "challenge_matches": null,
+    "challenge_reported": null,
+    "distinct_process": null,
+    "engine_version_plausible": null,
+    "far_side_pid": null,
+    "near_side_pid": 93932,
+    "nonce": "6d594caa3ea2bf69e27d9d625015f409",
+    "nonce_seen_by_far_side": null,
+    "reason": "no far-side observations exist, so no live Unreal process was observed. This report is a NEAR-SIDE artefact.",
+    "verified": false
+  },
+  "map": "/Game/WorldForge/Terrain/Terrain_AshFlats_01_Preview",
+  "map_loaded": null,
+  "observed_engine_version": null,
+  "observed_uproject": null,
+  "observed_world_package": null,
+  "operation_id": "op_v2_6_fixture_smoke_6d594caa3ea2",
+  "operation_manifest": null,
+  "probes": {
+    "actor_bounds": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "bounds",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "Actor.get_actor_bounds(only_colliding[, include_from_child_actors]) -- marked ASSUMED in scene_survey_far_side.py"
+    },
+    "actor_path_name": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "actor",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "Actor.get_path_name() -- scene_survey_far_side.py:707 (_path_of)"
+    },
+    "actor_transform": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "actor",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "get_actor_location / get_actor_rotation / get_actor_scale3d"
+    },
+    "actor_world_membership": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "actor",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "Actor.get_world() identity vs the editor world, cross-checked against the level enumeration"
+    },
+    "capsule_overlap_actors": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "geometry",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "SystemLibrary.capsule_overlap_actors(world, center, radius, half_height, object_types, actor_class_filter, actors_to_ignore) -- ASSUMED at scene_survey_far_side.py:975-978, called at :985"
+    },
+    "capsule_overlap_components": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "geometry",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "SystemLibrary.capsule_overlap_components(world, center, radius, half_height, object_types, component_class_filter, actors_to_ignore) -- ASSUMED at scene_survey_far_side.py:1010-1013, called at :1022"
+    },
+    "component_bounds": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "bounds",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "SystemLibrary.get_component_bounds(comp) -> 3-tuple -- marked ASSUMED in scene_survey_far_side.py"
+    },
+    "d18_grid_measurement": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "measurement",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "the far side collects timed support-grid runs at several N with warm-up and repetitions -- docs/architecture/forge_design_decisions.md:121-149"
+    },
+    "dirty_content_packages": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "packages",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "EditorLoadingAndSavingUtils.get_dirty_content_packages()"
+    },
+    "dirty_map_packages": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "packages",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "EditorLoadingAndSavingUtils.get_dirty_map_packages()"
+    },
+    "hit_result_decomposition": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "geometry",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "GameplayStatics.break_hit_result(hit) -> ASSUMED 18-tuple. FHitResult members are bare UPROPERTY() with NO BlueprintReadOnly, so they are NOT Python attributes and this is the only route -- scene_survey_far_side.py:855-862,872"
+    },
+    "line_trace_single": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "geometry",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "SystemLibrary.line_trace_single(world, start, end, channel, trace_complex, actors_to_ignore, draw_debug, ignore_self) -- scene_survey_far_side.py:940"
+    },
+    "operation_manifest_publication": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "publication",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "the far side publishes an operation manifest (wf.scene_survey.fixture_smoke.operation_manifest.v1) declaring operation identity, owned objects and their disposition, and a digest over the raw bundle that the near side RE-COMPUTES"
+    },
+    "plugin_runtime_identity": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "plugin",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "unreal.WorldForgeIdentityStatics.get_world_forge_runtime_identity() -- the native runtime identity surface. Importing `unreal` proves the ENGINE loaded, never that the WorldForge plugin did."
+    },
+    "plugin_survey_statics_reflected": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "plugin",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "hasattr(unreal, 'SceneSurveyStatics') -- the independent plugin-load signal scene_survey_far_side.py:2365 already uses, and the precondition it refuses on at :2425"
+    },
+    "raw_evidence_publication": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "publication",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "the far side publishes a structured raw-evidence bundle shaped as wf.scene_survey.raw_evidence_bundle.v1 whose every record carries the full wf.scene_survey.raw_evidence_record.v1 envelope"
+    },
+    "survey_enumerate_actors": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "plugin",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "SceneSurveyStatics.enumerate_survey_actors(world, center, radius_cm) -> int32 -- Plugins/WorldForge/Source/WorldForgeCore/Public/SceneSurvey.h:37-39; call site scene_survey_far_side.py:2436"
+    },
+    "survey_probe_temp_marker": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "plugin",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "SceneSurveyStatics.probe_temp_marker(world, location, capsule_radius, capsule_half_height) -> bool -- SceneSurvey.h:55-58; call site scene_survey_far_side.py:2454"
+    },
+    "survey_sample_support": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "plugin",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "SceneSurveyStatics.sample_survey_support(world, center, radius_cm, step_cm) -> int32 -- SceneSurvey.h:47-49; call site scene_survey_far_side.py:2437"
+    },
+    "transient_spawn_destroy_reobserve": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "ownership",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "EditorActorSubsystem.spawn_actor_from_class(..., transient=True) then destroy_actor, with destruction RE-OBSERVED through a NON-VACUOUS channel"
+    },
+    "world_identity": {
+      "detail": "the editor produced no far-side observations (exit_code=1, 6.75s). Nothing was observed.",
+      "group": "world",
+      "observed": null,
+      "status": "runtime_unavailable",
+      "symbol": "world.get_package().get_name() -- scene_survey_far_side.py:_record_world"
+    }
+  },
+  "project": "D:/Unreal Projects/WorldForge/WorldForge.uproject",
+  "raw_evidence_summary": null,
+  "report_kind": "editor_boot_produced_no_observations",
+  "report_kind_vocabulary": [
+    "live_editor_run",
+    "dry_run",
+    "no_editor_resolved",
+    "editor_boot_produced_no_observations",
+    "project_guard_refused"
+  ],
+  "run_nonce": "6d594caa3ea2bf69e27d9d625015f409",
+  "runtime_executed": false,
+  "safety": null,
+  "schema_version": "wf.scene_survey.fixture_smoke.v2",
+  "stdout_tail": "[2026.07.30-19.58.09:393][  0]LogZenServiceInstance: Display: Installed service at 'C:/Users/Nalakram/AppData/Local/UnrealEngine/Common/Zen/Install/zenserver.exe' is up to date\n[2026.07.30-19.58.10:400][  0]LogZenServiceInstance: Display: Unreal Zen Storage Server HTTP service at http://[::1]:8558 status: OK!.\n[2026.07.30-19.58.10:402][  0]LogDerivedDataCache: Display: ZenLocal: Using ZenServer HTTP service at [::1] with namespace ue.ddc. Status: OK!.\n[2026.07.30-19.58.10:410][  0]LogDerivedDataCache: Display: C:/Users/Nalakram/AppData/Local/UnrealEngine/Common/DerivedDataCache: Performance: Latency=0.02ms. RandomReadSpeed=1307.39MBs, RandomWriteSpeed=142.26MBs. Assigned SpeedClass 'Local'\n[2026.07.30-19.58.10:413][  0]LogUbaHorde: Display: UBA/Horde Configuration [Uba.Provider.Horde]: Not Enabled\n[2026.07.30-19.58.10:413][  0]LogShaderCompilers: Display: No distributed shader compiler controller found\n[2026.07.30-19.58.10:413][  0]LogShaderCompilers: Display: Using 16 local workers for shader compilation\n[2026.07.30-19.58.10:421][  0]LogShaderCompilers: Display: Compiling shader autogen file: ../../../../Unreal Projects/WorldForge/Intermediate/ShaderAutogen/PCD3D_SM6/AutogenShaderHeaders.ush\n[2026.07.30-19.58.10:422][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.\n[2026.07.30-19.58.10:700][  0]LogEditorDomain: Display: EditorDomain is Disabled\n[2026.07.30-19.58.10:740][  0]LogAssetRegistry: Display: AssetDataGatherer spent 0.000s loading caches from ../../../../Unreal Projects/WorldForge/Intermediate/CachedAssetRegistry.\n[2026.07.30-19.58.10:979][  0]LogDeviceProfileManager: Display: Deviceprofile LinuxArm64Editor not found.\n[2026.07.30-19.58.10:979][  0]LogDeviceProfileManager: Display: Deviceprofile LinuxArm64 not found.\n[2026.07.30-19.58.11:017][  0]LogCsvProfiler: Display: Metadata set : deviceprofile=\"WindowsEditor\"\n[2026.07.30-19.58.11:020][  0]LogStreaming: Display: FlushAsyncLoading(1): 1 QueuedPackages, 0 AsyncPackages\n[2026.07.30-19.58.11:036][  0]LogTextureEncodingSettings: Display: Texture Encode Speed: FinalIfAvailable (editor).\n[2026.07.30-19.58.11:036][  0]LogTextureEncodingSettings: Display: Oodle Texture Encode Speed settings: Fast: RDO Off Lambda=0, Effort=Normal Final: RDO Off Lambda=0, Effort=Normal\n[2026.07.30-19.58.11:036][  0]LogTextureEncodingSettings: Display: Shared linear texture encoding: Disabled\n[2026.07.30-19.58.11:051][  0]LogMeshReduction: Display: Using QuadricMeshReduction for automatic static mesh reduction\n[2026.07.30-19.58.11:051][  0]LogMeshReduction: Display: Using SkeletalMeshReduction for automatic skeletal mesh reduction\n[2026.07.30-19.58.11:051][  0]LogMeshReduction: Display: Using ProxyLODMeshReduction for automatic mesh merging\n[2026.07.30-19.58.11:051][  0]LogMeshReduction: Display: No distributed automatic mesh merging module available\n[2026.07.30-19.58.11:196][  0]LogShaderCompilers: Display: Compiling shader autogen file: ../../../../Unreal Projects/WorldForge/Intermediate/ShaderAutogen/PCD3D_SM5/AutogenShaderHeaders.ush\n[2026.07.30-19.58.11:196][  0]LogShaderCompilers: Display: Autogen file is unchanged, skipping write.\n[2026.07.30-19.58.11:196][  0]LogVirtualization: Display: VirtualizationSystem name found in ini file: None\n[2026.07.30-19.58.11:196][  0]LogVirtualization: Display: FNullVirtualizationSystem mounted, virtualization will be disabled\n[2026.07.30-19.58.11:233][  0]LogWorldPartition: Display: FWorldPartitionClassDescRegistry::Initialize started...\n[2026.07.30-19.58.11:235][  0]LogWorldPartition: Display: FWorldPartitionClassDescRegistry::Initialize took 1.910 ms\n[2026.07.30-19.58.11:483][  0]LogUdpMessaging: Display: Unicast socket bound to '0.0.0.0:59098'.\n[2026.07.30-19.58.11:488][  0]LogUdpMessaging: Display: Added local interface '192.168.1.66' to multicast group '230.0.0.1:6666'\n[2026.07.30-19.58.11:488][  0]LogUdpMessaging: Display: Added local interface '172.31.160.1' to multicast group '230.0.0.1:6666'\n[2026.07.30-19.58.11:488][  0]LogUdpMessaging: Display: Added local interface '127.0.0.1' to multicast group '230.0.0.1:6666'\n[2026.07.30-19.58.11:491][  0]LogUdpMessaging: Display: Using asynchronous task graph for message deserialization.\n[2026.07.30-19.58.11:707][  0]LogMetaSound: Display: MetaSound Page Target Initialized to 'Default'\n[2026.07.30-19.58.11:709][  0]LogAudio: Display: Registering Engine Module Parameter Interfaces...\n[2026.07.30-19.58.11:941][  0]LogAudio: Display: Beginning Audio Device Manager Shutdown (Module: )...\n[2026.07.30-19.58.11:941][  0]LogAudio: Display: Audio Device Manager Shutdown\n[2026.07.30-19.58.12:574][  0]LogAssetRegistry: Display: CleanupOrphanedCacheFiles (PostWrite): 0 .ref files found, 0 referenced binaries\n[2026.07.30-19.58.12:574][  0]LogAssetRegistry: Display: CleanupOrphanedCacheFiles: 0 total binaries, 0 referenced (kept), 0 old-style pre-migration (kept), 0 orphans deleted, 0 orphans locked (kept)\n[2026.07.30-19.58.12:836][  0]LogShaderCompilers: Display: Exiting ShaderCompilingThread",
+  "tally": {
+    "missing": 0,
+    "runtime_failed": 0,
+    "runtime_unavailable": 21,
+    "runtime_verified": 0,
+    "still_assumed": 0
+  },
+  "ue_cmd": "D:/UE_5.8/Engine/Binaries/Win64/UnrealEditor-Cmd.exe",
+  "ue_cmd_source": "discovered",
+  "unmet_required_probes": [
+    "plugin_runtime_identity",
+    "plugin_survey_statics_reflected",
+    "survey_enumerate_actors",
+    "survey_sample_support",
+    "survey_probe_temp_marker",
+    "world_identity",
+    "actor_path_name",
+    "actor_world_membership",
+    "actor_transform",
+    "actor_bounds",
+    "component_bounds",
+    "line_trace_single",
+    "hit_result_decomposition",
+    "capsule_overlap_actors",
+    "capsule_overlap_components",
+    "dirty_map_packages",
+    "dirty_content_packages",
+    "transient_spawn_destroy_reobserve",
+    "raw_evidence_publication",
+    "operation_manifest_publication",
+    "d18_grid_measurement"
+  ]
+}
