@@ -1,5 +1,5 @@
 {
-  "contract_version": "wf.scene_survey.contract.v2_6.0",
+  "contract_version": "wf.scene_survey.contract.v2_6.1",
   "fixtures": {
     "binding_resolver_inverted": {
       "driver": "subject_binding",
@@ -35,6 +35,51 @@
       "expected_code": "WF1107_SCENE_SURVEY_SUBJECT_MISMATCH",
       "fixture": "binding_wrong_subject_id.json",
       "vector": "a real survey of the wrong subject, returned against this request"
+    },
+    "cleanup_package_dirty_after_cleanup": {
+      "driver": "cleanup_evidence",
+      "expected_check": "ce::packages_not_dirtied",
+      "expected_code": "WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED",
+      "fixture": "cleanup_package_dirty_after_cleanup.json",
+      "vector": "every temporary object was destroyed and witnessed gone, and the survey STILL left the map package dirty. The ledger conjunct is satisfied here, so a rejection proves the snapshot term is doing its own work"
+    },
+    "cleanup_temporary_marker_left_behind": {
+      "driver": "cleanup_evidence",
+      "expected_check": "ce::no_objects_present_after_cleanup",
+      "expected_code": "WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED",
+      "fixture": "cleanup_temporary_marker_left_behind.json",
+      "vector": "a temporary object the survey spawned, reported destroyed, and then OBSERVED still present after cleanup. Both inventory snapshots agree — the object was created and removed between them as far as any set comparison can tell — so only the per-object ledger can see it"
+    },
+    "operation_replayed_from_another_request": {
+      "driver": "operation_identity",
+      "expected_check": "oi::operation_id_mismatch",
+      "expected_code": "WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH",
+      "fixture": "operation_replayed_from_another_request.json",
+      "residual_gap": "caught on the OPERATION-IDENTITY axis, not from the report body. The runtime report's operation block does carry request_hash (run_scene_survey_probe.py:1405-1408) but no validator reads it, so a copy presented WITHOUT its manifest is still undetectable from the report alone",
+      "vector": "a prior operation's report and manifest re-presented for a NEW asking. The question is byte-identical, so request_hash matches perfectly — only the operation id betrays the replay, which is precisely why it is excluded from the hash"
+    },
+    "operation_request_hash_mismatch": {
+      "driver": "operation_identity",
+      "expected_check": "oi::request_hash_mismatch",
+      "expected_code": "WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH",
+      "fixture": "operation_request_hash_mismatch.json",
+      "vector": "evidence sealed against one question, presented against another — same operation id, different map. The manifest's own seal is intact; only the binding to THIS request is false"
+    },
+    "operation_wrong_target_commit": {
+      "driver": "operation_identity",
+      "expected_check": "oi::request_hash_mismatch",
+      "expected_code": "WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH",
+      "fixture": "operation_wrong_target_commit.json",
+      "residual_gap": "same shape as the repository case: target_commit is hashed (scene_survey_operation.py:587) so evidence sealed against a different commit is refused, but nothing verifies the far side actually ran at that commit. Only the live-bridge path shape-checks 40-hex (tools/bridge/live.py:146-150)",
+      "vector": "a survey of one commit handed back against a request naming another"
+    },
+    "operation_wrong_target_repository": {
+      "driver": "operation_identity",
+      "expected_check": "oi::request_hash_mismatch",
+      "expected_code": "WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH",
+      "fixture": "operation_wrong_target_repository.json",
+      "residual_gap": "target_repository is a caller ASSERTION that nothing resolves. The rail below refuses evidence sealed against a different asserted repository (it is in REQUEST_HASH_INCLUDED, scene_survey_operation.py:591), but no scene-survey code observes which tree was actually surveyed — scene_survey_far_side.py never resolves a repository at all. The live bridge's field comparison (tools/bridge/live.py:141-145, WF1024) has no scene-survey counterpart",
+      "vector": "a survey of one repository handed back against a request naming another"
     },
     "report_clean_without_evidence": {
       "driver": "report_contract",
@@ -150,14 +195,13 @@
   "milestone": "v2.6",
   "not_yet_testable": {
     "nondeterministic_repeated_reports": "requires two real editor runs; determinism is enforced at runtime from per_run_hashes, which no static fixture can produce honestly",
-    "package_dirty_after_cleanup": "package_dirty_before / package_dirty_after are not observed or emitted",
-    "request_hash_mismatch": "the runtime report does not yet emit request_hash; there is nothing to mismatch against",
-    "runtime_report_copied_from_another_request": "replay detection needs request_hash in the report; without it the copy is indistinguishable from a legitimate re-run",
     "screenshot_without_runtime_evidence": "no screenshot artifact is produced at all under the current -nullrhi pass, so the vector has no on-disk form yet",
-    "subject_binding_hash_mismatch": "the runtime report does not yet emit subject_binding_hash",
-    "temporary_markers_left_behind": "temporary_actor_count_* are not emitted; markers are trace-probed rather than spawned, so there is no count to leave dirty",
-    "wrong_target_commit": "target_commit is never compared; only a 40-hex shape check exists, and only on the live bridge path",
-    "wrong_target_repository": "the scene-survey path does not yet compare resolved_target_repository against the request (the live bridge gate does, the survey gate does not)"
+    "subject_binding_hash_mismatch": "subject_binding_hash does not exist anywhere in this build: no writer, no reader, no compute helper, and no slot in REPORT_ALLOWED (scene_survey_contracts.py:662-680), so strict check_no_unknown would reject it outright if a fixture invented one. The subject IS covered transitively — 'subject' is in REQUEST_HASH_INCLUDED (scene_survey_operation.py:586) — but that is the request hash, not a subject-binding hash, and a fixture that renamed one to the other would be testing a field this build has never had"
   },
-  "note": "Fixtures carry no harness metadata on purpose: an embedded _expected_code key would itself be rejected by the strict unknown-key rail, which looks green and proves nothing."
+  "note": "Fixtures carry no harness metadata on purpose: an embedded _expected_code key would itself be rejected by the strict unknown-key rail, which looks green and proves nothing.",
+  "residual_gaps": {
+    "operation_replayed_from_another_request": "caught on the OPERATION-IDENTITY axis, not from the report body. The runtime report's operation block does carry request_hash (run_scene_survey_probe.py:1405-1408) but no validator reads it, so a copy presented WITHOUT its manifest is still undetectable from the report alone",
+    "operation_wrong_target_commit": "same shape as the repository case: target_commit is hashed (scene_survey_operation.py:587) so evidence sealed against a different commit is refused, but nothing verifies the far side actually ran at that commit. Only the live-bridge path shape-checks 40-hex (tools/bridge/live.py:146-150)",
+    "operation_wrong_target_repository": "target_repository is a caller ASSERTION that nothing resolves. The rail below refuses evidence sealed against a different asserted repository (it is in REQUEST_HASH_INCLUDED, scene_survey_operation.py:591), but no scene-survey code observes which tree was actually surveyed — scene_survey_far_side.py never resolves a repository at all. The live bridge's field comparison (tools/bridge/live.py:141-145, WF1024) has no scene-survey counterpart"
+  }
 }

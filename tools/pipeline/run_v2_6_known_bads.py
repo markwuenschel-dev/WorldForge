@@ -38,6 +38,7 @@ import argparse
 import contextlib
 import io
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -46,6 +47,8 @@ sys.path.insert(0, str(REPO_ROOT / "tools" / "pipeline"))
 sys.path.insert(0, str(REPO_ROOT / "tools"))
 
 import scene_survey_contracts as SS  # noqa: E402
+import scene_survey_evidence as EV  # noqa: E402
+import scene_survey_operation as OP  # noqa: E402
 from failure_codes import FailureCode as C  # noqa: E402
 from report_meta import build_meta  # noqa: E402
 from validation_report import ValidationReport, strict_from_env  # noqa: E402
@@ -54,7 +57,11 @@ KB_DIR = REPO_ROOT / "procedural" / "known_bads" / "v2_6"
 REPORT_DIR = REPO_ROOT / "procedural" / "reports" / "scene_survey" / "hostile"
 CATALOGUE = KB_DIR / "index.json"
 
-MIN_FIXTURES = 21
+MUTATIONS_SCRIPT = REPO_ROOT / "tools" / "pipeline" / "acceptance_recompute_mutations.py"
+MUTATIONS_VERDICT = REPORT_DIR / "acceptance_mutations.json"
+MUTATION_TERMS = ("M", "W", "P", "T", "B", "E")
+
+MIN_FIXTURES = 27
 
 
 # --------------------------------------------------------------------------- #
@@ -62,31 +69,51 @@ MIN_FIXTURES = 21
 # coverage claim stays honest.
 # --------------------------------------------------------------------------- #
 NOT_YET_TESTABLE = {
-    "request_hash_mismatch":
-        "the runtime report does not yet emit request_hash; there is nothing to "
-        "mismatch against",
     "subject_binding_hash_mismatch":
-        "the runtime report does not yet emit subject_binding_hash",
-    "runtime_report_copied_from_another_request":
-        "replay detection needs request_hash in the report; without it the copy "
-        "is indistinguishable from a legitimate re-run",
-    "wrong_target_repository":
-        "the scene-survey path does not yet compare resolved_target_repository "
-        "against the request (the live bridge gate does, the survey gate does not)",
-    "wrong_target_commit":
-        "target_commit is never compared; only a 40-hex shape check exists, and "
-        "only on the live bridge path",
-    "temporary_markers_left_behind":
-        "temporary_actor_count_* are not emitted; markers are trace-probed rather "
-        "than spawned, so there is no count to leave dirty",
-    "package_dirty_after_cleanup":
-        "package_dirty_before / package_dirty_after are not observed or emitted",
+        "subject_binding_hash does not exist anywhere in this build: no writer, no "
+        "reader, no compute helper, and no slot in REPORT_ALLOWED "
+        "(scene_survey_contracts.py:662-680), so strict check_no_unknown would "
+        "reject it outright if a fixture invented one. The subject IS covered "
+        "transitively — 'subject' is in REQUEST_HASH_INCLUDED "
+        "(scene_survey_operation.py:586) — but that is the request hash, not a "
+        "subject-binding hash, and a fixture that renamed one to the other would "
+        "be testing a field this build has never had",
     "nondeterministic_repeated_reports":
         "requires two real editor runs; determinism is enforced at runtime from "
         "per_run_hashes, which no static fixture can produce honestly",
     "screenshot_without_runtime_evidence":
         "no screenshot artifact is produced at all under the current -nullrhi "
         "pass, so the vector has no on-disk form yet",
+}
+
+# --------------------------------------------------------------------------- #
+# Vectors that ARE now covered, but only in part. Declaring the covered half
+# without the uncovered one is how a suite drifts into overclaiming: the fixture
+# below each of these is real and is killed by a real rail, and the string says
+# exactly which half of the vector that rail does NOT reach. `kb::residual_gaps_
+# declared` requires every catalogue entry carrying `residual_gap` to name one.
+# --------------------------------------------------------------------------- #
+RESIDUAL_GAPS = {
+    "operation_wrong_target_repository":
+        "target_repository is a caller ASSERTION that nothing resolves. The rail "
+        "below refuses evidence sealed against a different asserted repository "
+        "(it is in REQUEST_HASH_INCLUDED, scene_survey_operation.py:591), but no "
+        "scene-survey code observes which tree was actually surveyed — "
+        "scene_survey_far_side.py never resolves a repository at all. The live "
+        "bridge's field comparison (tools/bridge/live.py:141-145, WF1024) has no "
+        "scene-survey counterpart",
+    "operation_wrong_target_commit":
+        "same shape as the repository case: target_commit is hashed "
+        "(scene_survey_operation.py:587) so evidence sealed against a different "
+        "commit is refused, but nothing verifies the far side actually ran at "
+        "that commit. Only the live-bridge path shape-checks 40-hex "
+        "(tools/bridge/live.py:146-150)",
+    "operation_replayed_from_another_request":
+        "caught on the OPERATION-IDENTITY axis, not from the report body. The "
+        "runtime report's operation block does carry request_hash "
+        "(run_scene_survey_probe.py:1405-1408) but no validator reads it, so a "
+        "copy presented WITHOUT its manifest is still undetectable from the "
+        "report alone",
 }
 
 
@@ -102,16 +129,128 @@ def _report(**over):
     return SS._example_scene_survey_report(**over)
 
 
+# --------------------------------------------------------------------------- #
+# Operation-identity fixtures. These bind a sealed manifest to a request, which
+# is the axis `verify_operation_evidence` judges — and the axis the runtime gate
+# actually calls (validate_scene_survey_runtime.py:189-196).
+# --------------------------------------------------------------------------- #
+DERIVED_REPORT_STUB = REPORT_DIR / "operation_derived_report_stub.json"
+
+
+def _stub_derived_report():
+    """A real file for the manifest to bind, because a manifest must bind one.
+
+    `build_operation_manifest` refuses a manifest with no derived report
+    (scene_survey_operation.py:1155-1157) and digests whatever it is given. The
+    fixtures below are regenerated on every run, so this file and the digests
+    sealed over it are rewritten together and cannot drift apart.
+    """
+    REPORT_DIR.mkdir(parents=True, exist_ok=True)
+    text = json.dumps(_report(), indent=2, sort_keys=True, ensure_ascii=False) + "\n"
+    with DERIVED_REPORT_STUB.open("w", encoding="utf-8", newline="\n") as fh:
+        fh.write(text)
+    rel = OP.relative_posix(REPO_ROOT, DERIVED_REPORT_STUB)
+    if not rel.ok:
+        raise RuntimeError("stub report is not repo-relative: [{}] {}".format(
+            rel.code, rel.detail))
+    return rel.value
+
+
+def _sealed_manifest(**request_over):
+    """A manifest sealed by the REAL builder over a request, then serialized.
+
+    Built, never hand-written: a hand-written manifest would carry a
+    hand-written `manifest_digest`, and `verify_operation_evidence` recomputes
+    that seal first (scene_survey_operation.py:1352-1354). Every fixture below
+    would then be refused for a broken seal — a rejection that looks green and
+    says nothing about the vector under test.
+    """
+    req = OP._fake_request(**request_over)
+    res = OP.build_operation_manifest(REPO_ROOT, req,
+                                      derived_report=_stub_derived_report(),
+                                      created_at_utc="2026-07-30T00:00:00Z")
+    if not res.ok:
+        raise RuntimeError("could not seal fixture manifest: [{}] {}".format(
+            res.code, res.detail))
+    return res.value
+
+
+# --------------------------------------------------------------------------- #
+# Cleanup-ledger fixtures. `_SpawnLedger` (tools/bridge/scene_survey_far_side.py:
+# 1355) now files a per-object ledger into the raw bundle, and
+# `scene_survey_evidence.derive_cleanup_verified` (:1751) ANDs its conjunct onto
+# the three snapshot terms. Both halves are reachable from a static bundle.
+# --------------------------------------------------------------------------- #
+CLEAN_OP = "op_v2_6_scene_survey_0001"
+CLEAN_MAP = "/Game/Fixture/Lvl_Fixture"
+
+
+def _snapshot(stage, **over):
+    s = {"stage": stage, "collection_ok": True,
+         "actor_paths": [CLEAN_MAP + ".Lvl_Fixture:PersistentLevel.Floor_0"],
+         "dirty_packages": [], "operation_owned_actor_paths": [],
+         "map_identity": CLEAN_MAP, "package_identity": CLEAN_MAP}
+    s.update(over)
+    return s
+
+
+def _placement(oid, **over):
+    """One temporary object handled cleanly: created, destroyed, witnessed gone."""
+    p = {"record_id": "temporary_placement#" + oid,
+         "record_type": "temporary_placement", "record_ident": oid,
+         "operation_id": CLEAN_OP, "object_id": oid,
+         "ownership_tag": "worldforge.scene_survey/" + CLEAN_OP,
+         "creation_observed": True, "creation_stage": "observe",
+         "destruction_attempted": True,
+         "destruction_result": EV.DESTRUCTION_DESTROYED,
+         "post_cleanup_presence": EV.PRESENCE_ABSENT,
+         "absent_after_cleanup": True, "collection_ok": True}
+    p.update(over)
+    return p
+
+
+def _cleanup_bundle(placements=None, pre=None, post=None, **ledger_over):
+    """A raw bundle whose ledger SUMMARISES its own placements.
+
+    The aggregates are computed from the placements given, exactly as
+    `_SpawnLedger.write_manifest` computes them from the records it filed. A
+    fixture that hand-wrote them would be a manifest no producer can emit, and
+    `_ledger_contradictions` (scene_survey_evidence.py:747-818) rejects those on
+    sight — which is a rejection for lying about the producer, not for the
+    vector under test.
+    """
+    placements = placements or {}
+    ids = sorted(placements)
+    ledger = {"record_id": EV.LEDGER_REF, "record_type": EV.LEDGER_KIND,
+              "record_ident": EV.LEDGER_IDENT, "operation_id": CLEAN_OP,
+              "is_temporary_object_ledger": True, "collection_ok": True,
+              "ownership_tag": "worldforge.scene_survey/" + CLEAN_OP,
+              "cleanup_ran": True,
+              "object_ids": ids, "object_count": len(ids),
+              "created_object_ids": ids, "created_object_count": len(ids),
+              "spawn_call_sites_in_module": 1, "spawn_call_sites_in_ledger": 1,
+              "unledgered_spawn_call_sites": 0,
+              "persistent_package_hash": None,
+              "persistent_package_hash_supported": False}
+    ledger.update(ledger_over)
+    return {"inventory": {"pre": pre or _snapshot("anchor_bind"),
+                          "post": post or _snapshot("cleanup")},
+            "document": {EV.LEDGER_IDENT: ledger},
+            "temporary_placement": placements}
+
+
 def _fixtures():
     """slug -> (artifact, catalogue_entry)."""
     good_sub = _subject()
     out = {}
 
-    def add(slug, artifact, driver, code, vector, check=None):
+    def add(slug, artifact, driver, code, vector, check=None, residual=None):
         entry = {"driver": driver, "expected_code": code, "vector": vector,
                  "fixture": slug + ".json"}
         if check:
             entry["expected_check"] = check
+        if residual:
+            entry["residual_gap"] = residual
         out[slug] = (artifact, entry)
 
     # ---- subject contract ------------------------------------------------- #
@@ -263,6 +402,72 @@ def _fixtures():
         "the pre-Wave-1 report shape, which predates subject binding entirely and "
         "would silently satisfy a gate that only asked whether a report exists")
 
+    # ---- operation identity: was this evidence made FOR this request? ------- #
+    # Sealed manifest vs. the request it is presented against. `operation_id` is
+    # deliberately EXCLUDED from request_hash (scene_survey_operation.py:593-597)
+    # so "a prior artifact re-presented" and "a different question" are separable
+    # failures — which is why the two fixtures below owe different rails despite
+    # sharing a failure code.
+    add("operation_request_hash_mismatch",
+        {"manifest": _sealed_manifest(target_map="/Game/Fixture/Lvl_Fixture"),
+         "request": OP._fake_request(target_map="/Game/Fixture/Lvl_Somewhere_Else")},
+        "operation_identity", C.SCENE_SURVEY_OPERATION_ID_MISMATCH,
+        "evidence sealed against one question, presented against another — same "
+        "operation id, different map. The manifest's own seal is intact; only the "
+        "binding to THIS request is false",
+        "oi::request_hash_mismatch")
+
+    add("operation_replayed_from_another_request",
+        {"manifest": _sealed_manifest(operation_id="op_v2_6_scene_survey_PRIOR"),
+         "request": OP._fake_request(operation_id="op_v2_6_scene_survey_0001")},
+        "operation_identity", C.SCENE_SURVEY_OPERATION_ID_MISMATCH,
+        "a prior operation's report and manifest re-presented for a NEW asking. "
+        "The question is byte-identical, so request_hash matches perfectly — only "
+        "the operation id betrays the replay, which is precisely why it is "
+        "excluded from the hash",
+        "oi::operation_id_mismatch",
+        RESIDUAL_GAPS["operation_replayed_from_another_request"])
+
+    add("operation_wrong_target_repository",
+        {"manifest": _sealed_manifest(target_repository="FixtureCaller"),
+         "request": OP._fake_request(target_repository="FixtureCaller_Fork")},
+        "operation_identity", C.SCENE_SURVEY_OPERATION_ID_MISMATCH,
+        "a survey of one repository handed back against a request naming another",
+        "oi::request_hash_mismatch",
+        RESIDUAL_GAPS["operation_wrong_target_repository"])
+
+    add("operation_wrong_target_commit",
+        {"manifest": _sealed_manifest(target_commit="0f" * 20),
+         "request": OP._fake_request(target_commit="1a" * 20)},
+        "operation_identity", C.SCENE_SURVEY_OPERATION_ID_MISMATCH,
+        "a survey of one commit handed back against a request naming another",
+        "oi::request_hash_mismatch",
+        RESIDUAL_GAPS["operation_wrong_target_commit"])
+
+    # ---- cleanup ledger: did the survey put the level back? ----------------- #
+    # Both fixtures keep sufficiency SATISFIED. A bundle the evidence module
+    # cannot read answers "unknown", and an unknown is not a caught leak — it
+    # would reject for insufficiency and prove nothing. These are measured.
+    add("cleanup_temporary_marker_left_behind",
+        _cleanup_bundle({"wf_temp_marker_0": _placement(
+            "wf_temp_marker_0", post_cleanup_presence=EV.PRESENCE_PRESENT,
+            absent_after_cleanup=False)}),
+        "cleanup_evidence", C.SCENE_SURVEY_CLEANUP_UNVERIFIED,
+        "a temporary object the survey spawned, reported destroyed, and then "
+        "OBSERVED still present after cleanup. Both inventory snapshots agree — "
+        "the object was created and removed between them as far as any set "
+        "comparison can tell — so only the per-object ledger can see it",
+        "ce::no_objects_present_after_cleanup")
+
+    add("cleanup_package_dirty_after_cleanup",
+        _cleanup_bundle({"wf_temp_marker_0": _placement("wf_temp_marker_0")},
+                        post=_snapshot("cleanup", dirty_packages=[CLEAN_MAP])),
+        "cleanup_evidence", C.SCENE_SURVEY_CLEANUP_UNVERIFIED,
+        "every temporary object was destroyed and witnessed gone, and the survey "
+        "STILL left the map package dirty. The ledger conjunct is satisfied here, "
+        "so a rejection proves the snapshot term is doing its own work",
+        "ce::packages_not_dirtied")
+
     return out
 
 
@@ -281,10 +486,78 @@ def _drive_binding(art):
     return SS.validate_subject_binding(art["subject"], art["report"], strict=True)
 
 
+def _drive_operation_identity(art):
+    """The real `verify_operation_evidence` the runtime gate calls.
+
+    `check_files=False`: the on-disk digests of raw evidence and the derived
+    report are a DIFFERENT vector (WF1113 / WF1100, scene_survey_operation.py:
+    1384-1399) and they short-circuit before some identity failures. Leaving them
+    on would let a fixture be refused for a missing file and score as a caught
+    replay. The runtime gate runs with check_files=True over real artifacts
+    (validate_scene_survey_runtime.py:189-196); this suite isolates the identity
+    axis on purpose.
+
+    The result is a single OpResult, so its `reason` becomes the check name —
+    that is what lets `expected_check` pin the specific rail rather than settling
+    for "something refused it".
+    """
+    res = OP.verify_operation_evidence(REPO_ROOT, art["manifest"], art["request"],
+                                       check_files=False)
+    if res.ok:
+        return [("oi::bound", True, res.detail, None)]
+    return [("oi::{}".format(res.reason or "refused"), False, res.detail, res.code)]
+
+
+def _drive_cleanup_evidence(raw):
+    """The real cleanup derivation, decomposed into the rails it is built from.
+
+    SUFFICIENCY FIRST, and reported separately. `derive_cleanup_verified` answers
+    False both for "measured a leak" and for "could not tell", and a suite that
+    conflated them would score an unreadable fixture as a caught leak. A bundle
+    that is merely insufficient fails `ce::sufficient` and owns a different code,
+    so it can never masquerade as a cleanup rejection.
+    """
+    enough, why = EV.sufficiency_cleanup(raw)
+    if not enough:
+        return [("ce::sufficient", False,
+                 "the bundle cannot answer the cleanup question at all ({}) — an "
+                 "unanswerable bundle is not a caught leak".format(why),
+                 C.SCENE_SURVEY_EVIDENCE_INSUFFICIENT)]
+
+    verdict, inp = EV.derive_cleanup_verified(raw)
+    CU = C.SCENE_SURVEY_CLEANUP_UNVERIFIED
+    return [
+        ("ce::sufficient", True, why, None),
+        ("ce::cleanup_verified", bool(verdict),
+         "the survey must be able to show it put the level back", CU),
+        ("ce::no_objects_present_after_cleanup",
+         not inp.get("ledger_objects_present_after_cleanup"),
+         "objects observed still present after cleanup: {}".format(
+             inp.get("ledger_objects_present_after_cleanup")), CU),
+        ("ce::no_objects_undestroyed", not inp.get("ledger_objects_not_destroyed"),
+         "objects the ledger never saw destroyed: {}".format(
+             inp.get("ledger_objects_not_destroyed")), CU),
+        ("ce::no_unledgered_placements", not inp.get("ledger_unledgered_placements"),
+         "placements filed with no ledger entry: {}".format(
+             inp.get("ledger_unledgered_placements")), CU),
+        ("ce::packages_not_dirtied", bool(inp.get("dirty_packages_equal")),
+         "the dirty-package set must be identical before and after — newly dirty "
+         "{}, no longer dirty {} (a package that STOPS being dirty was written to "
+         "disk, which is a mutation too)".format(
+             inp.get("newly_dirty_packages"), inp.get("no_longer_dirty_packages")),
+         CU),
+        ("ce::no_leaked_actors", not inp.get("leaked_actors"),
+         "actors present after that were absent before: {}".format(
+             inp.get("leaked_actors")), CU),
+    ]
+
+
 DRIVERS = {
     "subject_contract": _drive_subject,
     "report_contract": _drive_report,
     "subject_binding": _drive_binding,
+    "operation_identity": _drive_operation_identity,
+    "cleanup_evidence": _drive_cleanup_evidence,
 }
 
 
@@ -292,10 +565,20 @@ def _positive_controls(rep):
     """Every driver must still ACCEPT the honest artifact."""
     good_sub = _subject()
     good_rep = _report()
+    honest_req = OP._fake_request()
     controls = [
         ("subject_contract", good_sub),
         ("report_contract", good_rep),
         ("subject_binding", {"subject": good_sub, "report": good_rep}),
+        # Evidence sealed for THIS request must still be accepted, or the four
+        # identity fixtures above would be satisfied by a rail that refuses
+        # everything.
+        ("operation_identity", {"manifest": _sealed_manifest(), "request": honest_req}),
+        # A survey that spawned one temporary object, destroyed it, witnessed it
+        # gone and dirtied nothing must read CLEAN. Without this, "cleanup_verified
+        # is never True" would satisfy both cleanup fixtures.
+        ("cleanup_evidence",
+         _cleanup_bundle({"wf_temp_marker_0": _placement("wf_temp_marker_0")})),
     ]
     for driver, art in controls:
         fails = [c for c in DRIVERS[driver](art) if not c[1]]
@@ -305,6 +588,121 @@ def _positive_controls(rep):
             "that rejected everything would satisfy this whole suite (failed: {})"
             .format(driver, [c[0] for c in fails]),
             code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+
+
+# --------------------------------------------------------------------------- #
+# Mutation evidence for the acceptance rails.
+#
+# Every fixture above proves a rail REJECTS something. None of them prove a rail
+# would have ACCEPTED it had the implementation been wrong — a rail that is
+# hard-wired to fail passes the whole suite above. `acceptance_recompute_mutations`
+# closes that hole by re-introducing each defect in this repository's own code and
+# requiring the corresponding RED to disappear. It ran as an orphan until this
+# gate called it: nothing in the shield, the makefile, or any test referenced it.
+#
+# SUBPROCESS, deliberately. The harness monkeypatches `scene_survey_recompute`
+# module attributes. In-process, a harness that died between patch and restore
+# would leave a stubbed derivation installed under the fixture drivers above, and
+# they would go green on it. A separate interpreter cannot leak that.
+# --------------------------------------------------------------------------- #
+def _mutation_evidence(rep, strict, pack):
+    if not MUTATIONS_SCRIPT.is_file():
+        rep.check("kb::mutations::present", False,
+                  "the acceptance mutation harness is missing: {}"
+                  .format(MUTATIONS_SCRIPT),
+                  code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+        return
+
+    MUTATIONS_VERDICT.parent.mkdir(parents=True, exist_ok=True)
+    if MUTATIONS_VERDICT.exists():
+        # Never grade a stale verdict from a previous run as if it were this one.
+        MUTATIONS_VERDICT.unlink()
+
+    argv = [sys.executable, str(MUTATIONS_SCRIPT), "--pack", pack,
+            "--json", str(MUTATIONS_VERDICT)]
+    if strict:
+        argv.append("--strict")
+    proc = subprocess.run(argv, cwd=str(REPO_ROOT), capture_output=True, text=True,
+                          encoding="utf-8", errors="replace")
+
+    # Exit 2 is "the harness never got to ask", which is NOT the same finding as
+    # exit 1 "a rail did not carry its weight". Reporting them identically would
+    # let a broken import read as a tested rail.
+    rep.check("kb::mutations::harness_ran", proc.returncode != 2,
+              "the mutation harness must complete, not abort ({})"
+              .format((proc.stderr or "").strip()[-400:] or "no stderr"),
+              code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+
+    rep.check("kb::mutations::exit_zero", proc.returncode == 0,
+              "acceptance_recompute_mutations must exit 0 — every acceptance term's "
+              "input mutation RED, and that RED killed by the implementation "
+              "mutation (rc={})".format(proc.returncode),
+              code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+
+    try:
+        verdict = json.loads(MUTATIONS_VERDICT.read_text(encoding="utf-8"))
+    except Exception as exc:
+        rep.check("kb::mutations::verdict_readable", False,
+                  "the structured verdict did not load: {}. An exit code alone "
+                  "cannot distinguish six killed mutants from an emptied TERMS "
+                  "tuple, so this gate refuses to grade on rc only".format(exc),
+                  code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+        return
+
+    terms = verdict.get("terms") or {}
+    missing = [t for t in MUTATION_TERMS if t not in terms]
+    rep.check("kb::mutations::all_terms_exercised", not missing,
+              "every acceptance term {} must be exercised — a term silently "
+              "dropped from the harness reports PASS for a rail nobody questioned "
+              "(missing: {})".format(list(MUTATION_TERMS), missing),
+              code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+
+    for term in MUTATION_TERMS:
+        rec = terms.get(term)
+        if not isinstance(rec, dict):
+            continue
+        rep.check("kb::mutations::{}::input_red".format(term),
+                  rec.get("input_mutation_red") is True,
+                  "term {} ({}): the input mutation must RED {} — a rail that "
+                  "stays green on a broken atom is not checking that atom"
+                  .format(term, rec.get("derivation"), rec.get("expected_rails")),
+                  code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+        rep.check("kb::mutations::{}::mutant_killed".format(term),
+                  rec.get("mutant_killed") is True,
+                  "term {}: stubbing {} to always-True must STOP that RED — "
+                  "otherwise the RED came from a bystander rail and proves nothing "
+                  "about {} (survived: {})".format(
+                      term, rec.get("derivation"), term, rec.get("survived_rails")),
+                  code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+        rep.check("kb::mutations::{}::restored".format(term),
+                  rec.get("derivation_restored") is True,
+                  "term {}: the implementation mutation on {} must be reverted"
+                  .format(term, rec.get("derivation")),
+                  code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+
+    for name, why in (
+            ("clean_control_green",
+             "the unmutated fixture must pass, or every RED above is unattributable"),
+            ("restoration_green",
+             "the fixture must still pass after all mutations — a leaked stub "
+             "would silently weaken every later run in this process"),
+            ("cross_check_double_catch",
+             "an incoherent world record must be caught by BOTH the acceptance and "
+             "the evidence rail"),
+            ("symmetry_under_claim_red",
+             "a report UNDER-claiming against its own evidence must also be refused"),
+            ("anti_circularity_independent",
+             "the recompute rail must reject a wrong-world survey that the shared "
+             "predicate accepts — if they agree, the rail is reading its own claim"),
+    ):
+        rep.check("kb::mutations::control::{}".format(name),
+                  (verdict.get("controls") or {}).get(name) is True, why,
+                  code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+
+    if not verdict.get("ok"):
+        for line in (verdict.get("failures") or [])[:20]:
+            rep.check("kb::mutations::detail", False, line,
+                      code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
 
 
 def _write_fixtures(fixtures):
@@ -324,6 +722,7 @@ def _write_fixtures(fixtures):
                  "_expected_code key would itself be rejected by the strict "
                  "unknown-key rail, which looks green and proves nothing."),
         "not_yet_testable": NOT_YET_TESTABLE,
+        "residual_gaps": RESIDUAL_GAPS,
         "fixtures": catalogue,
     }
     text = json.dumps(doc, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
@@ -335,8 +734,17 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="v2.6 scene-survey hostile fixtures")
     ap.add_argument("--strict", action="store_true")
     ap.add_argument("--pack", default="worldforge_vertical_slice")
+    # Mutation evidence runs by default under strict — which is how the shield
+    # already invokes this gate (v2_6_shield.py:81 passes `--pack X --strict`), so
+    # the harness stops being an orphan without any shield edit. `--mutations`
+    # forces it on outside strict; `--no-mutations` is an explicit, visible opt-out
+    # rather than a silent default.
+    ap.add_argument("--mutations", dest="mutations", action="store_true",
+                    default=None)
+    ap.add_argument("--no-mutations", dest="mutations", action="store_false")
     args, _unknown = ap.parse_known_args(argv)
     strict = args.strict or strict_from_env()
+    do_mutations = strict if args.mutations is None else args.mutations
 
     fixtures = _fixtures()
     _write_fixtures(fixtures)
@@ -405,11 +813,37 @@ def main(argv=None):
 
     _positive_controls(rep)
 
+    # Every check above proves a rail REJECTS a bad artifact. None of them prove
+    # the rail would have ACCEPTED it had the implementation been wrong.
+    if do_mutations:
+        _mutation_evidence(rep, strict, args.pack)
+
     # Declared coverage gaps must stay declared, not quietly shrink to nothing.
     rep.check("kb::gaps_declared", len(NOT_YET_TESTABLE) > 0,
               "vectors that cannot be tested at this commit are named in "
               "NOT_YET_TESTABLE ({} declared) rather than silently omitted"
               .format(len(NOT_YET_TESTABLE)),
+              code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+
+    # A vector may not be BOTH declared untestable and covered by a fixture: that
+    # combination is how a catalogue ends up contradicting itself, with the prose
+    # disclaiming what the suite is quietly proving.
+    contradictions = sorted(set(NOT_YET_TESTABLE) & set(entries))
+    rep.check("kb::gaps_not_contradicted", not contradictions,
+              "a vector cannot be listed in NOT_YET_TESTABLE and also carry a "
+              "fixture — remove it from the gap list when it becomes testable "
+              "(both: {})".format(contradictions),
+              code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
+
+    # Partial coverage must SAY it is partial. Without this, a fixture proving the
+    # narrow half of a vector reads in the catalogue exactly like one proving all
+    # of it.
+    undeclared = sorted(s for s in RESIDUAL_GAPS
+                        if not (entries.get(s) or {}).get("residual_gap"))
+    rep.check("kb::residual_gaps_declared", not undeclared,
+              "every partially-covered vector must carry its residual_gap in the "
+              "catalogue, naming the half its fixture does NOT reach (missing: {})"
+              .format(undeclared),
               code=C.SCENE_SURVEY_NEGATIVE_ACCEPTED)
 
     rep.finalize()
