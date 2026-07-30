@@ -60,10 +60,23 @@ Shared, from ``scene_survey_evidence``:
 
 NOT shared, on purpose — re-implemented here:
 
-  * every ``derive_*`` / ``sufficiency_*`` in ``DERIVATIONS`` (evidence.py:608-618)
+  * every ``derive_*`` / ``sufficiency_*`` in ``DERIVATIONS``
+    (``scene_survey_evidence.py:2048-2063``)
   * ``derive()``, ``rederive_and_compare()``, ``derived_record()``
   * ``validate_scene_survey_report()`` field verdicts
-  * ``evaluate_acceptance_eligibility()``
+  * ACCEPTANCE ELIGIBILITY. Until 2026-07-30 this list claimed
+    ``evaluate_acceptance_eligibility()`` was re-implemented here. It was not:
+    no such function existed in this module and ``acceptance_eligible`` was absent
+    from ``COMPARED_FIELDS``, so the only path to an eligibility verdict was
+    ``validate_scene_survey_runtime.py:415`` -> ``SS.validate_subject_binding`` ->
+    ``scene_survey_contracts.evaluate_acceptance_eligibility`` — the SAME predicate
+    the assembler calls at ``run_scene_survey_probe.py:795``. The docstring
+    asserted a check that had never been written. It is written now, under
+    ``ACCEPTANCE ELIGIBILITY`` below: six terms M∧W∧P∧T∧B∧E derived from
+    ``raw["world"]`` / ``raw["actor"]`` / ``raw["marker"]``, which is one level
+    BELOW the shared predicate — that one reads a ``binding`` bundle projected out
+    of the (subject, report) pair (``scene_survey_evidence.acceptance_raw
+    :1915-1964``) and never opens the far-side bundle at all.
   * ``resolve_raw()`` — five lines, and it is the mechanism by which a MISSING
     record is detected. A shared bug there would hide the very thing the ref rail
     exists to find, so it is re-implemented and cross-checked against the shared
@@ -758,6 +771,602 @@ def world_identity_ok(raw, requested_map):
 
 
 # --------------------------------------------------------------------------- #
+# ACCEPTANCE ELIGIBILITY.  A(o) = M ∧ W ∧ P ∧ T ∧ B ∧ E, from the RAW atoms.
+#
+# WHY THIS EXISTS AT ALL — THE CIRCLE THIS BREAKS
+# -----------------------------------------------
+# [verified] ``scene_survey_contracts.evaluate_acceptance_eligibility:993-1065``
+# is the ONE shared predicate. The assembler calls it at
+# ``run_scene_survey_probe.py:795`` and writes its verdict into the report; the
+# validator reached the same predicate through ``SS.validate_subject_binding``
+# (``scene_survey_contracts.py:1154``) at
+# ``validate_scene_survey_runtime.py:415``. Producer and checker therefore agreed
+# BY CONSTRUCTION.
+#
+# Worse, the predicate's "raw" is not raw. ``scene_survey_evidence.acceptance_raw
+# :1915-1964`` PROJECTS a three-record ``binding`` bundle out of the (subject,
+# report) PAIR: ``binding#observed.world_package`` is ``report["map_asset_path"]``
+# (:1943), ``actor_object_path`` is ``report["observed_anchor_object_path"]``
+# (:1944), ``actor_location`` is ``report["observed_anchor_location"]`` (:1945).
+# Those are the report's own restatements of the far-side document, so every
+# "observed" coordinate the shared predicate compares is a value the report chose.
+# The far side's actual measurements — ``raw["world"]["observed"]["package_name"]``
+# (``scene_survey_far_side.py:2229``) and the per-actor ``location`` /
+# ``distance_to_anchor_cm`` records (``:1889``, ``:1905``) — are never consulted by
+# it. [verified] ``scene_survey_evidence.py:638`` even exempts the ``binding`` kind
+# from the raw-observation kinds, because it is not one.
+#
+# So this section re-derives eligibility one level BELOW the shared predicate:
+# from ``raw["world"]``, ``raw["actor"]`` and ``raw["marker"]`` — records the
+# report cannot author, only restate.
+#
+#   M  anchor_mode is exactly "actor_object_path"        <- caller vocabulary
+#   W  requested map == independently observed world     <- raw world record
+#   P  requested actor path == independently resolved    <- raw actor population
+#   T  stated transform == measured actor transform      <- raw actor.location
+#   B  survey origin and measurements bound to that actor<- raw distances/markers
+#   E  required raw observations complete, operation-bound, finite, consistent
+#
+# A(o) = Kleene ⋀ of the six. UNKNOWN is a value: a term the raw cannot answer is
+# UNKNOWN, never False and never True, and a report presenting a decided
+# acceptance claim over an UNKNOWN re-derivation has invented one.
+# --------------------------------------------------------------------------- #
+#: The one mode under which the subject's anchor is independently observable.
+#: Re-stated here rather than imported so a change to the shared vocabulary shows
+#: up as a DISAGREEMENT in ``_dogfood`` instead of propagating silently into both
+#: sides at once. Cross-checked against ``scene_survey_evidence
+#: .OBSERVABLE_ANCHOR_MODE`` and ``scene_survey_contracts.ANCHOR_MODES`` there.
+OBSERVABLE_ANCHOR_MODE = "actor_object_path"
+ANCHOR_MODES = ("explicit_transform", "actor_object_path")
+
+# [verified] τ_T — the ONE transform tolerance, in CENTIMETRES (Unreal world units
+# are cm; ``scene_survey_far_side.py:1650`` names its own distance field
+# ``distance_to_anchor_cm``). 1.0 cm is not invented here: it is the tolerance the
+# existing pair-validator already declares — ``scene_survey_contracts
+# .validate_subject_binding(..., tolerance_cm=1.0)`` at :1085, applied at :1124.
+# Adopting it means this rail cannot be accused of being a NEW policy, and it
+# cannot be looser than the rail it is meant to backstop. It is a named constant
+# in exactly one place and is threaded through every call site as a parameter, so
+# no comparison site may type a literal.
+TAU_ANCHOR_TRANSFORM_CM = 1.0
+
+# [assumed] ε_B — NOT a physical tolerance. B compares two numbers that must be
+# EQUAL by construction (a distance the far side computed at
+# ``scene_survey_far_side.py:1878`` against the same distance recomputed here from
+# the same two locations), so the only slack needed is float round-trip through
+# JSON. 0.05 cm is four orders of magnitude below τ_T and exists solely so a
+# decimal-representation difference is not reported as a survey defect.
+TAU_ORIGIN_CONSISTENCY_CM = 0.05
+
+#: The six components, in the order they are conjoined, as they appear in the
+#: comparison surface. Names are deliberately NOT the shared predicate's names —
+#: these are different terms computed from different inputs, and giving them the
+#: same names would invite a later reader to "deduplicate" them back together.
+ACCEPTANCE_COMPONENT_FIELDS = (
+    "acceptance_anchor_mode_observable",        # M
+    "acceptance_world_identity_bound",          # W
+    "acceptance_actor_identity_bound",          # P
+    "acceptance_actor_transform_bound",         # T
+    "acceptance_survey_bound_to_actor",         # B
+    "acceptance_raw_observations_complete",     # E
+)
+
+#: Where a report STATES each recomputed field, if it states it at all. Only used
+#: to locate the claim for comparison — never as an input to a derivation.
+#: ``run_scene_survey_probe.py:796-799`` writes ``acceptance_eligible`` at the top
+#: level and the shared predicate's per-component verdicts under
+#: ``meta.acceptance_components``.
+CLAIM_PATHS = {
+    "acceptance_eligible": ("acceptance_eligible",),
+    "acceptance_anchor_mode_observable":
+        ("meta", "acceptance_components", "anchor_mode_observable"),
+    "acceptance_world_identity_bound":
+        ("meta", "acceptance_components", "observed_world_identity_valid"),
+    "acceptance_actor_identity_bound":
+        ("meta", "acceptance_components", "observed_actor_identity_valid"),
+    "acceptance_actor_transform_bound":
+        ("meta", "acceptance_components", "observed_actor_transform_valid"),
+    "acceptance_survey_bound_to_actor":
+        ("meta", "acceptance_components", "survey_bound_to_observed_actor"),
+    "acceptance_raw_observations_complete":
+        ("meta", "acceptance_components", "raw_observations_complete"),
+}
+
+#: Fields a report is NOT required to state. An ABSENT claim here is not a
+#: mismatch — but a STATED one that disagrees is, and a stated one over an
+#: undecidable re-derivation is an invention. ``acceptance_eligible`` is
+#: deliberately NOT in this set: it is REPORT_REQUIRED
+#: (``scene_survey_contracts.py:677``), so omitting it IS a defect. E has no
+#: counterpart in the shared predicate at all — it is a term this module adds.
+OPTIONAL_CLAIM_FIELDS = frozenset(ACCEPTANCE_COMPONENT_FIELDS)
+
+#: Sentinel for "the report does not carry this key at all", which is a different
+#: fact from "the report carries it as null".
+_NO_CLAIM = object()
+
+# Raw-record envelope vocabulary (scene_survey_far_side.py:549-568, :268-290).
+# Vocabulary only: these are the names the far side writes, and disagreeing about
+# a NAME would make every rail below silently pass. No verdict is shared.
+CS_COLLECTED = "collected"
+CS_PARTIAL = "partial"
+SATISFYING_COLLECTION_STATUS = (CS_COLLECTED, CS_PARTIAL)
+
+
+def _verdict(value, detail, **extra):
+    """A tri-state result in the shape ``compare`` reads.
+
+    ``sufficient`` is derived from the verdict rather than passed separately, so
+    the two can never drift into "sufficient, but UNKNOWN" — a state whose meaning
+    nobody would agree on.
+    """
+    out = {"sufficient": is_decided(value), "verdict": value, "detail": detail}
+    out.update(extra)
+    return out
+
+
+def _distance_cm(a, b):
+    """Euclidean distance between two finite vec3s, or None."""
+    if not (is_finite_vec(a) and is_finite_vec(b)):
+        return None
+    return math.sqrt(sum((float(a[i]) - float(b[i])) ** 2 for i in range(3)))
+
+
+def _actor_records(raw):
+    actors = (raw or {}).get("actor")
+    return actors if isinstance(actors, dict) else {}
+
+
+# --- M ---------------------------------------------------------------------- #
+def anchor_mode_observable(subject):
+    """M — is the subject's anchor observable AT ALL under the declared mode?
+
+    Read from the CALLER's subject, which is the only place a mode can honestly
+    come from. NOT from the report: ``run_scene_survey_probe.py`` never echoes the
+    mode into the report, and a mode taken from the produced artifact would be the
+    producer certifying its own admissibility.
+    """
+    if not isinstance(subject, dict) or not subject:
+        return _verdict(UNKNOWN, "no caller-resolved subject was supplied, so the "
+                                 "anchor mode is unstated and unaskable")
+    mode = subject.get("anchor_mode")
+    if not isinstance(mode, str) or mode not in ANCHOR_MODES:
+        return _verdict(UNKNOWN, "subject states anchor_mode={!r}, which is outside "
+                                 "the closed vocabulary {} — an unrecognised mode is "
+                                 "not a mode this module may rule on".format(
+                                     mode, list(ANCHOR_MODES)),
+                        anchor_mode=mode)
+    return _verdict(mode == OBSERVABLE_ANCHOR_MODE,
+                    "subject anchor_mode={!r}; only {!r} makes the subject's own "
+                    "coordinates independently observable".format(
+                        mode, OBSERVABLE_ANCHOR_MODE),
+                    anchor_mode=mode)
+
+
+# --- P ---------------------------------------------------------------------- #
+def anchor_actor_resolution(raw, requested_path, stated_path=_NO_CLAIM):
+    """P — does the caller's actor path resolve in the RAW actor population?
+
+    The far side resolves the anchor by exact ``get_path_name()`` equality
+    (``scene_survey_far_side.py:2434-2462``) and then sweeps every level actor
+    within the radius, filing one record per actor keyed by that same path
+    (``:1601-1658``). The anchor actor is at distance 0 from its own location, so
+    if the sweep ran at all the anchor MUST be in the population. An actor set
+    that is non-empty and does not contain the requested path therefore did not
+    survey the requested actor — that is a decided False, not an unknown.
+
+    ``stated_path`` is the report's ``observed_anchor_object_path`` — the pipeline's
+    RESTATEMENT of what it resolved. It is held to the raw record exactly the way T
+    holds the stated location to the measured one, and for the same reason: the
+    shared predicate compares that restatement to the REQUEST
+    (``scene_survey_evidence.py:2014-2016``), which cannot see a report and a
+    request that agree with each other while the raw disagrees with both.
+
+    Returns the usual tri-state plus ``record``/``ident`` for the resolved actor,
+    so T and B can be measured against the same record P accepted.
+    """
+    out_extra = {"record": None, "ident": None}
+    if not isinstance(requested_path, str) or not requested_path.strip():
+        return _verdict(UNKNOWN, "the caller named no anchor_object_path, so there "
+                                 "is no actor identity to resolve", **out_extra)
+    actors = _actor_records(raw)
+    if not actors:
+        return _verdict(UNKNOWN, "the raw bundle carries no per-actor records, so "
+                                 "the requested actor can be neither found nor ruled "
+                                 "out — an absent population is not a negative "
+                                 "result", **out_extra)
+    matches = sorted(ident for ident, rec in actors.items()
+                     if isinstance(rec, dict) and rec.get("path_name") == requested_path)
+    if len(matches) > 1:
+        return _verdict(False, "{} raw actor records claim path_name {!r} — an "
+                               "ambiguous identity is not a resolved one: {}".format(
+                                   len(matches), requested_path, matches[:4]),
+                        **out_extra)
+    if not matches:
+        stated = sorted(str(rec.get("path_name")) for rec in actors.values()
+                        if isinstance(rec, dict))
+        return _verdict(False, "the requested anchor actor {!r} is absent from the "
+                               "{} raw actor record(s) the survey collected — the "
+                               "survey resolved something else. Present: {}".format(
+                                   requested_path, len(actors), stated[:4]),
+                        **out_extra)
+    ident = matches[0]
+    record = actors[ident]
+    out_extra = {"record": record, "ident": ident}
+    if ident != requested_path:
+        # scene_survey_far_side.py:1603 keys the record BY the path. A record whose
+        # key and whose measured path disagree is two identities in one record.
+        return _verdict(False, "the raw actor record keyed {!r} states path_name "
+                               "{!r} — key and measurement name different actors"
+                               .format(ident, requested_path), **out_extra)
+    if record.get("collection_ok") is not True:
+        return _verdict(UNKNOWN, "the raw record for {!r} reports collection_ok={!r} "
+                                 "— the actor was named but not successfully "
+                                 "observed, so its identity is unestablished, not "
+                                 "wrong".format(requested_path,
+                                                record.get("collection_ok")),
+                        **out_extra)
+    if stated_path is not _NO_CLAIM and stated_path is not None \
+            and stated_path != record.get("path_name"):
+        return _verdict(False, "the report states it anchored on {!r}, but the raw "
+                               "record for the requested actor measures path_name "
+                               "{!r} — the restatement names a different object "
+                               "than the measurement".format(
+                                   stated_path, record.get("path_name")),
+                        **out_extra)
+    return _verdict(True, "the requested anchor actor {!r} resolves to exactly one "
+                          "successfully-collected raw actor record{}".format(
+                              requested_path,
+                              "" if stated_path is _NO_CLAIM
+                              else ", and the report restates that same path"),
+                    **out_extra)
+
+
+# --- T ---------------------------------------------------------------------- #
+def stated_anchor_transform(subject, report):
+    """The transform the pipeline CLAIMS it anchored at, and where the claim came from.
+
+    Precedence, and why: the caller's own ``anchor_location`` wins when it exists,
+    because holding a measurement to the REQUEST is strictly stronger than holding
+    it to the producer's restatement. Under ``actor_object_path`` the caller
+    supplies none by contract (``scene_survey_contracts.py:255-256``), so the
+    report's ``observed_anchor_location`` is the only statement available — and
+    that is precisely the value this term exists to hold to the raw measurement.
+    """
+    s = subject if isinstance(subject, dict) else {}
+    r = report if isinstance(report, dict) else {}
+    want = s.get("anchor_location")
+    if is_finite_vec(want):
+        return list(want), "subject.anchor_location"
+    got = r.get("observed_anchor_location")
+    if is_finite_vec(got):
+        return list(got), "report.observed_anchor_location"
+    return None, "neither the subject nor the report states a finite anchor transform"
+
+
+def anchor_transform_bound(actor_record, stated, source, tau_cm=TAU_ANCHOR_TRANSFORM_CM):
+    """T — does the stated anchor transform agree with the MEASURED actor transform?
+
+    The measured side is ``actor.location``, read off the live object at
+    ``scene_survey_far_side.py:1889``; the far side reads the same call to produce
+    the anchor it reports (``:2492``). Nothing else in the pipeline compares the
+    two, so a report free-typing an ``observed_anchor_location`` that is not where
+    the actor is has, until now, been invisible.
+    """
+    if not isinstance(actor_record, dict):
+        return _verdict(UNKNOWN, "no resolved actor record to measure a transform on",
+                        tau_cm=tau_cm)
+    observed = actor_record.get("location")
+    if not is_finite_vec(observed):
+        return _verdict(UNKNOWN, "the resolved actor's location was not measured "
+                                 "(got {!r}) — an unread transform is not a wrong "
+                                 "one".format(observed), tau_cm=tau_cm)
+    if not is_finite_vec(stated):
+        return _verdict(UNKNOWN, "{} — nothing to compare the measurement against"
+                        .format(source), tau_cm=tau_cm,
+                        observed_location=list(observed))
+    dist = _distance_cm(stated, observed)
+    return _verdict(dist <= tau_cm,
+                    "stated anchor ({}) {!r} is {:.4f}cm from the measured actor "
+                    "location {!r}; tolerance is {}cm".format(
+                        source, stated, dist, list(observed), tau_cm),
+                    tau_cm=tau_cm, distance_cm=dist, stated_source=source,
+                    stated_location=list(stated), observed_location=list(observed))
+
+
+# --- B ---------------------------------------------------------------------- #
+def survey_bound_to_anchor(raw, anchor_location, anchor_ident=None,
+                           eps_cm=TAU_ORIGIN_CONSISTENCY_CM):
+    """B — were the survey's own measurements taken about THAT actor?
+
+    P and T establish that the right actor exists and that the reported anchor is
+    its transform. Neither says the SURVEY used it. This does, from three raw
+    facts that only hold if the sweep was centred on the resolved actor:
+
+      b1 the resolved actor's own ``distance_to_anchor_cm`` is ~0. It is measured
+         against the sweep centre (``scene_survey_far_side.py:1878``,
+         ``center=loc`` at ``:2699``), so a non-zero value means the centre was
+         somewhere else.
+      b2 every other actor's ``distance_to_anchor_cm`` equals |actor − anchor|
+         recomputed here. This is over-determined on purpose: one actor could be
+         coincidence, a whole population agreeing cannot be.
+      b3 the marker candidates lie on the anchor's own y/z with x offsets in
+         constant (index+1) steps — the exact placement law at
+         ``scene_survey_far_side.py:2705`` (``ctr.x + (i+1)*STEP, ctr.y, ctr.z``).
+         STEP is far-side policy this module is not told, so the LAW is checked
+         rather than the value: proportional offsets, shared y and z.
+
+    Kleene conjunction over the three, so a conjunct whose atoms were not
+    collected makes B unknown instead of quietly dropping out.
+    """
+    detail = {}
+    if not is_finite_vec(anchor_location):
+        return _verdict(UNKNOWN, "no measured anchor location, so nothing can be "
+                                 "shown to be bound to it", conjuncts=detail)
+
+    actors = _actor_records(raw)
+
+    # b1 — the anchor actor's own distance to the sweep centre.
+    b1 = UNKNOWN
+    rec = actors.get(anchor_ident) if anchor_ident is not None else None
+    if isinstance(rec, dict) and is_finite_number(rec.get("distance_to_anchor_cm")):
+        b1 = abs(float(rec["distance_to_anchor_cm"])) <= eps_cm
+        detail["anchor_self_distance_cm"] = float(rec["distance_to_anchor_cm"])
+    detail["anchor_is_survey_origin"] = repr(b1)
+
+    # b2 — the whole population's distances, recomputed.
+    checked, disagreeing = 0, []
+    for ident in sorted(actors):
+        arec = actors[ident]
+        if not isinstance(arec, dict):
+            continue
+        loc, dist = arec.get("location"), arec.get("distance_to_anchor_cm")
+        if not (is_finite_vec(loc) and is_finite_number(dist)):
+            continue
+        checked += 1
+        mine = _distance_cm(loc, anchor_location)
+        if abs(mine - float(dist)) > eps_cm:
+            disagreeing.append("{}: states {:.4f}cm, recomputes {:.4f}cm".format(
+                ident, float(dist), mine))
+    b2 = UNKNOWN if checked == 0 else (not disagreeing)
+    detail["actor_distances_checked"] = checked
+    detail["actor_distances_disagreeing"] = disagreeing[:4]
+    detail["actor_distances_consistent"] = repr(b2)
+
+    # b3 — the marker placement law about the anchor.
+    markers = (raw or {}).get("marker")
+    markers = markers if isinstance(markers, dict) else {}
+    placed = []
+    for ident in sorted(markers):
+        mrec = markers[ident]
+        if not isinstance(mrec, dict):
+            continue
+        loc, index = mrec.get("location"), mrec.get("index")
+        if is_finite_vec(loc) and isinstance(index, int) and not isinstance(index, bool):
+            placed.append((index, ident, [float(c) for c in loc]))
+    b3, offending = UNKNOWN, []
+    if placed:
+        placed.sort()
+        step = None
+        for index, ident, loc in placed:
+            if abs(loc[1] - float(anchor_location[1])) > eps_cm \
+                    or abs(loc[2] - float(anchor_location[2])) > eps_cm:
+                offending.append("{}: y/z {!r} is off the anchor's own y/z {!r}".format(
+                    ident, loc[1:], list(anchor_location)[1:]))
+                continue
+            n = index + 1
+            if n <= 0:
+                offending.append("{}: index {!r} is not a placement ordinal".format(
+                    ident, index))
+                continue
+            this_step = (loc[0] - float(anchor_location[0])) / float(n)
+            if step is None:
+                step = this_step
+                if abs(step) <= eps_cm:
+                    offending.append("{}: derived step {:.4f}cm is degenerate — the "
+                                     "candidates are not laid out from the anchor"
+                                     .format(ident, step))
+            elif abs(this_step - step) > eps_cm:
+                offending.append("{}: implies step {:.4f}cm, the first candidate "
+                                 "implies {:.4f}cm".format(ident, this_step, step))
+        b3 = not offending
+        detail["marker_step_cm"] = step
+    detail["markers_placed_from_anchor"] = repr(b3)
+    detail["marker_offenders"] = offending[:4]
+
+    verdict = tri_and(b1, b2, b3)
+    return _verdict(verdict,
+                    "anchor_self={} population={} ({} distance(s) recomputed) "
+                    "markers={} ({} candidate(s))".format(
+                        repr(b1), repr(b2), checked, repr(b3), len(placed)),
+                    conjuncts=detail)
+
+
+# --- E ---------------------------------------------------------------------- #
+def raw_observations_complete(raw, bundle=None, operation_id=None,
+                              anchor_ident=None):
+    """E — is the raw itself complete, operation-bound, finite and self-consistent?
+
+    The other five terms all read values OUT of the raw. E asks whether the raw is
+    entitled to be read at all. Four conjuncts, each tri-state:
+
+      e1 COMPLETE      — the world record and (when one was resolved) the anchor
+                         actor record collected successfully, and their
+                         collection_status / evidence_class are satisfying ones.
+      e2 OPERATION-BOUND — every record that names an operation names the SAME one,
+                         and it is the operation being graded. A bundle whose
+                         records come from two runs is two surveys wearing one name.
+      e3 FINITE        — no NaN/Infinity anywhere. A non-finite number compares
+                         False against everything including itself, so every
+                         threshold above it is decided by accident.
+      e4 CONSISTENT    — no dangling refs, no restatement that contradicts its own
+                         atom, and the world record's cached ``world_identity``
+                         agrees with the ``package_name`` it was cached from
+                         (``scene_survey_far_side.py:2238``).
+
+    A conjunct whose evidence is simply absent is UNKNOWN, never False: a bundle
+    that predates the envelope fields cannot be convicted of failing them.
+    """
+    bundle = bundle if bundle is not None else raw
+    detail = {}
+
+    # e1 — completeness of the two records acceptance actually stands on.
+    world = ((raw or {}).get("world") or {}).get("observed")
+    if not isinstance(world, dict):
+        e1 = UNKNOWN
+        detail["complete"] = "no observed world record"
+    else:
+        parts = [tri(world.get("collection_ok"))]
+        why = []
+        if world.get("collection_ok") is not True:
+            why.append("world#observed.collection_ok={!r}".format(
+                world.get("collection_ok")))
+        for label, rec in (("world#observed", world),) + (
+                (("actor#" + str(anchor_ident), _actor_records(raw).get(anchor_ident)),)
+                if anchor_ident is not None else ()):
+            if not isinstance(rec, dict):
+                parts.append(UNKNOWN)
+                why.append("{} is absent".format(label))
+                continue
+            status = rec.get("collection_status")
+            if status is None:
+                parts.append(UNKNOWN)
+            elif status not in SATISFYING_COLLECTION_STATUS:
+                parts.append(False)
+                why.append("{}.collection_status={!r}".format(label, status))
+            cls = rec.get("evidence_class")
+            if cls is None:
+                parts.append(UNKNOWN)
+            elif cls not in ACCEPTANCE_CLASSIFICATIONS:
+                parts.append(False)
+                why.append("{}.evidence_class={!r} cannot satisfy a rail".format(
+                    label, cls))
+            if label.startswith("actor#") and rec.get("collection_ok") is not True:
+                parts.append(False)
+                why.append("{}.collection_ok={!r}".format(label,
+                                                          rec.get("collection_ok")))
+        e1 = tri_and(*parts)
+        detail["complete"] = "; ".join(why) or "required records collected"
+    detail["complete_verdict"] = repr(e1)
+
+    # e2 — one operation, and the right one.
+    stated = set()
+    for kind in sorted((raw or {}) if isinstance(raw, dict) else {}):
+        records = raw.get(kind)
+        if not isinstance(records, dict):
+            continue
+        for rec in records.values():
+            if isinstance(rec, dict) and isinstance(rec.get("operation_id"), str) \
+                    and rec["operation_id"].strip():
+                stated.add(rec["operation_id"])
+    if not stated:
+        e2 = UNKNOWN
+        detail["operation_bound"] = ("no raw record states an operation_id — the "
+                                     "bundle cannot be shown to belong to this run")
+    elif len(stated) > 1:
+        e2 = False
+        detail["operation_bound"] = ("raw records name {} different operations {} — "
+                                     "one bundle, two runs".format(len(stated),
+                                                                   sorted(stated)))
+    elif operation_id is not None and stated != {operation_id}:
+        e2 = False
+        detail["operation_bound"] = ("raw records name operation {!r}, but the "
+                                     "operation being graded is {!r}".format(
+                                         sorted(stated)[0], operation_id))
+    else:
+        e2 = True
+        detail["operation_bound"] = "every record names {!r}".format(sorted(stated)[0])
+    detail["operation_bound_verdict"] = repr(e2)
+
+    # e3 — finiteness.
+    nonfinite = nonfinite_numerics(raw)
+    e3 = not nonfinite
+    detail["nonfinite"] = nonfinite[:4]
+
+    # e4 — internal consistency.
+    dangling = dangling_refs(bundle)
+    contradictions = marker_contradictions(bundle, raw)
+    identity_drift = []
+    if isinstance(world, dict) and "world_identity" in world:
+        if norm_package(world.get("world_identity")) != norm_package(
+                world.get("package_name")):
+            identity_drift.append(
+                "world#observed.world_identity={!r} but package_name={!r}".format(
+                    world.get("world_identity"), world.get("package_name")))
+    e4 = not (dangling or contradictions or identity_drift)
+    detail["dangling_refs"] = dangling[:3]
+    detail["contradictions"] = contradictions[:3]
+    detail["identity_drift"] = identity_drift
+
+    verdict = tri_and(e1, e2, e3, e4)
+    return _verdict(verdict,
+                    "complete={} operation_bound={} finite={} consistent={}".format(
+                        repr(e1), repr(e2), e3, e4),
+                    conjuncts=detail)
+
+
+def acceptance_eligibility(raw, subject=None, report=None, bundle=None,
+                           requested_map=None, operation_id=None,
+                           tau_anchor_transform_cm=TAU_ANCHOR_TRANSFORM_CM,
+                           tau_origin_consistency_cm=TAU_ORIGIN_CONSISTENCY_CM,
+                           world=None):
+    """A(o) = M ∧ W ∧ P ∧ T ∧ B ∧ E, over the raw atoms. Returns the six + the whole.
+
+    ``report`` is read for exactly one purpose — the transform it STATES, so T can
+    hold that statement against the measurement. Its ``acceptance_eligible``, its
+    ``meta.acceptance_components`` and its failed-rail list are never inputs here;
+    ``compare`` reads them afterwards, to grade this result against, which is the
+    opposite direction.
+    """
+    bundle = bundle if bundle is not None else raw
+    s = subject if isinstance(subject, dict) else {}
+    if requested_map is None:
+        requested_map = s.get("map_asset_path")
+
+    m = anchor_mode_observable(subject)
+    w = dict(world) if isinstance(world, dict) else world_identity_ok(raw, requested_map)
+    p = anchor_actor_resolution(
+        raw, s.get("anchor_object_path"),
+        stated_path=(report.get("observed_anchor_object_path", _NO_CLAIM)
+                     if isinstance(report, dict) else _NO_CLAIM))
+
+    stated, source = stated_anchor_transform(subject, report)
+    anchor_record = p.get("record") if p.get("verdict") is True else None
+    t = anchor_transform_bound(anchor_record, stated, source,
+                               tau_cm=tau_anchor_transform_cm)
+
+    measured_anchor = (anchor_record or {}).get("location") if anchor_record else None
+    b = survey_bound_to_anchor(raw, measured_anchor, anchor_ident=p.get("ident"),
+                               eps_cm=tau_origin_consistency_cm)
+    e = raw_observations_complete(raw, bundle=bundle, operation_id=operation_id,
+                                  anchor_ident=(p.get("ident")
+                                                if p.get("verdict") is True else None))
+
+    components = {
+        "acceptance_anchor_mode_observable": m,
+        "acceptance_world_identity_bound": w,
+        "acceptance_actor_identity_bound": p,
+        "acceptance_actor_transform_bound": t,
+        "acceptance_survey_bound_to_actor": b,
+        "acceptance_raw_observations_complete": e,
+    }
+    verdict = tri_and(*[components[f]["verdict"] for f in ACCEPTANCE_COMPONENT_FIELDS])
+    denied = [f for f in ACCEPTANCE_COMPONENT_FIELDS
+              if components[f]["verdict"] is False]
+    undecided = [f for f in ACCEPTANCE_COMPONENT_FIELDS
+                 if components[f]["verdict"] is UNKNOWN]
+    overall = _verdict(
+        verdict,
+        "M∧W∧P∧T∧B∧E = {}; denied by {}; undecidable {}".format(
+            repr(verdict), denied or "nothing", undecided or "nothing"),
+        denied_components=denied, undecided_components=undecided,
+        tau_anchor_transform_cm=tau_anchor_transform_cm,
+        tau_origin_consistency_cm=tau_origin_consistency_cm)
+    out = {"acceptance_eligible": overall}
+    out.update(components)
+    return out
+
+
+# --------------------------------------------------------------------------- #
 # PROVENANCE.  A request-derived field labelled `observed` is a forgery.
 # --------------------------------------------------------------------------- #
 def forged_provenance(container):
@@ -798,13 +1407,27 @@ COMPARED_FIELDS = (
     "overlap_count",
     "player_clearance_valid",
     "cleanup_verified",
-)
+    # Acceptance eligibility and every term it is conjoined from. The whole point
+    # of listing the COMPONENTS and not just the verdict: an eligibility claim that
+    # happens to agree while its parts disagree is agreement by luck, and the
+    # per-component rows are what say WHICH term the raw denied.
+    "acceptance_eligible",
+) + ACCEPTANCE_COMPONENT_FIELDS
 
 
-def recompute_all(raw, requested_map=None, bundle=None, **taus):
-    """Every recomputable aggregate, from raw only. No report is consulted."""
+def recompute_all(raw, requested_map=None, bundle=None, subject=None, report=None,
+                  operation_id=None,
+                  tau_anchor_transform_cm=TAU_ANCHOR_TRANSFORM_CM,
+                  tau_origin_consistency_cm=TAU_ORIGIN_CONSISTENCY_CM, **taus):
+    """Every recomputable aggregate, from raw only.
+
+    ``report`` is consulted for exactly one value — the anchor transform it STATES,
+    which term T holds against the raw measurement (see ``acceptance_eligibility``).
+    Nothing else in the report is an input to anything computed here.
+    """
     bundle = bundle if bundle is not None else raw
     mk = marker_verdicts(bundle, raw, **taus)
+    world = world_identity_ok(raw, requested_map)
     out = {
         "schema_version": SCHEMA_VERSION,
         "actor_bounds_valid": actor_bounds_valid(raw),
@@ -812,12 +1435,39 @@ def recompute_all(raw, requested_map=None, bundle=None, **taus):
         "overlap_count": mk["overlap_count"],
         "player_clearance_valid": mk["player_clearance_valid"],
         "cleanup_verified": cleanup_verified(raw),
-        "world_identity_ok": world_identity_ok(raw, requested_map),
+        "world_identity_ok": world,
         "_markers": mk,
         "_contradictions": marker_contradictions(bundle, raw),
         "_dangling_refs": dangling_refs(bundle),
     }
+    out.update(acceptance_eligibility(
+        raw, subject=subject, report=report, bundle=bundle,
+        requested_map=requested_map, operation_id=operation_id,
+        tau_anchor_transform_cm=tau_anchor_transform_cm,
+        tau_origin_consistency_cm=tau_origin_consistency_cm,
+        world=world))
     return out
+
+
+def claimed_value(reported, field):
+    """What the report STATES for ``field``, or ``_NO_CLAIM`` if it states nothing.
+
+    Most compared fields are top-level report keys. The acceptance components are
+    not: ``run_scene_survey_probe.py:798`` files them under
+    ``meta.acceptance_components`` under the SHARED predicate's names. Locating a
+    claim is not the same as trusting it — the located value is only ever used as
+    the right-hand side of a comparison against this module's own derivation.
+
+    ``_NO_CLAIM`` and ``None`` are kept apart because "the report has no such key"
+    and "the report says null" are different facts about a document.
+    """
+    path = CLAIM_PATHS.get(field, (field,))
+    cur = reported
+    for key in path:
+        if not isinstance(cur, dict) or key not in cur:
+            return _NO_CLAIM
+        cur = cur[key]
+    return cur
 
 
 def compare(reported, recomputed, fields=COMPARED_FIELDS):
@@ -826,29 +1476,47 @@ def compare(reported, recomputed, fields=COMPARED_FIELDS):
     Two distinct failure kinds, deliberately not merged:
 
       * MISMATCH — the raw was sufficient and re-derives to a different value.
-        The report does not follow from its own evidence.
+        The report does not follow from its own evidence. This is SYMMETRIC:
+        claimed True over a re-derived False and claimed False over a re-derived
+        True are both mismatches. ``scene_survey_contracts.py:1144-1153``
+        deliberately installed only the over-claim direction, because the
+        symmetric rail would red a fixture that file's owner could not change;
+        this module is not bound by that compromise, and an under-claim is still a
+        report that does not follow from its evidence.
       * UNKNOWN-AS-DECIDED — the raw was NOT sufficient, and the report presented
         a decided value anyway. Nothing is being contradicted; something is being
         invented. Collapsing this into "mismatch" would let it be read as a
         rounding disagreement.
+
+    A field in ``OPTIONAL_CLAIM_FIELDS`` that the report does not state at all is
+    neither: silence is not a claim. A field outside that set is REQUIRED by the
+    report contract, so its absence IS a mismatch.
     """
     reported = reported if isinstance(reported, dict) else {}
     mismatches, invented = [], []
     for field in fields:
         got = recomputed.get(field) or {}
-        claimed = reported.get(field)
+        claimed = claimed_value(reported, field)
+        unstated = claimed is _NO_CLAIM or (claimed is None
+                                            and field in OPTIONAL_CLAIM_FIELDS)
         verdict = got.get("verdict", UNKNOWN)
         if not got.get("sufficient"):
-            if claimed is not None:
+            if not unstated and claimed is not None:
                 invented.append(
                     "{}: report states {!r} but the raw evidence is insufficient "
                     "to decide it ({})".format(field, claimed,
                                                got.get("detail") or got))
             continue
         if verdict is UNKNOWN:
-            if claimed is not None:
+            if not unstated and claimed is not None:
                 invented.append("{}: report states {!r}; re-derivation is UNKNOWN"
                                 .format(field, claimed))
+            continue
+        if unstated:
+            if field in OPTIONAL_CLAIM_FIELDS:
+                continue
+            mismatches.append("{}: report omits the field; raw re-derives {!r}"
+                              .format(field, verdict))
             continue
         if claimed is None:
             mismatches.append("{}: report omits the field; raw re-derives {!r}"
@@ -907,6 +1575,400 @@ def _clean_bundle():
                      "actor_paths": ["/A"], "dirty_packages": [],
                      "operation_owned_actor_paths": []}},
     }
+
+
+#: The one acceptance fixture. Every acceptance negative below is this case with
+#: exactly ONE atom changed, so a rail that reds can only be reading that atom.
+_ACC_OP = "op_acceptance_fixture_0001"
+_ACC_MAP = "/Game/Fixture/Lvl_Fixture"
+_ACC_PATH = "/Game/Fixture/Lvl_Fixture.Lvl_Fixture:PersistentLevel.AnchorActor_0"
+_ACC_OTHER = "/Game/Fixture/Lvl_Fixture.Lvl_Fixture:PersistentLevel.Bystander_0"
+_ACC_ANCHOR = [1200.0, -450.0, 92.5]
+_ACC_STEP = 250.0
+
+
+def _acc_envelope(record_type, ident, stage, **over):
+    """The raw-record envelope shape the far side writes (far_side.py:548-567)."""
+    rec = {"record_schema": "wf.scene_survey.raw_evidence_record.v1",
+           "operation_id": _ACC_OP, "record_id": "{}#{}".format(record_type, ident),
+           "record_type": record_type, "record_ident": ident, "stage": stage,
+           "collection_status": CS_COLLECTED, "evidence_class": OBSERVED,
+           "world_identity": _ACC_MAP, "collection_ok": True, "errors": []}
+    rec.update(over)
+    return rec
+
+
+def _clean_acceptance_case():
+    """``(subject, report, raw)`` for a survey that IS acceptance-eligible.
+
+    Built so all six terms are decidedly True: an ``actor_object_path`` subject
+    (M), a world record naming the requested map (W), exactly one actor record
+    carrying the requested path (P), whose measured location is the anchor the
+    report states (T), with a population whose distances and a marker sweep whose
+    placement law both resolve about that location (B), over records that are
+    complete, singly-operation-bound, finite and self-consistent (E).
+    """
+    subject = {
+        "subject_id": "subject_acceptance_alpha",
+        "subject_kind": "actor",
+        "map_asset_path": _ACC_MAP,
+        "anchor_mode": "actor_object_path",
+        "anchor_location": None,
+        "anchor_rotation": None,
+        "anchor_object_path": _ACC_PATH,
+        "resolved_by": "caller",
+        "schema_version": "wf.scene_survey.survey_subject.v1",
+    }
+    report = {
+        "subject_id": "subject_acceptance_alpha",
+        "subject_resolved_by": "caller",
+        "map_asset_path": _ACC_MAP,
+        "observed_anchor_location": list(_ACC_ANCHOR),
+        "observed_anchor_object_path": _ACC_PATH,
+        "runtime_executed": True,
+        "acceptance_eligible": True,
+        "acceptance_ineligibility_reason": None,
+        # The five pre-existing compared aggregates, stated as the raw re-derives
+        # them, so an acceptance negative can never be confused with one of those
+        # rails firing on an incomplete fixture.
+        "actor_bounds_valid": True,
+        "temporary_placements_grounded": 2,
+        "overlap_count": 0,
+        "player_clearance_valid": True,
+        "cleanup_verified": True,
+        "meta": {"acceptance_components": {
+            "anchor_mode_observable": True,
+            "observed_world_identity_valid": True,
+            "observed_actor_identity_valid": True,
+            "observed_actor_transform_valid": True,
+            "survey_bound_to_observed_actor": True,
+        }},
+    }
+    other = [_ACC_ANCHOR[0] + 200.0, _ACC_ANCHOR[1], _ACC_ANCHOR[2]]
+    raw = {
+        "schema_version": "wf.scene_survey.raw_evidence_bundle.v1",
+        "world": {"observed": _acc_envelope(
+            "world", "observed", "world_identity",
+            package_name=_ACC_MAP, world_identity=_ACC_MAP,
+            world_object_path=_ACC_MAP + ".Lvl_Fixture")},
+        "actor": {
+            _ACC_PATH: _acc_envelope(
+                "actor", _ACC_PATH, "observe", actor_object_path=_ACC_PATH,
+                path_name=_ACC_PATH, class_name="AAnchorActor",
+                location=list(_ACC_ANCHOR), rotation=[0.0, 0.0, 0.0],
+                scale=[1.0, 1.0, 1.0], bounds_origin=list(_ACC_ANCHOR),
+                bounds_extent=[50.0, 50.0, 92.5], distance_to_anchor_cm=0.0,
+                component_refs=[]),
+            _ACC_OTHER: _acc_envelope(
+                "actor", _ACC_OTHER, "observe", actor_object_path=_ACC_OTHER,
+                path_name=_ACC_OTHER, class_name="AStaticMeshActor",
+                location=other, rotation=[0.0, 0.0, 0.0], scale=[1.0, 1.0, 1.0],
+                bounds_origin=other, bounds_extent=[25.0, 25.0, 25.0],
+                distance_to_anchor_cm=200.0, component_refs=[]),
+        },
+        "component": {},
+        "trace": {},
+        "marker": {},
+        "proxy": {},
+        "temporary_placement": {},
+        "inventory": {
+            "pre": _acc_envelope("inventory", "pre", "anchor_bind",
+                                 actor_paths=[_ACC_PATH, _ACC_OTHER],
+                                 dirty_packages=[],
+                                 operation_owned_actor_paths=[]),
+            "post": _acc_envelope("inventory", "post", "cleanup",
+                                  actor_paths=[_ACC_PATH, _ACC_OTHER],
+                                  dirty_packages=[],
+                                  operation_owned_actor_paths=[]),
+        },
+    }
+    for i in range(2):
+        ident = "marker_{:03d}".format(i)
+        tref = "trace#{}::ground".format(ident)
+        raw["trace"][ident + "::ground"] = _acc_envelope(
+            "trace", ident + "::ground", "classify", hit=True,
+            impact_point=[_ACC_ANCHOR[0] + (i + 1) * _ACC_STEP, _ACC_ANCHOR[1],
+                          _ACC_ANCHOR[2]],
+            impact_normal=[0.0, 0.0, 1.0])
+        raw["marker"][ident] = _acc_envelope(
+            "marker", ident, "classify", index=i,
+            location=[_ACC_ANCHOR[0] + (i + 1) * _ACC_STEP, _ACC_ANCHOR[1],
+                      _ACC_ANCHOR[2]],
+            ground_trace_ref=tref, ground_impact_z=_ACC_ANCHOR[2],
+            footprint_trace_refs=[], footprint_trace_hits=[True] * 4,
+            capsule_overlap_static_actor_paths=[],
+            capsule_overlap_dynamic_actor_paths=[],
+            grounded=True, footprint=True, overlap=False, capsule_clear=True,
+            accepted=True)
+    return subject, report, raw
+
+
+def _acceptance_dogfood(t):
+    """Every acceptance term gets a positive control AND its own negative.
+
+    A rail observed only failing is indistinguishable from a rail that always
+    fails, and a rail observed only passing proves nothing at all — so each of the
+    six terms is driven both ways from the SAME fixture.
+    """
+    def rc(subject, report, raw):
+        return recompute_all(raw, requested_map=subject.get("map_asset_path"),
+                             subject=subject, report=report, operation_id=_ACC_OP)
+
+    # ---- POSITIVE CONTROL: all six decided True, and the claim is accepted ---- #
+    s, r, raw = _clean_acceptance_case()
+    got = rc(s, r, raw)
+    for field in ACCEPTANCE_COMPONENT_FIELDS + ("acceptance_eligible",):
+        t("acc_pos_" + field, got[field]["verdict"] is True,
+          "{}: {}".format(field, got[field].get("detail")))
+    mis, inv = compare(r, got)
+    t("acc_pos_report_accepted", mis == [] and inv == [], (mis, inv))
+
+    # ---- M: the mode is the caller's, and explicit_transform is never eligible - #
+    s, r, raw = _clean_acceptance_case()
+    s["anchor_mode"] = "explicit_transform"
+    s["anchor_object_path"] = None
+    s["anchor_location"] = list(_ACC_ANCHOR)
+    got = rc(s, r, raw)
+    t("acc_neg_M_explicit_transform",
+      got["acceptance_anchor_mode_observable"]["verdict"] is False
+      and got["acceptance_eligible"]["verdict"] is False, got["acceptance_eligible"])
+    mis, _i = compare(r, got, ("acceptance_eligible",))
+    t("acc_neg_M_overclaim_flagged", len(mis) == 1, mis)
+    s, r, raw = _clean_acceptance_case()
+    s["anchor_mode"] = "telepathy"
+    got = rc(s, r, raw)
+    t("acc_neg_M_unknown_mode_is_unknown",
+      got["acceptance_anchor_mode_observable"]["verdict"] is UNKNOWN,
+      got["acceptance_anchor_mode_observable"])
+
+    # ---- W: measured world package, never the report's echo ------------------- #
+    s, r, raw = _clean_acceptance_case()
+    raw["world"]["observed"]["package_name"] = "/Game/Fixture/Lvl_Elsewhere"
+    got = rc(s, r, raw)
+    t("acc_neg_W_other_world",
+      got["acceptance_world_identity_bound"]["verdict"] is False
+      and got["acceptance_eligible"]["verdict"] is False,
+      got["acceptance_world_identity_bound"])
+    # ...and the report echoing the RIGHT map does not rescue it.
+    t("acc_neg_W_report_echo_does_not_rescue",
+      r["map_asset_path"] == _ACC_MAP
+      and got["acceptance_eligible"]["verdict"] is False,
+      "the report still names the requested map; the raw does not")
+
+    # ---- P: the actor population, not the report's observed_anchor_object_path - #
+    s, r, raw = _clean_acceptance_case()
+    substituted = raw["actor"].pop(_ACC_PATH)
+    substituted["path_name"] = _ACC_OTHER + "_substitute"
+    substituted["actor_object_path"] = substituted["path_name"]
+    raw["actor"][substituted["path_name"]] = substituted
+    got = rc(s, r, raw)
+    t("acc_neg_P_substituted_actor",
+      got["acceptance_actor_identity_bound"]["verdict"] is False
+      and got["acceptance_eligible"]["verdict"] is False,
+      got["acceptance_actor_identity_bound"])
+    s, r, raw = _clean_acceptance_case()
+    raw["actor"] = {}
+    got = rc(s, r, raw)
+    t("acc_neg_P_no_population_is_unknown",
+      got["acceptance_actor_identity_bound"]["verdict"] is UNKNOWN
+      and got["acceptance_eligible"]["verdict"] is UNKNOWN,
+      got["acceptance_actor_identity_bound"])
+    _m, inv = compare(r, got, ("acceptance_eligible",))
+    t("acc_neg_P_unknown_presented_as_decided", len(inv) == 1, inv)
+    s, r, raw = _clean_acceptance_case()
+    raw["actor"][_ACC_PATH]["collection_ok"] = False
+    got = rc(s, r, raw)
+    t("acc_neg_P_uncollected_actor_is_unknown",
+      got["acceptance_actor_identity_bound"]["verdict"] is UNKNOWN,
+      got["acceptance_actor_identity_bound"])
+    # ...and the report's own restatement of what it anchored on is held to the raw.
+    s, r, raw = _clean_acceptance_case()
+    r["observed_anchor_object_path"] = _ACC_OTHER
+    got = rc(s, r, raw)
+    t("acc_neg_P_restated_path_contradicts_raw",
+      got["acceptance_actor_identity_bound"]["verdict"] is False
+      and got["acceptance_eligible"]["verdict"] is False,
+      got["acceptance_actor_identity_bound"])
+
+    # ---- T: the stated transform vs the measured one -------------------------- #
+    s, r, raw = _clean_acceptance_case()
+    r["observed_anchor_location"] = [_ACC_ANCHOR[0] + 500.0, _ACC_ANCHOR[1],
+                                     _ACC_ANCHOR[2]]
+    got = rc(s, r, raw)
+    t("acc_neg_T_drifted_transform",
+      got["acceptance_actor_transform_bound"]["verdict"] is False
+      and got["acceptance_eligible"]["verdict"] is False,
+      got["acceptance_actor_transform_bound"])
+    # ...and the tolerance is the named contract value, honoured at the boundary.
+    s, r, raw = _clean_acceptance_case()
+    r["observed_anchor_location"] = [_ACC_ANCHOR[0] + TAU_ANCHOR_TRANSFORM_CM * 0.5,
+                                     _ACC_ANCHOR[1], _ACC_ANCHOR[2]]
+    t("acc_pos_T_within_tau",
+      rc(s, r, raw)["acceptance_actor_transform_bound"]["verdict"] is True)
+    s, r, raw = _clean_acceptance_case()
+    r["observed_anchor_location"] = [_ACC_ANCHOR[0] + TAU_ANCHOR_TRANSFORM_CM * 2.0,
+                                     _ACC_ANCHOR[1], _ACC_ANCHOR[2]]
+    t("acc_neg_T_beyond_tau",
+      rc(s, r, raw)["acceptance_actor_transform_bound"]["verdict"] is False)
+    s, r, raw = _clean_acceptance_case()
+    raw["actor"][_ACC_PATH]["location"] = None
+    got = rc(s, r, raw)
+    t("acc_neg_T_unmeasured_is_unknown",
+      got["acceptance_actor_transform_bound"]["verdict"] is UNKNOWN,
+      got["acceptance_actor_transform_bound"])
+
+    # ---- B: the survey origin actually used ----------------------------------- #
+    s, r, raw = _clean_acceptance_case()
+    raw["actor"][_ACC_OTHER]["distance_to_anchor_cm"] = 999.0
+    got = rc(s, r, raw)
+    t("acc_neg_B_population_distance_disagrees",
+      got["acceptance_survey_bound_to_actor"]["verdict"] is False
+      and got["acceptance_eligible"]["verdict"] is False,
+      got["acceptance_survey_bound_to_actor"])
+    s, r, raw = _clean_acceptance_case()
+    raw["actor"][_ACC_PATH]["distance_to_anchor_cm"] = 700.0
+    t("acc_neg_B_anchor_is_not_the_origin",
+      rc(s, r, raw)["acceptance_survey_bound_to_actor"]["verdict"] is False)
+    s, r, raw = _clean_acceptance_case()
+    raw["marker"]["marker_001"]["location"] = [_ACC_ANCHOR[0] + 3.0 * _ACC_STEP,
+                                               _ACC_ANCHOR[1], _ACC_ANCHOR[2]]
+    t("acc_neg_B_marker_step_breaks",
+      rc(s, r, raw)["acceptance_survey_bound_to_actor"]["verdict"] is False,
+      "candidate 1 must sit at 2 steps from the anchor, not 3")
+    s, r, raw = _clean_acceptance_case()
+    raw["marker"]["marker_000"]["location"] = [_ACC_ANCHOR[0] + _ACC_STEP,
+                                               _ACC_ANCHOR[1] + 400.0, _ACC_ANCHOR[2]]
+    t("acc_neg_B_marker_off_anchor_axis",
+      rc(s, r, raw)["acceptance_survey_bound_to_actor"]["verdict"] is False)
+    s, r, raw = _clean_acceptance_case()
+    for ident in list(raw["actor"]):
+        raw["actor"][ident].pop("distance_to_anchor_cm", None)
+    raw["marker"] = {}
+    got = rc(s, r, raw)
+    t("acc_neg_B_no_binding_atoms_is_unknown",
+      got["acceptance_survey_bound_to_actor"]["verdict"] is UNKNOWN,
+      got["acceptance_survey_bound_to_actor"])
+
+    # ---- E: the raw's own right to be read ------------------------------------ #
+    s, r, raw = _clean_acceptance_case()
+    raw["actor"][_ACC_OTHER]["operation_id"] = "op_some_other_run"
+    got = rc(s, r, raw)
+    t("acc_neg_E_two_operations_in_one_bundle",
+      got["acceptance_raw_observations_complete"]["verdict"] is False
+      and got["acceptance_eligible"]["verdict"] is False,
+      got["acceptance_raw_observations_complete"])
+    s, r, raw = _clean_acceptance_case()
+    got = recompute_all(raw, requested_map=_ACC_MAP, subject=s, report=r,
+                        operation_id="op_the_one_being_graded")
+    t("acc_neg_E_bundle_from_another_operation",
+      got["acceptance_raw_observations_complete"]["verdict"] is False,
+      got["acceptance_raw_observations_complete"])
+    s, r, raw = _clean_acceptance_case()
+    raw["world"]["observed"]["collection_status"] = "failed"
+    t("acc_neg_E_failed_world_record",
+      rc(s, r, raw)["acceptance_raw_observations_complete"]["verdict"] is False)
+    s, r, raw = _clean_acceptance_case()
+    raw["world"]["observed"]["evidence_class"] = "unsupported"
+    t("acc_neg_E_unsatisfying_evidence_class",
+      rc(s, r, raw)["acceptance_raw_observations_complete"]["verdict"] is False)
+    s, r, raw = _clean_acceptance_case()
+    raw["world"]["observed"]["world_identity"] = "/Game/Fixture/Lvl_Elsewhere"
+    t("acc_neg_E_world_identity_drift",
+      rc(s, r, raw)["acceptance_raw_observations_complete"]["verdict"] is False)
+    s, r, raw = _clean_acceptance_case()
+    raw["actor"][_ACC_OTHER]["location"] = [float("nan"), 0.0, 0.0]
+    t("acc_neg_E_nonfinite_atom",
+      rc(s, r, raw)["acceptance_raw_observations_complete"]["verdict"] is False)
+    s, r, raw = _clean_acceptance_case()
+    raw["marker"]["marker_000"]["ground_trace_ref"] = "trace#gone"
+    t("acc_neg_E_dangling_ref",
+      rc(s, r, raw)["acceptance_raw_observations_complete"]["verdict"] is False)
+    s, r, raw = _clean_acceptance_case()
+    raw["marker"]["marker_000"]["grounded"] = False
+    t("acc_neg_E_contradictory_restatement",
+      rc(s, r, raw)["acceptance_raw_observations_complete"]["verdict"] is False)
+    s, r, raw = _clean_acceptance_case()
+    for kind in ("world", "actor", "marker", "trace", "inventory"):
+        for rec in raw[kind].values():
+            rec.pop("operation_id", None)
+    got = rc(s, r, raw)
+    t("acc_neg_E_unbound_bundle_is_unknown",
+      got["acceptance_raw_observations_complete"]["verdict"] is UNKNOWN,
+      got["acceptance_raw_observations_complete"])
+
+    # ---- the SYMMETRIC direction contracts:1144-1153 declined to install ------ #
+    s, r, raw = _clean_acceptance_case()
+    r["acceptance_eligible"] = False
+    mis, _i = compare(r, rc(s, r, raw), ("acceptance_eligible",))
+    t("acc_neg_underclaim_is_also_a_mismatch", len(mis) == 1,
+      "a report claiming ineligible over raw that re-derives eligible must FAIL "
+      "too, or the rail only polices one direction: {}".format(mis))
+
+    # ---- a component claim that disagrees with its own raw -------------------- #
+    s, r, raw = _clean_acceptance_case()
+    raw["actor"][_ACC_OTHER]["distance_to_anchor_cm"] = 999.0
+    r["meta"]["acceptance_components"]["survey_bound_to_observed_actor"] = True
+    mis, _i = compare(r, rc(s, r, raw), ("acceptance_survey_bound_to_actor",))
+    t("acc_neg_component_claim_mismatch", len(mis) == 1, mis)
+
+    # ---- an UNSTATED optional component is silence, not a mismatch ------------ #
+    s, r, raw = _clean_acceptance_case()
+    r.pop("meta")
+    mis, inv = compare(r, rc(s, r, raw))
+    t("acc_pos_unstated_components_are_not_mismatches", mis == [] and inv == [],
+      (mis, inv))
+
+    # ---- anti-circularity, asserted STRUCTURALLY over this module's own AST ---- #
+    # A comment promising independence is what this module had before, and it was
+    # false for two months. So the promise is now a test: parse this file and
+    # assert that no CALL anywhere in it names the shared acceptance predicate or
+    # any of the functions that reach it. Prose in a docstring cannot satisfy this,
+    # and a future edit that quietly re-shares the predicate cannot pass it.
+    import ast
+    banned = ("evaluate_acceptance_eligibility", "validate_subject_binding",
+              "acceptance_eligibility_record", "acceptance_raw",
+              "derive_acceptance_eligibility", "sufficiency_acceptance_eligibility",
+              "rederive_and_compare", "derived_record")
+    tree = ast.parse(Path(__file__).read_text(encoding="utf-8"))
+    called = set()
+    imported = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Call):
+            fn = node.func
+            if isinstance(fn, ast.Attribute):
+                called.add(fn.attr)
+            elif isinstance(fn, ast.Name):
+                called.add(fn.id)
+        elif isinstance(node, ast.ImportFrom):
+            imported.update(a.name for a in node.names)
+    reached = sorted(set(banned) & (called | imported))
+    t("acc_no_shared_predicate_reached", reached == [],
+      "this module must never call or import the shared acceptance predicate; "
+      "its AST names {}".format(reached))
+    # ...and `derive` itself, the generic entry point into the shared DERIVATIONS
+    # table, must not be reachable under any alias either.
+    t("acc_no_shared_derive_call", "derive" not in called,
+      "a call to the shared scene_survey_evidence.derive() would make this "
+      "module's verdict the assembler's verdict wearing a different name")
+
+    # ---- the shared vocabulary must not drift out from under the local copy --- #
+    try:
+        import scene_survey_evidence as SE
+        t("acc_vocab_anchor_mode_agrees",
+          OBSERVABLE_ANCHOR_MODE == SE.OBSERVABLE_ANCHOR_MODE,
+          "mine={!r} theirs={!r}".format(OBSERVABLE_ANCHOR_MODE,
+                                         SE.OBSERVABLE_ANCHOR_MODE))
+    except Exception as exc:  # noqa: BLE001
+        print("[recompute] NOTE — anchor-mode vocabulary cross-check skipped: "
+              "{}".format(exc))
+    try:
+        import scene_survey_contracts as SC
+        t("acc_vocab_anchor_modes_agree",
+          tuple(ANCHOR_MODES) == tuple(SC.ANCHOR_MODES),
+          "mine={} theirs={}".format(ANCHOR_MODES, SC.ANCHOR_MODES))
+    except Exception as exc:  # noqa: BLE001
+        print("[recompute] NOTE — anchor-modes vocabulary cross-check skipped: "
+              "{}".format(exc))
 
 
 def _main():
@@ -1165,10 +2227,13 @@ def _main():
     except Exception as exc:  # noqa: BLE001
         print("[recompute] NOTE — evidence resolver cross-check skipped: {}".format(exc))
 
+    # 22. ACCEPTANCE ELIGIBILITY — six terms, each driven both ways.
+    _acceptance_dogfood(t)
+
     for line in failures:
         print("FAIL {}".format(line))
     print("SCENE-SURVEY RECOMPUTE SELF-DOGFOOD: {} ({} negative(s) + positives)".format(
-        "PASS" if not failures else "FAIL", 21))
+        "PASS" if not failures else "FAIL", 22))
     return 0 if not failures else 1
 
 
