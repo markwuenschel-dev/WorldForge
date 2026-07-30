@@ -28,6 +28,22 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[2]
 PY = sys.executable
 
+# The operation the runtime gate grades. This is passed EXPLICITLY and never
+# discovered: validate_scene_survey_runtime.py refuses to scan the operations
+# directory and pick the newest, because "newest on disk" would let an unrelated
+# run satisfy this gate. --pack cannot supply it — that flag is a report label,
+# not a document reference, and no pack schema in this repository declares a
+# bound operation.
+#
+# Omitting the argument does not produce the intentional caller RED; it produces
+# a WIRING DEFECT rail (WF1128) saying the caller never said what to grade. Those
+# are different failures and the gate now distinguishes them, so this argument is
+# what keeps a missing flag from masquerading as absent caller evidence.
+#
+# The spelling must be exact: the validator uses parse_known_args, so a typo
+# (--operation_id) is silently swallowed and falls through to the wiring rail.
+RUNTIME_OPERATION_ID = "op_v2_6_scene_survey_0001"
+
 
 def run(label, relpath, *a):
     script_path = REPO_ROOT / relpath
@@ -91,7 +107,8 @@ def main(argv=None):
         # Waves 3/4 — runtime survey gates (fail-closed until the C++/boot/bridge
         # waves build them; the verdict honestly reflects the unbuilt state).
         results.append(run("run-scene-survey-smoke", PL + "/run_scene_survey_probe.py", "--smoke", *s))
-        results.append(run("validate-scene-survey-runtime", PL + "/validate_scene_survey_runtime.py", *P, *s))
+        results.append(run("validate-scene-survey-runtime", PL + "/validate_scene_survey_runtime.py",
+                           *P, *s, "--operation-id", RUNTIME_OPERATION_ID))
 
     # --- Regression lane (opt-in — the full v2.5 transition shield) ---------
     if args.regressions:

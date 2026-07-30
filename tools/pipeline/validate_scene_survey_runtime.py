@@ -34,6 +34,24 @@ must be inside the caller's declared max age, and — when the operation manifes
 the originating request are available — it must match the request hash. Every one of
 those is fail-closed: an operation nobody named is an operation nobody can verify.
 
+WHY THE RED IS RED (WF1128/WF1129/WF1097). Three completely different situations
+used to render as the same RED, so the gate's colour carried no information:
+
+  * ``input::operation_id_resolved``   WF1128 — WIRING DEFECT. No source produced an
+    operation id at all. The caller forgot to say what to grade. Fixed by editing a
+    command line.
+  * ``input::operation_id_unambiguous`` WF1129 — AMBIGUITY. More than one candidate
+    operation was offered. The gate refuses to choose; picking one silently is how a
+    run grades the wrong operation and nobody finds out.
+  * ``input::caller_evidence_present``  WF1097 — ABSENT CALLER EVIDENCE. The gate
+    knows exactly which operation it would grade, and no runtime artifact for that
+    operation exists yet. THIS is the intentional RED this whole module is waiting
+    on; it is fixed by booting an editor, not by editing a command line.
+
+Exactly one of the three can be a blocking failure on any given run: the evidence
+rail is SKIPPED when no id resolved, and the two resolution rails are mutually
+exclusive by construction. See ``resolve_operation_id``.
+
 INDEPENDENT RE-DERIVATION. This gate does not consult ANY of the report's own
 success flags, derived booleans or summary counts. ``tools/pipeline/
 scene_survey_recompute.py`` re-derives actor_bounds_valid, temporary_placements_
@@ -96,9 +114,224 @@ DEFAULT_MAX_AGE_SECONDS = 86400  # 24h; override with --max-age-seconds
 
 
 # --------------------------------------------------------------------------- #
+# operation-id resolution — an explicit, CLOSED set of sources
+# --------------------------------------------------------------------------- #
+# THE DEFECT THIS EXISTS FOR. v2_6_shield.py invokes this gate as
+# ``validate_scene_survey_runtime.py --pack <pack> --strict`` and passes no
+# --operation-id at all, so the gate went RED on a MISSING ARGUMENT — wearing the
+# same colour as the honest, intentional RED this module is actually waiting on
+# (no live runtime evidence has been produced yet). One of those is fixed by
+# editing a command line; the other is fixed by booting an editor. A gate that
+# renders them identically is a gate whose RED carries no information, and a
+# wiring defect that hides behind an expected RED is a wiring defect nobody fixes.
+#
+# Resolution is an ordered walk over a CLOSED tuple of NAMED sources. Each
+# terminal state gets its own check name and its own failure code:
+#
+#   argument          --operation-id was passed                 -> resolved
+#   pack_declaration  the pack declares exactly ONE bound op    -> resolved
+#   (no candidate)    no source produced one                    -> WF1128 WIRING
+#   (>1 candidate)    sources produced several distinct ids     -> WF1129 AMBIGUOUS
+#
+# WHAT IS DELIBERATELY NOT A SOURCE: the operations directory on disk
+# (scene_survey_operation.py MANIFEST_DIR_REL). "Scan it and take the newest" is
+# the eight-day-old-artifact defect in a new costume — the gate would once again
+# be grading whatever ran last instead of the operation it was ASKED about, and
+# it would go green off another operation's evidence. Nothing in this module
+# lists, globs or sorts that directory; scene_survey_operation.py exposes no
+# enumerator either (every entry point there is id-first). The negative harness
+# tools/pipeline/test_negative_scene_survey_operation_resolution.py proves the
+# absence behaviourally, by making every directory-enumeration primitive raise
+# for the duration of a resolve.
+
+OP_SOURCE_ARGUMENT = "argument"
+OP_SOURCE_PACK = "pack_declaration"
+#: The complete, ordered set of places an operation id may come from. A source
+#: that is not in this tuple is not consulted — that is what makes the resolver
+#: auditable rather than "whatever the filesystem happened to contain".
+OPERATION_ID_SOURCES = (OP_SOURCE_ARGUMENT, OP_SOURCE_PACK)
+
+OUTCOME_RESOLVED = "resolved"
+OUTCOME_WIRING_DEFECT = "wiring_defect"
+OUTCOME_AMBIGUOUS = "ambiguous"
+
+#: Keys a pack document would have to carry for a bound operation to be derivable
+#: from it. NONE OF THESE EXIST IN ANY PACK IN THIS REPOSITORY TODAY — they are a
+#: PROPOSAL, read only from an explicitly-supplied document. See
+#: ``pack_operation_candidates`` for what the pack format actually permits.
+PACK_OPERATION_KEYS = ("scene_survey_operation_id", "scene_survey_operation_ids")
+
+
+def _usable_operation_id(value, repo_root=None):
+    """Strict validation of a candidate id. Returns the id, or None.
+
+    An id is usable only if it survives ``OP.manifest_path_for`` unchanged. That
+    function slugs the id into a directory name, and the slug is LOSSY: two
+    different ids can slug to the same directory, at which point the gate would
+    read one operation's evidence while believing it read another's. So a
+    candidate that had to be rewritten to become filesystem-safe is REFUSED
+    rather than quietly normalised. ``confine_path`` inside that call also fails
+    an id that would escape the repository (WF1130).
+    """
+    if not isinstance(value, str):
+        return None
+    text = value.strip()
+    if not text:
+        return None
+    res = OP.manifest_path_for(REPO_ROOT if repo_root is None else repo_root, text)
+    if not res.ok:
+        return None
+    if Path(res.value["absolute"]).parent.name != text:
+        return None
+    return text
+
+
+def pack_operation_candidates(pack, pack_document=None, repo_root=None):
+    """Operation ids the SELECTED PACK declares as bound to it.
+
+    WHAT THE PACK FORMAT ACTUALLY PERMITS TODAY: nothing. This returns ``[]`` for
+    every pack that exists, and that is a fact about the repository, not a stub.
+
+      * ``--pack`` in this file is a report LABEL, not a document reference. Its
+        value reaches exactly two places — ``ValidationReport("pack", args.pack)``
+        and ``build_meta(pack=args.pack)`` in ``main`` — and is never resolved to
+        a path, opened, or parsed.
+      * The name the shield passes, ``worldforge_vertical_slice``, does not name a
+        pack document at all: the pack YAMLs live in ``procedural/world_packs/``
+        and ``procedural/slice_packs/`` and there is no file of that name in
+        either. It is a SLICE id (``package_slice.py:35``), and the slice package
+        report that carries it names ``pack_id="encounter_loop_world"``.
+      * No pack schema anywhere in the repository carries an operation field.
+
+    So source #2 of ``OPERATION_ID_SOURCES`` is INERT until a pack schema grows a
+    bound-operation field — a change to the pack format, which this module does
+    not own. The seam is written out rather than omitted because the ambiguity
+    rail must be reachable and testable BEFORE that schema exists; a rail whose
+    only possible input is "no candidates" has never been observed rejecting
+    anything, and an unobserved rail is not a rail.
+
+    ``pack_document`` is the injection point: an in-memory mapping standing in for
+    the pack document a future schema would supply. Passing one exercises the
+    real resolution path. Returns ``(candidates, detail)``.
+    """
+    if pack_document is None:
+        return [], ("pack {!r} declares no bound operation: no pack schema in this "
+                    "repository carries one, and this gate never loads a pack "
+                    "document — --pack is a report label, not a document "
+                    "reference".format(pack))
+    if not isinstance(pack_document, dict):
+        return [], ("pack {!r} supplied a {} where a pack document (mapping) was "
+                    "required; refusing to guess at its shape".format(
+                        pack, type(pack_document).__name__))
+    raw = []
+    for key in PACK_OPERATION_KEYS:
+        if key not in pack_document:
+            continue
+        value = pack_document[key]
+        raw.extend(list(value) if isinstance(value, (list, tuple)) else [value])
+    if not raw:
+        return [], ("pack {!r} carries a document but none of the declared "
+                    "bound-operation keys {}".format(pack, list(PACK_OPERATION_KEYS)))
+    return raw, "pack {!r} declares {} candidate(s)".format(pack, len(raw))
+
+
+def resolve_operation_id(args, repo_root=None, pack_document=None):
+    """Resolve WHICH operation is being graded, from named sources only.
+
+    Never touches the filesystem to discover an operation: the only path call in
+    here is ``OP.manifest_path_for``, which FORMS a path from an id it was already
+    given and never reads a directory. See ``OPERATION_ID_SOURCES``.
+
+    Returns a dict with ``operation_id`` (str or None), ``source``, ``outcome``
+    (one of ``OUTCOME_*``), ``candidates`` and ``detail``.
+    """
+    repo_root = REPO_ROOT if repo_root is None else Path(repo_root)
+    res = {"operation_id": None, "source": None, "outcome": None, "candidates": [],
+           "sources_consulted": list(OPERATION_ID_SOURCES),
+           "pack": getattr(args, "pack", None), "detail": ""}
+
+    # 1. an explicitly passed --operation-id wins, and nothing else is consulted.
+    raw = getattr(args, "operation_id", None)
+    if raw is not None and str(raw).strip():
+        explicit = _usable_operation_id(raw, repo_root)
+        if explicit is None:
+            res["outcome"] = OUTCOME_WIRING_DEFECT
+            res["detail"] = (
+                "--operation-id {!r} was passed but is not a usable operation id "
+                "(it is not filesystem-safe as written, or it would escape the "
+                "repository). It is refused rather than normalised: the slug is "
+                "lossy, so two ids can name one directory".format(raw))
+            return res
+        res.update(operation_id=explicit, source=OP_SOURCE_ARGUMENT,
+                   outcome=OUTCOME_RESOLVED, candidates=[explicit],
+                   detail="--operation-id was passed explicitly; source {!r} wins "
+                          "and no other source was consulted".format(OP_SOURCE_ARGUMENT))
+        return res
+
+    # 2. the pack, IF its contract permits it to declare exactly one bound op.
+    if pack_document is None:
+        pack_document = getattr(args, "pack_document", None)
+    raw_candidates, why = pack_operation_candidates(
+        getattr(args, "pack", None), pack_document, repo_root)
+    usable, rejected = [], []
+    for cand in raw_candidates:
+        ok = _usable_operation_id(cand, repo_root)
+        if ok is None:
+            rejected.append(cand)
+        else:
+            usable.append(ok)
+    distinct = sorted(set(usable))
+    res["candidates"] = distinct
+
+    if len(distinct) == 1:
+        res.update(operation_id=distinct[0], source=OP_SOURCE_PACK,
+                   outcome=OUTCOME_RESOLVED,
+                   detail="derived under strict validation from the single bound "
+                          "operation the pack declares ({}); rejected as unusable: "
+                          "{}".format(why, rejected))
+    elif len(distinct) > 1:
+        res.update(outcome=OUTCOME_AMBIGUOUS,
+                   detail="the pack declares {} distinct bound operations {} — this "
+                          "gate refuses to choose".format(len(distinct), distinct))
+    else:
+        res.update(outcome=OUTCOME_WIRING_DEFECT,
+                   detail="{}{}".format(
+                       why,
+                       "" if not rejected else
+                       "; candidate(s) {} were rejected as unusable operation "
+                       "ids".format(rejected)))
+    return res
+
+
+def _validate_operation_id_resolution(rep, res):
+    """Two mutually-exclusive rails, so the RED says WHICH failure this is.
+
+    Ambiguity and wiring are separate terminal states of ``resolve_operation_id``,
+    so at most one of these can fail on any run. Neither is the absent-evidence
+    rail: that one lives at the end of ``_select_input`` and only becomes
+    reachable once an operation id HAS been resolved.
+    """
+    outcome = res.get("outcome")
+    rep.check("input::operation_id_unambiguous", outcome != OUTCOME_AMBIGUOUS,
+              "AMBIGUOUS OPERATION (not a missing argument, and not absent "
+              "evidence): more than one candidate operation was offered and this "
+              "gate will not pick one. Silently choosing is how a run grades the "
+              "wrong operation and reports success about it. Name the one you mean "
+              "with --operation-id. {}".format(res.get("detail")),
+              code=C.SCENE_SURVEY_CONCURRENT_OPERATION)
+    rep.check("input::operation_id_resolved", outcome != OUTCOME_WIRING_DEFECT,
+              "WIRING DEFECT (this is NOT the absent-runtime-evidence RED): no "
+              "operation id was produced by ANY of the declared sources {}. The "
+              "caller did not say what to grade, so nothing was graded — fix the "
+              "invocation, not the editor. {}".format(
+                  list(OPERATION_ID_SOURCES), res.get("detail")),
+              code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
+
+
+# --------------------------------------------------------------------------- #
 # input selection — WHICH operation is being graded, and is this its artifact?
 # --------------------------------------------------------------------------- #
-def _select_input(rep, args, now=None, repo_root=None):
+def _select_input(rep, args, now=None, repo_root=None, resolution=None):
     """Resolve the report path for the NAMED operation, fail-closed.
 
     Returns a context dict. Every failure here is blocking: a gate that cannot say
@@ -107,18 +340,24 @@ def _select_input(rep, args, now=None, repo_root=None):
     ``repo_root`` is a parameter rather than a module constant so this rail can be
     driven to GREEN over a synthetic tree in ``_dogfood``. A rail that has only ever
     been observed failing is indistinguishable from a rail that always fails.
+
+    ``resolution`` is the output of ``resolve_operation_id``; it is computed here
+    when not supplied so every caller — including the dogfood harness — goes
+    through the same resolution rails.
     """
     repo_root = Path(repo_root) if repo_root is not None else REPO_ROOT
+    if resolution is None:
+        resolution = resolve_operation_id(args, repo_root=repo_root)
+    _validate_operation_id_resolution(rep, resolution)
+
+    operation_id = resolution.get("operation_id")
     ctx = {"report_path": None, "manifest": None, "manifest_path": None,
-           "request": None, "operation_id": args.operation_id,
+           "request": None, "operation_id": operation_id,
+           "operation_id_source": resolution.get("source"),
+           "resolution": resolution,
            "selection": None, "repo_root": repo_root}
 
-    stated = bool(args.operation_id and str(args.operation_id).strip())
-    rep.check("input::operation_id_stated", stated,
-              "--operation-id is required: without it this gate reads one fixed "
-              "filename and any well-formed report satisfies any operation forever "
-              "(that is how an eight-day-old artifact was graded as current)",
-              code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
+    stated = bool(operation_id)
 
     # 1. explicit path wins, but is still bound to the stated operation below.
     if args.report:
@@ -127,7 +366,7 @@ def _select_input(rep, args, now=None, repo_root=None):
             ctx["report_path"] = repo_root / args.report
         ctx["selection"] = "explicit_path"
     elif stated:
-        res = OP.report_path_for(repo_root, args.operation_id)
+        res = OP.report_path_for(repo_root, operation_id)
         if res.ok:
             ctx["report_path"] = res.value["absolute"]
             ctx["selection"] = "operation_scoped"
@@ -136,12 +375,16 @@ def _select_input(rep, args, now=None, repo_root=None):
                       "cannot form an operation-scoped report path: {} [{}]".format(
                           res.detail, res.code),
                       code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
-    if ctx["report_path"] is None or not ctx["report_path"].is_file():
+    report_on_disk = ctx["report_path"] is not None and ctx["report_path"].is_file()
+    # Kept before the legacy-fallback rewrite below: the absent-evidence rail must
+    # name the address the operation's artifact WOULD have, not the shared fixed
+    # filename the diagnostic path degrades to.
+    ctx["operation_scoped_report_path"] = ctx["report_path"]
+    if not report_on_disk:
         # Fall back to the legacy fixed path so the operator still gets a
         # diagnostic, and say plainly that nothing found there is operation-bound.
         fallback = repo_root / LEGACY_RUNTIME_REPORT.relative_to(REPO_ROOT)
-        rep.check("input::operation_scoped_artifact",
-                  ctx["report_path"] is not None and ctx["report_path"].is_file(),
+        rep.check("input::operation_scoped_artifact", report_on_disk,
                   "no operation-scoped report at {} — falling back to the legacy "
                   "unscoped path {} for diagnosis only; a report at a shared fixed "
                   "filename cannot prove which operation produced it".format(
@@ -154,14 +397,16 @@ def _select_input(rep, args, now=None, repo_root=None):
                   "graded {}".format(ctx["report_path"]))
 
     # 2. the operation manifest is the only artifact that binds evidence to a request.
+    manifest_on_disk = False
     if stated:
-        mres = OP.manifest_path_for(repo_root, args.operation_id)
+        mres = OP.manifest_path_for(repo_root, operation_id)
         if mres.ok:
             ctx["manifest_path"] = mres.value["absolute"]
+            manifest_on_disk = Path(mres.value["absolute"]).is_file()
             lres = OP.load_operation_manifest(ctx["manifest_path"])
             rep.check("identity::manifest_present", bool(lres.ok),
                       "operation manifest for {!r} must exist and carry an intact "
-                      "digest ({}): {}".format(args.operation_id,
+                      "digest ({}): {}".format(operation_id,
                                                mres.value["relative_posix"],
                                                "" if lres.ok else lres.detail),
                       code=C.SCENE_SURVEY_OPERATION_MANIFEST_MISSING)
@@ -201,6 +446,35 @@ def _select_input(rep, args, now=None, repo_root=None):
                   "question nobody can reconstruct".format(
                       isinstance(ctx["manifest"], dict), isinstance(ctx["request"], dict)),
                   code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
+
+    # 4. THE INTENTIONAL RED. Everything above can fail for reasons that are the
+    # CALLER'S fault (wrong id, tampered request, drifted hash). This rail fails
+    # for the one reason that is nobody's fault yet: the gate knows exactly which
+    # operation it would grade, formed both of that operation's addresses, and
+    # neither address has anything at it — no live survey has ever run. That is
+    # the honest RED this module was built to hold, and it must never be confused
+    # with the wiring RED above, which is repaired by editing a command line.
+    if not stated:
+        rep.skip("input::caller_evidence_present",
+                 "not evaluated: no operation id was resolved, so there is no "
+                 "address to look for caller evidence at. The blocking failure on "
+                 "this run is input::operation_id_resolved / "
+                 "input::operation_id_unambiguous, NOT absent evidence",
+                 code=C.SCENE_SURVEY_EVIDENCE_MISSING)
+    else:
+        rep.check("input::caller_evidence_present",
+                  bool(report_on_disk and manifest_on_disk),
+                  "ABSENT CALLER EVIDENCE — the intentional RED. Operation {!r} is "
+                  "named and unambiguous (source={}), so this gate knows precisely "
+                  "what it would grade; nothing has produced it. report={} "
+                  "present={} | manifest={} present={}. This is NOT a wiring "
+                  "defect and NOT ambiguity: it is repaired by running "
+                  "run_scene_survey_probe.py against a target, not by changing "
+                  "this invocation".format(
+                      operation_id, ctx.get("operation_id_source"),
+                      ctx.get("operation_scoped_report_path"), bool(report_on_disk),
+                      ctx.get("manifest_path"), bool(manifest_on_disk)),
+                  code=C.SCENE_SURVEY_EVIDENCE_MISSING)
     return ctx
 
 
@@ -608,7 +882,8 @@ def _validate_determinism(rep, survey, bundles, tag="live"):
               code=C.SCENE_SURVEY_DETERMINISM_MISMATCH)
 
 
-def _validate_recompute(rep, subject, survey, bundles, args, tag="live"):
+def _validate_recompute(rep, subject, survey, bundles, args, tag="live",
+                        operation_id=None):
     """r_reported = f(E_raw), for every aggregate the report presents as decided."""
     if not bundles:
         rep.check("recompute::{}::possible".format(tag), False,
@@ -625,6 +900,8 @@ def _validate_recompute(rep, subject, survey, bundles, args, tag="live"):
     requested_map = (subject or {}).get("map_asset_path")
     recomputed = RC.recompute_all(
         bundle, requested_map=requested_map,
+        subject=subject, report=survey, operation_id=operation_id,
+        tau_anchor_transform_cm=args.tau_anchor_transform_cm,
         tau_supported=args.tau_supported_fraction,
         tau_z_cm=args.tau_ground_dz_cm,
         theta_max_deg=args.theta_max_deg)
@@ -667,6 +944,54 @@ def _validate_recompute(rep, subject, survey, bundles, args, tag="live"):
                   cleanup.get("detail") or cleanup),
               code=C.SCENE_SURVEY_CLEANUP_UNVERIFIED)
 
+    # ---- ACCEPTANCE ELIGIBILITY, re-derived from raw ------------------------- #
+    # This gate used to reach eligibility ONLY through SS.validate_subject_binding
+    # (:415), which calls scene_survey_contracts.evaluate_acceptance_eligibility —
+    # the same predicate run_scene_survey_probe.py:795 used to WRITE the claim.
+    # Producer and checker agreed by construction. The three rails below read
+    # RC.acceptance_eligibility, which never touches that predicate and derives its
+    # six terms from raw["world"], raw["actor"] and raw["marker"] instead.
+    #
+    # NOT a "must be True" rail, unlike world identity / bounds / cleanup above: an
+    # explicit_transform survey is legitimately valid AND legitimately ineligible
+    # (scene_survey_contracts.py:1002-1004). What is required is AGREEMENT — in
+    # BOTH directions. A report claiming eligible over raw that denies it is an
+    # over-claim; a report claiming ineligible over raw that supports it is a
+    # report that still does not follow from its own evidence, and it is the
+    # direction scene_survey_contracts.py:1144-1153 explicitly left uninstalled.
+    acc = recomputed["acceptance_eligible"]
+    claimed = RC.claimed_value(survey or {}, "acceptance_eligible")
+    decided = acc.get("sufficient") and RC.is_decided(acc.get("verdict"))
+    rep.check("recompute::{}::acceptance_claim_matches_raw".format(tag),
+              bool(decided) and claimed is acc.get("verdict"),
+              "the report's acceptance_eligible claim must equal the value the RAW "
+              "atoms re-derive, in both directions: report states {!r}, raw "
+              "re-derives {!r} ({})".format(
+                  "<absent>" if claimed is RC._NO_CLAIM else claimed,
+                  acc.get("verdict"), acc.get("detail")),
+              code=C.SCENE_SURVEY_EVIDENCE_UNSUPPORTED_CLAIM)
+
+    comp_mis, comp_inv = RC.compare(survey or {}, recomputed,
+                                    RC.ACCEPTANCE_COMPONENT_FIELDS)
+    rep.check("recompute::{}::acceptance_components_follow_from_raw".format(tag),
+              not comp_mis and not comp_inv,
+              "a stated acceptance component does not follow from the raw atoms: "
+              "mismatch={} invented={}".format(comp_mis[:3], comp_inv[:3]),
+              code=C.SCENE_SURVEY_EVIDENCE_REDERIVATION_MISMATCH)
+
+    # E is the one term with no counterpart in the shared predicate, so nothing
+    # else can red on it. A False here means the raw itself is incomplete, split
+    # across operations, non-finite or self-contradictory — in which case every
+    # other term above was computed over evidence that should not have been read.
+    # UNKNOWN is permitted: it propagates into the verdict above and reds any
+    # decided claim there, which is where that failure belongs.
+    ev = recomputed["acceptance_raw_observations_complete"]
+    rep.check("recompute::{}::acceptance_evidence_not_contradicted".format(tag),
+              ev.get("verdict") is not False,
+              "the raw evidence acceptance stands on is itself broken: {} — {}"
+              .format(ev.get("detail"), ev.get("conjuncts")),
+              code=C.SCENE_SURVEY_EVIDENCE_INSUFFICIENT)
+
 
 # --------------------------------------------------------------------------- #
 # dogfood — every rail gets a negative, and every negative runs the REAL rail
@@ -686,11 +1011,27 @@ def _ran(fn, *a, **kw):
     return {name for name, c in probe.checks.items() if not c["ok"]}
 
 
+def _ran_blocking(fn, *a, **kw):
+    """As ``_ran``, but only the checks that actually turn the gate RED.
+
+    ``_ran`` reports every non-PASS check, and ``ValidationReport.skip`` records
+    SKIP_NOT_APPLICABLE with ``ok=False``. That is the right reading for the
+    tamper negatives, but it is the WRONG reading for the three-way RED
+    distinguishability rails: a deliberately skipped rail would look like a
+    failure and every "and the other two did not fire" clause would be vacuous.
+    """
+    probe = ValidationReport("suite", "dogfood", strict=True)
+    fn(probe, *a, **kw)
+    return {name for name, c in probe.checks.items() if c.get("blocking")}
+
+
 class _Args(object):
     """Minimal argparse stand-in for driving the production rails in dogfood."""
 
     def __init__(self, **kw):
         self.operation_id = kw.get("operation_id")
+        self.pack = kw.get("pack", "dogfood_pack")
+        self.pack_document = kw.get("pack_document")
         self.report = kw.get("report")
         self.request = kw.get("request")
         self.max_age_seconds = kw.get("max_age_seconds", DEFAULT_MAX_AGE_SECONDS)
@@ -698,6 +1039,8 @@ class _Args(object):
                                              RC.TAU_SUPPORTED_FRACTION)
         self.tau_ground_dz_cm = kw.get("tau_ground_dz_cm", RC.TAU_GROUND_DZ_CM)
         self.theta_max_deg = kw.get("theta_max_deg", RC.THETA_MAX_DEG)
+        self.tau_anchor_transform_cm = kw.get("tau_anchor_transform_cm",
+                                              RC.TAU_ANCHOR_TRANSFORM_CM)
 
 
 def _dogfood(rep):
@@ -883,10 +1226,79 @@ def _dogfood(rep):
                   code=C.SCENE_SURVEY_OPERATION_MANIFEST_MISSING)
 
         rep.check("dogfood::unnamed_operation_rejected",
-                  "input::operation_id_stated" in _ran(_select_input, _Args()),
+                  "input::operation_id_resolved" in _ran(_select_input, _Args()),
                   "a gate asked to grade no particular operation must FAIL — that "
                   "is the fixed-filename defect this rail exists for",
                   code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
+
+        # ---- the three REDs must be TELLABLE APART ------------------------- #
+        # This is the whole point of the resolution rails: a missing --operation-id
+        # (a caller wiring bug) used to render identically to "no live survey has
+        # run yet" (the intentional state). Each case below asserts BOTH that its
+        # own rail fires AND that the other two do not, over the SAME synthetic
+        # tree that just went green above.
+        wiring = _ran_blocking(_select_input, _Args(), repo_root=root)
+        rep.check("dogfood::wiring_defect_is_distinguishable",
+                  "input::operation_id_resolved" in wiring
+                  and "input::operation_id_unambiguous" not in wiring
+                  and "input::caller_evidence_present" not in wiring,
+                  "no operation id from any source must fire ONLY the wiring rail: "
+                  "it is a missing argument, not absent evidence and not ambiguity "
+                  "(got {})".format(sorted(wiring)),
+                  code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
+
+        ambiguous = _ran_blocking(
+            _select_input,
+            _Args(pack_document={"scene_survey_operation_ids":
+                                 [op_id, "op_dogfood_positive_0002"]}),
+            repo_root=root)
+        rep.check("dogfood::ambiguity_is_distinguishable",
+                  "input::operation_id_unambiguous" in ambiguous
+                  and "input::operation_id_resolved" not in ambiguous
+                  and "input::caller_evidence_present" not in ambiguous,
+                  "two declared bound operations must fire ONLY the ambiguity rail, "
+                  "and the gate must NOT pick one (got {})".format(sorted(ambiguous)),
+                  code=C.SCENE_SURVEY_CONCURRENT_OPERATION)
+
+        absent = _ran_blocking(_select_input,
+                               _Args(operation_id="op_dogfood_never_ran_0001"),
+                               repo_root=root)
+        rep.check("dogfood::absent_evidence_is_distinguishable",
+                  "input::caller_evidence_present" in absent
+                  and "input::operation_id_resolved" not in absent
+                  and "input::operation_id_unambiguous" not in absent,
+                  "a named operation with nothing on disk must fire ONLY the "
+                  "absent-caller-evidence rail — the gate knew what to grade and "
+                  "nobody has produced it (got {})".format(sorted(absent)),
+                  code=C.SCENE_SURVEY_EVIDENCE_MISSING)
+
+        # POSITIVE: a pack declaring exactly ONE bound operation resolves it,
+        # under the same strict id validation the argument path uses.
+        one_pack = resolve_operation_id(
+            _Args(pack_document={"scene_survey_operation_id": op_id}),
+            repo_root=root)
+        rep.check("dogfood::single_pack_declaration_resolves",
+                  one_pack["operation_id"] == op_id
+                  and one_pack["source"] == OP_SOURCE_PACK,
+                  "one declared bound operation must resolve from the pack source, "
+                  "not fall through to the wiring RED (got {})".format(one_pack),
+                  code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
+
+        # NEGATIVE: the newest-on-disk shortcut must be UNREACHABLE. There are two
+        # published operations under `root` at this point; a resolver that scanned
+        # would return one of them for an invocation that named neither.
+        second = OP.report_path_for(root, "op_dogfood_positive_0002")
+        second.value["absolute"].parent.mkdir(parents=True, exist_ok=True)
+        second.value["absolute"].write_text("{}", encoding="utf-8")
+        scanned = resolve_operation_id(_Args(), repo_root=root)
+        rep.check("dogfood::no_newest_on_disk_fallback",
+                  scanned["operation_id"] is None
+                  and scanned["outcome"] == OUTCOME_WIRING_DEFECT
+                  and scanned["sources_consulted"] == list(OPERATION_ID_SOURCES),
+                  "with operations present on disk and no source naming one, the "
+                  "resolver must still resolve NOTHING — 'take the newest' is the "
+                  "eight-day-old-artifact defect in a new costume (got {})".format(
+                      scanned), code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
         rep.check("dogfood::unbound_request_rejected",
                   "identity::request_hash_bound" in _ran(
                       _select_input, _Args(operation_id="op_dogfood_absent")),
@@ -1101,6 +1513,115 @@ def _dogfood(rep):
                   "a survey of a world other than the requested one must FAIL (got "
                   "{})".format(wrong_world),
                   code=C.SCENE_SURVEY_WORLD_IDENTITY_UNVERIFIED)
+
+        # ---- ACCEPTANCE ELIGIBILITY: one negative per term, all through the
+        # SHIPPED rail. Each case is the single acceptance fixture with exactly one
+        # atom changed, so a rail that reds can only be reading that atom.
+        ACC_RAIL = "recompute::df::acceptance_claim_matches_raw"
+        ACC_COMP = "recompute::df::acceptance_components_follow_from_raw"
+        ACC_EV = "recompute::df::acceptance_evidence_not_contradicted"
+
+        def _acc(mutate=None, operation_id=RC._ACC_OP):
+            """Run the shipped recompute rail over the acceptance fixture."""
+            a_sub, a_rep, a_raw = RC._clean_acceptance_case()
+            if mutate is not None:
+                mutate(a_sub, a_rep, a_raw)
+            return _ran(_validate_recompute, a_sub, a_rep,
+                        [("acceptance_fixture", a_raw, {"operation_id": operation_id})],
+                        _Args(), "df", operation_id=operation_id)
+
+        rep.check("dogfood::acceptance_clean_accepted", not _acc(),
+                  "an acceptance-eligible survey whose raw supports every term must "
+                  "pass EVERY rail, or each negative below is meaningless: {}".format(
+                      sorted(_acc())),
+                  code=C.SCENE_SURVEY_EVIDENCE_REDERIVATION_MISMATCH)
+
+        def _m_explicit(sub, _rep, _raw):
+            sub["anchor_mode"] = "explicit_transform"
+            sub["anchor_object_path"] = None
+            sub["anchor_location"] = list(RC._ACC_ANCHOR)
+
+        def _w_other_world(_sub, _rep, raw):
+            raw["world"]["observed"]["package_name"] = "/Game/Fixture/Lvl_Elsewhere"
+
+        def _p_substituted(_sub, _rep, raw):
+            rec = raw["actor"].pop(RC._ACC_PATH)
+            rec["path_name"] = RC._ACC_OTHER + "_substitute"
+            rec["actor_object_path"] = rec["path_name"]
+            raw["actor"][rec["path_name"]] = rec
+
+        def _t_drifted(_sub, report, _raw):
+            report["observed_anchor_location"] = [RC._ACC_ANCHOR[0] + 500.0,
+                                                  RC._ACC_ANCHOR[1], RC._ACC_ANCHOR[2]]
+
+        def _b_wrong_origin(_sub, _rep, raw):
+            raw["actor"][RC._ACC_OTHER]["distance_to_anchor_cm"] = 999.0
+
+        def _e_two_operations(_sub, _rep, raw):
+            raw["actor"][RC._ACC_OTHER]["operation_id"] = "op_some_other_run"
+
+        for term, label, mutate, rails in (
+                ("M", "explicit_transform_is_never_eligible", _m_explicit, (ACC_RAIL,)),
+                ("W", "world_other_than_requested", _w_other_world, (ACC_RAIL,)),
+                ("P", "substituted_anchor_actor", _p_substituted, (ACC_RAIL,)),
+                ("T", "anchor_transform_not_the_actors", _t_drifted, (ACC_RAIL,)),
+                ("B", "survey_not_centred_on_the_actor", _b_wrong_origin, (ACC_RAIL,)),
+                ("E", "raw_split_across_operations", _e_two_operations,
+                 (ACC_RAIL, ACC_EV))):
+            got = _acc(mutate)
+            rep.check("dogfood::acceptance_{}_{}_rejected".format(term, label),
+                      all(rail in got for rail in rails),
+                      "term {} of A(o)=M∧W∧P∧T∧B∧E must deny an otherwise-perfect "
+                      "report that still claims acceptance_eligible=True; expected "
+                      "{} in the failures, got {}".format(term, list(rails),
+                                                          sorted(got)),
+                      code=C.SCENE_SURVEY_EVIDENCE_UNSUPPORTED_CLAIM)
+
+        # NEGATIVE: the bundle belongs to a DIFFERENT operation than the one graded.
+        rep.check("dogfood::acceptance_foreign_operation_rejected",
+                  ACC_EV in _acc(operation_id="op_the_one_being_graded"),
+                  "raw whose records name another operation must deny term E, "
+                  "however clean each individual measurement is",
+                  code=C.SCENE_SURVEY_EVIDENCE_INSUFFICIENT)
+
+        # NEGATIVE: the SYMMETRIC direction scene_survey_contracts.py:1144-1153
+        # declined to install — a report under-claiming against its own evidence.
+        def _under_claim(_sub, report, _raw):
+            report["acceptance_eligible"] = False
+            report["acceptance_ineligibility_reason"] = \
+                "independent_subject_anchor_not_observable"
+
+        rep.check("dogfood::acceptance_underclaim_rejected",
+                  ACC_RAIL in _acc(_under_claim),
+                  "a report claiming acceptance_eligible=False over raw that "
+                  "re-derives True must FAIL too: an under-claim is still a report "
+                  "that does not follow from its own evidence",
+                  code=C.SCENE_SURVEY_EVIDENCE_UNSUPPORTED_CLAIM)
+
+        # NEGATIVE: a per-component claim forged to True over raw that denies it.
+        def _forged_component(_sub, report, raw):
+            raw["actor"][RC._ACC_OTHER]["distance_to_anchor_cm"] = 999.0
+            report["meta"]["acceptance_components"][
+                "survey_bound_to_observed_actor"] = True
+
+        rep.check("dogfood::acceptance_forged_component_rejected",
+                  ACC_COMP in _acc(_forged_component),
+                  "a meta.acceptance_components entry the raw denies must FAIL the "
+                  "component rail, not just the aggregate one",
+                  code=C.SCENE_SURVEY_EVIDENCE_REDERIVATION_MISMATCH)
+
+        # NEGATIVE: raw too thin to decide, claim stated anyway.
+        def _no_actors(_sub, _rep, raw):
+            raw["actor"] = {}
+
+        thin = _acc(_no_actors)
+        rep.check("dogfood::acceptance_undecidable_claim_rejected",
+                  ACC_RAIL in thin
+                  and "recompute::df::no_unknown_presented_as_decided" in thin,
+                  "an acceptance claim over raw that cannot decide it must FAIL as "
+                  "an unknown presented as decided, not pass as agreement (got "
+                  "{})".format(sorted(thin)),
+                  code=C.SCENE_SURVEY_EVIDENCE_INSUFFICIENT)
     finally:
         import shutil
         shutil.rmtree(tmp, ignore_errors=True)
@@ -1116,9 +1637,13 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="v2.6 scene-survey runtime evidence gate.")
     ap.add_argument("--pack", default="worldforge_vertical_slice")
     ap.add_argument("--operation-id", default=None,
-                    help="the operation being graded. REQUIRED: without it this gate "
-                         "reads one fixed filename and any report satisfies any "
-                         "operation forever")
+                    help="the operation being graded. Wins over every other source. "
+                         "When omitted, the only other source is a pack that "
+                         "declares exactly ONE bound operation — no pack schema "
+                         "carries that field today, so omitting this flag is a "
+                         "WIRING DEFECT (WF1128), reported separately from the "
+                         "absent-runtime-evidence RED (WF1097) and from ambiguity "
+                         "(WF1129). The operations directory is never scanned")
     ap.add_argument("--report", default=None,
                     help="explicit envelope path (still bound to --operation-id)")
     ap.add_argument("--request", default=None,
@@ -1129,6 +1654,11 @@ def main(argv=None):
                     default=RC.TAU_SUPPORTED_FRACTION)
     ap.add_argument("--tau-ground-dz-cm", type=float, default=RC.TAU_GROUND_DZ_CM)
     ap.add_argument("--theta-max-deg", type=float, default=RC.THETA_MAX_DEG)
+    ap.add_argument("--tau-anchor-transform-cm", type=float,
+                    default=RC.TAU_ANCHOR_TRANSFORM_CM,
+                    help="how far the STATED anchor transform may sit from the "
+                         "measured actor transform before term T of acceptance "
+                         "eligibility is denied (cm)")
     ap.add_argument("--strict", action="store_true")
     args, _ = ap.parse_known_args(argv)
     strict = args.strict or strict_from_env()
@@ -1136,7 +1666,8 @@ def main(argv=None):
     rep = ValidationReport("pack", args.pack, strict=strict)
     _dogfood(rep)
 
-    ctx = _select_input(rep, args)
+    resolution = resolve_operation_id(args)
+    ctx = _select_input(rep, args, resolution=resolution)
     _validate_freshness(rep, ctx, args)
 
     obj, survey, subject = _load_envelope(rep, ctx["report_path"], "live")
@@ -1148,18 +1679,26 @@ def main(argv=None):
         _validate_runtime_binding(rep, subject, survey, "live")
         bundles, _source = _collect_raw(rep, ctx, obj, survey, "live")
         _validate_determinism(rep, survey, bundles, "live")
-        _validate_recompute(rep, subject, survey, bundles, args, "live")
+        _validate_recompute(rep, subject, survey, bundles, args, "live",
+                            operation_id=ctx.get("operation_id"))
 
     rep.finalize()
     rep.set_meta(build_meta(
         command="validate-scene-survey-runtime", pack=args.pack, strict=strict,
         status=rep.status, report_type="wf.scene_survey.runtime_gate.v1",
-        extra={"operation_id": args.operation_id,
+        extra={"operation_id": ctx.get("operation_id"),
+               "operation_id_argument": args.operation_id,
+               "operation_id_source": resolution.get("source"),
+               "operation_id_outcome": resolution.get("outcome"),
+               "operation_id_candidates": resolution.get("candidates"),
+               "operation_id_sources_consulted": resolution.get("sources_consulted"),
+               "operation_id_detail": resolution.get("detail"),
                "input_selection": ctx.get("selection"),
                "graded_artifact": str(ctx.get("report_path")),
                "tau_supported_fraction": args.tau_supported_fraction,
                "tau_ground_dz_cm": args.tau_ground_dz_cm,
-               "theta_max_deg": args.theta_max_deg}))
+               "theta_max_deg": args.theta_max_deg,
+               "tau_anchor_transform_cm": args.tau_anchor_transform_cm}))
     REPORT_DIR.mkdir(parents=True, exist_ok=True)
     rep.write(REPORT_DIR, "validate_scene_survey_runtime_report.json")
     rep.print_summary("validate-scene-survey-runtime")
