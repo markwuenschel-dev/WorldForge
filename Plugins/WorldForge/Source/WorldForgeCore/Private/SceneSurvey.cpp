@@ -86,8 +86,21 @@ int32 USceneSurveyStatics::SampleSurveySupport(const UObject* WorldContextObject
 		UE_LOG(LogWFSurvey, Warning, TEXT("WF_SURVEY_SUPPORT_ERROR reason=bad_params"));
 		return 0;
 	}
+	// Tolerances are CONTRACT VALUES — docs/contracts/v2_6_support_grid_contract.md §3.
 	const float MaxSlope = 44.f, MaxStepH = 45.f;
-	const int32 N = FMath::Max(1, (int32)(RadiusCm / StepCm));
+
+	// Grid extent. sample_region_shape = AXIS_ALIGNED_SQUARE; RadiusCm is its HALF-EXTENT.
+	//     k = floor(R / s),  i,j in [-k, k],  p_ij = (a.x + i*s, a.y + j*s),  N = (2k+1)^2
+	// Consequence, and the point of the change: R < s yields k = 0 -> exactly ONE centre
+	// sample. The previous max(1, floor(R/s)) sampled a 3x3 block reaching +/-s, i.e.
+	// OUTSIDE the half-extent it was handed. A collector must not sample beyond its
+	// requested region.
+	// A radial region is a SEPARATE, SEPARATELY-DECLARED mode (i*i + j*j <= (R/s)^2).
+	// Never substitute disk semantics for square semantics silently — the two modes must
+	// stay distinguishable by name at every layer.
+	// RadiusCm > 0 and StepCm > 0 are guaranteed by the guard above, so the quotient is
+	// positive and FloorToInt is a true floor.
+	const int32 K = FMath::FloorToInt(RadiusCm / StepCm);
 	FCollisionQueryParams Q;
 	Q.bTraceComplex = true;
 
@@ -95,19 +108,30 @@ int32 USceneSurveyStatics::SampleSurveySupport(const UObject* WorldContextObject
 	TMap<int64, float> GridZ;
 
 	// Pass 1 — classify each cell from a downward complex trace + head clearance.
-	for (int32 ix = -N; ix <= N; ++ix)
+	for (int32 ix = -K; ix <= K; ++ix)
 	{
-		for (int32 iy = -N; iy <= N; ++iy)
+		for (int32 iy = -K; iy <= K; ++iy)
 		{
 			const float X = Center.X + ix * StepCm;
 			const float Y = Center.Y + iy * StepCm;
 			const FVector S(X, Y, Center.Z + 1000.f), E(X, Y, Center.Z - 3000.f);
 			FHitResult H;
 			const bool bHit = W->LineTraceSingleByChannel(H, S, E, ECC_Visibility, Q);
-			int32 c;
+			int32 c = CLS_UNKNOWN;  // fail-closed default, before any classification
 			if (!bHit)
 			{
 				c = CLS_UNSUPPORTED;  // a clean miss = no floor beneath this cell
+			}
+			else if (H.ImpactPoint.ContainsNaN() || H.ImpactNormal.ContainsNaN()
+				|| H.ImpactNormal.IsNearlyZero())
+			{
+				// A blocking hit carrying no usable geometry is a FAILED MEASUREMENT,
+				// not an observation that there is no floor here. Fail-closed: it is
+				// trace_error, never unsupported, and never counted valid. This is the
+				// only assignment of CLS_TRACE_ERROR; without it the class is
+				// structurally unreachable and every "valid excludes trace_error" rail
+				// downstream is vacuous.
+				c = CLS_TRACE_ERROR;
 			}
 			else
 			{
@@ -132,13 +156,26 @@ int32 USceneSurveyStatics::SampleSurveySupport(const UObject* WorldContextObject
 		}
 	}
 
-	// Pass 2 — edge reclassification: a valid cell bordering an invalid neighbour
-	// (unsupported / trace_error / unknown) or a large step discontinuity is an edge.
+	// Pass 2 — DIAGNOSTIC edge marking. This is NOT the authoritative edge result.
+	//
+	// Authoritative predicate (contract §5):
+	//     E_ij = S_ij AND exists q in N(i,j):  !S_q
+	//                                       OR |z_ij - z_q| > tau_h
+	//                                       OR angle(n_ij, n_q) > tau_n
+	// The tau_n (normal-discontinuity) term is ABSENT below, and tau_n has no declared
+	// value anywhere yet, so this flag systematically UNDER-reports: a ridge crest with
+	// a sharp normal change but no height step stays `valid` on both sides.
+	//
+	// Therefore CLS_EDGE here is a diagnostic hint only. It MUST NOT satisfy the
+	// authoritative edge result; that is derived independently by the WorldForge
+	// evidence layer from raw observations (tools/pipeline/support_grid_canonical.py).
+	// Keeping the engine side to raw observation + diagnostics is what stops the C++
+	// and the validator from agreeing merely by duplicated convention.
 	static const int32 DX[4] = { 1, -1, 0, 0 };
 	static const int32 DY[4] = { 0, 0, 1, -1 };
-	for (int32 ix = -N; ix <= N; ++ix)
+	for (int32 ix = -K; ix <= K; ++ix)
 	{
-		for (int32 iy = -N; iy <= N; ++iy)
+		for (int32 iy = -K; iy <= K; ++iy)
 		{
 			int32* Cp = Cls.Find(GridKey(ix, iy));
 			if (!Cp || *Cp != CLS_VALID) { continue; }
@@ -179,10 +216,14 @@ int32 USceneSurveyStatics::SampleSurveySupport(const UObject* WorldContextObject
 		default:              ++Unknown; break;
 		}
 	}
+	// Field order up to unknown= is load-bearing: tools/pipeline/run_scene_survey_probe.py:136
+	// parses this prefix as a DIAGNOSTIC channel. New fields are appended after it only.
+	// edge_authority=diagnostic says out loud that edge= lacks the tau_n term (see pass 2).
 	UE_LOG(LogWFSurvey, Display,
 		TEXT("WF_SURVEY_SUPPORT total=%d valid=%d unsupported=%d edge=%d blocked=%d ")
-		TEXT("trace_error=%d unknown=%d radius=%.1f step=%.1f navmesh=0"),
-		Total, Valid, Unsupported, Edge, Blocked, TraceErr, Unknown, RadiusCm, StepCm);
+		TEXT("trace_error=%d unknown=%d radius=%.1f step=%.1f navmesh=0 ")
+		TEXT("shape=axis_aligned_square k=%d edge_authority=diagnostic"),
+		Total, Valid, Unsupported, Edge, Blocked, TraceErr, Unknown, RadiusCm, StepCm, K);
 	return Total;
 }
 

@@ -38,12 +38,26 @@ public:
 		meta = (WorldContext = "WorldContextObject"))
 	static int32 EnumerateSurveyActors(const UObject* WorldContextObject, FVector Center, float RadiusCm);
 
-	/** Downward-trace 6-class support sampling over a grid around Center (step
-	 *  StepCm, half-extent RadiusCm): each cell -> valid_support / unsupported /
-	 *  edge / blocked / trace_error / unknown (unknown is the fail-closed default;
-	 *  unsupported = clean miss; edge = valid cell bordering an invalid neighbour or
-	 *  a step discontinuity). Emits a WF_SURVEY_SUPPORT summary; returns the total
-	 *  sample count. Collision/geometry evidence only — never navmesh. */
+	/** Downward-trace 6-class support sampling over a grid around Center.
+	 *
+	 *  Sample region: sample_region_shape = AXIS_ALIGNED_SQUARE, RadiusCm = its
+	 *  HALF-EXTENT, StepCm = spacing. k = floor(RadiusCm/StepCm), indices i,j in
+	 *  [-k,k], so RadiusCm < StepCm gives exactly ONE centre sample and no cell is
+	 *  ever placed outside the requested half-extent. A radial/disk region would be a
+	 *  separate declared mode (i*i + j*j <= (R/s)^2) — never a silent substitution.
+	 *
+	 *  Each cell -> valid_support / unsupported / edge / blocked / trace_error /
+	 *  unknown. unsupported = clean miss; trace_error = a blocking hit with NaN or
+	 *  degenerate geometry (a failed measurement, not a miss); unknown is the
+	 *  fail-closed default and is unreachable by construction here.
+	 *
+	 *  `edge` is DIAGNOSTIC ONLY: it omits the normal-discontinuity (tau_n) term of the
+	 *  authoritative edge predicate and therefore under-reports. The authoritative edge
+	 *  result is derived by the WorldForge evidence layer, not here. See
+	 *  docs/contracts/v2_6_support_grid_contract.md.
+	 *
+	 *  Emits a WF_SURVEY_SUPPORT summary; returns the total sample count.
+	 *  Collision/geometry evidence only — never navmesh. */
 	UFUNCTION(BlueprintCallable, Category = "WorldForge|SceneSurvey",
 		meta = (WorldContext = "WorldContextObject"))
 	static int32 SampleSurveySupport(const UObject* WorldContextObject, FVector Center, float RadiusCm, float StepCm);
