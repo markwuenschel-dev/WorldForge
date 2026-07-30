@@ -1,0 +1,1935 @@
+{
+  "comparison_tolerances": {
+    "normal_abs_tol": 1e-06,
+    "note": "A consumer comparing its own collector against this fixture compares positions and normals within these; classes, counts, and index sets compare exactly.",
+    "position_abs_tol_cm": 0.0001
+  },
+  "content_hash": {
+    "algorithm": "sha256",
+    "covers": "canonical JSON of this whole document, sort_keys=True, separators=(',',':'), with content_hash.value set to \"\"",
+    "value": "630ce6759edec2bcada705c77df4708149ad6191fee200c2b15425b8b0f4fccb"
+  },
+  "coordinate_frame": {
+    "authored_natively": true,
+    "axis_conversion_applied": "none",
+    "grid_alignment": "axis_aligned_to_world_XY, not rotated to subject yaw",
+    "handedness": "left_handed",
+    "name": "unreal_world_cm",
+    "note": "The Grid SOP is set to orient=0 (XY plane) so Houdini authors the plane with a +Z normal in centimetre-scale units. Houdini's default ZX/+Y-up orientation is deliberately unused so that no axis conversion exists anywhere in this fixture.",
+    "units": "centimetres",
+    "up_axis": "+Z"
+  },
+  "derivation_authority": "tools/pipeline/support_grid_canonical.py",
+  "derivation_note": "The expected block is NOT hand-authored and NOT re-implemented here. Houdini produced the raw_observations; support_grid_canonical.derive_grid produced every expected value from them.",
+  "expected": {
+    "class_counts": {
+      "blocked": 0,
+      "edge": 0,
+      "trace_error": 0,
+      "unknown": 0,
+      "unsupported": 0,
+      "valid_support": 25
+    },
+    "edge_cells": [],
+    "expectation_depends_on_tau_n": true,
+    "expectation_depends_on_tau_n_note": "The resolved classes of this fixture are a function of whether tau_n is declared in the authority module, NOT of the geometry alone. generator.authority_module_sha256 pins which version of support_grid_canonical.py produced this expected block. If that hash does not match the authority a consumer is testing against, REGENERATE this fixture \u2014 do not reconcile by hand.",
+    "expectation_note": "tau_n IS declared (44.0 deg), so the normal-discontinuity term was evaluated. On a perfectly flat plane no neighbour differs in support, height, or normal, so no edge term fires and every cell is PROVED a non-edge (edge=False) and resolves to 'valid_support'. This is the fully-determined flat-plane baseline.",
+    "heights": [
+      {
+        "i": -2,
+        "j": -2,
+        "z_cm": 0.0
+      },
+      {
+        "i": -2,
+        "j": -1,
+        "z_cm": 0.0
+      },
+      {
+        "i": -2,
+        "j": 0,
+        "z_cm": 0.0
+      },
+      {
+        "i": -2,
+        "j": 1,
+        "z_cm": 0.0
+      },
+      {
+        "i": -2,
+        "j": 2,
+        "z_cm": 0.0
+      },
+      {
+        "i": -1,
+        "j": -2,
+        "z_cm": 0.0
+      },
+      {
+        "i": -1,
+        "j": -1,
+        "z_cm": 0.0
+      },
+      {
+        "i": -1,
+        "j": 0,
+        "z_cm": 0.0
+      },
+      {
+        "i": -1,
+        "j": 1,
+        "z_cm": 0.0
+      },
+      {
+        "i": -1,
+        "j": 2,
+        "z_cm": 0.0
+      },
+      {
+        "i": 0,
+        "j": -2,
+        "z_cm": 0.0
+      },
+      {
+        "i": 0,
+        "j": -1,
+        "z_cm": 0.0
+      },
+      {
+        "i": 0,
+        "j": 0,
+        "z_cm": 0.0
+      },
+      {
+        "i": 0,
+        "j": 1,
+        "z_cm": 0.0
+      },
+      {
+        "i": 0,
+        "j": 2,
+        "z_cm": 0.0
+      },
+      {
+        "i": 1,
+        "j": -2,
+        "z_cm": 0.0
+      },
+      {
+        "i": 1,
+        "j": -1,
+        "z_cm": 0.0
+      },
+      {
+        "i": 1,
+        "j": 0,
+        "z_cm": 0.0
+      },
+      {
+        "i": 1,
+        "j": 1,
+        "z_cm": 0.0
+      },
+      {
+        "i": 1,
+        "j": 2,
+        "z_cm": 0.0
+      },
+      {
+        "i": 2,
+        "j": -2,
+        "z_cm": 0.0
+      },
+      {
+        "i": 2,
+        "j": -1,
+        "z_cm": 0.0
+      },
+      {
+        "i": 2,
+        "j": 0,
+        "z_cm": 0.0
+      },
+      {
+        "i": 2,
+        "j": 1,
+        "z_cm": 0.0
+      },
+      {
+        "i": 2,
+        "j": 2,
+        "z_cm": 0.0
+      }
+    ],
+    "indeterminate_edge_cells": [],
+    "k": 2,
+    "nominal_sample_count": 25,
+    "normals": [
+      {
+        "i": -2,
+        "j": -2,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": -2,
+        "j": -1,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": -2,
+        "j": 0,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": -2,
+        "j": 1,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": -2,
+        "j": 2,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": -1,
+        "j": -2,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": -1,
+        "j": -1,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": -1,
+        "j": 0,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": -1,
+        "j": 1,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": -1,
+        "j": 2,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 0,
+        "j": -2,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 0,
+        "j": -1,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 0,
+        "j": 0,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 0,
+        "j": 1,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 0,
+        "j": 2,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 1,
+        "j": -2,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 1,
+        "j": -1,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 1,
+        "j": 0,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 1,
+        "j": 1,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 1,
+        "j": 2,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 2,
+        "j": -2,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 2,
+        "j": -1,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 2,
+        "j": 0,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 2,
+        "j": 1,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "i": 2,
+        "j": 2,
+        "unit_normal": [
+          0.0,
+          0.0,
+          1.0
+        ]
+      }
+    ],
+    "observed_sample_count": 25,
+    "support_classes": [
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": -2,
+        "j": -2,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": -2,
+        "j": -1,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": -2,
+        "j": 0,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": -2,
+        "j": 1,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": -2,
+        "j": 2,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": -1,
+        "j": -2,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": -1,
+        "j": -1,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": -1,
+        "j": 0,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": -1,
+        "j": 1,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": -1,
+        "j": 2,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 0,
+        "j": -2,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 0,
+        "j": -1,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 0,
+        "j": 0,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 0,
+        "j": 1,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 0,
+        "j": 2,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 1,
+        "j": -2,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 1,
+        "j": -1,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 1,
+        "j": 0,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 1,
+        "j": 1,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 1,
+        "j": 2,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 2,
+        "j": -2,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 2,
+        "j": -1,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 2,
+        "j": 0,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 2,
+        "j": 1,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      },
+      {
+        "edge": false,
+        "edge_terms": [],
+        "i": 2,
+        "j": 2,
+        "pass1_class": "valid_support",
+        "reason": "supported",
+        "resolved_class": "valid_support",
+        "supported": true
+      }
+    ],
+    "tau_n_evaluated": true,
+    "unsupported_regions": [],
+    "unsupported_regions_note": "Empty by construction: the plane covers the entire sample region, so no ground trace misses."
+  },
+  "fixture_id": "houdini_flat_plane",
+  "fixture_version": "1.0.0",
+  "generator": {
+    "authority_module_sha256": "fcc60090dcaebb59c5870b8566289bd4ebef23cc71b70c0b6957101f768036e5",
+    "float_round_decimals": 9,
+    "houdini_product": "hython",
+    "houdini_version": "21.0.729",
+    "houdini_version_tuple": [
+      21,
+      0,
+      729
+    ],
+    "hython": "D:/Side Effects Software/Houdini 21.0.729/bin/hython",
+    "kind": "houdini_live",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python_version": "3.11.7",
+    "script": "procedural/fixtures/houdini/generate_flat_plane_fixture.py"
+  },
+  "geometry": {
+    "covers_entire_sample_region": true,
+    "extent_max_xy_cm": [
+      500.0,
+      500.0
+    ],
+    "extent_min_xy_cm": [
+      -500.0,
+      -500.0
+    ],
+    "facing": "+Z",
+    "facing_note": "A Grid SOP at orient=0 winds -Z (downward-facing). A Reverse SOP authors the plane genuinely facing up; the observed normal is never sign-flipped in the observation path. hou.Geometry.intersect returns the true geometric normal and does not orient it toward the ray (verified).",
+    "grid_sop_parms": {
+      "cols": 2,
+      "orient": 0,
+      "rows": 2,
+      "sizex": 1000.0,
+      "sizey": 1000.0,
+      "tz": 0.0
+    },
+    "plane_z_cm": 0.0,
+    "point_count": 4,
+    "prim_count": 1,
+    "primitive": "flat_plane",
+    "slope_deg": 0.0,
+    "source": "houdini_grid_sop -> reverse_sop"
+  },
+  "governing_contract": "docs/contracts/v2_6_support_grid_contract.md",
+  "raw_observations": [
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          -100.0,
+          -100.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          -100.0,
+          -100.0,
+          -3000.0
+        ],
+        "trace_start": [
+          -100.0,
+          -100.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          -100.0,
+          -100.0,
+          176.0
+        ],
+        "trace_start": [
+          -100.0,
+          -100.0,
+          50.0
+        ]
+      },
+      "i": -2,
+      "j": -2,
+      "x": -100.0,
+      "y": -100.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          -100.0,
+          -50.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          -100.0,
+          -50.0,
+          -3000.0
+        ],
+        "trace_start": [
+          -100.0,
+          -50.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          -100.0,
+          -50.0,
+          176.0
+        ],
+        "trace_start": [
+          -100.0,
+          -50.0,
+          50.0
+        ]
+      },
+      "i": -2,
+      "j": -1,
+      "x": -100.0,
+      "y": -50.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          -100.0,
+          0.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          -100.0,
+          0.0,
+          -3000.0
+        ],
+        "trace_start": [
+          -100.0,
+          0.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          -100.0,
+          0.0,
+          176.0
+        ],
+        "trace_start": [
+          -100.0,
+          0.0,
+          50.0
+        ]
+      },
+      "i": -2,
+      "j": 0,
+      "x": -100.0,
+      "y": 0.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          -100.0,
+          50.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          -100.0,
+          50.0,
+          -3000.0
+        ],
+        "trace_start": [
+          -100.0,
+          50.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          -100.0,
+          50.0,
+          176.0
+        ],
+        "trace_start": [
+          -100.0,
+          50.0,
+          50.0
+        ]
+      },
+      "i": -2,
+      "j": 1,
+      "x": -100.0,
+      "y": 50.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          -100.0,
+          100.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          -100.0,
+          100.0,
+          -3000.0
+        ],
+        "trace_start": [
+          -100.0,
+          100.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          -100.0,
+          100.0,
+          176.0
+        ],
+        "trace_start": [
+          -100.0,
+          100.0,
+          50.0
+        ]
+      },
+      "i": -2,
+      "j": 2,
+      "x": -100.0,
+      "y": 100.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          -50.0,
+          -100.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          -50.0,
+          -100.0,
+          -3000.0
+        ],
+        "trace_start": [
+          -50.0,
+          -100.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          -50.0,
+          -100.0,
+          176.0
+        ],
+        "trace_start": [
+          -50.0,
+          -100.0,
+          50.0
+        ]
+      },
+      "i": -1,
+      "j": -2,
+      "x": -50.0,
+      "y": -100.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          -50.0,
+          -50.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          -50.0,
+          -50.0,
+          -3000.0
+        ],
+        "trace_start": [
+          -50.0,
+          -50.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          -50.0,
+          -50.0,
+          176.0
+        ],
+        "trace_start": [
+          -50.0,
+          -50.0,
+          50.0
+        ]
+      },
+      "i": -1,
+      "j": -1,
+      "x": -50.0,
+      "y": -50.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          -50.0,
+          0.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          -50.0,
+          0.0,
+          -3000.0
+        ],
+        "trace_start": [
+          -50.0,
+          0.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          -50.0,
+          0.0,
+          176.0
+        ],
+        "trace_start": [
+          -50.0,
+          0.0,
+          50.0
+        ]
+      },
+      "i": -1,
+      "j": 0,
+      "x": -50.0,
+      "y": 0.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          -50.0,
+          50.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          -50.0,
+          50.0,
+          -3000.0
+        ],
+        "trace_start": [
+          -50.0,
+          50.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          -50.0,
+          50.0,
+          176.0
+        ],
+        "trace_start": [
+          -50.0,
+          50.0,
+          50.0
+        ]
+      },
+      "i": -1,
+      "j": 1,
+      "x": -50.0,
+      "y": 50.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          -50.0,
+          100.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          -50.0,
+          100.0,
+          -3000.0
+        ],
+        "trace_start": [
+          -50.0,
+          100.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          -50.0,
+          100.0,
+          176.0
+        ],
+        "trace_start": [
+          -50.0,
+          100.0,
+          50.0
+        ]
+      },
+      "i": -1,
+      "j": 2,
+      "x": -50.0,
+      "y": 100.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          0.0,
+          -100.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          0.0,
+          -100.0,
+          -3000.0
+        ],
+        "trace_start": [
+          0.0,
+          -100.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          0.0,
+          -100.0,
+          176.0
+        ],
+        "trace_start": [
+          0.0,
+          -100.0,
+          50.0
+        ]
+      },
+      "i": 0,
+      "j": -2,
+      "x": 0.0,
+      "y": -100.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          0.0,
+          -50.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          0.0,
+          -50.0,
+          -3000.0
+        ],
+        "trace_start": [
+          0.0,
+          -50.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          0.0,
+          -50.0,
+          176.0
+        ],
+        "trace_start": [
+          0.0,
+          -50.0,
+          50.0
+        ]
+      },
+      "i": 0,
+      "j": -1,
+      "x": 0.0,
+      "y": -50.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          0.0,
+          0.0,
+          -3000.0
+        ],
+        "trace_start": [
+          0.0,
+          0.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          0.0,
+          0.0,
+          176.0
+        ],
+        "trace_start": [
+          0.0,
+          0.0,
+          50.0
+        ]
+      },
+      "i": 0,
+      "j": 0,
+      "x": 0.0,
+      "y": 0.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          0.0,
+          50.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          0.0,
+          50.0,
+          -3000.0
+        ],
+        "trace_start": [
+          0.0,
+          50.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          0.0,
+          50.0,
+          176.0
+        ],
+        "trace_start": [
+          0.0,
+          50.0,
+          50.0
+        ]
+      },
+      "i": 0,
+      "j": 1,
+      "x": 0.0,
+      "y": 50.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          0.0,
+          100.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          0.0,
+          100.0,
+          -3000.0
+        ],
+        "trace_start": [
+          0.0,
+          100.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          0.0,
+          100.0,
+          176.0
+        ],
+        "trace_start": [
+          0.0,
+          100.0,
+          50.0
+        ]
+      },
+      "i": 0,
+      "j": 2,
+      "x": 0.0,
+      "y": 100.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          50.0,
+          -100.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          50.0,
+          -100.0,
+          -3000.0
+        ],
+        "trace_start": [
+          50.0,
+          -100.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          50.0,
+          -100.0,
+          176.0
+        ],
+        "trace_start": [
+          50.0,
+          -100.0,
+          50.0
+        ]
+      },
+      "i": 1,
+      "j": -2,
+      "x": 50.0,
+      "y": -100.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          50.0,
+          -50.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          50.0,
+          -50.0,
+          -3000.0
+        ],
+        "trace_start": [
+          50.0,
+          -50.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          50.0,
+          -50.0,
+          176.0
+        ],
+        "trace_start": [
+          50.0,
+          -50.0,
+          50.0
+        ]
+      },
+      "i": 1,
+      "j": -1,
+      "x": 50.0,
+      "y": -50.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          50.0,
+          0.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          50.0,
+          0.0,
+          -3000.0
+        ],
+        "trace_start": [
+          50.0,
+          0.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          50.0,
+          0.0,
+          176.0
+        ],
+        "trace_start": [
+          50.0,
+          0.0,
+          50.0
+        ]
+      },
+      "i": 1,
+      "j": 0,
+      "x": 50.0,
+      "y": 0.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          50.0,
+          50.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          50.0,
+          50.0,
+          -3000.0
+        ],
+        "trace_start": [
+          50.0,
+          50.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          50.0,
+          50.0,
+          176.0
+        ],
+        "trace_start": [
+          50.0,
+          50.0,
+          50.0
+        ]
+      },
+      "i": 1,
+      "j": 1,
+      "x": 50.0,
+      "y": 50.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          50.0,
+          100.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          50.0,
+          100.0,
+          -3000.0
+        ],
+        "trace_start": [
+          50.0,
+          100.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          50.0,
+          100.0,
+          176.0
+        ],
+        "trace_start": [
+          50.0,
+          100.0,
+          50.0
+        ]
+      },
+      "i": 1,
+      "j": 2,
+      "x": 50.0,
+      "y": 100.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          100.0,
+          -100.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          100.0,
+          -100.0,
+          -3000.0
+        ],
+        "trace_start": [
+          100.0,
+          -100.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          100.0,
+          -100.0,
+          176.0
+        ],
+        "trace_start": [
+          100.0,
+          -100.0,
+          50.0
+        ]
+      },
+      "i": 2,
+      "j": -2,
+      "x": 100.0,
+      "y": -100.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          100.0,
+          -50.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          100.0,
+          -50.0,
+          -3000.0
+        ],
+        "trace_start": [
+          100.0,
+          -50.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          100.0,
+          -50.0,
+          176.0
+        ],
+        "trace_start": [
+          100.0,
+          -50.0,
+          50.0
+        ]
+      },
+      "i": 2,
+      "j": -1,
+      "x": 100.0,
+      "y": -50.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          100.0,
+          0.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          100.0,
+          0.0,
+          -3000.0
+        ],
+        "trace_start": [
+          100.0,
+          0.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          100.0,
+          0.0,
+          176.0
+        ],
+        "trace_start": [
+          100.0,
+          0.0,
+          50.0
+        ]
+      },
+      "i": 2,
+      "j": 0,
+      "x": 100.0,
+      "y": 0.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          100.0,
+          50.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          100.0,
+          50.0,
+          -3000.0
+        ],
+        "trace_start": [
+          100.0,
+          50.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          100.0,
+          50.0,
+          176.0
+        ],
+        "trace_start": [
+          100.0,
+          50.0,
+          50.0
+        ]
+      },
+      "i": 2,
+      "j": 1,
+      "x": 100.0,
+      "y": 50.0
+    },
+    {
+      "ground": {
+        "actor_path": "/Fixture/houdini_flat_plane",
+        "component_path": "/Fixture/houdini_flat_plane.Plane",
+        "hit": true,
+        "impact_point": [
+          100.0,
+          100.0,
+          0.0
+        ],
+        "normal": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "prim": 0,
+        "trace_end": [
+          100.0,
+          100.0,
+          -3000.0
+        ],
+        "trace_start": [
+          100.0,
+          100.0,
+          1000.0
+        ]
+      },
+      "head": {
+        "hit": false,
+        "impact_point": null,
+        "normal": null,
+        "prim": -1,
+        "trace_end": [
+          100.0,
+          100.0,
+          176.0
+        ],
+        "trace_start": [
+          100.0,
+          100.0,
+          50.0
+        ]
+      },
+      "i": 2,
+      "j": 2,
+      "x": 100.0,
+      "y": 100.0
+    }
+  ],
+  "role": "test_input_only",
+  "role_note": "TEST INPUT ONLY. Houdini is a geometry source, never acceptance evidence. This manifest must not be consumed by any shield, gate, or acceptance path.",
+  "schema": "worldforge.houdini.support_fixture/1",
+  "survey_request": {
+    "anchor_xyz_cm": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "radius_cm": 100.0,
+    "radius_semantics": "half_extent",
+    "sample_region_shape": "axis_aligned_square",
+    "step_cm": 50.0
+  },
+  "tolerances": {
+    "cos_max_slope": 0.7193398003386512,
+    "head_clear_hi_cm": 176.0,
+    "head_clear_lo_cm": 50.0,
+    "max_slope_deg": 44.0,
+    "max_step_h_cm": 45.0,
+    "source": "support_grid_canonical.CONTRACT_TOLERANCES",
+    "tau_h_cm": 90.0,
+    "tau_n_declared": true,
+    "tau_n_deg": 44.0,
+    "unit_normal_tol": 0.001
+  },
+  "trace_setup": {
+    "contract_source": "v2_6_support_grid_contract.md \u00a72.1 (SceneSurvey.cpp:117,147,148)",
+    "ground_anchored_to": "grid_centre_z",
+    "ground_end_z_cm": -3000.0,
+    "ground_start_z_cm": 1000.0,
+    "head_window_cm_above_impact": [
+      50.0,
+      176.0
+    ]
+  }
+}
