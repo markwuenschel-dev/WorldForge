@@ -385,6 +385,72 @@ STAGE_ORDER = {s: i for i, s in enumerate(STAGES)}
 
 
 # --------------------------------------------------------------------------- #
+# The temporary-object ledger's vocabulary.
+# --------------------------------------------------------------------------- #
+# CLOSED sets, mirroring the literals the far side writes
+# (tools/bridge/scene_survey_far_side.py: PRESENCE_STATES / DESTRUCTION_RESULTS,
+# declared beside `_SpawnLedger`). Duplicated as strings rather than imported
+# because the far side runs inside the UE interpreter and cannot import this
+# module — the STRINGS are the contract, and the ledger record emits both tuples so
+# a drift between the two files is visible in the evidence itself.
+PRESENCE_NEVER_CREATED = "never_created"
+PRESENCE_ABSENT = "absent"
+PRESENCE_PRESENT = "present"
+PRESENCE_UNKNOWN = "unknown"
+PRESENCE_STATES = (PRESENCE_NEVER_CREATED, PRESENCE_ABSENT, PRESENCE_PRESENT,
+                   PRESENCE_UNKNOWN)
+# The two that DECIDE the per-object conjunct. `unknown` is excluded on purpose:
+# an unwitnessed final state makes the claim insufficient, never false and never
+# true.
+PRESENCE_DECIDED = (PRESENCE_NEVER_CREATED, PRESENCE_ABSENT, PRESENCE_PRESENT)
+
+DESTRUCTION_NOT_ATTEMPTED = "not_attempted"
+DESTRUCTION_DESTROYED = "destroyed"
+DESTRUCTION_RETURNED_FALSE = "destroy_returned_false"
+DESTRUCTION_ERROR = "error"
+DESTRUCTION_UNKNOWN = "unknown"
+DESTRUCTION_RESULTS = (DESTRUCTION_NOT_ATTEMPTED, DESTRUCTION_DESTROYED,
+                       DESTRUCTION_RETURNED_FALSE, DESTRUCTION_ERROR,
+                       DESTRUCTION_UNKNOWN)
+
+# Where the ledger's own record lives. Under `document`, NOT under
+# `temporary_placement`, so it is not mistaken for a placement and does not join
+# that predicate's population.
+LEDGER_KIND = "document"
+LEDGER_IDENT = "temporary_object_ledger"
+LEDGER_REF = LEDGER_KIND + "#" + LEDGER_IDENT
+
+
+def temporary_object_ledger(raw):
+    """The operation's temporary-object ledger record, or None.
+
+    None is the load-bearing answer. Two inventory snapshots can only ever compare
+    the world before against the world after; an object that was created AND
+    destroyed between them is invisible to that comparison, and so is an object
+    created before the pre snapshot by a spawn path nobody tracked. The ledger is
+    the only artifact that enumerates O_created, so without it the per-object
+    conjunct of CleanupVerified is not false — it is UNASKABLE, and
+    `sufficiency_cleanup` refuses on exactly that basis.
+    """
+    doc = (raw or {}).get(LEDGER_KIND)
+    led = doc.get(LEDGER_IDENT) if isinstance(doc, dict) else None
+    return led if isinstance(led, dict) else None
+
+
+def ledger_declared_ids(led):
+    """The object ids the ledger claims as its own. None when unmeasured."""
+    ids = (led or {}).get("object_ids")
+    if not isinstance(ids, list):
+        return None
+    return [str(i) for i in ids]
+
+
+def _placements(raw):
+    p = (raw or {}).get("temporary_placement")
+    return p if isinstance(p, dict) else {}
+
+
+# --------------------------------------------------------------------------- #
 # Evidence records.
 # --------------------------------------------------------------------------- #
 _RECORD_REQUIRED = (
@@ -673,6 +739,136 @@ def contradictory_atoms(bundle):
                 out.append("inventory#{}: collection_ok=True contradicts {}={!r} "
                            "(`_inventory` sets collection_ok only when both "
                            "sets were actually read)".format(which, f, rec.get(f)))
+    out.extend(_placement_contradictions(bundle))
+    out.extend(_ledger_contradictions(bundle))
+    return out
+
+
+def _ledger_contradictions(bundle):
+    """The ledger's SUMMARY fields against the atoms they summarise.
+
+    `object_count`, `created_object_ids` and `created_object_count` are aggregates
+    the far side writes beside the enumeration they were computed from
+    (`_SpawnLedger.write_manifest` in tools/bridge/scene_survey_far_side.py). No
+    derivation in this module reads them — `_ledger_verdict` recomputes O_created
+    from the per-object `creation_observed` atoms — which is exactly why they have
+    to be checked HERE rather than trusted or ignored.
+
+    Ignoring a lying aggregate is not safe just because nothing consumes it. A
+    manifest whose count disagrees with its own list was written by something other
+    than the ledger that produced the atoms, and that is the same forgery shape as
+    an overwritten `post_cleanup_presence`: leave the atoms honest, restate them
+    wrongly one level up, and hope the reader takes the summary. A bundle in that
+    state is not answered from at all.
+
+    The duplicate rule mirrors `check_reference_integrity`'s: an id listed twice in
+    a set of owned objects is a ledger that cannot say how many objects it owns, and
+    it silently inflates every count derived from the list.
+
+    `created_object_ids` is compared only against the DECLARED ids. A placement the
+    ledger never declared is a different defect with a different verdict — it is a
+    measured contamination, reported as False by `_ledger_verdict`, not an
+    unanswerable bundle.
+    """
+    out = []
+    led = temporary_object_ledger(bundle)
+    if led is None:
+        return out
+    addr = LEDGER_REF
+    declared = ledger_declared_ids(led)
+    if declared is None:
+        return out
+    dupes = sorted({i for i in declared if declared.count(i) > 1})
+    if dupes:
+        out.append("{}: object_ids lists {} more than once — a ledger that names an "
+                   "object twice cannot say how many objects it owns, and every "
+                   "count taken over that list is inflated".format(addr, dupes))
+    n = led.get("object_count")
+    if isinstance(n, int) and not isinstance(n, bool) and n != len(set(declared)):
+        out.append("{}: object_count={} contradicts its own object_ids ({} distinct "
+                   "id(s)) — the aggregate does not summarise the enumeration it "
+                   "sits beside".format(addr, n, len(set(declared))))
+    created = led.get("created_object_ids")
+    if not isinstance(created, list):
+        return out
+    created = [str(i) for i in created]
+    c_dupes = sorted({i for i in created if created.count(i) > 1})
+    if c_dupes:
+        out.append("{}: created_object_ids lists {} more than once".format(
+            addr, c_dupes))
+    m = led.get("created_object_count")
+    if isinstance(m, int) and not isinstance(m, bool) and m != len(set(created)):
+        out.append("{}: created_object_count={} contradicts created_object_ids ({} "
+                   "distinct id(s))".format(addr, m, len(set(created))))
+    stray = sorted(set(created) - set(declared))
+    if stray:
+        out.append("{}: created_object_ids names {} which object_ids does not "
+                   "declare — the ledger claims to have created an object it does "
+                   "not claim to own".format(addr, stray))
+    placements = _placements(bundle)
+    from_atoms = {i for i in set(declared)
+                  if isinstance(placements.get(i), dict)
+                  and placements[i].get("creation_observed") is True}
+    if from_atoms != set(created) & set(declared):
+        out.append("{}: created_object_ids={} contradicts the creation_observed "
+                   "atoms of the declared placements, which say {} — the summary "
+                   "and the measurements it summarises disagree".format(
+                       addr, sorted(set(created) & set(declared)),
+                       sorted(from_atoms)))
+    return out
+
+
+def _placement_contradictions(bundle):
+    """Temporary-placement atoms that cannot all be true at once.
+
+    `post_cleanup_presence` is DERIVED from `absent_after_cleanup`
+    (`_SpawnLedger.cleanup` registers it in `derived_fields`), so the two are one
+    measurement under two names and can only disagree if something other than the
+    ledger wrote one of them. That is the exact shape of a forged cleanup claim:
+    leave the atom honest and overwrite the summary. Same for a record that says
+    the object was never created while also reporting a destroy attempt against it,
+    and for a value outside either closed vocabulary — an unrecognised state must
+    never be silently read as "fine".
+    """
+    out = []
+    items = (bundle or {}).get("temporary_placement")
+    if not isinstance(items, dict):
+        return out
+    for ident in sorted(items, key=str):
+        p = items[ident]
+        if not isinstance(p, dict):
+            continue
+        addr = "temporary_placement#{}".format(ident)
+        presence = p.get("post_cleanup_presence")
+        if presence is not None and presence not in PRESENCE_STATES:
+            out.append("{}: post_cleanup_presence {!r} is outside the closed set "
+                       "{}".format(addr, presence, list(PRESENCE_STATES)))
+        result = p.get("destruction_result")
+        if result is not None and result not in DESTRUCTION_RESULTS:
+            out.append("{}: destruction_result {!r} is outside the closed set "
+                       "{}".format(addr, result, list(DESTRUCTION_RESULTS)))
+        absent = p.get("absent_after_cleanup")
+        if is_decided(absent) and presence in (PRESENCE_ABSENT, PRESENCE_PRESENT):
+            if (presence == PRESENCE_ABSENT) is not bool(absent):
+                out.append(
+                    "{}: post_cleanup_presence={!r} contradicts "
+                    "absent_after_cleanup={!r} — post_cleanup_presence is DERIVED "
+                    "from that atom (_SpawnLedger.cleanup), so they restate one "
+                    "is_valid measurement and cannot disagree".format(
+                        addr, presence, absent))
+        if presence == PRESENCE_NEVER_CREATED and p.get("creation_observed") is True:
+            out.append("{}: post_cleanup_presence='never_created' contradicts "
+                       "creation_observed=True".format(addr))
+        if presence == PRESENCE_NEVER_CREATED and p.get("destruction_attempted") is True:
+            out.append("{}: post_cleanup_presence='never_created' contradicts "
+                       "destruction_attempted=True — an object that was never "
+                       "created cannot have been destroyed".format(addr))
+        if p.get("creation_observed") is not True \
+                and result == DESTRUCTION_DESTROYED:
+            out.append("{}: destruction_result='destroyed' with "
+                       "creation_observed={!r} — nothing was observed to exist for "
+                       "the destroy to have removed".format(
+                           addr, p.get("creation_observed")))
     return out
 
 
@@ -851,14 +1047,49 @@ def _obs_inventory_clean(rec, _bundle=None):
 
 
 def _obs_temporary_cleanup(rec, _bundle=None):
-    """The object was RE-OBSERVED to be gone, not merely destroy()'d.
+    """One owned object's cleanup, from BOTH channels, neither of them sufficient.
 
-    `absent_after_cleanup` is set from a fresh level enumeration
-    (`_SpawnLedger.cleanup`) and is None when that
-    enumeration could not be run. `destroy_returned` is recorded separately and is
-    deliberately not consulted here — a destroy call's return value is the
-    runtime's claim about itself.
+        cleaned(x) = destroyed(x) AND NOT present_final(x)
+
+    `destruction_result` is the destroy CALL's outcome — the runtime's claim about
+    itself — and `post_cleanup_presence` is the independent re-observation through
+    `SystemLibrary.is_valid`. Requiring both is the point: the whole hazard is a
+    destroy that returns success over an object that is still there, and either
+    field alone would report that as a clean run.
+
+    `absent_after_cleanup` is the raw atom `post_cleanup_presence` is derived from
+    (`_SpawnLedger.cleanup`); it is read here too so the derivation cannot be
+    forged past the atom it claims to come from, and `contradictory_atoms` rejects
+    the bundle outright if the two disagree.
+
+    The three decided shapes, and why each is what it is:
+
+      * `present`      -> False. Measured, and bad: the object outlived cleanup.
+      * `never_created`-> True only when creation was measured False. Nothing was
+                          created, so nothing can have leaked; that is an
+                          observation of this operation, not an empty default.
+      * `absent`       -> True only with creation observed, a destroy attempted,
+                          the destroy reporting success, and the is_valid atom
+                          agreeing.
+
+    Anything else — an unread presence, a record with no ledger vocabulary at all —
+    is UNKNOWN. There is no legacy fallback to `absent_after_cleanup` alone: a
+    record carrying only that field could be produced by a spawn path the ledger
+    never saw, and reading it as a pass is the fake-green this predicate exists to
+    prevent.
     """
+    presence = rec.get("post_cleanup_presence")
+    created = tri(rec.get("creation_observed"))
+    if presence == PRESENCE_PRESENT:
+        return False
+    if presence == PRESENCE_NEVER_CREATED:
+        return True if created is False else UNKNOWN
+    if presence != PRESENCE_ABSENT:
+        return UNKNOWN
+    if created is not True or rec.get("destruction_attempted") is not True:
+        return UNKNOWN
+    if rec.get("destruction_result") != DESTRUCTION_DESTROYED:
+        return False
     return tri(rec.get("absent_after_cleanup"))
 
 
@@ -1389,18 +1620,191 @@ def sufficiency_cleanup(raw):
             return False, ("the {} inventory carries no M, the persistent map "
                            "identity (map_identity={!r})".format(
                                which, snap.get("map_identity")))
-    return True, "pre@{} post@{}, with D, T and M measured on both".format(
-        pre["stage"], post["stage"])
+    ok_led, led_detail = _ledger_sufficiency(raw)
+    if not ok_led:
+        return False, led_detail
+    return True, ("pre@{} post@{}, with D, T and M measured on both, and {}".format(
+        pre["stage"], post["stage"], led_detail))
+
+
+def _ledger_sufficiency(raw):
+    """(ok, detail) for the per-object conjunct's inputs. NO ledger => NOT ENOUGH.
+
+    This is the whole reason the ledger exists. `(O_1 == O_0) AND (D_1 == D_0) AND
+    (P_1 == P_0)` is computed from two snapshots of the world, and two snapshots
+    cannot see an object that was created AND destroyed between them: it is absent
+    from both, so every set comparison agrees and the verdict comes out True. The
+    fourth conjunct —
+
+        for every x in O_created: destroyed(x) AND NOT present_final(x)
+
+    — is the only one that ranges over objects rather than over states of the
+    world, and O_created can only come from a ledger that was watching the spawn
+    path. Its absence therefore yields `unknown`. It must NEVER yield success,
+    because "no ledger" and "a ledger that recorded nothing" are the same bytes to
+    a consumer that defaults the missing one to the empty set.
+
+    Everything refused here is refused as INSUFFICIENT (unknown), not as False. A
+    verdict of False would claim a defect in the world; these are all defects in
+    the observation.
+    """
+    led = temporary_object_ledger(raw)
+    if led is None:
+        return False, (
+            "no temporary-object ledger at {} — the operation filed no record of "
+            "what it created, so O_created is unknown and the per-object cleanup "
+            "conjunct is unaskable. Deriving cleanup from the pre/post inventories "
+            "alone would report success for an object created AND destroyed "
+            "between the two snapshots, which neither snapshot can see.".format(
+                LEDGER_REF))
+    if led.get("collection_ok") is not True:
+        return False, ("the temporary-object ledger reports collection_ok={!r} — a "
+                       "ledger that did not collect witnesses nothing".format(
+                           led.get("collection_ok")))
+    if led.get("cleanup_ran") is not True:
+        return False, ("the temporary-object ledger reports cleanup_ran={!r}: the "
+                       "operation never reached its cleanup stage, so the post "
+                       "inventory describes a world cleanup was never run "
+                       "on".format(led.get("cleanup_ran")))
+    tag = led.get("ownership_tag")
+    if not (isinstance(tag, str) and tag.strip()):
+        return False, ("the temporary-object ledger carries no ownership_tag "
+                       "({!r}) — without one, an object it lists cannot be "
+                       "attributed to this operation".format(tag))
+    declared = ledger_declared_ids(led)
+    if declared is None:
+        return False, ("the temporary-object ledger carries no object_ids list "
+                       "({!r}) — an unmeasured set must not be read as the empty "
+                       "set".format(led.get("object_ids")))
+    # An introspection hole is not an observation. `unledgered_spawn_call_sites`
+    # is None when the far side could not read its own source; that does not block
+    # (it is a fact about the collector, not about the world), but a POSITIVE count
+    # does: a second spawn path means O_created can be incomplete, and a conjunct
+    # quantified over an incomplete set is vacuous rather than satisfied.
+    stray = led.get("unledgered_spawn_call_sites")
+    if isinstance(stray, int) and not isinstance(stray, bool) and stray > 0:
+        return False, ("the far side measured {} spawn call site(s) outside "
+                       "`_SpawnLedger.spawn_transient` — the ledger cannot be shown "
+                       "to enumerate every object this operation created, so "
+                       "O_created is incomplete".format(stray))
+    placements = _placements(raw)
+    missing = [i for i in declared if not isinstance(placements.get(i), dict)]
+    if missing:
+        return False, ("the ledger declares object id(s) {} with no matching "
+                       "temporary_placement record — a declared object with no "
+                       "record cannot be checked for removal".format(missing[:5]))
+    # Every CREATED object must have answered both channels. An unread final state
+    # is the one thing that must not round to either verdict.
+    for oid in declared:
+        p = placements[oid]
+        born = tri(p.get("creation_observed"))
+        # `creation_observed` is the gate on the whole per-object conjunct, so an
+        # undecided one must REFUSE, not skip. Skipping it treats "we do not know
+        # whether this operation created the object" as "it created nothing", which
+        # is the tri-state collapse this module exists to prevent — and it is
+        # trivially forgeable: blank one field on a leaked object's record and the
+        # object drops out of `for every x in O_created` entirely, taking its
+        # witnessed leak with it. The far side never emits it undecided
+        # (`_SpawnLedger.spawn_transient` writes False at record creation and True
+        # only on a returned handle), so anything undecided arriving here is a
+        # degraded or edited bundle, and neither may be answered from.
+        if born is UNKNOWN:
+            # ...UNLESS the object's final state already decides the record. A
+            # `present` object filed under this operation's ledger is a measured
+            # leak whatever the creation channel says, and refusing as unknown there
+            # would upgrade a witnessed defect in the WORLD into a defect in the
+            # pass. This is the same Kleene rule `_obs_temporary_cleanup` applies
+            # within a record: false dominates unknown; unknown never becomes true.
+            if p.get("post_cleanup_presence") == PRESENCE_PRESENT:
+                continue
+            return False, ("temporary_placement#{}: creation_observed={!r} is not a "
+                           "decided observation — whether this operation created "
+                           "the object is unknown, so `for every x in O_created` "
+                           "cannot be asked of it. unknown is not 'never "
+                           "created'.".format(oid, p.get("creation_observed")))
+        if born is False:
+            continue
+        presence = p.get("post_cleanup_presence")
+        if presence not in PRESENCE_DECIDED:
+            return False, ("temporary_placement#{}: creation was observed but the "
+                           "final state was not — post_cleanup_presence={!r}. An "
+                           "unwitnessed removal is unknown, never clean.".format(
+                               oid, presence))
+        if p.get("destruction_result") not in DESTRUCTION_RESULTS:
+            return False, ("temporary_placement#{}: destruction_result={!r} is "
+                           "outside the closed vocabulary {}".format(
+                               oid, p.get("destruction_result"),
+                               list(DESTRUCTION_RESULTS)))
+        if presence == PRESENCE_ABSENT and not is_decided(
+                p.get("absent_after_cleanup")):
+            return False, ("temporary_placement#{}: post_cleanup_presence='absent' "
+                           "but the atom it is derived from, absent_after_cleanup, "
+                           "is {!r} — a summary with no measurement under it".format(
+                               oid, p.get("absent_after_cleanup")))
+    return True, ("a temporary-object ledger that ran cleanup over {} declared "
+                  "object(s), {} of them created".format(
+                      len(declared),
+                      sum(1 for i in declared
+                          if placements[i].get("creation_observed") is True)))
 
 
 def derive_cleanup_verified(raw):
-    """CleanupVerified = (D_f = D_i) AND (T_f = T_i) AND (M_f = M_i).
+    """The operator's CleanupVerified, in full.
 
-    EQUALITY, not containment, on every one of the three. The previous rule only
-    looked for NEWLY dirty packages; a package that stops being dirty was written
-    to disk, and a survey that saves a map has mutated the project just as surely
-    as one that dirties it. The actor-set comparison is retained on top —
-    strictly additional, never a replacement.
+        O_0, O_1 = operation-owned objects before execution / after cleanup
+        D_0, D_1 = dirty-package sets before / after
+        P_0, P_1 = persistent package identity (and, where observable, content)
+
+        CleanupVerified = (O_1 == O_0) AND (D_1 == D_0) AND (P_1 == P_0)
+                          AND for every x in O_created:
+                                  destroyed(x) AND NOT present_final(x)
+
+    EQUALITY, not containment, on the set terms. The rule this replaced only looked
+    for NEWLY dirty packages; a package that STOPS being dirty was written to disk,
+    and a survey that saves a map has mutated the project just as surely as one
+    that dirties it. The actor-set comparison is retained on top — strictly
+    additional, never a replacement.
+
+    THE FOURTH CONJUNCT IS NOT REDUNDANT. The first three range over states of the
+    world at two instants; the fourth ranges over OBJECTS. An object created after
+    the pre snapshot and destroyed before the post snapshot is absent from both, so
+    every set comparison agrees and the first three conjuncts are all True while
+    the operation did in fact mutate the level. Only the ledger can see it, which
+    is why `sufficiency_cleanup` refuses to answer at all without one.
+
+    P has two halves and only one is observable from UE Python. The IDENTITY half
+    (which package is open) is `map_identity` / `package_identity` and is ANDed in
+    as `persistent_package_identity_equal`. The CONTENT half (a hash of the
+    persistent package) has no Python api at all — see the far side's
+    PACKAGE_HASH_UNSUPPORTED_REASON — so it is reported as
+    `persistent_package_hash_supported: False` with a NULL comparison and is NOT
+    folded into the AND. An unavailable comparison is never coerced into agreement.
+
+    Empty is the expected case: an operation that begins with no owned temporary
+    objects has O_0 == O_1 == {} and a vacuously satisfied fourth conjunct, and
+    that reads True — but only because the ledger was present and said so.
+    """
+    snapshot_ok, inputs = _inventory_only_cleanup_verdict(raw)
+    ledger = _ledger_verdict(raw)
+    inputs.update(ledger)
+    return bool(snapshot_ok and ledger["ledger_conjunct"]), inputs
+
+
+def _inventory_only_cleanup_verdict(raw):
+    """(ok, inputs) for the THREE SNAPSHOT conjuncts alone: O, D and P-identity.
+
+    Split out under a name that says what it is, for two reasons. It keeps the
+    formula's snapshot half readable next to its object half — and it is the exact
+    rule this module applied BEFORE the ledger existed, so a test can call it
+    directly and demonstrate that it answers True for a bundle in which an object
+    was created and destroyed between the two snapshots
+    (tools/pipeline/test_negative_scene_survey_cleanup.py, mutant 1). That
+    demonstration is what makes the ledger's necessity a measurement instead of an
+    argument.
+
+    NEVER call this as the cleanup verdict. It cannot fail on a short-lived object,
+    which is the entire reason `derive_cleanup_verified` ANDs the ledger conjunct on
+    top and `sufficiency_cleanup` refuses to answer without one.
     """
     inv = (raw or {}).get("inventory")
     inv = inv if isinstance(inv, dict) else {}
@@ -1424,8 +1828,14 @@ def derive_cleanup_verified(raw):
     m_i, m_f = _map_identity(pre), _map_identity(post)
     map_identity_stable = (m_i is not None and m_i == m_f)
 
+    hash_supported, hash_equal, hash_detail = _persistent_hash_comparison(pre, post)
+
     ok = (not leaked and not vanished and not newly_dirty and not no_longer_dirty
-          and not temp_leaked and not temp_released and map_identity_stable)
+          and not temp_leaked and not temp_released and map_identity_stable
+          # `is not False`, not `is True`: an UNSUPPORTED comparison must not block
+          # the verdict (it is not evidence of a mutation), and a SUPPORTED one that
+          # disagrees must. The distinction is the whole reason this is tri-state.
+          and hash_equal is not False)
     return ok, {
         "dirty_packages_equal": d_i == d_f,
         "newly_dirty_packages": newly_dirty,
@@ -1436,9 +1846,208 @@ def derive_cleanup_verified(raw):
         "operation_owned_pre": sorted(t_i), "operation_owned_post": sorted(t_f),
         "map_identity_equal": map_identity_stable,
         "map_identity_pre": m_i, "map_identity_post": m_f,
+        # P, named as the formula names it. The identity half is the same
+        # comparison as map_identity_equal and IS in the AND; the content half is
+        # unsupported and is NOT. Both are stated so no reader has to work out
+        # which half of P was actually checked.
+        "persistent_package_identity_equal": map_identity_stable,
+        "persistent_package_hash_supported": hash_supported,
+        "persistent_package_hash_equal": hash_equal,
+        "persistent_package_hash_detail": hash_detail,
+        "persistent_package_hash_pre": pre.get("persistent_package_hash"),
+        "persistent_package_hash_post": post.get("persistent_package_hash"),
         "leaked_actors": leaked, "vanished_actors": vanished,
         "actors_pre": len(pre_actors), "actors_post": len(post_actors),
+        "snapshot_conjuncts_ok": ok,
     }
+
+
+_HASH_UNSUPPORTED_DETAIL = (
+    "no UE Python api exposes a content hash of a persistent package; the content "
+    "half of P_1 == P_0 is unsupported and is deliberately NOT folded into the "
+    "conjunction (see the far side's PACKAGE_HASH_UNSUPPORTED_REASON)")
+
+
+def _persistent_hash_comparison(pre, post):
+    """(supported, equal, detail) for the CONTENT half of P, READ FROM THE RAW.
+
+    These three used to be written as the literals `False`, `None` and a fixed
+    sentence — correct for today's far side, which has no hash api, and fail-OPEN
+    for any far side that gains one. A hardcoded `supported=False` cannot be made to
+    disagree by any input, so the moment the collector starts emitting real hashes
+    the consumer would keep reporting the comparison unavailable and a MUTATED
+    persistent package would derive as clean. That is the same shape as the
+    allow-list this module already replaced with a deny-list in
+    `observation_kinds_in`: forgetting to update it must cost a loud error, not an
+    unchecked value.
+
+    Tri-state, and the three states mean different things:
+
+        supported=False, equal=None   the far side declares no hash channel. NOT
+                                      folded into the AND — an unavailable
+                                      comparison is never coerced into agreement.
+        supported=True,  equal=True   both snapshots hashed and the hashes match.
+        supported=True,  equal=False  the persistent package's CONTENT changed. A
+                                      measured mutation, and a False verdict.
+
+    Support requires BOTH snapshots to declare it AND both to carry a real string.
+    A snapshot that claims support while carrying no hash has declared a channel it
+    did not read, and half a comparison is not a comparison.
+    """
+    h_i, h_f = pre.get("persistent_package_hash"), post.get("persistent_package_hash")
+    declared = (pre.get("persistent_package_hash_supported") is True
+                and post.get("persistent_package_hash_supported") is True)
+    readable = (isinstance(h_i, str) and h_i.strip()
+                and isinstance(h_f, str) and h_f.strip())
+    if not declared:
+        return False, None, _HASH_UNSUPPORTED_DETAIL
+    if not readable:
+        return False, None, (
+            "both snapshots declare persistent_package_hash_supported=True but the "
+            "hashes read {!r} / {!r} — a declared channel that carried no value is "
+            "still an unavailable comparison, never an agreeing one".format(h_i, h_f))
+    return True, (h_i == h_f), (
+        "persistent package content hash {} -> {}".format(h_i, h_f))
+
+
+def _ledger_verdict(raw):
+    """The per-object conjunct: FORALL x in O_created: destroyed(x) AND NOT present(x).
+
+    Reached only after `_ledger_sufficiency` passed, so every created object here
+    has a decided final state and a destruction result inside the closed
+    vocabulary. Everything this function can report is therefore a MEASUREMENT of
+    the world, and every one of them is a False rather than an unknown.
+
+    Two contamination checks ride along, because both make the quantifier lie
+    rather than fail:
+
+      * an UNLEDGERED placement — a temporary_placement record the ledger's
+        `object_ids` does not list. The record exists, so something created it; the
+        ledger did not see it, so `for every x in O_created` never visits it.
+      * a FOREIGN placement — a record whose `operation_id` is not this operation's.
+        Another operation's object cannot be cleaned up by this one, and counting
+        its clean removal towards this operation's verdict would let one run
+        inherit another's evidence.
+    """
+    led = temporary_object_ledger(raw) or {}
+    placements = _placements(raw)
+    declared = ledger_declared_ids(led) or []
+    declared_set = set(declared)
+    op = led.get("operation_id")
+
+    unledgered = sorted(str(k) for k in placements if str(k) not in declared_set)
+    foreign = sorted(
+        str(k) for k, r in placements.items()
+        if isinstance(r, dict) and r.get("operation_id") is not None
+        and op is not None and r.get("operation_id") != op)
+    tag = led.get("ownership_tag")
+    misattributed = sorted(
+        str(k) for k, r in placements.items()
+        if isinstance(r, dict) and r.get("ownership_tag") is not None
+        and tag is not None and r.get("ownership_tag") != tag)
+
+    created, not_destroyed, still_present, creation_undecided = [], [], [], []
+    for oid in sorted(declared_set):
+        p = placements.get(oid)
+        if not isinstance(p, dict):
+            continue
+        # A DECIDED `present` is collected BEFORE the creation gate. It is a
+        # measurement that an object filed under this operation's ledger id was
+        # still in the world after cleanup, and that is a leak whatever the creation
+        # channel says. Gating it on `creation_observed is True` would mean blanking
+        # that one field erases a witnessed leak from the verdict.
+        if p.get("post_cleanup_presence") == PRESENCE_PRESENT:
+            still_present.append(oid)
+        born = tri(p.get("creation_observed"))
+        if born is UNKNOWN:
+            # Reported, never voted on. An undecided creation makes the conjunct
+            # UNASKABLE for this object, which is `unknown` — and unknown is a
+            # sufficiency answer, not a verdict. `_ledger_sufficiency` refuses the
+            # whole derivation on it, so this list is empty by the time a value is
+            # returned; it is carried so the input record shows why, and so this
+            # function is not silently permissive if it is ever called directly.
+            creation_undecided.append(oid)
+            continue
+        if born is not True:
+            continue
+        created.append(oid)
+        if p.get("destruction_result") != DESTRUCTION_DESTROYED:
+            not_destroyed.append(oid)
+        if p.get("post_cleanup_presence") != PRESENCE_ABSENT \
+                and oid not in still_present:
+            still_present.append(oid)
+
+    foreign_world = _foreign_world_placements(raw, led, placements)
+
+    conjunct = not (unledgered or foreign or misattributed or not_destroyed
+                    or still_present or foreign_world)
+    return {
+        "ledger_present": temporary_object_ledger(raw) is not None,
+        # NOT named `*_ref`: this is an evidence-record input, and every `*_ref`
+        # suffix in this codebase is walked by a raw-bundle reference resolver
+        # (`iter_refs`). A field that looks addressable but is not is a trap.
+        "ledger_record_id": LEDGER_REF,
+        "ledger_ownership_tag": tag,
+        "ledger_cleanup_ran": led.get("cleanup_ran") is True,
+        "ledger_declared_object_ids": sorted(declared_set),
+        "ledger_created_object_ids": created,
+        "ledger_created_count": len(created),
+        "ledger_objects_not_destroyed": not_destroyed,
+        "ledger_objects_present_after_cleanup": still_present,
+        "ledger_objects_creation_undecided": creation_undecided,
+        "ledger_unledgered_placements": unledgered,
+        "ledger_foreign_operation_placements": foreign,
+        "ledger_misattributed_placements": misattributed,
+        "ledger_foreign_world_placements": foreign_world,
+        "ledger_conjunct": conjunct,
+    }
+
+
+def _witnessed_world_identities(raw, led):
+    """Every non-empty world/package identity this operation's evidence witnessed.
+
+    Three independent witnesses: the ledger's own `package_identity`, and the map
+    identity of each inventory snapshot. All three are read from the live editor by
+    the far side (`_world_identity` / `_inventory`), never back-filled from the
+    request, so they are measurements rather than echoes.
+    """
+    inv = (raw or {}).get("inventory")
+    inv = inv if isinstance(inv, dict) else {}
+    seen = [(led or {}).get("package_identity")]
+    for which in ("pre", "post"):
+        ident = _map_identity(inv.get(which))
+        if ident is not None:
+            seen.extend(ident)
+    return {v for v in seen if isinstance(v, str) and v.strip()}
+
+
+def _foreign_world_placements(raw, led, placements):
+    """Placements claiming a world this operation's inventories never witnessed.
+
+    An object recorded as created in a world other than the one the snapshots were
+    taken in cannot be reasoned about by those snapshots at all: its removal was
+    never in their scope, so counting it towards this operation's cleanup imports
+    evidence from a world nobody here looked at. Same family as the foreign
+    `operation_id` and the misattributed `ownership_tag` — a contaminant that makes
+    the quantifier lie rather than fail — and reported the same way, as a measured
+    False.
+
+    Compared only when BOTH sides are non-empty strings. `_world_identity()` is None
+    until `_record_world` has read the editor, and an unread identity is not a
+    mismatch.
+    """
+    witnessed = _witnessed_world_identities(raw, led)
+    if not witnessed:
+        return []
+    out = []
+    for k, r in (placements or {}).items():
+        if not isinstance(r, dict):
+            continue
+        claimed = [v for v in (r.get("world_identity"), r.get("package_identity"))
+                   if isinstance(v, str) and v.strip()]
+        if claimed and not (set(claimed) & witnessed):
+            out.append(str(k))
+    return sorted(out)
 
 
 def derive_temporary_actor_count(raw, which):
@@ -1804,9 +2413,73 @@ if __name__ == "__main__":
         s.update(over)
         return s
 
-    inv = {"inventory": {"pre": _snap("observe"), "post": _snap("cleanup")}}
+    # ---- the ledger, without which no cleanup claim is answerable at all ---- #
+    _OP = "op-A"
+
+    def _ledger(**over):
+        led = {"record_id": LEDGER_REF, "record_type": LEDGER_KIND,
+               "record_ident": LEDGER_IDENT, "operation_id": _OP,
+               "is_temporary_object_ledger": True, "collection_ok": True,
+               "ownership_tag": "worldforge.scene_survey/" + _OP,
+               "cleanup_ran": True,
+               "object_ids": [], "object_count": 0,
+               "created_object_ids": [], "created_object_count": 0,
+               "spawn_call_sites_in_module": 1, "spawn_call_sites_in_ledger": 1,
+               "unledgered_spawn_call_sites": 0,
+               "persistent_package_hash": None,
+               "persistent_package_hash_supported": False}
+        led.update(over)
+        return led
+
+    def _placed(oid, **over):
+        """One CLEANLY handled owned object: created, destroyed, witnessed gone."""
+        p = {"record_id": "temporary_placement#" + oid,
+             "record_type": "temporary_placement", "record_ident": oid,
+             "operation_id": _OP, "object_id": oid,
+             "ownership_tag": "worldforge.scene_survey/" + _OP,
+             "creation_observed": True, "creation_stage": "observe",
+             "destruction_attempted": True,
+             "destruction_result": DESTRUCTION_DESTROYED,
+             "post_cleanup_presence": PRESENCE_ABSENT,
+             "absent_after_cleanup": True, "collection_ok": True}
+        p.update(over)
+        return p
+
+    def _cb(pre=None, post=None, ledger=None, placements=None):
+        """A cleanup bundle whose ledger SUMMARISES its own placements.
+
+        The aggregate fields are computed here from the placements the fixture was
+        given, exactly as `_SpawnLedger.write_manifest` computes them from the
+        records it filed. They used to be hand-written, and every fixture below that
+        declared an object inherited `object_count: 0` and `created_object_ids: []`
+        beside it — a manifest no producer can emit, and one `_ledger_contradictions`
+        now rejects outright. Fixtures that lie about their own producer prove
+        nothing about a consumer.
+
+        An explicit override still wins, which is how the lying-summary rails below
+        build their mutants.
+        """
+        over = dict(ledger or {})
+        places = dict(placements or {})
+        led = _ledger(**over)
+        ids = ledger_declared_ids(led) or []
+        if "object_count" not in over:
+            led["object_count"] = len(set(ids))
+        if "created_object_ids" not in over:
+            led["created_object_ids"] = sorted(
+                i for i in set(ids)
+                if isinstance(places.get(i), dict)
+                and places[i].get("creation_observed") is True)
+        if "created_object_count" not in over:
+            led["created_object_count"] = len(set(led["created_object_ids"]))
+        return {"inventory": {"pre": _snap("observe", **(pre or {})),
+                              "post": _snap("cleanup", **(post or {}))},
+                LEDGER_KIND: {LEDGER_IDENT: led},
+                "temporary_placement": places}
+
+    inv = _cb()
     enough, v, _i, _d = derive("cleanup_verified", inv)
-    _t("cleanup_clean_state", enough and v is True, (enough, v))
+    _t("cleanup_clean_state", enough and v is True, (enough, v, _d))
     inv["inventory"]["post"]["actor_paths"] = ["/A", "/LEAKED"]
     enough, v, _i, _d = derive("cleanup_verified", inv)
     _t("cleanup_detects_leak", enough and v is False)
@@ -1817,35 +2490,30 @@ if __name__ == "__main__":
 
     # D_f = D_i is EQUALITY: a package that STOPS being dirty was saved to disk,
     # which the old containment rule (post - pre) could not see at all.
-    _inv = {"inventory": {"pre": _snap("observe", dirty_packages=["/Game/Maps/M"]),
-                          "post": _snap("cleanup", dirty_packages=[])}}
+    _inv = _cb(pre={"dirty_packages": ["/Game/Maps/M"]}, post={"dirty_packages": []})
     enough, v, i, _d = derive("cleanup_verified", _inv)
     _t("cleanup_detects_package_saved",
        enough and v is False and i["no_longer_dirty_packages"] == ["/Game/Maps/M"],
        (enough, v))
     # T_f = T_i — a temporary object still owned after cleanup is a leak.
-    _inv = {"inventory": {
-        "pre": _snap("observe"),
-        "post": _snap("cleanup", operation_owned_actor_paths=["/Temp_0"])}}
+    _inv = _cb(post={"operation_owned_actor_paths": ["/Temp_0"]})
     enough, v, i, _d = derive("cleanup_verified", _inv)
     _t("cleanup_detects_temporary_leak",
        enough and v is False and i["temporary_objects_leaked"] == ["/Temp_0"],
        (enough, v))
     # T absent is UNKNOWN, never the empty set — this is the exact door a
     # hard-coded cleanup_verified=True walks back in through.
-    _inv = {"inventory": {"pre": _snap("observe"), "post": _snap("cleanup")}}
+    _inv = _cb()
     del _inv["inventory"]["post"]["operation_owned_actor_paths"]
     enough, _v, _i, d = derive("cleanup_verified", _inv)
     _t("cleanup_absent_owned_set_is_unknown", not enough, d)
     # M_f = M_i — the map identity must be the same world on both sides.
-    _inv = {"inventory": {"pre": _snap("observe"),
-                          "post": _snap("cleanup", map_identity="/Game/Maps/OTHER",
-                                        package_identity="/Game/Maps/OTHER")}}
+    _inv = _cb(post={"map_identity": "/Game/Maps/OTHER",
+                     "package_identity": "/Game/Maps/OTHER"})
     enough, v, i, _d = derive("cleanup_verified", _inv)
     _t("cleanup_detects_map_identity_drift",
        enough and v is False and i["map_identity_equal"] is False, (enough, v))
-    _inv = {"inventory": {"pre": _snap("observe", map_identity=None),
-                          "post": _snap("cleanup")}}
+    _inv = _cb(pre={"map_identity": None})
     enough, _v, _i, d = derive("cleanup_verified", _inv)
     _t("cleanup_absent_map_identity_is_unknown", not enough, d)
 
@@ -1853,6 +2521,231 @@ if __name__ == "__main__":
     inv["inventory"]["post"] = _snap("observe")
     enough, _v, _i, d = derive("cleanup_verified", inv)
     _t("cleanup_rejects_stage_inversion", not enough, d)
+
+    # ---- THE LEDGER RAILS -------------------------------------------------- #
+    # MUTANT 1 — no ledger at all. Two clean inventories, nothing else. The old
+    # rule answered True here, which is the entire defect: an object created and
+    # destroyed between the snapshots is absent from both.
+    _m1 = _cb()
+    del _m1[LEDGER_KIND][LEDGER_IDENT]
+    enough, v, _i, d = derive("cleanup_verified", _m1)
+    _t("ledger_absent_is_unknown_not_success",
+       (not enough) and v is None and "no temporary-object ledger" in d, (enough, v, d))
+    # ...and the same bundle WITH a ledger is answerable, so the refusal above is
+    # attributable to the ledger and not to some other hole in the fixture.
+    enough, v, _i, _d = derive("cleanup_verified", _cb())
+    _t("ledger_present_makes_it_answerable", enough and v is True, (enough, v))
+    # A ledger that never reached cleanup is also unknown: the post inventory then
+    # describes a world cleanup was never run on.
+    enough, v, _i, d = derive("cleanup_verified", _cb(ledger={"cleanup_ran": False}))
+    _t("ledger_cleanup_not_run_is_unknown", (not enough) and v is None, (enough, v, d))
+    # An unmeasured object_ids list must not be read as the empty set.
+    enough, v, _i, d = derive("cleanup_verified", _cb(ledger={"object_ids": None}))
+    _t("ledger_unmeasured_object_ids_is_unknown", not enough, d)
+    # A second spawn path in the module means O_created can be incomplete.
+    enough, v, _i, d = derive("cleanup_verified",
+                              _cb(ledger={"unledgered_spawn_call_sites": 1}))
+    _t("ledger_stray_spawn_path_is_unknown", not enough, d)
+
+    # MUTANT 2 — created and destroyed BETWEEN the snapshots, so both inventories
+    # agree exactly; destruction_result forged to success; the independent
+    # re-observation still says the object is there.
+    _m2 = _cb(placements={"t0": _placed("t0",
+                                        post_cleanup_presence=PRESENCE_PRESENT,
+                                        absent_after_cleanup=False)},
+              ledger={"object_ids": ["t0"], "object_count": 1,
+                      "created_object_ids": ["t0"], "created_object_count": 1})
+    enough, v, i, d = derive("cleanup_verified", _m2)
+    _t("ledger_catches_survivor_invisible_to_inventories",
+       enough and v is False
+       and i["ledger_objects_present_after_cleanup"] == ["t0"]
+       and i["temporary_objects_equal"] is True
+       and i["dirty_packages_equal"] is True
+       and i["map_identity_equal"] is True,
+       (enough, v, d))
+    # The honest version of the same object passes, so the rail above is the
+    # presence field doing the work rather than the fixture being broken.
+    _ok2 = _cb(placements={"t0": _placed("t0")},
+               ledger={"object_ids": ["t0"], "object_count": 1,
+                       "created_object_ids": ["t0"], "created_object_count": 1})
+    enough, v, _i, d = derive("cleanup_verified", _ok2)
+    _t("ledger_clean_object_passes", enough and v is True, (enough, v, d))
+    # ...and a destroy that never succeeded fails even with the object gone, because
+    # the conjunct is destroyed(x) AND NOT present(x), not either one alone.
+    _m2b = _cb(placements={"t0": _placed(
+        "t0", destruction_result=DESTRUCTION_RETURNED_FALSE)},
+        ledger={"object_ids": ["t0"], "object_count": 1})
+    enough, v, i, _d = derive("cleanup_verified", _m2b)
+    _t("ledger_requires_destroy_and_absence",
+       enough and v is False and i["ledger_objects_not_destroyed"] == ["t0"],
+       (enough, v))
+    # An UNWITNESSED final state is unknown, never clean.
+    _m2c = _cb(placements={"t0": _placed(
+        "t0", post_cleanup_presence=PRESENCE_UNKNOWN, absent_after_cleanup=None)},
+        ledger={"object_ids": ["t0"], "object_count": 1})
+    enough, _v, _i, d = derive("cleanup_verified", _m2c)
+    _t("ledger_unwitnessed_removal_is_unknown", not enough, d)
+    # A placement the ledger does not list makes the quantifier vacuous.
+    _m2d = _cb(placements={"t0": _placed("t0")})
+    enough, v, i, _d = derive("cleanup_verified", _m2d)
+    _t("ledger_unlisted_placement_is_false",
+       enough and v is False and i["ledger_unledgered_placements"] == ["t0"],
+       (enough, v))
+
+    # MUTANT 3 — a package dirtied. D_1 != D_0.
+    _m3 = _cb(post={"dirty_packages": ["/Game/Maps/M"]})
+    enough, v, i, _d = derive("cleanup_verified", _m3)
+    _t("ledger_bundle_still_detects_dirty_package",
+       enough and v is False and i["dirty_packages_equal"] is False
+       and i["newly_dirty_packages"] == ["/Game/Maps/M"], (enough, v))
+
+    # MUTANT 4 — a placement record belonging to a DIFFERENT operation.
+    # Not listed by the ledger, which is the realistic shape of contamination: the
+    # record is both foreign and unledgered, and either one alone decides False.
+    _m4 = _cb(placements={"t9": _placed("t9", operation_id="op-B",
+                                        ownership_tag="worldforge.scene_survey/op-B")})
+    enough, v, i, _d = derive("cleanup_verified", _m4)
+    _t("ledger_foreign_operation_placement_is_false",
+       enough and v is False
+       and i["ledger_foreign_operation_placements"] == ["t9"]
+       and i["ledger_misattributed_placements"] == ["t9"], (enough, v, i))
+    # ...and when the ledger DOES claim the foreign record, the bundle is
+    # cross-operation and reference integrity rejects it before any claim is
+    # derived. Still never a success — refused one gate earlier.
+    _m4b = _cb(placements={"t9": _placed("t9", operation_id="op-B")},
+               ledger={"object_ids": ["t9"], "object_count": 1,
+                       "temporary_object_refs": ["temporary_placement#t9"]})
+    enough, v, _i, d = derive("cleanup_verified", _m4b)
+    _t("ledger_claimed_foreign_record_fails_integrity",
+       (not enough) and v is None and "operation" in d, (enough, v, d))
+
+    # A forged summary over an honest atom is a CONTRADICTION, not a pass: the
+    # bundle is rejected outright rather than answered from.
+    _forge = _cb(placements={"t0": _placed("t0", absent_after_cleanup=False)},
+                 ledger={"object_ids": ["t0"], "object_count": 1})
+    enough, _v, _i, d = derive("cleanup_verified", _forge)
+    _t("ledger_presence_cannot_contradict_its_own_atom",
+       (not enough) and "contradicts absent_after_cleanup" in d, d)
+    # A presence value outside the closed vocabulary is rejected, never ignored.
+    _oov = _cb(placements={"t0": _placed("t0", post_cleanup_presence="cleaned")},
+               ledger={"object_ids": ["t0"], "object_count": 1})
+    enough, _v, _i, d = derive("cleanup_verified", _oov)
+    _t("ledger_presence_vocabulary_is_closed", not enough, d)
+
+    # An UNDECIDED creation_observed gates the whole per-object conjunct, so it must
+    # refuse rather than skip. Skipping reads "we do not know whether this operation
+    # created the object" as "it created nothing", and a forger who blanks that one
+    # field drops the object — and its fate — out of `for every x in O_created`.
+    _m2e = _cb(placements={"t0": _placed(
+        "t0", creation_observed=None, destruction_attempted=False,
+        destruction_result=DESTRUCTION_NOT_ATTEMPTED,
+        post_cleanup_presence=PRESENCE_UNKNOWN, absent_after_cleanup=None)},
+        ledger={"object_ids": ["t0"]})
+    enough, _v, _i, d = derive("cleanup_verified", _m2e)
+    _t("ledger_undecided_creation_is_unknown",
+       (not enough) and "creation_observed" in d, d)
+    # ...but a WITNESSED survivor still decides the record False. Within a record
+    # false dominates unknown, so blanking the creation atom must not erase a
+    # measured leak — that direction would be the fake green.
+    _m2f = _cb(placements={"t0": _placed(
+        "t0", creation_observed=None,
+        destruction_result=DESTRUCTION_RETURNED_FALSE,
+        post_cleanup_presence=PRESENCE_PRESENT, absent_after_cleanup=False)},
+        ledger={"object_ids": ["t0"]})
+    enough, v, i, _d = derive("cleanup_verified", _m2f)
+    _t("ledger_undecided_creation_cannot_hide_a_survivor",
+       enough and v is False
+       and i["ledger_objects_present_after_cleanup"] == ["t0"]
+       and i["ledger_objects_creation_undecided"] == ["t0"], (enough, v))
+
+    # The ledger's AGGREGATES against the atoms they summarise. Nothing derives from
+    # them — O_created is recomputed from `creation_observed` — which is exactly why
+    # a lying one must be rejected rather than ignored: a manifest whose counts
+    # disagree with its own enumeration was written by something other than the
+    # ledger that produced the atoms.
+    _agg = _cb(placements={"t0": _placed("t0")},
+               ledger={"object_ids": ["t0"], "object_count": 7})
+    enough, _v, _i, d = derive("cleanup_verified", _agg)
+    _t("ledger_object_count_must_summarise_object_ids",
+       (not enough) and "object_count=7" in d, d)
+    _agg2 = _cb(placements={"t0": _placed("t0")},
+                ledger={"object_ids": ["t0"], "created_object_ids": [],
+                        "created_object_count": 0})
+    enough, _v, _i, d = derive("cleanup_verified", _agg2)
+    _t("ledger_created_summary_must_match_the_atoms",
+       (not enough) and "creation_observed atoms" in d, d)
+    _dup = _cb(placements={"t0": _placed("t0")},
+               ledger={"object_ids": ["t0", "t0"]})
+    enough, _v, _i, d = derive("cleanup_verified", _dup)
+    _t("ledger_duplicate_object_id_is_unknown",
+       (not enough) and "more than once" in d, d)
+
+    # A placement claiming a world the snapshots never witnessed is a contaminant of
+    # the same family as a foreign operation_id: it makes the quantifier lie.
+    _fw = _cb(placements={"t0": _placed("t0", world_identity="/Game/Maps/Other",
+                                        package_identity="/Game/Maps/Other")},
+              ledger={"object_ids": ["t0"], "package_identity": "/Game/Maps/M"})
+    enough, v, i, _d = derive("cleanup_verified", _fw)
+    _t("ledger_foreign_world_placement_is_false",
+       enough and v is False and i["ledger_foreign_world_placements"] == ["t0"],
+       (enough, v))
+
+    # P's CONTENT half is read from the snapshots, never asserted. A hardcoded
+    # `supported=False` cannot be made to disagree by any input, so the day the far
+    # side grows a hash api is the day a mutated package starts deriving clean.
+    def _hashed(pre_h, post_h):
+        return _cb(pre={"persistent_package_hash": pre_h,
+                        "persistent_package_hash_supported": True},
+                   post={"persistent_package_hash": post_h,
+                         "persistent_package_hash_supported": True})
+    _h_ok, _h_in = derive_cleanup_verified(_hashed("h:a", "h:b"))
+    _t("persistent_package_hash_change_is_false",
+       _h_ok is False and _h_in["persistent_package_hash_supported"] is True
+       and _h_in["persistent_package_hash_equal"] is False, _h_in)
+    _h_ok, _h_in = derive_cleanup_verified(_hashed("h:a", "h:a"))
+    _t("persistent_package_hash_match_does_not_block",
+       _h_ok is True and _h_in["persistent_package_hash_equal"] is True, _h_in)
+    _h_ok, _h_in = derive_cleanup_verified(_hashed("h:a", None))
+    _t("persistent_package_hash_half_read_is_unsupported",
+       _h_ok is True and _h_in["persistent_package_hash_supported"] is False
+       and _h_in["persistent_package_hash_equal"] is None, _h_in)
+
+    # P: the content half is UNSUPPORTED and must not be folded into the AND.
+    _p_ok, _p_inputs = derive_cleanup_verified(_cb())
+    _t("persistent_package_hash_is_unsupported_not_agreed",
+       _p_ok is True
+       and _p_inputs["persistent_package_hash_supported"] is False
+       and _p_inputs["persistent_package_hash_equal"] is None
+       and _p_inputs["persistent_package_identity_equal"] is True, _p_inputs)
+
+    # The per-object predicate is wired and can decide in both directions.
+    _t("temporary_cleanup_predicate_registered",
+       "temporary_cleanup_valid" in DERIVATIONS
+       and "package_cleanliness_valid" in DERIVATIONS)
+    enough, v, _i, d = derive("temporary_cleanup_valid",
+                              _cb(placements={"t0": _placed("t0")},
+                                  ledger={"object_ids": ["t0"]}))
+    _t("temporary_cleanup_valid_true_on_clean_object", enough and v is True,
+       (enough, v, d))
+    enough, v, _i, d = derive("temporary_cleanup_valid",
+                              _cb(placements={"t0": _placed(
+                                  "t0", post_cleanup_presence=PRESENCE_PRESENT,
+                                  absent_after_cleanup=False)},
+                                  ledger={"object_ids": ["t0"]}))
+    _t("temporary_cleanup_valid_false_on_survivor", enough and v is False,
+       (enough, v, d))
+    enough, _v, _i, d = derive("temporary_cleanup_valid", _cb())
+    _t("temporary_cleanup_valid_empty_population_is_unknown", not enough, d)
+    # A refused spawn is a MEASUREMENT that nothing was created — not a hole.
+    enough, v, _i, d = derive("temporary_cleanup_valid",
+                              _cb(placements={"t0": _placed(
+                                  "t0", creation_observed=False,
+                                  destruction_attempted=False,
+                                  destruction_result=DESTRUCTION_NOT_ATTEMPTED,
+                                  post_cleanup_presence=PRESENCE_NEVER_CREATED,
+                                  absent_after_cleanup=None)},
+                                  ledger={"object_ids": ["t0"]}))
+    _t("never_created_object_is_clean", enough and v is True, (enough, v, d))
 
     # Re-derivation must catch a forged claim.
     good = {"marker": {"m0": {"grounded": True, "accepted": True,
@@ -2011,7 +2904,15 @@ if __name__ == "__main__":
         "proxy": {"p0": {"value": False, "collection_ok": True}},
         "inventory": {"pre": {"collection_ok": True, "actor_paths": [],
                               "dirty_packages": ["/Game/Maps/M"]}},
-        "temporary_placement": {"t0": {"absent_after_cleanup": False}},
+        # Mutant-2 shaped: the destroy call claims success and the independent
+        # re-observation says the object is still there. Exactly one of the two
+        # channels is lying, and the predicate must read it as a measured FAILURE.
+        "temporary_placement": {"t0": {"creation_observed": True,
+                                       "creation_stage": "observe",
+                                       "destruction_attempted": True,
+                                       "destruction_result": DESTRUCTION_DESTROYED,
+                                       "post_cleanup_presence": PRESENCE_PRESENT,
+                                       "absent_after_cleanup": False}},
     }
     for _p in PREDICATE_NAMES:
         _st = predicate_state(_neg, _p)

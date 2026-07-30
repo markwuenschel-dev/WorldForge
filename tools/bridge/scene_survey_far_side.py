@@ -243,6 +243,7 @@ There is deliberately NO map environment variable: the map is
 ``subject["map_asset_path"]``. A separate map knob would be a second channel that
 could disagree with the subject about what was surveyed.
 """
+import inspect
 import json
 import math
 import os
@@ -1233,15 +1234,124 @@ ENUMERATION_VACUITY_REASON = (
     "is_valid instead, which the same boot verified answers True before destroy and "
     "False after.")
 
+# --------------------------------------------------------------------------- #
+# ledger vocabulary — CLOSED sets, so no reader has to interpret free text
+# --------------------------------------------------------------------------- #
+# The tag stamped on every object this operation creates. Ownership is what makes
+# O_created a SET at all: without it "an object that appeared" and "an object WE
+# made" are the same sentence, and only the second one is this operation's to clean
+# up. It is per-operation, so two concurrent surveys cannot claim each other's
+# objects.
+OWNERSHIP_TAG_PREFIX = "worldforge.scene_survey"
+
+
+def _ownership_tag():
+    return "{}/{}".format(OWNERSHIP_TAG_PREFIX, OPERATION_ID)
+
+
+# `post_cleanup_presence` — the WITNESSED final state of one owned object. CLOSED.
+# `unknown` is a member on purpose: "we could not look" is a state of the
+# observation, and it must not be spellable as "absent". `never_created` is the
+# other one that matters — an object that was refused or failed to spawn was never
+# there to leak, and that is a measurement of this operation, not a hole in it.
+PRESENCE_NEVER_CREATED = "never_created"
+PRESENCE_ABSENT = "absent"
+PRESENCE_PRESENT = "present"
+PRESENCE_UNKNOWN = "unknown"
+PRESENCE_STATES = (PRESENCE_NEVER_CREATED, PRESENCE_ABSENT, PRESENCE_PRESENT,
+                   PRESENCE_UNKNOWN)
+
+# `destruction_result` — the DESTROY CALL's own outcome and nothing more, i.e. the
+# runtime's claim about itself. CLOSED. Removal is witnessed separately, by
+# `post_cleanup_presence`, which is measured afterwards through a DIFFERENT api
+# (`SystemLibrary.is_valid`). The two are kept apart because the whole hazard this
+# ledger exists for is a destroy that returns True over an object that is still
+# there — a single "cleaned_up" boolean could not express that at all.
+DESTRUCTION_NOT_ATTEMPTED = "not_attempted"
+DESTRUCTION_DESTROYED = "destroyed"
+DESTRUCTION_RETURNED_FALSE = "destroy_returned_false"
+DESTRUCTION_ERROR = "error"
+DESTRUCTION_UNKNOWN = "unknown"
+DESTRUCTION_RESULTS = (DESTRUCTION_NOT_ATTEMPTED, DESTRUCTION_DESTROYED,
+                       DESTRUCTION_RETURNED_FALSE, DESTRUCTION_ERROR,
+                       DESTRUCTION_UNKNOWN)
+
+# P, the persistent-package term of CleanupVerified, has two halves and only ONE of
+# them is observable from UE Python.
+#
+#   P as IDENTITY  — which package is open. Observable: it is the world package
+#                    name every inventory already carries as `package_identity`,
+#                    and the assembler ANDs it into the verdict.
+#   P as CONTENT   — a hash/digest of the persistent package's bytes, which is what
+#                    would prove the on-disk asset did not change. NOT observable:
+#                    see the reason below.
+#
+# The content half is emitted as `unsupported` with a null value rather than being
+# quietly dropped or defaulted to "equal", because an unavailable comparison that
+# reads as agreement is precisely a fabricated pass.
+PACKAGE_HASH_UNSUPPORTED_REASON = (
+    "no UE Python api exposes a content hash or save-state digest of a persistent "
+    "package: UPackage.is_dirty(), UPackage.get_file_size() and the package GUID "
+    "are not reflected to Python, and the only package-level state Python can read "
+    "is MEMBERSHIP of the editor's dirty-package sets "
+    "(unreal.EditorLoadingAndSavingUtils.get_dirty_map_packages / "
+    "get_dirty_content_packages), which is a boolean per package and not a digest. "
+    "Hashing the .umap on disk would answer a different question — whether the file "
+    "changed — and would still be blind to an in-memory mutation that was never "
+    "saved, which is the mutation a survey is most likely to cause. P_1 == P_0 is "
+    "therefore reported as UNSUPPORTED with value None; the observable identity half "
+    "is reported separately as persistent_package_identity_equal.")
+
+# The ledger's own record. Filed under `document` rather than `temporary_placement`
+# so it is not mistaken for a placement and does not join that predicate's
+# population. Its ABSENCE is the signal the consumer keys on: a cleanup verdict
+# derived from two inventory snapshots alone cannot see an object that was created
+# AND destroyed between them, so no ledger means `unknown`, never success.
+LEDGER_KIND = "document"
+LEDGER_IDENT = "temporary_object_ledger"
+
+
+def _spawn_call_sites():
+    """(total, ledgered) occurrences of the spawn call in THIS module's source.
+
+    "every temporary object is created through the ledger" is a claim about the
+    CODE, and a claim about the code that nobody measures is a comment. This counts
+    the literal spawn call in the module and in `spawn_transient` alone; the
+    consumer refuses the cleanup verdict when the two disagree, because a second
+    spawn path means the ledger's object set can be incomplete and an incomplete
+    O_created makes the per-object conjunct vacuous.
+
+    (None, None) when the source cannot be read — that is a hole in this
+    introspection, not an observation about the world, and it is reported as such.
+    """
+    token = "spawn_actor_from_class" + "("  # split so this line is not itself a hit
+    try:
+        path = inspect.getsourcefile(_SpawnLedger)
+        with open(path, "r", encoding="utf-8") as fh:
+            module_src = fh.read()
+        fn_src = "".join(inspect.getsourcelines(_SpawnLedger.spawn_transient)[0])
+    except Exception:  # noqa: BLE001
+        return None, None
+    return module_src.count(token), fn_src.count(token)
+
+
 # The MEASUREMENT fields of a temporary_placement record. `ident`,
 # `requested_location`, `transient`, `spawn_attempted` and `spawn_ok` are the
 # ACTION's own record — what this operation did — and stay readable on a refused or
 # failed record, because a refusal nobody can attribute is not an honest refusal.
+# `creation_observed`, `destruction_attempted`, `destruction_result` and
+# `post_cleanup_presence` are in that same category and are deliberately NOT listed
+# here: on a refused spawn they carry `False` / `not_attempted` / `never_created`,
+# which are the true statements about an object that never existed. Blanking them
+# to None would turn "nothing was created, so nothing can have leaked" into "we do
+# not know", and the consumer would have to guess which one it was.
 PLACEMENT_MEASURED = ("path_name", "destroy_returned", "absent_after_cleanup",
                       "is_valid_before_destroy", "is_valid_after_destroy",
                       "enumeration_present_before_cleanup",
                       "enumeration_present_after_cleanup",
                       "enumeration_absent_after_cleanup")
+
+
 class _SpawnLedger:
     """Tracks every object THIS operation creates, and re-observes its removal.
 
@@ -1281,8 +1391,77 @@ class _SpawnLedger:
     def __init__(self, raw):
         self.raw = raw
         self.spawned = []          # [(ident, actor)]
+        self.created = []          # every object_id creation was OBSERVED for
+        self.cleanup_ran = False
+        self.ownership_tag = _ownership_tag()
         self.policy = ("transient-only; this pass spawns nothing (marker clearance is "
                        "trace-probed, never placed)")
+        # Filed at CONSTRUCTION, not at cleanup. The manifest's absence is what tells
+        # the consumer that no ledger was installed at all, so it must exist from the
+        # moment the ledger does — including on every early-error path, where a
+        # manifest written only at the end would be missing for the opposite reason.
+        self.write_manifest()
+
+    def write_manifest(self):
+        """File/refresh the ledger's own record: what it owns, and whether it ran.
+
+        This is the artifact the cleanup rail is gated on. It states, in one place
+        and as RAW, the three things two inventory snapshots cannot say:
+
+          * the COMPLETE set of object ids this operation created (O_created), so a
+            consumer can iterate them rather than infer them from a diff that never
+            saw the short-lived ones;
+          * that cleanup actually RAN, as opposed to having been skipped by an early
+            return that left the post snapshot looking identical to the pre one;
+          * that `spawn_transient` is the only spawn path in this module, measured
+            from the source rather than asserted.
+
+        No verdict is computed here. The far side emits raw; the assembler derives.
+        """
+        total_sites, ledgered_sites = _spawn_call_sites()
+        rec = _envelope(LEDGER_KIND, LEDGER_IDENT, ST_CLEANUP if self.cleanup_ran
+                        else ST_PREPARATION,
+                        "scene_survey_far_side._SpawnLedger.write_manifest",
+                        source_api=" + ".join((SPAWN_API, DESTROY_API, IS_VALID_API)),
+                        measured_fields=())
+        object_ids = sorted(str(k) for k in (self.raw.get(
+            "temporary_placement") or {}))
+        rec.update({
+            "is_temporary_object_ledger": True,
+            "ownership_tag": self.ownership_tag,
+            "spawn_policy": self.policy,
+            "spawn_entry_point": ("scene_survey_far_side._SpawnLedger."
+                                  "spawn_transient"),
+            "spawn_call_sites_in_module": total_sites,
+            "spawn_call_sites_in_ledger": ledgered_sites,
+            # None when the source could not be read: an unmeasured introspection,
+            # NOT an observation that there are no stray spawn paths.
+            "unledgered_spawn_call_sites": (
+                None if (total_sites is None or ledgered_sites is None)
+                else total_sites - ledgered_sites),
+            "object_ids": object_ids,
+            "object_count": len(object_ids),
+            "created_object_ids": sorted(str(i) for i in self.created),
+            "created_object_count": len(self.created),
+            "still_owned_object_ids": sorted(str(i) for i, _a in self.spawned),
+            "temporary_object_refs": [_raw_ref("temporary_placement", i)
+                                      for i in object_ids],
+            "cleanup_ran": bool(self.cleanup_ran),
+            "package_identity": _world_identity(),
+            # P, the persistent-package term, split into its observable and its
+            # unobservable half. See PACKAGE_HASH_UNSUPPORTED_REASON.
+            "persistent_package_hash": None,
+            "persistent_package_hash_supported": False,
+            "persistent_package_hash_evidence_class": EC_UNSUPPORTED,
+            "persistent_package_hash_unsupported_reason":
+                PACKAGE_HASH_UNSUPPORTED_REASON,
+            "presence_states": list(PRESENCE_STATES),
+            "destruction_results": list(DESTRUCTION_RESULTS),
+            "collection_ok": True,
+            "errors": [],
+        })
+        self.raw.setdefault(LEDGER_KIND, {})[LEDGER_IDENT] = _settle(rec, True)
+        return rec
 
     def owned_paths(self):
         """Paths of objects still owned by this operation. [] is a measurement."""
@@ -1293,16 +1472,43 @@ class _SpawnLedger:
         return sorted(out)
 
     def spawn_transient(self, world, actor_class, location, ident):
-        """Spawn ONE tracked transient actor, or file an honest refusal record."""
+        """Spawn ONE tracked transient actor, or file an honest refusal record.
+
+        THE spawn path. Every operation-owned temporary object is created here or
+        it is not created at all — `_spawn_call_sites` measures that from the
+        module source and the assembler refuses the cleanup verdict when a second
+        spawn call appears, because an incomplete O_created makes the per-object
+        cleanup conjunct vacuous rather than false.
+
+        The record filed here is the object's whole life story: it is created in
+        the not-yet-created state, amended by `cleanup`, and never deleted. A
+        refused spawn keeps its record too — `creation_observed=False` and
+        `post_cleanup_presence="never_created"` are the true statements about an
+        object that never existed, and they are different facts from silence.
+        """
         rec = _envelope("temporary_placement", ident, ST_OBSERVE,
                         "scene_survey_far_side._SpawnLedger.spawn_transient",
                         source_api=SPAWN_API,
                         measured_fields=PLACEMENT_MEASURED)
         rec.update({
             "ident": ident,
+            # ---- identity + ownership -------------------------------------------
+            # object_id is the ledger's stable handle for this object and is what the
+            # manifest lists; path_name is the engine's, and is None until the object
+            # exists. Two names because the ledger must be able to talk about an
+            # object whose spawn was refused, which has no path.
+            "object_id": ident,
+            "ownership_tag": self.ownership_tag,
+            "package_identity": _world_identity(),
             "requested_location": location,
             "spawn_attempted": False,
             "spawn_ok": False,
+            # ---- the ledger's life-cycle vocabulary ------------------------------
+            "creation_observed": False,
+            "creation_stage": ST_OBSERVE,
+            "destruction_attempted": False,
+            "destruction_result": DESTRUCTION_NOT_ATTEMPTED,
+            "post_cleanup_presence": PRESENCE_NEVER_CREATED,
             "transient": True,
             "path_name": None,
             "destroy_attempted": False,
@@ -1337,9 +1543,11 @@ class _SpawnLedger:
             # UNSUPPORTED, not failed: nothing broke. The editor is in a state where
             # this operation cannot be performed at all, and saying "failed" would
             # report an incident that did not occur.
+            self.write_manifest()
             return _settle(rec, False, evidence_class=EC_UNSUPPORTED)
         if not _finite_vec3(location):
             rec["errors"].append("refused to spawn: location is not a finite vec3")
+            self.write_manifest()
             return _settle(rec, False, FC_PLACEMENT_INVALID)
         rec["spawn_attempted"] = True
         try:
@@ -1350,15 +1558,24 @@ class _SpawnLedger:
         except Exception as exc:  # noqa: BLE001
             rec["errors"].append("spawn_actor_from_class: {}: {}".format(
                 type(exc).__name__, exc))
+            self.write_manifest()
             return _settle(rec, False, FC_PLACEMENT_INVALID)
         if actor is None:
             rec["errors"].append("spawn_actor_from_class returned None")
+            self.write_manifest()
             return _settle(rec, False, FC_PLACEMENT_INVALID)
         rec["spawn_ok"] = True
         rec["path_name"] = _path_of(actor)
         rec["actor_object_path"] = rec["path_name"]
         rec["collection_ok"] = True
+        # CREATION OBSERVED — the spawn call returned a live object handle. From
+        # here the object is in O_created and can only leave that set by being
+        # witnessed gone; there is no path that un-creates it.
+        rec["creation_observed"] = True
+        rec["post_cleanup_presence"] = PRESENCE_UNKNOWN
         self.spawned.append((ident, actor))
+        self.created.append(ident)
+        self.write_manifest()
         return _settle(rec, True)
 
     def cleanup(self):
@@ -1373,7 +1590,14 @@ class _SpawnLedger:
         Every channel is emitted with its own value and its own unknown. A channel
         that could not be read is ``None``, never ``False`` and never "absent".
         """
+        # `cleanup_ran` is set FIRST and unconditionally. It answers "did the
+        # operation reach its cleanup stage", which is a different question from
+        # "was there anything to destroy" — and the consumer needs the first one,
+        # because an early return that skipped cleanup entirely leaves a post
+        # inventory that looks exactly like a clean one.
+        self.cleanup_ran = True
         if not self.spawned:
+            self.write_manifest()
             return
         # ---- BEFORE: both channels, while the object should still exist ---------
         before, before_err = _all_level_actors()
@@ -1395,10 +1619,17 @@ class _SpawnLedger:
         for ident, actor in list(self.spawned):
             rec = self.raw["temporary_placement"].get(ident) or {}
             rec["destroy_attempted"] = True
+            rec["destruction_attempted"] = True
             try:
                 sub = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
                 rec["destroy_returned"] = bool(sub.destroy_actor(actor))
+                # The CALL's outcome, named as such. It is never the proof — the
+                # proof is post_cleanup_presence, measured below through is_valid.
+                rec["destruction_result"] = (
+                    DESTRUCTION_DESTROYED if rec["destroy_returned"]
+                    else DESTRUCTION_RETURNED_FALSE)
             except Exception as exc:  # noqa: BLE001
+                rec["destruction_result"] = DESTRUCTION_ERROR
                 rec.setdefault("errors", []).append(
                     "destroy_actor: {}: {}".format(type(exc).__name__, exc))
 
@@ -1428,6 +1659,7 @@ class _SpawnLedger:
             iv = rec["is_valid_after_destroy"]
             if iv is None:
                 rec["absent_after_cleanup"] = None
+                rec["post_cleanup_presence"] = PRESENCE_UNKNOWN
                 rec["cleanup_channel"] = "is_valid(unread)"
                 rec.setdefault("errors", []).append(
                     "is_valid could not be read after destroy, so the object's "
@@ -1442,9 +1674,20 @@ class _SpawnLedger:
                      "enumeration_absent_after_cleanup is vacuously true and cannot "
                      "fail (see enumeration_vacuity_reason)",
                      ["is_valid_after_destroy"], source_api=IS_VALID_API)
+            # The same measurement, in the ledger's closed vocabulary. Registered as
+            # DERIVED from the same single atom, so the two names cannot drift into
+            # two opinions — and the consumer cross-checks them anyway
+            # (scene_survey_evidence.contradictory_atoms).
+            _derived(rec, "post_cleanup_presence",
+                     PRESENCE_ABSENT if not iv else PRESENCE_PRESENT,
+                     "post_cleanup_presence = 'absent' when is_valid_after_destroy "
+                     "is False, 'present' when it is True, 'unknown' when it could "
+                     "not be read. Never 'absent' by default.",
+                     ["is_valid_after_destroy"], source_api=IS_VALID_API)
             rec["cleanup_channel"] = "is_valid"
             _settle(rec, True)
         self.spawned = []
+        self.write_manifest()
 
     def _note_all(self, detail):
         for ident, _actor in self.spawned:
@@ -1495,9 +1738,21 @@ def _inventory(stage, ledger, world_package):
             _raw_ref("temporary_placement", k)
             for k in (ledger.raw.get("temporary_placement") or {})),
         "spawn_policy": ledger.policy,
+        "ownership_tag": ledger.ownership_tag,
         "dirtiness_api_note": ("UPackage.is_dirty() is not exposed to Python; dirtiness "
                                "is observable only as membership of the engine's dirty "
                                "package sets"),
+        # ---- P, the persistent-package term, per snapshot ---------------------- #
+        # The observable half is `package_identity` above. The content half is not
+        # observable at all from UE Python and is emitted as an explicit
+        # `unsupported` with a NULL value — never a zero, never a placeholder hash,
+        # and never omitted, because an absent field and an unavailable measurement
+        # read identically to a consumer that has to guess.
+        "persistent_package_identity": world_package,
+        "persistent_package_hash": None,
+        "persistent_package_hash_supported": False,
+        "persistent_package_hash_evidence_class": EC_UNSUPPORTED,
+        "persistent_package_hash_unsupported_reason": PACKAGE_HASH_UNSUPPORTED_REASON,
         "errors": [],
     })
     rec["world_identity"] = world_package

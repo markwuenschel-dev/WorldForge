@@ -229,6 +229,35 @@ def _refs(raw, kind):
     return [SSE.raw_ref(kind, k) for k in sorted(d)]
 
 
+def _ledger_refs(raw):
+    """[ledger record id] when the operation filed one, [] when it did not.
+
+    Cited as an input to every cleanup claim. The empty list is not a formatting
+    detail: a cleanup record whose raw_refs do not include the ledger is a cleanup
+    claim derived from inventories alone, and the derivation refuses to produce one
+    (scene_survey_evidence._ledger_sufficiency).
+    """
+    return [SSE.LEDGER_REF] if SSE.temporary_object_ledger(raw) is not None else []
+
+
+def _package_hash_reason(raw):
+    """The far side's own reason string for P's content half, or this side's.
+
+    Preferred from the raw record so the report carries the reason the COLLECTOR
+    gave rather than a copy this file maintains separately and lets rot.
+    """
+    led = SSE.temporary_object_ledger(raw) or {}
+    reason = led.get("persistent_package_hash_unsupported_reason")
+    if isinstance(reason, str) and reason.strip():
+        return reason
+    return ("no UE Python api exposes a content hash or save-state digest of a "
+            "persistent package, so P_1 == P_0 cannot be evaluated on package "
+            "CONTENT. The observable identity half is folded into cleanup_verified "
+            "as persistent_package_identity_equal; this record stays unsupported "
+            "with a null value rather than being coerced into agreement. (The far "
+            "side filed no ledger record carrying its own reason.)")
+
+
 def _projection(d, keys):
     """Stable, key-sorted projection of one raw kind — the determinism preimage."""
     if not isinstance(d, dict):
@@ -559,8 +588,35 @@ def _build_evidence(args, far, captures, runtime_executed):
     # cleanup_verified needs a pre AND a post inventory, and the post must be taken
     # at or after the cleanup stage. "nothing was spawned, so nothing to clean" is a
     # claim about the world, and a claim about the world needs two snapshots of it.
+    # It ALSO needs the operation's temporary-object ledger: two snapshots cannot see
+    # an object created and destroyed between them, so a missing ledger makes the
+    # per-object conjunct unaskable and the whole claim `unknown`
+    # (scene_survey_evidence._ledger_sufficiency). The ledger record is cited as an
+    # input so the claim's provenance includes the thing its refusal turns on.
     ev["cleanup_verified"] = SSE.derived_record(
-        "cleanup_verified", raw, "cleanup", ASSEMBLER, refs=inv_refs)
+        "cleanup_verified", raw, "cleanup", ASSEMBLER,
+        refs=inv_refs + _ledger_refs(raw))
+    # The two population predicates the evidence model registers for the cleanup
+    # kinds. Both were registered and NOBODY REQUESTED THEM — a predicate with no
+    # consumer is a rail that has never been asked to hold anything up. Requested
+    # here so the per-object ledger observations and the per-snapshot dirty-package
+    # observations each produce a re-derivable, forgery-checkable claim of their own
+    # rather than only ever being folded into cleanup_verified's conjunction.
+    #
+    # An empty population comes back INSUFFICIENT, i.e. an honest `failed` record
+    # that projects to None and is named in meta.evidence_unknown_fields. That is
+    # the correct reading of a survey that placed nothing: there is no population to
+    # aggregate over, and an all() across an empty list is a confident answer about
+    # nothing.
+    ev["temporary_cleanup_valid"] = SSE.derived_record(
+        "temporary_cleanup_valid", raw, "cleanup", ASSEMBLER,
+        refs=_refs(raw, "temporary_placement") + _ledger_refs(raw))
+    ev["package_cleanliness_valid"] = SSE.derived_record(
+        "package_cleanliness_valid", raw, "cleanup", ASSEMBLER, refs=inv_refs)
+    # P_1 == P_0, content half. UNSUPPORTED with a null value — never a fabricated
+    # zero and never a True. See the far side's PACKAGE_HASH_UNSUPPORTED_REASON.
+    ev["persistent_package_hash_stable"] = SSE.unsupported(
+        _package_hash_reason(raw), stage="cleanup", collector=FAR_COLLECTOR)
 
     ev["proxy_owners"] = _proxy_owner_record(raw)
     ev["proxies_disabled"] = _proxies_disabled_record(args, raw)
@@ -979,6 +1035,208 @@ class _SmokeArgs(object):
         self.artifact_dir = None
 
 
+# The one world identity the populated smoke fixture is taken in. Named once
+# because it is LOAD-BEARING in three places at once: both inventory snapshots and
+# every temporary-object record must agree on it, or
+# `scene_survey_evidence._foreign_world_placements` correctly reports the placement
+# as evidence imported from a world these snapshots never witnessed.
+_SMOKE_MAP = "/Game/Fixture/Lvl_Fixture"
+
+
+def _smoke_temporary_object_records(op_id, world):
+    """The ledger + one owned-object record of an HONEST, CLEAN operation.
+
+    Hand-built to mirror what `_SpawnLedger` actually emits — `spawn_transient`
+    then `cleanup` then `write_manifest` (tools/bridge/scene_survey_far_side.py:
+    1405-1464, 1474-1579, 1581-1690) — because the far side cannot be imported here:
+    it is an -ExecutePythonScript entry point that needs `unreal`. The shape is
+    therefore copied, never invented; the closed vocabularies are taken from the
+    CONSUMER's own constants (`SSE.PRESENCE_ABSENT`, `SSE.DESTRUCTION_DESTROYED`,
+    ...) so a fixture and the module that reads it cannot drift into two spellings.
+
+    THE STORY IT TELLS, and why each field is what it is. One transient object,
+    `t0`, spawned AFTER the pre snapshot and destroyed BEFORE the post one — the
+    case two inventories are blind to, which is the entire reason the ledger exists:
+
+      creation_observed=True      the spawn call returned a live handle, so `t0` is
+                                  in O_created and the per-object conjunct must
+                                  actually range over it. False here would make the
+                                  quantifier vacuous, which is the shape this
+                                  fixture must NOT have.
+      destruction_attempted=True  cleanup reached this object.
+      destroy_returned=True       the destroy CALL's own outcome — the runtime's
+      destruction_result=destroyed  claim about itself, never the proof.
+      is_valid_before/after       False->True inverted: True before, False after.
+                                  This is the falsifiable channel, and it is the
+                                  one that CAN say no.
+      absent_after_cleanup=True   = NOT is_valid_after_destroy, registered in
+      post_cleanup_presence=absent  `derived_fields` exactly as `cleanup` registers
+                                  them, so `_placement_contradictions` sees one
+                                  is_valid measurement under two names rather than
+                                  a summary somebody wrote over an honest atom.
+      enumeration_* / vacuous     absence from `get_all_level_actors` is recorded
+                                  and flagged VACUOUS: a transient actor is never
+                                  enumerated, so this channel cannot fail and is
+                                  never the cleanup proof.
+
+    The manifest's aggregates (`object_count`, `object_ids`, `created_object_ids`,
+    `created_object_count`) are computed from that single atom the way
+    `write_manifest` computes them, because `scene_survey_evidence.
+    _ledger_contradictions` rejects the whole bundle when a summary disagrees with
+    the measurements it sits beside — a lying aggregate is not made safe by nobody
+    consuming it.
+    """
+    ident = "t0"
+    tag = "worldforge.scene_survey/{}".format(op_id)
+    path = "{0}.{1}:PersistentLevel.WFSurveyTemp_{2}".format(
+        world, world.rsplit("/", 1)[-1], ident)
+    spawn_api = "unreal.EditorActorSubsystem.spawn_actor_from_class"
+    destroy_api = "unreal.EditorActorSubsystem.destroy_actor"
+    is_valid_api = "unreal.SystemLibrary.is_valid"
+    cleanup_api = " + ".join((spawn_api, destroy_api, is_valid_api))
+    vacuity = ("an actor spawned with transient=True is never returned by "
+               "get_all_level_actors at all, so its absence from the enumeration is "
+               "true before destruction as well as after and cannot distinguish the "
+               "two (the far side's measured statement of this is "
+               "scene_survey_far_side.ENUMERATION_VACUITY_REASON)")
+    hash_reason = ("no UE Python api exposes a content hash or save-state digest of "
+                   "a persistent package, so the CONTENT half of P_1 == P_0 is "
+                   "unsupported with a null value; only the identity half is "
+                   "observable (scene_survey_far_side."
+                   "PACKAGE_HASH_UNSUPPORTED_REASON)")
+
+    placement = {
+        # ---- the envelope every raw record carries (far_side:528-568) ---------
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "operation_id": op_id,
+        "request_hash": None,
+        "request_hash_algorithm": None,
+        "record_id": SSE.raw_ref("temporary_placement", ident),
+        "record_type": "temporary_placement",
+        "record_ident": ident,
+        "stage": "cleanup",
+        "collector": "scene_survey_far_side._SpawnLedger.spawn_transient",
+        "collection_status": "collected",
+        "evidence_class": "observed",
+        "source_api": cleanup_api,
+        "world_identity": world,
+        "actor_object_path": path,
+        "component_object_path": None,
+        "failure_code": None,
+        "derived_fields": {
+            # Both derived from ONE atom, `is_valid_after_destroy`, and both say so
+            # — the same registration `_SpawnLedger.cleanup` writes.
+            "absent_after_cleanup": {
+                "evidence_class": "derived_from_observed",
+                "derivation": "absent_after_cleanup = NOT is_valid_after_destroy",
+                "inputs": ["is_valid_after_destroy"],
+                "source_api": is_valid_api,
+            },
+            "post_cleanup_presence": {
+                "evidence_class": "derived_from_observed",
+                "derivation": ("post_cleanup_presence = 'absent' when "
+                               "is_valid_after_destroy is False, 'present' when it "
+                               "is True, 'unknown' when it could not be read"),
+                "inputs": ["is_valid_after_destroy"],
+                "source_api": is_valid_api,
+            },
+        },
+        "measured_fields": ["path_name", "destroy_returned", "absent_after_cleanup",
+                            "is_valid_before_destroy", "is_valid_after_destroy",
+                            "enumeration_present_before_cleanup",
+                            "enumeration_present_after_cleanup",
+                            "enumeration_absent_after_cleanup"],
+        # ---- identity + ownership -------------------------------------------
+        "ident": ident,
+        "object_id": ident,
+        "ownership_tag": tag,
+        "package_identity": world,
+        "requested_location": [10.0, 20.0, 30.0],
+        "spawn_attempted": True,
+        "spawn_ok": True,
+        # ---- the life story --------------------------------------------------
+        "creation_observed": True,
+        "creation_stage": "observe",
+        "destruction_attempted": True,
+        "destruction_result": SSE.DESTRUCTION_DESTROYED,
+        "post_cleanup_presence": SSE.PRESENCE_ABSENT,
+        "transient": True,
+        "path_name": path,
+        "destroy_attempted": True,
+        "destroy_returned": True,
+        "absent_after_cleanup": True,
+        # ---- the two channels, kept apart ------------------------------------
+        "is_valid_before_destroy": True,
+        "is_valid_after_destroy": False,
+        "validity_api": is_valid_api,
+        "enumeration_present_before_cleanup": False,
+        "enumeration_present_after_cleanup": False,
+        "enumeration_absent_after_cleanup": True,
+        "enumeration_absence_is_vacuous": True,
+        "enumeration_vacuity_reason": vacuity,
+        "cleanup_channel": "is_valid",
+        "collection_ok": True,
+        "errors": [],
+    }
+
+    created = [ident] if placement["creation_observed"] is True else []
+    object_ids = [ident]
+    ledger = {
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "operation_id": op_id,
+        "request_hash": None,
+        "request_hash_algorithm": None,
+        "record_id": SSE.LEDGER_REF,
+        "record_type": SSE.LEDGER_KIND,
+        "record_ident": SSE.LEDGER_IDENT,
+        "stage": "cleanup",
+        "collector": "scene_survey_far_side._SpawnLedger.write_manifest",
+        "collection_status": "collected",
+        "evidence_class": "observed",
+        "source_api": cleanup_api,
+        "world_identity": world,
+        "actor_object_path": None,
+        "component_object_path": None,
+        "failure_code": None,
+        "derived_fields": {},
+        "measured_fields": [],
+        "is_temporary_object_ledger": True,
+        "ownership_tag": tag,
+        "spawn_policy": "transient-only",
+        "spawn_entry_point": "scene_survey_far_side._SpawnLedger.spawn_transient",
+        # One spawn call site in the module, and it is inside the ledger: a SECOND
+        # one would mean O_created can be incomplete, and `_ledger_sufficiency`
+        # refuses the verdict on a positive `unledgered_spawn_call_sites`. That the
+        # REAL far side still measures 1/1 is asserted by
+        # test_negative_scene_survey_cleanup.py::producer::single_spawn_path, not
+        # here — this fixture only states the clean case it represents.
+        "spawn_call_sites_in_module": 1,
+        "spawn_call_sites_in_ledger": 1,
+        "unledgered_spawn_call_sites": 0,
+        # Aggregates, computed from the atoms above rather than typed beside them.
+        "object_ids": object_ids,
+        "object_count": len(object_ids),
+        "created_object_ids": created,
+        "created_object_count": len(created),
+        # Emptied by cleanup: nothing is still owned. That is a measurement, and it
+        # is why both inventories carry operation_owned_actor_paths == [].
+        "still_owned_object_ids": [],
+        "temporary_object_refs": [SSE.raw_ref("temporary_placement", i)
+                                  for i in object_ids],
+        "cleanup_ran": True,
+        "package_identity": world,
+        "persistent_package_hash": None,
+        "persistent_package_hash_supported": False,
+        "persistent_package_hash_evidence_class": "unsupported",
+        "persistent_package_hash_unsupported_reason": hash_reason,
+        "presence_states": list(SSE.PRESENCE_STATES),
+        "destruction_results": list(SSE.DESTRUCTION_RESULTS),
+        "collection_ok": True,
+        "errors": [],
+    }
+    return {ident: placement}, {SSE.LEDGER_IDENT: ledger}
+
+
 def _smoke_evidence_sourcing():
     """THE tri-state rails: no structured record => unknown, never a scrape, never 0.
 
@@ -1030,10 +1288,20 @@ def _smoke_evidence_sourcing():
     # is the complement of overlap (far_side:946) and accepted implies grounded AND
     # footprint AND clearance (SceneSurvey.cpp:230). m0 is decided-blocked, m1 is
     # decided-clean, so grounded (2) and accepted (1) genuinely differ.
+    #
+    # cleanup_verified additionally needs the operation's TEMPORARY-OBJECT LEDGER.
+    # Two inventory snapshots cannot see an object created and destroyed between
+    # them, so without a ledger O_created is unknown and the per-object conjunct is
+    # unaskable (scene_survey_evidence._ledger_sufficiency). The fixture therefore
+    # carries a real one — one transient object, created, destroyed, witnessed gone
+    # — so the True below is EARNED by a bundle that could have said otherwise, not
+    # granted by a derivation that stopped asking.
+    _placements, _ledger_doc = _smoke_temporary_object_records(
+        args.operation_id, _SMOKE_MAP)
     _inv = {"collection_ok": True, "actor_paths": ["/A"], "dirty_packages": [],
             "operation_owned_actor_paths": [],
-            "map_identity": "/Game/Fixture/Lvl_Fixture",
-            "package_identity": "/Game/Fixture/Lvl_Fixture"}
+            "map_identity": _SMOKE_MAP,
+            "package_identity": _SMOKE_MAP}
     rich_far = dict(bare_far)
     rich_far.update({
         "actor_count": 2, "support_total": 158,
@@ -1048,6 +1316,8 @@ def _smoke_evidence_sourcing():
                               "overlap": False, "capsule_clear": True}},
             "inventory": {"pre": dict(_inv, stage="anchor_bind"),
                           "post": dict(_inv, stage="cleanup")},
+            "temporary_placement": _placements,
+            "document": _ledger_doc,
             "proxy": {"runtime_proxies": {"value": None, "collection_ok": False,
                                           "stage": "observe", "detail": "no BeginPlay"}},
         },
