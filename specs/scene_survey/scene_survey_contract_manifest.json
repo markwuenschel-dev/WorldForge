@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "artifacts": {
+    "examples/scene_survey/caller_resolved_actor_request.json": {
+      "bytes": 1229,
+      "sha256": "1fbd92f18441e6bac5d013f67c8b52cd0040b7a672cd7edc6b733783acbe0a40"
+    },
+    "examples/scene_survey/caller_resolved_transform_request.json": {
+      "bytes": 1234,
+      "sha256": "7db2349bc02357f1a932867c5bc83adb0f748fa73b8f76d345187d5bcd6e00b9"
+    },
+    "specs/scene_survey/scene_survey_report.schema.json": {
+      "bytes": 44598,
+      "sha256": "54e827c11a0012413e234b4492bd24fe098be96cf40b6e7d9828d59d1d0ec806"
+    },
+    "specs/scene_survey/scene_survey_request.schema.json": {
+      "bytes": 3066,
+      "sha256": "cf0a03364eabea020d46ebae02101c15490e238b90d25e2a0b0ae7c4ec965a40"
+    },
+    "specs/scene_survey/scene_survey_subject.schema.json": {
+      "bytes": 3989,
+      "sha256": "9a73898fa84990ef6e244480e114997fc98ac9df72e60ab5cca409a88a997887"
+    }
+  },
+  "binding": {
+    "rotation_compared": false,
+    "scale_compared": false,
+    "transform_tolerance_cm": 1.0,
+    "transform_tolerance_metric": "euclidean_l2_inclusive"
+  },
+  "contract_surface_sha256": "9982441720290194f8ceec4814ca0aeecd7a9fe51455deab490235dd1fb9fe9a",
+  "contract_version": "wf.scene_survey.contract.v2_6.1",
+  "equivalence_probes_run": 111,
+  "example_plugin_source_hash_observed": true,
+  "failure_codes_owned": [
+    "WF1061_SCENE_SURVEY_PROFILE_INVALID",
+    "WF1062_SCENE_SURVEY_REPORT_INVALID",
+    "WF1063_SCENE_SURVEY_EVIDENCE_INDEX_INVALID",
+    "WF1064_SCENE_SURVEY_UNKNOWN_MODE",
+    "WF1065_SCENE_SURVEY_UNKNOWN_CAPTURE",
+    "WF1066_SCENE_SURVEY_UNKNOWN_SUPPORT_CLASS",
+    "WF1067_SCENE_SURVEY_UNKNOWN_CAMERA",
+    "WF1068_SCENE_SURVEY_CAMERA_CAPTURE_MISSING",
+    "WF1069_SCENE_SURVEY_CAMERA_PROVENANCE_INVALID",
+    "WF1070_SCENE_SURVEY_CAMERA_CAPTURE_OVERCLAIM",
+    "WF1071_SCENE_SURVEY_CAMERA_PROJECTION_INVALID",
+    "WF1072_SCENE_SURVEY_ACTOR_ENUMERATION_INVALID",
+    "WF1073_SCENE_SURVEY_ACTOR_BOUNDS_MISSING",
+    "WF1074_SCENE_SURVEY_COMPONENT_STATE_INVALID",
+    "WF1075_SCENE_SURVEY_SUPPORT_SAMPLE_INVALID",
+    "WF1076_SCENE_SURVEY_SUPPORT_MAP_INCOMPLETE",
+    "WF1077_SCENE_SURVEY_SUPPORT_UNKNOWN_OVERCLAIM",
+    "WF1078_SCENE_SURVEY_SUPPORT_COVERAGE_OVERCLAIM",
+    "WF1079_SCENE_SURVEY_EDGE_CLASSIFICATION_INVALID",
+    "WF1080_SCENE_SURVEY_EDGE_EVIDENCE_MISSING",
+    "WF1081_SCENE_SURVEY_NAVMESH_OVERCLAIM",
+    "WF1082_SCENE_SURVEY_PLACEMENT_INVALID",
+    "WF1083_SCENE_SURVEY_PLACEMENT_NOT_GROUNDED",
+    "WF1084_SCENE_SURVEY_PLACEMENT_OVERLAP_ACCEPTED",
+    "WF1085_SCENE_SURVEY_PLACEMENT_CLEARANCE_MISSING",
+    "WF1086_SCENE_SURVEY_PLACEMENT_EDGE_VIOLATION",
+    "WF1087_SCENE_SURVEY_PLACEMENT_FOOTPRINT_UNSUPPORTED",
+    "WF1088_SCENE_SURVEY_PLACEMENT_GUESSED_COORDINATES",
+    "WF1089_SCENE_SURVEY_PROXY_ENUMERATION_INVALID",
+    "WF1090_SCENE_SURVEY_PROXY_UNATTRIBUTED",
+    "WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED",
+    "WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED",
+    "WF1093_SCENE_SURVEY_MAP_DIRTIED",
+    "WF1094_SCENE_SURVEY_DETERMINISM_MISMATCH",
+    "WF1095_SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM",
+    "WF1096_SCENE_SURVEY_STALE_EVIDENCE",
+    "WF1097_SCENE_SURVEY_EVIDENCE_MISSING",
+    "WF1098_SCENE_SURVEY_OPERATOR_VIEW_INVALID",
+    "WF1099_SCENE_SURVEY_UNKNOWN_FAILURE_CODE",
+    "WF1100_SCENE_SURVEY_REPORT_INTEGRITY_FAILED",
+    "WF1101_SCENE_SURVEY_NEGATIVE_ACCEPTED",
+    "WF1102_SCENE_SURVEY_FUZZ_ACCEPTED",
+    "WF1103_SCENE_SURVEY_TORTURE_FAILED",
+    "WF1104_SCENE_SURVEY_HYGIENE_FAILED",
+    "WF1105_SCENE_SURVEY_REGRESSION_FAILED",
+    "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+    "WF1107_SCENE_SURVEY_SUBJECT_MISMATCH",
+    "WF1108_SCENE_SURVEY_SUBJECT_INFERRED",
+    "WF1109_SCENE_SURVEY_CHANNEL_DISAGREEMENT",
+    "WF1110_SCENE_SURVEY_EVIDENCE_CLASSIFICATION_INVALID",
+    "WF1111_SCENE_SURVEY_EVIDENCE_UNSUPPORTED_CLAIM",
+    "WF1112_SCENE_SURVEY_EVIDENCE_REDERIVATION_MISMATCH",
+    "WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING",
+    "WF1114_SCENE_SURVEY_EVIDENCE_INSUFFICIENT",
+    "WF1120_SCENE_SURVEY_BOOT_FAILED",
+    "WF1121_SCENE_SURVEY_MAP_LOAD_FAILED",
+    "WF1122_SCENE_SURVEY_WORLD_IDENTITY_UNVERIFIED",
+    "WF1123_SCENE_SURVEY_OBSERVATION_FAILED",
+    "WF1124_SCENE_SURVEY_CLASSIFICATION_FAILED",
+    "WF1125_SCENE_SURVEY_REPORT_ASSEMBLY_FAILED",
+    "WF1126_SCENE_SURVEY_PARTIAL_EVIDENCE",
+    "WF1127_SCENE_SURVEY_OPERATION_MANIFEST_MISSING",
+    "WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH",
+    "WF1129_SCENE_SURVEY_CONCURRENT_OPERATION",
+    "WF1130_SCENE_SURVEY_OUTPUT_LOCATION_UNSAFE"
+  ],
+  "generator": "tools/pipeline/export_scene_survey_contracts.py",
+  "generator_provenance": {
+    "commit_omitted_because": "a committed artifact that embeds HEAD would need regenerating on every unrelated commit, turning the drift gate into noise. Identity is carried by contract_surface_sha256 instead, which changes exactly when the contract surface changes. The WorldForge commit IS stamped on runtime evidence, which is per-run.",
+    "commit_stamped": false,
+    "generated_from": [
+      "tools/pipeline/scene_survey_contracts.py",
+      "tools/bridge/schema.py",
+      "tools/bridge/capability_ops.py"
+    ]
+  },
+  "honest_limitations": [
+    "JSON Schema cannot express cross-field arithmetic or cross-document binding; each schema's x-worldforge-rails block names the rails that remain runtime-only. Schema validity is necessary, not sufficient.",
+    "The examples are WorldForge-authored contract-test artifacts. They are valid requests, but a WorldForge-authored request can never satisfy the caller-originated acceptance gate."
+  ],
+  "operation": {
+    "far_side_script": "tools/bridge/scene_survey_far_side.py",
+    "operation": "scene_survey",
+    "payload_keys": [
+      "subject",
+      "captures"
+    ],
+    "summary": "read-only spatial survey of a caller-resolved subject in a target map"
+  },
+  "title": "SceneSurveyContractManifest",
+  "vocabulary": {
+    "anchor_modes": [
+      "explicit_transform",
+      "actor_object_path"
+    ],
+    "camera_kinds": [
+      "gameplay",
+      "elevated_oblique",
+      "top_down"
+    ],
+    "live_runtime_modes": [
+      "live_survey_runtime"
+    ],
+    "runtime_modes": [
+      "deterministic_survey_simulation",
+      "live_survey_runtime"
+    ],
+    "subject_kinds": [
+      "actor",
+      "area",
+      "point"
+    ],
+    "subject_resolvers": [
+      "caller"
+    ],
+    "survey_status": [
+      "pass",
+      "fail",
+      "blocked"
+    ]
+  }
+}

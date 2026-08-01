@@ -1117,6 +1117,124 @@ class FailureCode:
     TRANSITION_REGRESSION_FAILED = "WF1038_TRANSITION_REGRESSION_FAILED"
     TRANSITION_UNKNOWN_FAILURE_CODE = "WF1039_TRANSITION_UNKNOWN_FAILURE_CODE"
 
+    # ======================================================================
+    # v2.6 SceneSurveyForge band (1061–1130; uses 1061–1109) ----------------
+    # ----------------------------------------------------------------------
+    # The first read-only spatial survey of a real external UE 5.8 target.
+    # v2.6 proves a WorldForge survey observes an existing map
+    # and emits machine-readable spatial EVIDENCE — cameras, actor/component
+    # bounds, downward-trace support classification, MeshForge proxy provenance,
+    # and ground-snapped temporary markers — while staying fail-closed and never
+    # editing the courtyard. Honesty invariants reject: an unknown survey mode /
+    # capture kind / support class / camera id; a camera "ok" with no image hash
+    # or provenance; a non-orthographic top-down passed off as true top-down; an
+    # enumeration with no bounds / collision state; a support sample counted valid
+    # while classified unknown or trace_error (fail-closed); a coverage=complete
+    # claim over zero probed samples; an edge region with no discontinuity /
+    # footprint evidence; a survey that leans on navmesh; a temporary marker
+    # claimed grounded while floating; a placement accepted despite overlap,
+    # capsule/Heart clearance violation, platform-edge crossing, or unsupported
+    # footprint; a placement coordinate not backed by a trace (guessed); a proxy
+    # with no owner/category binding; a proxies-disabled claim with proxies still
+    # present; a cleanup claim whose final state != initial; a dirtied target map
+    # / package; a determinism claim with mismatched repeat
+    # hashes; a simulated result mislabeled as live runtime; stale evidence; a
+    # "pass" report with no evidence paths; a survey subject WorldForge resolved
+    # for itself instead of receiving from the caller; a report anchored somewhere
+    # other than the subject it was handed; and the hostile-suite integrity
+    # codes. The backfill auto-fills SEVERITY + GATE_TAXONOMY. WF1110–1130
+    # reserved. Band is disjoint from the transition band (<=1060) — no collision.
+    # -- authoring contract invalidity (1061–1063) --
+    SCENE_SURVEY_PROFILE_INVALID = "WF1061_SCENE_SURVEY_PROFILE_INVALID"
+    SCENE_SURVEY_REPORT_INVALID = "WF1062_SCENE_SURVEY_REPORT_INVALID"
+    SCENE_SURVEY_EVIDENCE_INDEX_INVALID = "WF1063_SCENE_SURVEY_EVIDENCE_INDEX_INVALID"
+    # -- unknown vocabulary (1064–1067) --
+    SCENE_SURVEY_UNKNOWN_MODE = "WF1064_SCENE_SURVEY_UNKNOWN_MODE"
+    SCENE_SURVEY_UNKNOWN_CAPTURE = "WF1065_SCENE_SURVEY_UNKNOWN_CAPTURE"
+    SCENE_SURVEY_UNKNOWN_SUPPORT_CLASS = "WF1066_SCENE_SURVEY_UNKNOWN_SUPPORT_CLASS"
+    SCENE_SURVEY_UNKNOWN_CAMERA = "WF1067_SCENE_SURVEY_UNKNOWN_CAMERA"
+    # -- camera capture (1068–1071) --
+    SCENE_SURVEY_CAMERA_CAPTURE_MISSING = "WF1068_SCENE_SURVEY_CAMERA_CAPTURE_MISSING"
+    SCENE_SURVEY_CAMERA_PROVENANCE_INVALID = "WF1069_SCENE_SURVEY_CAMERA_PROVENANCE_INVALID"
+    SCENE_SURVEY_CAMERA_CAPTURE_OVERCLAIM = "WF1070_SCENE_SURVEY_CAMERA_CAPTURE_OVERCLAIM"
+    SCENE_SURVEY_CAMERA_PROJECTION_INVALID = "WF1071_SCENE_SURVEY_CAMERA_PROJECTION_INVALID"
+    # -- actor / component enumeration + bounds (1072–1074) --
+    SCENE_SURVEY_ACTOR_ENUMERATION_INVALID = "WF1072_SCENE_SURVEY_ACTOR_ENUMERATION_INVALID"
+    SCENE_SURVEY_ACTOR_BOUNDS_MISSING = "WF1073_SCENE_SURVEY_ACTOR_BOUNDS_MISSING"
+    SCENE_SURVEY_COMPONENT_STATE_INVALID = "WF1074_SCENE_SURVEY_COMPONENT_STATE_INVALID"
+    # -- support sampling / classification (1075–1081) --
+    SCENE_SURVEY_SUPPORT_SAMPLE_INVALID = "WF1075_SCENE_SURVEY_SUPPORT_SAMPLE_INVALID"
+    SCENE_SURVEY_SUPPORT_MAP_INCOMPLETE = "WF1076_SCENE_SURVEY_SUPPORT_MAP_INCOMPLETE"
+    SCENE_SURVEY_SUPPORT_UNKNOWN_OVERCLAIM = "WF1077_SCENE_SURVEY_SUPPORT_UNKNOWN_OVERCLAIM"
+    SCENE_SURVEY_SUPPORT_COVERAGE_OVERCLAIM = "WF1078_SCENE_SURVEY_SUPPORT_COVERAGE_OVERCLAIM"
+    SCENE_SURVEY_EDGE_CLASSIFICATION_INVALID = "WF1079_SCENE_SURVEY_EDGE_CLASSIFICATION_INVALID"
+    SCENE_SURVEY_EDGE_EVIDENCE_MISSING = "WF1080_SCENE_SURVEY_EDGE_EVIDENCE_MISSING"
+    SCENE_SURVEY_NAVMESH_OVERCLAIM = "WF1081_SCENE_SURVEY_NAVMESH_OVERCLAIM"
+    # -- temporary marker placement (1082–1088) --
+    SCENE_SURVEY_PLACEMENT_INVALID = "WF1082_SCENE_SURVEY_PLACEMENT_INVALID"
+    SCENE_SURVEY_PLACEMENT_NOT_GROUNDED = "WF1083_SCENE_SURVEY_PLACEMENT_NOT_GROUNDED"
+    SCENE_SURVEY_PLACEMENT_OVERLAP_ACCEPTED = "WF1084_SCENE_SURVEY_PLACEMENT_OVERLAP_ACCEPTED"
+    SCENE_SURVEY_PLACEMENT_CLEARANCE_MISSING = "WF1085_SCENE_SURVEY_PLACEMENT_CLEARANCE_MISSING"
+    SCENE_SURVEY_PLACEMENT_EDGE_VIOLATION = "WF1086_SCENE_SURVEY_PLACEMENT_EDGE_VIOLATION"
+    SCENE_SURVEY_PLACEMENT_FOOTPRINT_UNSUPPORTED = "WF1087_SCENE_SURVEY_PLACEMENT_FOOTPRINT_UNSUPPORTED"
+    SCENE_SURVEY_PLACEMENT_GUESSED_COORDINATES = "WF1088_SCENE_SURVEY_PLACEMENT_GUESSED_COORDINATES"
+    # -- proxy provenance / toggle / cleanup (1089–1093) --
+    SCENE_SURVEY_PROXY_ENUMERATION_INVALID = "WF1089_SCENE_SURVEY_PROXY_ENUMERATION_INVALID"
+    SCENE_SURVEY_PROXY_UNATTRIBUTED = "WF1090_SCENE_SURVEY_PROXY_UNATTRIBUTED"
+    SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED = "WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED"
+    SCENE_SURVEY_CLEANUP_UNVERIFIED = "WF1092_SCENE_SURVEY_CLEANUP_UNVERIFIED"
+    SCENE_SURVEY_MAP_DIRTIED = "WF1093_SCENE_SURVEY_MAP_DIRTIED"
+    # -- determinism / runtime honesty (1094–1096) --
+    SCENE_SURVEY_DETERMINISM_MISMATCH = "WF1094_SCENE_SURVEY_DETERMINISM_MISMATCH"
+    SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM = "WF1095_SCENE_SURVEY_RUNTIME_SIMULATED_OVERCLAIM"
+    SCENE_SURVEY_STALE_EVIDENCE = "WF1096_SCENE_SURVEY_STALE_EVIDENCE"
+    # -- report / evidence / operator (1097–1098) --
+    SCENE_SURVEY_EVIDENCE_MISSING = "WF1097_SCENE_SURVEY_EVIDENCE_MISSING"
+    SCENE_SURVEY_OPERATOR_VIEW_INVALID = "WF1098_SCENE_SURVEY_OPERATOR_VIEW_INVALID"
+    # -- registry / truth / hostile (1099–1105) --
+    SCENE_SURVEY_UNKNOWN_FAILURE_CODE = "WF1099_SCENE_SURVEY_UNKNOWN_FAILURE_CODE"
+    SCENE_SURVEY_REPORT_INTEGRITY_FAILED = "WF1100_SCENE_SURVEY_REPORT_INTEGRITY_FAILED"
+    SCENE_SURVEY_NEGATIVE_ACCEPTED = "WF1101_SCENE_SURVEY_NEGATIVE_ACCEPTED"
+    SCENE_SURVEY_FUZZ_ACCEPTED = "WF1102_SCENE_SURVEY_FUZZ_ACCEPTED"
+    SCENE_SURVEY_TORTURE_FAILED = "WF1103_SCENE_SURVEY_TORTURE_FAILED"
+    SCENE_SURVEY_HYGIENE_FAILED = "WF1104_SCENE_SURVEY_HYGIENE_FAILED"
+    SCENE_SURVEY_REGRESSION_FAILED = "WF1105_SCENE_SURVEY_REGRESSION_FAILED"
+    # -- caller-owned survey subject / binding (1106–1109) --
+    # The caller owns intent: it hands WorldForge an already-resolved subject and
+    # WorldForge's job is to verify and echo it, never to go find one itself.
+    SCENE_SURVEY_SUBJECT_UNRESOLVED = "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED"
+    SCENE_SURVEY_SUBJECT_MISMATCH = "WF1107_SCENE_SURVEY_SUBJECT_MISMATCH"
+    SCENE_SURVEY_SUBJECT_INFERRED = "WF1108_SCENE_SURVEY_SUBJECT_INFERRED"
+    SCENE_SURVEY_CHANNEL_DISAGREEMENT = "WF1109_SCENE_SURVEY_CHANNEL_DISAGREEMENT"
+    # -- runtime evidence integrity (1110–1119) --
+    # A report field is no longer a scalar but an evidence record: value plus how
+    # it was obtained plus what from. These codes police that chain, because the
+    # cheapest way to fake a green run is to populate the expected JSON keys.
+    SCENE_SURVEY_EVIDENCE_CLASSIFICATION_INVALID = "WF1110_SCENE_SURVEY_EVIDENCE_CLASSIFICATION_INVALID"
+    SCENE_SURVEY_EVIDENCE_UNSUPPORTED_CLAIM = "WF1111_SCENE_SURVEY_EVIDENCE_UNSUPPORTED_CLAIM"
+    SCENE_SURVEY_EVIDENCE_REDERIVATION_MISMATCH = "WF1112_SCENE_SURVEY_EVIDENCE_REDERIVATION_MISMATCH"
+    SCENE_SURVEY_EVIDENCE_RAW_MISSING = "WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING"
+    SCENE_SURVEY_EVIDENCE_INSUFFICIENT = "WF1114_SCENE_SURVEY_EVIDENCE_INSUFFICIENT"
+    # -- runtime stage failures (1120–1126) --
+    # Materially different failures must not collapse into one generic runtime
+    # error: an operator needs to know whether the editor never booted, the map
+    # never loaded, or the world that loaded was not the world requested.
+    SCENE_SURVEY_BOOT_FAILED = "WF1120_SCENE_SURVEY_BOOT_FAILED"
+    SCENE_SURVEY_MAP_LOAD_FAILED = "WF1121_SCENE_SURVEY_MAP_LOAD_FAILED"
+    SCENE_SURVEY_WORLD_IDENTITY_UNVERIFIED = "WF1122_SCENE_SURVEY_WORLD_IDENTITY_UNVERIFIED"
+    SCENE_SURVEY_OBSERVATION_FAILED = "WF1123_SCENE_SURVEY_OBSERVATION_FAILED"
+    SCENE_SURVEY_CLASSIFICATION_FAILED = "WF1124_SCENE_SURVEY_CLASSIFICATION_FAILED"
+    SCENE_SURVEY_REPORT_ASSEMBLY_FAILED = "WF1125_SCENE_SURVEY_REPORT_ASSEMBLY_FAILED"
+    SCENE_SURVEY_PARTIAL_EVIDENCE = "WF1126_SCENE_SURVEY_PARTIAL_EVIDENCE"
+    # -- operation identity / isolation (1127–1130) --
+    # Evidence that cannot be bound to THIS operation is unfalsifiable, and a
+    # second concurrent operation writing the same paths is how two runs
+    # cross-bind without anyone noticing.
+    SCENE_SURVEY_OPERATION_MANIFEST_MISSING = "WF1127_SCENE_SURVEY_OPERATION_MANIFEST_MISSING"
+    SCENE_SURVEY_OPERATION_ID_MISMATCH = "WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH"
+    SCENE_SURVEY_CONCURRENT_OPERATION = "WF1129_SCENE_SURVEY_CONCURRENT_OPERATION"
+    SCENE_SURVEY_OUTPUT_LOCATION_UNSAFE = "WF1130_SCENE_SURVEY_OUTPUT_LOCATION_UNSAFE"
+
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
 # This is the *default* nature of the code; a validator may still choose a

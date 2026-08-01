@@ -1,0 +1,627 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::clean_report_valid": {
+      "ok": true,
+      "detail": "synthetic clean report must validate: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::clean_passes_runtime_obj": {
+      "ok": true,
+      "detail": "the runtime rails must accept a clean report, or every negative below is meaningless: set()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::not_executed_rejected": {
+      "ok": true,
+      "detail": "the executed RAIL must reject runtime_executed=False (this invokes the shipped rail; it does not re-test a literal)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::valid_gt_total_rejected": {
+      "ok": true,
+      "detail": "valid>total must be rejected by the contract rail",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::self_resolved_rejected": {
+      "ok": true,
+      "detail": "a report claiming WorldForge resolved the subject must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::no_observed_anchor_rejected": {
+      "ok": true,
+      "detail": "an executed run with no observed anchor must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::bound_subject_accepted": {
+      "ok": true,
+      "detail": "the binding rail must pass a genuinely matched pair (got set())",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::absent_subject_rejected": {
+      "ok": true,
+      "detail": "an envelope with no 'subject' block must FAIL the binding rail",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::binding_wrong_subject_id_rejected": {
+      "ok": true,
+      "detail": "an unbound survey must fail runtime::df::binds_to_subject (got {'runtime::df::binds_to_subject'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::binding_wrong_map_rejected": {
+      "ok": true,
+      "detail": "an unbound survey must fail runtime::df::binds_to_subject (got {'runtime::df::binds_to_subject'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::binding_anchor_drift_rejected": {
+      "ok": true,
+      "detail": "an unbound survey must fail runtime::df::binds_to_subject (got {'runtime::df::binds_to_subject'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::binding_self_resolved_rejected": {
+      "ok": true,
+      "detail": "an unbound survey must fail runtime::df::resolved_by_caller (got {'runtime::df::binds_to_subject', 'runtime::df::resolved_by_caller'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::envelope_clean_accepted": {
+      "ok": true,
+      "detail": "a well-formed envelope must pass every shape rail: set()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::bare_report_not_promoted": {
+      "ok": true,
+      "detail": "a bare SceneSurveyReport must FAIL the envelope rail — the old `obj.get('survey', obj)` fallback made it indistinguishable from a malformed wrapper",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::duplicate_keys_rejected": {
+      "ok": true,
+      "detail": "a duplicated object key must be caught at parse time",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::nonfinite_rejected": {
+      "ok": true,
+      "detail": "NaN/Infinity must be rejected, not parsed and compared",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::unparseable_rejected": {
+      "ok": true,
+      "detail": "an unparseable report must fail, never be skipped",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::absent_report_rejected": {
+      "ok": true,
+      "detail": "an absent report must fail the readable rail",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::selection_positive_control": {
+      "ok": true,
+      "detail": "a fully-bound operation (manifest + request + operation-scoped report) must pass EVERY selection rail, or 'honestly RED' is an unfalsifiable claim. manifest_built=True published=True failures=[]",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::request_hash_mismatch_rejected": {
+      "ok": true,
+      "detail": "a request whose hash does not match the manifest must FAIL — the same tree that just went green",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::unknown_operation_rejected": {
+      "ok": true,
+      "detail": "an operation with no artifact of its own must FAIL rather than inherit whatever sits at the legacy fixed path",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::unnamed_operation_rejected": {
+      "ok": true,
+      "detail": "a gate asked to grade no particular operation must FAIL — that is the fixed-filename defect this rail exists for",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::wiring_defect_is_distinguishable": {
+      "ok": true,
+      "detail": "no operation id from any source must fire ONLY the wiring rail: it is a missing argument, not absent evidence and not ambiguity (got ['identity::manifest_present', 'identity::request_hash_bound', 'input::operation_id_resolved', 'input::operation_scoped_artifact'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::ambiguity_is_distinguishable": {
+      "ok": true,
+      "detail": "two declared bound operations must fire ONLY the ambiguity rail, and the gate must NOT pick one (got ['identity::manifest_present', 'identity::request_hash_bound', 'input::operation_id_unambiguous', 'input::operation_scoped_artifact'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::absent_evidence_is_distinguishable": {
+      "ok": true,
+      "detail": "a named operation with nothing on disk must fire ONLY the absent-caller-evidence rail — the gate knew what to grade and nobody has produced it (got ['identity::manifest_present', 'identity::request_hash_bound', 'input::caller_evidence_present', 'input::operation_scoped_artifact'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::single_pack_declaration_resolves": {
+      "ok": true,
+      "detail": "one declared bound operation must resolve from the pack source, not fall through to the wiring RED (got {'operation_id': 'op_dogfood_positive_0001', 'source': 'pack_declaration', 'outcome': 'resolved', 'candidates': ['op_dogfood_positive_0001'], 'sources_consulted': ['argument', 'pack_declaration'], 'pack': 'dogfood_pack', 'detail': \"derived under strict validation from the single bound operation the pack declares (pack 'dogfood_pack' declares 1 candidate(s)); rejected as unusable: []\"})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::no_newest_on_disk_fallback": {
+      "ok": true,
+      "detail": "with operations present on disk and no source naming one, the resolver must still resolve NOTHING — 'take the newest' is the eight-day-old-artifact defect in a new costume (got {'operation_id': None, 'source': None, 'outcome': 'wiring_defect', 'candidates': [], 'sources_consulted': ['argument', 'pack_declaration'], 'pack': 'dogfood_pack', 'detail': \"pack 'dogfood_pack' declares no bound operation: no pack schema in this repository carries one, and this gate never loads a pack document — --pack is a report label, not a document reference\"})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::unbound_request_rejected": {
+      "ok": true,
+      "detail": "an operation with no manifest+request pair must FAIL the request-hash binding rail",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::stale_artifact_rejected": {
+      "ok": true,
+      "detail": "an artifact outside the declared max age must FAIL (got {'freshness::within_max_age'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::predating_artifact_rejected": {
+      "ok": true,
+      "detail": "an artifact older than its producing code must FAIL (got {'freshness::not_older_than_producers'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::declared_freshness_positive": {
+      "ok": true,
+      "detail": "a just-built envelope at HEAD must pass every declared-freshness rail: set()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::declared_timestamp_absent_rejected": {
+      "ok": true,
+      "detail": "an envelope with no meta.timestamp must FAIL: mtime alone is launderable by a rewrite",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::declared_stale_rejected": {
+      "ok": true,
+      "detail": "an eight-day-old DECLARED build time must FAIL both the max-age and the predates-producers rails even when the file was touched one second ago — this is the exact defect being repaired (got {'freshness::declared_after_producers', 'freshness::declared_within_max_age'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::wrong_git_sha_rejected": {
+      "ok": true,
+      "detail": "a report produced at another revision must not pass silently",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::wrong_operation_rejected": {
+      "ok": true,
+      "detail": "a report for a different operation must FAIL identity binding",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::clean_provenance_accepted": {
+      "ok": true,
+      "detail": "a report with no evidence records must not trip the provenance rail",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::forged_observed_subject_rejected": {
+      "ok": true,
+      "detail": "a subject_id record claiming classification 'observed' must FAIL: WorldForge has no channel that could observe caller vocabulary",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::no_raw_rejected": {
+      "ok": true,
+      "detail": "an envelope with no reachable raw bundle must FAIL, because every derived value in it is then unverifiable",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::cross_operation_evidence_rejected": {
+      "ok": true,
+      "detail": "raw evidence declaring a different operation_id must FAIL",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::determinism_drift_rejected": {
+      "ok": true,
+      "detail": "two run bundles that differ must FAIL determinism on RECOMPUTED digests, not on the report's self-attested per_run_hashes (got {'determinism::df::runs_identical', 'determinism::df::claim_matches_recomputation'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::determinism_overclaim_rejected": {
+      "ok": true,
+      "detail": "a report claiming more runs than there are artifacts must FAIL (got {'determinism::df::claim_count_matches'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::determinism_self_contradicting_claim_rejected": {
+      "ok": true,
+      "detail": "a report whose OWN per_run_hashes disagree while claiming consistency must FAIL — this conjunct is carried over from the rail this function replaced (got {'determinism::df::claimed_hashes_agree'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::determinism_clean_accepted": {
+      "ok": true,
+      "detail": "one artifact + one claimed hash + consistent must pass",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::recompute_clean_accepted": {
+      "ok": true,
+      "detail": "a report whose aggregates follow from its raw must pass every recompute rail: set()",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::forged_aggregate_rejected": {
+      "ok": true,
+      "detail": "a reported aggregate the raw does not produce must FAIL (got {'recompute::df::aggregates_follow_from_raw'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::bounds_from_count_rejected": {
+      "ok": true,
+      "detail": "actor_bounds_valid=True with no per-actor bounds in the raw must FAIL as an undecidable presented as decided (got {'recompute::df::no_unknown_presented_as_decided', 'recompute::df::actor_bounds_from_bounds'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::literal_cleanup_rejected": {
+      "ok": true,
+      "detail": "cleanup_verified=True with no pre/post inventory must FAIL (got {'recompute::df::no_unknown_presented_as_decided', 'recompute::df::cleanup_from_inventories'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::contradictory_atoms_rejected": {
+      "ok": true,
+      "detail": "a marker restating grounded=False over a trace that hit must FAIL (got {'recompute::df::no_contradictory_atoms', 'recompute::df::acceptance_evidence_not_contradicted'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::dangling_ref_rejected": {
+      "ok": true,
+      "detail": "a raw_ref that resolves to no record must FAIL (got {'raw::df::refs_resolve', 'raw::df::bundle_operation_bound'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::wrong_world_rejected": {
+      "ok": true,
+      "detail": "a survey of a world other than the requested one must FAIL (got {'recompute::df::world_identity_ok'})",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_clean_accepted": {
+      "ok": true,
+      "detail": "an acceptance-eligible survey whose raw supports every term must pass EVERY rail, or each negative below is meaningless: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_M_explicit_transform_is_never_eligible_rejected": {
+      "ok": true,
+      "detail": "term M of A(o)=M∧W∧P∧T∧B∧E must deny an otherwise-perfect report that still claims acceptance_eligible=True; expected ['recompute::df::acceptance_claim_matches_raw'] in the failures, got ['recompute::df::acceptance_claim_matches_raw', 'recompute::df::acceptance_components_follow_from_raw', 'recompute::df::aggregates_follow_from_raw', 'recompute::df::no_unknown_presented_as_decided']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_W_world_other_than_requested_rejected": {
+      "ok": true,
+      "detail": "term W of A(o)=M∧W∧P∧T∧B∧E must deny an otherwise-perfect report that still claims acceptance_eligible=True; expected ['recompute::df::acceptance_claim_matches_raw'] in the failures, got ['recompute::df::acceptance_claim_matches_raw', 'recompute::df::acceptance_components_follow_from_raw', 'recompute::df::acceptance_evidence_not_contradicted', 'recompute::df::aggregates_follow_from_raw', 'recompute::df::world_identity_ok']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_P_substituted_anchor_actor_rejected": {
+      "ok": true,
+      "detail": "term P of A(o)=M∧W∧P∧T∧B∧E must deny an otherwise-perfect report that still claims acceptance_eligible=True; expected ['recompute::df::acceptance_claim_matches_raw'] in the failures, got ['recompute::df::acceptance_claim_matches_raw', 'recompute::df::acceptance_components_follow_from_raw', 'recompute::df::aggregates_follow_from_raw', 'recompute::df::no_unknown_presented_as_decided']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_T_anchor_transform_not_the_actors_rejected": {
+      "ok": true,
+      "detail": "term T of A(o)=M∧W∧P∧T∧B∧E must deny an otherwise-perfect report that still claims acceptance_eligible=True; expected ['recompute::df::acceptance_claim_matches_raw'] in the failures, got ['recompute::df::acceptance_claim_matches_raw', 'recompute::df::acceptance_components_follow_from_raw', 'recompute::df::aggregates_follow_from_raw']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_B_survey_not_centred_on_the_actor_rejected": {
+      "ok": true,
+      "detail": "term B of A(o)=M∧W∧P∧T∧B∧E must deny an otherwise-perfect report that still claims acceptance_eligible=True; expected ['recompute::df::acceptance_claim_matches_raw'] in the failures, got ['recompute::df::acceptance_claim_matches_raw', 'recompute::df::acceptance_components_follow_from_raw', 'recompute::df::aggregates_follow_from_raw']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_E_raw_split_across_operations_rejected": {
+      "ok": true,
+      "detail": "term E of A(o)=M∧W∧P∧T∧B∧E must deny an otherwise-perfect report that still claims acceptance_eligible=True; expected ['recompute::df::acceptance_claim_matches_raw', 'recompute::df::acceptance_evidence_not_contradicted'] in the failures, got ['recompute::df::acceptance_claim_matches_raw', 'recompute::df::acceptance_evidence_not_contradicted', 'recompute::df::aggregates_follow_from_raw']",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_foreign_operation_rejected": {
+      "ok": true,
+      "detail": "raw whose records name another operation must deny term E, however clean each individual measurement is",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_underclaim_rejected": {
+      "ok": true,
+      "detail": "a report claiming acceptance_eligible=False over raw that re-derives True must FAIL too: an under-claim is still a report that does not follow from its own evidence",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_forged_component_rejected": {
+      "ok": true,
+      "detail": "a meta.acceptance_components entry the raw denies must FAIL the component rail, not just the aggregate one",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::acceptance_undecidable_claim_rejected": {
+      "ok": true,
+      "detail": "an acceptance claim over raw that cannot decide it must FAIL as an unknown presented as decided, not pass as agreement (got ['recompute::df::acceptance_claim_matches_raw', 'recompute::df::acceptance_components_follow_from_raw', 'recompute::df::actor_bounds_from_bounds', 'recompute::df::no_unknown_presented_as_decided'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::recompute_module_selftest": {
+      "ok": true,
+      "detail": "tools/pipeline/scene_survey_recompute.py self-dogfood must pass",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "input::operation_id_unambiguous": {
+      "ok": true,
+      "detail": "AMBIGUOUS OPERATION (not a missing argument, and not absent evidence): more than one candidate operation was offered and this gate will not pick one. Silently choosing is how a run grades the wrong operation and reports success about it. Name the one you mean with --operation-id. --operation-id was passed explicitly; source 'argument' wins and no other source was consulted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "input::operation_id_resolved": {
+      "ok": true,
+      "detail": "WIRING DEFECT (this is NOT the absent-runtime-evidence RED): no operation id was produced by ANY of the declared sources ['argument', 'pack_declaration']. The caller did not say what to grade, so nothing was graded — fix the invocation, not the editor. --operation-id was passed explicitly; source 'argument' wins and no other source was consulted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "input::operation_scoped_artifact": {
+      "ok": false,
+      "detail": "no operation-scoped report at D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\operations\\op_v2_6_scene_survey_0001\\scene_survey_report.json — falling back to the legacy unscoped path D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\scene_survey_report.json for diagnosis only; a report at a shared fixed filename cannot prove which operation produced it",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF1127_SCENE_SURVEY_OPERATION_MANIFEST_MISSING",
+      "blocking": true
+    },
+    "identity::manifest_present": {
+      "ok": false,
+      "detail": "operation manifest for 'op_v2_6_scene_survey_0001' must exist and carry an intact digest (procedural/reports/scene_survey/runtime/operations/op_v2_6_scene_survey_0001/operation_manifest.json): no operation manifest at D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\operations\\op_v2_6_scene_survey_0001\\operation_manifest.json — evidence with no manifest cannot be bound to an operation",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF1127_SCENE_SURVEY_OPERATION_MANIFEST_MISSING",
+      "blocking": true
+    },
+    "identity::request_hash_bound": {
+      "ok": false,
+      "detail": "cannot bind evidence to a request: manifest=False request=False — pass --operation-id and --request. An unbound report answers a question nobody can reconstruct",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF1128_SCENE_SURVEY_OPERATION_ID_MISMATCH",
+      "blocking": true
+    },
+    "input::caller_evidence_present": {
+      "ok": false,
+      "detail": "ABSENT CALLER EVIDENCE — the intentional RED. Operation 'op_v2_6_scene_survey_0001' is named and unambiguous (source=argument), so this gate knows precisely what it would grade; nothing has produced it. report=D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\operations\\op_v2_6_scene_survey_0001\\scene_survey_report.json present=False | manifest=D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\operations\\op_v2_6_scene_survey_0001\\operation_manifest.json present=False. This is NOT a wiring defect and NOT ambiguity: it is repaired by running run_scene_survey_probe.py against a target, not by changing this invocation",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF1097_SCENE_SURVEY_EVIDENCE_MISSING",
+      "blocking": true
+    },
+    "freshness::artifact_present": {
+      "ok": false,
+      "detail": "no runtime survey report at D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\scene_survey_report.json — run run_scene_survey_probe.py against a target first (fail-closed until a live survey runs)",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF1097_SCENE_SURVEY_EVIDENCE_MISSING",
+      "blocking": true
+    },
+    "envelope::live::readable": {
+      "ok": false,
+      "detail": "runtime report unreadable: [Errno 2] No such file or directory: 'D:\\\\Unreal Projects\\\\WorldForge\\\\procedural\\\\reports\\\\scene_survey\\\\runtime\\\\scene_survey_report.json'",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF1097_SCENE_SURVEY_EVIDENCE_MISSING",
+      "blocking": true
+    }
+  },
+  "failures": [
+    "input::operation_scoped_artifact: no operation-scoped report at D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\operations\\op_v2_6_scene_survey_0001\\scene_survey_report.json — falling back to the legacy unscoped path D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\scene_survey_report.json for diagnosis only; a report at a shared fixed filename cannot prove which operation produced it",
+    "identity::manifest_present: operation manifest for 'op_v2_6_scene_survey_0001' must exist and carry an intact digest (procedural/reports/scene_survey/runtime/operations/op_v2_6_scene_survey_0001/operation_manifest.json): no operation manifest at D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\operations\\op_v2_6_scene_survey_0001\\operation_manifest.json — evidence with no manifest cannot be bound to an operation",
+    "identity::request_hash_bound: cannot bind evidence to a request: manifest=False request=False — pass --operation-id and --request. An unbound report answers a question nobody can reconstruct",
+    "input::caller_evidence_present: ABSENT CALLER EVIDENCE — the intentional RED. Operation 'op_v2_6_scene_survey_0001' is named and unambiguous (source=argument), so this gate knows precisely what it would grade; nothing has produced it. report=D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\operations\\op_v2_6_scene_survey_0001\\scene_survey_report.json present=False | manifest=D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\operations\\op_v2_6_scene_survey_0001\\operation_manifest.json present=False. This is NOT a wiring defect and NOT ambiguity: it is repaired by running run_scene_survey_probe.py against a target, not by changing this invocation",
+    "freshness::artifact_present: no runtime survey report at D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\scene_survey_report.json — run run_scene_survey_probe.py against a target first (fail-closed until a live survey runs)",
+    "envelope::live::readable: runtime report unreadable: [Errno 2] No such file or directory: 'D:\\\\Unreal Projects\\\\WorldForge\\\\procedural\\\\reports\\\\scene_survey\\\\runtime\\\\scene_survey_report.json'"
+  ],
+  "counts": {
+    "PASS": 64,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 6,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail",
+  "meta": {
+    "command": "validate-scene-survey-runtime",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:33:59.734219+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.scene_survey.runtime_gate.v1",
+    "report_id": "wf.scene_survey.runtime_gate.v1:99f76f3d1025",
+    "status": "fail",
+    "failure_count": 6,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 0,
+    "records_total": 0,
+    "records_passed": 0,
+    "records_failed": 0,
+    "records_skipped": 0,
+    "operation_id": "op_v2_6_scene_survey_0001",
+    "operation_id_argument": "op_v2_6_scene_survey_0001",
+    "operation_id_source": "argument",
+    "operation_id_outcome": "resolved",
+    "operation_id_candidates": [
+      "op_v2_6_scene_survey_0001"
+    ],
+    "operation_id_sources_consulted": [
+      "argument",
+      "pack_declaration"
+    ],
+    "operation_id_detail": "--operation-id was passed explicitly; source 'argument' wins and no other source was consulted",
+    "input_selection": "operation_scoped+legacy_fallback",
+    "graded_artifact": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\scene_survey\\runtime\\scene_survey_report.json",
+    "tau_supported_fraction": 1.0,
+    "tau_ground_dz_cm": 100.0,
+    "theta_max_deg": 44.0,
+    "tau_anchor_transform_cm": 1.0
+  }
+}

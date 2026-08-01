@@ -1,0 +1,210 @@
+{
+  "suite": "scene_survey_report_integrity",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "index::valid": {
+      "ok": true,
+      "detail": "evidence index invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::all_paths_resolve": {
+      "ok": true,
+      "detail": "evidence index links do not resolve: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::non_vacuous": {
+      "ok": true,
+      "detail": "evidence index must reference >= 1 committed report(s) (got 10)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::clean_passes": {
+      "ok": true,
+      "detail": "clean synthetic report must pass",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_meta": {
+      "ok": true,
+      "detail": "tampered report (no_meta) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_unknown_sha": {
+      "ok": true,
+      "detail": "tampered report (unknown_sha) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_timestamp": {
+      "ok": true,
+      "detail": "tampered report (no_timestamp) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_bad_report_type": {
+      "ok": true,
+      "detail": "tampered report (bad_report_type) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_status": {
+      "ok": true,
+      "detail": "tampered report (no_status) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_checks": {
+      "ok": true,
+      "detail": "tampered report (no_checks) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::hostile\\v2_6_assembler_probes_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::hostile\\v2_6_known_bads_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::negatives\\scene_survey_fuzz_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::negatives\\scene_survey_negatives_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::runtime\\validate_scene_survey_runtime_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::scene_survey_hygiene_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::scene_survey_report_integrity_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::scene_survey_torture_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::support_grid_conformance_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::validate_scene_survey_contracts_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::non_vacuous": {
+      "ok": true,
+      "detail": "must scan >= 1 real reports (got 10)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 21,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "scene-survey-report-integrity",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:33:59.026327+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.scene_survey.report_integrity.v1",
+    "report_id": "wf.scene_survey.report_integrity.v1:0a6c5b9e0ff9",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 10,
+    "records_total": 10,
+    "records_passed": 10,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "$id": "https://worldforge.local/specs/scene_survey/scene_survey_request.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A BridgeRequest carrying requested_operation='scene_survey'. The caller authors this; it is the ONLY way to state a survey subject. --map and --anchor are refused by the operation, not defaulted.",
+  "properties": {
+    "operation_id": {
+      "type": "string"
+    },
+    "output_location": {
+      "type": "string"
+    },
+    "requested_operation": {
+      "const": "scene_survey"
+    },
+    "required_plugin": {
+      "type": "string"
+    },
+    "required_plugin_source_hash": {
+      "anyOf": [
+        {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "required_plugin_version": {
+      "type": "string"
+    },
+    "source_commit": {
+      "type": "string"
+    },
+    "source_repository": {
+      "type": "string"
+    },
+    "subject": {
+      "anyOf": [
+        {
+          "$ref": "scene_survey_subject.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "target_commit": {
+      "type": "string"
+    },
+    "target_engine": {
+      "type": "string"
+    },
+    "target_map": {
+      "type": "string"
+    },
+    "target_project": {
+      "type": "string"
+    },
+    "target_repository": {
+      "type": "string"
+    },
+    "timeout_seconds": {
+      "minimum": 0,
+      "multipleOf": 1,
+      "type": "number"
+    }
+  },
+  "required": [
+    "operation_id",
+    "output_location",
+    "requested_operation",
+    "required_plugin",
+    "required_plugin_version",
+    "source_commit",
+    "source_repository",
+    "target_commit",
+    "target_engine",
+    "target_map",
+    "target_project",
+    "target_repository"
+  ],
+  "title": "SceneSurveyRequest",
+  "type": "object",
+  "x-worldforge-contract-version": "wf.scene_survey.contract.v2_6.1",
+  "x-worldforge-rails": [
+    {
+      "code": "WF1107_SCENE_SURVEY_SUBJECT_MISMATCH",
+      "detail": "when target_map is non-empty it must equal subject.map_asset_path exactly. Cross-field equality is not expressible in JSON Schema.",
+      "expressible_in_json_schema": false,
+      "rail": "request::target_map_agrees_with_subject"
+    },
+    {
+      "code": "WF1026_BRIDGE_STALE_PLUGIN",
+      "detail": "required_plugin_source_hash must be stated and must equal the sha256 of the target's Plugins/WorldForge/Source tree. An UNSTATED pin fails closed — it is not treated as 'no requirement'. Checked before the editor boots.",
+      "expressible_in_json_schema": false,
+      "rail": "request::plugin_source_pin"
+    },
+    {
+      "code": "WF1106_SCENE_SURVEY_SUBJECT_UNRESOLVED",
+      "detail": "subject is Optional on the BridgeRequest dataclass because other operations do not take one, but the scene_survey operation refuses a request whose subject is absent.",
+      "expressible_in_json_schema": false,
+      "rail": "request::subject_required_for_scene_survey"
+    }
+  ]
+}

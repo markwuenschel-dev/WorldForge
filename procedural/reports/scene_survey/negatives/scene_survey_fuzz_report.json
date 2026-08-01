@@ -1,0 +1,154 @@
+{
+  "suite": "scene_survey_fuzz",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "fuzz::zero_invalid_accepted": {
+      "ok": true,
+      "detail": "0 invalid case(s) accepted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::case_count": {
+      "ok": true,
+      "detail": "must run > 0 cases",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::pair::zero_invalid_accepted": {
+      "ok": true,
+      "detail": "0 mismatched pair(s) accepted",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::pair::case_count": {
+      "ok": true,
+      "detail": "pair lane must exercise every mutation mode at least once",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::pair::matched::explicit_transform": {
+      "ok": true,
+      "detail": "matched pair rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::pair::matched::actor_object_path": {
+      "ok": true,
+      "detail": "matched pair rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::valid::SceneSurveySubject": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::valid::SceneSurveyProfile": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::valid::SceneSurveyCameraCapture": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::valid::SceneSurveySupportMap": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::valid::SceneSurveyTemporaryPlacement": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::valid::SceneSurveyProxyReport": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::valid::SceneSurveyReport": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fuzz::valid::SceneSurveyEvidenceIndex": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 14,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "scene-survey-fuzz",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:33:58.301759+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.scene_survey.fuzz.v1",
+    "report_id": "wf.scene_survey.fuzz.v1:8832c50f0b06",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 360,
+    "records_total": 360,
+    "records_passed": 360,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -21,6 +21,7 @@ registry (which the platform already owns), or from an explicit argument.
 Self-contained: stdlib + the shared engine_identity registry.
 """
 
+import hashlib
 import os
 import subprocess
 import sys
@@ -162,6 +163,165 @@ def resolve_plugin_source(repo_root, arg=None, engine_build_id=None):
         "cannot find a WorldForge plugin directory with 5.8-built binaries in any "
         "worktree of this repository. Build the plugin under UE 5.8, or pass "
         "--plugin-source / set {}.".format(ENV_PLUGIN_SOURCE))
+
+
+# ---------------------------------------------------------------------------
+# Plugin SOURCE identity (the source half of the problem the BuildId match above
+# solves for binaries).
+#
+# _worktree_with_matching_plugin_binaries guards WF1019 by refusing to hand a
+# 5.7-built DLL to a 5.8 editor. That guards the COMPILED artifact. It says nothing
+# about whether the far side's plugin *source* is the same source this repo pinned:
+# two checkouts can carry byte-different SceneSurvey.cpp and still produce binaries
+# whose BuildId matches, because BuildId identifies the ENGINE, not the plugin code.
+# A source hash closes that gap — the caller pins the source it expects, the near
+# side hashes what is actually on disk before booting, and a mismatch is WF1026
+# (stale plugin) instead of a silently different survey.
+# ---------------------------------------------------------------------------
+
+_PLUGIN_SOURCE_SUBDIR = "Source"
+
+
+def _worktree_with_plugin_source(repo_root):
+    """Discover a worktree of THIS repo carrying a plugin ``Source/`` tree.
+
+    Deliberately NOT ``_worktree_with_matching_plugin_binaries``: that one requires
+    compiled binaries, and source identity is answerable from a checkout that was
+    never built. Reusing it would make the source hash unavailable exactly where it
+    is most useful — on a machine that has the code but not the build.
+
+    ``repo_root`` is ALWAYS tried first, and both sides are ``resolve()``d before
+    comparison. That is not a stylistic detail: plugin *source* is committed, so the
+    answer is normally repo_root's own tree, and a sibling worktree on another branch
+    is a different revision of the same plugin. Comparing unresolved strings (a
+    relative ``repo_root`` against git's absolute output) silently demotes repo_root
+    and hashes whichever worktree git happens to list first — observed here handing
+    back the parked v2.4 checkout instead of this one.
+    """
+    root = Path(repo_root).resolve()
+    candidates = [root]
+    try:
+        out = subprocess.check_output(
+            ["git", "worktree", "list", "--porcelain"], cwd=str(root),
+            stderr=subprocess.DEVNULL).decode("utf-8", "replace")
+    except Exception:
+        pass
+    else:
+        others = sorted(Path(line.split(" ", 1)[1].strip()).resolve()
+                        for line in out.splitlines() if line.startswith("worktree "))
+        candidates += [p for p in others if p != root]
+    for wt in candidates:
+        plugin = wt / "Plugins" / "WorldForge"
+        if (plugin / _PLUGIN_SOURCE_SUBDIR).is_dir():
+            return plugin
+    return None
+
+
+def hash_plugin_source(plugin_dir):
+    """Return the sha256 hex digest of a plugin's ``Source/**`` tree.
+
+    Determinism rules, each one load-bearing:
+
+    * **Sorted by relative POSIX path.** Directory iteration order is a filesystem
+      detail; sorting makes the digest independent of it.
+    * **No absolute paths in the digest.** Only paths relative to ``Source/`` are
+      hashed, so the same tree on two machines (or two worktrees) hashes equal.
+    * **Line endings normalised** (CRLF and lone CR -> LF) before hashing, so a
+      checkout under a different ``core.autocrlf`` is not reported as different
+      code. NOTE: the two live copies of this plugin were verified to be pure-LF
+      already, so this normalisation is defensive, not the thing that makes them
+      agree — do not cite it as evidence they match.
+    * **Length-framed entries.** Each record is ``<relpath>\\0<bytelen>\\0<bytes>``,
+      so no combination of names and contents can be re-partitioned into a
+      different tree with the same digest.
+    * **No filtering.** Every file under ``Source/`` is hashed verbatim. A skip-list
+      is a place for a difference to hide, and this function exists to find
+      differences.
+
+    Raises ResolutionError if there is no ``Source/`` dir or it holds no files: an
+    empty digest would be a hash that matches nothing and alarms about nothing.
+    """
+    root = Path(plugin_dir) / _PLUGIN_SOURCE_SUBDIR
+    if not root.is_dir():
+        raise ResolutionError(
+            "plugin source tree not found: {} has no {}/ directory".format(
+                plugin_dir, _PLUGIN_SOURCE_SUBDIR))
+    files = sorted((p for p in root.rglob("*") if p.is_file()),
+                   key=lambda p: p.relative_to(root).as_posix())
+    if not files:
+        raise ResolutionError(
+            "plugin source tree {} contains no files — refusing to emit a digest "
+            "that would match nothing".format(root))
+    h = hashlib.sha256()
+    for p in files:
+        rel = p.relative_to(root).as_posix()
+        data = p.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+        h.update(rel.encode("utf-8"))
+        h.update(b"\0")
+        h.update(str(len(data)).encode("ascii"))
+        h.update(b"\0")
+        h.update(data)
+    return h.hexdigest()
+
+
+def resolve_plugin_source_hash(repo_root=None, arg=None, plugin_dir=None):
+    """Resolve a plugin dir, then hash its ``Source/`` tree.
+
+    Returns ``Resolved(<sha256 hex>, source)`` where ``source`` is the rung that
+    answered — the same ladder discipline as every other resolver here:
+
+        1. ``plugin_dir`` / ``arg`` (an explicit plugin directory) -> "arg"
+        2. ``$WF_BRIDGE_PLUGIN_SOURCE``                            -> "env"
+        3. a worktree of ``repo_root`` carrying Plugins/WorldForge/Source -> "discovered"
+
+    There is no registry rung: the shared registry knows about engines, not plugins
+    (same as ``resolve_plugin_source``). If no rung answers this raises
+    ResolutionError — it never falls back to a baked constant, because a baked
+    constant here would be a hash that silently claims agreement it never checked.
+
+    ``plugin_dir`` is the rung Lane C wants: hand it the TARGET project's
+    ``<project>/Plugins/WorldForge`` and compare the result to
+    ``BridgeRequest.required_plugin_source_hash`` before booting the editor.
+    """
+    explicit = plugin_dir or arg
+    if explicit:
+        return Resolved(hash_plugin_source(explicit), "arg")
+    env = os.environ.get(ENV_PLUGIN_SOURCE)
+    if env:
+        return Resolved(hash_plugin_source(env), "env")
+    if repo_root:
+        found = _worktree_with_plugin_source(repo_root)
+        if found:
+            return Resolved(hash_plugin_source(found), "discovered")
+    raise ResolutionError(
+        "cannot resolve a WorldForge plugin source tree to hash. Pass plugin_dir=, "
+        "or set {}, or call with repo_root= so a worktree can be discovered."
+        .format(ENV_PLUGIN_SOURCE))
+
+
+def plugin_source_hash_matches(required, observed):
+    """Compare a caller's pinned source hash against the observed one.
+
+    Returns ``(ok, detail)``. ``ok`` is True only on an exact match of two non-empty
+    digests. An unstated pin (``required`` is None/empty) returns **False** with a
+    detail saying so: "nobody pinned it" is an unverified claim, not a passing one,
+    and the caller must decide whether an unpinned run is acceptable rather than
+    having this function decide by returning True.
+
+    The caller maps a False result to WF1026_BRIDGE_STALE_PLUGIN.
+    """
+    if not required:
+        return False, ("no required_plugin_source_hash was stated — plugin source "
+                       "identity is unverified (observed {})".format(
+                           (observed or "?")[:12]))
+    if not observed:
+        return False, ("no plugin source hash could be observed on disk to compare "
+                       "against required {}".format(required[:12]))
+    if required == observed:
+        return True, "plugin source hash matches ({})".format(required[:12])
+    return False, ("plugin source hash mismatch: required {} != observed {} — the "
+                   "far side is running different plugin source".format(
+                       required[:12], observed[:12]))
 
 
 def resolve_fixture_root(repo_root, arg=None):

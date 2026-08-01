@@ -1,0 +1,134 @@
+{
+  "controls": {
+    "anti_circularity_independent": true,
+    "clean_control_green": true,
+    "cross_check_double_catch": true,
+    "restoration_green": true,
+    "symmetry_under_claim_red": true
+  },
+  "failures": [],
+  "fixture": "scene_survey_recompute._clean_acceptance_case",
+  "ok": true,
+  "pack": "worldforge_vertical_slice",
+  "rail_under_test": "validate_scene_survey_runtime._validate_recompute",
+  "schema": "wf.scene_survey.acceptance_mutation_evidence.v1",
+  "status": "pass",
+  "tau_anchor_transform_cm": 1.0,
+  "terms": {
+    "B": {
+      "derivation": "survey_bound_to_anchor",
+      "derivation_restored": true,
+      "expected_rails": [
+        "recompute::mut::acceptance_claim_matches_raw"
+      ],
+      "input_mutation_red": true,
+      "meaning": "survey origin and measurements are bound to that resolved actor",
+      "mutant_killed": true,
+      "observed_failed_rails": [
+        "recompute::mut::acceptance_claim_matches_raw",
+        "recompute::mut::acceptance_components_follow_from_raw",
+        "recompute::mut::aggregates_follow_from_raw"
+      ],
+      "survived_rails": []
+    },
+    "E": {
+      "derivation": "raw_observations_complete",
+      "derivation_restored": true,
+      "expected_rails": [
+        "recompute::mut::acceptance_claim_matches_raw",
+        "recompute::mut::acceptance_evidence_not_contradicted"
+      ],
+      "input_mutation_red": true,
+      "meaning": "raw observations complete, operation-bound, finite, self-consistent",
+      "mutant_killed": true,
+      "observed_failed_rails": [
+        "recompute::mut::acceptance_claim_matches_raw",
+        "recompute::mut::acceptance_evidence_not_contradicted",
+        "recompute::mut::aggregates_follow_from_raw"
+      ],
+      "survived_rails": []
+    },
+    "M": {
+      "derivation": "anchor_mode_observable",
+      "derivation_restored": true,
+      "expected_rails": [
+        "recompute::mut::acceptance_claim_matches_raw"
+      ],
+      "input_mutation_red": true,
+      "meaning": "anchor mode is exactly 'actor_object_path'",
+      "mutant_killed": true,
+      "observed_failed_rails": [
+        "recompute::mut::acceptance_claim_matches_raw",
+        "recompute::mut::acceptance_components_follow_from_raw",
+        "recompute::mut::aggregates_follow_from_raw"
+      ],
+      "survived_rails": []
+    },
+    "P": {
+      "derivation": "anchor_actor_resolution",
+      "derivation_restored": true,
+      "expected_rails": [
+        "recompute::mut::acceptance_claim_matches_raw"
+      ],
+      "input_mutation_red": true,
+      "meaning": "requested actor path == independently resolved actor path",
+      "mutant_killed": true,
+      "observed_failed_rails": [
+        "recompute::mut::acceptance_claim_matches_raw",
+        "recompute::mut::acceptance_components_follow_from_raw",
+        "recompute::mut::aggregates_follow_from_raw",
+        "recompute::mut::no_unknown_presented_as_decided"
+      ],
+      "survived_rails": []
+    },
+    "T": {
+      "derivation": "anchor_transform_bound",
+      "derivation_restored": true,
+      "expected_rails": [
+        "recompute::mut::acceptance_claim_matches_raw"
+      ],
+      "input_mutation_red": true,
+      "meaning": "stated transform agrees with the measured actor transform within tau",
+      "mutant_killed": true,
+      "observed_failed_rails": [
+        "recompute::mut::acceptance_claim_matches_raw",
+        "recompute::mut::acceptance_components_follow_from_raw",
+        "recompute::mut::aggregates_follow_from_raw"
+      ],
+      "survived_rails": []
+    },
+    "W": {
+      "derivation": "world_identity_ok",
+      "derivation_restored": true,
+      "expected_rails": [
+        "recompute::mut::acceptance_claim_matches_raw"
+      ],
+      "input_mutation_red": true,
+      "meaning": "requested map == independently observed world package",
+      "mutant_killed": true,
+      "observed_failed_rails": [
+        "recompute::mut::acceptance_claim_matches_raw",
+        "recompute::mut::acceptance_components_follow_from_raw",
+        "recompute::mut::aggregates_follow_from_raw",
+        "recompute::mut::world_identity_ok"
+      ],
+      "survived_rails": []
+    }
+  },
+  "terms_exercised": [
+    "B",
+    "E",
+    "M",
+    "P",
+    "T",
+    "W"
+  ],
+  "terms_expected": [
+    "M",
+    "W",
+    "P",
+    "T",
+    "B",
+    "E"
+  ]
+}
