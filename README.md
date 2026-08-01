@@ -1,134 +1,175 @@
 # WorldForge
 
-**WorldForge is a tooling layer, not a game.** It is the factory that lets you build
-adaptive games faster.
+<div align="center">
 
+### The factory for adaptive Unreal worlds — not the game itself.
+
+[![Contracts](https://github.com/markwuenschel-dev/WorldForge/actions/workflows/worldforge_contracts.yml/badge.svg)](https://github.com/markwuenschel-dev/WorldForge/actions/workflows/worldforge_contracts.yml)
+[![Last commit](https://img.shields.io/github/last-commit/markwuenschel-dev/WorldForge?style=flat-square&label=last%20commit)](https://github.com/markwuenschel-dev/WorldForge/commits/main)
+[![Open issues](https://img.shields.io/github/issues/markwuenschel-dev/WorldForge?style=flat-square&label=issues)](https://github.com/markwuenschel-dev/WorldForge/issues)
+[![Open PRs](https://img.shields.io/github/issues-pr/markwuenschel-dev/WorldForge?style=flat-square&label=pull%20requests)](https://github.com/markwuenschel-dev/WorldForge/pulls)
+[![Repo size](https://img.shields.io/github/repo-size/markwuenschel-dev/WorldForge?style=flat-square&label=repository%20size)](https://github.com/markwuenschel-dev/WorldForge)
+[![Stars](https://img.shields.io/github/stars/markwuenschel-dev/WorldForge?style=flat-square&label=stars)](https://github.com/markwuenschel-dev/WorldForge/stargazers)
+[![Forks](https://img.shields.io/github/forks/markwuenschel-dev/WorldForge?style=flat-square&label=forks)](https://github.com/markwuenschel-dev/WorldForge/forks)
+[![Watchers](https://img.shields.io/github/watchers/markwuenschel-dev/WorldForge?style=flat-square&label=watchers)](https://github.com/markwuenschel-dev/WorldForge/watchers)
+
+![Unreal Engine 5.8](https://img.shields.io/badge/Unreal%20Engine-5.8-0E1128?style=flat-square&logo=unrealengine&logoColor=white)
+![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?style=flat-square&logo=python&logoColor=white)
+![C++](https://img.shields.io/badge/C%2B%2B-Plugin%20runtime-00599C?style=flat-square&logo=cplusplus&logoColor=white)
+![Windows](https://img.shields.io/badge/Platform-Windows-0078D4?style=flat-square&logo=windows&logoColor=white)
+![Strict mode](https://img.shields.io/badge/Validation-STRICT%20by%20design-2EA44F?style=flat-square)
+![Procedural generation](https://img.shields.io/badge/Generation-Contract--driven-8A2BE2?style=flat-square)
+![UE PCG](https://img.shields.io/badge/UE-PCG-0E1128?style=flat-square&logo=unrealengine&logoColor=white)
+![Houdini](https://img.shields.io/badge/Houdini-Metadata%20aware-FF4713?style=flat-square&logo=sidefx&logoColor=white)
+![NeoStackAI](https://img.shields.io/badge/Editor%20automation-NeoStackAI-5B2C6F?style=flat-square)
+
+</div>
+
+WorldForge is a reusable tooling layer for building adaptive games faster. It turns
+world-design specifications into generated content, validates that content through
+explicit contracts, and materializes the resulting artifacts in Unreal Engine.
+Your RPG, survival game, colony sim, or faction sandbox lives on top of the factory;
+the factory itself stays game-agnostic.
+
+```text
+Unreal Engine 5.8
+        ↓
+WorldForge tooling layer  ← this repository
+        ↓
+Your game                 ← a separate project
 ```
-Unreal Engine 5.7
-    ↓
-WorldForge tooling layer   ← this project
-    ↓
-Your actual game           ← a separate project, built later
-```
 
-The game built on top could be an open-world RPG, a base-builder survival game, a
-colony sim, or a faction-driven sandbox. WorldForge stays general enough to
-support any of them.
+## Why WorldForge
 
-## What it provides
-
-Two halves, one contract-driven pipeline:
-
-- **The headless forge (Python, `tools/` + `procedural/`)** — generates world
-  content as validated data: terrain, biome slices, POIs, placement, meshes,
-  missions, environment rigs. Every generator has validators, negative fixtures,
-  and lifecycle (destroy/rebuild) coverage. Nothing counts as done until its
-  validation gate is green under `STRICT`.
-- **The UE plugin (`Plugins/WorldForge/`)** — the reusable in-engine factory:
-  world-state contracts, generation-rule primitives (`WorldForgeCore`, runtime)
-  and procedural materials / manifest import automation (`WorldForgeEd`,
-  editor-only). Port this folder into any game.
-
-Agents drive a live Unreal editor through the NeoStackAI bridge
-(`execute_script`) to materialize the generated specs as real maps and actors —
-60 biome/mission maps currently carry fully spec-bound environment rigs
-(sky, sun, skylight, fog, volumetric cloud, post-process).
-
-## The forge lineage
-
-| Version | System | Status |
+| | WorldForge provides | It deliberately does not provide |
 | --- | --- | --- |
-| v0.2–v0.8 | Slice factory, world packs, TerrainForge/POIForge Lite, runtime StateForge | shipped |
-| v0.9 | Hardening: STRICT mode, audit, package-check, lifecycle | merged to `main` |
-| v1.0/v1.0x | `desert_mvp_world` (25 maps) + hostile validation platform (~40 validators) | shipped |
-| v1.1 | BiomeForge: 5 biomes × 60 maps, materialized in-editor | shipped |
-| v1.2 | MeshForge intake: 42 generated meshes + 51 Megascans (ownership-distinct) | shipped |
-| v1.3 | MissionForge + PlaytestForge: 60 biome-aware mission loops, 60/60 playtested | shipped |
-| v1.3.5 | Visual Fidelity: 60 environment rigs resolved **and live-spawned in UE** | shipped |
+| **Generation** | Terrain, biome slices, POIs, placements, meshes, missions, environment rigs | A fixed game world or hand-authored campaign |
+| **Runtime** | Portable world-state contracts and generation-rule primitives | Lore, factions, enemies, or game-specific quest content |
+| **Automation** | Manifest import, procedural materials, and editor-side drivers | Blind, unvalidated asset production |
+| **Evidence** | Strict gates, negative fixtures, lifecycle tests, and report integrity | A green check based solely on happy-path output |
 
-Canonical verification (all under `STRICT=1`):
+## The system at a glance
 
-```
-full_shield.py --pack mission_loop_world  --strict --torture --meshes --missions --playtest --visuals   → 69/69
-full_shield.py --pack biome_expansion_world --strict --torture --meshes                                 → 76/76
-full_shield.py --pack desert_mvp_world      --strict --torture                                          → 33/33
-```
-
-## Running the pipeline
-
-Every `Makefile` target maps 1:1 to a `python tools/pipeline/<script>.py`
-entrypoint, so `make` is optional. On Windows always run with `PYTHONUTF8=1`.
-
-```bash
-# the whole shield for a world pack
-PYTHONUTF8=1 STRICT=1 MEGASCANS=1 HOUDINI=metadata_only \
-  python tools/pipeline/full_shield.py --pack mission_loop_world \
-  --jobs 8 --strict --torture --meshes --missions --playtest --visuals
-
-# single factory operations (see `make help` / Makefile for the full set, 100+ targets)
-make create-slice BIOME=desert VARIANT=dunes NAME=my_slice
-make create-slice-pack PACK=desert_foundation
-make create-terrain / create-poi / run-state-sim ...
+```mermaid
+flowchart LR
+    Specs["Hand-authored specs\nprocedural/definitions"] --> Forge["Headless forge\nPython generators + validators"]
+    Forge --> Evidence["Generated artifacts +\nvalidation evidence"]
+    Evidence --> Plugin["WorldForge UE plugin\nCore + Editor modules"]
+    Plugin --> UE["Unreal Editor\nmaterialized maps and actors"]
+    UE --> Checks["STRICT validation\nnegative + lifecycle coverage"]
+    Checks -->|"evidence-backed"| Evidence
 ```
 
-Flags thread through the environment: `STRICT`, `DEEP`, `TORTURE`, `SEEDS`,
-`MESHES`, `MEGASCANS`, `HOUDINI`, `MISSIONS`, `PLAYTEST`, `VISUALS`.
+### Two halves, one contract
 
-## Layout
+- **Headless forge** — `tools/` and `procedural/` generate and validate terrain,
+  biome, POI, placement, mesh, mission, and environment data. Generated output is
+  never hand-edited; it is rebuilt through the pipeline.
+- **Unreal plugin** — `Plugins/WorldForge/` is the portable in-engine factory.
+  `WorldForgeCore` owns runtime-safe contracts and rule primitives; `WorldForgeEd`
+  owns editor-only materials, manifest processing, and import automation.
+- **Editor bridge** — NeoStackAI-driven scripts can operate a live Unreal editor to
+  turn validated specs into maps and actors while preserving the evidence trail.
 
+## Reliability is a feature
+
+`STRICT=1` is the production posture: warnings become blocking signals and a gate
+cannot be relaxed merely to obtain a pass. WorldForge pairs normal validation with
+negative fixtures, determinism checks, report-integrity checks, and destroy/rebuild
+lifecycle coverage.
+
+The hosted GitHub workflow verifies Tier 0 and Tier 1 contracts without requiring
+Unreal. Engine-dependent validation remains explicit and is run where an Unreal
+environment is available; it is never represented as a hosted-CI result.
+
+## Current platform milestones
+
+| Milestone | Capability | Delivery state |
+| --- | --- | --- |
+| v0.9 | Strict mode, audit, package checks, and lifecycle hardening | Merged |
+| v1.0–v1.3.5 | World packs, BiomeForge, MeshForge, MissionForge, playtest and visual-fidelity coverage | Shipped |
+| v2.2–v2.4 | Quest/faction, streaming, and tactical contract surfaces | Shipped |
+| v2.5 | UE 5.8 transition contracts, capability manifest, plugin-build validation | Qualified |
+| v2.6 | Controlled Unreal geometry scene-survey qualification and evidence publication | Merged |
+
+See [`docs/status/`](docs/status/) for the milestone records and
+[`docs/architecture/forge_design_decisions.md`](docs/architecture/forge_design_decisions.md)
+for the current decision log and qualification boundaries.
+
+## Quick start
+
+### 1. Open the project
+
+1. Install Unreal Engine **5.8** and Python **3.11**.
+2. Open [`WorldForge.uproject`](WorldForge.uproject) in Unreal Editor.
+3. Allow Unreal to compile the `WorldForge`, `WorldForgeCore`, and `WorldForgeEd`
+   modules.
+
+### 2. Run a strict headless gate
+
+On Windows, set `PYTHONUTF8=1` for Python tooling:
+
+```powershell
+$env:PYTHONUTF8 = '1'
+$env:STRICT = '1'
+python tools/pipeline/full_shield.py --pack desert_mvp_world --strict
 ```
+
+For the full mission-loop shield:
+
+```powershell
+$env:PYTHONUTF8 = '1'
+$env:STRICT = '1'
+$env:MEGASCANS = '1'
+$env:HOUDINI = 'metadata_only'
+python tools/pipeline/full_shield.py --pack mission_loop_world --jobs 8 --strict --torture --meshes --missions --playtest --visuals
+```
+
+`make` is optional: each target maps directly to a Python entrypoint. Run
+`make help` to browse the available operations.
+
+## Repository map
+
+```text
 WorldForge/
-├── WorldForge.uproject         UE 5.7 host shell (disposable)
-├── Source/WorldForge/          minimal primary game module
-├── Plugins/WorldForge/         THE reusable factory — port this into any game
+├── WorldForge.uproject         UE host shell
+├── Plugins/WorldForge/         Portable factory plugin
 │   └── Source/
-│       ├── WorldForgeCore/     Runtime: world-state contracts + generation-rule primitives
-│       └── WorldForgeEd/       Editor-only: materials, manifest pipeline, import automation
+│       ├── WorldForgeCore/     Runtime contracts + rule primitives
+│       └── WorldForgeEd/       Editor-only materials + import automation
 ├── tools/
-│   ├── pipeline/               headless generators + validators (the shield)
-│   └── unreal/                 in-editor drivers (run inside UE / via NeoStack bridge)
+│   ├── pipeline/               Generators, validators, shield entrypoints
+│   └── unreal/                 In-editor drivers and validation
 ├── procedural/
-│   ├── definitions/            hand-authored specs (recipes, presets, profiles)
-│   ├── generated/              generator output — never hand-edit
-│   └── reports/                validation evidence, one report per gate
-├── Content/WorldForge/Maps/    materialized biome/mission maps (60 rigged)
-├── docs/                       ARCHITECTURE.md, contracts/, runbooks/, followups/
-└── tests/
+│   ├── definitions/            Hand-authored recipes, presets, profiles
+│   ├── generated/              Regenerated output — do not hand-edit
+│   └── reports/                Evidence emitted by validation gates
+├── docs/                       Architecture, contracts, runbooks, status
+└── tests/                      Contract and tooling tests
 ```
 
-The ownership rule of thumb:
+## Contribution rules
 
-| Belongs in the factory | Does **not** belong |
-| --- | --- |
-| Material/generation pipelines | Specific lore, factions, enemies |
-| World-state contracts (schemas) | Specific quests, base buildings |
-| Import/manifest automation | Hand-authored game content |
-| Generation *rules* | Generation *results* (those go to `procedural/generated/`) |
+- Keep `Plugins/WorldForge/` reusable: no game-specific lore, content, or assets.
+- Put runtime-safe code in `WorldForgeCore`; keep editor-only work in `WorldForgeEd`.
+- Treat `procedural/generated/` and `procedural/reports/` as pipeline output:
+  regenerate them rather than editing them manually.
+- Do not weaken validators to make a gate green. Fix the source artifact or the
+  generator, and include negative coverage for new validation rules.
+- Keep third-party assets ownership-distinct. Houdini remains metadata-aware unless
+  a live cook environment is explicitly available.
 
-Third-party content stays ownership-distinct: Megascans assets are cataloged as
-`third_party_owned` (destroy-protected, never vendored as "generated"); Houdini
-plugin binaries are not committed (`HOUDINI=metadata_only` until a live cook
-environment exists).
+## Learn more
 
-## Getting started
+- [Architecture and design decisions](docs/architecture/forge_design_decisions.md)
+- [Status and qualification records](docs/status/)
+- [Runbooks](docs/runbooks/)
+- [Contracts](docs/contracts/)
 
-1. Open `WorldForge.uproject` in Unreal Editor 5.7 (or right-click → Generate
-   Visual Studio project files) and let it compile `WorldForge`,
-   `WorldForgeCore`, and `WorldForgeEd`.
-2. `python tools/pipeline/full_shield.py --pack desert_mvp_world --strict` to
-   confirm the headless pipeline is green on your machine.
+---
 
-## Conventions for agents
+<div align="center">
 
-- Treat `Plugins/WorldForge/` as reusable infrastructure. No game-specific
-  content, lore, or assets in it.
-- Runtime-safe code goes in `WorldForgeCore`; editor-only tooling in `WorldForgeEd`.
-- World-state contracts describe *capabilities and parameters*, never specific
-  game content.
-- Never hand-edit `procedural/generated/` or `procedural/reports/` — regenerate
-  through the pipeline so provenance and determinism checks stay honest.
-- Never weaken a validator to make a gate pass; fix the content or the generator.
-  Every new validator ships with negative fixtures proving it can fail.
-- Run Python tooling with `PYTHONUTF8=1` on Windows.
-- A live editor is available through the NeoStackAI bridge — drive it
-  (`execute_script`, LevelDesign API) rather than deferring editor-side work.
+**Build worlds as evidence-backed systems.**
+
+</div>
