@@ -1235,6 +1235,87 @@ class FailureCode:
     SCENE_SURVEY_CONCURRENT_OPERATION = "WF1129_SCENE_SURVEY_CONCURRENT_OPERATION"
     SCENE_SURVEY_OUTPUT_LOCATION_UNSAFE = "WF1130_SCENE_SURVEY_OUTPUT_LOCATION_UNSAFE"
 
+    # ---------------------------------------------------------------------- #
+    # WorldForge Core -- consumer-driven world generation/revision (1200-1299)
+    # ---------------------------------------------------------------------- #
+    # Core is the game-agnostic kernel under tools/wfcore/: consumer contracts,
+    # desired/observed world models, constraint analysis, typed plans, provider
+    # selection, and bounded transactional world deltas.
+    #
+    # The band is disjoint from the scene-survey band (<=1130) with 1131-1199
+    # left free, so scene-survey can extend without colliding.
+    #
+    # DEFINING A CODE HERE PROVES NOTHING. The backfill below auto-fills
+    # SEVERITY and GATE_TAXONOMY for any constant typed into this class, which
+    # means an unraisable code is published to callers as "owned" while nothing
+    # in the repository can emit it. Every code below must have a real raise
+    # site in tools/wfcore/ and a negative test that observes it.
+    #
+    # -- constraint taxonomy (1200-1205) --
+    # A consumer's statements are not interchangeable. These police the
+    # distinction that makes automated planning safe: a soft preference must be
+    # structurally incapable of failing a build, and a hard invariant must be
+    # structurally incapable of being scored away.
+    CORE_CONSTRAINT_INVALID = "WF1200_CORE_CONSTRAINT_INVALID"
+    CORE_CONSTRAINT_UNKNOWN_CLASS = "WF1201_CORE_CONSTRAINT_UNKNOWN_CLASS"
+    # A load-bearing constraint that nothing evaluated. Distinct from a
+    # violation: an unknown is something to go MEASURE, a violation is something
+    # to go FIX. Collapsing them sends repair to author a change nobody
+    # established was needed.
+    CORE_CONSTRAINT_NOT_EVALUATED = "WF1202_CORE_CONSTRAINT_NOT_EVALUATED"
+    # A constraint set with no acceptance-load-bearing member folds to vacuous
+    # SATISFIED and would accept any world at all.
+    CORE_NO_LOAD_BEARING_CONSTRAINT = "WF1203_CORE_NO_LOAD_BEARING_CONSTRAINT"
+    # A non-load-bearing class was allowed to block acceptance, or a load-bearing
+    # one was scored away. Either direction breaks the consumer's contract.
+    CORE_CONSTRAINT_CLASS_AUTHORITY_VIOLATION = "WF1204_CORE_CONSTRAINT_CLASS_AUTHORITY_VIOLATION"
+    # A tolerance has no truth value of its own; one that names no target
+    # parameterises nothing while still reading as a constraint.
+    CORE_TOLERANCE_WITHOUT_TARGET = "WF1205_CORE_TOLERANCE_WITHOUT_TARGET"
+    # -- consumer contracts (1206-1215) --
+    # The importing game owns meaning; Core owns capability. These police the
+    # contract surface across that boundary in BOTH directions: a malformed
+    # consumer contract, and Core overstepping what the consumer permitted.
+    CORE_CONSUMER_PROFILE_INVALID = "WF1206_CORE_CONSUMER_PROFILE_INVALID"
+    CORE_ASSET_CATALOG_INVALID = "WF1207_CORE_ASSET_CATALOG_INVALID"
+    CORE_WORLD_REQUEST_INVALID = "WF1208_CORE_WORLD_REQUEST_INVALID"
+    CORE_REVISION_POLICY_INVALID = "WF1209_CORE_REVISION_POLICY_INVALID"
+    CORE_ACCEPTANCE_CRITERIA_INVALID = "WF1210_CORE_ACCEPTANCE_CRITERIA_INVALID"
+    # A specific game's proper noun, map, or asset appearing inside Core. Core
+    # that knows a consumer's vocabulary is no longer game-agnostic, and the
+    # second-consumer proof would silently stop meaning anything.
+    CORE_CONSUMER_VOCABULARY_LEAK = "WF1211_CORE_CONSUMER_VOCABULARY_LEAK"
+    CORE_CONTRACT_VERSION_UNSUPPORTED = "WF1212_CORE_CONTRACT_VERSION_UNSUPPORTED"
+    # Core touched content the consumer marked protected, or proposed a mutation
+    # outside the permitted set. The consumer decides what may change.
+    CORE_PROTECTED_CONTENT_TOUCHED = "WF1213_CORE_PROTECTED_CONTENT_TOUCHED"
+    CORE_MUTATION_NOT_PERMITTED = "WF1214_CORE_MUTATION_NOT_PERMITTED"
+    CORE_BUDGET_EXCEEDED = "WF1215_CORE_BUDGET_EXCEEDED"
+    # -- desired / observed world models (1216-1225) --
+    CORE_DESIRED_WORLD_INVALID = "WF1216_CORE_DESIRED_WORLD_INVALID"
+    CORE_OBSERVED_WORLD_INVALID = "WF1217_CORE_OBSERVED_WORLD_INVALID"
+    # An observed-world model whose fields are not backed by runtime evidence.
+    # The observed model is the one thing that must never be authored: it is a
+    # measurement, and a fabricated measurement is the root fake-green.
+    CORE_OBSERVED_WORLD_UNBACKED = "WF1218_CORE_OBSERVED_WORLD_UNBACKED"
+    CORE_EXPERIENCE_GRAPH_INVALID = "WF1219_CORE_EXPERIENCE_GRAPH_INVALID"
+    CORE_ENV_STATE_GRAPH_INVALID = "WF1220_CORE_ENV_STATE_GRAPH_INVALID"
+    CORE_GRAPH_UNREACHABLE_NODE = "WF1221_CORE_GRAPH_UNREACHABLE_NODE"
+    # Desired and observed models that do not describe the same world cannot be
+    # reconciled; differencing them would compare two unrelated things.
+    CORE_MODEL_IDENTITY_MISMATCH = "WF1222_CORE_MODEL_IDENTITY_MISMATCH"
+    # -- providers / capability registry / selection (1226-1235) --
+    CORE_PROVIDER_DECLARATION_INVALID = "WF1226_CORE_PROVIDER_DECLARATION_INVALID"
+    CORE_PROVIDER_CAPABILITY_UNKNOWN = "WF1227_CORE_PROVIDER_CAPABILITY_UNKNOWN"
+    CORE_NO_PROVIDER_FOR_CAPABILITY = "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY"
+    CORE_PROVIDER_SELECTION_AMBIGUOUS = "WF1229_CORE_PROVIDER_SELECTION_AMBIGUOUS"
+    CORE_PROVIDER_REQUIREMENT_UNMET = "WF1230_CORE_PROVIDER_REQUIREMENT_UNMET"
+    # A provider that did something it never declared. Undeclared side effects
+    # make the transaction's mutation bound unenforceable.
+    CORE_PROVIDER_SIDE_EFFECT_UNDECLARED = "WF1231_CORE_PROVIDER_SIDE_EFFECT_UNDECLARED"
+    CORE_PROVIDER_ROLLBACK_UNSUPPORTED = "WF1232_CORE_PROVIDER_ROLLBACK_UNSUPPORTED"
+    CORE_PROVIDER_DETERMINISM_UNPROVEN = "WF1233_CORE_PROVIDER_DETERMINISM_UNPROVEN"
+
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
 # This is the *default* nature of the code; a validator may still choose a
