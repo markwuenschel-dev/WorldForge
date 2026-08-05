@@ -1383,6 +1383,18 @@ class FailureCode:
     CORE_SINK_NO_COMPENSATION = "WF1279_CORE_SINK_NO_COMPENSATION"
     CORE_SINK_SAVE_FAILED = "WF1280_CORE_SINK_SAVE_FAILED"
     CORE_SINK_RELOAD_MISMATCH = "WF1281_CORE_SINK_RELOAD_MISMATCH"
+    # -- consumer adapters (1286-1295) --
+    CORE_ADAPTER_INVALID = "WF1286_CORE_ADAPTER_INVALID"
+    # An adapter carrying world-generation logic. Adapters expose the consumer's
+    # project, landmarks, catalogs and acceptance hooks; the moment one decides
+    # HOW a world is made, that capability is no longer generic and the next
+    # consumer cannot reuse it.
+    CORE_ADAPTER_CONTAINS_GENERATION_LOGIC = "WF1287_CORE_ADAPTER_CONTAINS_GENERATION_LOGIC"
+    # WorldForge presenting a request as caller-originated when it authored it.
+    # The capability layer inventing the domain layer's intent is the one error
+    # that makes every downstream result meaningless while looking perfect: the
+    # evidence is real, it just answers a question nobody asked.
+    CORE_CALLER_PROVENANCE_FABRICATED = "WF1288_CORE_CALLER_PROVENANCE_FABRICATED"
 
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
