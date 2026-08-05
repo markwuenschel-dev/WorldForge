@@ -1350,6 +1350,39 @@ class FailureCode:
     # Committed without re-observing. An unverified commit is a claim, not a
     # result -- the postcondition was asserted rather than measured.
     CORE_DELTA_UNVERIFIED = "WF1251_CORE_DELTA_UNVERIFIED"
+    # -- acceptance evaluation (1256-1265) --
+    CORE_ACCEPTANCE_INVALID = "WF1256_CORE_ACCEPTANCE_INVALID"
+    # Acceptance claimed while a load-bearing constraint is UNKNOWN. This is the
+    # headline fake-green: everything "passed" because nothing was measured.
+    CORE_ACCEPTANCE_ON_UNKNOWN = "WF1257_CORE_ACCEPTANCE_ON_UNKNOWN"
+    # Acceptance evaluated against evidence from a different operation, or from
+    # before the delta was applied. Stale evidence accepts the previous world.
+    CORE_ACCEPTANCE_STALE_EVIDENCE = "WF1258_CORE_ACCEPTANCE_STALE_EVIDENCE"
+    # The result was never reloaded from disk before being judged. An in-memory
+    # world can satisfy criteria that a saved-and-reloaded one does not.
+    CORE_ACCEPTANCE_NOT_RELOADED = "WF1259_CORE_ACCEPTANCE_NOT_RELOADED"
+    # -- evidence-driven repair (1266-1275) --
+    CORE_REPAIR_INVALID = "WF1266_CORE_REPAIR_INVALID"
+    # A repair that does not go through the same generic planning + transaction
+    # path. A bespoke fix path is untested, unbounded and unrollbackable, and it
+    # makes the repair loop prove nothing about the platform.
+    CORE_REPAIR_BYPASSED_PLANNING = "WF1267_CORE_REPAIR_BYPASSED_PLANNING"
+    # A repair attempted against a failure nothing observed.
+    CORE_REPAIR_WITHOUT_EVIDENCE = "WF1268_CORE_REPAIR_WITHOUT_EVIDENCE"
+    CORE_REPAIR_ATTEMPTS_EXHAUSTED = "WF1269_CORE_REPAIR_ATTEMPTS_EXHAUSTED"
+    # Successive repairs that do not reduce the blocker set. Without this a loop
+    # can churn forever while reporting progress it is not making.
+    CORE_REPAIR_NOT_CONVERGING = "WF1270_CORE_REPAIR_NOT_CONVERGING"
+    # -- engine-backed mutation sink (1276-1285) --
+    CORE_SINK_UNAVAILABLE = "WF1276_CORE_SINK_UNAVAILABLE"
+    CORE_SINK_OBSERVATION_FAILED = "WF1277_CORE_SINK_OBSERVATION_FAILED"
+    CORE_SINK_APPLY_FAILED = "WF1278_CORE_SINK_APPLY_FAILED"
+    # The engine exposes no generic Undo to Python, so every mutation kind needs
+    # a declared compensating action. A kind without one cannot be rolled back
+    # and must be refused BEFORE it is applied, not discovered afterwards.
+    CORE_SINK_NO_COMPENSATION = "WF1279_CORE_SINK_NO_COMPENSATION"
+    CORE_SINK_SAVE_FAILED = "WF1280_CORE_SINK_SAVE_FAILED"
+    CORE_SINK_RELOAD_MISMATCH = "WF1281_CORE_SINK_RELOAD_MISMATCH"
 
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).

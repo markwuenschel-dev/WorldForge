@@ -1,0 +1,176 @@
+{
+  "compensations": {
+    "actor_spawn": "destroy_spawned_actor",
+    "actor_transform": "restore_captured_transform"
+  },
+  "core_import_error": null,
+  "delta": {
+    "abort_reason": "mutation 'mut_doomed' failed to apply: WF1278_CORE_SINK_APPLY_FAILED: actor_class 'NoSuchActorClassXYZ' resolved to nothing on either rung of the ladder (getattr(unreal, ...), load_class('/Script/Engine....'))",
+    "bound_enforcement": "unknown",
+    "bounds": [
+      {
+        "allowed_actors": [
+          "/Game/Maps/_wf_test_lvl:WF_TX_RollbackA",
+          "/Game/Maps/_wf_test_lvl:WF_TX_RollbackB"
+        ],
+        "allowed_packages": [],
+        "protected_paths": [],
+        "schema_version": "wf.core.mutation_bound.v1",
+        "step_id": "step_live_rollback"
+      }
+    ],
+    "created_at": "2026-08-05T22:26:21Z",
+    "created_by": "worldforge.core",
+    "delta_id": "delta_940e51110186420b",
+    "detail": "rolled back and CONFIRMED: every undone target was re-observed and matches its captured before-state",
+    "evidence_refs": [
+      "far_side_transaction_document"
+    ],
+    "failure_codes": [],
+    "journal_path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_wfcore_tx_live_rollback\\world_delta.json",
+    "lock": {
+      "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+      "held": true,
+      "operation_id": "op_wfcore_tx_live_rollback",
+      "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+      "released": true
+    },
+    "mutations": [
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              0.0,
+              0.0,
+              700.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_ok",
+        "observed_after_rollback": {
+          "state_kind": "absent"
+        },
+        "operation": "create",
+        "provider_id": "unreal_editor_mutation_sink",
+        "restoration": "satisfied",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "rolled_back",
+        "step_id": "step_live_rollback",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/_wf_test_lvl:WF_TX_RollbackA",
+        "undo_reported_ok": true
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "WF1278_CORE_SINK_APPLY_FAILED: actor_class 'NoSuchActorClassXYZ' resolved to nothing on either rung of the ladder (getattr(unreal, ...), load_class('/Script/Engine....'))",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "NoSuchActorClassXYZ",
+            "location": [
+              0.0,
+              0.0,
+              800.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_doomed",
+        "observed_after_rollback": {
+          "state_kind": "absent"
+        },
+        "operation": "create",
+        "provider_id": "unreal_editor_mutation_sink",
+        "restoration": "satisfied",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "rolled_back",
+        "step_id": "step_live_rollback",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/_wf_test_lvl:WF_TX_RollbackB",
+        "undo_reported_ok": true
+      }
+    ],
+    "operation_id": "op_wfcore_tx_live_rollback",
+    "outcome": "rolled_back",
+    "report_type": "wf.core.world_delta.v1",
+    "rollback_completeness": "satisfied",
+    "schema_version": "wf.core.world_delta.v1",
+    "verification": "unknown"
+  },
+  "env_parse_errors": [],
+  "error": null,
+  "failure_codes": [],
+  "far_side_schema": "wf.core.unreal_sink_far_side.v1",
+  "map_load_api": "unreal.LevelEditorSubsystem.load_level",
+  "map_loaded": true,
+  "map_requested": "/Game/Maps/_wf_test_lvl",
+  "observe_after": true,
+  "operation_id": "op_wfcore_tx_live_rollback",
+  "repo_root": "D:\\Unreal Projects\\WorldForge",
+  "request_source": "file",
+  "save_map": false,
+  "sink_notes": [
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/_wf_test_lvl._wf_test_lvl:PersistentLevel.StaticMeshActor_0 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "actor_class 'NoSuchActorClassXYZ' resolved to nothing on either rung of the ladder (getattr(unreal, ...), load_class('/Script/Engine....'))",
+      "failure_code": "WF1278_CORE_SINK_APPLY_FAILED",
+      "where": "apply"
+    },
+    {
+      "detail": "mutation 'mut_doomed' spawned nothing; nothing to destroy",
+      "failure_code": null,
+      "where": "undo"
+    },
+    {
+      "detail": "destroyed 'WF_TX_RollbackA'; SystemLibrary.is_valid -> False",
+      "failure_code": null,
+      "where": "undo"
+    }
+  ],
+  "sink_refusals": [],
+  "sink_saves": [],
+  "supported_kinds": {
+    "actor|create": "actor_spawn",
+    "actor|modify": "actor_transform"
+  },
+  "traceback": null,
+  "world_package_observed": "/Game/Maps/_wf_test_lvl"
+}

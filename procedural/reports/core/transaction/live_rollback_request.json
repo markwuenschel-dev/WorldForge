@@ -1,0 +1,90 @@
+{
+  "operation_id": "op_wfcore_tx_live_rollback",
+  "bounds": [
+    {
+      "step_id": "step_live_rollback",
+      "allowed_packages": [],
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:WF_TX_RollbackA",
+        "/Game/Maps/_wf_test_lvl:WF_TX_RollbackB"
+      ],
+      "protected_paths": [],
+      "schema_version": "wf.core.mutation_bound.v1"
+    }
+  ],
+  "mutations": [
+    {
+      "mutation_id": "mut_ok",
+      "step_id": "step_live_rollback",
+      "provider_id": "unreal_editor_mutation_sink",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:WF_TX_RollbackA",
+      "operation": "create",
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "expected_after_state": {
+        "state_kind": "present",
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            0.0,
+            700.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "status": "planned",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1"
+    },
+    {
+      "mutation_id": "mut_doomed",
+      "step_id": "step_live_rollback",
+      "provider_id": "unreal_editor_mutation_sink",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:WF_TX_RollbackB",
+      "operation": "create",
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "expected_after_state": {
+        "state_kind": "present",
+        "payload": {
+          "actor_class": "NoSuchActorClassXYZ",
+          "location": [
+            0.0,
+            0.0,
+            800.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "status": "planned",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1"
+    }
+  ],
+  "evidence_refs": [
+    "far_side_transaction_document"
+  ]
+}

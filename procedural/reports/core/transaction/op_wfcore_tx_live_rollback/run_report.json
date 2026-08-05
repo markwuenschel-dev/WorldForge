@@ -1,0 +1,180 @@
+{
+  "accepted": true,
+  "command": [
+    "D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+    "D:/Unreal Projects/WorldForge/WorldForge.uproject",
+    "-ExecutePythonScript=D:/Unreal Projects/WorldForge/tools/unreal/wfcore_unreal_sink.py",
+    "-unattended",
+    "-nopause",
+    "-nosplash",
+    "-nullrhi",
+    "-stdout"
+  ],
+  "editor_exit_code": 0,
+  "editor_seconds": 12.14,
+  "environment": {
+    "PYTHONUTF8": "1",
+    "WF_TX_MAP": "/Game/Maps/_wf_test_lvl",
+    "WF_TX_OBSERVE_AFTER": "1",
+    "WF_TX_OPERATION_ID": "op_wfcore_tx_live_rollback",
+    "WF_TX_OUT": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_wfcore_tx_live_rollback\\far_side.json",
+    "WF_TX_REPO_ROOT": "D:\\Unreal Projects\\WorldForge",
+    "WF_TX_REQUEST": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_wfcore_tx_live_rollback\\request.json",
+    "WF_TX_SAVE_MAP": "0",
+    "WF_TX_TOOLS": "D:\\Unreal Projects\\WorldForge\\tools"
+  },
+  "expected_outcomes": [
+    "rolled_back"
+  ],
+  "far_side_document": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_wfcore_tx_live_rollback\\far_side.json",
+  "far_side_error": null,
+  "far_side_failure_codes": [],
+  "far_side_traceback": null,
+  "journal_path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_wfcore_tx_live_rollback\\world_delta.json",
+  "lock": {
+    "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+    "held": true,
+    "operation_id": "op_wfcore_tx_live_rollback",
+    "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+    "released": true
+  },
+  "map_loaded": true,
+  "map_requested": "/Game/Maps/_wf_test_lvl",
+  "near_side_findings": {
+    "delta_present": true,
+    "failure_codes": [],
+    "mutation_statuses": {
+      "mut_doomed": "rolled_back",
+      "mut_ok": "rolled_back"
+    },
+    "outcome": "rolled_back",
+    "rederived_rollback_completeness": "satisfied",
+    "rederived_verification": "unknown",
+    "reported_rollback_completeness": "satisfied",
+    "reported_verification": "unknown",
+    "rollback_agrees": true,
+    "rollback_fold_ranged_over_something": true,
+    "validation_failures": [],
+    "verification_agrees": true,
+    "verification_fold_ranged_over_something": true
+  },
+  "not_accepted_because": [],
+  "operation_id": "op_wfcore_tx_live_rollback",
+  "report_type": "wf.core.unreal_sink_run_report.v1",
+  "request": {
+    "bounds": [
+      {
+        "allowed_actors": [
+          "/Game/Maps/_wf_test_lvl:WF_TX_RollbackA",
+          "/Game/Maps/_wf_test_lvl:WF_TX_RollbackB"
+        ],
+        "allowed_packages": [],
+        "protected_paths": [],
+        "schema_version": "wf.core.mutation_bound.v1",
+        "step_id": "step_live_rollback"
+      }
+    ],
+    "evidence_refs": [
+      "far_side_transaction_document"
+    ],
+    "mutations": [
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              0.0,
+              0.0,
+              700.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_ok",
+        "operation": "create",
+        "provider_id": "unreal_editor_mutation_sink",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "planned",
+        "step_id": "step_live_rollback",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/_wf_test_lvl:WF_TX_RollbackA"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "NoSuchActorClassXYZ",
+            "location": [
+              0.0,
+              0.0,
+              800.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ]
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_doomed",
+        "operation": "create",
+        "provider_id": "unreal_editor_mutation_sink",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "planned",
+        "step_id": "step_live_rollback",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/_wf_test_lvl:WF_TX_RollbackB"
+      }
+    ],
+    "operation_id": "op_wfcore_tx_live_rollback"
+  },
+  "schema_version": "wf.core.unreal_sink_run_report.v1",
+  "sink_notes": [
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/_wf_test_lvl._wf_test_lvl:PersistentLevel.StaticMeshActor_0 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "actor_class 'NoSuchActorClassXYZ' resolved to nothing on either rung of the ladder (getattr(unreal, ...), load_class('/Script/Engine....'))",
+      "failure_code": "WF1278_CORE_SINK_APPLY_FAILED",
+      "where": "apply"
+    },
+    {
+      "detail": "mutation 'mut_doomed' spawned nothing; nothing to destroy",
+      "failure_code": null,
+      "where": "undo"
+    },
+    {
+      "detail": "destroyed 'WF_TX_RollbackA'; SystemLibrary.is_valid -> False",
+      "failure_code": null,
+      "where": "undo"
+    }
+  ],
+  "sink_refusals": [],
+  "stdout_tail": "3)\r\n[2026.08.05-22.26.20:912][  0]LogPython: Display: Running start-up script D:/UE_5.8/Engine/Plugins/Experimental/ToolsetRegistry/Content/Python/init_unreal.py... started...\r\n[2026.08.05-22.26.20:972][  0]LogPython: Display: Running start-up script D:/UE_5.8/Engine/Plugins/Experimental/ToolsetRegistry/Content/Python/init_unreal.py... took 60.955 ms\r\n[2026.08.05-22.26.20:972][  0]LogPython: Display: Running start-up script D:/UE_5.8/Engine/Plugins/Animation/IKRig/Content/Python/init_unreal.py... started...\r\n[2026.08.05-22.26.20:975][  0]LogPython: Display: Running start-up script D:/UE_5.8/Engine/Plugins/Animation/IKRig/Content/Python/init_unreal.py... took 1.846 ms (total: 62.802 ms)\r\n[2026.08.05-22.26.20:975][  0]LogPython: Display: Running start-up script D:/UE_5.8/Engine/Plugins/Animation/ControlRig/Content/Python/init_unreal.py... started...\r\n[2026.08.05-22.26.20:993][  0]LogPython: Display: Running start-up script D:/UE_5.8/Engine/Plugins/Animation/ControlRig/Content/Python/init_unreal.py... took 17.638 ms (total: 80.441 ms)\r\n[2026.08.05-22.26.21:258][  1]LogAssetRegistry: Display: Starting OnFilesLoaded.Broadcast\r\n[2026.08.05-22.26.21:268][  1]LogPlacementMode: Display: The Asset Registry is done with its initial scan, the list of placeable classes has been updated.\r\n[2026.08.05-22.26.21:290][  1]LogAssetRegistry: Display: Completed OnFilesLoaded.Broadcast: 0.032s\r\n[2026.08.05-22.26.21:427][  2]LogAudio: Display: Audio Device unregistered from world 'Untitled'.\r\n[2026.08.05-22.26.21:476][  2]LogStreaming: Display: FlushAsyncLoading(362): 1 QueuedPackages, 0 AsyncPackages\r\n[2026.08.05-22.26.21:477][  2]LogAudio: Display: Audio Device (ID: 1) registered with world '_wf_test_lvl'.\r\n[2026.08.05-22.26.21:539][  2]LogUObjectGlobals: Warning: Failed to find object 'Class /Script/Engine.NoSuchActorClassXYZ'\r\n[2026.08.05-22.26.21:565][  3]LogToolsetRegistry: Display: Unregistering Toolset ToolsetRegistry.AgentSkillToolset\r\n[2026.08.05-22.26.21:590][  3]LogAnalytics: Display: [UEEditor.Rocket.Release] AnalyticsET::EndSession\r\n[2026.08.05-22.26.21:591][  3]LogAudio: Display: Beginning Audio Device Manager Shutdown (Module: AudioMixerWasapi)...\r\n[2026.08.05-22.26.21:591][  3]LogAudio: Display: Destroying 1 Remaining Audio Device(s)...\r\n[2026.08.05-22.26.21:591][  3]LogAudio: Display: Audio Device unregistered from world '_wf_test_lvl'.\r\n[2026.08.05-22.26.21:591][  3]LogAudio: Display: Shutting down audio device while 1 references to it are still alive. For more information, compile with INSTRUMENT_AUDIODEVICE_HANDLES.\r\n[2026.08.05-22.26.21:591][  3]LogAudioMixer: Display: FAudioMixerWasapi::StopAudioStream() InstanceID=1, StreamState=4\r\n[2026.08.05-22.26.21:600][  3]LogAudioMixerWasapi: Display: FWasapiServiceWatcher stopped.\r\n[2026.08.05-22.26.21:611][  3]LogAudio: Display: Audio Device Manager Shutdown\r\n[2026.08.05-22.26.21:790][  3]LogNeoStackAI: Error: ACPClient [Claude Agent]: Agent process exited with code -4058\r\n[2026.08.05-22.26.21:932][  3]LogAssetRegistry: Display: Asset registry cache written as 121.7 MiB to ../../../../Unreal Projects/WorldForge/Intermediate/CachedAssetRegistry/CachedAssetRegistry_*.ref\r\n[2026.08.05-22.26.21:932][  3]LogAssetRegistry: Display: CleanupOrphanedCacheFiles (PostWrite): 1 .ref files found, 1 referenced binaries\r\n[2026.08.05-22.26.21:932][  3]LogAssetRegistry: Display:   CachedAssetRegistry_0_C70F0D504EB6AB7FBE2CF5AE14C2CF54.bin: deleted (orphaned, unreferenced by any .ref)\r\n[2026.08.05-22.26.21:932][  3]LogAssetRegistry: Display: CleanupOrphanedCacheFiles: 2 total binaries, 1 referenced (kept), 0 old-style pre-migration (kept), 1 orphans deleted, 0 orphans locked (kept)\r\n[2026.08.05-22.26.22:475][  3]LogAssetRegistry: Display: CleanupOrphanedCacheFiles (PostWrite): 1 .ref files found, 1 referenced binaries\r\n[2026.08.05-22.26.22:475][  3]LogAssetRegistry: Display: CleanupOrphanedCacheFiles: 1 total binaries, 1 referenced (kept), 0 old-style pre-migration (kept), 0 orphans deleted, 0 orphans locked (kept)\r\n[2026.08.05-22.26.22:483][  3]LogNeoStackAI: Error: ACPAgentManager: Claude Agent error -4058: Agent process exited with code -4058\r\n[2026.08.05-22.26.22:483][  3]LogNeoStackAI: Error: ACPClient: Error in initialize (code 1001): Codex process has exited with code 1:\r\nfile:///C:/Users/Nalakram/.agentintegrationkit/npm-cache/_npx/51778398e0ffe6a4/node_modules/@openai/codex/bin/codex.js:105\r\r\n  throw new Error(\r\r\n        ^\r\r\n\r\r\nError: Missing optional dependency @openai/codex-win32-x64. Reinstall Codex: npm install -g @openai/codex@latest\r\r\n    at findCodexExecutable (file:///C:/Users/Nalakram/.agentintegrationkit/npm-cache/_npx/51778398e0ffe6a4/node_modules/@openai/codex/bin/codex.js:105:9)\r\r\n    at file:///C:/Users/Nalakram/.agentintegrationkit/npm-cache/_npx/51778398e0ffe6a4/node_modules/@openai/codex/bin/codex.js:110:20\r\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:413:25)\r\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:654:26)\r\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\r\n\r\r\nNode.js v25.2.0\r\n[2026.08.05-22.26.22:483][  3]LogNeoStackAI: Error: ACPAgentManager: Codex error 1001: Codex process has exited with code 1:\r\nfile:///C:/Users/Nalakram/.agentintegrationkit/npm-cache/_npx/51778398e0ffe6a4/node_modules/@openai/codex/bin/codex.js:105\r\r\n  throw new Error(\r\r\n        ^\r\r\n\r\r\nError: Missing optional dependency @openai/codex-win32-x64. Reinstall Codex: npm install -g @openai/codex@latest\r\r\n    at findCodexExecutable (file:///C:/Users/Nalakram/.agentintegrationkit/npm-cache/_npx/51778398e0ffe6a4/node_modules/@openai/codex/bin/codex.js:105:9)\r\r\n    at file:///C:/Users/Nalakram/.agentintegrationkit/npm-cache/_npx/51778398e0ffe6a4/node_modules/@openai/codex/bin/codex.js:110:20\r\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:413:25)\r\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:654:26)\r\r\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\r\r\n\r\r\nNode.js v25.2.0\r\n[2026.08.05-22.26.22:697][  3]LogShaderCompilers: Display: Exiting ShaderCompilingThread\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000: request failed, libcurl error: 7 (Could not connect to server)\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000: libcurl info message cache 0 (Host localhost:11434 was resolved.)\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000: libcurl info message cache 1 (IPv6: ::1)\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000: libcurl info message cache 2 (IPv4: 127.0.0.1)\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000: libcurl info message cache 3 (  Trying [::1]:11434...)\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000: libcurl info message cache 4 (  Trying 127.0.0.1:11434...)\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000: libcurl info message cache 5 (connect to ::1 port 11434 from :: port 52256 failed: Connection refused)\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000: libcurl info message cache 6 (connect to 127.0.0.1 port 11434 from 0.0.0.0 port 52259 failed: Connection refused)\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000: libcurl info message cache 7 (Failed to connect to localhost port 11434 after 2232 ms: Could not connect to server)\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000: libcurl info message cache 8 (closing connection #2)\r\n[2026.08.05-22.26.22:720][  3]LogHttp: Warning: 000001F82DA37000 GET http://localhost:11434/api/tags completed with reason 'ConnectionError' after 2.23s\r\n[2026.08.05-22.26.22:720][  3]LogNeoStackAI: Warning: Ollama discovery failed (no response). Is the local server running?\r\n[2026.08.05-22.26.22:720][  3]LogNeoStackAI: Warning: ChatModelRegistry: Ollama (Local) discovery failed: Ollama discovery failed (no response). Is the local server running?\r\n",
+  "world_package_observed": "/Game/Maps/_wf_test_lvl"
+}
