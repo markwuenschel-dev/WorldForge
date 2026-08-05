@@ -1322,6 +1322,34 @@ class FailureCode:
     CORE_PROVIDER_SIDE_EFFECT_UNDECLARED = "WF1231_CORE_PROVIDER_SIDE_EFFECT_UNDECLARED"
     CORE_PROVIDER_ROLLBACK_UNSUPPORTED = "WF1232_CORE_PROVIDER_ROLLBACK_UNSUPPORTED"
     CORE_PROVIDER_DETERMINISM_UNPROVEN = "WF1233_CORE_PROVIDER_DETERMINISM_UNPROVEN"
+    # -- typed generation / revision plan (1236-1245) --
+    # A plan is a promise about what will change. These police the promise, so
+    # the transaction executor has something enforceable to bound itself by.
+    CORE_PLAN_INVALID = "WF1236_CORE_PLAN_INVALID"
+    CORE_PLAN_STEP_INVALID = "WF1237_CORE_PLAN_STEP_INVALID"
+    CORE_PLAN_DEPENDENCY_CYCLE = "WF1238_CORE_PLAN_DEPENDENCY_CYCLE"
+    CORE_PLAN_PRECONDITION_UNMET = "WF1239_CORE_PLAN_PRECONDITION_UNMET"
+    CORE_PLAN_POSTCONDITION_UNMET = "WF1240_CORE_PLAN_POSTCONDITION_UNMET"
+    # A plan that leaves a VIOLATED load-bearing constraint unaddressed cannot
+    # reach acceptance, so executing it burns a revision attempt to arrive
+    # somewhere already known to be unacceptable.
+    CORE_PLAN_ADDRESSES_NOTHING = "WF1241_CORE_PLAN_ADDRESSES_NOTHING"
+    CORE_PLAN_NO_ROLLBACK = "WF1242_CORE_PLAN_NO_ROLLBACK"
+    CORE_PLAN_FALLBACK_INVALID = "WF1243_CORE_PLAN_FALLBACK_INVALID"
+    # -- bounded transactional world delta (1246-1255) --
+    CORE_DELTA_INVALID = "WF1246_CORE_DELTA_INVALID"
+    # A mutation outside the plan's declared expected-changed set. This is THE
+    # bound: a delta that may touch anything is not bounded, and its rollback
+    # cannot be complete because nothing enumerated what to undo.
+    CORE_DELTA_OUT_OF_BOUNDS = "WF1247_CORE_DELTA_OUT_OF_BOUNDS"
+    CORE_DELTA_ROLLBACK_FAILED = "WF1248_CORE_DELTA_ROLLBACK_FAILED"
+    # Neither committed nor rolled back. The world is in a state no contract
+    # describes, and it must be reported as exactly that rather than as either.
+    CORE_DELTA_PARTIAL_COMMIT = "WF1249_CORE_DELTA_PARTIAL_COMMIT"
+    CORE_TRANSACTION_NOT_ISOLATED = "WF1250_CORE_TRANSACTION_NOT_ISOLATED"
+    # Committed without re-observing. An unverified commit is a claim, not a
+    # result -- the postcondition was asserted rather than measured.
+    CORE_DELTA_UNVERIFIED = "WF1251_CORE_DELTA_UNVERIFIED"
 
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).

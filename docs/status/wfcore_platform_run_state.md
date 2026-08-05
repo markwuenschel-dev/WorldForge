@@ -144,7 +144,7 @@ Import root is `tools/` (same convention as `bridge`): `cd tools && python -m wf
 | `contracts/` | DONE, 74 assertions | consumer profile, asset catalog, world request, revision policy, acceptance criteria |
 | `models/` | DONE, 22 tests | desired/observed world, experience + env-state graphs |
 | `providers/` | DONE, 85 assertions | declaration, capability registry, result-driven selection |
-| `analysis/` | lane in flight | desired-vs-observed reconciliation |
+| `analysis/` | DONE, 25 tests | desired-vs-observed reconciliation |
 | `planning/` | lane in flight | typed generation/revision plan |
 | `transaction/` | lane in flight | bounded world delta + rollback |
 
