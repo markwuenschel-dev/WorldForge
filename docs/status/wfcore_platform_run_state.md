@@ -62,7 +62,38 @@ Trap confirmed again: **probe output never reaches stdout** — it appears only 
 
 ---
 
-## v2.6 fixture smoke — FIRST EVER EXECUTION [correct RED]
+## v2.6 fixture smoke — NOW FULLY GREEN [verified 2026-08-05]
+
+Final state after repair: **`verified=21 unavailable=0 failed=0 still_assumed=0 missing=0`**,
+`gate_green: true` in the report itself. Commit `2a200a7c`.
+
+Three defects, all found only by running it. See that commit message for the full
+reasoning; the durable lessons:
+
+1. **UE drops the bool.** A UFUNCTION declared `bool` + out-param binds as `None`
+   for false and the **bare out-param** for true (`PyGenUtil.cpp:1160-1183`). Both
+   decoders assumed `(bool, out)`, so correct `HitResult`/`Array` results were
+   rejected as "unrecognised shape". **The shape IS the answer.**
+2. **`GameplayStatics.break_hit_result` does not exist in UE 5.8 Python.** Probed
+   live. FHitResult members are not Python attributes and `get_editor_property`
+   raises for every one; the real routes are `HitResult.to_dict()` (named) and
+   `HitResult.to_tuple()` (exactly 18 values, same order). Prefer named.
+3. **Ordering defect**: `classify()` graded the manifest probe before the digest was
+   folded in, and could only downgrade. Fixed; independence preserved.
+
+Also: a line-trace **miss** and an **empty** capsule-overlap set are complete
+observations, not failures.
+
+### D18 — the measurement now says DO NOT promote to C++
+On the first (defective) run `c1_python_cannot_expose_data` was `measured_pass` —
+but only *because* the geometry probes were failing on defect (1). With the decoders
+fixed it is **`measured_fail`**. All six criteria are answered and **none is met**, so
+the locked D18 promotion criteria for a support-grid C++ collector are **not satisfied**.
+Latest fit: `alpha=-1.06e-04s`, `beta=1.52e-05 s/sample`, `R2=0.9387`, `ok=N/N` at every N.
+
+---
+
+## Historical: the first execution [correct RED]
 
 `PYTHONUTF8=1 python tools/pipeline/run_v2_6_fixture_smoke.py`
 -> `procedural/reports/scene_survey/fixture_smoke/v2_6_fixture_smoke_report.json`
@@ -110,11 +141,23 @@ Import root is `tools/` (same convention as `bridge`): `cd tools && python -m wf
 | `constraints.py` | DONE | The 8 constraint classes + `ACCEPTANCE_LOAD_BEARING` closed set |
 | `failure.py` | DONE | Shim to the ONE code authority (`tools/pipeline/failure_codes.py`) |
 | `hygiene.py` | DONE, mutation-tested | Core may not contain any consumer's vocabulary |
-| `contracts/` | lane in flight | consumer profile, asset catalog, world request, revision policy, acceptance criteria |
-| `models/` | lane in flight | desired/observed world, experience + env-state graphs |
-| `providers/` | lane in flight | declaration, capability registry, result-driven selection |
-| `planning/` | not started | typed generation/revision plan |
-| `transaction/` | not started | bounded world delta + rollback |
+| `contracts/` | DONE, 74 assertions | consumer profile, asset catalog, world request, revision policy, acceptance criteria |
+| `models/` | DONE, 22 tests | desired/observed world, experience + env-state graphs |
+| `providers/` | DONE, 85 assertions | declaration, capability registry, result-driven selection |
+| `analysis/` | lane in flight | desired-vs-observed reconciliation |
+| `planning/` | lane in flight | typed generation/revision plan |
+| `transaction/` | lane in flight | bounded world delta + rollback |
+
+Outside Core: `tools/core_boundary_proof.py` — digests Core before/after a consumer
+run and requires identity. Mutation-tested (catches MODIFIED and ADDED, names paths).
+`capture --out <f>` then `verify --baseline <f>`.
+
+### The plan → delta boundary (captain-fixed, both lanes code against it)
+A `PlanStep` carries `step_id`, `capability`, `selected_provider`, `depends_on`,
+`preconditions`, `postconditions`, `allowed_side_effects`,
+`expected_changed_packages`, `expected_changed_actors`, `evidence_requirements`,
+`fallback_policy`, `rollback`. The last two of the changed-* pair are **the mutation
+bound** the executor enforces against what was ACTUALLY mutated, not what was intended.
 
 ### Failure-code band WF1200–1299 (Core)
 1200–1205 constraint taxonomy · 1206–1215 consumer contracts · 1216–1225 world models ·
