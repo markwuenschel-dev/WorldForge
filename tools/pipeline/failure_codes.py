@@ -1304,6 +1304,13 @@ class FailureCode:
     # Desired and observed models that do not describe the same world cannot be
     # reconciled; differencing them would compare two unrelated things.
     CORE_MODEL_IDENTITY_MISMATCH = "WF1222_CORE_MODEL_IDENTITY_MISMATCH"
+    # A node whose reachability could not be DETERMINED. Deliberately distinct
+    # from WF1221 (unreachable), which is a positive claim that no path exists:
+    # attaching WF1221 to an undetermined node would publish an unreachability
+    # nobody established, and would send repair to build a connection that may
+    # already be there. Distinct from WF1202 too -- that is a constraint nothing
+    # evaluated, whereas this is a graph query that ran and could not decide.
+    CORE_GRAPH_REACHABILITY_NOT_DETERMINED = "WF1223_CORE_GRAPH_REACHABILITY_NOT_DETERMINED"
     # -- providers / capability registry / selection (1226-1235) --
     CORE_PROVIDER_DECLARATION_INVALID = "WF1226_CORE_PROVIDER_DECLARATION_INVALID"
     CORE_PROVIDER_CAPABILITY_UNKNOWN = "WF1227_CORE_PROVIDER_CAPABILITY_UNKNOWN"

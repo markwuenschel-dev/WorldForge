@@ -58,8 +58,11 @@ check" is not a gate.
 """
 
 __all__ = [
-    "ids",
     "tri",
     "constraints",
     "failure",
+    "hygiene",
+    "contracts",
+    "models",
+    "providers",
 ]

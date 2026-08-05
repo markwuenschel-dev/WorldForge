@@ -167,9 +167,11 @@ def fold_acceptance(evaluations: List[Tuple[Dict[str, Any], str]]) -> str:
 
     Vacuous case: zero load-bearing constraints folds to SATISFIED, following
     ``tri.conj``'s identity. A consumer request carrying no acceptance-load-
-    bearing constraint at all is a malformed REQUEST -- rejected in contract
-    validation (WF1202), not silently downgraded to UNKNOWN here, which would
-    make the fold non-associative.
+    bearing constraint at all is a malformed REQUEST -- rejected by
+    ``validate_constraint_set`` as WF1203 (CORE_NO_LOAD_BEARING_CONSTRAINT), not
+    silently downgraded to UNKNOWN here, which would make the fold
+    non-associative. (WF1202 is the different case of a load-bearing constraint
+    that exists but was never evaluated.)
     """
     return tri.conj(
         value for (constraint, value) in evaluations
