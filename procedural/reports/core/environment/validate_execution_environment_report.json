@@ -1,0 +1,146 @@
+{
+  "checks": [
+    {
+      "check": "observation_has_no_fatal_errors",
+      "detail": "far side reported no errors",
+      "ok": true
+    },
+    {
+      "check": "observation_enumerated_plugins",
+      "detail": "272 plugin(s) enumerated",
+      "ok": true
+    },
+    {
+      "check": "not_required.CoreTerrainMaterials.recorded",
+      "detail": "declared PRESENT-BUT-NOT-REQUIRED; enabled=True version=1.0 base_dir=../../../../Unreal Projects/WorldForge/Plugins/CoreTerrainMaterials",
+      "ok": true
+    },
+    {
+      "check": "required.EditorScriptingUtilities.enabled",
+      "detail": "declared REQUIRED by the plan; enabled=True version=1.0 content_mounted=False base_dir=../../../Engine/Plugins/Editor/EditorScriptingUtilities",
+      "ok": true
+    },
+    {
+      "check": "not_required.GeometryScripting.recorded",
+      "detail": "declared PRESENT-BUT-NOT-REQUIRED; enabled=True version=0.1 base_dir=../../../Engine/Plugins/Runtime/GeometryScripting",
+      "ok": true
+    },
+    {
+      "check": "not_required.HoudiniEngine.recorded",
+      "detail": "declared PRESENT-BUT-NOT-REQUIRED; enabled=True version=3.0 - H21.0.753 base_dir=../../../../Unreal Projects/WorldForge/Plugins/HoudiniEngine",
+      "ok": true
+    },
+    {
+      "check": "not_required.HoudiniLiveLink.recorded",
+      "detail": "declared PRESENT-BUT-NOT-REQUIRED; enabled=True version=1.0 base_dir=../../../../Unreal Projects/WorldForge/Plugins/HoudiniLiveLink",
+      "ok": true
+    },
+    {
+      "check": "not_required.HoudiniNiagara.recorded",
+      "detail": "declared PRESENT-BUT-NOT-REQUIRED; enabled=True version=2.6.0 base_dir=../../../../Unreal Projects/WorldForge/Plugins/HoudiniNiagara",
+      "ok": true
+    },
+    {
+      "check": "not_required.NeoStackAI.recorded",
+      "detail": "declared PRESENT-BUT-NOT-REQUIRED; enabled=True version=2.0.45 base_dir=../../../Engine/Plugins/Marketplace/NeoStack7811ed331f04V5",
+      "ok": true
+    },
+    {
+      "check": "copy.NeoStackAI.loaded_from_declared_location",
+      "detail": "expected base_dir to contain 'Engine/Plugins/Marketplace', observed '../../../Engine/Plugins/Marketplace/NeoStack7811ed331f04V5'",
+      "ok": true
+    },
+    {
+      "check": "copy.NeoStackAI.did_not_load_from_disabled_copy",
+      "detail": "must NOT load from 'WorldForge/Plugins/NeoStackAI'; observed base_dir '../../../Engine/Plugins/Marketplace/NeoStack7811ed331f04V5'",
+      "ok": true
+    },
+    {
+      "check": "not_required.PCG.recorded",
+      "detail": "declared PRESENT-BUT-NOT-REQUIRED; enabled=True version=1.0 base_dir=../../../Engine/Plugins/PCG",
+      "ok": true
+    },
+    {
+      "check": "required.PythonScriptPlugin.enabled",
+      "detail": "declared REQUIRED by the plan; enabled=True version=1.0 content_mounted=True base_dir=../../../Engine/Plugins/Experimental/PythonScriptPlugin",
+      "ok": true
+    },
+    {
+      "check": "disabled.UELLMToolkit.not_enabled",
+      "detail": "declared DELIBERATELY DISABLED; enabled=False. A plugin the engine enables while the record says it is disabled makes the record a fiction",
+      "ok": true
+    },
+    {
+      "check": "required.WorldForge.enabled",
+      "detail": "declared REQUIRED by the plan; enabled=True version=0.1.0 content_mounted=True base_dir=../../../../Unreal Projects/WorldForge/Plugins/WorldForge",
+      "ok": true
+    },
+    {
+      "check": "copy.WorldForge.loaded_from_declared_location",
+      "detail": "expected base_dir to contain 'WorldForge/Plugins/WorldForge', observed '../../../../Unreal Projects/WorldForge/Plugins/WorldForge'",
+      "ok": true
+    },
+    {
+      "check": "no_undeclared_project_plugins",
+      "detail": "every project-shipped mounted plugin is declared",
+      "ok": true
+    }
+  ],
+  "declared": {
+    "CoreTerrainMaterials": {
+      "disposition": "present_not_required_by_plan",
+      "reason": "content-only plugin shipped in Plugins/; supplies terrain material assets. No Core operation references it, and no consumer catalog approves an asset from it."
+    },
+    "EditorScriptingUtilities": {
+      "disposition": "required_by_plan",
+      "reason": "EditorAssetLibrary / actor subsystem calls the mutation sink uses to author and to compensate."
+    },
+    "GeometryScripting": {
+      "disposition": "present_not_required_by_plan",
+      "reason": "mounted; no Core operation calls it today."
+    },
+    "HoudiniEngine": {
+      "disposition": "present_not_required_by_plan",
+      "reason": "the module builds and mounts, which proves ONLY that. No Houdini provider is registered in the capability registry, no plan step has ever selected one, and no cook has been executed. A mounted plugin is not a production provider; see docs/contracts/wfcore_houdini_provider_status.md."
+    },
+    "HoudiniLiveLink": {
+      "disposition": "present_not_required_by_plan",
+      "reason": "ships in Plugins/ alongside HoudiniEngine and mounts; no Core operation calls it and no provider offers a live-link capability."
+    },
+    "HoudiniNiagara": {
+      "disposition": "present_not_required_by_plan",
+      "reason": "enabled in WorldForge.uproject; mounted; unused by Core."
+    },
+    "NeoStackAI": {
+      "disposition": "present_not_required_by_plan",
+      "expect_base_dir_contains": "Engine/Plugins/Marketplace",
+      "must_not_load_from": "WorldForge/Plugins/NeoStackAI",
+      "reason": "ENVIRONMENT CHANGE. Two plugins on disk share this name: a project-local v3.0.3 missing its ThirdParty/Lua and sol2 headers, and a complete engine marketplace v2.0.45. UBT selected the engine descriptor together with the project's module rules, which cannot build. The project-local descriptor is renamed to .uplugin.disabled so exactly one copy resolves. NeoStackAI is enabled in WorldForge.uproject and mounts from the engine copy; no WorldForge Core operation calls it, so the selected execution plan does not require it. REVERSE WITH: mv Plugins/NeoStackAI/NeoStackAI.uplugin.disabled Plugins/NeoStackAI/NeoStackAI.uplugin -- note the build then fails again until the missing ThirdParty headers are supplied."
+    },
+    "PCG": {
+      "disposition": "present_not_required_by_plan",
+      "reason": "enabled in WorldForge.uproject and mounted, but no provider declaration currently offers a PCG capability, so the selected plan never routes to it."
+    },
+    "PythonScriptPlugin": {
+      "disposition": "required_by_plan",
+      "reason": "the entire near-side/far-side bridge is -ExecutePythonScript."
+    },
+    "UELLMToolkit": {
+      "disposition": "deliberately_disabled",
+      "reason": "ENVIRONMENT CHANGE. EngineVersion 5.6.0; uses APIs changed in 5.8 (IKRetargetBatchOperation::DuplicateAndRetarget signature, moved RigVMModel/RigVMVariableDescription.h). It is untracked in git and NOT referenced by WorldForge.uproject -- it built only via EnabledByDefault. No WorldForge Core operation calls it, so the selected execution plan does not require it. REVERSE WITH: mv Plugins/UELLMToolkit/UELLMToolkit.uplugin.disabled Plugins/UELLMToolkit/UELLMToolkit.uplugin -- the 5.8 build then fails again."
+    },
+    "WorldForge": {
+      "disposition": "required_by_plan",
+      "expect_base_dir_contains": "WorldForge/Plugins/WorldForge",
+      "reason": "WorldForgeCore supplies SceneSurveyStatics and the runtime identity surface that every observation depends on."
+    }
+  },
+  "disabled_descriptors_on_disk": [
+    "Plugins/NeoStackAI/NeoStackAI.uplugin.disabled",
+    "Plugins/UELLMToolkit/UELLMToolkit.uplugin.disabled"
+  ],
+  "failed": 0,
+  "green": true,
+  "observation_present": true,
+  "report_type": "wf.core.execution_environment_report.v1"
+}

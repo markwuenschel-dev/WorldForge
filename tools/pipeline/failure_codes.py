@@ -1395,6 +1395,17 @@ class FailureCode:
     # that makes every downstream result meaningless while looking perfect: the
     # evidence is real, it just answers a question nobody asked.
     CORE_CALLER_PROVENANCE_FABRICATED = "WF1288_CORE_CALLER_PROVENANCE_FABRICATED"
+    # -- external-tool provider evidence (1289-1295) --
+    # A provider backed by an external DCC tool (Houdini and anything like it)
+    # that claims a capability without evidence of a real cook. A plugin that
+    # merely MOUNTS proves only that it mounts; the capability claim needs an
+    # execution that produced an output.
+    CORE_PROVIDER_COOK_EVIDENCE_MISSING = "WF1289_CORE_PROVIDER_COOK_EVIDENCE_MISSING"
+    # Fixture or metadata evidence offered as proof of a production capability.
+    # A deterministic fixture generated once by hand is exactly what a working
+    # provider's output looks like, which is precisely why it must not be
+    # accepted as proof that the provider exists and the planner selected it.
+    CORE_PROVIDER_EVIDENCE_IS_FIXTURE = "WF1290_CORE_PROVIDER_EVIDENCE_IS_FIXTURE"
 
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).
