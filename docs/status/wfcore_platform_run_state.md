@@ -2,14 +2,27 @@
 
 ## STATUS: all twelve flow stages built. One item is operator-gated by design.
 
+ONE shield now covers the platform. The execution-environment and external-tool
+gates are folded in **unconditionally** — a gate you must remember to ask for is one
+a future agent will not ask for.
+
+```bash
+cd "D:/Unreal Projects/WorldForge/tools"
+PYTHONUTF8=1 python core_boundary_proof.py capture --out /tmp/wfcore-base.json
+PYTHONUTF8=1 python wfcore_shield.py --baseline /tmp/wfcore-base.json
 ```
-cd tools
-PYTHONUTF8=1 python wfcore_shield.py --baseline <manifest>        # 8 suites + hygiene + boundary
-PYTHONUTF8=1 python pipeline/test_consumer_flow.py                # consumer proof
-PYTHONUTF8=1 python pipeline/test_wfcore_unreal_sink.py           # 189 checks
-PYTHONUTF8=1 python pipeline/validate_execution_environment.py    # add --probe for a live boot
-PYTHONUTF8=1 python pipeline/validate_external_tool_providers.py
-PYTHONUTF8=1 python tools/pipeline/validate_failure_codes.py
+
+Expected: `suites discovered : 8`, twelve `[PASS ]` rows, `GATE GREEN`, exit 0.
+Add `--probe-environment` to re-take the live plugin observation with a real editor
+boot (~40s); the environment **grading** runs either way.
+
+The two remaining gates are not Core suites and run separately:
+
+```bash
+cd "D:/Unreal Projects/WorldForge/tools"
+PYTHONUTF8=1 python pipeline/test_consumer_flow.py        # CONSUMER-PROOF GATE: PASS
+PYTHONUTF8=1 python pipeline/test_wfcore_unreal_sink.py   # SINK GATE: PASS (189 checks)
+PYTHONUTF8=1 python pipeline/validate_failure_codes.py    # PASS - 0 failure(s)
 ```
 
 ### The two disabled descriptors — declared and graded, not described
@@ -42,7 +55,10 @@ green gate implying capability.
 and concluded the support grid stays in Python — one implementation choice inside
 WorldForge. It says nothing about driving an external tool end to end.
 
-All green as of commit `79c70352` (10 commits on `worldforge/wfcore-consumer-platform`).
+Branch `worldforge/wfcore-consumer-platform`; local commits only, never pushed. The
+authoritative pass/fail is the shield run above, not a commit count recorded here —
+a hardcoded SHA in a status file goes stale on the next commit and then quietly
+misreports.
 
 **The proof:** capture Core → run `demoarena` → run `demoexpanse` → verify.
 `sha256:1f91927f…091d6003` (39 files) before and after. PROOF HOLDS.
@@ -57,7 +73,7 @@ action, not an engineering one.
 Durable execution state for the "game-agnostic world-generation and world-authoring
 platform" build. Update this file as milestones move; it is the handoff of record.
 
-**Started:** 2026-08-05 · **Branch:** `main` · **Engine:** UE 5.8 (`D:\UE_5.8`, BuildId `55116800`)
+**Started:** 2026-08-05 · **Branch:** `worldforge/wfcore-consumer-platform` · **Engine:** UE 5.8 (`D:\UE_5.8`, BuildId `55116800`)
 
 ---
 
@@ -149,7 +165,7 @@ Latest fit: `alpha=-1.06e-04s`, `beta=1.52e-05 s/sample`, `R2=0.9387`, `ok=N/N` 
 
 ## Historical: the first execution [correct RED]
 
-`PYTHONUTF8=1 python tools/pipeline/run_v2_6_fixture_smoke.py`
+`cd "D:/Unreal Projects/WorldForge" && PYTHONUTF8=1 python tools/pipeline/run_v2_6_fixture_smoke.py`
 -> `procedural/reports/scene_survey/fixture_smoke/v2_6_fixture_smoke_report.json`
 
 `verified=16 unavailable=0 failed=4 still_assumed=1 missing=0`
@@ -225,14 +241,18 @@ untouched. That discharges the platform claim (M12). It does **not** discharge "
 importing game asked for this" — that step needs the caller lane to send a request, and only
 the operator can arrange it.
 
-Also outside Core: `tools/wfcore_shield.py` — the single Core gate. Discovers suites
-(never a hardcoded list), runs hygiene + the boundary proof, and **fails when it
-discovers zero suites** (exit 2). Negative-controlled.
+Also outside Core: `tools/wfcore_shield.py` — the single platform gate. Discovers
+suites (never a hardcoded list), then runs hygiene, the execution-environment gate,
+the external-tool-provider gate, and the boundary proof. **Fails when it discovers
+zero suites** (exit 2). Negative-controlled, including that drift in a folded gate
+turns the whole shield RED.
 
-```
-cd tools && PYTHONUTF8=1 python wfcore_shield.py --baseline <manifest>
-  suites discovered : 6   → contracts 74 · models 22 · providers 85 ·
-                            analysis 25 · planning 127 · transaction 101
+```bash
+cd "D:/Unreal Projects/WorldForge/tools" && PYTHONUTF8=1 python wfcore_shield.py --baseline <manifest>
+  suites discovered : 8   → contracts 74 · models 22 · providers 85 · analysis 25 ·
+                            planning 127 · transaction 101 · acceptance 24 · repair 21
+                          + hygiene · execution_environment · external_tool_providers
+                          + core_boundary_proof
   GATE GREEN
 ```
 
@@ -286,18 +306,28 @@ defining a code proves nothing — it publishes an "owned" code nothing can emit
 
 ## Verify commands
 
+Every command below is executable verbatim and states the directory it runs from.
+
 ```bash
 # Core hygiene (game-agnosticism gate)
-cd tools && PYTHONUTF8=1 python -m wfcore.hygiene
+cd "D:/Unreal Projects/WorldForge/tools" && PYTHONUTF8=1 python -m wfcore.hygiene
 
-# live UE surface probe (writes to Saved/Logs/WorldForge.log, NOT stdout)
-"/d/UE_5.8/Engine/Binaries/Win64/UnrealEditor-Cmd.exe" WorldForge.uproject \
-  -ExecutePythonScript=<script> -unattended -nopause -nosplash -nullrhi -stdout
+# live UE surface probe. THREE things are not optional here:
+#   * the .uproject path must be ABSOLUTE - a relative one fails with
+#     "Failed to open descriptor file" and the editor exits before Python runs
+#   * the script path must use FORWARD SLASHES - a backslash path is
+#     escape-processed, so "\tools" arrives as a literal TAB and the far side
+#     silently never loads
+#   * output goes to Saved/Logs/WorldForge.log, NEVER to stdout
+"/d/UE_5.8/Engine/Binaries/Win64/UnrealEditor-Cmd.exe" \
+  "D:/Unreal Projects/WorldForge/WorldForge.uproject" \
+  -ExecutePythonScript="D:/Unreal Projects/WorldForge/tools/unreal/<script>.py" \
+  -unattended -nopause -nosplash -nullrhi -stdout
 
-# the v2.6 surface smoke
-PYTHONUTF8=1 python tools/pipeline/run_v2_6_fixture_smoke.py
+# the v2.6 surface smoke (~10 min) - from the REPO ROOT, not tools/
+cd "D:/Unreal Projects/WorldForge" && PYTHONUTF8=1 python tools/pipeline/run_v2_6_fixture_smoke.py
 
-# rebuild against 5.8
+# rebuild against 5.8 - read UBT's own "Result:" line, not a piped exit code
 "/d/UE_5.8/Engine/Build/BatchFiles/Build.bat" WorldForgeEditor Win64 Development \
   -Project="D:/Unreal Projects/WorldForge/WorldForge.uproject" -WaitMutex
 ```

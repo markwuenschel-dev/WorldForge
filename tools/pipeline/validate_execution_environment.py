@@ -187,6 +187,44 @@ def _repo_rel(path):
 # --------------------------------------------------------------------------- #
 # probing
 # --------------------------------------------------------------------------- #
+def descriptor_fingerprint():
+    """Hash the project's plugin-descriptor SET: which exist, and their contents.
+
+    This is the staleness rail. Without it the gate grades whatever observation
+    happens to be committed, so someone could disable a plugin, re-run the shield,
+    and read green off evidence taken before the change -- which is exactly the
+    "graded an eight-day-old artifact" failure this repository has already paid
+    for once.
+
+    Content-hashed, not mtime-based: an mtime is not a freshness signal (an
+    artifact in this repo was observed moving between dates with identical bytes).
+    Enabling a descriptor, disabling one, or editing one all move this hash, and
+    any of the three means the committed observation no longer describes the tree.
+    """
+    import hashlib
+    entries = []
+    root = os.path.join(_REPO, "Plugins")
+    for dirpath, dirnames, filenames in os.walk(root):
+        dirnames[:] = [d for d in dirnames
+                       if d not in ("Binaries", "Intermediate", "Content")]
+        for fn in sorted(filenames):
+            if fn.endswith((".uplugin", ".uplugin.disabled")):
+                full = os.path.join(dirpath, fn)
+                try:
+                    with open(full, "rb") as fh:
+                        body = hashlib.sha256(fh.read()).hexdigest()
+                except OSError:
+                    body = "unreadable"
+                entries.append((_repo_rel(full), body))
+    h = hashlib.sha256()
+    for (rel, body) in sorted(entries):
+        h.update(rel.encode("utf-8")); h.update(b"\0")
+        h.update(body.encode("utf-8")); h.update(b"\n")
+    return {"descriptor_count": len(entries),
+            "fingerprint": "sha256:" + h.hexdigest(),
+            "descriptors": [r for (r, _b) in sorted(entries)]}
+
+
 def probe(uproject=None, ue_cmd=None, evidence_path=DEFAULT_EVIDENCE, timeout=900):
     """Boot the editor and write a live observation document."""
     uproject = uproject or os.path.join(_REPO, "WorldForge.uproject")
@@ -205,6 +243,20 @@ def probe(uproject=None, ue_cmd=None, evidence_path=DEFAULT_EVIDENCE, timeout=90
             "-unattended", "-nopause", "-nosplash", "-nullrhi", "-stdout"]
     proc = subprocess.run(argv, env=env, capture_output=True, text=True,
                           timeout=timeout)
+
+    # Stamp the observation with the descriptor set it was taken against, so a
+    # later grade can tell whether the tree has moved underneath it. Written by
+    # the NEAR side because the far side cannot see the repository layout.
+    if os.path.isfile(evidence_path):
+        try:
+            with open(evidence_path, "r", encoding="utf-8") as fh:
+                doc = json.load(fh)
+            doc["descriptor_fingerprint_at_probe"] = descriptor_fingerprint()
+            with open(evidence_path, "w", encoding="utf-8") as fh:
+                json.dump(doc, fh, indent=2, sort_keys=True)
+        except Exception as exc:  # noqa: BLE001
+            print("WARNING: could not stamp the descriptor fingerprint: "
+                  "{}".format(exc))
     return proc.returncode, evidence_path
 
 
@@ -228,6 +280,29 @@ def grade(observation):
     add("observation_has_no_fatal_errors", not errors,
         "far-side errors: {}".format(errors[:3]) if errors
         else "far side reported no errors")
+
+    # STALENESS. The committed observation only speaks for the descriptor set it
+    # was taken against. If that set has moved, the observation describes a tree
+    # that no longer exists and must not be graded as though it does.
+    now = descriptor_fingerprint()
+    stamped = observation.get("descriptor_fingerprint_at_probe") or {}
+    stamped_fp = stamped.get("fingerprint")
+    if not stamped_fp:
+        add("observation_is_fingerprinted", False,
+            "this observation carries no descriptor fingerprint, so whether it "
+            "still describes the current plugin tree is UNKNOWN. Re-take it with "
+            "--probe rather than grading evidence of unknown currency.")
+    else:
+        fresh = stamped_fp == now["fingerprint"]
+        add("observation_is_current", fresh,
+            "descriptor fingerprint at probe {} vs now {} ({} descriptors); a "
+            "plugin descriptor was added, removed or edited since this "
+            "observation was taken, so re-run with --probe".format(
+                stamped_fp[:23], now["fingerprint"][:23], now["descriptor_count"])
+            if not fresh else
+            "descriptor set unchanged since the observation was taken "
+            "({} descriptors, {})".format(now["descriptor_count"],
+                                          now["fingerprint"][:23]))
 
     plugins = observation.get("plugins")
     enabled = observation.get("enabled_plugin_names")

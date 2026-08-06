@@ -90,6 +90,10 @@ def main(argv=None) -> int:
     p.add_argument("--baseline", default=None,
                    help="Core boundary baseline manifest; when given, the "
                         "boundary proof is run against it")
+    p.add_argument("--probe-environment", action="store_true",
+                   help="re-take the live plugin-environment observation with a "
+                        "real editor boot (~40s) instead of grading the "
+                        "committed one; the GRADING always runs either way")
     args = p.parse_args(argv)
 
     py = sys.executable
@@ -100,6 +104,23 @@ def main(argv=None) -> int:
         results.append(_run(mod, [py, "-m", mod]))
 
     results.append(_run("wfcore.hygiene", [py, "-m", "wfcore.hygiene"]))
+
+    # UNCONDITIONAL, not flag-gated. These police conditions that drift silently
+    # between runs -- the plugin environment, and external-tool capability claims
+    # -- and a gate you have to remember to ask for is one a future agent will
+    # not ask for. "Six commands pass" is weaker than "the one shield fails when
+    # any of these drifts", because only the second survives being forgotten.
+    #
+    # The environment gate grades the COMMITTED observation and refuses when the
+    # plugin-descriptor fingerprint has moved since it was taken, so it cannot go
+    # green on stale evidence. --probe-environment re-takes it with a live boot
+    # (~40s), which is why the boot itself is opt-in and the GRADING is not.
+    env_argv = [py, "pipeline/validate_execution_environment.py"]
+    if args.probe_environment:
+        env_argv.append("--probe")
+    results.append(_run("validate_execution_environment", env_argv))
+    results.append(_run("validate_external_tool_providers",
+                        [py, "pipeline/validate_external_tool_providers.py"]))
 
     if args.baseline:
         results.append(_run("core_boundary_proof",
