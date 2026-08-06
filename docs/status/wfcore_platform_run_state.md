@@ -1,5 +1,27 @@
 # WorldForge Core — consumer-driven platform run state
 
+## STATUS: all twelve flow stages built. One item is operator-gated by design.
+
+```
+cd tools
+PYTHONUTF8=1 python wfcore_shield.py --baseline <manifest>   # 8 suites + hygiene + boundary
+PYTHONUTF8=1 python pipeline/test_consumer_flow.py           # consumer proof
+PYTHONUTF8=1 python pipeline/test_wfcore_unreal_sink.py      # 189 checks
+PYTHONUTF8=1 python tools/pipeline/validate_failure_codes.py
+```
+
+All green as of commit `79c70352` (10 commits on `worldforge/wfcore-consumer-platform`).
+
+**The proof:** capture Core → run `demoarena` → run `demoexpanse` → verify.
+`sha256:1f91927f…091d6003` (39 files) before and after. PROOF HOLDS.
+
+**Still open, and it cannot be closed from here:** no real importing game has sent a
+request. Both consumers are WorldForge-authored demonstrations that say so in their own
+provenance records, and the runner refuses to label such a run caller-originated
+(`WF1288`). Closing this needs the caller lane to send a real request — an operator
+action, not an engineering one.
+
+
 Durable execution state for the "game-agnostic world-generation and world-authoring
 platform" build. Update this file as milestones move; it is the handoff of record.
 
