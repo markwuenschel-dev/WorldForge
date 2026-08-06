@@ -110,6 +110,7 @@ DECLARED = {
     },
     # ---- the two deliberately disabled descriptors -------------------------- #
     "NeoStackAI": {
+        "local_install": True,
         # Enabled in WorldForge.uproject, and it DOES mount -- but from the
         # ENGINE marketplace copy, because the project-local duplicate's
         # descriptor is renamed to .uplugin.disabled. Both halves are stated.
@@ -134,6 +135,7 @@ DECLARED = {
                   "fails again until the missing ThirdParty headers are supplied.",
     },
     "UELLMToolkit": {
+        "local_install": True,
         "disposition": DISABLED,
         "reason": "ENVIRONMENT CHANGE. EngineVersion 5.6.0; uses APIs changed in "
                   "5.8 (IKRetargetBatchOperation::DuplicateAndRetarget signature, "
@@ -281,9 +283,24 @@ def grade(observation):
         "far-side errors: {}".format(errors[:3]) if errors
         else "far side reported no errors")
 
-    # STALENESS. The committed observation only speaks for the descriptor set it
-    # was taken against. If that set has moved, the observation describes a tree
-    # that no longer exists and must not be graded as though it does.
+    # IS THIS EVEN THE DECLARED MACHINE? The plugins this gate governs are
+    # UNTRACKED local installs -- they exist in the operator's working tree and
+    # in no clean checkout. Reporting their absence as "drift" would send a
+    # future agent hunting a plugin change that never happened, so absence and
+    # drift are separated before either is graded.
+    local_installs = [n for n, d in DECLARED.items() if d.get("local_install")]
+    present = [n for n in local_installs
+               if os.path.isdir(os.path.join(_REPO, "Plugins", n))]
+    if local_installs and not present:
+        add("environment_is_the_declared_machine", False,
+            "none of the declared LOCAL-INSTALL plugins {} exist in this "
+            "checkout, so this is not the tree the observation describes -- it "
+            "is a clean checkout or another machine. This is NOT drift and "
+            "nothing changed; the declaration simply cannot be verified here. "
+            "Run this gate in the operator's working tree."
+            .format(local_installs))
+        return checks
+
     now = descriptor_fingerprint()
     stamped = observation.get("descriptor_fingerprint_at_probe") or {}
     stamped_fp = stamped.get("fingerprint")
