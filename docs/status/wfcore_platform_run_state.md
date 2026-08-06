@@ -145,8 +145,69 @@ Import root is `tools/` (same convention as `bridge`): `cd tools && python -m wf
 | `models/` | DONE, 22 tests | desired/observed world, experience + env-state graphs |
 | `providers/` | DONE, 85 assertions | declaration, capability registry, result-driven selection |
 | `analysis/` | DONE, 25 tests | desired-vs-observed reconciliation |
-| `planning/` | lane in flight | typed generation/revision plan |
-| `transaction/` | lane in flight | bounded world delta + rollback |
+| `planning/` | DONE, 127 assertions | typed generation/revision plan |
+| `transaction/` | DONE, 101 assertions | bounded world delta + rollback |
+| `acceptance/` | DONE, 24 tests | acceptance evaluation |
+| `repair/` | DONE, 21 tests | evidence-driven repair loop |
+
+Engine-backed sink (outside Core, where engine code belongs):
+`tools/unreal/wfcore_unreal_sink.py` (far side) + `tools/pipeline/run_wfcore_transaction.py`
+(near side). 189-check headless gate. **Two live editor runs proved the loop on real
+content** — `committed` with `verification=satisfied`, and `rolled_back` with
+`rollback_completeness=satisfied` after a real `WF1278` apply failure destroyed a real
+actor and re-observation confirmed absence. Journals under
+`procedural/reports/core/transaction/`.
+
+### THE OPEN ITEM — caller provenance (operator-gated, by design)
+The locked rule is that an acceptance request must **originate from the caller lane**;
+WorldForge must never fabricate caller provenance (now `WF1288`). `Gloamstead5_8` is a
+separate, edit-forbidden repository from this session, so a genuinely Gloamstead-originated
+request **cannot be produced here** — and manufacturing one would be precisely the error the
+architecture exists to prevent.
+
+What is therefore being proven instead: two **WorldForge-authored demonstration consumers**,
+explicitly labelled as such in their own records, driving the full flow with Core proven
+untouched. That discharges the platform claim (M12). It does **not** discharge "a real
+importing game asked for this" — that step needs the caller lane to send a request, and only
+the operator can arrange it.
+
+Also outside Core: `tools/wfcore_shield.py` — the single Core gate. Discovers suites
+(never a hardcoded list), runs hygiene + the boundary proof, and **fails when it
+discovers zero suites** (exit 2). Negative-controlled.
+
+```
+cd tools && PYTHONUTF8=1 python wfcore_shield.py --baseline <manifest>
+  suites discovered : 6   → contracts 74 · models 22 · providers 85 ·
+                            analysis 25 · planning 127 · transaction 101
+  GATE GREEN
+```
+
+### Verified cross-lane seam
+Planning's `_example_plan_step()` feeds transaction's `bound_from_step()` cleanly;
+`selected_provider` is the plain string planning declares; declared paths classify
+`in_bound`, an undeclared path returns WF1247. Two independently-built lanes agreeing
+on the captain-fixed contract, checked rather than assumed.
+
+### The rollback property, demonstrated
+Two runs differing only in the sink's honesty, both reporting `undo_reported_ok=True`
+on every mutation:
+
+| sink | outcome | restoration |
+|---|---|---|
+| undo lies (reports ok, restores nothing) | `partial_commit` | `['violated','satisfied']` |
+| undo honest | `rolled_back` | `['satisfied','satisfied']` |
+
+Only re-observation separates them. `undo_reported_ok` is written at three sites in
+`executor.py` and **read by no verdict path** — confirmed by grep, not by claim.
+
+### Engine facts that constrain the real sink (researched 2026-08-05)
+- UE 5.8 Python exposes `ScopedEditorTransaction` (begin/commit/`.cancel()`) but **no
+  generic `Undo()`**. Python cannot drive the engine's undo stack. Every mutation kind
+  therefore needs an explicit compensating action, and an uncompensatable kind must be
+  refused BEFORE apply (WF1279), never discovered afterwards.
+- `ScopedEditorTransaction.cancel()` does not restore a package's dirty flag.
+- There is no per-package `is_dirty()` — only the two engine-wide dirty-package sets.
+- No existing script captures a before-state or reports what it actually wrote.
 
 Outside Core: `tools/core_boundary_proof.py` — digests Core before/after a consumer
 run and requires identity. Mutation-tested (catches MODIFIED and ADDED, names paths).
