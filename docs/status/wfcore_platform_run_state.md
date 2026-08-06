@@ -4,11 +4,43 @@
 
 ```
 cd tools
-PYTHONUTF8=1 python wfcore_shield.py --baseline <manifest>   # 8 suites + hygiene + boundary
-PYTHONUTF8=1 python pipeline/test_consumer_flow.py           # consumer proof
-PYTHONUTF8=1 python pipeline/test_wfcore_unreal_sink.py      # 189 checks
+PYTHONUTF8=1 python wfcore_shield.py --baseline <manifest>        # 8 suites + hygiene + boundary
+PYTHONUTF8=1 python pipeline/test_consumer_flow.py                # consumer proof
+PYTHONUTF8=1 python pipeline/test_wfcore_unreal_sink.py           # 189 checks
+PYTHONUTF8=1 python pipeline/validate_execution_environment.py    # add --probe for a live boot
+PYTHONUTF8=1 python pipeline/validate_external_tool_providers.py
 PYTHONUTF8=1 python tools/pipeline/validate_failure_codes.py
 ```
+
+### The two disabled descriptors — declared and graded, not described
+`validate_execution_environment.py` declares a disposition + reason per plugin and
+grades it against a **live boot observation** (`--probe`). Measured:
+
+| plugin | observed | disposition |
+|---|---|---|
+| `UELLMToolkit` | **absent from the enabled list** | `deliberately_disabled` — untracked, not in `.uproject`, built only via `EnabledByDefault`; 5.6-era APIs |
+| `NeoStackAI` | enabled, **v2.0.45**, from `Engine/Plugins/Marketplace` — *not* the disabled project-local v3.0.3 | `present_not_required_by_plan` — enabled in `.uproject`, but no Core operation calls it |
+
+Each entry carries its exact reversal command and the consequence of reversing.
+The gate pins the **base directory**, because "NeoStackAI is enabled" reads
+identically whichever of the two on-disk copies answered.
+
+Two measurement traps found here: `is_plugin_mounted` means *content*-mounted, so a
+code-only plugin reads False while fully active — the activation signal is ENABLED.
+And a Windows path passed to `-ExecutePythonScript` is escape-processed, so
+`\tools` arrives as a literal TAB and the far side silently never loads.
+
+### Houdini — mounted plugin and fixture generator, nothing more
+See `docs/contracts/wfcore_houdini_provider_status.md`. The plugin builds, mounts,
+and has generated deterministic fixtures via `hython`. **No provider is declared, no
+plan step has selected one, no cook has run.** `validate_external_tool_providers.py`
+requires cook evidence — including `selected_by_plan` — and rejects fixture paths as
+its source (`WF1289` / `WF1290`). Today it is a green gate asserting *absence*, not a
+green gate implying capability.
+
+**D18 does not speak to this.** It measured Python's cost for support-grid sampling
+and concluded the support grid stays in Python — one implementation choice inside
+WorldForge. It says nothing about driving an external tool end to end.
 
 All green as of commit `79c70352` (10 commits on `worldforge/wfcore-consumer-platform`).
 
