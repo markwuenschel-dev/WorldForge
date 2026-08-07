@@ -132,7 +132,19 @@ DECLARED = {
                   "require it. REVERSE WITH: mv "
                   "Plugins/NeoStackAI/NeoStackAI.uplugin.disabled "
                   "Plugins/NeoStackAI/NeoStackAI.uplugin -- note the build then "
-                  "fails again until the missing ThirdParty headers are supplied.",
+                  "fails again until the missing ThirdParty headers are supplied. "
+                  "THIS DISABLE IS NOT DURABLE, measured 2026-08-07: NeoStack "
+                  "self-updated 3.0.3 -> 3.1.25, REINSTALLED its project-local "
+                  "descriptor, and deleted the .disabled file outright. The "
+                  "duplicate returned, UBT failed again with the identical "
+                  "'does not contain the NeoStackAI module' error (exit 6, "
+                  "3.25s), and the ThirdParty/Lua and sol2 headers were STILL "
+                  "absent in the newer version. Expect this to recur on every "
+                  "NeoStack update. A durable fix needs an operator decision: "
+                  "supply the missing ThirdParty headers, or set NeoStackAI "
+                  "Enabled=false in WorldForge.uproject (tracked, but disables "
+                  "the tooling), or remove one of the two installs. Renaming "
+                  "buys a working build until the next update, nothing more.",
     },
     "UELLMToolkit": {
         "local_install": True,

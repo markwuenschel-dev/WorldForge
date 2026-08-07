@@ -7,7 +7,7 @@
     },
     {
       "check": "observation_is_current",
-      "detail": "descriptor set unchanged since the observation was taken (10 descriptors, sha256:334502561cf2a3ec)",
+      "detail": "descriptor set unchanged since the observation was taken (10 descriptors, sha256:ad891644959360f4)",
       "ok": true
     },
     {
@@ -119,8 +119,9 @@
     "NeoStackAI": {
       "disposition": "present_not_required_by_plan",
       "expect_base_dir_contains": "Engine/Plugins/Marketplace",
+      "local_install": true,
       "must_not_load_from": "WorldForge/Plugins/NeoStackAI",
-      "reason": "ENVIRONMENT CHANGE. Two plugins on disk share this name: a project-local v3.0.3 missing its ThirdParty/Lua and sol2 headers, and a complete engine marketplace v2.0.45. UBT selected the engine descriptor together with the project's module rules, which cannot build. The project-local descriptor is renamed to .uplugin.disabled so exactly one copy resolves. NeoStackAI is enabled in WorldForge.uproject and mounts from the engine copy; no WorldForge Core operation calls it, so the selected execution plan does not require it. REVERSE WITH: mv Plugins/NeoStackAI/NeoStackAI.uplugin.disabled Plugins/NeoStackAI/NeoStackAI.uplugin -- note the build then fails again until the missing ThirdParty headers are supplied."
+      "reason": "ENVIRONMENT CHANGE. Two plugins on disk share this name: a project-local v3.0.3 missing its ThirdParty/Lua and sol2 headers, and a complete engine marketplace v2.0.45. UBT selected the engine descriptor together with the project's module rules, which cannot build. The project-local descriptor is renamed to .uplugin.disabled so exactly one copy resolves. NeoStackAI is enabled in WorldForge.uproject and mounts from the engine copy; no WorldForge Core operation calls it, so the selected execution plan does not require it. REVERSE WITH: mv Plugins/NeoStackAI/NeoStackAI.uplugin.disabled Plugins/NeoStackAI/NeoStackAI.uplugin -- note the build then fails again until the missing ThirdParty headers are supplied. THIS DISABLE IS NOT DURABLE, measured 2026-08-07: NeoStack self-updated 3.0.3 -> 3.1.25, REINSTALLED its project-local descriptor, and deleted the .disabled file outright. The duplicate returned, UBT failed again with the identical 'does not contain the NeoStackAI module' error (exit 6, 3.25s), and the ThirdParty/Lua and sol2 headers were STILL absent in the newer version. Expect this to recur on every NeoStack update. A durable fix needs an operator decision: supply the missing ThirdParty headers, or set NeoStackAI Enabled=false in WorldForge.uproject (tracked, but disables the tooling), or remove one of the two installs. Renaming buys a working build until the next update, nothing more."
     },
     "PCG": {
       "disposition": "present_not_required_by_plan",
@@ -132,6 +133,7 @@
     },
     "UELLMToolkit": {
       "disposition": "deliberately_disabled",
+      "local_install": true,
       "reason": "ENVIRONMENT CHANGE. EngineVersion 5.6.0; uses APIs changed in 5.8 (IKRetargetBatchOperation::DuplicateAndRetarget signature, moved RigVMModel/RigVMVariableDescription.h). It is untracked in git and NOT referenced by WorldForge.uproject -- it built only via EnabledByDefault. No WorldForge Core operation calls it, so the selected execution plan does not require it. REVERSE WITH: mv Plugins/UELLMToolkit/UELLMToolkit.uplugin.disabled Plugins/UELLMToolkit/UELLMToolkit.uplugin -- the 5.8 build then fails again."
     },
     "WorldForge": {

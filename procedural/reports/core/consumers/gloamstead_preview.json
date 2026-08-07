@@ -1,0 +1,3598 @@
+{
+  "adapter_id": "adapter_gloamstead_first_night_wayfinding",
+  "artifacts": {
+    "acceptance_requirements": {
+      "acceptance_verdict": "unknown",
+      "accepted": false,
+      "detail": "acceptance was asked to judge a run with no delta and no evidence, and refused. A preview that came back satisfied would mean the pipeline can accept a world it has never looked at",
+      "evidence_supplied_count": 0,
+      "failure_codes": [
+        "WF1256_CORE_ACCEPTANCE_INVALID"
+      ],
+      "outcome": "refused",
+      "pre_observation_fold": "unknown",
+      "refusal_reason": "the judgement is malformed and cannot honestly run: the delta under judgement names no operation_id, so no evidence can be matched to the operation it describes; delta outcome None is not one of ('refused', 'committed', 'committed_unverified', 'rolled_back', 'partial_commit'); applied_at is None, not an ordinal; without it nothing establishes whether an observation predates the change it claims to describe",
+      "required_evidence": [
+        {
+          "constraint_class": "hard_invariant",
+          "constraint_id": "c_landmarks_stay_reachable",
+          "evaluator": "UGloamsteadSurveySubjectRegistry::SurveyAndEmit (GloamsteadSurveySubjectRegistry.h:128)",
+          "evidence_kind": "runtime_observation",
+          "supplied_by_this_preview": false
+        },
+        {
+          "constraint_class": "hard_invariant",
+          "constraint_id": "c_route_traversable",
+          "evaluator": "UGloamsteadSurveySubjectRegistry::EmitReport (GloamsteadSurveySubjectRegistry.h:136), cross-checked by the existing automation test Gloamstead.SurveySubject.ResolvesPlacedActorsAndRefusesToGuess (Source/Gloamstead/Tests/SurveySubjectRegistryTests.cpp:88)",
+          "evidence_kind": "runtime_observation",
+          "supplied_by_this_preview": false
+        },
+        {
+          "constraint_class": "hard_invariant",
+          "constraint_id": "c_markers_on_route",
+          "evaluator": "Gloamstead level owner, reviewing the revised /Game/Maps/Lvl_Gloamstead in the UE 5.8 editor",
+          "evidence_kind": "human_review",
+          "supplied_by_this_preview": false
+        },
+        {
+          "constraint_class": "prohibited_outcome",
+          "constraint_id": "c_no_marker_in_restoration_envelope",
+          "evaluator": "URitualPlacementComponent::IsCurrentPlacementValid (RitualPlacementComponent.h:42, impl .cpp:558-561) and IsPointValidForPlacement (.h:180, impl .cpp:545-556)",
+          "evidence_kind": "runtime_observation",
+          "supplied_by_this_preview": false
+        },
+        {
+          "constraint_class": "protected_semantics",
+          "constraint_id": "c_identity_untouched",
+          "evaluator": "git diff --stat 6628a02f44b91c2a17a29fe2d9d6139bae3d72f1..HEAD -- Content/Gloamstead Content/Data",
+          "evidence_kind": "authoring_time_check",
+          "supplied_by_this_preview": false
+        },
+        {
+          "constraint_class": "budget",
+          "constraint_id": "c_marker_instance_budget",
+          "evaluator": "count of actors added to /Game/Maps/Lvl_Gloamstead by the WorldForge revision transaction record",
+          "evidence_kind": "external_measurement",
+          "supplied_by_this_preview": false
+        }
+      ],
+      "required_evidence_count": 6,
+      "stage": "preview_acceptance",
+      "status": "ok",
+      "unknown_handling": "block_and_request_measurement"
+    },
+    "caller_provenance": {
+      "caller_originated": true,
+      "checks_run": 3,
+      "claimed_origination": "caller_originated",
+      "detail": "this bundle may not be presented as a caller's request unless the adapter itself declares a caller origination",
+      "failure_codes": [],
+      "failures": [],
+      "provenance_verdict": "satisfied",
+      "stage": "caller_provenance",
+      "status": "ok"
+    },
+    "constraint_analysis": {
+      "acceptance_verdict": "unknown",
+      "blockers": [],
+      "created_by": "wfcore.analysis.reconcile",
+      "failure_codes": [
+        "WF1218_CORE_OBSERVED_WORLD_UNBACKED"
+      ],
+      "findings": [],
+      "not_a_predicate": [],
+      "reconciled": false,
+      "refusal_reason": "the observed model carries no measured world identity, so nothing establishes that it is an observation of the world this request is about",
+      "report_type": "wf.core.constraint_analysis.v1",
+      "same_world": "unknown",
+      "satisfied": [],
+      "schema_version": "wf.core.constraint_analysis.v1",
+      "unknown": [],
+      "violated": [],
+      "world_identity": {
+        "request_id": "request_gloamstead_first_night_wayfinding_0001",
+        "revision": 0,
+        "world_id": "/Game/Maps/Lvl_Gloamstead"
+      }
+    },
+    "desired_world": {
+      "model": {
+        "created_by": "pipeline.run_consumer_flow",
+        "environmental_state": [
+          {
+            "state_dimension": "relief_class",
+            "state_id": "state_relief",
+            "state_value": "flat"
+          },
+          {
+            "state_dimension": "lighting_condition",
+            "state_id": "state_lighting",
+            "state_value": "dark"
+          },
+          {
+            "state_dimension": "extent_m2",
+            "state_id": "state_extent",
+            "state_value": "unknown"
+          }
+        ],
+        "gameplay_anchors": [
+          {
+            "anchor_id": "afford_route_entry_to_first_lantern",
+            "required": true,
+            "role": "traversal"
+          },
+          {
+            "anchor_id": "afford_wayfinding_markers",
+            "required": true,
+            "role": "navigation_anchor"
+          }
+        ],
+        "population": [],
+        "report_type": "wf.core.desired_world.v1",
+        "request_id": "request_gloamstead_first_night_wayfinding_0001",
+        "revision": 0,
+        "schema_version": "wf.core.desired_world.v1",
+        "semantic_landmarks": [
+          {
+            "intent": "the PlayerStart actor in Lvl_Gloamstead -- where the first night begins. It is an actor label, NOT a declared survey subject: the registry declares four subjects and this is not one of them",
+            "landmark_id": "entry.player_start",
+            "role": "entry"
+          },
+          {
+            "intent": "the lantern the player restores and then walks back to. Declared at GloamsteadSurveySubjectRegistry.cpp:57 with resolver kind RegisteredComponent and deliberately NO ActorClass -- the claim is made at runtime by URitualPlacementComponent (RitualPlacementComponent.cpp:32)",
+            "landmark_id": "courtyard.lantern.first",
+            "role": "objective"
+          },
+          {
+            "intent": "AVeilHeart, placed as the Dais_Heart actor. Declared at GloamsteadSurveySubjectRegistry.cpp:26",
+            "landmark_id": "sanctuary.heart",
+            "role": "shelter"
+          },
+          {
+            "intent": "AGloamsteadSanctuaryBootstrap, declared at GloamsteadSurveySubjectRegistry.cpp:34. Its UBoxComponent Bounds (GloamsteadSanctuaryBootstrap.h:44-45) is the sanctuary's extent",
+            "landmark_id": "sanctuary.bootstrap",
+            "role": "boundary"
+          }
+        ],
+        "spatial_relations": [
+          {
+            "object_ref": "entry.player_start",
+            "relation": "reachable_from",
+            "relation_id": "rel_reach_courtyard.lantern.first",
+            "subject_ref": "courtyard.lantern.first"
+          },
+          {
+            "object_ref": "entry.player_start",
+            "relation": "reachable_from",
+            "relation_id": "rel_reach_sanctuary.heart",
+            "subject_ref": "sanctuary.heart"
+          }
+        ],
+        "world_id": "/Game/Maps/Lvl_Gloamstead"
+      },
+      "unexpressible_intent": []
+    },
+    "expected_changes": {
+      "mutation_envelope": {
+        "expected_changed_actors": [
+          "/Game/Maps/Lvl_Gloamstead/afford_route_entry_to_first_lantern",
+          "/Game/Maps/Lvl_Gloamstead/afford_wayfinding_markers"
+        ],
+        "expected_changed_packages": [
+          "/Game/Maps/Lvl_Gloamstead"
+        ],
+        "mutates_nothing": false,
+        "total": 3
+      },
+      "preview_plan": {
+        "expected_changed_actors": [],
+        "expected_changed_packages": [],
+        "mutates_nothing": true,
+        "total": 0
+      }
+    },
+    "mutation_bounds": {
+      "mutation_envelope": [
+        {
+          "bound": {
+            "allowed_actors": [],
+            "allowed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_revise_c_landmarks_stay_reachable"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": false,
+          "step_id": "step_revise_c_landmarks_stay_reachable"
+        },
+        {
+          "bound": {
+            "allowed_actors": [
+              "/Game/Maps/Lvl_Gloamstead/afford_wayfinding_markers"
+            ],
+            "allowed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_revise_c_marker_instance_budget"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": false,
+          "step_id": "step_revise_c_marker_instance_budget"
+        },
+        {
+          "bound": {
+            "allowed_actors": [
+              "/Game/Maps/Lvl_Gloamstead/afford_wayfinding_markers"
+            ],
+            "allowed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_revise_c_markers_on_route"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": false,
+          "step_id": "step_revise_c_markers_on_route"
+        },
+        {
+          "bound": {
+            "allowed_actors": [],
+            "allowed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_revise_c_no_marker_in_restoration_envelope"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": false,
+          "step_id": "step_revise_c_no_marker_in_restoration_envelope"
+        },
+        {
+          "bound": {
+            "allowed_actors": [
+              "/Game/Maps/Lvl_Gloamstead/afford_route_entry_to_first_lantern"
+            ],
+            "allowed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_revise_c_route_traversable"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": false,
+          "step_id": "step_revise_c_route_traversable"
+        }
+      ],
+      "preview_plan": [
+        {
+          "bound": {
+            "allowed_actors": [],
+            "allowed_packages": [],
+            "declares_no_mutation": true,
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_observe_c_identity_untouched"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": true,
+          "step_id": "step_observe_c_identity_untouched"
+        },
+        {
+          "bound": {
+            "allowed_actors": [],
+            "allowed_packages": [],
+            "declares_no_mutation": true,
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_observe_c_landmarks_stay_reachable"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": true,
+          "step_id": "step_observe_c_landmarks_stay_reachable"
+        },
+        {
+          "bound": {
+            "allowed_actors": [],
+            "allowed_packages": [],
+            "declares_no_mutation": true,
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_observe_c_marker_instance_budget"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": true,
+          "step_id": "step_observe_c_marker_instance_budget"
+        },
+        {
+          "bound": {
+            "allowed_actors": [],
+            "allowed_packages": [],
+            "declares_no_mutation": true,
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_observe_c_markers_on_route"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": true,
+          "step_id": "step_observe_c_markers_on_route"
+        },
+        {
+          "bound": {
+            "allowed_actors": [],
+            "allowed_packages": [],
+            "declares_no_mutation": true,
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_observe_c_no_marker_in_restoration_envelope"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": true,
+          "step_id": "step_observe_c_no_marker_in_restoration_envelope"
+        },
+        {
+          "bound": {
+            "allowed_actors": [],
+            "allowed_packages": [],
+            "declares_no_mutation": true,
+            "schema_version": "wf.core.mutation_bound.v1",
+            "step_id": "step_observe_c_route_traversable"
+          },
+          "bound_failures": [],
+          "bound_is_valid": true,
+          "declares_no_mutation": true,
+          "step_id": "step_observe_c_route_traversable"
+        }
+      ]
+    },
+    "mutation_envelope": {
+      "basis": "authored_maximal_obligation",
+      "excluded_constraints": [
+        {
+          "constraint_class": "protected_semantics",
+          "constraint_id": "c_identity_untouched",
+          "reason": "a protected-semantics violation could only be remedied by mutating the content the consumer protected, which its own revision policy forbids",
+          "remedy_owner": "the consumer"
+        },
+        {
+          "constraint_class": "declared_unknown",
+          "constraint_id": "c_unknown_player_traversal_metrics",
+          "reason": "a declared unknown is resolved by a consumer DECISION, never by a change to the world",
+          "remedy_owner": "Gloamstead gameplay owner -- must measure the shipping Blueprint pawn (AGloamsteadCharacter is UCLASS(abstract), GloamsteadCharacter.h:23-24, so the live values are in uasset data no source grep can read) and record the result back into this adapter"
+        },
+        {
+          "constraint_class": "declared_unknown",
+          "constraint_id": "c_unknown_ritual_restoration_radius",
+          "reason": "a declared unknown is resolved by a consumer DECISION, never by a change to the world",
+          "remedy_owner": "Gloamstead ritual owner -- must read the authored RestorationRadius attribute off the PCG points for courtyard.lantern.first; the 800cm in RitualPlacementComponent.cpp:553 is the code FALLBACK, not the authored value"
+        }
+      ],
+      "not_an_observation": true,
+      "plan": {
+        "addresses": [
+          "c_landmarks_stay_reachable",
+          "c_marker_instance_budget",
+          "c_markers_on_route",
+          "c_no_marker_in_restoration_envelope",
+          "c_route_traversable"
+        ],
+        "analysis_id": "envelope_request_gloamstead_first_night_wayfinding_0001",
+        "consumer_id": "worldforge_caller.gloamstead_consumer",
+        "created_by": "worldforge.core",
+        "fallback_policy": {
+          "detail": "stop the plan: a step that failed leaves later steps resting on a premise nobody re-established",
+          "on_failure": "abort"
+        },
+        "observes": [],
+        "plan_id": "plan_envelope_request_gloamstead_first_night_wayfinding_0001",
+        "report_type": "wf.core.plan.v1",
+        "request_id": "request_gloamstead_first_night_wayfinding_0001",
+        "rollback": {
+          "max_revision_attempts": 2,
+          "rollback_granularity": "whole_revision",
+          "rollback_required": true
+        },
+        "schema_version": "wf.core.plan.v1",
+        "steps": [
+          {
+            "allowed_side_effects": [
+              "mutates_persistent_asset"
+            ],
+            "capability": "editor_authoring",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "HYPOTHETICAL: bounds what a remedy could reach if this constraint were found violated. Nothing has measured it.",
+            "evidence_requirements": [
+              "operation_manifest"
+            ],
+            "expected_changed_actors": [],
+            "expected_changed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "fallback_policy": {
+              "detail": "undo this step and stop rather than build on a failed change",
+              "on_failure": "rollback_and_abort"
+            },
+            "mutation_kinds": [
+              "add_geometry",
+              "move_geometry"
+            ],
+            "postconditions": [
+              {
+                "expectation": "the addressed constraint holds after this step",
+                "observation_key": "navigation.reachability.declared_landmarks",
+                "predicate_id": "post_c_landmarks_stay_reachable_satisfied",
+                "subject": "navigation.reachability.declared_landmarks"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "compensating",
+              "rollback_granularity": "whole_revision",
+              "rollback_required": true
+            },
+            "selected_provider": "unreal_editor_mutation_sink",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "editor_authoring",
+              "considered": [
+                {
+                  "eligibility": "violated",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "editor_authoring"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                },
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_revision_c_landmarks_stay_reachable",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "unreal_editor_mutation_sink",
+              "selection_id": "sel_req_revision_c_landmarks_stay_reachable",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_revise_c_landmarks_stay_reachable"
+          },
+          {
+            "allowed_side_effects": [
+              "mutates_persistent_asset"
+            ],
+            "capability": "editor_authoring",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "HYPOTHETICAL: bounds what a remedy could reach if this constraint were found violated. Nothing has measured it.",
+            "evidence_requirements": [
+              "operation_manifest"
+            ],
+            "expected_changed_actors": [
+              "/Game/Maps/Lvl_Gloamstead/afford_wayfinding_markers"
+            ],
+            "expected_changed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "fallback_policy": {
+              "detail": "undo this step and stop rather than build on a failed change",
+              "on_failure": "rollback_and_abort"
+            },
+            "mutation_kinds": [
+              "remove_geometry"
+            ],
+            "postconditions": [
+              {
+                "expectation": "the addressed constraint holds after this step",
+                "observation_key": "afford_wayfinding_markers.instance_count",
+                "predicate_id": "post_c_marker_instance_budget_satisfied",
+                "subject": "afford_wayfinding_markers.instance_count"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "compensating",
+              "rollback_granularity": "whole_revision",
+              "rollback_required": true
+            },
+            "selected_provider": "unreal_editor_mutation_sink",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "editor_authoring",
+              "considered": [
+                {
+                  "eligibility": "violated",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "editor_authoring"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                },
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_revision_c_marker_instance_budget",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "unreal_editor_mutation_sink",
+              "selection_id": "sel_req_revision_c_marker_instance_budget",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_revise_c_marker_instance_budget"
+          },
+          {
+            "allowed_side_effects": [
+              "mutates_persistent_asset"
+            ],
+            "capability": "editor_authoring",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "HYPOTHETICAL: bounds what a remedy could reach if this constraint were found violated. Nothing has measured it.",
+            "evidence_requirements": [
+              "operation_manifest"
+            ],
+            "expected_changed_actors": [
+              "/Game/Maps/Lvl_Gloamstead/afford_wayfinding_markers"
+            ],
+            "expected_changed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "fallback_policy": {
+              "detail": "undo this step and stop rather than build on a failed change",
+              "on_failure": "rollback_and_abort"
+            },
+            "mutation_kinds": [
+              "add_geometry",
+              "move_geometry"
+            ],
+            "postconditions": [
+              {
+                "expectation": "the addressed constraint holds after this step",
+                "observation_key": "afford_wayfinding_markers.placed_along_route",
+                "predicate_id": "post_c_markers_on_route_satisfied",
+                "subject": "afford_wayfinding_markers.placed_along_route"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "compensating",
+              "rollback_granularity": "whole_revision",
+              "rollback_required": true
+            },
+            "selected_provider": "unreal_editor_mutation_sink",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "editor_authoring",
+              "considered": [
+                {
+                  "eligibility": "violated",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "editor_authoring"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                },
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_revision_c_markers_on_route",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "unreal_editor_mutation_sink",
+              "selection_id": "sel_req_revision_c_markers_on_route",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_revise_c_markers_on_route"
+          },
+          {
+            "allowed_side_effects": [
+              "mutates_persistent_asset"
+            ],
+            "capability": "editor_authoring",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "HYPOTHETICAL: bounds what a remedy could reach if this constraint were found violated. Nothing has measured it.",
+            "evidence_requirements": [
+              "operation_manifest"
+            ],
+            "expected_changed_actors": [],
+            "expected_changed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "fallback_policy": {
+              "detail": "undo this step and stop rather than build on a failed change",
+              "on_failure": "rollback_and_abort"
+            },
+            "mutation_kinds": [
+              "move_geometry",
+              "remove_geometry"
+            ],
+            "postconditions": [
+              {
+                "expectation": "the addressed constraint holds after this step",
+                "observation_key": "ritual.placement.restoration_envelope",
+                "predicate_id": "post_c_no_marker_in_restoration_envelope_satisfied",
+                "subject": "ritual.placement.restoration_envelope"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "compensating",
+              "rollback_granularity": "whole_revision",
+              "rollback_required": true
+            },
+            "selected_provider": "unreal_editor_mutation_sink",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "editor_authoring",
+              "considered": [
+                {
+                  "eligibility": "violated",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "editor_authoring"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                },
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_revision_c_no_marker_in_restoration_envelope",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "unreal_editor_mutation_sink",
+              "selection_id": "sel_req_revision_c_no_marker_in_restoration_envelope",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_revise_c_no_marker_in_restoration_envelope"
+          },
+          {
+            "allowed_side_effects": [
+              "mutates_persistent_asset"
+            ],
+            "capability": "editor_authoring",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "HYPOTHETICAL: bounds what a remedy could reach if this constraint were found violated. Nothing has measured it.",
+            "evidence_requirements": [
+              "operation_manifest"
+            ],
+            "expected_changed_actors": [
+              "/Game/Maps/Lvl_Gloamstead/afford_route_entry_to_first_lantern"
+            ],
+            "expected_changed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "fallback_policy": {
+              "detail": "undo this step and stop rather than build on a failed change",
+              "on_failure": "rollback_and_abort"
+            },
+            "mutation_kinds": [
+              "add_geometry",
+              "move_geometry"
+            ],
+            "postconditions": [
+              {
+                "expectation": "the addressed constraint holds after this step",
+                "observation_key": "afford_route_entry_to_first_lantern.on_foot",
+                "predicate_id": "post_c_route_traversable_satisfied",
+                "subject": "afford_route_entry_to_first_lantern.on_foot"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "compensating",
+              "rollback_granularity": "whole_revision",
+              "rollback_required": true
+            },
+            "selected_provider": "unreal_editor_mutation_sink",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "editor_authoring",
+              "considered": [
+                {
+                  "eligibility": "violated",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "editor_authoring"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                },
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_revision_c_route_traversable",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "unreal_editor_mutation_sink",
+              "selection_id": "sel_req_revision_c_route_traversable",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_revise_c_route_traversable"
+          }
+        ]
+      }
+    },
+    "observed_evidence": {
+      "field_census": [
+        {
+          "backed": false,
+          "field_evidence": "unknown",
+          "path": "environmental_state.enumeration",
+          "provenance": "not_observed",
+          "value_is_null": true
+        },
+        {
+          "backed": false,
+          "field_evidence": "unknown",
+          "path": "gameplay_anchors.enumeration",
+          "provenance": "not_observed",
+          "value_is_null": true
+        },
+        {
+          "backed": false,
+          "field_evidence": "unknown",
+          "path": "population.enumeration",
+          "provenance": "not_observed",
+          "value_is_null": true
+        },
+        {
+          "backed": false,
+          "field_evidence": "unknown",
+          "path": "semantic_landmarks.enumeration",
+          "provenance": "not_observed",
+          "value_is_null": true
+        },
+        {
+          "backed": false,
+          "field_evidence": "unknown",
+          "path": "spatial_relations.enumeration",
+          "provenance": "not_observed",
+          "value_is_null": true
+        },
+        {
+          "backed": false,
+          "field_evidence": "unknown",
+          "path": "world_identity",
+          "provenance": "not_observed",
+          "value_is_null": true
+        }
+      ],
+      "model": {
+        "created_by": "pipeline.run_consumer_flow",
+        "environmental_state": {
+          "entities": {},
+          "enumeration": {
+            "collection_ok": null,
+            "detail": "a --preview run performs no observation pass: no world was bound and no collector ran, so this field has no measurement behind it",
+            "evidence_refs": [],
+            "observed_at_stage": "not_started",
+            "observed_by": null,
+            "operation_id": null,
+            "provenance": "not_observed",
+            "value": null
+          }
+        },
+        "evidence_index": {},
+        "gameplay_anchors": {
+          "entities": {},
+          "enumeration": {
+            "collection_ok": null,
+            "detail": "a --preview run performs no observation pass: no world was bound and no collector ran, so this field has no measurement behind it",
+            "evidence_refs": [],
+            "observed_at_stage": "not_started",
+            "observed_by": null,
+            "operation_id": null,
+            "provenance": "not_observed",
+            "value": null
+          }
+        },
+        "observation_operations": [],
+        "population": {
+          "entities": {},
+          "enumeration": {
+            "collection_ok": null,
+            "detail": "a --preview run performs no observation pass: no world was bound and no collector ran, so this field has no measurement behind it",
+            "evidence_refs": [],
+            "observed_at_stage": "not_started",
+            "observed_by": null,
+            "operation_id": null,
+            "provenance": "not_observed",
+            "value": null
+          }
+        },
+        "report_type": "wf.core.observed_world.v1",
+        "schema_version": "wf.core.observed_world.v1",
+        "semantic_landmarks": {
+          "entities": {},
+          "enumeration": {
+            "collection_ok": null,
+            "detail": "a --preview run performs no observation pass: no world was bound and no collector ran, so this field has no measurement behind it",
+            "evidence_refs": [],
+            "observed_at_stage": "not_started",
+            "observed_by": null,
+            "operation_id": null,
+            "provenance": "not_observed",
+            "value": null
+          }
+        },
+        "spatial_relations": {
+          "entities": {},
+          "enumeration": {
+            "collection_ok": null,
+            "detail": "a --preview run performs no observation pass: no world was bound and no collector ran, so this field has no measurement behind it",
+            "evidence_refs": [],
+            "observed_at_stage": "not_started",
+            "observed_by": null,
+            "operation_id": null,
+            "provenance": "not_observed",
+            "value": null
+          }
+        },
+        "world_identity": {
+          "collection_ok": null,
+          "detail": "a --preview run performs no observation pass: no world was bound and no collector ran, so this field has no measurement behind it",
+          "evidence_refs": [],
+          "observed_at_stage": "not_started",
+          "observed_by": null,
+          "operation_id": null,
+          "provenance": "not_observed",
+          "value": null
+        }
+      }
+    },
+    "preview_plan": {
+      "addresses": [],
+      "analysis_id": "analysis_preview_request_gloamstead_first_night_wayfinding_0001",
+      "consumer_id": "worldforge_caller.gloamstead_consumer",
+      "created_by": "worldforge.core",
+      "fallback_policy": {
+        "detail": "stop the plan: a step that failed leaves later steps resting on a premise nobody re-established",
+        "on_failure": "abort"
+      },
+      "observes": [
+        "c_identity_untouched",
+        "c_landmarks_stay_reachable",
+        "c_marker_instance_budget",
+        "c_markers_on_route",
+        "c_no_marker_in_restoration_envelope",
+        "c_route_traversable"
+      ],
+      "plan_id": "plan_analysis_preview_request_gloamstead_first_night_wayfinding_0001",
+      "report_type": "wf.core.plan.v1",
+      "request_id": "request_gloamstead_first_night_wayfinding_0001",
+      "rollback": {
+        "max_revision_attempts": 2,
+        "rollback_granularity": "whole_revision",
+        "rollback_required": true
+      },
+      "schema_version": "wf.core.plan.v1",
+      "steps": [
+        {
+          "allowed_side_effects": [
+            "emits_evidence_only"
+          ],
+          "capability": "scene_observation",
+          "created_by": "worldforge.core",
+          "depends_on": [],
+          "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+          "evidence_requirements": [
+            "raw_observation_log"
+          ],
+          "expected_changed_actors": [],
+          "expected_changed_packages": [],
+          "fallback_policy": {
+            "detail": "stop: a measurement that failed leaves the subject unknown",
+            "on_failure": "abort"
+          },
+          "postconditions": [
+            {
+              "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+              "observation_key": "gloamstead.identity_bearing_content.measured",
+              "predicate_id": "post_c_identity_untouched_measured",
+              "subject": "gloamstead.identity_bearing_content"
+            }
+          ],
+          "preconditions": [],
+          "rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          },
+          "selected_provider": "scene_observation_bridge",
+          "selection": {
+            "ambiguous_between": [],
+            "capability": "scene_observation",
+            "considered": [
+              {
+                "eligibility": "satisfied",
+                "provider_id": "scene_observation_bridge",
+                "reasons": [],
+                "score": 0.0,
+                "status": "selected"
+              },
+              {
+                "eligibility": "violated",
+                "provider_id": "unreal_editor_mutation_sink",
+                "reasons": [
+                  {
+                    "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                    "evaluation": "violated",
+                    "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                    "stage": "capability_match",
+                    "subject": "scene_observation"
+                  }
+                ],
+                "score": null,
+                "status": "rejected"
+              }
+            ],
+            "failure_codes": [],
+            "outcome": "selected",
+            "ranking": [
+              {
+                "provider_id": "scene_observation_bridge",
+                "score": 0.0
+              }
+            ],
+            "registry_snapshot": {
+              "capability_index": {
+                "editor_authoring": [
+                  "unreal_editor_mutation_sink"
+                ],
+                "scene_observation": [
+                  "scene_observation_bridge"
+                ]
+              },
+              "collisions": {},
+              "providers": [
+                "scene_observation_bridge",
+                "unreal_editor_mutation_sink"
+              ],
+              "registry_id": "wfcore_capability_registry",
+              "report_type": "wf.core.capability_registry.v1",
+              "schema_version": "wf.core.capability_registry.v1"
+            },
+            "report_type": "wf.core.provider_selection_result.v1",
+            "request_id": "req_observation_c_identity_untouched",
+            "schema_version": "wf.core.provider_selection_result.v1",
+            "selected_provider": "scene_observation_bridge",
+            "selection_id": "sel_req_observation_c_identity_untouched",
+            "tiebreak_applied": []
+          },
+          "step_id": "step_observe_c_identity_untouched"
+        },
+        {
+          "allowed_side_effects": [
+            "emits_evidence_only"
+          ],
+          "capability": "scene_observation",
+          "created_by": "worldforge.core",
+          "depends_on": [],
+          "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+          "evidence_requirements": [
+            "raw_observation_log"
+          ],
+          "expected_changed_actors": [],
+          "expected_changed_packages": [],
+          "fallback_policy": {
+            "detail": "stop: a measurement that failed leaves the subject unknown",
+            "on_failure": "abort"
+          },
+          "postconditions": [
+            {
+              "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+              "observation_key": "navigation.reachability.declared_landmarks.measured",
+              "predicate_id": "post_c_landmarks_stay_reachable_measured",
+              "subject": "navigation.reachability.declared_landmarks"
+            }
+          ],
+          "preconditions": [],
+          "rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          },
+          "selected_provider": "scene_observation_bridge",
+          "selection": {
+            "ambiguous_between": [],
+            "capability": "scene_observation",
+            "considered": [
+              {
+                "eligibility": "satisfied",
+                "provider_id": "scene_observation_bridge",
+                "reasons": [],
+                "score": 0.0,
+                "status": "selected"
+              },
+              {
+                "eligibility": "violated",
+                "provider_id": "unreal_editor_mutation_sink",
+                "reasons": [
+                  {
+                    "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                    "evaluation": "violated",
+                    "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                    "stage": "capability_match",
+                    "subject": "scene_observation"
+                  }
+                ],
+                "score": null,
+                "status": "rejected"
+              }
+            ],
+            "failure_codes": [],
+            "outcome": "selected",
+            "ranking": [
+              {
+                "provider_id": "scene_observation_bridge",
+                "score": 0.0
+              }
+            ],
+            "registry_snapshot": {
+              "capability_index": {
+                "editor_authoring": [
+                  "unreal_editor_mutation_sink"
+                ],
+                "scene_observation": [
+                  "scene_observation_bridge"
+                ]
+              },
+              "collisions": {},
+              "providers": [
+                "scene_observation_bridge",
+                "unreal_editor_mutation_sink"
+              ],
+              "registry_id": "wfcore_capability_registry",
+              "report_type": "wf.core.capability_registry.v1",
+              "schema_version": "wf.core.capability_registry.v1"
+            },
+            "report_type": "wf.core.provider_selection_result.v1",
+            "request_id": "req_observation_c_landmarks_stay_reachable",
+            "schema_version": "wf.core.provider_selection_result.v1",
+            "selected_provider": "scene_observation_bridge",
+            "selection_id": "sel_req_observation_c_landmarks_stay_reachable",
+            "tiebreak_applied": []
+          },
+          "step_id": "step_observe_c_landmarks_stay_reachable"
+        },
+        {
+          "allowed_side_effects": [
+            "emits_evidence_only"
+          ],
+          "capability": "scene_observation",
+          "created_by": "worldforge.core",
+          "depends_on": [],
+          "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+          "evidence_requirements": [
+            "raw_observation_log"
+          ],
+          "expected_changed_actors": [],
+          "expected_changed_packages": [],
+          "fallback_policy": {
+            "detail": "stop: a measurement that failed leaves the subject unknown",
+            "on_failure": "abort"
+          },
+          "postconditions": [
+            {
+              "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+              "observation_key": "afford_wayfinding_markers.instance_count.measured",
+              "predicate_id": "post_c_marker_instance_budget_measured",
+              "subject": "afford_wayfinding_markers.instance_count"
+            }
+          ],
+          "preconditions": [],
+          "rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          },
+          "selected_provider": "scene_observation_bridge",
+          "selection": {
+            "ambiguous_between": [],
+            "capability": "scene_observation",
+            "considered": [
+              {
+                "eligibility": "satisfied",
+                "provider_id": "scene_observation_bridge",
+                "reasons": [],
+                "score": 0.0,
+                "status": "selected"
+              },
+              {
+                "eligibility": "violated",
+                "provider_id": "unreal_editor_mutation_sink",
+                "reasons": [
+                  {
+                    "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                    "evaluation": "violated",
+                    "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                    "stage": "capability_match",
+                    "subject": "scene_observation"
+                  }
+                ],
+                "score": null,
+                "status": "rejected"
+              }
+            ],
+            "failure_codes": [],
+            "outcome": "selected",
+            "ranking": [
+              {
+                "provider_id": "scene_observation_bridge",
+                "score": 0.0
+              }
+            ],
+            "registry_snapshot": {
+              "capability_index": {
+                "editor_authoring": [
+                  "unreal_editor_mutation_sink"
+                ],
+                "scene_observation": [
+                  "scene_observation_bridge"
+                ]
+              },
+              "collisions": {},
+              "providers": [
+                "scene_observation_bridge",
+                "unreal_editor_mutation_sink"
+              ],
+              "registry_id": "wfcore_capability_registry",
+              "report_type": "wf.core.capability_registry.v1",
+              "schema_version": "wf.core.capability_registry.v1"
+            },
+            "report_type": "wf.core.provider_selection_result.v1",
+            "request_id": "req_observation_c_marker_instance_budget",
+            "schema_version": "wf.core.provider_selection_result.v1",
+            "selected_provider": "scene_observation_bridge",
+            "selection_id": "sel_req_observation_c_marker_instance_budget",
+            "tiebreak_applied": []
+          },
+          "step_id": "step_observe_c_marker_instance_budget"
+        },
+        {
+          "allowed_side_effects": [
+            "emits_evidence_only"
+          ],
+          "capability": "scene_observation",
+          "created_by": "worldforge.core",
+          "depends_on": [],
+          "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+          "evidence_requirements": [
+            "raw_observation_log"
+          ],
+          "expected_changed_actors": [],
+          "expected_changed_packages": [],
+          "fallback_policy": {
+            "detail": "stop: a measurement that failed leaves the subject unknown",
+            "on_failure": "abort"
+          },
+          "postconditions": [
+            {
+              "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+              "observation_key": "afford_wayfinding_markers.placed_along_route.measured",
+              "predicate_id": "post_c_markers_on_route_measured",
+              "subject": "afford_wayfinding_markers.placed_along_route"
+            }
+          ],
+          "preconditions": [],
+          "rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          },
+          "selected_provider": "scene_observation_bridge",
+          "selection": {
+            "ambiguous_between": [],
+            "capability": "scene_observation",
+            "considered": [
+              {
+                "eligibility": "satisfied",
+                "provider_id": "scene_observation_bridge",
+                "reasons": [],
+                "score": 0.0,
+                "status": "selected"
+              },
+              {
+                "eligibility": "violated",
+                "provider_id": "unreal_editor_mutation_sink",
+                "reasons": [
+                  {
+                    "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                    "evaluation": "violated",
+                    "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                    "stage": "capability_match",
+                    "subject": "scene_observation"
+                  }
+                ],
+                "score": null,
+                "status": "rejected"
+              }
+            ],
+            "failure_codes": [],
+            "outcome": "selected",
+            "ranking": [
+              {
+                "provider_id": "scene_observation_bridge",
+                "score": 0.0
+              }
+            ],
+            "registry_snapshot": {
+              "capability_index": {
+                "editor_authoring": [
+                  "unreal_editor_mutation_sink"
+                ],
+                "scene_observation": [
+                  "scene_observation_bridge"
+                ]
+              },
+              "collisions": {},
+              "providers": [
+                "scene_observation_bridge",
+                "unreal_editor_mutation_sink"
+              ],
+              "registry_id": "wfcore_capability_registry",
+              "report_type": "wf.core.capability_registry.v1",
+              "schema_version": "wf.core.capability_registry.v1"
+            },
+            "report_type": "wf.core.provider_selection_result.v1",
+            "request_id": "req_observation_c_markers_on_route",
+            "schema_version": "wf.core.provider_selection_result.v1",
+            "selected_provider": "scene_observation_bridge",
+            "selection_id": "sel_req_observation_c_markers_on_route",
+            "tiebreak_applied": []
+          },
+          "step_id": "step_observe_c_markers_on_route"
+        },
+        {
+          "allowed_side_effects": [
+            "emits_evidence_only"
+          ],
+          "capability": "scene_observation",
+          "created_by": "worldforge.core",
+          "depends_on": [],
+          "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+          "evidence_requirements": [
+            "raw_observation_log"
+          ],
+          "expected_changed_actors": [],
+          "expected_changed_packages": [],
+          "fallback_policy": {
+            "detail": "stop: a measurement that failed leaves the subject unknown",
+            "on_failure": "abort"
+          },
+          "postconditions": [
+            {
+              "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+              "observation_key": "ritual.placement.restoration_envelope.measured",
+              "predicate_id": "post_c_no_marker_in_restoration_envelope_measured",
+              "subject": "ritual.placement.restoration_envelope"
+            }
+          ],
+          "preconditions": [],
+          "rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          },
+          "selected_provider": "scene_observation_bridge",
+          "selection": {
+            "ambiguous_between": [],
+            "capability": "scene_observation",
+            "considered": [
+              {
+                "eligibility": "satisfied",
+                "provider_id": "scene_observation_bridge",
+                "reasons": [],
+                "score": 0.0,
+                "status": "selected"
+              },
+              {
+                "eligibility": "violated",
+                "provider_id": "unreal_editor_mutation_sink",
+                "reasons": [
+                  {
+                    "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                    "evaluation": "violated",
+                    "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                    "stage": "capability_match",
+                    "subject": "scene_observation"
+                  }
+                ],
+                "score": null,
+                "status": "rejected"
+              }
+            ],
+            "failure_codes": [],
+            "outcome": "selected",
+            "ranking": [
+              {
+                "provider_id": "scene_observation_bridge",
+                "score": 0.0
+              }
+            ],
+            "registry_snapshot": {
+              "capability_index": {
+                "editor_authoring": [
+                  "unreal_editor_mutation_sink"
+                ],
+                "scene_observation": [
+                  "scene_observation_bridge"
+                ]
+              },
+              "collisions": {},
+              "providers": [
+                "scene_observation_bridge",
+                "unreal_editor_mutation_sink"
+              ],
+              "registry_id": "wfcore_capability_registry",
+              "report_type": "wf.core.capability_registry.v1",
+              "schema_version": "wf.core.capability_registry.v1"
+            },
+            "report_type": "wf.core.provider_selection_result.v1",
+            "request_id": "req_observation_c_no_marker_in_restoration_envelope",
+            "schema_version": "wf.core.provider_selection_result.v1",
+            "selected_provider": "scene_observation_bridge",
+            "selection_id": "sel_req_observation_c_no_marker_in_restoration_envelope",
+            "tiebreak_applied": []
+          },
+          "step_id": "step_observe_c_no_marker_in_restoration_envelope"
+        },
+        {
+          "allowed_side_effects": [
+            "emits_evidence_only"
+          ],
+          "capability": "scene_observation",
+          "created_by": "worldforge.core",
+          "depends_on": [],
+          "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+          "evidence_requirements": [
+            "raw_observation_log"
+          ],
+          "expected_changed_actors": [],
+          "expected_changed_packages": [],
+          "fallback_policy": {
+            "detail": "stop: a measurement that failed leaves the subject unknown",
+            "on_failure": "abort"
+          },
+          "postconditions": [
+            {
+              "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+              "observation_key": "afford_route_entry_to_first_lantern.on_foot.measured",
+              "predicate_id": "post_c_route_traversable_measured",
+              "subject": "afford_route_entry_to_first_lantern.on_foot"
+            }
+          ],
+          "preconditions": [],
+          "rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          },
+          "selected_provider": "scene_observation_bridge",
+          "selection": {
+            "ambiguous_between": [],
+            "capability": "scene_observation",
+            "considered": [
+              {
+                "eligibility": "satisfied",
+                "provider_id": "scene_observation_bridge",
+                "reasons": [],
+                "score": 0.0,
+                "status": "selected"
+              },
+              {
+                "eligibility": "violated",
+                "provider_id": "unreal_editor_mutation_sink",
+                "reasons": [
+                  {
+                    "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                    "evaluation": "violated",
+                    "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                    "stage": "capability_match",
+                    "subject": "scene_observation"
+                  }
+                ],
+                "score": null,
+                "status": "rejected"
+              }
+            ],
+            "failure_codes": [],
+            "outcome": "selected",
+            "ranking": [
+              {
+                "provider_id": "scene_observation_bridge",
+                "score": 0.0
+              }
+            ],
+            "registry_snapshot": {
+              "capability_index": {
+                "editor_authoring": [
+                  "unreal_editor_mutation_sink"
+                ],
+                "scene_observation": [
+                  "scene_observation_bridge"
+                ]
+              },
+              "collisions": {},
+              "providers": [
+                "scene_observation_bridge",
+                "unreal_editor_mutation_sink"
+              ],
+              "registry_id": "wfcore_capability_registry",
+              "report_type": "wf.core.capability_registry.v1",
+              "schema_version": "wf.core.capability_registry.v1"
+            },
+            "report_type": "wf.core.provider_selection_result.v1",
+            "request_id": "req_observation_c_route_traversable",
+            "schema_version": "wf.core.provider_selection_result.v1",
+            "selected_provider": "scene_observation_bridge",
+            "selection_id": "sel_req_observation_c_route_traversable",
+            "tiebreak_applied": []
+          },
+          "step_id": "step_observe_c_route_traversable"
+        }
+      ]
+    },
+    "provider_selection": {
+      "mutation_envelope": [
+        {
+          "ambiguous_between": [],
+          "capability": "editor_authoring",
+          "considered": [
+            {
+              "eligibility": "violated",
+              "provider_id": "scene_observation_bridge",
+              "score": null,
+              "status": "rejected"
+            },
+            {
+              "eligibility": "satisfied",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": 0.0,
+              "status": "selected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_revision_c_landmarks_stay_reachable: outcome=selected selected=unreal_editor_mutation_sink",
+            "  scene_observation_bridge [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+            "  unreal_editor_mutation_sink [selected] eligibility=satisfied score=0.0"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "unreal_editor_mutation_sink",
+          "step_id": "step_revise_c_landmarks_stay_reachable"
+        },
+        {
+          "ambiguous_between": [],
+          "capability": "editor_authoring",
+          "considered": [
+            {
+              "eligibility": "violated",
+              "provider_id": "scene_observation_bridge",
+              "score": null,
+              "status": "rejected"
+            },
+            {
+              "eligibility": "satisfied",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": 0.0,
+              "status": "selected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_revision_c_marker_instance_budget: outcome=selected selected=unreal_editor_mutation_sink",
+            "  scene_observation_bridge [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+            "  unreal_editor_mutation_sink [selected] eligibility=satisfied score=0.0"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "unreal_editor_mutation_sink",
+          "step_id": "step_revise_c_marker_instance_budget"
+        },
+        {
+          "ambiguous_between": [],
+          "capability": "editor_authoring",
+          "considered": [
+            {
+              "eligibility": "violated",
+              "provider_id": "scene_observation_bridge",
+              "score": null,
+              "status": "rejected"
+            },
+            {
+              "eligibility": "satisfied",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": 0.0,
+              "status": "selected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_revision_c_markers_on_route: outcome=selected selected=unreal_editor_mutation_sink",
+            "  scene_observation_bridge [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+            "  unreal_editor_mutation_sink [selected] eligibility=satisfied score=0.0"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "unreal_editor_mutation_sink",
+          "step_id": "step_revise_c_markers_on_route"
+        },
+        {
+          "ambiguous_between": [],
+          "capability": "editor_authoring",
+          "considered": [
+            {
+              "eligibility": "violated",
+              "provider_id": "scene_observation_bridge",
+              "score": null,
+              "status": "rejected"
+            },
+            {
+              "eligibility": "satisfied",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": 0.0,
+              "status": "selected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_revision_c_no_marker_in_restoration_envelope: outcome=selected selected=unreal_editor_mutation_sink",
+            "  scene_observation_bridge [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+            "  unreal_editor_mutation_sink [selected] eligibility=satisfied score=0.0"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "unreal_editor_mutation_sink",
+          "step_id": "step_revise_c_no_marker_in_restoration_envelope"
+        },
+        {
+          "ambiguous_between": [],
+          "capability": "editor_authoring",
+          "considered": [
+            {
+              "eligibility": "violated",
+              "provider_id": "scene_observation_bridge",
+              "score": null,
+              "status": "rejected"
+            },
+            {
+              "eligibility": "satisfied",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": 0.0,
+              "status": "selected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_revision_c_route_traversable: outcome=selected selected=unreal_editor_mutation_sink",
+            "  scene_observation_bridge [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+            "  unreal_editor_mutation_sink [selected] eligibility=satisfied score=0.0"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "unreal_editor_mutation_sink",
+          "step_id": "step_revise_c_route_traversable"
+        }
+      ],
+      "preview_plan": [
+        {
+          "ambiguous_between": [],
+          "capability": "scene_observation",
+          "considered": [
+            {
+              "eligibility": "satisfied",
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0,
+              "status": "selected"
+            },
+            {
+              "eligibility": "violated",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": null,
+              "status": "rejected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_observation_c_identity_untouched: outcome=selected selected=scene_observation_bridge",
+            "  scene_observation_bridge [selected] eligibility=satisfied score=0.0",
+            "  unreal_editor_mutation_sink [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'scene_observation' (offers ('editor_authoring',))"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "scene_observation_bridge",
+          "step_id": "step_observe_c_identity_untouched"
+        },
+        {
+          "ambiguous_between": [],
+          "capability": "scene_observation",
+          "considered": [
+            {
+              "eligibility": "satisfied",
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0,
+              "status": "selected"
+            },
+            {
+              "eligibility": "violated",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": null,
+              "status": "rejected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_observation_c_landmarks_stay_reachable: outcome=selected selected=scene_observation_bridge",
+            "  scene_observation_bridge [selected] eligibility=satisfied score=0.0",
+            "  unreal_editor_mutation_sink [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'scene_observation' (offers ('editor_authoring',))"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "scene_observation_bridge",
+          "step_id": "step_observe_c_landmarks_stay_reachable"
+        },
+        {
+          "ambiguous_between": [],
+          "capability": "scene_observation",
+          "considered": [
+            {
+              "eligibility": "satisfied",
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0,
+              "status": "selected"
+            },
+            {
+              "eligibility": "violated",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": null,
+              "status": "rejected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_observation_c_marker_instance_budget: outcome=selected selected=scene_observation_bridge",
+            "  scene_observation_bridge [selected] eligibility=satisfied score=0.0",
+            "  unreal_editor_mutation_sink [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'scene_observation' (offers ('editor_authoring',))"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "scene_observation_bridge",
+          "step_id": "step_observe_c_marker_instance_budget"
+        },
+        {
+          "ambiguous_between": [],
+          "capability": "scene_observation",
+          "considered": [
+            {
+              "eligibility": "satisfied",
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0,
+              "status": "selected"
+            },
+            {
+              "eligibility": "violated",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": null,
+              "status": "rejected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_observation_c_markers_on_route: outcome=selected selected=scene_observation_bridge",
+            "  scene_observation_bridge [selected] eligibility=satisfied score=0.0",
+            "  unreal_editor_mutation_sink [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'scene_observation' (offers ('editor_authoring',))"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "scene_observation_bridge",
+          "step_id": "step_observe_c_markers_on_route"
+        },
+        {
+          "ambiguous_between": [],
+          "capability": "scene_observation",
+          "considered": [
+            {
+              "eligibility": "satisfied",
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0,
+              "status": "selected"
+            },
+            {
+              "eligibility": "violated",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": null,
+              "status": "rejected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_observation_c_no_marker_in_restoration_envelope: outcome=selected selected=scene_observation_bridge",
+            "  scene_observation_bridge [selected] eligibility=satisfied score=0.0",
+            "  unreal_editor_mutation_sink [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'scene_observation' (offers ('editor_authoring',))"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "scene_observation_bridge",
+          "step_id": "step_observe_c_no_marker_in_restoration_envelope"
+        },
+        {
+          "ambiguous_between": [],
+          "capability": "scene_observation",
+          "considered": [
+            {
+              "eligibility": "satisfied",
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0,
+              "status": "selected"
+            },
+            {
+              "eligibility": "violated",
+              "provider_id": "unreal_editor_mutation_sink",
+              "score": null,
+              "status": "rejected"
+            }
+          ],
+          "explanation": [
+            "selection sel_req_observation_c_route_traversable: outcome=selected selected=scene_observation_bridge",
+            "  scene_observation_bridge [selected] eligibility=satisfied score=0.0",
+            "  unreal_editor_mutation_sink [rejected] eligibility=violated score=None",
+            "      - capability_match: provider does not offer capability 'scene_observation' (offers ('editor_authoring',))"
+          ],
+          "outcome": "selected",
+          "ranking": [
+            {
+              "provider_id": "scene_observation_bridge",
+              "score": 0.0
+            }
+          ],
+          "selected_provider": "scene_observation_bridge",
+          "step_id": "step_observe_c_route_traversable"
+        }
+      ]
+    },
+    "rollback_actions": {
+      "mutation_envelope": [
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo mutates_persistent_asset within content.authored_assets",
+              "detail": "writes actors and packages inside the step's declared mutation bound; undone by the compensating inverse the sink records per mutation",
+              "effect_id": "eff_editor_persistent_write",
+              "effect_kind": "mutates_persistent_asset",
+              "scope": "content.authored_assets"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "unreal_editor_mutation_sink",
+          "provider_rollback_mode": "compensating",
+          "rollback_capable": true,
+          "step_id": "step_revise_c_landmarks_stay_reachable",
+          "step_rollback": {
+            "provider_rollback": "compensating",
+            "rollback_granularity": "whole_revision",
+            "rollback_required": true
+          }
+        },
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo mutates_persistent_asset within content.authored_assets",
+              "detail": "writes actors and packages inside the step's declared mutation bound; undone by the compensating inverse the sink records per mutation",
+              "effect_id": "eff_editor_persistent_write",
+              "effect_kind": "mutates_persistent_asset",
+              "scope": "content.authored_assets"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "unreal_editor_mutation_sink",
+          "provider_rollback_mode": "compensating",
+          "rollback_capable": true,
+          "step_id": "step_revise_c_marker_instance_budget",
+          "step_rollback": {
+            "provider_rollback": "compensating",
+            "rollback_granularity": "whole_revision",
+            "rollback_required": true
+          }
+        },
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo mutates_persistent_asset within content.authored_assets",
+              "detail": "writes actors and packages inside the step's declared mutation bound; undone by the compensating inverse the sink records per mutation",
+              "effect_id": "eff_editor_persistent_write",
+              "effect_kind": "mutates_persistent_asset",
+              "scope": "content.authored_assets"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "unreal_editor_mutation_sink",
+          "provider_rollback_mode": "compensating",
+          "rollback_capable": true,
+          "step_id": "step_revise_c_markers_on_route",
+          "step_rollback": {
+            "provider_rollback": "compensating",
+            "rollback_granularity": "whole_revision",
+            "rollback_required": true
+          }
+        },
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo mutates_persistent_asset within content.authored_assets",
+              "detail": "writes actors and packages inside the step's declared mutation bound; undone by the compensating inverse the sink records per mutation",
+              "effect_id": "eff_editor_persistent_write",
+              "effect_kind": "mutates_persistent_asset",
+              "scope": "content.authored_assets"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "unreal_editor_mutation_sink",
+          "provider_rollback_mode": "compensating",
+          "rollback_capable": true,
+          "step_id": "step_revise_c_no_marker_in_restoration_envelope",
+          "step_rollback": {
+            "provider_rollback": "compensating",
+            "rollback_granularity": "whole_revision",
+            "rollback_required": true
+          }
+        },
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo mutates_persistent_asset within content.authored_assets",
+              "detail": "writes actors and packages inside the step's declared mutation bound; undone by the compensating inverse the sink records per mutation",
+              "effect_id": "eff_editor_persistent_write",
+              "effect_kind": "mutates_persistent_asset",
+              "scope": "content.authored_assets"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "unreal_editor_mutation_sink",
+          "provider_rollback_mode": "compensating",
+          "rollback_capable": true,
+          "step_id": "step_revise_c_route_traversable",
+          "step_rollback": {
+            "provider_rollback": "compensating",
+            "rollback_granularity": "whole_revision",
+            "rollback_required": true
+          }
+        }
+      ],
+      "preview_plan": [
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo emits_evidence_only within evidence.observation_log",
+              "detail": "emits a measurement record and changes nothing in the world; this is what makes it selectable under the provider.mutation_free filter an observation step asks for",
+              "effect_id": "eff_observation_log",
+              "effect_kind": "emits_evidence_only",
+              "scope": "evidence.observation_log"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "scene_observation_bridge",
+          "provider_rollback_mode": "none",
+          "rollback_capable": false,
+          "step_id": "step_observe_c_identity_untouched",
+          "step_rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          }
+        },
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo emits_evidence_only within evidence.observation_log",
+              "detail": "emits a measurement record and changes nothing in the world; this is what makes it selectable under the provider.mutation_free filter an observation step asks for",
+              "effect_id": "eff_observation_log",
+              "effect_kind": "emits_evidence_only",
+              "scope": "evidence.observation_log"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "scene_observation_bridge",
+          "provider_rollback_mode": "none",
+          "rollback_capable": false,
+          "step_id": "step_observe_c_landmarks_stay_reachable",
+          "step_rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          }
+        },
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo emits_evidence_only within evidence.observation_log",
+              "detail": "emits a measurement record and changes nothing in the world; this is what makes it selectable under the provider.mutation_free filter an observation step asks for",
+              "effect_id": "eff_observation_log",
+              "effect_kind": "emits_evidence_only",
+              "scope": "evidence.observation_log"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "scene_observation_bridge",
+          "provider_rollback_mode": "none",
+          "rollback_capable": false,
+          "step_id": "step_observe_c_marker_instance_budget",
+          "step_rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          }
+        },
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo emits_evidence_only within evidence.observation_log",
+              "detail": "emits a measurement record and changes nothing in the world; this is what makes it selectable under the provider.mutation_free filter an observation step asks for",
+              "effect_id": "eff_observation_log",
+              "effect_kind": "emits_evidence_only",
+              "scope": "evidence.observation_log"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "scene_observation_bridge",
+          "provider_rollback_mode": "none",
+          "rollback_capable": false,
+          "step_id": "step_observe_c_markers_on_route",
+          "step_rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          }
+        },
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo emits_evidence_only within evidence.observation_log",
+              "detail": "emits a measurement record and changes nothing in the world; this is what makes it selectable under the provider.mutation_free filter an observation step asks for",
+              "effect_id": "eff_observation_log",
+              "effect_kind": "emits_evidence_only",
+              "scope": "evidence.observation_log"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "scene_observation_bridge",
+          "provider_rollback_mode": "none",
+          "rollback_capable": false,
+          "step_id": "step_observe_c_no_marker_in_restoration_envelope",
+          "step_rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          }
+        },
+        {
+          "compensating_actions": [
+            {
+              "compensation": "undo emits_evidence_only within evidence.observation_log",
+              "detail": "emits a measurement record and changes nothing in the world; this is what makes it selectable under the provider.mutation_free filter an observation step asks for",
+              "effect_id": "eff_observation_log",
+              "effect_kind": "emits_evidence_only",
+              "scope": "evidence.observation_log"
+            }
+          ],
+          "irreversible_effects": [],
+          "provider_id": "scene_observation_bridge",
+          "provider_rollback_mode": "none",
+          "rollback_capable": false,
+          "step_id": "step_observe_c_route_traversable",
+          "step_rollback": {
+            "provider_rollback": "none",
+            "rollback_granularity": "none",
+            "rollback_required": false
+          }
+        }
+      ]
+    }
+  },
+  "caller_originated": true,
+  "consumer_id": "worldforge_caller.gloamstead_consumer",
+  "green": true,
+  "mode": "preview",
+  "mutated_anything": false,
+  "preview_acceptance_outcome": "refused",
+  "preview_acceptance_verdict": "unknown",
+  "report_type": "wf.core.consumer_preview_report.v1",
+  "request_id": "request_gloamstead_first_night_wayfinding_0001",
+  "stages": [
+    {
+      "caller_originated": true,
+      "checks_run": 3,
+      "claimed_origination": "caller_originated",
+      "detail": "this bundle may not be presented as a caller's request unless the adapter itself declares a caller origination",
+      "failure_codes": [],
+      "failures": [],
+      "provenance_verdict": "satisfied",
+      "stage": "caller_provenance",
+      "status": "ok"
+    },
+    {
+      "checks_run": 78,
+      "failure_codes": [],
+      "failures": [],
+      "stage": "desired_world",
+      "status": "ok"
+    },
+    {
+      "backed_fields": 0,
+      "checks_run": 88,
+      "detail": "every field is unbacked; the model is VALID and observes nothing, which are two separate claims and both are checked",
+      "failure_codes": [],
+      "failures": [],
+      "fields": 6,
+      "stage": "observed_world",
+      "status": "ok"
+    },
+    {
+      "acceptance_verdict": "unknown",
+      "analysis_failure_codes": [
+        "WF1218_CORE_OBSERVED_WORLD_UNBACKED"
+      ],
+      "checks_run": 27,
+      "detail": "reconcile REFUSED: with no measured world identity nothing establishes that the observation is of the world this request is about. Zero findings and an UNKNOWN verdict are the correct output, not a degraded one",
+      "failure_codes": [],
+      "failures": [],
+      "finding_count": 0,
+      "reconciled": false,
+      "refusal_reason": "the observed model carries no measured world identity, so nothing establishes that it is an observation of the world this request is about",
+      "same_world": "unknown",
+      "satisfied": [],
+      "stage": "constraint_analysis",
+      "status": "ok",
+      "unknown": [],
+      "violated": []
+    },
+    {
+      "capability_index": {
+        "editor_authoring": [
+          "unreal_editor_mutation_sink"
+        ],
+        "scene_observation": [
+          "scene_observation_bridge"
+        ]
+      },
+      "checks_run": 73,
+      "collisions": {},
+      "detail": "these are capability DECLARATIONS, not attestations that either provider is installed or runnable; availability is unobserved in a preview like everything else",
+      "failure_codes": [],
+      "failures": [],
+      "provider_availability": "unknown",
+      "provider_ids": [
+        "scene_observation_bridge",
+        "unreal_editor_mutation_sink"
+      ],
+      "stage": "provider_registry",
+      "status": "ok"
+    },
+    {
+      "addresses": [],
+      "basis": "unknown_findings_from_this_run",
+      "execution_order": [
+        "step_observe_c_identity_untouched",
+        "step_observe_c_landmarks_stay_reachable",
+        "step_observe_c_marker_instance_budget",
+        "step_observe_c_markers_on_route",
+        "step_observe_c_no_marker_in_restoration_envelope",
+        "step_observe_c_route_traversable"
+      ],
+      "failure_codes": [],
+      "failures": [],
+      "not_an_observation": false,
+      "observes": [
+        "c_identity_untouched",
+        "c_landmarks_stay_reachable",
+        "c_marker_instance_budget",
+        "c_markers_on_route",
+        "c_no_marker_in_restoration_envelope",
+        "c_route_traversable"
+      ],
+      "outcome": "planned",
+      "plan": {
+        "addresses": [],
+        "analysis_id": "analysis_preview_request_gloamstead_first_night_wayfinding_0001",
+        "consumer_id": "worldforge_caller.gloamstead_consumer",
+        "created_by": "worldforge.core",
+        "fallback_policy": {
+          "detail": "stop the plan: a step that failed leaves later steps resting on a premise nobody re-established",
+          "on_failure": "abort"
+        },
+        "observes": [
+          "c_identity_untouched",
+          "c_landmarks_stay_reachable",
+          "c_marker_instance_budget",
+          "c_markers_on_route",
+          "c_no_marker_in_restoration_envelope",
+          "c_route_traversable"
+        ],
+        "plan_id": "plan_analysis_preview_request_gloamstead_first_night_wayfinding_0001",
+        "report_type": "wf.core.plan.v1",
+        "request_id": "request_gloamstead_first_night_wayfinding_0001",
+        "rollback": {
+          "max_revision_attempts": 2,
+          "rollback_granularity": "whole_revision",
+          "rollback_required": true
+        },
+        "schema_version": "wf.core.plan.v1",
+        "steps": [
+          {
+            "allowed_side_effects": [
+              "emits_evidence_only"
+            ],
+            "capability": "scene_observation",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+            "evidence_requirements": [
+              "raw_observation_log"
+            ],
+            "expected_changed_actors": [],
+            "expected_changed_packages": [],
+            "fallback_policy": {
+              "detail": "stop: a measurement that failed leaves the subject unknown",
+              "on_failure": "abort"
+            },
+            "postconditions": [
+              {
+                "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+                "observation_key": "gloamstead.identity_bearing_content.measured",
+                "predicate_id": "post_c_identity_untouched_measured",
+                "subject": "gloamstead.identity_bearing_content"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "none",
+              "rollback_granularity": "none",
+              "rollback_required": false
+            },
+            "selected_provider": "scene_observation_bridge",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "scene_observation",
+              "considered": [
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                },
+                {
+                  "eligibility": "violated",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "scene_observation"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "scene_observation_bridge",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_observation_c_identity_untouched",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "scene_observation_bridge",
+              "selection_id": "sel_req_observation_c_identity_untouched",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_observe_c_identity_untouched"
+          },
+          {
+            "allowed_side_effects": [
+              "emits_evidence_only"
+            ],
+            "capability": "scene_observation",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+            "evidence_requirements": [
+              "raw_observation_log"
+            ],
+            "expected_changed_actors": [],
+            "expected_changed_packages": [],
+            "fallback_policy": {
+              "detail": "stop: a measurement that failed leaves the subject unknown",
+              "on_failure": "abort"
+            },
+            "postconditions": [
+              {
+                "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+                "observation_key": "navigation.reachability.declared_landmarks.measured",
+                "predicate_id": "post_c_landmarks_stay_reachable_measured",
+                "subject": "navigation.reachability.declared_landmarks"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "none",
+              "rollback_granularity": "none",
+              "rollback_required": false
+            },
+            "selected_provider": "scene_observation_bridge",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "scene_observation",
+              "considered": [
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                },
+                {
+                  "eligibility": "violated",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "scene_observation"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "scene_observation_bridge",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_observation_c_landmarks_stay_reachable",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "scene_observation_bridge",
+              "selection_id": "sel_req_observation_c_landmarks_stay_reachable",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_observe_c_landmarks_stay_reachable"
+          },
+          {
+            "allowed_side_effects": [
+              "emits_evidence_only"
+            ],
+            "capability": "scene_observation",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+            "evidence_requirements": [
+              "raw_observation_log"
+            ],
+            "expected_changed_actors": [],
+            "expected_changed_packages": [],
+            "fallback_policy": {
+              "detail": "stop: a measurement that failed leaves the subject unknown",
+              "on_failure": "abort"
+            },
+            "postconditions": [
+              {
+                "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+                "observation_key": "afford_wayfinding_markers.instance_count.measured",
+                "predicate_id": "post_c_marker_instance_budget_measured",
+                "subject": "afford_wayfinding_markers.instance_count"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "none",
+              "rollback_granularity": "none",
+              "rollback_required": false
+            },
+            "selected_provider": "scene_observation_bridge",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "scene_observation",
+              "considered": [
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                },
+                {
+                  "eligibility": "violated",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "scene_observation"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "scene_observation_bridge",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_observation_c_marker_instance_budget",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "scene_observation_bridge",
+              "selection_id": "sel_req_observation_c_marker_instance_budget",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_observe_c_marker_instance_budget"
+          },
+          {
+            "allowed_side_effects": [
+              "emits_evidence_only"
+            ],
+            "capability": "scene_observation",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+            "evidence_requirements": [
+              "raw_observation_log"
+            ],
+            "expected_changed_actors": [],
+            "expected_changed_packages": [],
+            "fallback_policy": {
+              "detail": "stop: a measurement that failed leaves the subject unknown",
+              "on_failure": "abort"
+            },
+            "postconditions": [
+              {
+                "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+                "observation_key": "afford_wayfinding_markers.placed_along_route.measured",
+                "predicate_id": "post_c_markers_on_route_measured",
+                "subject": "afford_wayfinding_markers.placed_along_route"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "none",
+              "rollback_granularity": "none",
+              "rollback_required": false
+            },
+            "selected_provider": "scene_observation_bridge",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "scene_observation",
+              "considered": [
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                },
+                {
+                  "eligibility": "violated",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "scene_observation"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "scene_observation_bridge",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_observation_c_markers_on_route",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "scene_observation_bridge",
+              "selection_id": "sel_req_observation_c_markers_on_route",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_observe_c_markers_on_route"
+          },
+          {
+            "allowed_side_effects": [
+              "emits_evidence_only"
+            ],
+            "capability": "scene_observation",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+            "evidence_requirements": [
+              "raw_observation_log"
+            ],
+            "expected_changed_actors": [],
+            "expected_changed_packages": [],
+            "fallback_policy": {
+              "detail": "stop: a measurement that failed leaves the subject unknown",
+              "on_failure": "abort"
+            },
+            "postconditions": [
+              {
+                "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+                "observation_key": "ritual.placement.restoration_envelope.measured",
+                "predicate_id": "post_c_no_marker_in_restoration_envelope_measured",
+                "subject": "ritual.placement.restoration_envelope"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "none",
+              "rollback_granularity": "none",
+              "rollback_required": false
+            },
+            "selected_provider": "scene_observation_bridge",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "scene_observation",
+              "considered": [
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                },
+                {
+                  "eligibility": "violated",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "scene_observation"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "scene_observation_bridge",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_observation_c_no_marker_in_restoration_envelope",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "scene_observation_bridge",
+              "selection_id": "sel_req_observation_c_no_marker_in_restoration_envelope",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_observe_c_no_marker_in_restoration_envelope"
+          },
+          {
+            "allowed_side_effects": [
+              "emits_evidence_only"
+            ],
+            "capability": "scene_observation",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "nothing has been observed, so this constraint has no verdict; the remedy is to measure it, never to change the world on its behalf",
+            "evidence_requirements": [
+              "raw_observation_log"
+            ],
+            "expected_changed_actors": [],
+            "expected_changed_packages": [],
+            "fallback_policy": {
+              "detail": "stop: a measurement that failed leaves the subject unknown",
+              "on_failure": "abort"
+            },
+            "postconditions": [
+              {
+                "expectation": "the subject has been measured, so the constraint can receive a verdict instead of blocking as unknown",
+                "observation_key": "afford_route_entry_to_first_lantern.on_foot.measured",
+                "predicate_id": "post_c_route_traversable_measured",
+                "subject": "afford_route_entry_to_first_lantern.on_foot"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "none",
+              "rollback_granularity": "none",
+              "rollback_required": false
+            },
+            "selected_provider": "scene_observation_bridge",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "scene_observation",
+              "considered": [
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                },
+                {
+                  "eligibility": "violated",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'scene_observation' (offers ('editor_authoring',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "scene_observation"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "scene_observation_bridge",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_observation_c_route_traversable",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "scene_observation_bridge",
+              "selection_id": "sel_req_observation_c_route_traversable",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_observe_c_route_traversable"
+          }
+        ]
+      },
+      "plan_id": "plan_analysis_preview_request_gloamstead_first_night_wayfinding_0001",
+      "plan_mutates": false,
+      "stage": "preview_plan",
+      "status": "ok",
+      "step_count": 6,
+      "synthesis_id": "synth_analysis_preview_request_gloamstead_first_night_wayfinding_0001",
+      "unresolved": []
+    },
+    {
+      "addresses": [
+        "c_landmarks_stay_reachable",
+        "c_marker_instance_budget",
+        "c_markers_on_route",
+        "c_no_marker_in_restoration_envelope",
+        "c_route_traversable"
+      ],
+      "basis": "authored_maximal_obligation",
+      "excluded_constraints": [
+        {
+          "constraint_class": "protected_semantics",
+          "constraint_id": "c_identity_untouched",
+          "reason": "a protected-semantics violation could only be remedied by mutating the content the consumer protected, which its own revision policy forbids",
+          "remedy_owner": "the consumer"
+        },
+        {
+          "constraint_class": "declared_unknown",
+          "constraint_id": "c_unknown_player_traversal_metrics",
+          "reason": "a declared unknown is resolved by a consumer DECISION, never by a change to the world",
+          "remedy_owner": "Gloamstead gameplay owner -- must measure the shipping Blueprint pawn (AGloamsteadCharacter is UCLASS(abstract), GloamsteadCharacter.h:23-24, so the live values are in uasset data no source grep can read) and record the result back into this adapter"
+        },
+        {
+          "constraint_class": "declared_unknown",
+          "constraint_id": "c_unknown_ritual_restoration_radius",
+          "reason": "a declared unknown is resolved by a consumer DECISION, never by a change to the world",
+          "remedy_owner": "Gloamstead ritual owner -- must read the authored RestorationRadius attribute off the PCG points for courtyard.lantern.first; the 800cm in RitualPlacementComponent.cpp:553 is the code FALLBACK, not the authored value"
+        }
+      ],
+      "execution_order": [
+        "step_revise_c_landmarks_stay_reachable",
+        "step_revise_c_marker_instance_budget",
+        "step_revise_c_markers_on_route",
+        "step_revise_c_no_marker_in_restoration_envelope",
+        "step_revise_c_route_traversable"
+      ],
+      "failure_codes": [],
+      "failures": [],
+      "not_an_observation": true,
+      "observes": [],
+      "outcome": "planned",
+      "plan": {
+        "addresses": [
+          "c_landmarks_stay_reachable",
+          "c_marker_instance_budget",
+          "c_markers_on_route",
+          "c_no_marker_in_restoration_envelope",
+          "c_route_traversable"
+        ],
+        "analysis_id": "envelope_request_gloamstead_first_night_wayfinding_0001",
+        "consumer_id": "worldforge_caller.gloamstead_consumer",
+        "created_by": "worldforge.core",
+        "fallback_policy": {
+          "detail": "stop the plan: a step that failed leaves later steps resting on a premise nobody re-established",
+          "on_failure": "abort"
+        },
+        "observes": [],
+        "plan_id": "plan_envelope_request_gloamstead_first_night_wayfinding_0001",
+        "report_type": "wf.core.plan.v1",
+        "request_id": "request_gloamstead_first_night_wayfinding_0001",
+        "rollback": {
+          "max_revision_attempts": 2,
+          "rollback_granularity": "whole_revision",
+          "rollback_required": true
+        },
+        "schema_version": "wf.core.plan.v1",
+        "steps": [
+          {
+            "allowed_side_effects": [
+              "mutates_persistent_asset"
+            ],
+            "capability": "editor_authoring",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "HYPOTHETICAL: bounds what a remedy could reach if this constraint were found violated. Nothing has measured it.",
+            "evidence_requirements": [
+              "operation_manifest"
+            ],
+            "expected_changed_actors": [],
+            "expected_changed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "fallback_policy": {
+              "detail": "undo this step and stop rather than build on a failed change",
+              "on_failure": "rollback_and_abort"
+            },
+            "mutation_kinds": [
+              "add_geometry",
+              "move_geometry"
+            ],
+            "postconditions": [
+              {
+                "expectation": "the addressed constraint holds after this step",
+                "observation_key": "navigation.reachability.declared_landmarks",
+                "predicate_id": "post_c_landmarks_stay_reachable_satisfied",
+                "subject": "navigation.reachability.declared_landmarks"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "compensating",
+              "rollback_granularity": "whole_revision",
+              "rollback_required": true
+            },
+            "selected_provider": "unreal_editor_mutation_sink",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "editor_authoring",
+              "considered": [
+                {
+                  "eligibility": "violated",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "editor_authoring"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                },
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_revision_c_landmarks_stay_reachable",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "unreal_editor_mutation_sink",
+              "selection_id": "sel_req_revision_c_landmarks_stay_reachable",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_revise_c_landmarks_stay_reachable"
+          },
+          {
+            "allowed_side_effects": [
+              "mutates_persistent_asset"
+            ],
+            "capability": "editor_authoring",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "HYPOTHETICAL: bounds what a remedy could reach if this constraint were found violated. Nothing has measured it.",
+            "evidence_requirements": [
+              "operation_manifest"
+            ],
+            "expected_changed_actors": [
+              "/Game/Maps/Lvl_Gloamstead/afford_wayfinding_markers"
+            ],
+            "expected_changed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "fallback_policy": {
+              "detail": "undo this step and stop rather than build on a failed change",
+              "on_failure": "rollback_and_abort"
+            },
+            "mutation_kinds": [
+              "remove_geometry"
+            ],
+            "postconditions": [
+              {
+                "expectation": "the addressed constraint holds after this step",
+                "observation_key": "afford_wayfinding_markers.instance_count",
+                "predicate_id": "post_c_marker_instance_budget_satisfied",
+                "subject": "afford_wayfinding_markers.instance_count"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "compensating",
+              "rollback_granularity": "whole_revision",
+              "rollback_required": true
+            },
+            "selected_provider": "unreal_editor_mutation_sink",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "editor_authoring",
+              "considered": [
+                {
+                  "eligibility": "violated",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "editor_authoring"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                },
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_revision_c_marker_instance_budget",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "unreal_editor_mutation_sink",
+              "selection_id": "sel_req_revision_c_marker_instance_budget",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_revise_c_marker_instance_budget"
+          },
+          {
+            "allowed_side_effects": [
+              "mutates_persistent_asset"
+            ],
+            "capability": "editor_authoring",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "HYPOTHETICAL: bounds what a remedy could reach if this constraint were found violated. Nothing has measured it.",
+            "evidence_requirements": [
+              "operation_manifest"
+            ],
+            "expected_changed_actors": [
+              "/Game/Maps/Lvl_Gloamstead/afford_wayfinding_markers"
+            ],
+            "expected_changed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "fallback_policy": {
+              "detail": "undo this step and stop rather than build on a failed change",
+              "on_failure": "rollback_and_abort"
+            },
+            "mutation_kinds": [
+              "add_geometry",
+              "move_geometry"
+            ],
+            "postconditions": [
+              {
+                "expectation": "the addressed constraint holds after this step",
+                "observation_key": "afford_wayfinding_markers.placed_along_route",
+                "predicate_id": "post_c_markers_on_route_satisfied",
+                "subject": "afford_wayfinding_markers.placed_along_route"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "compensating",
+              "rollback_granularity": "whole_revision",
+              "rollback_required": true
+            },
+            "selected_provider": "unreal_editor_mutation_sink",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "editor_authoring",
+              "considered": [
+                {
+                  "eligibility": "violated",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "editor_authoring"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                },
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_revision_c_markers_on_route",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "unreal_editor_mutation_sink",
+              "selection_id": "sel_req_revision_c_markers_on_route",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_revise_c_markers_on_route"
+          },
+          {
+            "allowed_side_effects": [
+              "mutates_persistent_asset"
+            ],
+            "capability": "editor_authoring",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "HYPOTHETICAL: bounds what a remedy could reach if this constraint were found violated. Nothing has measured it.",
+            "evidence_requirements": [
+              "operation_manifest"
+            ],
+            "expected_changed_actors": [],
+            "expected_changed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "fallback_policy": {
+              "detail": "undo this step and stop rather than build on a failed change",
+              "on_failure": "rollback_and_abort"
+            },
+            "mutation_kinds": [
+              "move_geometry",
+              "remove_geometry"
+            ],
+            "postconditions": [
+              {
+                "expectation": "the addressed constraint holds after this step",
+                "observation_key": "ritual.placement.restoration_envelope",
+                "predicate_id": "post_c_no_marker_in_restoration_envelope_satisfied",
+                "subject": "ritual.placement.restoration_envelope"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "compensating",
+              "rollback_granularity": "whole_revision",
+              "rollback_required": true
+            },
+            "selected_provider": "unreal_editor_mutation_sink",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "editor_authoring",
+              "considered": [
+                {
+                  "eligibility": "violated",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "editor_authoring"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                },
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_revision_c_no_marker_in_restoration_envelope",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "unreal_editor_mutation_sink",
+              "selection_id": "sel_req_revision_c_no_marker_in_restoration_envelope",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_revise_c_no_marker_in_restoration_envelope"
+          },
+          {
+            "allowed_side_effects": [
+              "mutates_persistent_asset"
+            ],
+            "capability": "editor_authoring",
+            "created_by": "worldforge.core",
+            "depends_on": [],
+            "description": "HYPOTHETICAL: bounds what a remedy could reach if this constraint were found violated. Nothing has measured it.",
+            "evidence_requirements": [
+              "operation_manifest"
+            ],
+            "expected_changed_actors": [
+              "/Game/Maps/Lvl_Gloamstead/afford_route_entry_to_first_lantern"
+            ],
+            "expected_changed_packages": [
+              "/Game/Maps/Lvl_Gloamstead"
+            ],
+            "fallback_policy": {
+              "detail": "undo this step and stop rather than build on a failed change",
+              "on_failure": "rollback_and_abort"
+            },
+            "mutation_kinds": [
+              "add_geometry",
+              "move_geometry"
+            ],
+            "postconditions": [
+              {
+                "expectation": "the addressed constraint holds after this step",
+                "observation_key": "afford_route_entry_to_first_lantern.on_foot",
+                "predicate_id": "post_c_route_traversable_satisfied",
+                "subject": "afford_route_entry_to_first_lantern.on_foot"
+              }
+            ],
+            "preconditions": [],
+            "rollback": {
+              "provider_rollback": "compensating",
+              "rollback_granularity": "whole_revision",
+              "rollback_required": true
+            },
+            "selected_provider": "unreal_editor_mutation_sink",
+            "selection": {
+              "ambiguous_between": [],
+              "capability": "editor_authoring",
+              "considered": [
+                {
+                  "eligibility": "violated",
+                  "provider_id": "scene_observation_bridge",
+                  "reasons": [
+                    {
+                      "detail": "provider does not offer capability 'editor_authoring' (offers ('scene_observation',))",
+                      "evaluation": "violated",
+                      "failure_code": "WF1228_CORE_NO_PROVIDER_FOR_CAPABILITY",
+                      "stage": "capability_match",
+                      "subject": "editor_authoring"
+                    }
+                  ],
+                  "score": null,
+                  "status": "rejected"
+                },
+                {
+                  "eligibility": "satisfied",
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "reasons": [],
+                  "score": 0.0,
+                  "status": "selected"
+                }
+              ],
+              "failure_codes": [],
+              "outcome": "selected",
+              "ranking": [
+                {
+                  "provider_id": "unreal_editor_mutation_sink",
+                  "score": 0.0
+                }
+              ],
+              "registry_snapshot": {
+                "capability_index": {
+                  "editor_authoring": [
+                    "unreal_editor_mutation_sink"
+                  ],
+                  "scene_observation": [
+                    "scene_observation_bridge"
+                  ]
+                },
+                "collisions": {},
+                "providers": [
+                  "scene_observation_bridge",
+                  "unreal_editor_mutation_sink"
+                ],
+                "registry_id": "wfcore_capability_registry",
+                "report_type": "wf.core.capability_registry.v1",
+                "schema_version": "wf.core.capability_registry.v1"
+              },
+              "report_type": "wf.core.provider_selection_result.v1",
+              "request_id": "req_revision_c_route_traversable",
+              "schema_version": "wf.core.provider_selection_result.v1",
+              "selected_provider": "unreal_editor_mutation_sink",
+              "selection_id": "sel_req_revision_c_route_traversable",
+              "tiebreak_applied": []
+            },
+            "step_id": "step_revise_c_route_traversable"
+          }
+        ]
+      },
+      "plan_id": "plan_envelope_request_gloamstead_first_night_wayfinding_0001",
+      "plan_mutates": true,
+      "stage": "mutation_envelope",
+      "status": "ok",
+      "step_count": 5,
+      "synthesis_id": "synth_envelope_request_gloamstead_first_night_wayfinding_0001",
+      "unresolved": []
+    },
+    {
+      "detail": "the plan this run would execute next declares an EMPTY mutation bound, because nothing has been measured and therefore nothing has been shown to need changing",
+      "expected_changes": {
+        "expected_changed_actors": [],
+        "expected_changed_packages": [],
+        "mutates_nothing": true,
+        "total": 0
+      },
+      "plan_mutates": false,
+      "stage": "preview_mutates_nothing",
+      "status": "ok"
+    },
+    {
+      "acceptance_verdict": "unknown",
+      "accepted": false,
+      "detail": "acceptance was asked to judge a run with no delta and no evidence, and refused. A preview that came back satisfied would mean the pipeline can accept a world it has never looked at",
+      "evidence_supplied_count": 0,
+      "failure_codes": [
+        "WF1256_CORE_ACCEPTANCE_INVALID"
+      ],
+      "outcome": "refused",
+      "pre_observation_fold": "unknown",
+      "refusal_reason": "the judgement is malformed and cannot honestly run: the delta under judgement names no operation_id, so no evidence can be matched to the operation it describes; delta outcome None is not one of ('refused', 'committed', 'committed_unverified', 'rolled_back', 'partial_commit'); applied_at is None, not an ordinal; without it nothing establishes whether an observation predates the change it claims to describe",
+      "required_evidence": [
+        {
+          "constraint_class": "hard_invariant",
+          "constraint_id": "c_landmarks_stay_reachable",
+          "evaluator": "UGloamsteadSurveySubjectRegistry::SurveyAndEmit (GloamsteadSurveySubjectRegistry.h:128)",
+          "evidence_kind": "runtime_observation",
+          "supplied_by_this_preview": false
+        },
+        {
+          "constraint_class": "hard_invariant",
+          "constraint_id": "c_route_traversable",
+          "evaluator": "UGloamsteadSurveySubjectRegistry::EmitReport (GloamsteadSurveySubjectRegistry.h:136), cross-checked by the existing automation test Gloamstead.SurveySubject.ResolvesPlacedActorsAndRefusesToGuess (Source/Gloamstead/Tests/SurveySubjectRegistryTests.cpp:88)",
+          "evidence_kind": "runtime_observation",
+          "supplied_by_this_preview": false
+        },
+        {
+          "constraint_class": "hard_invariant",
+          "constraint_id": "c_markers_on_route",
+          "evaluator": "Gloamstead level owner, reviewing the revised /Game/Maps/Lvl_Gloamstead in the UE 5.8 editor",
+          "evidence_kind": "human_review",
+          "supplied_by_this_preview": false
+        },
+        {
+          "constraint_class": "prohibited_outcome",
+          "constraint_id": "c_no_marker_in_restoration_envelope",
+          "evaluator": "URitualPlacementComponent::IsCurrentPlacementValid (RitualPlacementComponent.h:42, impl .cpp:558-561) and IsPointValidForPlacement (.h:180, impl .cpp:545-556)",
+          "evidence_kind": "runtime_observation",
+          "supplied_by_this_preview": false
+        },
+        {
+          "constraint_class": "protected_semantics",
+          "constraint_id": "c_identity_untouched",
+          "evaluator": "git diff --stat 6628a02f44b91c2a17a29fe2d9d6139bae3d72f1..HEAD -- Content/Gloamstead Content/Data",
+          "evidence_kind": "authoring_time_check",
+          "supplied_by_this_preview": false
+        },
+        {
+          "constraint_class": "budget",
+          "constraint_id": "c_marker_instance_budget",
+          "evaluator": "count of actors added to /Game/Maps/Lvl_Gloamstead by the WorldForge revision transaction record",
+          "evidence_kind": "external_measurement",
+          "supplied_by_this_preview": false
+        }
+      ],
+      "required_evidence_count": 6,
+      "stage": "preview_acceptance",
+      "status": "ok",
+      "unknown_handling": "block_and_request_measurement"
+    }
+  ],
+  "stages_failed": 0
+}
