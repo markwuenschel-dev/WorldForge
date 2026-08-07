@@ -84,8 +84,24 @@ CAMERA_MODES = (
 # The locomotion modes a consumer's player may have. Core reads these to decide
 # which clearances matter -- a consumer that cannot climb does not need climbable
 # geometry, and generating it anyway is wasted work the consumer never asked for.
+#
+# ``jump`` was added after the FIRST REAL CALLER exposed its absence: that game's
+# character binds ACharacter::Jump, and the closed vocabulary had no member for
+# it, so the profile could only UNDERSTATE the player's real mobility. That is a
+# live defect and not a cosmetic one -- vertical reach is exactly the kind of
+# clearance Core decides generation from, and a consumer silently described as
+# unable to jump would have geometry authored for a shorter reach than its player
+# actually has.
+#
+# The consumer worked around it honestly (declaring the shortfall in notes rather
+# than smuggling an out-of-vocabulary string past the enum), which is what made
+# the gap visible instead of silently absorbed. Fixed generically here, in Core,
+# because jumping is a property of players in general and not of any one game --
+# fixing it in that consumer's adapter would have left the next caller to
+# rediscover it.
 LOCOMOTION_MODES = (
-    "walk", "sprint", "crouch", "climb", "swim", "fly", "vehicle", "teleport",
+    "walk", "jump", "sprint", "crouch", "climb", "swim", "fly", "vehicle",
+    "teleport",
 )
 
 PLAYER_METRIC_FIELDS = (
