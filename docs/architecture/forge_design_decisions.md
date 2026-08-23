@@ -87,11 +87,11 @@ Not the full state system — a minimal `WorldStateSubsystem` + the state-consum
 - **Materials** read a curated `MPC_WorldState` mirror, pushed on change — render-facing values only (IndustrialPressure, CorruptionLevel, RestorationLevel, Wetness, Ashfall, FactionTint). Gameplay-scale state stays in the subsystem.
 - **Rule**: Pull API = source of truth; MPC = render-only projection.
 
-## D11 — State write contract: authoritative setter now; accumulation + persistence deferred
-- **Now**: `void SetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Value)` — the authoritative primitive; a debug console command drives the tracer. In-memory store only.
-- **Deferred (layer on top, all resolve *into* `SetStateValue`)**: `AddInfluence(...)`, influence-source tracking, falloff fields, aggregation rules, save/load persistence, region simulation, settlement emitters.
+## D11 — State write contract: native reservation now; accumulation + persistence deferred
+- **Now**: `bool SetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Value)` writes an unreserved address. A native owner can reserve one exact address with `ReserveStateAddress(...)`; only its opaque, move-only `FWorldForgeStateWriteLease` can write that address through `SetStateValueWithLease(...)`, and `ReleaseStateAddress(...)` or lease destruction relinquishes it. The capability is non-reflected and there is no global state console command. In-memory store only.
+- **Deferred (layer on top, all resolve *into* the native write contract)**: `AddInfluence(...)`, influence-source tracking, falloff fields, aggregation rules, save/load persistence, region simulation, settlement emitters.
 - **One required Tier-2 human edit**: `M_Terrain_Master` samples `MPC_WorldState.IndustrialPressure` to drive a soot/industrial overlay lerp (no MPC sample → no visible reaction; an agent can't do this and it can't be deferred).
-- **Acceptance tracer**: `SetStateValue(Region, Desert_Valley_01, industrial_pressure, 0.75)` → subsystem updates `MPC_WorldState.IndustrialPressure` → terrain soot param visibly changes.
+- **Acceptance tracer**: a matching native lease writes a curated address → subsystem updates its MPC projection → the corresponding material parameter visibly changes.
 
 ## D12 — MeshForge: mirror MaterialForge, Blender first, sequenced after PlacementForge
 - **Pattern**: same contract shape — human-owned procedural graph (Blender GN / Houdini HDA) → agent recipe YAML → headless generation → mesh export → UE import → `StaticMesh` + provenance Data Asset → validation. "MaterialForge with meshes."
@@ -316,10 +316,9 @@ data-contract system.
 - **Milestone responsibilities** — it establishes the permanent crossing, it does not add a demo:
   a real `WorldForgeCore` runtime capability registry — **none exists today**: `WorldForgeCore` is
   eleven source files carrying `UMaterialRecipeDataAsset`, `UPlacementRulesDataAsset`,
-  `UWorldStateSubsystem` and `USceneSurveyStatics`, and the only `Register*` call in the whole
-  plugin is `IConsoleManager::Get().RegisterConsoleCommand(` at
-  `Plugins/WorldForge/Source/WorldForgeCore/Private/WorldStateSubsystem.cpp:31` (verified
-  2026-07-30); a real `WorldForgeEd` editor/operator entry
+  `UWorldStateSubsystem` and `USceneSurveyStatics`; the former global state console
+  registration was removed in favor of native address-bound write leases; a real
+  `WorldForgeEd` editor/operator entry
   point — the module is currently **empty boilerplate**: `StartupModule`/`ShutdownModule` contain
   only intent comments ("Register procedural-material / manifest / import tooling here"),
   `WorldForgeEd.cpp:7-15`, and the module is three files total under `Source/`
@@ -416,7 +415,7 @@ operation and nobody finds out."*
 - `.github/CODEOWNERS`, `.github/workflows/worldforge_contracts.yml`, `tests/fixtures/invalid_recipes/` + `tools/pipeline/test_negative_recipes.py`. Text-contract checks enforced in GitHub CI (no UE).
 
 **Milestone 3 — Thin StateForge spine** — refs D9–D11
-- `WorldStateSubsystem` (`UWorldSubsystem`, `WorldForgeCore`): `GetStateValue` / `SetStateValue`, `MPC_WorldState` push bridge, Tier-2 edit to `M_Terrain_Master` (sample `IndustrialPressure`), `industrial_pressure → soot` tracer + debug command.
+- `WorldStateSubsystem` (`UWorldSubsystem`, `WorldForgeCore`): `GetStateValue`, native write reservation/lease contract, `MPC_WorldState` push bridge, Tier-2 edit to `M_Terrain_Master` (sample `IndustrialPressure`), and a native-owned material-reaction tracer.
 
 **Milestone 4 — PlacementForge** — refs D13
 - Human-owned PCG graph; agent spawn-rule YAML → `PlacementRulesDataAsset`; PCG pulls live state per-cell.

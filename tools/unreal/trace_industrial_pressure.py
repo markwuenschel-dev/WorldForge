@@ -6,11 +6,9 @@ Desert Industrialized Slice -- in-engine propagation tracer (PlacementForge D13,
 StateForge D9-D11). Proves the existing slice reacts to one driving state key
 (industrial_pressure) BEFORE any presets/orchestration are built.
 
-It drives state through the REAL path the contract mandates -- the
-`WorldForge.SetState` console command, which calls UWorldStateSubsystem::SetStateValue
--> in-memory store -> curated MPC mirror. It NEVER edits the MPC directly. Then it
-reads back the observable side effect (MPC_WorldState.IndustrialPressure) and computes
-the placement response from the (regenerated) PlacementRulesDataAsset:
+It requires an owning native state writer with a matching lease to drive the
+subsystem. Editor Python intentionally has no such lease and reports that
+unavailability instead of editing the MPC or attempting a console mutation.
 
     effective_density = base_density * lerp(density_at_state_zero, density_at_state_one, state)
 
@@ -43,6 +41,9 @@ CONTEXT_ID = "Desert_Valley_01"
 STATES = [0.0, 0.75]
 MANIFEST_REL = "procedural/manifests/placement/reclaimed_desert_foliage.json"
 REPORT_REL = "procedural/reports/slices/desert_industrialized"
+NATIVE_STATE_WRITE_AUTHORITY_ERROR = (
+    "native state-write authority is required; editor Python cannot acquire "
+    "a world-state write lease")
 
 
 def _log(msg):
@@ -122,7 +123,8 @@ def main():
         "context_id": CONTEXT_ID,
         "states": STATES,
         "steps": [],
-        "errors": [],
+        "errors": [NATIVE_STATE_WRITE_AUTHORITY_ERROR],
+        "state_authority": {"available": False, "detail": NATIVE_STATE_WRITE_AUTHORITY_ERROR},
     }
 
     try:
@@ -146,25 +148,17 @@ def main():
             summary["errors"].append("MPC_WorldState not found at {}".format(MPC_PATH))
 
         for state in STATES:
-            cmd = "WorldForge.SetState {} {} {} {}".format(SCOPE, CONTEXT_ID, DRIVING_KEY, state)
-            _log("exec: {}".format(cmd))
-            unreal.SystemLibrary.execute_console_command(world, cmd)
-
-            # Read back the LIVE per-world MPC instance value (the observable side
-            # effect of the subsystem's PushToMpc). UKismetMaterialLibrary is exposed
-            # to Python as unreal.MaterialLibrary. This is read-only observation; the
-            # WRITE path stays the console command -> subsystem -> MPC (never direct).
             mpc_readback = None
-            if mpc:
-                mpc_readback = unreal.MaterialLibrary.get_scalar_parameter_value(
-                    world, mpc, MPC_PARAM)
+
+            # This preview deliberately omits an MPC readback because no native writer
+            # has applied a runtime value.
 
             step = {
                 "set_value": state,
-                "console_command": cmd,
+                "runtime_state_applied": False,
                 "mpc_param": MPC_PARAM,
-                "mpc_readback": (round(mpc_readback, 4) if mpc_readback is not None else None),
-                "mpc_matches_set": (mpc_readback is not None and abs(mpc_readback - state) < 1e-4),
+                "mpc_readback": None,
+                "mpc_matches_set": False,
                 "species_response": _species_response(da, state),
             }
             summary["steps"].append(step)
@@ -172,9 +166,9 @@ def main():
             tag = "state_{:.2f}".format(state).replace(".", "_")
             with open(os.path.join(report_dir, "{}.json".format(tag)), "w", encoding="utf-8") as f:
                 json.dump(step, f, indent=2)
-            _log("{} -> MPC.{} readback={}".format(cmd, MPC_PARAM, step["mpc_readback"]))
+            _log("state {} preview only".format(state))
 
-        summary["status"] = "ok" if not summary["errors"] else "ok_with_warnings"
+        summary["status"] = "native_authority_required"
 
     except Exception as exc:  # noqa: BLE001
         summary["status"] = "error"

@@ -825,8 +825,21 @@ def _v_operation_manifest(observed):
     if err:
         return err
     if observed.get("digest_matches") is not True:
+        recomputed = observed.get("digest_recomputed")
+        if recomputed is None:
+            # NOT a hash mismatch. The near side never obtained a digest at all,
+            # so the manifest's claim is UNVERIFIABLE rather than contradicted.
+            # Both are failures; conflating them sent a previous investigation
+            # hunting an integrity breach that did not exist.
+            return ("the near side could NOT RE-DERIVE the raw-bundle digest "
+                    "(reason: {}), so the manifest's declared digest {!r} is "
+                    "unverifiable -- this is missing/unreadable evidence, NOT a "
+                    "hash mismatch".format(
+                        observed.get("digest_recompute_status")
+                        or "the near-side re-derivation never ran",
+                        observed.get("raw_evidence_digest")))
         return ("the near side re-computed the raw-bundle digest as {!r} but the "
-                "manifest declares {!r}".format(observed.get("digest_recomputed"),
+                "manifest declares {!r}".format(recomputed,
                                                 observed.get("raw_evidence_digest")))
     if not isinstance(observed.get("owned_objects"), list):
         return "owned_objects is not a list"
@@ -1030,17 +1043,42 @@ def far_side_main():
                 continue
         return None, None
 
-    def unpack_out(res):
-        """UE Python returns (ReturnValue, OutParam) when a UFUNCTION has both.
+    def unpack_out(res, out_type_name=None):
+        """Decode a UFUNCTION declared ``bool`` + out-param, as UE actually binds it.
 
-        Mirrors scene_survey_far_side.py:810-823. An unrecognised shape must not
-        be read as a miss, so both come back None.
+        The earlier version of this helper assumed ``(bool, OutParam)`` and was
+        wrong, which is what made all four geometry probes report "unrecognised
+        shape" on a run where the engine had answered correctly. UE's binding
+        generator DROPS the bool (PyGenUtil.cpp:1160-1183):
+
+            "If we have multiple return values and the main return value is a
+             bool, we return None (for false) or the (potentially packed) return
+             value without the bool (for true)"
+
+        So the SHAPE IS THE ANSWER:
+            None                      -> false (a real miss / a real empty set)
+            instance of out_type_name -> true, and this IS the out-param
+            bool                      -> a function with no out-param
+            (bool, out) / (out,)      -> tolerated packings
+
+        Returns ``(verdict, out)``. ``verdict is None`` means the shape could not
+        be read at all -- which must NEVER be conflated with a miss: a miss is an
+        observation, an unreadable shape is the absence of one. Anything not
+        listed above stays unreadable rather than being coerced, so a genuinely
+        malformed result still fails instead of passing as a negative.
         """
+        if res is None:
+            return False, None
         if isinstance(res, bool):
             return res, None
-        if isinstance(res, (tuple, list)) and len(res) >= 2:
-            first = res[0]
-            return (first if isinstance(first, bool) else None), res[1]
+        out_type = getattr(unreal, out_type_name, None) if out_type_name else None
+        if out_type is not None and isinstance(res, out_type):
+            return True, res
+        if isinstance(res, (tuple, list)):
+            if len(res) >= 2 and isinstance(res[0], bool):
+                return res[0], res[1]
+            if len(res) == 1 and out_type is not None and isinstance(res[0], out_type):
+                return True, res[0]
         return None, None
 
     # ---- the raw-evidence bundle this run publishes ------------------------ #
@@ -1521,7 +1559,7 @@ def far_side_main():
                 record("hit_result_decomposition", STATUS_ASSUMED,
                        "the trace call did not return, so no FHitResult existed")
             else:
-                hit, out_hit = unpack_out(res)
+                hit, out_hit = unpack_out(res, "HitResult")
                 obs = {"hit": hit, "start": trace_start, "end": trace_end,
                        "trace_channel": channel_name, "draw_debug": debug_name,
                        "out_hit_present": out_hit is not None,
@@ -1533,16 +1571,25 @@ def far_side_main():
                            "line_trace_single returned an unrecognised shape {!r}; "
                            "the hit/miss answer was NOT read".format(
                                type(res).__name__), obs)
+                elif hit is False:
+                    # UE packs a false return as bare None. That IS the answer:
+                    # the trace ran and hit nothing. A miss is a complete
+                    # observation, so this probe is verified -- but no FHitResult
+                    # exists, so hit_result_decomposition legitimately stays
+                    # unproven below and the gate stays RED until a trace hits.
+                    record("line_trace_single", STATUS_VERIFIED,
+                           "line_trace_single executed and returned None, which "
+                           "is UE's packing of a false return: the trace ran and "
+                           "MISSED. The hit/miss answer was read.", obs)
                 elif out_hit is None:
                     record("line_trace_single", STATUS_FAILED,
-                           "the hit boolean was read but no FHitResult "
-                           "out-parameter came back, so the (bool, FHitResult) "
-                           "return shape scene_survey_far_side.py:947 depends on is "
-                           "NOT confirmed", obs)
+                           "line_trace_single reported a HIT but produced no "
+                           "FHitResult; a true return must carry the out-param, "
+                           "so the result cannot be decomposed", obs)
                 else:
                     record("line_trace_single", STATUS_VERIFIED,
-                           "line_trace_single executed and returned "
-                           "(bool, FHitResult); hit={}".format(bool(hit)), obs)
+                           "line_trace_single executed and returned an FHitResult "
+                           "(UE drops the bool on a true return); hit=True", obs)
                 trace_rec["observed"] = obs
                 publish(trace_rec, hit is not None,
                         None if hit is not None else "support_sample")
@@ -1554,15 +1601,21 @@ def far_side_main():
                            "break_hit_result was never called")
             else:
                 # FHitResult members are bare UPROPERTY() with NO
-                # BlueprintReadOnly, so they are NOT Python attributes;
-                # break_hit_result is the only route
-                # (scene_survey_far_side.py:855-862).
+                # BlueprintReadOnly, so they are NOT Python attributes, and
+                # get_editor_property raises for every one of them.
+                #
+                # GameplayStatics.break_hit_result DOES NOT EXIST in UE 5.8's
+                # Python surface -- measured live, it raises AttributeError. It
+                # was an assumption carried over from Blueprint. The struct's own
+                # to_tuple() is the reflected route and returns exactly the same
+                # 18 values in the same order, so the positional decode below is
+                # unchanged and still length-checked.
                 try:
-                    parts = list(unreal.GameplayStatics.break_hit_result(out_hit))
+                    parts = list(out_hit.to_tuple())
                 except Exception as exc:  # noqa: BLE001
                     record("hit_result_decomposition", STATUS_UNAVAILABLE,
-                           "GameplayStatics.break_hit_result is not reflected or "
-                           "raised: " + why(exc))
+                           "HitResult.to_tuple is not reflected or raised: "
+                           + why(exc))
                 else:
                     read_errors = []
 
@@ -1654,14 +1707,18 @@ def far_side_main():
                 obs["error"] = "{} raised: {}".format(fn_name, why(exc))
                 record(probe_name, STATUS_FAILED, obs["error"], obs)
                 continue
-            _ok, found = unpack_out(res)
-            if found is None and isinstance(res, (tuple, list)) and len(res) == 1:
-                found = res[0]
-            if found is None:
+            verdict, found = unpack_out(res, "Array")
+            if verdict is None:
                 obs["error"] = ("{} returned an unrecognised shape {!r}; the overlap "
                                 "set was NOT read".format(fn_name, type(res).__name__))
                 record(probe_name, STATUS_FAILED, obs["error"], obs)
                 continue
+            if found is None:
+                # verdict is False: the engine ran the query and found nothing.
+                # An empty overlap set is a complete OBSERVATION, not a failure --
+                # treating it as unreadable is what made a correct negative look
+                # like a broken probe.
+                found = []
             try:
                 paths = sorted(p for p in (_safe_path(o) for o in found) if p)
             except Exception as exc:  # noqa: BLE001
@@ -1907,18 +1964,18 @@ def far_side_main():
                                 sid, why(exc)))
                         rows.append([sid, None, None, None])
                         continue
-                    hv, oh = unpack_out(res)
+                    hv, oh = unpack_out(res, "HitResult")
                     hit_flag = None if hv is None else (1 if hv else 0)
                     if oh is not None:
                         try:
-                            parts = list(unreal.GameplayStatics.break_hit_result(oh))
+                            parts = list(oh.to_tuple())
                             if len(parts) >= 18:
                                 dist = _finite(parts[3])
                                 ip = xyz(parts[5])
                                 impact_z = None if ip is None else ip[2]
                         except Exception as exc:  # noqa: BLE001
                             if len(errors) < 5:
-                                errors.append("{}: break_hit_result: {}".format(
+                                errors.append("{}: HitResult.to_tuple: {}".format(
                                     sid, why(exc)))
                     rows.append([sid, hit_flag,
                                  None if dist is None else round(dist, 6),
@@ -2575,6 +2632,15 @@ def classify(far_doc, launch_detail):
         probes[name]["detail"] = rec.get("detail")
         probes[name]["observed"] = rec.get("observed")
 
+    # The near side's OWN re-derivation must land in the observation BEFORE the
+    # validators read it. The far side ships deliberate None placeholders for
+    # digest_recomputed/digest_matches (it must not grade its own digest), so a
+    # validator run before this fold rejects every manifest claim on the
+    # PLACEHOLDER rather than on evidence -- a fake red. This is still an
+    # independent re-derivation: the digest is recomputed here, on the near side,
+    # over the bundle actually transported, and is never copied from the far side.
+    verify_manifest_digest(far_doc, probes)
+
     for name in PROBE_NAMES:
         if probes[name]["status"] != STATUS_VERIFIED:
             continue
@@ -2611,11 +2677,18 @@ def verify_manifest_digest(far_doc, probes):
         return
     bundle = (far_doc or {}).get("raw_evidence")
     recomputed = None
-    if bundle is not None:
+    if bundle is None:
+        # Honest "unknown": no bundle was transported, so nothing can be
+        # re-derived. Kept distinct from a digest that disagrees.
+        status_note = ("the far side transported no 'raw_evidence' bundle for the "
+                       "near side to digest")
+    else:
+        status_note = "recomputed over the transported raw_evidence bundle"
         try:
             recomputed = digest(bundle)
         except Exception as exc:  # noqa: BLE001
             recomputed = "<undigestable: {}: {}>".format(type(exc).__name__, exc)
+    observed["digest_recompute_status"] = status_note
     observed["digest_recomputed"] = recomputed
     observed["digest_matches"] = (
         recomputed is not None and recomputed == observed.get("raw_evidence_digest"))
@@ -3082,8 +3155,10 @@ def near_side_main(argv=None):
         report["safety"] = far_doc.get("safety")
         report["far_side_notes"] = far_doc.get("notes") or []
         report["far_side_error"] = far_doc.get("error") or report["far_side_error"]
+        # classify() folds the near side's independently re-derived raw-bundle
+        # digest into the manifest observation before validating it; calling
+        # verify_manifest_digest() again here would be redundant.
         report["probes"] = classify(far_doc, "")
-        verify_manifest_digest(far_doc, report["probes"])
         report["operation_manifest"] = far_doc.get("operation_manifest")
         bundle = far_doc.get("raw_evidence") or {}
         report["raw_evidence_summary"] = {

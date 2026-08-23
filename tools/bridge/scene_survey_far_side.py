@@ -204,10 +204,20 @@ process: ``World.get_package().get_name()``, ``Actor.get_path_name()``,
 ``Actor.get_actor_bounds(False, True)``, the 3-tuple return of
 ``SystemLibrary.get_component_bounds``,
 ``EditorLoadingAndSavingUtils.get_dirty_map_packages/get_dirty_content_packages``,
-and ``SystemLibrary.is_valid`` (True before ``destroy_actor``, False after). STILL
-ASSUMED and labelled as such at each call site: ``SystemLibrary.line_trace_single``,
-``SystemLibrary.capsule_overlap_actors``, ``SystemLibrary.capsule_overlap_components``,
-``GameplayStatics.break_hit_result``, and every ``USceneSurveyStatics`` primitive.
+and ``SystemLibrary.is_valid`` (True before ``destroy_actor``, False after).
+
+The four geometry calls — ``SystemLibrary.line_trace_single``,
+``capsule_overlap_actors``, ``capsule_overlap_components`` and
+``GameplayStatics.break_hit_result`` — are no longer assumed. Their C++
+declarations are read from the engine (KismetSystemLibrary.h:1270/1181/1212,
+GameplayStatics.h:1078) and their PYTHON return shape from the generator that
+produces it: ``PyGenUtil::PackReturnValues`` (PyGenUtil.cpp:1152-1201) drops a bool
+return value that is followed by out params, handing back ``None`` when it was
+false and the bare out param when it was true. The first live 5.8 run measured
+exactly that — ``HitResult`` and ``Array`` where an earlier guard here expected a
+``(bool, out)`` tuple, and rejected four correct answers as unreadable.
+STILL ASSUMED and labelled as such at each call site: every
+``USceneSurveyStatics`` primitive.
 
 Inputs (environment) — the near side sets all of these:
     WF_SURVEY_OUT            absolute path for the far-side JSON (required)
@@ -808,23 +818,61 @@ def _primitive_components(actor):
         return None, "component list is not iterable: {}".format(exc)
 
 
-def _unpack_out(res):
-    """UE Python returns (ReturnValue, OutParam) when a UFUNCTION has both.
+def _out_type(name):
+    """``unreal.<name>`` when that type is reflected, else None.
 
-    Returns (return_value_or_None, out_param_or_None). Both are None when the shape
-    is not one this code recognises — an unrecognised shape must not be read as a
-    miss, so the caller records it as unobserved.
+    Resolved by name through getattr so a build that does not export the type
+    leaves the caller holding None — and a None expected-type makes the shape
+    guard below REJECT rather than fall back to accepting anything.
     """
+    try:
+        candidate = getattr(unreal, name)
+    except Exception:  # noqa: BLE001
+        return None
+    return candidate if isinstance(candidate, type) else None
+
+
+def _unpack_bool_out(res, out_name):
+    """Decode UE Python's packing of a ``bool`` return plus ONE out parameter.
+
+    The bool is NOT handed back. ``PyGenUtil::PackReturnValues`` (UE 5.8
+    PyGenUtil.cpp:1160-1183) special-cases a bool return value that is followed by
+    out params: Python gets ``None`` when the bool was false, and the bare out
+    parameter — not a tuple — when it was true. The SHAPE therefore CARRIES the
+    answer. Reading ``None`` as "unreadable" is what made the first live 5.8 run
+    reject four correct results as an unrecognised shape.
+
+    Returns ``(True/False/None, out_or_None)``. A None first element means the
+    shape could not be read AT ALL; the caller must record it unobserved and never
+    count it as a false. A value that is neither None, nor an instance of
+    ``out_name``, nor one of the two tuple packings is still rejected, so a
+    genuinely malformed return cannot pass itself off as an answer.
+    """
+    if res is None:
+        return False, None
+    out_type = _out_type(out_name)
+    if out_type is not None and isinstance(res, out_type):
+        return True, res
     if isinstance(res, bool):
+        # A UFUNCTION with no out params at all packs down to the bare bool.
         return res, None
-    if isinstance(res, (tuple, list)) and len(res) >= 2:
+    if isinstance(res, (tuple, list)) and res:
+        # Tuple packings kept for safety: ``(bool, out)`` from a binding that does
+        # not skip the bool, and a 1-tuple carrying only the out value.
         first = res[0]
-        return (first if isinstance(first, bool) else None), res[1]
+        if isinstance(first, bool):
+            return first, (res[1] if len(res) > 1 else None)
+        if len(res) == 1 and out_type is not None and isinstance(first, out_type):
+            return True, first
     return None, None
 
 
 def _trace_channel():
-    """The visibility TraceTypeQuery, or None. ASSUMED enum member name."""
+    """The visibility TraceTypeQuery, or None.
+
+    ``TRACE_TYPE_QUERY1`` is the name UE 5.8 actually exports; both spellings are
+    still tried because the cost of the fallback is one failed getattr.
+    """
     for name in ("TRACE_TYPE_QUERY1", "TraceTypeQuery1"):
         try:
             return getattr(unreal.TraceTypeQuery, name)
@@ -855,30 +903,79 @@ def _object_type(index):
 def _break_hit(hit):
     """Best-effort raw fields out of an FHitResult.
 
-    HitResult members are bare UPROPERTY() with no BlueprintReadOnly, so they are
-    NOT Python attributes; ``GameplayStatics.break_hit_result`` is the only route
-    (UE 5.8 GameplayStatics.h:1077). ASSUMED: an 18-tuple whose members are, in
-    order, blocking_hit, initial_overlap, time, distance, location, impact_point,
-    normal, impact_normal, phys_mat, hit_actor, hit_component, hit_bone_name,
-    bone_name, hit_item, element_index, face_index, trace_start, trace_end.
+    HitResult members are bare UPROPERTY() with no BlueprintReadOnly, and the Python
+    binding exports a struct property only when it carries CPF_BlueprintVisible
+    (PyGenUtil.cpp:1805-1810, IsScriptExposedProperty), so they are NOT Python
+    attributes. ``get_editor_property`` does not reach them either — it raises for
+    every field, measured live.
 
-    Every field is extracted defensively and independently: a tuple of a different
-    length yields Nones plus a reason, never a wrong-field misread.
+    ``GameplayStatics.break_hit_result`` DOES NOT EXIST in the UE 5.8 Python
+    surface. That was an assumption inherited from Blueprint, and it cost a run:
+    the call raised ``AttributeError: type object 'GameplayStatics' has no
+    attribute 'break_hit_result'`` for every sample. Measured live against 5.8,
+    the reflected routes are the struct's own accessors:
+
+        hit.to_dict()   -> named fields (preferred)
+        hit.to_tuple()  -> exactly 18 values, in the order below
+
+    ``to_dict`` is tried FIRST because it is keyed by name. Positional decoding of
+    an 18-tuple is correct only while the field order holds, and a silent
+    reordering would not fail — it would return a plausible wrong number, which is
+    worse than an error. The tuple path is kept as a fallback, and it re-checks
+    the length so a shorter tuple yields Nones plus a reason rather than a
+    wrong-field misread.
+
+    Tuple order (verified live, matches to_dict insertion order): blocking_hit,
+    initial_overlap, time, distance, location, impact_point, normal,
+    impact_normal, phys_mat, hit_actor, hit_component, hit_bone_name, bone_name,
+    hit_item, element_index, face_index, trace_start, trace_end.
     """
     out = {"blocking_hit": None, "distance": None, "location": None,
            "impact_point": None, "impact_normal": None,
            "hit_actor_path": None, "hit_component_path": None}
+
+    def _safe(fn, value):
+        try:
+            return fn(value)
+        except Exception:  # noqa: BLE001
+            return None
+
+    # -- preferred: named access ------------------------------------------- #
+    as_dict = None
+    if hasattr(hit, "to_dict"):
+        try:
+            candidate = hit.to_dict()
+            if isinstance(candidate, dict):
+                as_dict = candidate
+        except Exception:  # noqa: BLE001
+            as_dict = None
+
+    if as_dict is not None:
+        out["blocking_hit"] = _safe(
+            lambda v: bool(v) if isinstance(v, bool) else None,
+            as_dict.get("blocking_hit"))
+        out["distance"] = _safe(_num, as_dict.get("distance"))
+        out["location"] = _safe(_xyz, as_dict.get("location"))
+        out["impact_point"] = _safe(_xyz, as_dict.get("impact_point"))
+        out["impact_normal"] = _safe(_xyz, as_dict.get("impact_normal"))
+        actor = as_dict.get("hit_actor")
+        comp = as_dict.get("hit_component")
+        out["hit_actor_path"] = _path_of(actor) if actor is not None else None
+        out["hit_component_path"] = _path_of(comp) if comp is not None else None
+        return out, None
+
+    # -- fallback: positional 18-tuple -------------------------------------- #
+    if not hasattr(hit, "to_tuple"):
+        return out, ("FHitResult exposes neither to_dict nor to_tuple, and its "
+                     "members are not Python attributes, so no field was read")
     try:
-        parts = unreal.GameplayStatics.break_hit_result(hit)
+        parts = list(hit.to_tuple())
     except Exception as exc:  # noqa: BLE001
-        return out, "break_hit_result: {}: {}".format(type(exc).__name__, exc)
-    try:
-        parts = list(parts)
-    except Exception as exc:  # noqa: BLE001
-        return out, "break_hit_result returned a non-sequence: {}".format(exc)
+        return out, "HitResult.to_tuple: {}: {}".format(type(exc).__name__, exc)
     if len(parts) < 18:
-        return out, ("break_hit_result returned {} field(s), expected 18 — the "
-                     "field order cannot be trusted, so nothing was read".format(len(parts)))
+        return out, ("HitResult.to_tuple returned {} field(s), expected 18 — the "
+                     "field order cannot be trusted, so nothing was read".format(
+                         len(parts)))
 
     def _at(i, fn):
         try:
@@ -902,9 +999,12 @@ def _line_trace(raw, world, ident, start, end, purpose):
     ``hit`` is tri-state: True/False when the engine answered, None when the call or
     its return shape could not be read. A None here must never be counted as a miss.
 
-    ASSUMED symbol: ``SystemLibrary.line_trace_single(world_context, start, end,
-    trace_channel, trace_complex, actors_to_ignore, draw_debug_type, ignore_self)``
-    returning ``(bool, FHitResult)``.
+    ``SystemLibrary.line_trace_single(world_context, start, end, trace_channel,
+    trace_complex, actors_to_ignore, draw_debug_type, ignore_self)`` is declared
+    ``bool`` with an ``FHitResult&`` out param (KismetSystemLibrary.h:1270), which
+    the Python binding packs as: ``None`` on a miss, a bare ``unreal.HitResult`` on
+    a hit (PyGenUtil.cpp:1160-1183). A MISS therefore carries no FHitResult at all
+    — that is the complete answer, not a partial one.
     """
     rec = _envelope("trace", ident, ST_OBSERVE, "scene_survey_far_side._line_trace",
                     source_api=TRACE_API,
@@ -938,6 +1038,13 @@ def _line_trace(raw, world, ident, start, end, purpose):
     if not (_finite_vec3(start) and _finite_vec3(end)):
         rec["errors"].append("trace endpoints are not finite vec3s; no trace was attempted")
         return _settle(rec, False, FC_SUPPORT_SAMPLE)
+    if world is None:
+        # Mandatory now that a None return is read as a miss: with a null world
+        # context LineTraceSingle short-circuits to false (KismetSystemLibrary.cpp:
+        # 1909), which reaches Python as the SAME None a real miss produces. The
+        # only place the two can still be told apart is before the call.
+        rec["errors"].append("no world context; no trace was attempted")
+        return _settle(rec, False, FC_SUPPORT_SAMPLE)
     try:
         res = unreal.SystemLibrary.line_trace_single(
             world, unreal.Vector(start[0], start[1], start[2]),
@@ -945,7 +1052,7 @@ def _line_trace(raw, world, ident, start, end, purpose):
     except Exception as exc:  # noqa: BLE001
         rec["errors"].append("line_trace_single: {}: {}".format(type(exc).__name__, exc))
         return _settle(rec, False, FC_SUPPORT_SAMPLE)
-    hit, out_hit = _unpack_out(res)
+    hit, out_hit = _unpack_bool_out(res, "HitResult")
     if hit is None:
         rec["errors"].append("line_trace_single returned an unrecognised shape {!r}; the "
                              "hit/miss answer was NOT read".format(type(res).__name__))
@@ -964,37 +1071,53 @@ def _line_trace(raw, world, ident, start, end, purpose):
             rec["source_api"] = TRACE_API + " (+ " + BREAK_HIT_API + " unread)"
         else:
             rec["source_api"] = TRACE_API + " + " + BREAK_HIT_API
-    else:
-        rec["errors"].append("no FHitResult out-parameter was returned; only the hit "
-                             "boolean was observed")
+    elif hit:
+        # A hit with no FHitResult is a real defect: WHERE it hit went unread.
+        rec["errors"].append("line_trace_single reported a hit but returned no "
+                             "FHitResult, so nothing about WHERE it hit was read")
+    # A miss returns no FHitResult by construction, so there is nothing to note and
+    # nothing missing: the depth fields stay None because they were never measured,
+    # which is the honest answer — not because the trace half-failed.
     return _settle(rec, True)
 
 
 def _capsule_overlap_actor_paths(world, center, radius, half_height, object_type_index):
     """(actor_path_list, error). None (not []) when the query could not be run.
 
-    ASSUMED symbol: ``SystemLibrary.capsule_overlap_actors(world_context, center,
-    radius, half_height, object_types, actor_class_filter, actors_to_ignore)``
-    returning ``(bool, [Actor])``.
+    ``SystemLibrary.capsule_overlap_actors(world_context, center, radius,
+    half_height, object_types, actor_class_filter, actors_to_ignore)`` is declared
+    ``bool`` with a ``TArray<AActor*>&`` out param (KismetSystemLibrary.h:1181) and
+    the bool IS ``OutActors.Num() > 0`` (KismetSystemLibrary.cpp:1803). The binding
+    packs that as ``None`` for the empty case and a bare ``unreal.Array`` otherwise
+    (PyGenUtil.cpp:1160-1183), so an EMPTY overlap set arrives as None and must be
+    read as ``[]`` — the query ran and found nothing. Only an unreadable shape
+    returns None from here.
     """
     otype = _object_type(object_type_index)
     if otype is None:
         return None, "ObjectTypeQuery{} is not reflected".format(object_type_index)
     if not _finite_vec3(center):
         return None, "capsule centre is not a finite vec3"
+    if world is None:
+        # As with the trace: a null world context makes the engine answer false,
+        # which is indistinguishable from a genuinely empty overlap set once it has
+        # been packed to None. Refusing the call keeps "clear" from being invented.
+        return None, "no world context; no capsule overlap query was attempted"
     try:
         res = unreal.SystemLibrary.capsule_overlap_actors(
             world, unreal.Vector(center[0], center[1], center[2]),
             float(radius), float(half_height), [otype], None, [])
     except Exception as exc:  # noqa: BLE001
         return None, "capsule_overlap_actors: {}: {}".format(type(exc).__name__, exc)
-    _ok, actors = _unpack_out(res)
+    overlapped, actors = _unpack_bool_out(res, "Array")
+    if overlapped is None:
+        return None, ("capsule_overlap_actors returned an unrecognised shape {!r}; "
+                      "the overlap set was NOT read".format(type(res).__name__))
+    if not overlapped:
+        return [], None
     if actors is None:
-        if isinstance(res, (tuple, list)) and len(res) == 1:
-            actors = res[0]
-        else:
-            return None, ("capsule_overlap_actors returned an unrecognised shape {!r}; "
-                          "the overlap set was NOT read".format(type(res).__name__))
+        return None, ("capsule_overlap_actors reported an overlap but returned no "
+                      "actor array; the overlap set was NOT read")
     try:
         return sorted(p for p in (_path_of(a) for a in actors) if p), None
     except Exception as exc:  # noqa: BLE001
@@ -1005,9 +1128,11 @@ def _capsule_overlap_component_paths(world, center, radius, half_height,
                                      object_type_index):
     """(component_path_list, error). None (not []) when the query could not be run.
 
-    ASSUMED symbol: ``SystemLibrary.capsule_overlap_components(world_context, center,
-    radius, half_height, object_types, component_class_filter, actors_to_ignore)``
-    returning ``(bool, [PrimitiveComponent])``.
+    ``SystemLibrary.capsule_overlap_components(world_context, center, radius,
+    half_height, object_types, component_class_filter, actors_to_ignore)`` is
+    declared ``bool`` with a ``TArray<UPrimitiveComponent*>&`` out param
+    (KismetSystemLibrary.h:1212) and packs exactly like the actor query above:
+    ``None`` when nothing overlapped, a bare ``unreal.Array`` when something did.
 
     Actor paths alone cannot say WHAT inside an actor blocks a capsule: a large
     actor with one small collider and a large actor that is solid produce the same
@@ -1019,19 +1144,23 @@ def _capsule_overlap_component_paths(world, center, radius, half_height,
         return None, "ObjectTypeQuery{} is not reflected".format(object_type_index)
     if not _finite_vec3(center):
         return None, "capsule centre is not a finite vec3"
+    if world is None:
+        return None, "no world context; no capsule overlap query was attempted"
     try:
         res = unreal.SystemLibrary.capsule_overlap_components(
             world, unreal.Vector(center[0], center[1], center[2]),
             float(radius), float(half_height), [otype], None, [])
     except Exception as exc:  # noqa: BLE001
         return None, "capsule_overlap_components: {}: {}".format(type(exc).__name__, exc)
-    _ok, comps = _unpack_out(res)
+    overlapped, comps = _unpack_bool_out(res, "Array")
+    if overlapped is None:
+        return None, ("capsule_overlap_components returned an unrecognised shape "
+                      "{!r}; the overlap set was NOT read".format(type(res).__name__))
+    if not overlapped:
+        return [], None
     if comps is None:
-        if isinstance(res, (tuple, list)) and len(res) == 1:
-            comps = res[0]
-        else:
-            return None, ("capsule_overlap_components returned an unrecognised shape "
-                          "{!r}; the overlap set was NOT read".format(type(res).__name__))
+        return None, ("capsule_overlap_components reported an overlap but returned no "
+                      "component array; the overlap set was NOT read")
     try:
         return sorted(p for p in (_path_of(c) for c in comps) if p), None
     except Exception as exc:  # noqa: BLE001

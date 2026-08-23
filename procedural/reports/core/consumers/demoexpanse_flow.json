@@ -1,0 +1,107 @@
+{
+  "adapter_id": "adapter_demoexpanse",
+  "caller_originated": false,
+  "constraint_classes": {
+    "budget": 1,
+    "declared_unknown": 1,
+    "hard_invariant": 2,
+    "optimization_target": 1,
+    "prohibited_outcome": 1,
+    "protected_semantics": 1,
+    "soft_preference": 1,
+    "tolerance": 1
+  },
+  "consumer_id": "demoexpanse",
+  "green": true,
+  "load_bearing_count": 6,
+  "profile_shape": {
+    "camera_mode": "first_person",
+    "density_class": "sparse",
+    "extent_m2": 4000000.0,
+    "game_type": "narrative_exploration",
+    "locomotion_modes": [
+      "walk",
+      "sprint",
+      "climb",
+      "swim"
+    ],
+    "rollback_granularity": "whole_revision",
+    "unknown_handling": "block",
+    "visual_language": "photoreal"
+  },
+  "report_type": "wf.core.consumer_flow_report.v1",
+  "request_id": "request_demoexpanse_0001",
+  "stages": [
+    {
+      "caller_originated": false,
+      "detail": "this run is NOT caller-originated: the consumer is a WorldForge-authored demonstration, so no artifact from this run may be presented as a caller's request (WF1288)",
+      "origination": "worldforge_authored_demonstration",
+      "provenance_verdict": "violated",
+      "stage": "origination",
+      "status": "ok"
+    },
+    {
+      "checks_run": 115,
+      "failure_codes": [],
+      "failures": [],
+      "stage": "adapter",
+      "status": "ok"
+    },
+    {
+      "checks_run": 4,
+      "failure_codes": [],
+      "failures": [],
+      "stage": "adapter_no_generation_logic",
+      "status": "ok"
+    },
+    {
+      "checks_run": 61,
+      "failure_codes": [],
+      "failures": [],
+      "stage": "consumer_profile",
+      "status": "ok"
+    },
+    {
+      "checks_run": 64,
+      "failure_codes": [],
+      "failures": [],
+      "stage": "asset_catalog",
+      "status": "ok"
+    },
+    {
+      "checks_run": 127,
+      "failure_codes": [],
+      "failures": [],
+      "stage": "world_request",
+      "status": "ok"
+    },
+    {
+      "checks_run": 30,
+      "failure_codes": [],
+      "failures": [],
+      "stage": "revision_policy",
+      "status": "ok"
+    },
+    {
+      "checks_run": 83,
+      "failure_codes": [],
+      "failures": [],
+      "stage": "acceptance_criteria",
+      "status": "ok"
+    },
+    {
+      "checks_run": 61,
+      "failure_codes": [],
+      "failures": [],
+      "stage": "constraint_set",
+      "status": "ok"
+    },
+    {
+      "detail": "with nothing observed, acceptance folds to unknown -- a fold of SATISFIED here would mean the pipeline can accept a world before observing one",
+      "fold": "unknown",
+      "stage": "pre_observation_fold",
+      "status": "ok"
+    }
+  ],
+  "stages_failed": 0
+}

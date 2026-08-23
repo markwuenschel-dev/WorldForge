@@ -1,0 +1,90 @@
+{
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:WF_TX_RollbackA",
+        "/Game/Maps/_wf_test_lvl:WF_TX_RollbackB"
+      ],
+      "allowed_packages": [],
+      "protected_paths": [],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_live_rollback"
+    }
+  ],
+  "evidence_refs": [
+    "far_side_transaction_document"
+  ],
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            0.0,
+            700.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_ok",
+      "operation": "create",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_live_rollback",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:WF_TX_RollbackA"
+    },
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "NoSuchActorClassXYZ",
+          "location": [
+            0.0,
+            0.0,
+            800.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_doomed",
+      "operation": "create",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_live_rollback",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:WF_TX_RollbackB"
+    }
+  ],
+  "operation_id": "op_wfcore_tx_live_rollback"
+}

@@ -1,0 +1,43 @@
+{
+  "checks": [
+    {
+      "check": "declarations_discoverable",
+      "detail": "1 provider declaration(s) reachable",
+      "failure_code": null,
+      "ok": true
+    },
+    {
+      "check": "no_undeclared_external_tool_provider",
+      "detail": "0 declaration(s) reference an external DCC tool",
+      "failure_code": null,
+      "ok": true
+    },
+    {
+      "check": "houdini_fixtures_are_labelled_fixtures",
+      "detail": "3 Houdini FIXTURE artifact(s) present and classified as test input, not capability evidence: ['procedural/fixtures/houdini/flat_plane_v1.json', 'procedural/fixtures/houdini/generate_flat_plane_fixture.py', 'procedural/fixtures/houdini/verify_flat_plane_fixture.py']",
+      "failure_code": null,
+      "ok": true
+    }
+  ],
+  "cook_evidence_required": [
+    "tool_name",
+    "tool_version",
+    "session_id",
+    "input_digest",
+    "output_paths",
+    "output_digests",
+    "cook_seconds",
+    "selected_by_plan"
+  ],
+  "external_tool_providers_declared": 0,
+  "green": true,
+  "report_type": "wf.core.external_tool_provider_report.v1",
+  "tools_policed": [
+    "houdini",
+    "hython",
+    "hapi",
+    "substance",
+    "blender",
+    "maya"
+  ]
+}
