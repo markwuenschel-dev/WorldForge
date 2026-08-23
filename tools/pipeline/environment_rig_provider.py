@@ -157,6 +157,14 @@ def plan_rig(rig):
     return plan
 
 
+# Generated actors carry this prefix in their in-world LABEL, not only in the
+# manifest. Found the hard way: a cleanup sweep filtering on it walked straight
+# past two rig actors whose labels were the caller's raw element ids, leaving
+# generated content in a map that was reported clean. Ownership recorded only in
+# a sidecar is ownership nobody can see while looking at the world.
+ACTOR_PREFIX = "wfrig_"
+
+
 def build_transaction_request(plan, operation_id, step_id, target_package,
                               evidence_refs=None):
     """The SAME request shape the placement provider emits.
@@ -172,7 +180,8 @@ def build_transaction_request(plan, operation_id, step_id, target_package,
 
     actors, muts = [], []
     for i, el in enumerate(plan["elements"]):
-        path = "{}:{}".format(target_package.rstrip("/"), el["element_id"])
+        path = "{}:{}{}".format(target_package.rstrip("/"), ACTOR_PREFIX,
+                                el["element_id"])
         actors.append(path)
         muts.append({
             "mutation_id": "mut_rig_{}_{:03d}".format(el["element_id"], i),

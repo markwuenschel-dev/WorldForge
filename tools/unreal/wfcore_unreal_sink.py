@@ -429,6 +429,30 @@ def _clean_properties(properties):
     return (clean or None), rejected
 
 
+def normalize_asset_ref(ref):
+    """UE asset references in their long, object-path form.
+
+    ``/Game/X/Y`` and ``/Game/X/Y.Y`` name the same asset -- the short form is
+    shorthand for the same-named object inside that package. A caller naturally
+    writes the short one; ``get_path_name()`` always returns the long one. Left
+    alone, intent and observation disagree on a difference that is purely
+    notational and the delta rolls back a correct materialisation.
+
+    Distinct from the rotation case, which LOOKED like a notation problem and was
+    not: there the two values were genuinely different orientations because the
+    sink applied the wrong one. Here they genuinely denote the same asset, so
+    normalising is the fix rather than a way to hide one.
+
+    Idempotent: a reference that already carries an object name is returned as-is.
+    """
+    if not isinstance(ref, str):
+        return ref
+    r = ref.strip()
+    if not r or "." in r.rsplit("/", 1)[-1]:
+        return r
+    return "{}.{}".format(r, r.rsplit("/", 1)[-1])
+
+
 def actor_payload(actor_class, location, rotation, scale, static_mesh=None,
                   material=None, properties=None):
     """The canonical actor payload -- the ONE shape both sides of the comparison use.
@@ -456,9 +480,9 @@ def actor_payload(actor_class, location, rotation, scale, static_mesh=None,
         return None
     out = {"actor_class": cls, "location": loc, "rotation": rot, "scale": scl}
     if isinstance(static_mesh, str) and static_mesh.strip():
-        out["static_mesh"] = static_mesh.strip()
+        out["static_mesh"] = normalize_asset_ref(static_mesh)
     if isinstance(material, str) and material.strip():
-        out["material"] = material.strip()
+        out["material"] = normalize_asset_ref(material)
     props, _rejected = _clean_properties(properties)
     if props:
         out["properties"] = props
@@ -973,6 +997,20 @@ class UnrealMutationSink(object):
                 "mutation {!r}'s payload {!r} is not a complete actor payload "
                 "(actor_class + finite location/rotation/scale)".format(
                     mutation.get("mutation_id"), payload))
+
+        # Write the normalised asset references back into the DECLARED
+        # postcondition. Normalising only what we observe is not enough: the
+        # delta compares the recorded expectation against the observation, and
+        # the expectation is the caller's payload verbatim. Left short-form, it
+        # disagrees with an engine that always reports the object path, and a
+        # correct materialisation rolls back on notation.
+        #
+        # This changes how the intent is WRITTEN, never what it asks for -- the
+        # two forms denote the same asset. Doing it here means one place sees
+        # both sides, so no provider has to remember.
+        for key in ("static_mesh", "material"):
+            if spec.get(key):
+                payload[key] = spec[key]
         return spec
 
     def _apply_spawn(self, mutation):
