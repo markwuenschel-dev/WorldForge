@@ -43,6 +43,28 @@ from typing import Any, Dict, List
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
 CORE_ROOT = os.path.join(_HERE, "wfcore")
+# Scratch inputs for the closed-loop plumbing gate. Regenerated every run rather
+# than committed: a fixture that drifts from the reader it exercises turns a gate
+# into decoration.
+PLUMBING_DIR = os.path.join(_HERE, "..", "procedural", "reports", "core",
+                            "closed_loop")
+PLUMBING_FIXTURES = os.path.join(PLUMBING_DIR, "plumbing_fixtures")
+PLUMBING_OUT = os.path.join(PLUMBING_DIR, "closed_loop_plumbing_report.json")
+
+
+def _ensure_plumbing_fixtures():
+    """Two caller-shaped observation artifacts, written fresh each run."""
+    import json as _json
+    os.makedirs(PLUMBING_FIXTURES, exist_ok=True)
+    for name, sid, xyz in (("a.json", "route.start", (-1200.0, 0.0, 100.0)),
+                           ("b.json", "route.end", (1200.0, 400.0, 100.0))):
+        with open(os.path.join(PLUMBING_FIXTURES, name), "w",
+                  encoding="utf-8") as fh:
+            _json.dump({"subject_id": sid, "status": "resolved",
+                        "anchor_mode": "actor_object_path",
+                        "created_at": "2026-01-01T00:00:00Z",
+                        "transform": {"location": {"x": xyz[0], "y": xyz[1],
+                                                   "z": xyz[2]}}}, fh, indent=1)
 
 STATUS_PASS = "pass"
 STATUS_FAIL = "fail"
@@ -121,6 +143,47 @@ def main(argv=None) -> int:
     results.append(_run("validate_execution_environment", env_argv))
     results.append(_run("validate_external_tool_providers",
                         [py, "pipeline/validate_external_tool_providers.py"]))
+    # Caller provenance attestation. Registered here rather than left to
+    # discovery because it is not a wfcore.* package suite: it exercises a
+    # pipeline resolver that reads real git repositories, and a rail nothing
+    # runs is a rail nobody notices breaking.
+    # These two were documented gates that no shield ran -- they were executed
+    # by hand, which means a regression in them was noticed only when somebody
+    # remembered to look. The sink is the most safety-critical file in the
+    # repository; leaving its 189 checks outside the shield made every "GATE
+    # GREEN" quieter than it sounded.
+    results.append(_run("test_wfcore_unreal_sink",
+                        [py, "pipeline/test_wfcore_unreal_sink.py"]))
+    results.append(_run("test_consumer_flow",
+                        [py, "pipeline/test_consumer_flow.py"]))
+    results.append(_run("test_caller_attestation",
+                        [py, "pipeline/test_caller_attestation.py"]))
+    # The generation provider: determinism, coordinate containment, and the
+    # refusal-rather-than-default rail. Registered for the same reason as
+    # above -- it is a pipeline module, not a wfcore.* package suite.
+    results.append(_run("test_route_placement_provider",
+                        [py, "pipeline/test_route_placement_provider.py"]))
+    # The observation reader: the three-state separation, and the rails that
+    # stop a caller-declared mapping from stating a value it did not measure.
+    results.append(_run("test_observation_intake",
+                        [py, "pipeline/test_observation_intake.py"]))
+    results.append(_run("test_build_manifest",
+                        [py, "pipeline/test_build_manifest.py"]))
+    results.append(_run("test_closed_loop",
+                        [py, "pipeline/test_closed_loop.py"]))
+    # The closed-loop proof's WIRING, without an editor. This gate can only say
+    # "the seams still connect": its report carries verdict=plumbing_only and
+    # green=false precisely so that a green shield is never mistaken for a live
+    # closed-loop proof, which needs an editor and is run separately.
+    _ensure_plumbing_fixtures()
+    results.append(_run("closed_loop_plumbing",
+                        [py, "pipeline/run_closed_loop_proof.py",
+                         "--caller-artifacts", PLUMBING_FIXTURES,
+                         "--subject-start", "route.start",
+                         "--subject-end", "route.end",
+                         "--map", "/Game/Maps/_wf_shield_plumbing",
+                         "--actor-class", "StaticMeshActor", "--no-live",
+                         "--out", PLUMBING_OUT]))
 
     if args.baseline:
         results.append(_run("core_boundary_proof",

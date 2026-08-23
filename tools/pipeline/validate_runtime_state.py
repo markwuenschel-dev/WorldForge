@@ -321,15 +321,98 @@ def main(argv=None):
     if ue_report.is_file():
         try:
             ue_rpt = json.loads(ue_report.read_text(encoding="utf-8"))
-            ue_ok = bool(ue_rpt.get("passed"))
-            ue_detail = "ue readback={}".format(ue_rpt.get("mpc_readback"))
-        except Exception:
-            ue_ok, ue_detail = False, "ue_state_scenario_report.json unreadable"
-        rep.ue_check("ue_state_applied", ue_ok, ue_detail,
-                  code=FailureCode.UE_STATE_NOT_APPLIED)
+        except Exception as exc:  # noqa: BLE001
+            ue_rpt = None
+            rep.ue_check("ue_state_applied", False,
+                         "ue_state_scenario_report.json unreadable: {}".format(exc),
+                         code=FailureCode.UE_STATE_NOT_APPLIED)
+
+        if ue_rpt is not None:
+            # RE-DERIVED, never read off the far side's own verdict.
+            #
+            # This previously graded `ue_rpt.get("passed")` -- the boolean the
+            # bridge wrote about itself. That is circular trust: the thing under
+            # test also supplies the verdict, so a bridge that applied nothing
+            # and wrote passed=true reads exactly like a bridge that worked. The
+            # rule this repository already follows elsewhere is that the far side
+            # emits RAW ONLY and the validator derives independently.
+            #
+            # The raw atoms are `applied` (what we asked the world to become) and
+            # `mpc_readback` (what the material parameter collection actually
+            # holds afterwards). The verdict is whether they agree, key by key.
+            applied = ue_rpt.get("applied")
+            readback = ue_rpt.get("mpc_readback")
+            atoms_ok = isinstance(applied, dict) and isinstance(readback, dict)
+            if not atoms_ok:
+                rep.ue_check(
+                    "ue_state_applied", False,
+                    "the bridge report carries no raw applied/mpc_readback pair "
+                    "(applied={!r} mpc_readback={!r}); with no atoms there is "
+                    "nothing to re-derive and its own 'passed' field is not "
+                    "evidence".format(type(applied).__name__,
+                                      type(readback).__name__),
+                    code=FailureCode.UE_STATE_NOT_APPLIED)
+            else:
+                # Key comparison is case/'_'-insensitive: the scenario names
+                # state keys in snake_case and the MPC parameter is PascalCase.
+                def _norm(k):
+                    return str(k).replace("_", "").lower()
+
+                rb = {_norm(k): v for k, v in readback.items()}
+                mismatched, unread = [], []
+                for k, want in applied.items():
+                    got = rb.get(_norm(k))
+                    if got is None:
+                        unread.append(k)
+                    elif isinstance(want, (int, float)) and isinstance(
+                            got, (int, float)):
+                        if abs(float(want) - float(got)) > 1e-6:
+                            mismatched.append((k, want, got))
+                    elif want != got:
+                        mismatched.append((k, want, got))
+                derived_ok = bool(applied) and not mismatched and not unread
+                rep.ue_check(
+                    "ue_state_applied", derived_ok,
+                    "re-derived from raw atoms: {} key(s) applied, "
+                    "mismatched={} never_read_back={}".format(
+                        len(applied), mismatched, unread),
+                    code=FailureCode.UE_STATE_NOT_APPLIED)
+
+                # A summary that contradicts its own atoms proves the report was
+                # written by something other than the run that produced them.
+                claimed = ue_rpt.get("passed")
+                if claimed is not None:
+                    rep.ue_check(
+                        "ue_report_summary_agrees_with_its_atoms",
+                        bool(claimed) == derived_ok,
+                        "the bridge report claims passed={!r} while its own "
+                        "applied/mpc_readback atoms re-derive to {!r}. A summary "
+                        "that disagrees with the measurements under it is not a "
+                        "rounding difference -- it means the two were not "
+                        "produced by the same run".format(claimed, derived_ok),
+                        code=FailureCode.UE_STATE_NOT_APPLIED)
+
+            # STALENESS. The bridge report must say WHEN it was produced and at
+            # WHICH revision. Without those a report is ungradeable for freshness
+            # and will keep certifying a runtime behaviour that may have changed
+            # months ago -- which is exactly what was happening here.
+            stamped = bool(ue_rpt.get("timestamp")) and bool(ue_rpt.get("git_sha"))
+            rep.ue_check(
+                "ue_report_is_stamped", stamped,
+                "the in-editor bridge report must declare meta 'timestamp' and "
+                "'git_sha' so its freshness can be graded (got timestamp={!r} "
+                "git_sha={!r}). File mtime is not a substitute: it moves when a "
+                "file is copied and says nothing about when the editor "
+                "ran".format(ue_rpt.get("timestamp"), ue_rpt.get("git_sha")),
+                code=FailureCode.UE_STATE_NOT_APPLIED)
     else:
+        # Absent is NOT a pass. It is recorded as a skip so a reader can see the
+        # question was asked, and the runtime-state claim is unproven until the
+        # bridge actually runs.
         rep.skip("ue_state_applied",
-                 "in-editor MPC bridge readback not run here; produce it with 'make apply-state-scenario'")
+                 "in-editor MPC bridge readback not run here, so the live "
+                 "state-response claim is UNPROVEN (not failed, not passed); "
+                 "produce it with 'make apply-state-scenario'")
 
     # -- Finalize + write ---------------------------------------------------
     rep.finalize()

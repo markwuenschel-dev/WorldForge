@@ -553,7 +553,16 @@ def test_compensation_tables(rep):
     rep.eq("far.kinds.transform_compensates_by_restoring_the_captured_transform",
            FAR.compensation_for(FAR.KIND_ACTOR_TRANSFORM),
            "restore_captured_transform")
-    for pair in (("actor", "delete"), ("package", "create"), ("package", "modify"),
+    rep.eq("far.kinds.actor_delete_maps_to_destroy",
+           FAR.mutation_kind("actor", "delete"), FAR.KIND_ACTOR_DESTROY)
+    rep.eq("far.kinds.destroy_compensates_by_respawning_captured_state",
+           FAR.compensation_for(FAR.KIND_ACTOR_DESTROY),
+           "respawn_from_captured_state")
+    # The invariant these cover is "a kind with no compensation maps to nothing".
+    # actor|delete used to be the example and now has a real compensation, so the
+    # example moved rather than the coverage: package mutations remain genuinely
+    # uncompensatable because this sink has no package restore point.
+    for pair in (("package", "create"), ("package", "modify"),
                  ("package", "delete"), ("actor", "teleport"), (None, None)):
         rep.check("far.kinds.unsupported_{}_{}_maps_to_nothing".format(*pair),
                   FAR.mutation_kind(pair[0], pair[1]) is None, pair)
@@ -566,7 +575,10 @@ def test_refusals(rep):
     ok = FAR.refusals_for([m("actor", "create", "a"), m("actor", "modify", "b")])
     rep.check("far.refusal.supported_kinds_are_not_refused", not ok, ok)
 
-    for kind, op in (("actor", "delete"), ("package", "create"),
+    ok2 = FAR.refusals_for([m("actor", "delete", "c")])
+    rep.check("far.refusal.actor_delete_is_now_supported", not ok2, ok2)
+
+    for kind, op in (("package", "create"),
                      ("package", "modify"), ("widget", "create")):
         got = FAR.refusals_for([m(kind, op)])
         rep.check("far.refusal.{}_{}_is_refused".format(kind, op), len(got) == 1, got)
@@ -655,8 +667,8 @@ def test_json_round_trip(rep):
             FAR.REQUEST_INLINE = json.dumps({
                 "operation_id": "op_refuse",
                 "bounds": [], "mutations": [
-                    {"mutation_id": "m0", "target_kind": "actor",
-                     "operation": "delete", "target_path": "{}:X".format(MAP_PKG)}],
+                    {"mutation_id": "m0", "target_kind": "package",
+                     "operation": "delete", "target_path": MAP_PKG}],
                 "evidence_refs": ["x"]})
             FAR.main()
             back = json.loads(out.read_text(encoding="utf-8"))

@@ -1406,6 +1406,50 @@ class FailureCode:
     # provider's output looks like, which is precisely why it must not be
     # accepted as proof that the provider exists and the planner selected it.
     CORE_PROVIDER_EVIDENCE_IS_FIXTURE = "WF1290_CORE_PROVIDER_EVIDENCE_IS_FIXTURE"
+    # A caller supplied structured provenance attestation -- a repository and a
+    # commit -- that could not be resolved against a real repository on disk.
+    # This is NOT the same failure as WF1288. WF1288 is WorldForge claiming a
+    # caller it does not have; this is a named caller whose own claim about
+    # itself did not check out. Absence of attestation never raises it: an
+    # adapter that promises nothing has broken no promise, and grading silence
+    # as a failure would punish exactly the honest adapters.
+    CORE_CALLER_ATTESTATION_UNRESOLVED = "WF1291_CORE_CALLER_ATTESTATION_UNRESOLVED"
+    # -- generated placement (1292-1295) --
+    # A placement was asked for against an anchor whose location was never
+    # measured. The refusal is the product: defaulting to an origin or a
+    # bounding-box centre would put real geometry in a place nobody chose, and
+    # every downstream artifact would be flawless evidence about the wrong spot.
+    CORE_PLACEMENT_ANCHOR_UNOBSERVED = "WF1292_CORE_PLACEMENT_ANCHOR_UNOBSERVED"
+    # A placement plan that contradicts itself: a refusal still carrying
+    # placements, an accepted plan short of its requested count, a non-finite
+    # coordinate, or an unresolvable planar extent.
+    CORE_PLACEMENT_PLAN_INVALID = "WF1293_CORE_PLACEMENT_PLAN_INVALID"
+    # A generated placement resolved OUTSIDE the declared planar extent. Distinct
+    # from a path-authority failure on purpose: the asset path can be perfectly
+    # permitted while the coordinate is kilometres away, and only a coordinate
+    # test can tell.
+    CORE_PLACEMENT_OUT_OF_BOUNDS = "WF1294_CORE_PLACEMENT_OUT_OF_BOUNDS"
+    # A placement falls inside a caller-declared exclusion and could not be moved
+    # clear within the bounded slide budget. Widening that budget is a decision
+    # about the caller's world; the generator escalates instead of guessing.
+    CORE_PLACEMENT_EXCLUSION_UNSATISFIABLE = "WF1295_CORE_PLACEMENT_EXCLUSION_UNSATISFIABLE"
+    # -- observation intake (1297-1299; 1296 is reserved for the request-domain
+    #    code the draft request-vocabulary contract already names) --
+    # An observation mapping that is malformed, ambiguous, or maps one
+    # observation key twice. Two sources for one field is an ambiguity nobody
+    # can adjudicate, so it is refused rather than resolved by precedence.
+    CORE_OBSERVATION_MAPPING_INVALID = "WF1297_CORE_OBSERVATION_MAPPING_INVALID"
+    # A caller artifact was found but could not back the claim: its required
+    # preconditions did not hold, the addressed value is not present, or what is
+    # present does not fit the declared shape. Deliberately NOT the same as "no
+    # artifact matched" -- a measurement that did not hold is information, and
+    # collapsing it into an absence is how a witnessed negative disappears.
+    CORE_OBSERVATION_ARTIFACT_UNUSABLE = "WF1298_CORE_OBSERVATION_ARTIFACT_UNUSABLE"
+    # A mapping attempted to SUPPLY a value, a default, or a provenance rather
+    # than select one out of an artifact. A mapping that can state a value can
+    # state a measurement nobody took, which would make the whole observation
+    # channel self-attesting.
+    CORE_OBSERVATION_VALUE_FABRICATED = "WF1299_CORE_OBSERVATION_VALUE_FABRICATED"
 
 
 # severity hint per code: "fail" (blocking) or "warn" (soft / strict-blocking).

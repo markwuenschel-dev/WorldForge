@@ -992,6 +992,26 @@ def manifest_path_for(repo_root: Any, operation_id: str) -> OpResult:
     return confine_path(repo_root, "{}/{}/operation_manifest.json".format(MANIFEST_DIR_REL, slug))
 
 
+def sealed_request_path_for(repo_root: Any, operation_id: str) -> OpResult:
+    """Where the request that CAUSED this evidence is sealed beside it.
+
+    The manifest binds a ``request_hash`` but the document itself lived only in
+    the invoker's hands, so a later reader holding the evidence could not
+    reconstruct what was asked -- and the runtime gate could not bind evidence to
+    a request unless whoever ran it happened to still have the file. Sealing a
+    copy here closes that without weakening anything: the hash in the manifest
+    was computed from the original at probe time, so re-hashing this copy detects
+    any later tampering with it. What it cannot prove is that the probe was
+    honest in the same instant it wrote both, which is true of all self-produced
+    evidence and is what the manifest digest is for.
+    """
+    slug = _slug(operation_id)
+    if not slug:
+        return _fail(C.SCENE_SURVEY_OPERATION_ID_MISMATCH, "unusable_operation_id",
+                     "operation_id {!r} has no filesystem-safe form".format(operation_id))
+    return confine_path(repo_root, "{}/{}/request.json".format(MANIFEST_DIR_REL, slug))
+
+
 def report_path_for(repo_root: Any, operation_id: str) -> OpResult:
     """Per-operation derived-report path (the companion to manifest_path_for)."""
     slug = _slug(operation_id)
