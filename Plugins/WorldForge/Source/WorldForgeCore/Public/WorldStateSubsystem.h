@@ -8,7 +8,8 @@
 #include "WorldStateSubsystem.generated.h"
 
 class UMaterialParameterCollection;
-struct IConsoleCommand;
+class UWorldStateSubsystem;
+class FWorldForgeStateWriteLease;
 
 /**
  * UWorldStateSubsystem - the thin StateForge spine (forge_design_decisions D9-D11).
@@ -20,9 +21,9 @@ struct IConsoleCommand;
  *     MPC_WorldState so materials can react. Materials read ONLY the MPC mirror.
  *
  * This is intentionally minimal: an in-memory float store plus the read/write
- * contract and one tracer reaction (industrial_pressure -> soot). Accumulation,
- * influence falloff, aggregation, persistence, and emitters layer on top later and
- * all resolve into SetStateValue (D11) - they are NOT part of this spine.
+ * contract and a curated render mirror. Accumulation, influence falloff,
+ * aggregation, persistence, and emitters layer on top later and all resolve into
+ * the native write contract - they are NOT part of this spine.
  */
 UCLASS()
 class WORLDFORGECORE_API UWorldStateSubsystem : public UWorldSubsystem
@@ -41,16 +42,39 @@ public:
 	float GetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Default = 0.f) const;
 
 	/**
-	 * Authoritative setter. Writes the value into the in-memory store and, if Key is
-	 * a curated render-facing value, mirrors it into MPC_WorldState. Higher-level
-	 * influence/accumulation systems resolve into this primitive.
+	 * Native-only generic write. Unreserved addresses accept this write; a reserved
+	 * address can be written only by its matching native lease.
 	 */
-	UFUNCTION(BlueprintCallable, Category = "WorldForge|State")
-	void SetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Value);
+	bool SetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Value);
+
+	/**
+	 * Reserves one exact address and returns its opaque native write lease. An
+	 * already-reserved address returns an invalid lease.
+	 */
+	FWorldForgeStateWriteLease ReserveStateAddress(EWorldForgeStateScope Scope, FName ContextId, FName Key);
+
+	/**
+	 * Writes a reserved address only when Lease was issued by this subsystem for
+	 * that exact address and remains active.
+	 */
+	bool SetStateValueWithLease(
+		const FWorldForgeStateWriteLease& Lease,
+		EWorldForgeStateScope Scope,
+		FName ContextId,
+		FName Key,
+		float Value);
+
+	/** Releases the exact reservation represented by Lease and invalidates it. */
+	bool ReleaseStateAddress(FWorldForgeStateWriteLease& Lease);
 
 private:
+	friend class FWorldForgeStateWriteLease;
+
 	/** In-memory store. Spine only: no persistence (D11). */
 	TMap<FWorldForgeStateAddress, float> StateStore;
+
+	/** Active native write reservations, keyed by their exact state address. */
+	TMap<FWorldForgeStateAddress, FGuid> StateWriteReservations;
 
 	/** Cached MPC_WorldState render mirror (loaded lazily, may be null in non-content builds). */
 	UPROPERTY(Transient)
@@ -65,7 +89,46 @@ private:
 	/** Resolve (and cache) the MPC_WorldState asset. */
 	UMaterialParameterCollection* GetStateCollection();
 
-	/** Console-driven tracer: `WorldForge.SetState <Scope> <ContextId> <Key> <Value>`. */
-	IConsoleCommand* SetStateCommand = nullptr;
-	void HandleSetStateCommand(const TArray<FString>& Args);
+	/** Validates that Lease is the active reservation for Address in this world. */
+	bool IsMatchingLease(const FWorldForgeStateWriteLease& Lease, const FWorldForgeStateAddress& Address) const;
+
+	/** Allows the opaque lease to expose active validity without exposing its token. */
+	bool IsLeaseActive(const FWorldForgeStateWriteLease& Lease) const;
+
+	/** Stores a validated write and mirrors a curated render-facing key. */
+	void WriteStateValue(const FWorldForgeStateAddress& Address, float Value);
+};
+
+/**
+ * Opaque, move-only native capability for one reserved world-state address.
+ *
+ * The subsystem remains the authority: this type exposes no address or token and
+ * checks its active reservation with the issuing subsystem on every use.
+ */
+class WORLDFORGECORE_API FWorldForgeStateWriteLease final
+{
+public:
+	FWorldForgeStateWriteLease() = default;
+	FWorldForgeStateWriteLease(const FWorldForgeStateWriteLease&) = delete;
+	FWorldForgeStateWriteLease& operator=(const FWorldForgeStateWriteLease&) = delete;
+	FWorldForgeStateWriteLease(FWorldForgeStateWriteLease&& Other) noexcept;
+	FWorldForgeStateWriteLease& operator=(FWorldForgeStateWriteLease&&) = delete;
+	~FWorldForgeStateWriteLease();
+
+	/** Returns true only while the issuing subsystem still owns this reservation. */
+	bool IsValid() const;
+
+private:
+	friend class UWorldStateSubsystem;
+
+	FWorldForgeStateWriteLease(
+		UWorldStateSubsystem* InOwningSubsystem,
+		const FWorldForgeStateAddress& InAddress,
+		const FGuid& InLeaseId);
+
+	void Invalidate();
+
+	TWeakObjectPtr<UWorldStateSubsystem> OwningSubsystem;
+	FWorldForgeStateAddress Address;
+	FGuid LeaseId;
 };

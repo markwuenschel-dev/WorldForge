@@ -18,8 +18,9 @@ v0.8 splits into two surfaces:
 - **Authoring-side (pure Python, runs anywhere):** `run-state-sim` simulates the
   scenario over data and writes a deterministic result descriptor;
   `validate-runtime-state` proves the result.
-- **UE-side (in-editor):** `apply-state-scenario` applies the same post-state via
-  the `WorldForge.SetState` console path and reads the MPC render-mirror back.
+- **UE-side (in-editor):** `apply-state-scenario` reports whether a native state
+  owner is available. Editor Python cannot acquire a write lease, so it records
+  `native_authority_required` rather than forging a state mutation.
 
 The authoring side is the contract; the UE bridge is validated against it.
 
@@ -32,7 +33,7 @@ make run-state-sim NAME=Desert_Ash_IndustrialYard_01 SCENARIO=activate_industria
 # 2. Validate the simulated result
 make validate-runtime-state NAME=Desert_Ash_IndustrialYard_01
 
-# 3. (UE-side) apply + read back the MPC bridge, with the slice map open
+# 3. (UE-side) record native-authority availability, with the slice map open
 make apply-state-scenario NAME=Desert_Ash_IndustrialYard_01 SCENARIO=activate_industrial_forge
 ```
 
@@ -88,10 +89,11 @@ model:
   per-slice UE report: it `PASS`es once `make validate-slice` has passed for the
   target slice, otherwise `FAIL`s (`WF080_UE_ARTIFACT_MISSING`).
 - `ue_state_applied` — the in-editor MPC bridge readback. It is verified with
-  `ue_check` (`PASS`/`FAIL`, code `WF082_UE_STATE_NOT_APPLIED`) **when**
-  `make apply-state-scenario` has written a `ue_state_scenario_report.json`; when that
-  report is absent it is recorded with `skip()` → `SKIP_NOT_APPLICABLE` (non-blocking),
-  because the authoring-side scenario validation already proves the state logic.
+  `ue_check` (`PASS`/`FAIL`, code `WF082_UE_STATE_NOT_APPLIED`) **when** a native
+  owner has produced a successful report. The editor-Python command records
+  `native_authority_required`; when no report is present the validator records
+  `skip()` → `SKIP_NOT_APPLICABLE` (non-blocking), because the authoring-side
+  scenario validation already proves the state logic.
 
 Run the v0.9 final gate with `make validate-runtime-state NAME=… SCENARIO=… STRICT=1`:
 strict escalates soft `WARN` checks to blocking while the optional MPC bridge readback
@@ -107,9 +109,10 @@ The report surfaces a legible before/after summary, `affected_poi`, and
 
 - Save/load is implemented and validated at the **data layer** (a real
   write→read→compare round-trip in `state_save.json`). In-editor world-state
-  serialization is a later milestone; the UE bridge currently applies state and
-  reads the MPC back but does not yet persist the live world.
-- `apply-state-scenario` must run with the scenario's slice map open so the
-  world's `UWorldStateSubsystem` and `MPC_WorldState` instance are live.
+  serialization is a later milestone; an in-editor readback requires a native
+  state owner and does not yet persist the live world.
+- `apply-state-scenario` must run with the scenario's slice map open when a
+  native state owner is available; editor Python alone cannot mutate the world's
+  `UWorldStateSubsystem`.
 - POI evidence is computed from the driving state key; richer per-template
   evidence models are future work.

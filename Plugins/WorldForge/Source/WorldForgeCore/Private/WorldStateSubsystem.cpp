@@ -2,7 +2,6 @@
 
 #include "WorldStateSubsystem.h"
 
-#include "HAL/IConsoleManager.h"
 #include "Kismet/KismetMaterialLibrary.h"
 #include "Materials/MaterialParameterCollection.h"
 
@@ -13,36 +12,16 @@ namespace
 	// The curated MPC render mirror lives next to the master material so the master
 	// can sample it without creating a plugin -> /Game content dependency.
 	const TCHAR* GStateCollectionPath = TEXT("/CoreTerrainMaterials/State/MPC_WorldState.MPC_WorldState");
-
-	bool ParseScope(const FString& In, EWorldForgeStateScope& Out)
-	{
-		if (In.Equals(TEXT("Global"), ESearchCase::IgnoreCase)) { Out = EWorldForgeStateScope::Global; return true; }
-		if (In.Equals(TEXT("Region"), ESearchCase::IgnoreCase)) { Out = EWorldForgeStateScope::Region; return true; }
-		if (In.Equals(TEXT("Local"), ESearchCase::IgnoreCase)) { Out = EWorldForgeStateScope::Local; return true; }
-		if (In.Equals(TEXT("Settlement"), ESearchCase::IgnoreCase)) { Out = EWorldForgeStateScope::Settlement; return true; }
-		return false;
-	}
 }
 
 void UWorldStateSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
-
-	SetStateCommand = IConsoleManager::Get().RegisterConsoleCommand(
-		TEXT("WorldForge.SetState"),
-		TEXT("Set a world-state value. Usage: WorldForge.SetState <Global|Region|Local|Settlement> <ContextId> <Key> <Value>"),
-		FConsoleCommandWithArgsDelegate::CreateUObject(this, &UWorldStateSubsystem::HandleSetStateCommand),
-		ECVF_Default);
 }
 
 void UWorldStateSubsystem::Deinitialize()
 {
-	if (SetStateCommand)
-	{
-		IConsoleManager::Get().UnregisterConsoleObject(SetStateCommand);
-		SetStateCommand = nullptr;
-	}
-
+	StateWriteReservations.Reset();
 	StateStore.Reset();
 	CachedStateCollection = nullptr;
 
@@ -58,16 +37,130 @@ float UWorldStateSubsystem::GetStateValue(EWorldForgeStateScope Scope, FName Con
 	return Default;
 }
 
-void UWorldStateSubsystem::SetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Value)
+bool UWorldStateSubsystem::SetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Value)
 {
-	StateStore.Add(FWorldForgeStateAddress(Scope, ContextId, Key), Value);
+	const FWorldForgeStateAddress Address(Scope, ContextId, Key);
+	if (StateWriteReservations.Contains(Address))
+	{
+		return false;
+	}
+
+	WriteStateValue(Address, Value);
+	return true;
+}
+
+FWorldForgeStateWriteLease UWorldStateSubsystem::ReserveStateAddress(
+	EWorldForgeStateScope Scope,
+	FName ContextId,
+	FName Key)
+{
+	const FWorldForgeStateAddress Address(Scope, ContextId, Key);
+	if (StateWriteReservations.Contains(Address))
+	{
+		return FWorldForgeStateWriteLease();
+	}
+
+	const FGuid LeaseId = FGuid::NewGuid();
+	StateWriteReservations.Add(Address, LeaseId);
+	return FWorldForgeStateWriteLease(this, Address, LeaseId);
+}
+
+bool UWorldStateSubsystem::SetStateValueWithLease(
+	const FWorldForgeStateWriteLease& Lease,
+	EWorldForgeStateScope Scope,
+	FName ContextId,
+	FName Key,
+	float Value)
+{
+	const FWorldForgeStateAddress Address(Scope, ContextId, Key);
+	if (!IsMatchingLease(Lease, Address))
+	{
+		return false;
+	}
+
+	WriteStateValue(Address, Value);
+	return true;
+}
+
+bool UWorldStateSubsystem::ReleaseStateAddress(FWorldForgeStateWriteLease& Lease)
+{
+	if (!IsLeaseActive(Lease))
+	{
+		return false;
+	}
+
+	StateWriteReservations.Remove(Lease.Address);
+	Lease.Invalidate();
+	return true;
+}
+
+bool UWorldStateSubsystem::IsMatchingLease(
+	const FWorldForgeStateWriteLease& Lease,
+	const FWorldForgeStateAddress& Address) const
+{
+	if (Lease.OwningSubsystem.Get() != this || !(Lease.Address == Address) || !Lease.LeaseId.IsValid())
+	{
+		return false;
+	}
+
+	const FGuid* ActiveLeaseId = StateWriteReservations.Find(Address);
+	return ActiveLeaseId && *ActiveLeaseId == Lease.LeaseId;
+}
+
+bool UWorldStateSubsystem::IsLeaseActive(const FWorldForgeStateWriteLease& Lease) const
+{
+	return IsMatchingLease(Lease, Lease.Address);
+}
+
+void UWorldStateSubsystem::WriteStateValue(const FWorldForgeStateAddress& Address, float Value)
+{
+	StateStore.Add(Address, Value);
 
 	// Mirror render-facing values into the MPC. Gameplay-scale state stays in the
 	// store only (D10): the MPC is a render-only projection.
-	if (GetCuratedMpcParams().Contains(Key))
+	if (GetCuratedMpcParams().Contains(Address.Key))
 	{
-		PushToMpc(Key, Value);
+		PushToMpc(Address.Key, Value);
 	}
+}
+
+FWorldForgeStateWriteLease::FWorldForgeStateWriteLease(
+	UWorldStateSubsystem* InOwningSubsystem,
+	const FWorldForgeStateAddress& InAddress,
+	const FGuid& InLeaseId)
+	: OwningSubsystem(InOwningSubsystem)
+	, Address(InAddress)
+	, LeaseId(InLeaseId)
+{
+}
+
+FWorldForgeStateWriteLease::FWorldForgeStateWriteLease(FWorldForgeStateWriteLease&& Other) noexcept
+	: OwningSubsystem(Other.OwningSubsystem)
+	, Address(Other.Address)
+	, LeaseId(Other.LeaseId)
+{
+	Other.Invalidate();
+}
+
+FWorldForgeStateWriteLease::~FWorldForgeStateWriteLease()
+{
+	if (UWorldStateSubsystem* StateSubsystem = OwningSubsystem.Get())
+	{
+		StateSubsystem->ReleaseStateAddress(*this);
+	}
+}
+
+bool FWorldForgeStateWriteLease::IsValid() const
+{
+	const UWorldStateSubsystem* StateSubsystem = OwningSubsystem.Get();
+	return StateSubsystem && StateSubsystem->IsLeaseActive(*this);
+}
+
+void FWorldForgeStateWriteLease::Invalidate()
+{
+	OwningSubsystem.Reset();
+	Address = FWorldForgeStateAddress();
+	LeaseId = FGuid();
 }
 
 const TMap<FName, FName>& UWorldStateSubsystem::GetCuratedMpcParams()
@@ -116,30 +209,4 @@ void UWorldStateSubsystem::PushToMpc(FName Key, float Value)
 
 	UKismetMaterialLibrary::SetScalarParameterValue(this, Collection, *ParamName, Value);
 	UE_LOG(LogWorldForgeState, Verbose, TEXT("MPC mirror: %s = %f"), *ParamName->ToString(), Value);
-}
-
-void UWorldStateSubsystem::HandleSetStateCommand(const TArray<FString>& Args)
-{
-	if (Args.Num() != 4)
-	{
-		UE_LOG(LogWorldForgeState, Warning,
-			TEXT("Usage: WorldForge.SetState <Global|Region|Local|Settlement> <ContextId> <Key> <Value>"));
-		return;
-	}
-
-	EWorldForgeStateScope Scope;
-	if (!ParseScope(Args[0], Scope))
-	{
-		UE_LOG(LogWorldForgeState, Warning, TEXT("Unknown scope '%s'."), *Args[0]);
-		return;
-	}
-
-	const FName ContextId = (Args[1].Equals(TEXT("None"), ESearchCase::IgnoreCase)) ? NAME_None : FName(*Args[1]);
-	const FName Key = FName(*Args[2]);
-	const float Value = FCString::Atof(*Args[3]);
-
-	SetStateValue(Scope, ContextId, Key, Value);
-
-	UE_LOG(LogWorldForgeState, Log, TEXT("SetState %s/%s/%s = %f"),
-		*Args[0], *ContextId.ToString(), *Key.ToString(), Value);
 }

@@ -26,12 +26,13 @@ Proves (all data-driven; no state key is hard-coded):
   - save/load round-trip restored the persisted state (WF075)
   - provenance present
   - post-scenario map validity — verified from the per-slice UE validate report
-  - the in-editor MPC bridge readback — an optional cross-check (WF082)
+  - the in-editor MPC bridge readback — an optional native-owner cross-check (WF082)
 
-The in-editor MPC bridge readback is produced by 'make apply-state-scenario';
-when its report is absent that check is skipped (non-blocking), because the
-authoring-side scenario validation already proves the state logic. Run the
-editor step to add the cross-check.
+The editor-Python 'make apply-state-scenario' helper cannot acquire a native
+write lease, so it records native-authority-required rather than applying state.
+An unavailable report fails WF082 explicitly; when no report is present the
+cross-check is skipped (non-blocking), because the authoring-side scenario
+validation already proves the state logic.
 
 Usage:
     python tools/pipeline/validate_runtime_state.py --name Desert_Ash_IndustrialYard_01
@@ -314,22 +315,28 @@ def main(argv=None):
                   args.name),
               code=FailureCode.UE_ARTIFACT_MISSING)
 
-    # -- In-editor MPC bridge readback: an optional cross-check produced by
-    #    'make apply-state-scenario'. Verified when present; otherwise skipped
-    #    (the authoring-side scenario validation already proves the state logic).
+    # -- In-editor MPC bridge readback: an optional native-owner cross-check.
+    #    Editor Python reports native-authority-required rather than forging this
+    #    mutation. A missing report remains non-blocking because the authoring-side
+    #    scenario validation already proves the state logic.
     ue_report = report_dir / "ue_state_scenario_report.json"
     if ue_report.is_file():
         try:
             ue_rpt = json.loads(ue_report.read_text(encoding="utf-8"))
-            ue_ok = bool(ue_rpt.get("passed"))
-            ue_detail = "ue readback={}".format(ue_rpt.get("mpc_readback"))
+            authority = ue_rpt.get("authority", {})
+            if authority.get("status") == "native_authority_required":
+                ue_ok = False
+                ue_detail = authority.get("detail", "native state-write authority is required")
+            else:
+                ue_ok = bool(ue_rpt.get("passed"))
+                ue_detail = "ue readback={}".format(ue_rpt.get("mpc_readback"))
         except Exception:
             ue_ok, ue_detail = False, "ue_state_scenario_report.json unreadable"
         rep.ue_check("ue_state_applied", ue_ok, ue_detail,
                   code=FailureCode.UE_STATE_NOT_APPLIED)
     else:
         rep.skip("ue_state_applied",
-                 "in-editor MPC bridge readback not run here; produce it with 'make apply-state-scenario'")
+                 "in-editor MPC bridge readback not run here; a native state owner must produce it")
 
     # -- Finalize + write ---------------------------------------------------
     rep.finalize()

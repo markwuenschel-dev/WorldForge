@@ -9,7 +9,7 @@ Opens the saved map a slice spec points at and asserts the slice is real and wir
     PCG actor present, references the spec's PCG graph + placement DataAsset
     region marker present, region_id + state key/before/after match the spec
     placement DataAsset resolves
-    MPC bridge works (SetState(after) -> MPC readback == after)
+    MPC bridge requires an owning native state writer for a runtime readback
 
 Writes <output_dir>/validate_slice_report.json and logs PASS/FAIL. JSON only.
 Spec resolution mirrors create_slice_map.py (--spec / $WF_SLICE_SPEC / fixed pointer).
@@ -43,10 +43,6 @@ TAG_PCG = "wf_pcg"
 TAG_PCG_GRAPH = "wf_pcg_graph"
 TAG_PLACEMENT_DA = "wf_placement_da"
 TAG_TERRAIN = "wf_terrain"
-
-MPC_PATH = "/CoreTerrainMaterials/State/MPC_WorldState"
-MPC_PRESSURE_PARAM = "IndustrialPressure"
-
 
 def log(m):
     unreal.log("[validate-slice] {}".format(m))
@@ -191,33 +187,19 @@ def validate_spec(spec, root, deep=False):
               da_path is not None and unreal.EditorAssetLibrary.load_asset(da_path) is not None, da_path,
               code=FailureCode.SPEC_INVALID)
 
-        # MPC bridge: drive to the slice's `after` state. The MPC render mirror is a
-        # CURATED scalar spine (WorldStateSubsystem::GetCuratedMpcParams): only curated
-        # keys (industrial_pressure) push into MPC_WorldState. For a curated key we
-        # assert the readback mirrors `after`; for an off-spine biome key (canopy_growth,
-        # etc.) the MPC mirror is not applicable by design — the canonical state
-        # round-trip is proven by the runtime-state scenario save/load — so we SKIP the
-        # mirror check while still exercising SetState to prove the bridge is callable.
-        after = state.get("after", 0.75)
+        # MPC bridge: only curated render keys project into MPC_WorldState. Runtime
+        # proof for one of those keys must come from an owning native writer, because
+        # editor Python cannot acquire a FWorldForgeStateWriteLease.
         state_key = str(state.get("key", ""))
         curated = state_key in CURATED_MPC_KEYS
-        try:
-            unreal.SystemLibrary.execute_console_command(
-                world, "WorldForge.SetState {} {} {} {}".format(
-                    state.get("scope", "Region"), state.get("context_id"), state.get("key"), after))
-            if curated:
-                mpc = unreal.EditorAssetLibrary.load_asset(MPC_PATH)
-                val = float(unreal.MaterialLibrary.get_scalar_parameter_value(world, mpc, MPC_PRESSURE_PARAM))
-                mpc_readback = round(val, 4)
-                check("mpc_bridge", abs(val - float(after)) < 1e-4,
-                      "readback={} expected={}".format(round(val, 4), after),
-                      code=FailureCode.MPC_VALUE_MISMATCH)
-            else:
-                rep.skip("mpc_bridge",
-                         "state key '{}' is off the curated MPC render spine by design; "
-                         "canonical round-trip validated by runtime-state scenario".format(state_key))
-        except Exception as e:  # noqa: BLE001
-            check("mpc_bridge", False, "exception: {}".format(e), code=FailureCode.MPC_VALUE_MISMATCH)
+        if curated:
+            check("mpc_bridge", False,
+                  "native state-write authority is required; editor Python cannot acquire a world-state write lease",
+                  code=FailureCode.UE_STATE_NOT_APPLIED)
+        else:
+            rep.skip("mpc_bridge",
+                     "state key '{}' is off the curated MPC render spine by design; "
+                     "canonical round-trip validated by runtime-state scenario".format(state_key))
 
         # player_start and nav_bounds are warn_only for backwards compat with pre-v0.4 maps
         # -> WARN_ONLY: intentionally non-blocking forever (legacy compat).

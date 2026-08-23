@@ -4,9 +4,8 @@ wire_terrain_soot.py (UE5 Python)
 
 Closes the thin StateForge spine (forge_design_decisions D9-D11): wires
 M_Terrain_Master to SAMPLE MPC_WorldState.IndustrialPressure and lerp its base
-color (and roughness) toward a sooted look, so a
-`WorldForge.SetState ... industrial_pressure X` push produces a visible terrain
-reaction.
+color (and roughness) toward a sooted look, so an owning native state writer can
+produce a visible terrain reaction through the render mirror.
 
 This automates what adaptive_world_state_system.md called a "human Tier-2 edit".
 It still mutates the master .uasset, so it is a Tier-2 change: human-run / reviewed,

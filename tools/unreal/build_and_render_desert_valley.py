@@ -10,9 +10,9 @@ Builds the smallest renderable Desert_Valley_01 map and captures two screenshots
 
 What it proves visually:
   * TERRAIN reacts: the ground uses MI_Terrain_Rock_Desert_01, whose parent is the
-    soot-wired M_Terrain_Master. Driving MPC_WorldState.IndustrialPressure (through the
-    REAL path -- WorldForge.SetState console cmd -> WorldStateSubsystem -> MPC) lerps the
-    ground toward soot.
+    soot-wired M_Terrain_Master. A native state writer can drive
+    MPC_WorldState.IndustrialPressure through the subsystem and lerp the ground toward
+    soot. Without that writer this script records a non-runtime preview only.
   * FOLIAGE density reacts: placeholder foliage (engine basic shapes -- the real meshes
     live in the consuming game project) is scattered at counts derived from the
     PlacementRulesDataAsset response curve: count = effective_density * AREA_100M2,
@@ -46,6 +46,9 @@ SCOPE = "Region"
 CONTEXT_ID = "Desert_Valley_01"
 DRIVING_KEY = "industrial_pressure"
 STATES = [0.0, 0.75]
+NATIVE_STATE_WRITE_AUTHORITY_ERROR = (
+    "native state-write authority is required; editor Python cannot acquire "
+    "a world-state write lease")
 
 # Render-proof terrain look. When the active slice provides preview_base_color
 # (linear RGB), the ground uses a self-built material whose base color is
@@ -473,6 +476,8 @@ def main():
         world = _world()
         report["editor_world"] = world.get_name() if world else None
         report["preview_base_color"] = list(PREVIEW_BASE_COLOR) if PREVIEW_BASE_COLOR else None
+        report["state_authority"] = {"available": False, "detail": NATIVE_STATE_WRITE_AUTHORITY_ERROR}
+        report["warnings"] = [NATIVE_STATE_WRITE_AUTHORITY_ERROR]
 
         # Prime the renderer: in a non-ticking commandlet the real-time skylight
         # cubemap starts black, so a single cold capture renders dark. Trigger the
@@ -483,10 +488,7 @@ def main():
             cap_comp.capture_scene()
 
         for state in STATES:
-            cmd = "WorldForge.SetState {} {} {} {}".format(SCOPE, CONTEXT_ID, DRIVING_KEY, state)
-            unreal.SystemLibrary.execute_console_command(world, cmd)
-            mpc = unreal.EditorAssetLibrary.load_asset("/CoreTerrainMaterials/State/MPC_WorldState")
-            mpc_val = unreal.MaterialLibrary.get_scalar_parameter_value(world, mpc, "IndustrialPressure")
+            mpc_val = None
 
             counts = scatter(species, state, rng, veg_mats)
 
@@ -502,20 +504,19 @@ def main():
 
             step = {
                 "set_value": state,
-                "mpc_readback": round(mpc_val, 4),
-                "mpc_matches_set": abs(mpc_val - state) < 1e-4,
+                "runtime_state_applied": False,
+                "mpc_readback": None,
+                "mpc_matches_set": False,
                 "foliage": counts,
                 "screenshot": os.path.join(rel_shot, fname),
             }
             report["steps"].append(step)
-            log("state {} -> MPC {} -> {}".format(state, step["mpc_readback"], fname))
+            log("state {} preview only -> {}".format(state, fname))
 
         # Leave the map in the clean state and save it.
-        unreal.SystemLibrary.execute_console_command(
-            world, "WorldForge.SetState {} {} {} 0.0".format(SCOPE, CONTEXT_ID, DRIVING_KEY))
         scatter(species, 0.0, rng, veg_mats)
         _les().save_current_level()
-        report["status"] = "ok"
+        report["status"] = "native_authority_required"
     except Exception as exc:  # noqa: BLE001
         report["status"] = "error"
         report["errors"].append(str(exc))

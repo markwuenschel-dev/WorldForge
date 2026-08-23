@@ -117,7 +117,7 @@ The commands that materialize these artifacts (so their `ue_check` reports `PASS
 | Editor command | Materializes | Failure code if missing |
 |---|---|---|
 | `make relocate-houdini-asset ASSET=…` | `asset_exists_in_ue_as_static_mesh` (generated-asset intake) | `WF080` / `WF081` |
-| `make apply-state-scenario NAME=… SCENARIO=…` | `ue_state_applied` (runtime scenario) | `WF082` |
+| `make apply-state-scenario NAME=… SCENARIO=…` | native-authority availability for `ue_state_applied`; a native owner must materialize runtime state | `WF082` |
 | `make import-terrain NAME=…` | terrain UE-import presence | `WF080` |
 
 These run inside UE editor Python (`UE_PYTHON`), with the relevant slice map open

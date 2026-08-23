@@ -1,20 +1,19 @@
 r"""
 run_state_scenario.py (UE5 Python)
 
-Runtime StateForge UE bridge — applies a simulated scenario result in-editor and
-reads the MPC render-mirror back, proving the data-layer expectation matches the
-live UWorldStateSubsystem -> MPC_WorldState path.
+Runtime StateForge UE bridge — records whether an editor-side runtime check can
+obtain native state-write authority.
 
 Reads result.json (JSON only — UE scripts must not use PyYAML) produced by
-run_state_sim.py, applies each post-state value via the WorldForge.SetState
-console command (the same path the console tracer uses), then reads back the
-curated MPC scalar params and compares them to expected_mpc.
+run_state_sim.py. Editor Python intentionally cannot acquire a native
+FWorldForgeStateWriteLease, so this script writes an explicit unavailable result
+instead of forging state through reflection, an MPC edit, or a console command.
 
 Writes a UE report consumed by validate_runtime_state.py:
     procedural/reports/scenarios/<run_id>/ue_state_scenario_report.json
 
-Run inside the editor with the scenario's slice map open so the world's
-UWorldStateSubsystem and MPC_WorldState instance are live.
+Run inside the editor with the scenario's slice map open when an owning native
+writer is available.
 
 Usage:
     py tools/unreal/run_state_scenario.py \
@@ -28,10 +27,6 @@ import os
 
 import unreal
 
-MPC_PATH = "/CoreTerrainMaterials/State/MPC_WorldState"
-_EPS = 1e-3
-
-
 def _editor_world():
     try:
         ues = unreal.get_editor_subsystem(unreal.UnrealEditorSubsystem)
@@ -44,7 +39,8 @@ def _editor_world():
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Apply a runtime-state scenario result in UE and read back the MPC.")
+    ap = argparse.ArgumentParser(
+        description="Report native write-authority availability for a runtime-state scenario in UE.")
     ap.add_argument("--result", required=True, help="Path to run_state_sim result.json")
     ap.add_argument("--project-root", default=".", help="Repo root (for report output)")
     args = ap.parse_args()
@@ -58,11 +54,6 @@ def main():
         descriptor = json.load(fh)
 
     run_id = descriptor.get("run_id", "unknown")
-    scope = descriptor.get("scope", "Region")
-    context_id = descriptor.get("context_id", "")
-    after_state = descriptor.get("after_state", {})
-    expected_mpc = descriptor.get("expected_mpc", {})
-
     report = {
         "run_id": run_id,
         "applied": {},
@@ -78,40 +69,14 @@ def main():
         _write_report(repo_root, run_id, report)
         return
 
-    # -- Apply each post-state value via the console tracer ------------------
-    for key, value in after_state.items():
-        cmd = "WorldForge.SetState {} {} {} {}".format(scope, context_id, key, value)
-        unreal.SystemLibrary.execute_console_command(world, cmd)
-        report["applied"][key] = value
-        unreal.log("[run-state-scenario] {}".format(cmd))
-
-    # -- Read back the curated MPC scalar params ----------------------------
-    mpc = unreal.load_asset(MPC_PATH)
-    all_ok = bool(mpc)
-    if not mpc:
-        report["error"] = "MPC_WorldState not found at {}".format(MPC_PATH)
-    else:
-        for param, expected in expected_mpc.items():
-            try:
-                # MPC scalar get/set live on UKismetMaterialLibrary, exposed to
-                # Python as unreal.MaterialLibrary.
-                got = unreal.MaterialLibrary.get_scalar_parameter_value(
-                    world, mpc, unreal.Name(param))
-            except Exception as exc:
-                got = None
-                report["checks"]["readback_{}".format(param)] = "error: {}".format(exc)
-            report["mpc_readback"][param] = got
-            ok = got is not None and abs(float(got) - float(expected)) < _EPS
-            report["checks"][param] = {"expected": expected, "got": got, "ok": ok}
-            all_ok = all_ok and ok
-
-    report["passed"] = all_ok
-    # convenience scalar used by the validator's warn-only readback display
-    if len(expected_mpc) == 1:
-        only = next(iter(expected_mpc))
-        report["mpc_readback_value"] = report["mpc_readback"].get(only)
+    authority_error = (
+        "native state-write authority is required; editor Python cannot acquire "
+        "a world-state write lease")
+    report["authority"] = {"status": "native_authority_required", "detail": authority_error}
+    report["checks"]["native_write_authority"] = {"ok": False, "detail": authority_error}
+    report["error"] = authority_error
     _write_report(repo_root, run_id, report)
-    unreal.log("[run-state-scenario] {} — {}".format("PASS" if all_ok else "FAIL", run_id))
+    unreal.log_error("[run-state-scenario] FAIL — {}: {}".format(run_id, authority_error))
 
 
 def _write_report(repo_root, run_id, report):
