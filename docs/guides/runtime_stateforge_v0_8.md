@@ -88,39 +88,27 @@ model:
 - `post_scenario_map_valid` — a real `ue_check` (`PASS`/`FAIL`) driven by the
   per-slice UE report: it `PASS`es once `make validate-slice` has passed for the
   target slice, otherwise `FAIL`s (`WF080_UE_ARTIFACT_MISSING`).
-- `ue_state_applied` — the in-editor MPC bridge readback. It is verified with
-  `ue_check` (`PASS`/`FAIL`, code `WF082_UE_STATE_NOT_APPLIED`) **when** a native
-  owner has produced a successful report. The editor-Python command records
-  `native_authority_required`; when no report is present the validator records
-  `skip()` → `SKIP_NOT_APPLICABLE` (non-blocking), because the authoring-side
-  scenario validation already proves the state logic.
+- `ue_state_applied` — the in-editor MPC bridge readback. A present persisted
+  report is evaluated with `ue_check` (code `WF082_UE_STATE_NOT_APPLIED`), but
+  currently cannot pass: arbitrary Python can forge JSON that claims a native
+  writer. The editor-Python command records `native_authority_required`; when no
+  report is present the validator records `skip()` → `SKIP_NOT_APPLICABLE`
+  (non-blocking), because the authoring-side scenario validation already proves
+  the state logic.
 
-### Native authority evidence v1
+### Persisted authority claims are not proof
 
-When a `ue_state_scenario_report.json` is present, `ue_state_applied` can pass
-only when its `authority` block is exactly this v1 audit record:
+The validator parses legacy and v1-shaped authority JSON only to report a
+specific `WF082` failure. A fully matching `writer: "native"` record, bound
+scope/context/state keys, and claimed applied-state/MPC/check data remain
+synthetic persisted claims; none can prove a native leased write or a live
+readback, and every present JSON report fails `WF082` today.
 
-```json
-{
-  "record_version": 1,
-  "kind": "native_state_write_lease",
-  "status": "success",
-  "writer": "native",
-  "scope": "<descriptor scope>",
-  "context_id": "<descriptor context_id>",
-  "state_keys": ["<descriptor state key>"]
-}
-```
-
-The bound scope, context, and ordered state keys must match the scenario result
-descriptor, and the report must also contain a successful applied-state, MPC
-readback, and check record. This is audit provenance only: it serializes neither
-an opaque lease nor a capability token. The validator rejects records that
-identify editor Python, console commands, or Blueprints as the writer. The
-current editor-Python bridge intentionally emits `native_authority_required`; it
-does not implement a native-success emitter. A present report with missing,
-malformed, unavailable, or non-native authority evidence fails `WF082` rather
-than being treated as a successful readback. An entirely absent optional UE
+Positive native proof requires a future native-only, in-process synchronous
+emitter/verifier tied directly to `SetStateValueWithLease(...)` and a readback
+from that same live world. It must not be a generic persisted JSON authority
+record. No such emitter/verifier exists yet. The current editor-Python bridge
+intentionally emits `native_authority_required`; an entirely absent optional UE
 report remains `SKIP_NOT_APPLICABLE`.
 
 Run the v0.9 final gate with `make validate-runtime-state NAME=… SCENARIO=… STRICT=1`:

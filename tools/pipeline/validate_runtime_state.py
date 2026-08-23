@@ -30,9 +30,11 @@ Proves (all data-driven; no state key is hard-coded):
 
 The editor-Python 'make apply-state-scenario' helper cannot acquire a native
 write lease, so it records native-authority-required rather than applying state.
-An unavailable report fails WF082 explicitly; when no report is present the
-cross-check is skipped (non-blocking), because the authoring-side scenario
-validation already proves the state logic.
+No persisted JSON record can currently prove a native leased write and live
+readback: every present UE report fails WF082 until a native-only in-process
+synchronous emitter/verifier exists. When no report is present the cross-check
+is skipped (non-blocking), because the authoring-side scenario validation
+already proves the state logic.
 
 Usage:
     python tools/pipeline/validate_runtime_state.py --name Desert_Ash_IndustrialYard_01
@@ -86,13 +88,14 @@ _NATIVE_AUTHORITY_RECORD_FIELDS = frozenset((
 
 
 def validate_native_authority_evidence(ue_report, descriptor):
-    """Return whether a UE readback has a bound native-write authority record.
+    """Reject untrusted persisted claims while preserving useful failure detail.
 
-    The record is deliberately descriptive rather than a serialized capability:
-    native code owns the opaque write lease, while the report names the address
-    it exercised.  A v1 record must have exactly the documented fields so an
-    editor, console, or Blueprint payload cannot acquire authority by adding a
-    permissive claim to an otherwise successful report.
+    A record can describe an alleged native leased write, but arbitrary Python
+    can forge that description. Until a native-only in-process synchronous
+    emitter/verifier is tied directly to SetStateValueWithLease and the same
+    live MPC readback, no persisted JSON can make ``ue_state_applied`` pass.
+    The v1 parsing and descriptor-binding checks below remain only to explain
+    why a present report is rejected; they do not authenticate it.
     """
     if not isinstance(ue_report, dict):
         return False, "UE report is not an object"
@@ -151,7 +154,10 @@ def validate_native_authority_evidence(ue_report, descriptor):
     if not isinstance(ue_report.get("checks"), dict) or not ue_report["checks"]:
         return False, "native authority report lacks check evidence"
 
-    return True, "native write-lease authority and UE readback accepted"
+    return False, (
+        "persisted JSON cannot prove a native leased write and live MPC readback; "
+        "a future native-only synchronous emitter/verifier tied to "
+        "SetStateValueWithLease is required")
 
 
 def _resolve_run_id(name, scenario, registry):

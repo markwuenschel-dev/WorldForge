@@ -4,6 +4,8 @@
 The validator is exercised through its public CLI entry point against a temporary
 copy of the tracked runtime-state inputs.  This keeps the legacy UE report as a
 realistic regression fixture without rewriting any generated repository report.
+Synthetic authority fixtures are deliberately named as JSON claims: they do not
+constitute native proof.
 """
 
 import contextlib
@@ -33,12 +35,12 @@ LEGACY_UE_REPORT = REPORT_ROOT / "ue_state_scenario_report.json"
 
 
 class RuntimeStateAuthorityEvidenceTests(unittest.TestCase):
-    """The UE readback can pass only on an explicit native-owner record."""
+    """Persisted JSON cannot prove a native leased write or live readback."""
 
     def _legacy_report(self):
         return json.loads((REPO_ROOT / LEGACY_UE_REPORT).read_text(encoding="utf-8"))
 
-    def _run_with_ue_report(self, ue_report):
+    def _run_with_ue_report(self, ue_report=None):
         """Run the public validator in a temporary repository and return its check."""
         with tempfile.TemporaryDirectory() as tmp:
             temp_root = Path(tmp)
@@ -52,9 +54,10 @@ class RuntimeStateAuthorityEvidenceTests(unittest.TestCase):
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(REPO_ROOT / rel, destination)
 
-            ue_path = temp_root / LEGACY_UE_REPORT
-            ue_path.parent.mkdir(parents=True, exist_ok=True)
-            ue_path.write_text(json.dumps(ue_report), encoding="utf-8")
+            if ue_report is not None:
+                ue_path = temp_root / LEGACY_UE_REPORT
+                ue_path.parent.mkdir(parents=True, exist_ok=True)
+                ue_path.write_text(json.dumps(ue_report), encoding="utf-8")
 
             old_root = validator.REPO_ROOT
             try:
@@ -71,7 +74,7 @@ class RuntimeStateAuthorityEvidenceTests(unittest.TestCase):
             return result["checks"]["ue_state_applied"]
 
     @staticmethod
-    def _native_success_authority(writer="native"):
+    def _synthetic_native_success_authority(writer="native"):
         return {
             "record_version": 1,
             "kind": "native_state_write_lease",
@@ -87,6 +90,12 @@ class RuntimeStateAuthorityEvidenceTests(unittest.TestCase):
         self.assertFalse(check["ok"])
         self.assertEqual("FAIL", check["verdict"])
         self.assertEqual("WF082_UE_STATE_NOT_APPLIED", check["code"])
+
+    def test_absent_optional_ue_report_is_skipped(self):
+        check = self._run_with_ue_report()
+        self.assertFalse(check["ok"])
+        self.assertEqual("SKIP_NOT_APPLICABLE", check["verdict"])
+        self.assertFalse(check["blocking"])
 
     def test_incomplete_native_success_evidence_is_rejected(self):
         report = self._legacy_report()
@@ -124,50 +133,52 @@ class RuntimeStateAuthorityEvidenceTests(unittest.TestCase):
         for writer in ("editor_python", "console", "blueprint"):
             with self.subTest(writer=writer):
                 report = self._legacy_report()
-                report["authority"] = self._native_success_authority(writer=writer)
+                report["authority"] = self._synthetic_native_success_authority(writer=writer)
                 check = self._run_with_ue_report(report)
                 self.assertFalse(check["ok"])
                 self.assertEqual("FAIL", check["verdict"])
 
     def test_authority_record_cannot_carry_a_capability_payload(self):
         report = self._legacy_report()
-        authority = self._native_success_authority()
+        authority = self._synthetic_native_success_authority()
         authority["opaque_lease_payload"] = "must-not-be-serialized"
         report["authority"] = authority
         check = self._run_with_ue_report(report)
         self.assertFalse(check["ok"])
         self.assertEqual("FAIL", check["verdict"])
 
-    def test_native_success_must_bind_the_descriptor_state_address(self):
+    def test_synthetic_native_claim_must_bind_the_descriptor_state_address(self):
         for field, wrong_value in (
                 ("scope", "Local"),
                 ("context_id", "Other_Context"),
                 ("state_keys", ["other_state_key"])):
             with self.subTest(field=field):
                 report = self._legacy_report()
-                authority = self._native_success_authority()
+                authority = self._synthetic_native_success_authority()
                 authority[field] = wrong_value
                 report["authority"] = authority
                 check = self._run_with_ue_report(report)
                 self.assertFalse(check["ok"])
                 self.assertEqual("FAIL", check["verdict"])
 
-    def test_native_success_requires_each_ue_evidence_surface(self):
+    def test_synthetic_native_claim_requires_each_ue_evidence_surface(self):
         for field in ("passed", "applied", "mpc_readback", "checks"):
             with self.subTest(field=field):
                 report = self._legacy_report()
-                report["authority"] = self._native_success_authority()
+                report["authority"] = self._synthetic_native_success_authority()
                 report.pop(field)
                 check = self._run_with_ue_report(report)
                 self.assertFalse(check["ok"])
                 self.assertEqual("FAIL", check["verdict"])
 
-    def test_well_formed_native_success_authorizes_ue_readback(self):
+    def test_fully_matching_synthetic_native_v1_json_is_rejected(self):
         report = self._legacy_report()
-        report["authority"] = self._native_success_authority()
+        report["authority"] = self._synthetic_native_success_authority()
         check = self._run_with_ue_report(report)
-        self.assertTrue(check["ok"])
-        self.assertEqual("PASS", check["verdict"])
+        self.assertFalse(check["ok"])
+        self.assertEqual("FAIL", check["verdict"])
+        self.assertEqual("WF082_UE_STATE_NOT_APPLIED", check["code"])
+        self.assertIn("persisted JSON", check["detail"])
 
 
 if __name__ == "__main__":
