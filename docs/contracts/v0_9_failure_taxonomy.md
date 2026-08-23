@@ -98,7 +98,7 @@ validator uses `ue_check(...)` when its editor report is present and `skip(...)`
 |---|---|---|---|
 | `WF080_UE_ARTIFACT_MISSING` | fail | UE asset/map artifact absent when its `ue_check` was evaluated | The tooling drives the editor to materialize it, then re-validate |
 | `WF081_UE_ASSET_NOT_STATIC_MESH` | fail | Materialized UE asset is not a StaticMesh | Re-run relocate; confirm the bake produced a StaticMesh |
-| `WF082_UE_STATE_NOT_APPLIED` | fail | Scenario MPC state lacks a successful native-authority report when its `ue_check` was evaluated | A native owner must acquire the matching lease, apply the state, and emit the report; editor Python intentionally reports `native_authority_required` |
+| `WF082_UE_STATE_NOT_APPLIED` | fail | Scenario MPC state lacks a well-formed native write-lease success record when its `ue_check` was evaluated | A native owner must acquire the matching lease, apply the state, and emit the v1 bound authority record; absent, malformed, unavailable, or non-native evidence fails, while editor Python intentionally reports `native_authority_required` |
 
 ## 090–099 · Packaging
 

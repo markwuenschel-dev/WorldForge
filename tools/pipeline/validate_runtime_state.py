@@ -73,6 +73,86 @@ CURATED_MPC_PARAMS = {
 }
 _EPS = 1e-6
 
+_NATIVE_AUTHORITY_RECORD_VERSION = 1
+_NATIVE_AUTHORITY_RECORD_FIELDS = frozenset((
+    "record_version",
+    "kind",
+    "status",
+    "writer",
+    "scope",
+    "context_id",
+    "state_keys",
+))
+
+
+def validate_native_authority_evidence(ue_report, descriptor):
+    """Return whether a UE readback has a bound native-write authority record.
+
+    The record is deliberately descriptive rather than a serialized capability:
+    native code owns the opaque write lease, while the report names the address
+    it exercised.  A v1 record must have exactly the documented fields so an
+    editor, console, or Blueprint payload cannot acquire authority by adding a
+    permissive claim to an otherwise successful report.
+    """
+    if not isinstance(ue_report, dict):
+        return False, "UE report is not an object"
+
+    authority = ue_report.get("authority")
+    if not isinstance(authority, dict):
+        return False, "native authority evidence is absent or malformed"
+    if authority.get("status") == "native_authority_required":
+        return False, "native state-write authority is required"
+
+    fields = set(authority)
+    if fields != _NATIVE_AUTHORITY_RECORD_FIELDS:
+        missing = sorted(_NATIVE_AUTHORITY_RECORD_FIELDS - fields)
+        unexpected = sorted(fields - _NATIVE_AUTHORITY_RECORD_FIELDS)
+        detail = "native authority evidence has the wrong v1 field set"
+        if missing:
+            detail += "; missing={}".format(",".join(missing))
+        if unexpected:
+            detail += "; unexpected={}".format(",".join(unexpected))
+        return False, detail
+
+    if (type(authority["record_version"]) is not int or
+            authority["record_version"] != _NATIVE_AUTHORITY_RECORD_VERSION):
+        return False, "native authority evidence has an unsupported record version"
+    if authority["kind"] != "native_state_write_lease":
+        return False, "native authority evidence is not a native write-lease record"
+    if authority["status"] != "success":
+        return False, "native authority evidence does not record success"
+    if authority["writer"] != "native":
+        return False, "native authority evidence was not emitted by a native writer"
+
+    expected_run_id = descriptor.get("run_id")
+    expected_scope = descriptor.get("scope")
+    expected_context_id = descriptor.get("context_id")
+    expected_state_keys = descriptor.get("state_keys")
+    if (not isinstance(expected_run_id, str) or not expected_run_id or
+            not isinstance(expected_scope, str) or not expected_scope or
+            not isinstance(expected_context_id, str) or not expected_context_id or
+            not isinstance(expected_state_keys, list) or
+            not expected_state_keys or
+            not all(isinstance(key, str) and key for key in expected_state_keys)):
+        return False, "scenario descriptor does not provide a bound state address"
+    if ue_report.get("run_id") != expected_run_id:
+        return False, "native authority evidence belongs to a different scenario run"
+    if authority["scope"] != expected_scope or authority["context_id"] != expected_context_id:
+        return False, "native authority evidence is bound to a different state address"
+    if authority["state_keys"] != expected_state_keys:
+        return False, "native authority evidence does not cover the scenario state keys"
+
+    if ue_report.get("passed") is not True:
+        return False, "native authority report did not pass its UE readback"
+    if not isinstance(ue_report.get("applied"), dict) or not ue_report["applied"]:
+        return False, "native authority report lacks applied-state evidence"
+    if not isinstance(ue_report.get("mpc_readback"), dict) or not ue_report["mpc_readback"]:
+        return False, "native authority report lacks MPC readback evidence"
+    if not isinstance(ue_report.get("checks"), dict) or not ue_report["checks"]:
+        return False, "native authority report lacks check evidence"
+
+    return True, "native write-lease authority and UE readback accepted"
+
 
 def _resolve_run_id(name, scenario, registry):
     """Pick a run_id for the target, optionally disambiguated by scenario id."""
@@ -323,13 +403,7 @@ def main(argv=None):
     if ue_report.is_file():
         try:
             ue_rpt = json.loads(ue_report.read_text(encoding="utf-8"))
-            authority = ue_rpt.get("authority", {})
-            if authority.get("status") == "native_authority_required":
-                ue_ok = False
-                ue_detail = authority.get("detail", "native state-write authority is required")
-            else:
-                ue_ok = bool(ue_rpt.get("passed"))
-                ue_detail = "ue readback={}".format(ue_rpt.get("mpc_readback"))
+            ue_ok, ue_detail = validate_native_authority_evidence(ue_rpt, descriptor)
         except Exception:
             ue_ok, ue_detail = False, "ue_state_scenario_report.json unreadable"
         rep.ue_check("ue_state_applied", ue_ok, ue_detail,

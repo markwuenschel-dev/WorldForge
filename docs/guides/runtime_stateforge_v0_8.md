@@ -95,6 +95,34 @@ model:
   `skip()` → `SKIP_NOT_APPLICABLE` (non-blocking), because the authoring-side
   scenario validation already proves the state logic.
 
+### Native authority evidence v1
+
+When a `ue_state_scenario_report.json` is present, `ue_state_applied` can pass
+only when its `authority` block is exactly this v1 audit record:
+
+```json
+{
+  "record_version": 1,
+  "kind": "native_state_write_lease",
+  "status": "success",
+  "writer": "native",
+  "scope": "<descriptor scope>",
+  "context_id": "<descriptor context_id>",
+  "state_keys": ["<descriptor state key>"]
+}
+```
+
+The bound scope, context, and ordered state keys must match the scenario result
+descriptor, and the report must also contain a successful applied-state, MPC
+readback, and check record. This is audit provenance only: it serializes neither
+an opaque lease nor a capability token. The validator rejects records that
+identify editor Python, console commands, or Blueprints as the writer. The
+current editor-Python bridge intentionally emits `native_authority_required`; it
+does not implement a native-success emitter. A present report with missing,
+malformed, unavailable, or non-native authority evidence fails `WF082` rather
+than being treated as a successful readback. An entirely absent optional UE
+report remains `SKIP_NOT_APPLICABLE`.
+
 Run the v0.9 final gate with `make validate-runtime-state NAME=… SCENARIO=… STRICT=1`:
 strict escalates soft `WARN` checks to blocking while the optional MPC bridge readback
 stays non-blocking when its report is absent. PASS is achievable from the authoring
