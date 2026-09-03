@@ -1,0 +1,74 @@
+{
+  "suite": "quest_faction_operator_dashboard",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dash::quest_views_present": {
+      "ok": true,
+      "detail": "quest_views.json missing (run operator-quest-faction-index)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dash::faction_views_present": {
+      "ok": true,
+      "detail": "faction_views.json missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dash::quest_pages_written": {
+      "ok": true,
+      "detail": "all quest pages must be written",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dash::faction_pages_written": {
+      "ok": true,
+      "detail": "all faction pages must be written",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 4,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "operator-quest-faction-dashboard",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:12.239067+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.quest_faction.operator_dashboard.v1",
+    "report_id": "wf.quest_faction.operator_dashboard.v1:10e45e5e2b20",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 28,
+    "records_total": 28,
+    "records_passed": 28,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

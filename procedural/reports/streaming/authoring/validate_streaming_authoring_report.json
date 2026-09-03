@@ -1,0 +1,3426 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "count::regions_2": {
+      "ok": true,
+      "detail": "expected 2 regions (got 2)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "count::tiles_6": {
+      "ok": true,
+      "detail": "expected 6 tiles (got 6)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "region::region_alpine_hub::contract": {
+      "ok": true,
+      "detail": "region invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "region::region_alpine_hub::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "region tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "region::region_alpine_hub::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "region tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "region::region_alpine_hub::tile_resolves::tile_alpine_objective_b": {
+      "ok": true,
+      "detail": "region tile tile_alpine_objective_b does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "region::region_volcanic_chain::contract": {
+      "ok": true,
+      "detail": "region invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "region::region_volcanic_chain::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "region tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "region::region_volcanic_chain::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "region tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "region::region_volcanic_chain::tile_resolves::tile_volcanic_exit": {
+      "ok": true,
+      "detail": "region tile tile_volcanic_exit does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::contract": {
+      "ok": true,
+      "detail": "tile invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::neighbor_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "neighbor tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::neighbor_reciprocal::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "neighbor tile_alpine_objective_a must list tile_alpine_hub_entry back (reciprocity)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::neighbor_resolves::tile_alpine_objective_b": {
+      "ok": true,
+      "detail": "neighbor tile_alpine_objective_b does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::neighbor_reciprocal::tile_alpine_objective_b": {
+      "ok": true,
+      "detail": "neighbor tile_alpine_objective_b must list tile_alpine_hub_entry back (reciprocity)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "tile anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::anchor_resolves::anchor_tile_alpine_hub_entry_npc": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_hub_entry_npc does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::anchor_resolves::anchor_tile_alpine_hub_entry_objective": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_hub_entry_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::anchor_resolves::anchor_tile_alpine_hub_entry_save": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_hub_entry_save does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::anchor_resolves::anchor_tile_alpine_hub_entry_to_a": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_hub_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::anchor_resolves::anchor_tile_alpine_hub_entry_to_b": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_hub_entry_to_b does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_hub_entry::ownership_manifest_exists": {
+      "ok": true,
+      "detail": "ownership_manifest_path does not resolve: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_a::contract": {
+      "ok": true,
+      "detail": "tile invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_a::neighbor_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "neighbor tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_a::neighbor_reciprocal::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "neighbor tile_alpine_hub_entry must list tile_alpine_objective_a back (reciprocity)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_a::anchor_resolves::anchor_tile_alpine_objective_a_from_entry": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_objective_a_from_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_a::anchor_resolves::anchor_tile_alpine_objective_a_npc": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_objective_a_npc does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_a::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_a::anchor_resolves::anchor_tile_alpine_objective_a_save": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_objective_a_save does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_a::ownership_manifest_exists": {
+      "ok": true,
+      "detail": "ownership_manifest_path does not resolve: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_b::contract": {
+      "ok": true,
+      "detail": "tile invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_b::neighbor_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "neighbor tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_b::neighbor_reciprocal::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "neighbor tile_alpine_hub_entry must list tile_alpine_objective_b back (reciprocity)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_b::anchor_resolves::anchor_tile_alpine_objective_b_from_entry": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_objective_b_from_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_b::anchor_resolves::anchor_tile_alpine_objective_b_npc": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_objective_b_npc does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_b::anchor_resolves::anchor_tile_alpine_objective_b_objective": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_objective_b_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_b::anchor_resolves::anchor_tile_alpine_objective_b_save": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_alpine_objective_b_save does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_alpine_objective_b::ownership_manifest_exists": {
+      "ok": true,
+      "detail": "ownership_manifest_path does not resolve: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_entry::contract": {
+      "ok": true,
+      "detail": "tile invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_entry::neighbor_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "neighbor tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_entry::neighbor_reciprocal::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "neighbor tile_volcanic_objective must list tile_volcanic_entry back (reciprocity)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_entry::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "tile anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_entry::anchor_resolves::anchor_tile_volcanic_entry_npc": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_entry_npc does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_entry::anchor_resolves::anchor_tile_volcanic_entry_save": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_entry_save does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_entry::anchor_resolves::anchor_tile_volcanic_entry_to_objective": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_entry::ownership_manifest_exists": {
+      "ok": true,
+      "detail": "ownership_manifest_path does not resolve: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_exit::contract": {
+      "ok": true,
+      "detail": "tile invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_exit::neighbor_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "neighbor tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_exit::neighbor_reciprocal::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "neighbor tile_volcanic_objective must list tile_volcanic_exit back (reciprocity)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_exit::anchor_resolves::anchor_tile_volcanic_exit_exit": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_exit_exit does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_exit::anchor_resolves::anchor_tile_volcanic_exit_from_objective": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_exit_from_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_exit::anchor_resolves::anchor_tile_volcanic_exit_save": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_exit_save does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_exit::ownership_manifest_exists": {
+      "ok": true,
+      "detail": "ownership_manifest_path does not resolve: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::contract": {
+      "ok": true,
+      "detail": "tile invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::neighbor_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "neighbor tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::neighbor_reciprocal::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "neighbor tile_volcanic_entry must list tile_volcanic_objective back (reciprocity)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::neighbor_resolves::tile_volcanic_exit": {
+      "ok": true,
+      "detail": "neighbor tile_volcanic_exit does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::neighbor_reciprocal::tile_volcanic_exit": {
+      "ok": true,
+      "detail": "neighbor tile_volcanic_exit must list tile_volcanic_objective back (reciprocity)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::anchor_resolves::anchor_tile_volcanic_objective_from_entry": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_objective_from_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::anchor_resolves::anchor_tile_volcanic_objective_npc": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_objective_npc does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::anchor_resolves::anchor_tile_volcanic_objective_save": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_objective_save does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::anchor_resolves::anchor_tile_volcanic_objective_to_exit": {
+      "ok": true,
+      "detail": "tile anchor anchor_tile_volcanic_objective_to_exit does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tile::tile_volcanic_objective::ownership_manifest_exists": {
+      "ok": true,
+      "detail": "ownership_manifest_path does not resolve: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_region_alpine_hub_entry::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_region_alpine_hub_entry::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_region_volcanic_chain_entry::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_region_volcanic_chain_entry::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_npc::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_npc::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_objective::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_objective::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_save::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_save::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_to_a::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_to_a::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_to_a::link_resolves::anchor_tile_alpine_objective_a_from_entry": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_alpine_objective_a_from_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_to_a::link_reciprocal::anchor_tile_alpine_objective_a_from_entry": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_alpine_objective_a_from_entry must link back",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_to_b::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_to_b::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_to_b::link_resolves::anchor_tile_alpine_objective_b_from_entry": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_alpine_objective_b_from_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_hub_entry_to_b::link_reciprocal::anchor_tile_alpine_objective_b_from_entry": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_alpine_objective_b_from_entry must link back",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_a_from_entry::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_a_from_entry::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_a_from_entry::link_resolves::anchor_tile_alpine_hub_entry_to_a": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_alpine_hub_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_a_from_entry::link_reciprocal::anchor_tile_alpine_hub_entry_to_a": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_alpine_hub_entry_to_a must link back",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_a_npc::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_a_npc::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_a_objective::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_a_objective::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_a_save::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_a_save::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_b_from_entry::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_b_from_entry::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_objective_b does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_b_from_entry::link_resolves::anchor_tile_alpine_hub_entry_to_b": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_alpine_hub_entry_to_b does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_b_from_entry::link_reciprocal::anchor_tile_alpine_hub_entry_to_b": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_alpine_hub_entry_to_b must link back",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_b_npc::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_b_npc::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_objective_b does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_b_objective::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_b_objective::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_objective_b does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_b_save::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_alpine_objective_b_save::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_alpine_objective_b does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_entry_npc::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_entry_npc::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_entry_save::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_entry_save::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_entry_to_objective::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_entry_to_objective::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_entry_to_objective::link_resolves::anchor_tile_volcanic_objective_from_entry": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_volcanic_objective_from_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_entry_to_objective::link_reciprocal::anchor_tile_volcanic_objective_from_entry": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_volcanic_objective_from_entry must link back",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_exit_exit::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_exit_exit::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_exit does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_exit_from_objective::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_exit_from_objective::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_exit does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_exit_from_objective::link_resolves::anchor_tile_volcanic_objective_to_exit": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_volcanic_objective_to_exit does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_exit_from_objective::link_reciprocal::anchor_tile_volcanic_objective_to_exit": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_volcanic_objective_to_exit must link back",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_exit_save::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_exit_save::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_exit does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_from_entry::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_from_entry::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_from_entry::link_resolves::anchor_tile_volcanic_entry_to_objective": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_volcanic_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_from_entry::link_reciprocal::anchor_tile_volcanic_entry_to_objective": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_volcanic_entry_to_objective must link back",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_npc::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_npc::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_objective::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_objective::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_save::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_save::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_to_exit::contract": {
+      "ok": true,
+      "detail": "anchor invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_to_exit::tile_resolves": {
+      "ok": true,
+      "detail": "anchor tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_to_exit::link_resolves::anchor_tile_volcanic_exit_from_objective": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_volcanic_exit_from_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "anchor::anchor_tile_volcanic_objective_to_exit::link_reciprocal::anchor_tile_volcanic_exit_from_objective": {
+      "ok": true,
+      "detail": "linked anchor anchor_tile_volcanic_exit_from_objective must link back",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_a::contract": {
+      "ok": true,
+      "detail": "route invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_a::source_anchor_id_resolves": {
+      "ok": true,
+      "detail": "route route_entry_to_a source_anchor_id does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_a::target_anchor_id_resolves": {
+      "ok": true,
+      "detail": "route route_entry_to_a target_anchor_id does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_a::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "route tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_a::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "route tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_a::no_navmesh_overclaim": {
+      "ok": true,
+      "detail": "route claims proved access without a proved grounded mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_b::contract": {
+      "ok": true,
+      "detail": "route invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_b::source_anchor_id_resolves": {
+      "ok": true,
+      "detail": "route route_entry_to_b source_anchor_id does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_b::target_anchor_id_resolves": {
+      "ok": true,
+      "detail": "route route_entry_to_b target_anchor_id does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_b::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "route tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_b::tile_resolves::tile_alpine_objective_b": {
+      "ok": true,
+      "detail": "route tile tile_alpine_objective_b does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_b::no_navmesh_overclaim": {
+      "ok": true,
+      "detail": "route claims proved access without a proved grounded mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_objective::contract": {
+      "ok": true,
+      "detail": "route invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_objective::source_anchor_id_resolves": {
+      "ok": true,
+      "detail": "route route_entry_to_objective source_anchor_id does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_objective::target_anchor_id_resolves": {
+      "ok": true,
+      "detail": "route route_entry_to_objective target_anchor_id does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_objective::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "route tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_objective::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "route tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_entry_to_objective::no_navmesh_overclaim": {
+      "ok": true,
+      "detail": "route claims proved access without a proved grounded mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_objective_to_exit::contract": {
+      "ok": true,
+      "detail": "route invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_objective_to_exit::source_anchor_id_resolves": {
+      "ok": true,
+      "detail": "route route_objective_to_exit source_anchor_id does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_objective_to_exit::target_anchor_id_resolves": {
+      "ok": true,
+      "detail": "route route_objective_to_exit target_anchor_id does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_objective_to_exit::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "route tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_objective_to_exit::tile_resolves::tile_volcanic_exit": {
+      "ok": true,
+      "detail": "route tile tile_volcanic_exit does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "route::route_objective_to_exit::no_navmesh_overclaim": {
+      "ok": true,
+      "detail": "route claims proved access without a proved grounded mode",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "count::mission_bindings_24": {
+      "ok": true,
+      "detail": "expected 24 mission bindings (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "count::npc_bindings_24": {
+      "ok": true,
+      "detail": "expected 24 npc bindings (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_clear_hazard_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_clear_hazard_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_clear_hazard_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_clear_hazard_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_recover_resource_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_recover_resource_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_recover_resource_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_recover_resource_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_survey_landmark_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_survey_landmark_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_survey_landmark_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "required tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "required tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::anchor_resolves::anchor_region_alpine_hub_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::anchor_resolves::anchor_tile_alpine_objective_a_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_alpine_objective_a_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::route_resolves::route_entry_to_a": {
+      "ok": true,
+      "detail": "required route route_entry_to_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_alpine_snow_survey_landmark_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_clear_hazard_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_clear_hazard_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_clear_hazard_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_clear_hazard_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_recover_resource_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_recover_resource_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_recover_resource_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_recover_resource_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_survey_landmark_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_survey_landmark_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_survey_landmark_baseline_s1 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "mission invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "required tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::anchor_resolves::anchor_region_volcanic_chain_entry": {
+      "ok": true,
+      "detail": "mission anchor anchor_region_volcanic_chain_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::anchor_resolves::anchor_tile_volcanic_objective_objective": {
+      "ok": true,
+      "detail": "mission anchor anchor_tile_volcanic_objective_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::route_resolves::route_entry_to_objective": {
+      "ok": true,
+      "detail": "required route route_entry_to_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "mission::smb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::quest_resolves": {
+      "ok": true,
+      "detail": "quest_id qf_volcanic_ashlands_survey_landmark_baseline_s2 does not resolve to a v2.2 quest",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_alpine_hub_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_hub_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_alpine_objective_a": {
+      "ok": true,
+      "detail": "npc allowed tile tile_alpine_objective_a does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::contract": {
+      "ok": true,
+      "detail": "npc invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::spawn_anchor_resolves": {
+      "ok": true,
+      "detail": "npc spawn anchor does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_volcanic_entry": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_entry does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "npc::snb_st_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::allowed_tile_resolves::tile_volcanic_objective": {
+      "ok": true,
+      "detail": "npc allowed tile tile_volcanic_objective does not resolve",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "coverage::24_scenarios": {
+      "ok": true,
+      "detail": "bindings must cover 24 scenarios (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 423,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-streaming-authoring",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:07.601495+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.streaming.authoring_validation.v1",
+    "report_id": "wf.streaming.authoring_validation.v1:ec1c6d41ba12",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 86,
+    "records_total": 86,
+    "records_passed": 86,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

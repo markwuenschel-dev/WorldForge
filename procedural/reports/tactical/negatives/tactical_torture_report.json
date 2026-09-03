@@ -1,0 +1,434 @@
+{
+  "suite": "tactical_torture",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "torture::nonempty": {
+      "ok": true,
+      "detail": "torture battery must carry >= 20 modes (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::profile_weight_out_of_range::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::profile_weight_out_of_range::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF931_TACTICAL_PROFILE_INVALID (got ['WF931_TACTICAL_PROFILE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::role_preferred_not_allowed::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::role_preferred_not_allowed::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF932_TACTICAL_ROLE_INVALID (got ['WF932_TACTICAL_ROLE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::affordance_bad_cover::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::affordance_bad_cover::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF947_TACTICAL_COVER_REFERENCE_INVALID (got ['WF947_TACTICAL_COVER_REFERENCE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::binding_tile_not_allowed::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::binding_tile_not_allowed::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF934_TACTICAL_NPC_BINDING_INVALID (got ['WF934_TACTICAL_NPC_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::input_unknown_stimulus::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::input_unknown_stimulus::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF937_TACTICAL_UNKNOWN_STIMULUS (got ['WF937_TACTICAL_UNKNOWN_STIMULUS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::option_flank_no_route::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::option_flank_no_route::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF951_TACTICAL_FLANK_ROUTE_MISSING (got ['WF951_TACTICAL_FLANK_ROUTE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::option_invalid_no_reason::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::option_invalid_no_reason::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF939_TACTICAL_DECISION_OPTION_INVALID (got ['WF939_TACTICAL_DECISION_OPTION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::trace_selects_invalid::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::trace_selects_invalid::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF941_TACTICAL_SELECTED_INVALID_OPTION (got ['WF941_TACTICAL_SELECTED_INVALID_OPTION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::trace_no_state_delta::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::trace_no_state_delta::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF944_TACTICAL_STATE_NOT_MUTATED (got ['WF944_TACTICAL_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::delta_change_equal_hash::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::delta_change_equal_hash::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF944_TACTICAL_STATE_NOT_MUTATED (got ['WF944_TACTICAL_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::delta_quest_no_context::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::delta_quest_no_context::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF955_TACTICAL_QUEST_STATE_MISSING (got ['WF955_TACTICAL_QUEST_STATE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::group_coordinated_one::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::group_coordinated_one::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF946_TACTICAL_COORDINATION_INVALID (got ['WF946_TACTICAL_COORDINATION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::group_suppression_no_suppressor::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::group_suppression_no_suppressor::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF946_TACTICAL_COORDINATION_INVALID (got ['WF946_TACTICAL_COORDINATION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_zero_valid::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_zero_valid::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF961_TACTICAL_RUNTIME_REPORT_INVALID (got ['WF961_TACTICAL_RUNTIME_REPORT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_save_failed::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_save_failed::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF958_TACTICAL_SAVE_LOAD_FAILED (got ['WF958_TACTICAL_SAVE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_budget_exceeded::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_budget_exceeded::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF960_TACTICAL_BUDGET_EXCEEDED (got ['WF960_TACTICAL_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_live_no_evidence::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_live_no_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF968_TACTICAL_NAVMESH_OVERCLAIM (got ['WF968_TACTICAL_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::save_no_npc_hashes::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::save_no_npc_hashes::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF957_TACTICAL_SAVE_LOAD_MISSING (got ['WF957_TACTICAL_SAVE_LOAD_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::budget_npc_overrun_pass::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::budget_npc_overrun_pass::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF960_TACTICAL_BUDGET_EXCEEDED (got ['WF960_TACTICAL_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::index_partial_matrix::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::index_partial_matrix::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF965_TACTICAL_PARTIAL_MATRIX (got ['WF965_TACTICAL_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::index_stale_sha::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::index_stale_sha::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF966_TACTICAL_STALE_EVIDENCE (got ['WF966_TACTICAL_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::index_action_coverage_missing::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::index_action_coverage_missing::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF964_TACTICAL_ACTION_COVERAGE_MISSING (got ['WF964_TACTICAL_ACTION_COVERAGE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::scenario_view_no_trace::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::scenario_view_no_trace::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF963_TACTICAL_OPERATOR_VIEW_INVALID (got ['WF963_TACTICAL_OPERATOR_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::npc_view_no_state_delta::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::npc_view_no_state_delta::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF944_TACTICAL_STATE_NOT_MUTATED (got ['WF944_TACTICAL_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 49,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "tactical-torture",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "da4362006bfca3a023a4b03edc83d38efbe6e628",
+    "timestamp": "2026-07-12T11:53:40.812415+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.tactical.torture.v1",
+    "report_id": "wf.tactical.torture.v1:4d63f09ec469",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 24,
+    "records_total": 24,
+    "records_passed": 24,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

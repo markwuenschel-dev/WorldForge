@@ -26,12 +26,15 @@ Proves (all data-driven; no state key is hard-coded):
   - save/load round-trip restored the persisted state (WF075)
   - provenance present
   - post-scenario map validity — verified from the per-slice UE validate report
-  - the in-editor MPC bridge readback — an optional cross-check (WF082)
+  - the in-editor MPC bridge readback — an optional native-owner cross-check (WF082)
 
-The in-editor MPC bridge readback is produced by 'make apply-state-scenario';
-when its report is absent that check is skipped (non-blocking), because the
-authoring-side scenario validation already proves the state logic. Run the
-editor step to add the cross-check.
+The editor-Python 'make apply-state-scenario' helper cannot acquire a native
+write lease, so it records native-authority-required rather than applying state.
+No persisted JSON record can currently prove a native leased write and live
+readback: every present UE report fails WF082 until a native-only in-process
+synchronous emitter/verifier exists. When no report is present the cross-check
+is skipped (non-blocking), because the authoring-side scenario validation
+already proves the state logic.
 
 Usage:
     python tools/pipeline/validate_runtime_state.py --name Desert_Ash_IndustrialYard_01
@@ -71,6 +74,90 @@ CURATED_MPC_PARAMS = {
     "ashfall": "Ashfall",
 }
 _EPS = 1e-6
+
+_NATIVE_AUTHORITY_RECORD_VERSION = 1
+_NATIVE_AUTHORITY_RECORD_FIELDS = frozenset((
+    "record_version",
+    "kind",
+    "status",
+    "writer",
+    "scope",
+    "context_id",
+    "state_keys",
+))
+
+
+def validate_native_authority_evidence(ue_report, descriptor):
+    """Reject untrusted persisted claims while preserving useful failure detail.
+
+    A record can describe an alleged native leased write, but arbitrary Python
+    can forge that description. Until a native-only in-process synchronous
+    emitter/verifier is tied directly to SetStateValueWithLease and the same
+    live MPC readback, no persisted JSON can make ``ue_state_applied`` pass.
+    The v1 parsing and descriptor-binding checks below remain only to explain
+    why a present report is rejected; they do not authenticate it.
+    """
+    if not isinstance(ue_report, dict):
+        return False, "UE report is not an object"
+
+    authority = ue_report.get("authority")
+    if not isinstance(authority, dict):
+        return False, "native authority evidence is absent or malformed"
+    if authority.get("status") == "native_authority_required":
+        return False, "native state-write authority is required"
+
+    fields = set(authority)
+    if fields != _NATIVE_AUTHORITY_RECORD_FIELDS:
+        missing = sorted(_NATIVE_AUTHORITY_RECORD_FIELDS - fields)
+        unexpected = sorted(fields - _NATIVE_AUTHORITY_RECORD_FIELDS)
+        detail = "native authority evidence has the wrong v1 field set"
+        if missing:
+            detail += "; missing={}".format(",".join(missing))
+        if unexpected:
+            detail += "; unexpected={}".format(",".join(unexpected))
+        return False, detail
+
+    if (type(authority["record_version"]) is not int or
+            authority["record_version"] != _NATIVE_AUTHORITY_RECORD_VERSION):
+        return False, "native authority evidence has an unsupported record version"
+    if authority["kind"] != "native_state_write_lease":
+        return False, "native authority evidence is not a native write-lease record"
+    if authority["status"] != "success":
+        return False, "native authority evidence does not record success"
+    if authority["writer"] != "native":
+        return False, "native authority evidence was not emitted by a native writer"
+
+    expected_run_id = descriptor.get("run_id")
+    expected_scope = descriptor.get("scope")
+    expected_context_id = descriptor.get("context_id")
+    expected_state_keys = descriptor.get("state_keys")
+    if (not isinstance(expected_run_id, str) or not expected_run_id or
+            not isinstance(expected_scope, str) or not expected_scope or
+            not isinstance(expected_context_id, str) or not expected_context_id or
+            not isinstance(expected_state_keys, list) or
+            not expected_state_keys or
+            not all(isinstance(key, str) and key for key in expected_state_keys)):
+        return False, "scenario descriptor does not provide a bound state address"
+    if ue_report.get("run_id") != expected_run_id:
+        return False, "native authority evidence belongs to a different scenario run"
+    if authority["scope"] != expected_scope or authority["context_id"] != expected_context_id:
+        return False, "native authority evidence is bound to a different state address"
+    if authority["state_keys"] != expected_state_keys:
+        return False, "native authority evidence does not cover the scenario state keys"
+
+    if ue_report.get("passed") is not True:
+        return False, "native authority report did not pass its UE readback"
+    if not isinstance(ue_report.get("applied"), dict) or not ue_report["applied"]:
+        return False, "native authority report lacks applied-state evidence"
+    if not isinstance(ue_report.get("mpc_readback"), dict) or not ue_report["mpc_readback"]:
+        return False, "native authority report lacks MPC readback evidence"
+    if not isinstance(ue_report.get("checks"), dict) or not ue_report["checks"]:
+        return False, "native authority report lacks check evidence"
+
+    return False, (
+        "persisted JSON cannot prove a native leased write and live MPC readback; "
+        "a future native-only synchronous emitter/verifier tied to "
+        "SetStateValueWithLease is required")
 
 
 def _resolve_run_id(name, scenario, registry):
@@ -314,38 +401,53 @@ def main(argv=None):
                   args.name),
               code=FailureCode.UE_ARTIFACT_MISSING)
 
-    # -- In-editor MPC bridge readback: an optional cross-check produced by
-    #    'make apply-state-scenario'. Verified when present; otherwise skipped
-    #    (the authoring-side scenario validation already proves the state logic).
+    # -- In-editor MPC bridge readback: an optional native-owner cross-check.
+    #    Editor Python reports native-authority-required rather than forging this
+    #    mutation. A missing report remains non-blocking because the authoring-side
+    #    scenario validation already proves the state logic.
     ue_report = report_dir / "ue_state_scenario_report.json"
     if ue_report.is_file():
+        ue_rpt = None
         try:
             ue_rpt = json.loads(ue_report.read_text(encoding="utf-8"))
+            ue_ok, ue_detail = validate_native_authority_evidence(ue_rpt, descriptor)
         except Exception as exc:  # noqa: BLE001
-            ue_rpt = None
-            rep.ue_check("ue_state_applied", False,
-                         "ue_state_scenario_report.json unreadable: {}".format(exc),
-                         code=FailureCode.UE_STATE_NOT_APPLIED)
+            ue_ok = False
+            ue_detail = "ue_state_scenario_report.json unreadable: {}".format(exc)
 
+        # MERGE NOTE (main <- worldforge/wfcore-consumer-platform). Both sides
+        # hardened this gate against the same class of defect and they are not
+        # the same check, so both are kept -- but they are not equal in strength
+        # and the stronger one owns the verdict.
+        #
+        # main's validate_native_authority_evidence is FAIL-CLOSED by design:
+        # arbitrary Python can forge a description of a leased native write, so
+        # until a native-only in-process emitter is tied to
+        # SetStateValueWithLease and the same live readback, NO persisted JSON
+        # can make ue_state_applied pass. That supersedes this branch's version,
+        # which could pass once the atoms agreed -- a persisted file agreeing
+        # with itself says nothing about who wrote it.
+        #
+        # So ue_state_applied is main's answer, unchanged.
+        rep.ue_check("ue_state_applied", ue_ok, ue_detail,
+                     code=FailureCode.UE_STATE_NOT_APPLIED)
+
+        # The two rails below came from this branch and main has no equivalent.
+        # They are kept under DISTINCT names: they add information about a
+        # report that is already being rejected, and being separate means they
+        # can only ever add a failure -- never soften main's verdict.
         if ue_rpt is not None:
-            # RE-DERIVED, never read off the far side's own verdict.
-            #
-            # This previously graded `ue_rpt.get("passed")` -- the boolean the
-            # bridge wrote about itself. That is circular trust: the thing under
-            # test also supplies the verdict, so a bridge that applied nothing
-            # and wrote passed=true reads exactly like a bridge that worked. The
-            # rule this repository already follows elsewhere is that the far side
-            # emits RAW ONLY and the validator derives independently.
-            #
-            # The raw atoms are `applied` (what we asked the world to become) and
-            # `mpc_readback` (what the material parameter collection actually
-            # holds afterwards). The verdict is whether they agree, key by key.
+            # RE-DERIVED, never read off the far side's own verdict. The gate
+            # once graded ue_rpt["passed"], the boolean the bridge wrote about
+            # itself: a bridge that applied nothing and wrote passed=true read
+            # exactly like one that worked.
             applied = ue_rpt.get("applied")
             readback = ue_rpt.get("mpc_readback")
             atoms_ok = isinstance(applied, dict) and isinstance(readback, dict)
+            derived_ok = False
             if not atoms_ok:
                 rep.ue_check(
-                    "ue_state_applied", False,
+                    "ue_state_atoms_present", False,
                     "the bridge report carries no raw applied/mpc_readback pair "
                     "(applied={!r} mpc_readback={!r}); with no atoms there is "
                     "nothing to re-derive and its own 'passed' field is not "
@@ -372,9 +474,11 @@ def main(argv=None):
                         mismatched.append((k, want, got))
                 derived_ok = bool(applied) and not mismatched and not unread
                 rep.ue_check(
-                    "ue_state_applied", derived_ok,
+                    "ue_state_atoms_agree", derived_ok,
                     "re-derived from raw atoms: {} key(s) applied, "
-                    "mismatched={} never_read_back={}".format(
+                    "mismatched={} never_read_back={}. NOTE this is a "
+                    "measurement of the file's internal consistency, not of "
+                    "write authority -- ue_state_applied owns that".format(
                         len(applied), mismatched, unread),
                     code=FailureCode.UE_STATE_NOT_APPLIED)
 
@@ -393,9 +497,8 @@ def main(argv=None):
                         code=FailureCode.UE_STATE_NOT_APPLIED)
 
             # STALENESS. The bridge report must say WHEN it was produced and at
-            # WHICH revision. Without those a report is ungradeable for freshness
-            # and will keep certifying a runtime behaviour that may have changed
-            # months ago -- which is exactly what was happening here.
+            # WHICH revision, or it will keep certifying a runtime behaviour
+            # that may have changed months ago -- which is what was happening.
             stamped = bool(ue_rpt.get("timestamp")) and bool(ue_rpt.get("git_sha"))
             rep.ue_check(
                 "ue_report_is_stamped", stamped,
@@ -407,12 +510,13 @@ def main(argv=None):
                 code=FailureCode.UE_STATE_NOT_APPLIED)
     else:
         # Absent is NOT a pass. It is recorded as a skip so a reader can see the
-        # question was asked, and the runtime-state claim is unproven until the
-        # bridge actually runs.
+        # question was asked, and the runtime-state claim is unproven until a
+        # native state owner actually produces it.
         rep.skip("ue_state_applied",
                  "in-editor MPC bridge readback not run here, so the live "
                  "state-response claim is UNPROVEN (not failed, not passed); "
-                 "produce it with 'make apply-state-scenario'")
+                 "a native state owner must produce it -- see "
+                 "'make apply-state-scenario'")
 
     # -- Finalize + write ---------------------------------------------------
     rep.finalize()

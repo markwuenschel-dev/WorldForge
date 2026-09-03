@@ -1,0 +1,1082 @@
+{
+  "suite": "quest_faction_negative_validators",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "catalog::non_vacuous": {
+      "ok": true,
+      "detail": "known-bad catalog must carry >= 40 cases (got 59)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:missing_steps::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:missing_steps::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF772_QUEST_STEP_INVALID (got ['WF772_QUEST_STEP_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:no_scenario_binding::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:no_scenario_binding::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF774_QUEST_SCENARIO_BINDING_MISSING (got ['WF774_QUEST_SCENARIO_BINDING_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:unknown_archetype::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:unknown_archetype::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF773_QUEST_UNKNOWN_ARCHETYPE (got ['WF773_QUEST_UNKNOWN_ARCHETYPE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:no_failure_conditions::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:no_failure_conditions::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF776_QUEST_COMPLETION_PREDICATE_INVALID (got ['WF776_QUEST_COMPLETION_PREDICATE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:unbounded_next_hooks::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:unbounded_next_hooks::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF780_QUEST_NEXT_MISSION_HOOK_INVALID (got ['WF780_QUEST_NEXT_MISSION_HOOK_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:too_many_steps::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qd:too_many_steps::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF772_QUEST_STEP_INVALID (got ['WF772_QUEST_STEP_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qs:unknown_claim_predicate::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qs:unknown_claim_predicate::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF776_QUEST_COMPLETION_PREDICATE_INVALID (got ['WF776_QUEST_COMPLETION_PREDICATE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qs:non_machine_predicate::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qs:non_machine_predicate::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF776_QUEST_COMPLETION_PREDICATE_INVALID (got ['WF776_QUEST_COMPLETION_PREDICATE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qs:bad_objective_type::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qs:bad_objective_type::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF772_QUEST_STEP_INVALID (got ['WF772_QUEST_STEP_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qs:zero_step_order::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qs:zero_step_order::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF775_QUEST_STEP_ORDER_INVALID (got ['WF775_QUEST_STEP_ORDER_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qs:empty_runtime_claims::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qs:empty_runtime_claims::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF776_QUEST_COMPLETION_PREDICATE_INVALID (got ['WF776_QUEST_COMPLETION_PREDICATE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qr:success_no_deltas::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qr:success_no_deltas::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF788_FACTION_STATE_NOT_MUTATED (got ['WF788_FACTION_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qr:completed_missing_required::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qr:completed_missing_required::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF778_QUEST_OUTCOME_EVIDENCE_MISSING (got ['WF778_QUEST_OUTCOME_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qr:reward_granted_no_binding::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qr:reward_granted_no_binding::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF779_QUEST_REWARD_BINDING_INVALID (got ['WF779_QUEST_REWARD_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qr:bad_state::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qr:bad_state::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF777_QUEST_RUNTIME_STATE_INVALID (got ['WF777_QUEST_RUNTIME_STATE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fd:unknown_class::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fd:unknown_class::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF781_FACTION_CONTRACT_INVALID (got ['WF781_FACTION_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fd:bad_bounds::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fd:bad_bounds::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF784_FACTION_BOUNDS_INVALID (got ['WF784_FACTION_BOUNDS_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fd:pref_opp_overlap::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fd:pref_opp_overlap::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF781_FACTION_CONTRACT_INVALID (got ['WF781_FACTION_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fd:unnormalized_tags::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fd:unnormalized_tags::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF781_FACTION_CONTRACT_INVALID (got ['WF781_FACTION_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fs:standing_out_of_bounds::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fs:standing_out_of_bounds::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF784_FACTION_BOUNDS_INVALID (got ['WF784_FACTION_BOUNDS_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fs:bad_relationships::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fs:bad_relationships::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF785_FACTION_RELATIONSHIP_INVALID (got ['WF785_FACTION_RELATIONSHIP_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fs:active_completed_overlap::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fs:active_completed_overlap::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF782_FACTION_STATE_INVALID (got ['WF782_FACTION_STATE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fs:resources_out_of_bounds::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fs:resources_out_of_bounds::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF784_FACTION_BOUNDS_INVALID (got ['WF784_FACTION_BOUNDS_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fx:standing_over_cap::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fx:standing_over_cap::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF787_FACTION_DELTA_UNBOUNDED (got ['WF787_FACTION_DELTA_UNBOUNDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fx:bounded_false::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fx:bounded_false::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF787_FACTION_DELTA_UNBOUNDED (got ['WF787_FACTION_DELTA_UNBOUNDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fx:unknown_reason::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fx:unknown_reason::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF786_FACTION_DELTA_INVALID (got ['WF786_FACTION_DELTA_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fx:resources_delta_over_cap::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::fx:resources_delta_over_cap::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF787_FACTION_DELTA_UNBOUNDED (got ['WF787_FACTION_DELTA_UNBOUNDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::cl:hash_unchanged_with_deltas::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::cl:hash_unchanged_with_deltas::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF788_FACTION_STATE_NOT_MUTATED (got ['WF788_FACTION_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::cl:bad_save_load::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::cl:bad_save_load::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF792_QUEST_FACTION_SAVE_LOAD_FAILED (got ['WF792_QUEST_FACTION_SAVE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:clean_roundtrip_failed::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:clean_roundtrip_failed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF792_QUEST_FACTION_SAVE_LOAD_FAILED (got ['WF792_QUEST_FACTION_SAVE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:clean_no_ledger::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:clean_no_ledger::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF790_CONSEQUENCE_LEDGER_MISSING (got ['WF790_CONSEQUENCE_LEDGER_MISSING', 'WF794_QUEST_FACTION_RUNTIME_REPORT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:clean_abandoned_outcome::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:clean_abandoned_outcome::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF778_QUEST_OUTCOME_EVIDENCE_MISSING (got ['WF778_QUEST_OUTCOME_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:clean_no_faction_mutation::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:clean_no_faction_mutation::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF788_FACTION_STATE_NOT_MUTATED (got ['WF788_FACTION_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:clean_no_next_state::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:clean_no_next_state::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF793_QUEST_FACTION_NEXT_STATE_MISSING (got ['WF793_QUEST_FACTION_NEXT_STATE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:malformed_failure_code::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rr:malformed_failure_code::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF798_QUEST_FACTION_UNKNOWN_FAILURE_CODE (got ['WF798_QUEST_FACTION_UNKNOWN_FAILURE_CODE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qi:partial_matrix_pass::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qi:partial_matrix_pass::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF795_QUEST_FACTION_PARTIAL_MATRIX (got ['WF795_QUEST_FACTION_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qi:stale_sha::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qi:stale_sha::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF796_QUEST_FACTION_STALE_EVIDENCE (got ['WF796_QUEST_FACTION_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qi:pass_with_missing::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qi:pass_with_missing::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF790_CONSEQUENCE_LEDGER_MISSING (got ['WF790_CONSEQUENCE_LEDGER_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qi:pass_with_stale::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::qi:pass_with_stale::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF796_QUEST_FACTION_STALE_EVIDENCE (got ['WF796_QUEST_FACTION_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::oq:clean_no_ledger_link::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::oq:clean_no_ledger_link::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF790_CONSEQUENCE_LEDGER_MISSING (got ['WF790_CONSEQUENCE_LEDGER_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::oq:no_scenarios::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::oq:no_scenarios::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF797_QUEST_FACTION_OPERATOR_VIEW_INVALID (got ['WF797_QUEST_FACTION_OPERATOR_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::of:history_no_state_path::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::of:history_no_state_path::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF782_FACTION_STATE_INVALID (got ['WF782_FACTION_STATE_INVALID', 'WF797_QUEST_FACTION_OPERATOR_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::quest_completed_no_evidence::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::quest_completed_no_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF778_QUEST_OUTCOME_EVIDENCE_MISSING (got ['WF778_QUEST_OUTCOME_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::outcome_success_no_deltas::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::outcome_success_no_deltas::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF788_FACTION_STATE_NOT_MUTATED (got ['WF788_FACTION_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::ledger_hash_unchanged::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::ledger_hash_unchanged::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF788_FACTION_STATE_NOT_MUTATED (got ['WF788_FACTION_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::report_clean_roundtrip_failed::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::report_clean_roundtrip_failed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF792_QUEST_FACTION_SAVE_LOAD_FAILED (got ['WF792_QUEST_FACTION_SAVE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::report_clean_no_ledger::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::report_clean_no_ledger::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF790_CONSEQUENCE_LEDGER_MISSING (got ['WF790_CONSEQUENCE_LEDGER_MISSING', 'WF794_QUEST_FACTION_RUNTIME_REPORT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::report_clean_abandoned::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::report_clean_abandoned::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF778_QUEST_OUTCOME_EVIDENCE_MISSING (got ['WF778_QUEST_OUTCOME_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::report_clean_no_mutation::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::report_clean_no_mutation::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF788_FACTION_STATE_NOT_MUTATED (got ['WF788_FACTION_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::delta_unbounded::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::delta_unbounded::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF787_FACTION_DELTA_UNBOUNDED (got ['WF787_FACTION_DELTA_UNBOUNDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::delta_not_bounded_flag::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::delta_not_bounded_flag::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF787_FACTION_DELTA_UNBOUNDED (got ['WF787_FACTION_DELTA_UNBOUNDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::unknown_faction_class::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::unknown_faction_class::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF781_FACTION_CONTRACT_INVALID (got ['WF781_FACTION_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::faction_state_out_of_bounds::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::faction_state_out_of_bounds::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF784_FACTION_BOUNDS_INVALID (got ['WF784_FACTION_BOUNDS_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::quest_active_and_completed::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::quest_active_and_completed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF782_FACTION_STATE_INVALID (got ['WF782_FACTION_STATE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::partial_matrix_claims_complete::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::partial_matrix_claims_complete::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF795_QUEST_FACTION_PARTIAL_MATRIX (got ['WF795_QUEST_FACTION_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::stale_git_sha::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::stale_git_sha::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF796_QUEST_FACTION_STALE_EVIDENCE (got ['WF796_QUEST_FACTION_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::operator_view_broken_ledger::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::operator_view_broken_ledger::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF790_CONSEQUENCE_LEDGER_MISSING (got ['WF790_CONSEQUENCE_LEDGER_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::faction_view_history_no_state::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::faction_view_history_no_state::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF782_FACTION_STATE_INVALID (got ['WF782_FACTION_STATE_INVALID', 'WF797_QUEST_FACTION_OPERATOR_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::malformed_next_hook::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::malformed_next_hook::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF780_QUEST_NEXT_MISSION_HOOK_INVALID (got ['WF780_QUEST_NEXT_MISSION_HOOK_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::QuestDefinition::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::QuestStep::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::QuestRuntimeState::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::FactionDefinition::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::FactionState::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::FactionDelta::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::ConsequenceLedger::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::QuestFactionRuntimeReport::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::QuestFactionEvidenceIndex::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorQuestView::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorFactionView::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 130,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "quest-faction-negative-validators",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:12.533603+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.quest_faction.negative_validators.v1",
+    "report_id": "wf.quest_faction.negative_validators.v1:65085ffdff07",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 59,
+    "records_total": 59,
+    "records_passed": 59,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

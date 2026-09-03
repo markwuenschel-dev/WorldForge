@@ -9,7 +9,7 @@ builds a real, saved, state-aware UE map for it -- no manual editor clicking:
     terrain plane         assigned the slice's terrain MI (textures show in editor)
     PCG actor             a PCGVolume running the slice's PCG graph (foliage scatter)
     region marker         a tagged actor carrying region_id + state key/before/after
-    state bridge          WorldForge.SetState(before) -> MPC readback (proves the bridge)
+    state authority       reports when a native state writer is required for MPC proof
     saved level + report
 
 JSON only (never YAML inside a UE script; see `make pre-ue-audit`). Run headless via
@@ -37,10 +37,6 @@ TAG_TERRAIN = "wf_terrain"        # marks the ground actor
 
 PLANE = "/Engine/BasicShapes/Plane"
 PLANE_SCALE = 40.0
-MPC_PATH = "/CoreTerrainMaterials/State/MPC_WorldState"
-MPC_PRESSURE_PARAM = "IndustrialPressure"
-
-
 def log(m):
     unreal.log("[create-slice-map] {}".format(m))
 
@@ -333,23 +329,13 @@ def build_poi_marker(poi_forge, report):
 
 
 def prime_state(state, report):
-    """Drive the runtime state to `before` and read the MPC back -- proves the
-    SetState -> WorldStateSubsystem -> MPC bridge is alive for this slice."""
-    world = _world()
-    scope = state.get("scope", "Region")
-    ctx = state.get("context_id")
-    key = state.get("key")
-    before = state.get("before", 0.0)
-    try:
-        unreal.SystemLibrary.execute_console_command(
-            world, "WorldForge.SetState {} {} {} {}".format(scope, ctx, key, before))
-        mpc = unreal.EditorAssetLibrary.load_asset(MPC_PATH)
-        val = unreal.MaterialLibrary.get_scalar_parameter_value(world, mpc, MPC_PRESSURE_PARAM)
-        report["mpc_readback"] = round(float(val), 4)
-        report["mpc_bridge_ok"] = abs(float(val) - float(before)) < 1e-4
-    except Exception as e:  # noqa: BLE001
-        report["warnings"].append("state prime failed: {}".format(e))
-        report["mpc_bridge_ok"] = False
+    """Record that editor Python cannot issue the native write lease this proof needs."""
+    del state
+    report["state_authority"] = "native_authority_required"
+    report["mpc_bridge_ok"] = False
+    report["warnings"].append(
+        "state prime unavailable: native state-write authority is required; "
+        "editor Python cannot acquire a world-state write lease")
 
 
 def build_map_for_spec(spec, root):

@@ -1,0 +1,113 @@
+<title>WorldForge v2.0 — Codebase Integrity Audit</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 15px/1.55 system-ui, sans-serif; max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+  h1,h2,h3 { line-height: 1.2; } h2 { border-bottom: 2px solid #8884; padding-bottom: .2rem; margin-top: 2rem; }
+  table { border-collapse: collapse; width: 100%; margin: .6rem 0; font-size: 13.5px; }
+  th,td { border: 1px solid #8884; padding: .35rem .5rem; text-align: left; vertical-align: top; }
+  th { background: #8882; }
+  code { background: #8882; padding: 0 .25rem; border-radius: 3px; font-size: 12.5px; }
+  .grade { font-size: 2.4rem; font-weight: 700; }
+  .sel { background: #2c6e2c33; } .num { text-align: right; font-variant-numeric: tabular-nums; }
+  .cat { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; opacity: .8; }
+  .pill { display:inline-block; padding: 0 .4rem; border-radius: 999px; background:#8883; font-size:12px; }
+  .solid { color: #2c8a2c; } .warn { color: #b8860b; }
+</style>
+
+<h1>WorldForge v2.0 VerticalSliceForge — Codebase Integrity Audit</h1>
+<p><em>Read-only scan, auto-mode single-turn loop. Scope: the ~20 v2.0 files authored this session
+(<code>tools/pipeline/slice_*.py</code>, <code>run_slice_forge_alpha.py</code>, <code>package_slice.py</code>,
+<code>v2_0_shield.py</code>, the <code>WF671–710</code> band, and the Makefile v2.0 section).
+Static layer (<code>ruff F,E9</code>) clean; all files compile.</em></p>
+
+<p style="background:#2c6e2c22;padding:.6rem;border-radius:6px"><strong>Loop status (2 runs):</strong>
+<strong>C1</strong> SHIPPED &amp; MERGED (<code>fe8d790</code> → main, PR #28). Auto-run <code>--max-turns 8</code>
+shipped 6 more on branch <code>chore/v2-0-integrity-hardening</code> (NOT pushed): <strong>C3</strong>
+(<code>103675e</code> Makefile-ref check), <strong>C2</strong> (<code>f675bee</code> index producer chained),
+<strong>C10</strong> (<code>f8d1d36</code> dogfood decoupled), <strong>C6</strong> (<code>69ee360</code> counts
+single-sourced), <strong>C9</strong> (<code>4ce0d37</code> double-validate), <strong>C5</strong>
+(<code>ba27cb4</code> WF681 routing). Shield GREEN <strong>20/20</strong> (added makefile-refs +
+evidence-index-build gates); ruff clean.
+<br>Auto-run stopped at turn 7/8 on the human-decision candidates.
+<br><strong>3rd run (manual):</strong> <strong>C4</strong> SHIPPED (<code>abb73ee</code>) — evidence index dropped
+the 4 fabricated facet categories (traversal/npc/combat/reward were runtime-ssid copies); index now carries only
+runtime_reports + save_load_reports (derived from round-tripped reports) + package_reports; committed index
+regenerated; C1 distinctness intact; shield GREEN 20/20. Branch <code>chore/v2-0-integrity-hardening</code> now
+7 commits (unpushed).
+<br><strong>C8</strong> SHIPPED (<code>cdbc872</code>): SlicePackageReport separates <code>build_target</code>
+(label) from required <code>ue_target</code> (real UBT target), enforced. C2–C10 MERGED to main via PR #29
+(<code>59c7e8e</code>).
+<br><strong>C7</strong> DONE (<code>404024a</code>, branch <code>fix/slice-save-slot</code>): build_report parses
+the real WF_REWARD_SAVE slot so WF705 fires on real reports; UE-free <code>--selftest</code> proves it. (The
+"needs a UE re-run" note was wrong — build_report is a pure function.) Shield 20/20.
+<br><strong>★ ENTIRE LEDGER CLOSED — C1–C10 all resolved.</strong> C1→#28, C2–C10→#29, C7→fix/slice-save-slot
+(ready to ship).</p>
+
+<h2>1. Executive summary</h2>
+<p>The v2.0 surface is <strong>structurally sound</strong>: the SliceRuntimeReport completed-slice honesty
+spine, the negative/fuzz/torture owning-code mappings, the shared <code>runtime_schema</code> helpers, and the
+shield's fail-closed wiring were all traced and confirmed solid. The 24/24 runtime evidence and package proof are
+genuine. Findings are integrity <em>refinements</em>, not correctness failures — with one genuine fake-green
+hole in the <code>SliceEvidenceIndex</code> coverage check (C1) and two wiring gaps in the documented command
+surface (C2 producer chain, C3 Makefile). No change to the shipped 18/18 green verdict is warranted; these harden
+the substrate against future drift.</p>
+
+<h2>2. Overall repo grade (v2.0 scope)</h2>
+<p><span class="grade">B+</span> &nbsp; Justified: honesty spine + hostile suite + shield wiring are A-grade
+(confirmed solid); one fake-green in a summary artifact and two command-surface wiring gaps pull it to B+. No
+critical/high-severity correctness bug; no human-decision blocker.</p>
+
+<h2>3. Category scorecards</h2>
+<table>
+<tr><th>Category</th><th>Health</th><th>Notes</th></tr>
+<tr><td>Bug / Correctness</td><td class="warn">B</td><td>One fake-green (C1); core honesty spine solid.</td></tr>
+<tr><td>Wiring / Integration</td><td class="warn">B−</td><td>Index producer not chained (C2); Makefile drift (C3).</td></tr>
+<tr><td>Data / Schema / Contract</td><td class="warn">B</td><td>Index fabricates 6 categories from 1 list (C4); build_target fiction (C8).</td></tr>
+<tr><td>Consistency</td><td class="warn">B</td><td>Magic <code>24</code>/<code>12</code> scattered (C6); dead codes (C5).</td></tr>
+<tr><td>Maintainability</td><td class="solid">A−</td><td>Minor: double-validate (C9), coupled dogfood fixture (C10).</td></tr>
+<tr><td>Static (ruff/compile)</td><td class="solid">A</td><td>Clean — 0 findings.</td></tr>
+</table>
+
+<h2>4 & 5. Candidate ledger</h2>
+<p>Scores 1–5. <code>priority = (sev+conf+lev+loc+test) − (blast+regress+human)</code>, range −10…+22, higher runs sooner.
+No candidate has <code>human_decision_risk ≥ 4</code>; none blocked. <span class="sel">Green row = auto-selected this turn.</span></p>
+<table>
+<tr><th>ID</th><th>Cat</th><th>Title / seam</th><th class="num">sev</th><th class="num">conf</th><th class="num">lev</th><th class="num">loc</th><th class="num">test</th><th class="num">blast</th><th class="num">regr</th><th class="num">human</th><th class="num">score</th><th>action</th></tr>
+<tr class="sel"><td><b>C1</b> ✅</td><td>Bug</td><td><b>SHIPPED fe8d790.</b> evidence-index coverage counted list length, not distinctness → 24 dup ids passed as full coverage (<code>slice_contracts.py:633-640</code>)</td><td class="num">3</td><td class="num">5</td><td class="num">4</td><td class="num">5</td><td class="num">5</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num"><b>17</b></td><td>fitness-check</td></tr>
+<tr><td>C3</td><td>Wiring</td><td>Makefile <code>build-vertical-slice</code>→nonexistent <code>build_vertical_slice.py</code>; <code>run-vertical-slice-runtime</code> defaults to gate not run (<code>Makefile:1523-1526</code>)</td><td class="num">2</td><td class="num">5</td><td class="num">3</td><td class="num">5</td><td class="num">4</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">16</td><td>fitness-check</td></tr>
+<tr><td>C10</td><td>Fragility</td><td>scenarios dogfood hardcodes a specific real map fixture; flips RED if content renamed (<code>validate_slice_scenarios.py:164-171</code>)</td><td class="num">2</td><td class="num">5</td><td class="num">2</td><td class="num">5</td><td class="num">3</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">14</td><td>direct-fix</td></tr>
+<tr><td>C2</td><td>Wiring</td><td>SliceEvidenceIndex has no producer in the shield/Makefile flow; <code>--index</code> only manual (<code>v2_0_shield.py:82-89</code>)</td><td class="num">3</td><td class="num">5</td><td class="num">4</td><td class="num">4</td><td class="num">3</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num">14</td><td>fitness-check</td></tr>
+<tr><td>C6</td><td>Consistency</td><td><code>24</code>/<code>12</code> hardcoded across gates instead of shared/derived (<code>slice_hygiene.py:61-66</code> et al.)</td><td class="num">2</td><td class="num">5</td><td class="num">3</td><td class="num">4</td><td class="num">3</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num">12</td><td>direct-fix</td></tr>
+<tr><td>C8</td><td>Data</td><td><code>build_target="WorldForgeVerticalSlice"</code> is not a real UE target; report field is fiction (<code>package_slice.py:36</code>)</td><td class="num">3</td><td class="num">4</td><td class="num">3</td><td class="num">5</td><td class="num">3</td><td class="num">2</td><td class="num">2</td><td class="num">2</td><td class="num">12</td><td>triage</td></tr>
+<tr><td>C5</td><td>Consistency</td><td>combat facet uses WF703 where dedicated WF681 fits; 5 band codes never emitted (<code>validate_slice_npc_combat.py</code>)</td><td class="num">2</td><td class="num">5</td><td class="num">2</td><td class="num">4</td><td class="num">3</td><td class="num">2</td><td class="num">2</td><td class="num">1</td><td class="num">11</td><td>direct-fix</td></tr>
+<tr><td>C9</td><td>Maint.</td><td><code>do_index</code> validates the index twice (<code>run_slice_forge_alpha.py:301-304</code>)</td><td class="num">1</td><td class="num">5</td><td class="num">1</td><td class="num">5</td><td class="num">2</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td class="num">11</td><td>direct-fix</td></tr>
+<tr><td>C4</td><td>Data</td><td><code>do_index</code> copies ssids into all 6 facet categories → index has no independent verifying power (<code>run_slice_forge_alpha.py:288-293</code>)</td><td class="num">3</td><td class="num">5</td><td class="num">3</td><td class="num">4</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">2</td><td class="num">10</td><td>design</td></tr>
+<tr><td>C7</td><td>Fragility</td><td><code>save_slot</code> hardcoded by producer → WF705 wrong-slot invariant vacuous on real reports; <code>stale_evidence</code> always <code>[]</code> (<code>run_slice_forge_alpha.py:150,295</code>)</td><td class="num">3</td><td class="num">5</td><td class="num">3</td><td class="num">3</td><td class="num">3</td><td class="num">2</td><td class="num">3</td><td class="num">2</td><td class="num">10</td><td>design</td></tr>
+</table>
+
+<h2>8. Human-decision blockers</h2>
+<p>None. No candidate touches a public/external contract, migration/backfill, deletion of reachable code,
+numerical correctness, GPU equivalence, or security. C4 and C7 carry <code>human_decision_risk=2</code>
+(index-design / honesty-model judgment) — noted, not blocking; recommended for a <em>design</em> pass, not auto-fix.</p>
+
+<h2>9. Quick wins</h2>
+<p>C1 (score 17), C3 (16), C10 (14) — all high locality, low blast radius, strong verification.</p>
+
+<h2>11. Unsafe-to-auto-execute</h2>
+<p>C4 (index redesign — blast 3 / regress 3) and C7 (parse real save-slot marker — regress 3, honesty-model call) →
+design branch, not this loop.</p>
+
+<h2>12. Verification readiness</h2>
+<p>Strong. Every candidate is provable via the existing validator harness + a new negative fixture. C1's fix is
+directly testable: a duplicate-id index must be rejected while the real committed index still passes, plus the
+full <code>v2_0_shield</code> stays 18/18.</p>
+
+<h2>13. Recommended queue</h2>
+<ol>
+  <li><b>C1</b> — evidence-index distinctness (this turn, fitness-check)</li>
+  <li>C3 — Makefile wiring + a "every Makefile pipeline ref exists" enforceable check</li>
+  <li>C10 — decouple scenarios dogfood from specific content</li>
+  <li>C2 — chain the index producer into the shield</li>
+  <li>C6 — single-source the matrix constants; then C5, C8</li>
+  <li>C4, C7 — design pass on the evidence-index model (decisions-needed)</li>
+</ol>

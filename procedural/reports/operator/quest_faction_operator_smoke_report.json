@@ -1,0 +1,2090 @@
+{
+  "suite": "quest_faction_operator_smoke",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "smoke::quest_views.json_present": {
+      "ok": true,
+      "detail": "quest_views.json missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "smoke::faction_views.json_present": {
+      "ok": true,
+      "detail": "faction_views.json missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "smoke::24_quest_views": {
+      "ok": true,
+      "detail": "expected 24 quest views (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "smoke::4_faction_views": {
+      "ok": true,
+      "detail": "expected 4 faction views (got 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_clear_hazard_baseline_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s1::delta_in_ledger::fx_qfrun_alpine_snow_clear_hazard_baseline_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_clear_hazard_baseline_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s1::delta_in_ledger::fx_qfrun_alpine_snow_clear_hazard_baseline_s1_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_clear_hazard_baseline_s1_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s1::delta_in_ledger::fx_qfrun_alpine_snow_clear_hazard_baseline_s1_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_clear_hazard_baseline_s1_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_clear_hazard_baseline_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s2::delta_in_ledger::fx_qfrun_alpine_snow_clear_hazard_baseline_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_clear_hazard_baseline_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s2::delta_in_ledger::fx_qfrun_alpine_snow_clear_hazard_baseline_s2_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_clear_hazard_baseline_s2_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s2::delta_in_ledger::fx_qfrun_alpine_snow_clear_hazard_baseline_s2_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_clear_hazard_baseline_s2_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_baseline_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_clear_hazard_high_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s1::delta_in_ledger::fx_qfrun_alpine_snow_clear_hazard_high_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_clear_hazard_high_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_clear_hazard_high_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s2::delta_in_ledger::fx_qfrun_alpine_snow_clear_hazard_high_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_clear_hazard_high_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s2::delta_in_ledger::fx_qfrun_alpine_snow_clear_hazard_high_s2_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_clear_hazard_high_s2_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s2::delta_in_ledger::fx_qfrun_alpine_snow_clear_hazard_high_s2_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_clear_hazard_high_s2_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_clear_hazard_high_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_recover_resource_baseline_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s1::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_baseline_s1_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_baseline_s1_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s1::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_baseline_s1_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_baseline_s1_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s1::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_baseline_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_baseline_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_recover_resource_baseline_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s2::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_baseline_s2_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_baseline_s2_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s2::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_baseline_s2_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_baseline_s2_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s2::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_baseline_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_baseline_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_baseline_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_recover_resource_high_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s1::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_high_s1_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_high_s1_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s1::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_high_s1_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_high_s1_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s1::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_high_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_high_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_recover_resource_high_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s2::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_high_s2_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_high_s2_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s2::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_high_s2_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_high_s2_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s2::delta_in_ledger::fx_qfrun_alpine_snow_recover_resource_high_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_recover_resource_high_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_recover_resource_high_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_survey_landmark_baseline_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s1::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_baseline_s1_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_baseline_s1_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s1::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_baseline_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_baseline_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s1::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_baseline_s1_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_baseline_s1_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_survey_landmark_baseline_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s2::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_baseline_s2_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_baseline_s2_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s2::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_baseline_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_baseline_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s2::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_baseline_s2_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_baseline_s2_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_baseline_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_survey_landmark_high_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s1::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_high_s1_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_high_s1_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s1::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_high_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_high_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s1::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_high_s1_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_high_s1_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_alpine_snow_survey_landmark_high_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_alpine_snow_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s2::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_high_s2_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_high_s2_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s2::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_high_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_high_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s2::delta_in_ledger::fx_qfrun_alpine_snow_survey_landmark_high_s2_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_alpine_snow_survey_landmark_high_s2_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_alpine_snow_survey_landmark_high_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_clear_hazard_baseline_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_clear_hazard_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s1_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s1_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s1_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s1_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_clear_hazard_baseline_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_clear_hazard_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s2_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s2_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s2_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_clear_hazard_baseline_s2_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_baseline_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_clear_hazard_high_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_clear_hazard_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_clear_hazard_high_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_clear_hazard_high_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_clear_hazard_high_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_clear_hazard_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_clear_hazard_high_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_clear_hazard_high_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_clear_hazard_high_s2_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_clear_hazard_high_s2_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_clear_hazard_high_s2_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_clear_hazard_high_s2_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_clear_hazard_high_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_recover_resource_baseline_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_recover_resource_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_baseline_s1_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_baseline_s1_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_baseline_s1_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_baseline_s1_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_baseline_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_baseline_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_recover_resource_baseline_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_recover_resource_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_baseline_s2_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_baseline_s2_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_baseline_s2_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_baseline_s2_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_baseline_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_baseline_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_baseline_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_recover_resource_high_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_recover_resource_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_high_s1_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_high_s1_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_high_s1_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_high_s1_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_high_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_high_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_recover_resource_high_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_recover_resource_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_high_s2_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_high_s2_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_high_s2_outriders": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_high_s2_outriders not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_recover_resource_high_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_recover_resource_high_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_recover_resource_high_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_survey_landmark_baseline_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_survey_landmark_baseline_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s1_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s1_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s1_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s1_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_survey_landmark_baseline_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_survey_landmark_baseline_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s2_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s2_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s2_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_baseline_s2_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_baseline_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s1::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s1::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_survey_landmark_high_s1.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s1::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_survey_landmark_high_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_high_s1_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_high_s1_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_high_s1_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_high_s1_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s1::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_high_s1_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_high_s1_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s1::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s1::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s1::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s2::contract": {
+      "ok": true,
+      "detail": "quest view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s2::page": {
+      "ok": true,
+      "detail": "quest page missing: qf_volcanic_ashlands_survey_landmark_high_s2.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s2::ledger_link": {
+      "ok": true,
+      "detail": "ledger link broken: procedural/generated/consequences/ledger_volcanic_ashlands_survey_landmark_high_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_high_s2_surveyors": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_high_s2_surveyors not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_high_s2_wardens": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_high_s2_wardens not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s2::delta_in_ledger::fx_qfrun_volcanic_ashlands_survey_landmark_high_s2_salvagers": {
+      "ok": true,
+      "detail": "faction delta fx_qfrun_volcanic_ashlands_survey_landmark_high_s2_salvagers not in linked ledger",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s2::runtime_report": {
+      "ok": true,
+      "detail": "quest outcome lacks a runtime report link",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s2::save_load_proof": {
+      "ok": true,
+      "detail": "passing view claims roundtrip_ok but save/load proof missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "qv::qf_volcanic_ashlands_survey_landmark_high_s2::codes_well_formed": {
+      "ok": true,
+      "detail": "quest view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::wardens::contract": {
+      "ok": true,
+      "detail": "faction view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::wardens::page": {
+      "ok": true,
+      "detail": "faction page missing: wardens.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::wardens::def_link": {
+      "ok": true,
+      "detail": "faction definition link broken: procedural/generated/factions/wardens.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::wardens::state_link": {
+      "ok": true,
+      "detail": "faction state link broken: procedural/reports/quest_faction/runtime/world_faction_state.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::surveyors::contract": {
+      "ok": true,
+      "detail": "faction view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::surveyors::page": {
+      "ok": true,
+      "detail": "faction page missing: surveyors.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::surveyors::def_link": {
+      "ok": true,
+      "detail": "faction definition link broken: procedural/generated/factions/surveyors.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::surveyors::state_link": {
+      "ok": true,
+      "detail": "faction state link broken: procedural/reports/quest_faction/runtime/world_faction_state.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::salvagers::contract": {
+      "ok": true,
+      "detail": "faction view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::salvagers::page": {
+      "ok": true,
+      "detail": "faction page missing: salvagers.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::salvagers::def_link": {
+      "ok": true,
+      "detail": "faction definition link broken: procedural/generated/factions/salvagers.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::salvagers::state_link": {
+      "ok": true,
+      "detail": "faction state link broken: procedural/reports/quest_faction/runtime/world_faction_state.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::outriders::contract": {
+      "ok": true,
+      "detail": "faction view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::outriders::page": {
+      "ok": true,
+      "detail": "faction page missing: outriders.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::outriders::def_link": {
+      "ok": true,
+      "detail": "faction definition link broken: procedural/generated/factions/outriders.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fv::outriders::state_link": {
+      "ok": true,
+      "detail": "faction state link broken: procedural/reports/quest_faction/runtime/world_faction_state.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_clear_hazard_baseline_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/wardens.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_clear_hazard_baseline_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/wardens.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_clear_hazard_high_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/wardens.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_clear_hazard_high_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/wardens.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_recover_resource_baseline_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/salvagers.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_recover_resource_baseline_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/salvagers.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_recover_resource_high_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/salvagers.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_recover_resource_high_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/salvagers.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_survey_landmark_baseline_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/surveyors.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_survey_landmark_baseline_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/surveyors.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_survey_landmark_high_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/surveyors.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_alpine_snow_survey_landmark_high_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/surveyors.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_clear_hazard_baseline_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/wardens.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_clear_hazard_baseline_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/wardens.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_clear_hazard_high_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/wardens.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_clear_hazard_high_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/wardens.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_recover_resource_baseline_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/salvagers.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_recover_resource_baseline_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/salvagers.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_recover_resource_high_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/salvagers.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_recover_resource_high_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/salvagers.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_survey_landmark_baseline_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/surveyors.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_survey_landmark_baseline_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/surveyors.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_survey_landmark_high_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/surveyors.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::qfrun_volcanic_ashlands_survey_landmark_high_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/factions/surveyors.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 256,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "operator-quest-faction-smoke",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:12.374551+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.quest_faction.operator_smoke.v1",
+    "report_id": "wf.quest_faction.operator_smoke.v1:efa74c8e2d2f",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 24,
+    "records_total": 24,
+    "records_passed": 24,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/ConsumerSlice:wfmarker_001",
+        "/Game/Maps/ConsumerSlice:wfmarker_002",
+        "/Game/Maps/ConsumerSlice:wfmarker_003"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/ConsumerSlice"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_cleanup"
+    }
+  ],
+  "evidence_refs": [
+    "manual_cleanup"
+  ],
+  "mutations": [
+    {
+      "before_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            -600.0,
+            100.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_c_0",
+      "operation": "delete",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_cleanup",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wfmarker_001"
+    },
+    {
+      "before_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            200.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_c_1",
+      "operation": "delete",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_cleanup",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wfmarker_002"
+    },
+    {
+      "before_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            600.0,
+            300.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_c_2",
+      "operation": "delete",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_cleanup",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wfmarker_003"
+    }
+  ],
+  "operation_id": "op_wfbuild_clean"
+}

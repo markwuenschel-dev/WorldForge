@@ -1,0 +1,1018 @@
+{
+  "suite": "tactical_negatives",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "suite_nonempty": {
+      "ok": true,
+      "detail": "negative suite must carry >= 24 fixtures (got 53)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::bp:aggression_out_of_range::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::bp:aggression_out_of_range::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF931_TACTICAL_PROFILE_INVALID (got ['WF931_TACTICAL_PROFILE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::bp:unknown_role::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::bp:unknown_role::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF935_TACTICAL_UNKNOWN_ROLE (got ['WF935_TACTICAL_UNKNOWN_ROLE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::bp:unknown_action::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::bp:unknown_action::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF936_TACTICAL_UNKNOWN_ACTION (got ['WF936_TACTICAL_UNKNOWN_ACTION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::bp:unknown_stimulus::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::bp:unknown_stimulus::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF937_TACTICAL_UNKNOWN_STIMULUS (got ['WF937_TACTICAL_UNKNOWN_STIMULUS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::bp:zero_cadence::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::bp:zero_cadence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF931_TACTICAL_PROFILE_INVALID (got ['WF931_TACTICAL_PROFILE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rl:preferred_not_allowed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rl:preferred_not_allowed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF932_TACTICAL_ROLE_INVALID (got ['WF932_TACTICAL_ROLE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rl:forbidden_overlaps_allowed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rl:forbidden_overlaps_allowed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF932_TACTICAL_ROLE_INVALID (got ['WF932_TACTICAL_ROLE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rl:distances_unordered::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rl:distances_unordered::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF932_TACTICAL_ROLE_INVALID (got ['WF932_TACTICAL_ROLE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rl:unknown_role_id::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rl:unknown_role_id::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF935_TACTICAL_UNKNOWN_ROLE (got ['WF935_TACTICAL_UNKNOWN_ROLE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::af:malformed_cover_point::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::af:malformed_cover_point::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF947_TACTICAL_COVER_REFERENCE_INVALID (got ['WF947_TACTICAL_COVER_REFERENCE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::af:no_source_reports::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::af:no_source_reports::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF933_TACTICAL_AFFORDANCE_MAP_INVALID (got ['WF933_TACTICAL_AFFORDANCE_MAP_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::af:unbounded_hazard::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::af:unbounded_hazard::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF933_TACTICAL_AFFORDANCE_MAP_INVALID (got ['WF933_TACTICAL_AFFORDANCE_MAP_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::nb:tile_not_allowed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::nb:tile_not_allowed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF934_TACTICAL_NPC_BINDING_INVALID (got ['WF934_TACTICAL_NPC_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::nb:scope_leak::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::nb:scope_leak::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF934_TACTICAL_NPC_BINDING_INVALID (got ['WF934_TACTICAL_NPC_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::nb:unknown_role::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::nb:unknown_role::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF935_TACTICAL_UNKNOWN_ROLE (got ['WF935_TACTICAL_UNKNOWN_ROLE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::di:unknown_stimulus::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::di:unknown_stimulus::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF937_TACTICAL_UNKNOWN_STIMULUS (got ['WF937_TACTICAL_UNKNOWN_STIMULUS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::di:bad_visibility::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::di:bad_visibility::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF938_TACTICAL_DECISION_INPUT_INVALID (got ['WF938_TACTICAL_DECISION_INPUT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::di:bad_health_state::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::di:bad_health_state::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF938_TACTICAL_DECISION_INPUT_INVALID (got ['WF938_TACTICAL_DECISION_INPUT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::di:empty_stimuli::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::di:empty_stimuli::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF937_TACTICAL_UNKNOWN_STIMULUS (got ['WF937_TACTICAL_UNKNOWN_STIMULUS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:valid_flank_no_route::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:valid_flank_no_route::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF951_TACTICAL_FLANK_ROUTE_MISSING (got ['WF951_TACTICAL_FLANK_ROUTE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:valid_retreat_no_anchor::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:valid_retreat_no_anchor::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF952_TACTICAL_RETREAT_ROUTE_MISSING (got ['WF952_TACTICAL_RETREAT_ROUTE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:valid_cover_no_cover::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:valid_cover_no_cover::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF947_TACTICAL_COVER_REFERENCE_INVALID (got ['WF947_TACTICAL_COVER_REFERENCE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:invalid_no_reason::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:invalid_no_reason::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF939_TACTICAL_DECISION_OPTION_INVALID (got ['WF939_TACTICAL_DECISION_OPTION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:valid_with_reason::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:valid_with_reason::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF939_TACTICAL_DECISION_OPTION_INVALID (got ['WF939_TACTICAL_DECISION_OPTION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:unknown_action::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::op:unknown_action::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF936_TACTICAL_UNKNOWN_ACTION (got ['WF936_TACTICAL_UNKNOWN_ACTION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::tr:selects_invalid_option::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::tr:selects_invalid_option::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF941_TACTICAL_SELECTED_INVALID_OPTION (got ['WF941_TACTICAL_SELECTED_INVALID_OPTION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::tr:selected_not_in_options::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::tr:selected_not_in_options::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF940_TACTICAL_DECISION_TRACE_INVALID (got ['WF940_TACTICAL_DECISION_TRACE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::tr:clean_no_state_delta::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::tr:clean_no_state_delta::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF944_TACTICAL_STATE_NOT_MUTATED (got ['WF944_TACTICAL_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::tr:clean_not_completed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::tr:clean_not_completed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF942_TACTICAL_EXECUTION_MISSING (got ['WF942_TACTICAL_EXECUTION_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::sd:change_equal_hash::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::sd:change_equal_hash::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF944_TACTICAL_STATE_NOT_MUTATED (got ['WF944_TACTICAL_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::sd:quest_no_context::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::sd:quest_no_context::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF955_TACTICAL_QUEST_STATE_MISSING (got ['WF955_TACTICAL_QUEST_STATE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::sd:faction_no_context::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::sd:faction_no_context::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF956_TACTICAL_FACTION_STATE_MISSING (got ['WF956_TACTICAL_FACTION_STATE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::sd:streaming_no_transition::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::sd:streaming_no_transition::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF943_TACTICAL_STATE_DELTA_INVALID (got ['WF943_TACTICAL_STATE_DELTA_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::gs:coordinated_one_npc::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::gs:coordinated_one_npc::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF946_TACTICAL_COORDINATION_INVALID (got ['WF946_TACTICAL_COORDINATION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::gs:flank_no_route::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::gs:flank_no_route::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF951_TACTICAL_FLANK_ROUTE_MISSING (got ['WF951_TACTICAL_FLANK_ROUTE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::gs:suppression_no_suppressor::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::gs:suppression_no_suppressor::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF946_TACTICAL_COORDINATION_INVALID (got ['WF946_TACTICAL_COORDINATION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:clean_zero_valid::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:clean_zero_valid::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF961_TACTICAL_RUNTIME_REPORT_INVALID (got ['WF961_TACTICAL_RUNTIME_REPORT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:clean_mission_incomplete::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:clean_mission_incomplete::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF961_TACTICAL_RUNTIME_REPORT_INVALID (got ['WF961_TACTICAL_RUNTIME_REPORT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:clean_save_failed::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:clean_save_failed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF958_TACTICAL_SAVE_LOAD_FAILED (got ['WF958_TACTICAL_SAVE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:clean_budget_exceeded::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:clean_budget_exceeded::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF960_TACTICAL_BUDGET_EXCEEDED (got ['WF960_TACTICAL_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:live_no_evidence::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:live_no_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF968_TACTICAL_NAVMESH_OVERCLAIM (got ['WF968_TACTICAL_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:malformed_failure_code::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::rr:malformed_failure_code::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF967_TACTICAL_UNKNOWN_FAILURE_CODE (got ['WF967_TACTICAL_UNKNOWN_FAILURE_CODE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::ss:roundtrip_no_npc_hashes::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::ss:roundtrip_no_npc_hashes::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF957_TACTICAL_SAVE_LOAD_MISSING (got ['WF957_TACTICAL_SAVE_LOAD_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::ss:bad_roundtrip::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::ss:bad_roundtrip::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF958_TACTICAL_SAVE_LOAD_FAILED (got ['WF958_TACTICAL_SAVE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::br:npc_overrun_pass::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::br:npc_overrun_pass::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF960_TACTICAL_BUDGET_EXCEEDED (got ['WF960_TACTICAL_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::br:dpm_overrun_pass::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::br:dpm_overrun_pass::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF960_TACTICAL_BUDGET_EXCEEDED (got ['WF960_TACTICAL_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::br:over_budget_class_pass::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::br:over_budget_class_pass::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF960_TACTICAL_BUDGET_EXCEEDED (got ['WF960_TACTICAL_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::ei:partial_matrix::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::ei:partial_matrix::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF965_TACTICAL_PARTIAL_MATRIX (got ['WF965_TACTICAL_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::ei:stale_sha::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::ei:stale_sha::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF966_TACTICAL_STALE_EVIDENCE (got ['WF966_TACTICAL_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::ei:action_coverage_missing::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::ei:action_coverage_missing::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF964_TACTICAL_ACTION_COVERAGE_MISSING (got ['WF964_TACTICAL_ACTION_COVERAGE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::os:pass_no_trace::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::os:pass_no_trace::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF963_TACTICAL_OPERATOR_VIEW_INVALID (got ['WF963_TACTICAL_OPERATOR_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::on:acted_no_trace::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::on:acted_no_trace::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF963_TACTICAL_OPERATOR_VIEW_INVALID (got ['WF963_TACTICAL_OPERATOR_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::on:acted_no_state_delta::rejected": {
+      "ok": true,
+      "detail": "known-bad fixture was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "neg::on:acted_no_state_delta::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF944_TACTICAL_STATE_NOT_MUTATED (got ['WF944_TACTICAL_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalBehaviorProfile::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalRoleDefinition::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalAffordanceMap::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalNPCBinding::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalDecisionInput::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalDecisionOption::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalDecisionTrace::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalStateDelta::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalGroupState::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalRuntimeReport::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalSaveState::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalBudgetReport::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TacticalEvidenceIndex::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorTacticalScenarioView::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorTacticalNPCView::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 122,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "tactical-negative-fixtures",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:05.144498+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.tactical.negatives.v1",
+    "report_id": "wf.tactical.negatives.v1:4915e970f5bd",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 53,
+    "records_total": 53,
+    "records_passed": 53,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

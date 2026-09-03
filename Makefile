@@ -162,7 +162,7 @@ help:
 	@echo "Runtime StateForge (v0.8 — make generated worlds react and remember):"
 	@echo "  make run-state-sim NAME=Desert_Ash_IndustrialYard_01 SCENARIO=activate_industrial_forge"
 	@echo "  make validate-runtime-state NAME=Desert_Ash_IndustrialYard_01"
-	@echo "  make apply-state-scenario NAME=Desert_Ash_IndustrialYard_01 SCENARIO=activate_industrial_forge  # UE-side"
+	@echo "  make apply-state-scenario NAME=Desert_Ash_IndustrialYard_01 SCENARIO=activate_industrial_forge  # UE-side authority report"
 	@echo ""
 	@echo "Houdini generated-asset intake (v0.8 sidecar — one owned StaticMesh, NOT MeshForge):"
 	@echo "  make register-generated-asset ASSET=rock_generator_desert_01"
@@ -491,8 +491,8 @@ validate-runtime-state:
 	$(PYTHON) tools/pipeline/validate_runtime_state.py --name $(NAME) \
 	  $(if $(SCENARIO),--scenario $(SCENARIO),) $(if $(STRICT),--strict,)
 
-# UE-side bridge: apply the scenario in-editor and read the MPC back (requires
-# the scenario's slice map open in the editor).
+# UE-side authority report: editor Python cannot acquire a state-write lease.
+# A matching native owner must apply and report any MPC readback.
 apply-state-scenario:
 	$(UE_PYTHON) tools/unreal/run_state_scenario.py \
 	  --result procedural/generated/scenarios/$(NAME)__$(SCENARIO)/result.json --project-root .

@@ -12,9 +12,11 @@ deterministic result descriptor:
   - persists the post-state and reads it back (a real save/load round-trip)
   - writes result.json + state_save.json and upserts the scenario registry
 
-This is the AUTHORING-SIDE (pure Python) simulation of the scenario. The UE-side
-bridge (tools/unreal/run_state_scenario.py) applies the same scenario in-editor
-and is validated against this descriptor's expectations.
+This is the AUTHORING-SIDE (pure Python) simulation of the scenario. A native
+UE-side owner can apply the same scenario and validate it against this
+descriptor's expectations. The editor-Python helper
+(tools/unreal/run_state_scenario.py) deliberately reports
+native-authority-required rather than forging that write.
 
 State keys are read from the scenario data — nothing here is hard-coded to
 industrial_pressure (forge_design_decisions: runtime hooks stay data-defined).

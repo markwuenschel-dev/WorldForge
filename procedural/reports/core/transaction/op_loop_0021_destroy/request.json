@@ -1,0 +1,128 @@
+{
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:wfmarker_001",
+        "/Game/Maps/_wf_test_lvl:wfmarker_002",
+        "/Game/Maps/_wf_test_lvl:wfmarker_003"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/_wf_test_lvl"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_closed_loop_destroy"
+    }
+  ],
+  "evidence_refs": [
+    "route_placement_plan",
+    "observed_world"
+  ],
+  "mutations": [
+    {
+      "before_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            -600.0,
+            100.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_wfmarker_001_del",
+      "operation": "delete",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_closed_loop_destroy",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_001"
+    },
+    {
+      "before_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            200.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_wfmarker_002_del",
+      "operation": "delete",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_closed_loop_destroy",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_002"
+    },
+    {
+      "before_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            600.0,
+            300.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_wfmarker_003_del",
+      "operation": "delete",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_closed_loop_destroy",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_003"
+    }
+  ],
+  "operation_id": "op_loop_0021_destroy"
+}

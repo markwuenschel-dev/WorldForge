@@ -1,0 +1,241 @@
+{
+  "abort_reason": "post-observation CONTRADICTS the declared postcondition for at least one applied mutation; the world does not contain what this delta claims to have put there, so it is rolled back rather than reported",
+  "bound_enforcement": "satisfied",
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/ConsumerSlice:wf_fog",
+        "/Game/Maps/ConsumerSlice:wf_skylight",
+        "/Game/Maps/ConsumerSlice:wf_sun"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/ConsumerSlice"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_environment_rig"
+    }
+  ],
+  "created_at": "2026-08-23T12:32:46Z",
+  "created_by": "worldforge.core",
+  "delta_id": "delta_2942ec7208e44f91",
+  "detail": "rolled back and CONFIRMED: every undone target was re-observed and matches its captured before-state",
+  "evidence_refs": [
+    "environment_rig_plan"
+  ],
+  "failure_codes": [
+    "WF1246_CORE_DELTA_INVALID"
+  ],
+  "lock": {
+    "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+    "held": true,
+    "operation_id": "op_rig_rot2",
+    "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+    "released": true
+  },
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "before_state_declared": {
+        "state_kind": "absent"
+      },
+      "detail": "environment rig element 'wf_sun'",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "DirectionalLight",
+          "location": [
+            0.0,
+            0.0,
+            1000.0
+          ],
+          "rotation": [
+            -38.0,
+            145.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_rig_wf_sun_000",
+      "observed_after_apply": {
+        "payload": {
+          "actor_class": "DirectionalLight",
+          "location": [
+            0.0,
+            0.0,
+            1000.0
+          ],
+          "rotation": [
+            -38.000000000000014,
+            -145.00000000000003,
+            2.0180909124057834e-15
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "observed_after_rollback": {
+        "state_kind": "absent"
+      },
+      "operation": "create",
+      "provider_id": "environment_rig_planner",
+      "restoration": "satisfied",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "rolled_back",
+      "step_id": "step_environment_rig",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wf_sun",
+      "undo_reported_ok": true,
+      "verification": "violated"
+    },
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "before_state_declared": {
+        "state_kind": "absent"
+      },
+      "detail": "environment rig element 'wf_skylight'",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "SkyLight",
+          "location": [
+            0.0,
+            0.0,
+            1200.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_rig_wf_skylight_001",
+      "observed_after_apply": {
+        "payload": {
+          "actor_class": "SkyLight",
+          "location": [
+            0.0,
+            0.0,
+            1200.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "observed_after_rollback": {
+        "state_kind": "absent"
+      },
+      "operation": "create",
+      "provider_id": "environment_rig_planner",
+      "restoration": "satisfied",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "rolled_back",
+      "step_id": "step_environment_rig",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wf_skylight",
+      "undo_reported_ok": true,
+      "verification": "violated"
+    },
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "before_state_declared": {
+        "state_kind": "absent"
+      },
+      "detail": "environment rig element 'wf_fog'",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "ExponentialHeightFog",
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_rig_wf_fog_002",
+      "observed_after_apply": {
+        "payload": {
+          "actor_class": "ExponentialHeightFog",
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            -0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "observed_after_rollback": {
+        "state_kind": "absent"
+      },
+      "operation": "create",
+      "provider_id": "environment_rig_planner",
+      "restoration": "satisfied",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "rolled_back",
+      "step_id": "step_environment_rig",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wf_fog",
+      "undo_reported_ok": true,
+      "verification": "violated"
+    }
+  ],
+  "operation_id": "op_rig_rot2",
+  "outcome": "rolled_back",
+  "report_type": "wf.core.world_delta.v1",
+  "rollback_completeness": "satisfied",
+  "schema_version": "wf.core.world_delta.v1",
+  "verification": "violated"
+}

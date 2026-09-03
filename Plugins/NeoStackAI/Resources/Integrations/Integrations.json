@@ -1,0 +1,824 @@
+{
+  "schemaVersion": 1,
+  "integrations": [
+    {
+      "extensionId": "neostack.actor_modifier",
+      "legacyPluginName": "NeoStackAI_ActorModifier",
+      "legacyModuleName": "NSAI_ActorModifier",
+      "moduleName": "NSAI_ActorModifier_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "ActorModifierCore",
+        "ActorModifier"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "ActorModifier/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.audio-capture",
+      "legacyPluginName": "NeoStackAI_AudioCapture",
+      "legacyModuleName": "NSAI_AudioCapture",
+      "moduleName": "NSAI_AudioCapture_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "AudioCapture"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "AudioCapture/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.audio-gameplay-volume",
+      "legacyPluginName": "NeoStackAI_AudioGameplayVolume",
+      "legacyModuleName": "NSAI_AudioGameplayVolume",
+      "moduleName": "NSAI_AudioGameplayVolume_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "AudioGameplay",
+        "AudioGameplayVolume"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "AudioGameplayVolume/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.audio-modulation",
+      "legacyPluginName": "NeoStackAI_AudioModulation",
+      "legacyModuleName": "NSAI_AudioModulation",
+      "moduleName": "NSAI_AudioModulation_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "AudioModulation",
+        "MetaSound",
+        "WaveTable",
+        "AudioInsights"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "AudioModulation/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.audio-motor-sim",
+      "legacyPluginName": "NeoStackAI_AudioMotorSim",
+      "legacyModuleName": "NSAI_AudioMotorSim",
+      "moduleName": "NSAI_AudioMotorSim_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "AudioMotorSim"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "AudioMotorSim/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.audio-synesthesia",
+      "legacyPluginName": "NeoStackAI_AudioSynesthesia",
+      "legacyModuleName": "NSAI_AudioSynesthesia",
+      "moduleName": "NSAI_AudioSynesthesia_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "AudioSynesthesia"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "AudioSynesthesia/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.audio-widgets",
+      "legacyPluginName": "NeoStackAI_AudioWidgets",
+      "legacyModuleName": "NSAI_AudioWidgets",
+      "moduleName": "NSAI_AudioWidgets_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "AudioWidgets",
+        "AudioSynesthesia"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "AudioWidgets/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.avalanche",
+      "legacyPluginName": "NeoStackAI_Avalanche",
+      "legacyModuleName": "NSAI_Avalanche",
+      "moduleName": "NSAI_Avalanche_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Avalanche",
+        "RemoteControl",
+        "StructUtils"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "Avalanche/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.avalanche_datalink",
+      "legacyPluginName": "NeoStackAI_AvalancheDataLink",
+      "legacyModuleName": "NSAI_AvalancheDataLink",
+      "moduleName": "NSAI_AvalancheDataLink_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Avalanche",
+        "DataLink",
+        "AvalancheDataLink"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "AvalancheDataLink/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.avalanche_scene_state",
+      "legacyPluginName": "NeoStackAI_AvalancheSceneState",
+      "legacyModuleName": "NSAI_AvalancheSceneState",
+      "moduleName": "NSAI_AvalancheSceneState_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Avalanche",
+        "SceneState",
+        "AvalancheSceneState"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "AvalancheSceneState/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.avalanche_sequence",
+      "legacyPluginName": "NeoStackAI_AvalancheSequence",
+      "legacyModuleName": "NSAI_AvalancheSequence",
+      "moduleName": "NSAI_AvalancheSequence_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Avalanche"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "AvalancheSequence/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.avalanche_transition",
+      "legacyPluginName": "NeoStackAI_AvalancheTransition",
+      "legacyModuleName": "NSAI_AvalancheTransition",
+      "moduleName": "NSAI_AvalancheTransition_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "StateTree",
+        "Avalanche"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "AvalancheTransition/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.chaosfracture",
+      "legacyPluginName": "NeoStackAI_ChaosFracture",
+      "legacyModuleName": "NSAI_ChaosFracture",
+      "moduleName": "NSAI_ChaosFracture_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Fracture",
+        "Dataflow"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "ChaosFracture/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.chaosoutfit",
+      "legacyPluginName": "NeoStackAI_ChaosOutfit",
+      "legacyModuleName": "NSAI_ChaosOutfit",
+      "moduleName": "NSAI_ChaosOutfit_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "ChaosOutfitAsset",
+        "ChaosClothAsset"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "ChaosOutfit/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.chooser",
+      "legacyPluginName": "NeoStackAI_Chooser",
+      "legacyModuleName": "NSAI_Chooser",
+      "moduleName": "NSAI_Chooser_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Chooser"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "Chooser/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.cloner_effector",
+      "legacyPluginName": "NeoStackAI_ClonerEffector",
+      "legacyModuleName": "NSAI_ClonerEffector",
+      "moduleName": "NSAI_ClonerEffector_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "ClonerEffector"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "ClonerEffector/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.controlrig",
+      "legacyPluginName": "NeoStackAI_ControlRig",
+      "legacyModuleName": "NSAI_ControlRig",
+      "moduleName": "NSAI_ControlRig_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "ControlRig",
+        "RigVM"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "ControlRig/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.dataflow",
+      "legacyPluginName": "NeoStackAI_Dataflow",
+      "legacyModuleName": "NSAI_Dataflow",
+      "moduleName": "NSAI_Dataflow_Integration",
+      "moduleType": "Editor",
+      "requiredPlugins": [
+        "Dataflow"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "Dataflow/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.dataregistry",
+      "legacyPluginName": "NeoStackAI_DataRegistry",
+      "legacyModuleName": "NSAI_DataRegistry",
+      "moduleName": "NSAI_DataRegistry_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "DataRegistry"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "DataRegistry/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.dmx_control_console",
+      "legacyPluginName": "NeoStackAI_DMXControlConsole",
+      "legacyModuleName": "NSAI_DMXControlConsole",
+      "moduleName": "NSAI_DMXControlConsole_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "DMXControlConsole"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "DMXControlConsole/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.dmx_engine",
+      "legacyPluginName": "NeoStackAI_DMXEngine",
+      "legacyModuleName": "NSAI_DMXEngine",
+      "moduleName": "NSAI_DMXEngine_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "DMXEngine",
+        "DMXProtocol"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "DMXEngine/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.dmx_fixtures",
+      "legacyPluginName": "NeoStackAI_DMXFixtures",
+      "legacyModuleName": "NSAI_DMXFixtures",
+      "moduleName": "NSAI_DMXFixtures_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "DMXFixtures"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "DMXFixtures/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.dmx_protocol",
+      "legacyPluginName": "NeoStackAI_DMXProtocol",
+      "legacyModuleName": "NSAI_DMXProtocol",
+      "moduleName": "NSAI_DMXProtocol_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "DMXProtocol"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "DMXProtocol/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.dynamic_material",
+      "legacyPluginName": "NeoStackAI_DynamicMaterial",
+      "legacyModuleName": "NSAI_DynamicMaterial",
+      "moduleName": "NSAI_DynamicMaterial_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "DynamicMaterial"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "DynamicMaterial/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.dynamic_material_media_stream_bridge",
+      "legacyPluginName": "NeoStackAI_DynamicMaterialMediaStreamBridge",
+      "legacyModuleName": "NSAI_DMMediaBridge",
+      "moduleName": "NSAI_DMMediaBridge_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "DynamicMaterial",
+        "MediaStream",
+        "DynamicMaterialMediaStreamBridge"
+      ],
+      "requiredIntegrations": [
+        "neostack.dynamic_material"
+      ],
+      "metadataPath": "DynamicMaterialMediaStreamBridge/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.enhancedinput",
+      "legacyPluginName": "NeoStackAI_EnhancedInput",
+      "legacyModuleName": "NSAI_EnhancedInput",
+      "moduleName": "NSAI_EnhancedInput_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "EnhancedInput"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "EnhancedInput/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.eqs",
+      "legacyPluginName": "NeoStackAI_EQS",
+      "legacyModuleName": "NSAI_EQS",
+      "moduleName": "NSAI_EQS_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "EnvironmentQueryEditor"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "EQS/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.gameplayabilities",
+      "legacyPluginName": "NeoStackAI_GameplayAbilities",
+      "legacyModuleName": "NSAI_GameplayAbilities",
+      "moduleName": "NSAI_GameplayAbilities_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "GameplayAbilities",
+        "GameplayTagsEditor"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "GameplayAbilities/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.gameplay_behaviors",
+      "legacyPluginName": "NeoStackAI_GameplayBehaviors",
+      "legacyModuleName": "NSAI_GameplayBehaviors",
+      "moduleName": "NSAI_GameplayBehaviors_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "GameplayBehaviors",
+        "GameplayAbilities"
+      ],
+      "requiredIntegrations": [
+        "neostack.gameplayabilities"
+      ],
+      "metadataPath": "GameplayBehaviors/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.gameplay_behavior_smartobjects",
+      "legacyPluginName": "NeoStackAI_GameplayBehaviorSmartObjects",
+      "legacyModuleName": "NSAI_GameplayBehaviorSmartObjects",
+      "moduleName": "NSAI_GameplayBehaviorSmartObjects_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "GameplayBehaviorSmartObjects",
+        "GameplayBehaviors"
+      ],
+      "requiredIntegrations": [
+        "neostack.smartobjects"
+      ],
+      "metadataPath": "GameplayBehaviorSmartObjects/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.gameplay_interactions",
+      "legacyPluginName": "NeoStackAI_GameplayInteractions",
+      "legacyModuleName": "NSAI_GameplayInteractions",
+      "moduleName": "NSAI_GameplayInteractions_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "GameplayInteractions"
+      ],
+      "requiredIntegrations": [
+        "neostack.smartobjects",
+        "neostack.statetree"
+      ],
+      "metadataPath": "GameplayInteractions/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.geometryscripting",
+      "legacyPluginName": "NeoStackAI_GeometryScripting",
+      "legacyModuleName": "NSAI_GeometryScripting",
+      "moduleName": "NSAI_GeometryScripting_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "GeometryScripting"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "GeometryScripting/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.ikrig",
+      "legacyPluginName": "NeoStackAI_IKRig",
+      "legacyModuleName": "NSAI_IKRig",
+      "moduleName": "NSAI_IKRig_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "IKRig",
+        "FullBodyIK"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "IKRig/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.interchange",
+      "legacyPluginName": "NeoStackAI_Interchange",
+      "legacyModuleName": "NSAI_Interchange",
+      "moduleName": "NSAI_Interchange_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Interchange"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "Interchange/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.livelink",
+      "legacyPluginName": "NeoStackAI_LiveLink",
+      "legacyModuleName": "NSAI_LiveLink",
+      "moduleName": "NSAI_LiveLink_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "LiveLink"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "LiveLink/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.massai",
+      "legacyPluginName": "NeoStackAI_MassAI",
+      "legacyModuleName": "NSAI_MassAI",
+      "moduleName": "NSAI_MassAI_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "ZoneGraph",
+        "MassGameplay",
+        "MassCrowd"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "MassAI/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.metahuman",
+      "legacyPluginName": "NeoStackAI_MetaHuman",
+      "legacyModuleName": "NSAI_MetaHuman",
+      "moduleName": "NSAI_MetaHuman_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "MetaHumanCharacter",
+        "MetaHumanSDK",
+        "MetaHuman",
+        "MetaHumanCoreTech"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "MetaHuman/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.metasound",
+      "legacyPluginName": "NeoStackAI_MetaSound",
+      "legacyModuleName": "NSAI_MetaSound",
+      "moduleName": "NSAI_MetaSound_Integration",
+      "moduleType": "Editor",
+      "requiredPlugins": [
+        "Metasound"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "MetaSound/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.movierenderpipeline",
+      "legacyPluginName": "NeoStackAI_MovieRenderPipeline",
+      "legacyModuleName": "NSAI_MovieRenderPipeline",
+      "moduleName": "NSAI_MovieRenderPipeline_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "MovieRenderPipeline"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "MovieRenderPipeline/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.ndisplay",
+      "legacyPluginName": "NeoStackAI_NDisplay",
+      "legacyModuleName": "NSAI_NDisplay",
+      "moduleName": "NSAI_NDisplay_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "nDisplay"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "NDisplay/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.niagara",
+      "legacyPluginName": "NeoStackAI_Niagara",
+      "legacyModuleName": "NSAI_Niagara",
+      "moduleName": "NSAI_Niagara_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Niagara"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "Niagara/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.paper2d",
+      "legacyPluginName": "NeoStackAI_Paper2D",
+      "legacyModuleName": "NSAI_Paper2D",
+      "moduleName": "NSAI_Paper2D_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Paper2D"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "Paper2D/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.pcg",
+      "legacyPluginName": "NeoStackAI_PCG",
+      "legacyModuleName": "NSAI_PCG",
+      "moduleName": "NSAI_PCG_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "PCG"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "PCG/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.posesearch",
+      "legacyPluginName": "NeoStackAI_PoseSearch",
+      "legacyModuleName": "NSAI_PoseSearch",
+      "moduleName": "NSAI_PoseSearch_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "PoseSearch"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "PoseSearch/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.property_animator",
+      "legacyPluginName": "NeoStackAI_PropertyAnimator",
+      "legacyModuleName": "NSAI_PropertyAnimator",
+      "moduleName": "NSAI_PropertyAnimator_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "PropertyAnimator",
+        "PropertyAnimatorCore",
+        "AudioSynesthesia"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "PropertyAnimator/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.python",
+      "legacyPluginName": "NeoStackAI_Python",
+      "legacyModuleName": "NSAI_Python",
+      "moduleName": "NSAI_Python_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "PythonScriptPlugin"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "Python/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.remote_control",
+      "legacyPluginName": "NeoStackAI_RemoteControl",
+      "legacyModuleName": "NSAI_RemoteControl",
+      "moduleName": "NSAI_RemoteControl_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "RemoteControl",
+        "StructUtils"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "RemoteControl/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.remote_control_components",
+      "legacyPluginName": "NeoStackAI_RemoteControlComponents",
+      "legacyModuleName": "NSAI_RemoteControlComponents",
+      "moduleName": "NSAI_RemoteControlComponents_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "RemoteControl",
+        "RemoteControlComponents"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "RemoteControlComponents/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.remote_control_protocol_dmx",
+      "legacyPluginName": "NeoStackAI_RemoteControlProtocolDMX",
+      "legacyModuleName": "NSAI_RemoteControlProtocolDMX",
+      "moduleName": "NSAI_RemoteControlProtocolDMX_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "RemoteControl",
+        "RemoteControlProtocolDMX",
+        "DMXProtocol",
+        "DMXEngine"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "RemoteControlProtocolDMX/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.remote_control_protocol_midi",
+      "legacyPluginName": "NeoStackAI_RemoteControlProtocolMIDI",
+      "legacyModuleName": "NSAI_RemoteControlProtocolMIDI",
+      "moduleName": "NSAI_RemoteControlProtocolMIDI_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "RemoteControl",
+        "RemoteControlProtocolMIDI",
+        "MIDIDevice"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "RemoteControlProtocolMIDI/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.remote_control_protocol_osc",
+      "legacyPluginName": "NeoStackAI_RemoteControlProtocolOSC",
+      "legacyModuleName": "NSAI_RemoteControlProtocolOSC",
+      "moduleName": "NSAI_RemoteControlProtocolOSC_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "RemoteControl",
+        "RemoteControlProtocolOSC",
+        "OSC"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "RemoteControlProtocolOSC/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.scene_state_datalink",
+      "legacyPluginName": "NeoStackAI_SceneStateDataLink",
+      "legacyModuleName": "NSAI_SceneStateDataLink",
+      "moduleName": "NSAI_SceneStateDataLink_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "SceneState",
+        "AvalancheSceneState",
+        "DataLink",
+        "SceneStateDataLink"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "SceneStateDataLink/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.smartobjects",
+      "legacyPluginName": "NeoStackAI_SmartObjects",
+      "legacyModuleName": "NSAI_SmartObjects",
+      "moduleName": "NSAI_SmartObjects_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "SmartObjects"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "SmartObjects/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.sound-cue-templates",
+      "legacyPluginName": "NeoStackAI_SoundCueTemplates",
+      "legacyModuleName": "NSAI_SoundCueTemplates",
+      "moduleName": "NSAI_SoundCueTemplates_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "SoundCueTemplates"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "SoundCueTemplates/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.soundscape",
+      "legacyPluginName": "NeoStackAI_Soundscape",
+      "legacyModuleName": "NSAI_Soundscape",
+      "moduleName": "NSAI_Soundscape_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Soundscape"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "Soundscape/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.sound-utilities",
+      "legacyPluginName": "NeoStackAI_SoundUtilities",
+      "legacyModuleName": "NSAI_SoundUtilities",
+      "moduleName": "NSAI_SoundUtilities_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "SoundUtilities"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "SoundUtilities/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.statetree",
+      "legacyPluginName": "NeoStackAI_StateTree",
+      "legacyModuleName": "NSAI_StateTree",
+      "moduleName": "NSAI_StateTree_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "StateTree",
+        "PropertyBindingUtils",
+        "GameplayStateTree",
+        "GameplayTagsEditor"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "StateTree/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.svg_importer",
+      "legacyPluginName": "NeoStackAI_SVGImporter",
+      "legacyModuleName": "NSAI_SVGImporter",
+      "moduleName": "NSAI_SVGImporter_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "SVGImporter",
+        "Avalanche",
+        "ActorModifierCore",
+        "ActorModifier"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "SVGImporter/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.synthesis",
+      "legacyPluginName": "NeoStackAI_Synthesis",
+      "legacyModuleName": "NSAI_Synthesis",
+      "moduleName": "NSAI_Synthesis_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Synthesis",
+        "AudioSynesthesia"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "Synthesis/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.text3d",
+      "legacyPluginName": "NeoStackAI_Text3D",
+      "legacyModuleName": "NSAI_Text3D",
+      "moduleName": "NSAI_Text3D_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Text3D",
+        "GeometryProcessing",
+        "GeometryScripting",
+        "GeometryMask"
+      ],
+      "requiredIntegrations": [
+        "neostack.avalanche"
+      ],
+      "metadataPath": "Text3D/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.water",
+      "legacyPluginName": "NeoStackAI_Water",
+      "legacyModuleName": "NSAI_Water",
+      "moduleName": "NSAI_Water_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "Water"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "Water/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.wavetable",
+      "legacyPluginName": "NeoStackAI_WaveTable",
+      "legacyModuleName": "NSAI_WaveTable",
+      "moduleName": "NSAI_WaveTable_Integration",
+      "moduleType": "Editor",
+      "requiredPlugins": [
+        "WaveTable"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "WaveTable/ExtensionUI.json"
+    },
+    {
+      "extensionId": "neostack.pixel_streaming2",
+      "legacyPluginName": "NeoStackAI_PixelStreaming2",
+      "legacyModuleName": "NSAI_PixelStreaming2",
+      "moduleName": "NSAI_PixelStreaming2_Integration",
+      "moduleType": "EditorNoCommandlet",
+      "requiredPlugins": [
+        "PixelStreaming2"
+      ],
+      "requiredIntegrations": [],
+      "metadataPath": "PixelStreaming2/ExtensionUI.json"
+    }
+  ]
+}

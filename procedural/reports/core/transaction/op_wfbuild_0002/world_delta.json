@@ -1,0 +1,224 @@
+{
+  "abort_reason": "",
+  "bound_enforcement": "satisfied",
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/ConsumerSlice:wfmarker_001",
+        "/Game/Maps/ConsumerSlice:wfmarker_002",
+        "/Game/Maps/ConsumerSlice:wfmarker_003"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/ConsumerSlice"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_closed_loop_place"
+    }
+  ],
+  "created_at": "2026-08-23T11:34:17Z",
+  "created_by": "worldforge.core",
+  "delta_id": "delta_cfef5d0cb2b240f9",
+  "evidence_refs": [
+    "route_placement_plan",
+    "observed_world"
+  ],
+  "failure_codes": [],
+  "lock": {
+    "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+    "held": true,
+    "operation_id": "op_wfbuild_0002",
+    "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+    "released": true
+  },
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "before_state_declared": {
+        "state_kind": "absent"
+      },
+      "detail": "route placement 1 of 3 at [-600.0, 100.0, 100.0] (slid 0.0cm to clear an exclusion)",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            -600.0,
+            100.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_wfmarker_001",
+      "observed_after_apply": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            -600.0,
+            100.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "operation": "create",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "applied",
+      "step_id": "step_closed_loop_place",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wfmarker_001",
+      "verification": "satisfied"
+    },
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "before_state_declared": {
+        "state_kind": "absent"
+      },
+      "detail": "route placement 2 of 3 at [0.0, 200.0, 100.0] (slid 0.0cm to clear an exclusion)",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            200.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_wfmarker_002",
+      "observed_after_apply": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            200.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "operation": "create",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "applied",
+      "step_id": "step_closed_loop_place",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wfmarker_002",
+      "verification": "satisfied"
+    },
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "before_state_declared": {
+        "state_kind": "absent"
+      },
+      "detail": "route placement 3 of 3 at [600.0, 300.0, 100.0] (slid 0.0cm to clear an exclusion)",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            600.0,
+            300.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_wfmarker_003",
+      "observed_after_apply": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            600.0,
+            300.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "operation": "create",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "applied",
+      "step_id": "step_closed_loop_place",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wfmarker_003",
+      "verification": "satisfied"
+    }
+  ],
+  "operation_id": "op_wfbuild_0002",
+  "outcome": "committed",
+  "report_type": "wf.core.world_delta.v1",
+  "rollback_completeness": "unknown",
+  "schema_version": "wf.core.world_delta.v1",
+  "verification": "satisfied"
+}

@@ -1,0 +1,1098 @@
+{
+  "suite": "streaming_negative_validators",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "catalog::non_vacuous": {
+      "ok": true,
+      "detail": "known-bad catalog must carry >= 45 cases (got 59)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rd:entry_not_in_tiles::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rd:entry_not_in_tiles::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF853_STREAMING_TILE_GRAPH_DISCONNECTED (got ['WF853_STREAMING_TILE_GRAPH_DISCONNECTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rd:exit_not_in_tiles::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rd:exit_not_in_tiles::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF853_STREAMING_TILE_GRAPH_DISCONNECTED (got ['WF853_STREAMING_TILE_GRAPH_DISCONNECTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rd:unknown_profile::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rd:unknown_profile::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF851_STREAMING_REGION_CONTRACT_INVALID (got ['WF851_STREAMING_REGION_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rd:too_few_tiles::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rd:too_few_tiles::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF851_STREAMING_REGION_CONTRACT_INVALID (got ['WF851_STREAMING_REGION_CONTRACT_INVALID', 'WF853_STREAMING_TILE_GRAPH_DISCONNECTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::td:self_neighbor::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::td:self_neighbor::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF854_STREAMING_NEIGHBOR_NOT_RECIPROCAL (got ['WF854_STREAMING_NEIGHBOR_NOT_RECIPROCAL'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::td:bad_bounds::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::td:bad_bounds::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF852_STREAMING_TILE_CONTRACT_INVALID (got ['WF852_STREAMING_TILE_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::td:unknown_role::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::td:unknown_role::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF852_STREAMING_TILE_CONTRACT_INVALID (got ['WF852_STREAMING_TILE_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::td:unknown_load_policy::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::td:unknown_load_policy::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF852_STREAMING_TILE_CONTRACT_INVALID (got ['WF852_STREAMING_TILE_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::an:transition_no_link::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::an:transition_no_link::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF856_STREAMING_ANCHOR_LINK_BROKEN (got ['WF856_STREAMING_ANCHOR_LINK_BROKEN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::an:self_link::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::an:self_link::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF856_STREAMING_ANCHOR_LINK_BROKEN (got ['WF856_STREAMING_ANCHOR_LINK_BROKEN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::an:bad_world_location::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::an:bad_world_location::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF855_STREAMING_ANCHOR_INVALID (got ['WF855_STREAMING_ANCHOR_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::an:incompatible_type_role::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::an:incompatible_type_role::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF855_STREAMING_ANCHOR_INVALID (got ['WF855_STREAMING_ANCHOR_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rt:navmesh_overclaim::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rt:navmesh_overclaim::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF882_STREAMING_NAVMESH_OVERCLAIM (got ['WF882_STREAMING_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rt:failed_claims_pass::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rt:failed_claims_pass::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF858_STREAMING_ROUTE_UNREACHABLE (got ['WF858_STREAMING_ROUTE_UNREACHABLE', 'WF882_STREAMING_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rt:single_tile_sequence::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rt:single_tile_sequence::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF859_STREAMING_ROUTE_TILE_SEQUENCE_INVALID (got ['WF859_STREAMING_ROUTE_TILE_SEQUENCE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rt:no_transition_points::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rt:no_transition_points::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF860_STREAMING_TRANSITION_POINT_INVALID (got ['WF860_STREAMING_TRANSITION_POINT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rt:repeated_tile::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::rt:repeated_tile::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF859_STREAMING_ROUTE_TILE_SEQUENCE_INVALID (got ['WF859_STREAMING_ROUTE_TILE_SEQUENCE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::mb:single_required_tile::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::mb:single_required_tile::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF861_STREAMING_MISSION_BINDING_INVALID (got ['WF861_STREAMING_MISSION_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::mb:no_required_routes::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::mb:no_required_routes::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF857_STREAMING_ROUTE_INVALID (got ['WF857_STREAMING_ROUTE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::mb:non_machine_claims::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::mb:non_machine_claims::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF861_STREAMING_MISSION_BINDING_INVALID (got ['WF861_STREAMING_MISSION_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::nb:pressure_escapes_allowed::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::nb:pressure_escapes_allowed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF875_STREAMING_NPC_PRESSURE_MISSING (got ['WF875_STREAMING_NPC_PRESSURE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::nb:combat_escapes_allowed::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::nb:combat_escapes_allowed::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF876_STREAMING_COMBAT_EVIDENCE_MISSING (got ['WF876_STREAMING_COMBAT_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::nb:unknown_stream_policy::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::nb:unknown_stream_policy::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF862_STREAMING_NPC_BINDING_INVALID (got ['WF862_STREAMING_NPC_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::bp:zero_loaded_tiles::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::bp:zero_loaded_tiles::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF863_STREAMING_BUDGET_PROFILE_INVALID (got ['WF863_STREAMING_BUDGET_PROFILE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::bp:negative_memory::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::bp:negative_memory::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF863_STREAMING_BUDGET_PROFILE_INVALID (got ['WF863_STREAMING_BUDGET_PROFILE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::tl:active_no_load::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::tl:active_no_load::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF864_STREAMING_TILE_LOAD_MISSING (got ['WF864_STREAMING_TILE_LOAD_MISSING', 'WF865_STREAMING_TILE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::tl:reload_state_lost::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::tl:reload_state_lost::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF868_STREAMING_TILE_STATE_LOST (got ['WF868_STREAMING_TILE_STATE_LOST'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::tl:clean_budget_exceeded::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::tl:clean_budget_exceeded::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF880_STREAMING_BUDGET_EXCEEDED (got ['WF880_STREAMING_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:no_transition::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:no_transition::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF873_STREAMING_REQUIRED_TRANSITION_MISSING (got ['WF873_STREAMING_REQUIRED_TRANSITION_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:single_tile::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:single_tile::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF874_STREAMING_MISSION_NOT_COMPLETED (got ['WF874_STREAMING_MISSION_NOT_COMPLETED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:no_route::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:no_route::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF872_STREAMING_REQUIRED_ROUTE_NOT_COMPLETED (got ['WF872_STREAMING_REQUIRED_ROUTE_NOT_COMPLETED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:save_failed_but_clean::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:save_failed_but_clean::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF870_STREAMING_CROSS_TILE_SAVE_FAILED (got ['WF870_STREAMING_CROSS_TILE_SAVE_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:budget_exceeded_but_clean::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:budget_exceeded_but_clean::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF880_STREAMING_BUDGET_EXCEEDED (got ['WF880_STREAMING_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:ue_streaming_overclaim::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:ue_streaming_overclaim::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF882_STREAMING_NAVMESH_OVERCLAIM (got ['WF882_STREAMING_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:malformed_failure_code::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::sr:malformed_failure_code::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF888_STREAMING_UNKNOWN_FAILURE_CODE (got ['WF888_STREAMING_UNKNOWN_FAILURE_CODE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::ss:roundtrip_no_hashes::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::ss:roundtrip_no_hashes::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF869_STREAMING_CROSS_TILE_SAVE_MISSING (got ['WF869_STREAMING_CROSS_TILE_SAVE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::ss:bad_roundtrip::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::ss:bad_roundtrip::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF870_STREAMING_CROSS_TILE_SAVE_FAILED (got ['WF870_STREAMING_CROSS_TILE_SAVE_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::ei:partial_matrix::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::ei:partial_matrix::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF886_STREAMING_PARTIAL_MATRIX (got ['WF886_STREAMING_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::ei:stale_sha::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::ei:stale_sha::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF887_STREAMING_STALE_EVIDENCE (got ['WF887_STREAMING_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::or:no_scenarios::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::or:no_scenarios::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF885_STREAMING_OPERATOR_VIEW_INVALID (got ['WF885_STREAMING_OPERATOR_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::ot:pass_no_lifecycle::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::contract::ot:pass_no_lifecycle::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF864_STREAMING_TILE_LOAD_MISSING (got ['WF864_STREAMING_TILE_LOAD_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::region_disconnected::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::region_disconnected::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF853_STREAMING_TILE_GRAPH_DISCONNECTED (got ['WF853_STREAMING_TILE_GRAPH_DISCONNECTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::tile_self_neighbor::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::tile_self_neighbor::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF854_STREAMING_NEIGHBOR_NOT_RECIPROCAL (got ['WF854_STREAMING_NEIGHBOR_NOT_RECIPROCAL'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::anchor_link_broken::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::anchor_link_broken::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF856_STREAMING_ANCHOR_LINK_BROKEN (got ['WF856_STREAMING_ANCHOR_LINK_BROKEN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::route_navmesh_overclaim::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::route_navmesh_overclaim::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF882_STREAMING_NAVMESH_OVERCLAIM (got ['WF882_STREAMING_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::route_failed_claims_pass::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::route_failed_claims_pass::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF858_STREAMING_ROUTE_UNREACHABLE (got ['WF858_STREAMING_ROUTE_UNREACHABLE', 'WF882_STREAMING_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::runtime_no_transition::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::runtime_no_transition::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF873_STREAMING_REQUIRED_TRANSITION_MISSING (got ['WF873_STREAMING_REQUIRED_TRANSITION_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::runtime_single_tile::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::runtime_single_tile::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF874_STREAMING_MISSION_NOT_COMPLETED (got ['WF874_STREAMING_MISSION_NOT_COMPLETED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::runtime_save_failed_clean::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::runtime_save_failed_clean::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF870_STREAMING_CROSS_TILE_SAVE_FAILED (got ['WF870_STREAMING_CROSS_TILE_SAVE_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::runtime_budget_exceeded_clean::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::runtime_budget_exceeded_clean::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF880_STREAMING_BUDGET_EXCEEDED (got ['WF880_STREAMING_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::runtime_ue_overclaim::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::runtime_ue_overclaim::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF882_STREAMING_NAVMESH_OVERCLAIM (got ['WF882_STREAMING_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::lifecycle_active_no_load::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::lifecycle_active_no_load::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF864_STREAMING_TILE_LOAD_MISSING (got ['WF864_STREAMING_TILE_LOAD_MISSING', 'WF865_STREAMING_TILE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::lifecycle_reload_state_lost::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::lifecycle_reload_state_lost::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF868_STREAMING_TILE_STATE_LOST (got ['WF868_STREAMING_TILE_STATE_LOST'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::save_no_tile_hashes::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::save_no_tile_hashes::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF869_STREAMING_CROSS_TILE_SAVE_MISSING (got ['WF869_STREAMING_CROSS_TILE_SAVE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::npc_pressure_escapes::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::npc_pressure_escapes::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF875_STREAMING_NPC_PRESSURE_MISSING (got ['WF875_STREAMING_NPC_PRESSURE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::budget_zero_tiles::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::budget_zero_tiles::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF863_STREAMING_BUDGET_PROFILE_INVALID (got ['WF863_STREAMING_BUDGET_PROFILE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::index_partial_matrix::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::index_partial_matrix::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF886_STREAMING_PARTIAL_MATRIX (got ['WF886_STREAMING_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::index_stale_sha::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::index_stale_sha::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF887_STREAMING_STALE_EVIDENCE (got ['WF887_STREAMING_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::tile_view_no_lifecycle::rejected": {
+      "ok": true,
+      "detail": "known-bad was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::evidence::tile_view_no_lifecycle::owning_code": {
+      "ok": true,
+      "detail": "must be rejected for WF864_STREAMING_TILE_LOAD_MISSING (got ['WF864_STREAMING_TILE_LOAD_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::RegionDefinition::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::StreamingTileDefinition::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::CrossTileAnchor::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::CrossTileRoute::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::StreamedMissionBinding::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::StreamedNPCBinding::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::StreamingBudgetProfile::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::TileLifecycleReport::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::StreamingRuntimeReport::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::CrossTileSaveState::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::StreamingEvidenceIndex::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorRegionView::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "reverse::OperatorTileView::valid_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 132,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "streaming-negative-validators",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:09.042899+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.streaming.negative_validators.v1",
+    "report_id": "wf.streaming.negative_validators.v1:e1c8687c67a5",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 59,
+    "records_total": 59,
+    "records_passed": 59,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

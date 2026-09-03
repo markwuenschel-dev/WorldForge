@@ -1,0 +1,66 @@
+{
+  "suite": "tactical_operator_dashboard",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dash::inputs_present": {
+      "ok": true,
+      "detail": "operator tactical index missing (run operator-tactical-index)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dash::scenario_views_24": {
+      "ok": true,
+      "detail": "expected 24 scenario views (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dash::action_coverage_complete": {
+      "ok": true,
+      "detail": "dashboard action coverage incomplete: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 3,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "operator-tactical-dashboard",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "da4362006bfca3a023a4b03edc83d38efbe6e628",
+    "timestamp": "2026-07-12T11:53:40.382587+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.tactical.operator_dashboard.v1",
+    "report_id": "wf.tactical.operator_dashboard.v1:510ac5b723e2",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 24,
+    "records_total": 24,
+    "records_passed": 24,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

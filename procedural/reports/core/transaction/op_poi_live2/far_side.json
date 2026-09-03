@@ -1,0 +1,1006 @@
+{
+  "compensations": {
+    "actor_destroy": "respawn_from_captured_state",
+    "actor_spawn": "destroy_spawned_actor",
+    "actor_transform": "restore_captured_transform"
+  },
+  "core_import_error": null,
+  "delta": {
+    "abort_reason": "",
+    "bound_enforcement": "satisfied",
+    "bounds": [
+      {
+        "allowed_actors": [
+          "/Game/Maps/ConsumerSlice:wfpoi_cache_002",
+          "/Game/Maps/ConsumerSlice:wfpoi_cache_005",
+          "/Game/Maps/ConsumerSlice:wfpoi_cache_008",
+          "/Game/Maps/ConsumerSlice:wfpoi_cache_011",
+          "/Game/Maps/ConsumerSlice:wfpoi_marker_003",
+          "/Game/Maps/ConsumerSlice:wfpoi_marker_006",
+          "/Game/Maps/ConsumerSlice:wfpoi_marker_009",
+          "/Game/Maps/ConsumerSlice:wfpoi_marker_012",
+          "/Game/Maps/ConsumerSlice:wfpoi_shrine_001",
+          "/Game/Maps/ConsumerSlice:wfpoi_shrine_004",
+          "/Game/Maps/ConsumerSlice:wfpoi_shrine_007",
+          "/Game/Maps/ConsumerSlice:wfpoi_shrine_010"
+        ],
+        "allowed_packages": [
+          "/Game/Maps/ConsumerSlice"
+        ],
+        "schema_version": "wf.core.mutation_bound.v1",
+        "step_id": "step_poi"
+      }
+    ],
+    "created_at": "2026-08-23T12:40:06Z",
+    "created_by": "worldforge.core",
+    "delta_id": "delta_6fb03216387d43d7",
+    "evidence_refs": [
+      "poi_distribution_plan"
+    ],
+    "failure_codes": [],
+    "journal_path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_poi_live2\\world_delta.json",
+    "lock": {
+      "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+      "held": true,
+      "operation_id": "op_poi_live2",
+      "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+      "released": true
+    },
+    "mutations": [
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 1 of kind 'shrine'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              0.0,
+              -1000.0,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_001",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              0.0,
+              -1000.0,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_shrine_001",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 2 of kind 'cache'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -1500.0,
+              1000.0,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_002",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -1500.0,
+              1000.0,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_cache_002",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 3 of kind 'marker'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              1500.0,
+              -2333.333,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_003",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              1500.0,
+              -2333.333,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_marker_003",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 4 of kind 'shrine'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -2250.0,
+              -333.333,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_004",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -2250.0,
+              -333.333,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_shrine_004",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 5 of kind 'cache'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              750.0,
+              1666.667,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_005",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              750.0,
+              1666.667,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_cache_005",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 6 of kind 'marker'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -750.0,
+              -1666.667,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_006",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -750.0,
+              -1666.667,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_marker_006",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 7 of kind 'shrine'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              2250.0,
+              333.333,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_007",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              2250.0,
+              333.333,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_shrine_007",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 8 of kind 'cache'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -2625.0,
+              2333.333,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_008",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -2625.0,
+              2333.333,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_cache_008",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 9 of kind 'marker'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              375.0,
+              -2777.778,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_009",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              375.0,
+              -2777.778,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_marker_009",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 10 of kind 'shrine'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -1125.0,
+              -777.778,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_010",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -1125.0,
+              -777.778,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_shrine_010",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 11 of kind 'cache'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              1875.0,
+              1222.222,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_011",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              1875.0,
+              1222.222,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_cache_011",
+        "verification": "satisfied"
+      },
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "POI 12 of kind 'marker'",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -1875.0,
+              -2111.111,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpoi_012",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "StaticMeshActor",
+            "location": [
+              -1875.0,
+              -2111.111,
+              100.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              1.0,
+              1.0,
+              1.0
+            ],
+            "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "poi_distribution_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_poi",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/ConsumerSlice:wfpoi_marker_012",
+        "verification": "satisfied"
+      }
+    ],
+    "operation_id": "op_poi_live2",
+    "outcome": "committed",
+    "report_type": "wf.core.world_delta.v1",
+    "rollback_completeness": "unknown",
+    "schema_version": "wf.core.world_delta.v1",
+    "verification": "satisfied"
+  },
+  "env_parse_errors": [],
+  "error": null,
+  "failure_codes": [],
+  "far_side_schema": "wf.core.unreal_sink_far_side.v1",
+  "map_load_api": "unreal.LevelEditorSubsystem.load_level",
+  "map_loaded": true,
+  "map_requested": "/Game/Maps/ConsumerSlice",
+  "observe_after": true,
+  "operation_id": "op_poi_live2",
+  "repo_root": "D:\\Unreal Projects\\WorldForge",
+  "request_source": "file",
+  "save_map": true,
+  "sink_notes": [
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_1 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_2 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_3 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_4 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_5 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_6 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_7 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_8 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_9 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_10 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_11 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "spawned StaticMeshActor as /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_12 via getattr(unreal, 'StaticMeshActor')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_shrine_001 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_1",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_cache_002 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_2",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_marker_003 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_3",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_shrine_004 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_4",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_cache_005 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_5",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_marker_006 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_6",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_shrine_007 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_7",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_cache_008 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_8",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_marker_009 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_9",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_shrine_010 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_10",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_cache_011 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_11",
+      "failure_code": null,
+      "where": "observe"
+    },
+    {
+      "detail": "/Game/Maps/ConsumerSlice:wfpoi_marker_012 -> StaticMeshActor at /Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_12",
+      "failure_code": null,
+      "where": "observe"
+    }
+  ],
+  "sink_refusals": [],
+  "sink_saves": [
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    },
+    {
+      "map": "/Game/Maps/ConsumerSlice",
+      "reported_ok": true
+    }
+  ],
+  "supported_kinds": {
+    "actor|create": "actor_spawn",
+    "actor|delete": "actor_destroy",
+    "actor|modify": "actor_transform"
+  },
+  "traceback": null,
+  "world_package_observed": "/Game/Maps/ConsumerSlice"
+}

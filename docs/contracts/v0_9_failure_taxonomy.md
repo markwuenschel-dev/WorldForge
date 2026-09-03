@@ -19,6 +19,8 @@ asserted with `ue_check(...)`, which the tooling materializes by driving the edi
 (present+valid → `PASS`, missing → `FAIL`). Where a UE cross-check is *optional*, the
 validator uses `ue_check(...)` when its editor report is present and `skip(...)` →
 `SKIP_NOT_APPLICABLE` otherwise, so it never blocks the authoring-side data layer.
+`WF082` is stricter: until its native-only in-process verifier exists, no persisted
+JSON authority report is valid UE proof.
 
 ---
 
@@ -98,7 +100,7 @@ validator uses `ue_check(...)` when its editor report is present and `skip(...)`
 |---|---|---|---|
 | `WF080_UE_ARTIFACT_MISSING` | fail | UE asset/map artifact absent when its `ue_check` was evaluated | The tooling drives the editor to materialize it, then re-validate |
 | `WF081_UE_ASSET_NOT_STATIC_MESH` | fail | Materialized UE asset is not a StaticMesh | Re-run relocate; confirm the bake produced a StaticMesh |
-| `WF082_UE_STATE_NOT_APPLIED` | fail | Scenario MPC state not applied in UE when its `ue_check` was evaluated | The tooling runs `make apply-state-scenario` in-editor, then re-validate |
+| `WF082_UE_STATE_NOT_APPLIED` | fail | Scenario MPC state lacks trusted native leased-write and live-readback proof when its `ue_check` was evaluated | An absent optional report is `SKIP_NOT_APPLICABLE`. Any present persisted JSON claim — legacy, malformed, unavailable, non-native, or fully formed `writer: native` v1 — fails. A future native-only synchronous in-process emitter/verifier tied to `SetStateValueWithLease(...)` and same-world live readback is required for PASS. |
 
 ## 090–099 · Packaging
 

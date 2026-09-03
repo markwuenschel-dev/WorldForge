@@ -165,8 +165,14 @@ emitters are still deferred and all resolve into `SetStateValue`.
   `float GetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Default = 0.f) const`
   Every CPU consumer (PlacementForge, enemies, economy, quests…) binds to this. They
   **never** read the MPC.
-- **Write (authoritative setter):**
-  `void SetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Value)`
+- **Write (native authority):**
+  `bool SetStateValue(EWorldForgeStateScope Scope, FName ContextId, FName Key, float Value)`
+  writes an unreserved address. A native owner reserves an exact address with
+  `ReserveStateAddress(...)`, then writes it only through a matching
+  `FWorldForgeStateWriteLease` and `SetStateValueWithLease(...)`. `ReleaseStateAddress(...)`
+  relinquishes that reservation, and lease destruction releases it automatically. The
+  lease is opaque, move-only, and non-reflected;
+  Blueprint and console routes cannot mutate a reserved address.
 - **Address** = `Scope (Global/Region/Local/Settlement) + ContextId + Key`, float-valued.
   In-memory store only (no persistence in the spine).
 - **Render mirror:** curated render-facing keys are pushed into `MPC_WorldState`
@@ -175,12 +181,13 @@ emitters are still deferred and all resolve into `SetStateValue`.
   Curated keys: `industrial_pressure`, `corruption_level`, `restoration_level`,
   `wetness`, `ashfall` (→ `IndustrialPressure`, `CorruptionLevel`, `RestorationLevel`,
   `Wetness`, `Ashfall`).
-- **Debug tracer:** console command
-  `WorldForge.SetState <Scope> <ContextId> <Key> <Value>`.
+- **No global state console command:** native callers must own an issued lease for
+  reserved addresses; editor scripting may observe results but does not receive
+  write authority.
 
-**Acceptance tracer:** `WorldForge.SetState Region Desert_Valley_01 industrial_pressure 0.75`
-→ subsystem mirrors into `MPC_WorldState.IndustrialPressure` → terrain soot overlay
-visibly changes.
+**Acceptance tracer:** a native owner reserves an address, writes it through its
+matching lease, and the subsystem mirrors a curated key into `MPC_WorldState` for the
+render reaction.
 
 ### Required Tier-2 edit — scripted, human-run
 

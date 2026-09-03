@@ -1,0 +1,189 @@
+{
+  "caller_origination": null,
+  "green": false,
+  "intake_census": {
+    "backed_keys": [
+      "end",
+      "start"
+    ],
+    "entries": 2,
+    "failed_keys": [],
+    "measured": 2,
+    "not_observed": 0,
+    "observation_failed": 0
+  },
+  "operation_id": "op_closed_loop_proof_0001",
+  "phases": [
+    {
+      "detail": "mapping valid",
+      "ok": true,
+      "phase": "intake"
+    },
+    {
+      "census": {
+        "backed_keys": [
+          "end",
+          "start"
+        ],
+        "entries": 2,
+        "failed_keys": [],
+        "measured": 2,
+        "not_observed": 0,
+        "observation_failed": 0
+      },
+      "detail": "observed world valid; {\"entries\": 2, \"measured\": 2, \"observation_failed\": 0, \"not_observed\": 0, \"backed_keys\": [\"end\", \"start\"], \"failed_keys\": []}",
+      "ok": true,
+      "phase": "intake"
+    },
+    {
+      "anchors": [
+        {
+          "anchor_id": "route.start",
+          "detail": "read from D:\\Unreal Projects\\WorldForge\\tools\\..\\procedural\\reports\\core\\closed_loop\\plumbing_fixtures\\a.json at ['transform', 'location'] as xyz_object",
+          "location_cm": [
+            -1200.0,
+            0.0,
+            100.0
+          ],
+          "provenance": "measured"
+        },
+        {
+          "anchor_id": "route.end",
+          "detail": "read from D:\\Unreal Projects\\WorldForge\\tools\\..\\procedural\\reports\\core\\closed_loop\\plumbing_fixtures\\b.json at ['transform', 'location'] as xyz_object",
+          "location_cm": [
+            1200.0,
+            400.0,
+            100.0
+          ],
+          "provenance": "measured"
+        }
+      ],
+      "detail": "both anchors measured: [[-1200.0, 0.0, 100.0], [1200.0, 400.0, 100.0]]",
+      "ok": true,
+      "phase": "anchors"
+    },
+    {
+      "detail": "3 placement(s), containment proved by coordinates",
+      "ok": true,
+      "phase": "plan"
+    },
+    {
+      "detail": "3 mutation(s); the sink's own validator accepts it",
+      "ok": true,
+      "phase": "request"
+    },
+    {
+      "collisions": [],
+      "detail": "no generated target touches any of the 0 declared game-owned path(s); everything this loop may repair is WorldForge's own",
+      "ok": true,
+      "phase": "ownership",
+      "protected": []
+    },
+    {
+      "detail": "--no-live: stopped before booting the editor. The 6 phase(s) before materialisation all held. Nothing was materialised, so nothing downstream may be claimed and this run is NOT a closed-loop proof",
+      "ok": false,
+      "phase": "materialise"
+    }
+  ],
+  "placement_plan": {
+    "anchor_ids": [
+      "route.start",
+      "route.end"
+    ],
+    "failure_codes": [],
+    "placements": [
+      {
+        "containment": {
+          "detail": "|dx|=600.0 vs half_extent_x=10000.0; |dy|=100.0 vs half_extent_y=10000.0",
+          "inside": true,
+          "method": "coordinate_comparison",
+          "tested_against": "resolved_planar_extent"
+        },
+        "index": 1,
+        "location_cm": [
+          -600.0,
+          100.0,
+          100.0
+        ],
+        "nominal_arclength_cm": 608.276,
+        "rotation_pyr": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "slid_cm": 0.0
+      },
+      {
+        "containment": {
+          "detail": "|dx|=0.0 vs half_extent_x=10000.0; |dy|=200.0 vs half_extent_y=10000.0",
+          "inside": true,
+          "method": "coordinate_comparison",
+          "tested_against": "resolved_planar_extent"
+        },
+        "index": 2,
+        "location_cm": [
+          0.0,
+          200.0,
+          100.0
+        ],
+        "nominal_arclength_cm": 1216.553,
+        "rotation_pyr": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "slid_cm": 0.0
+      },
+      {
+        "containment": {
+          "detail": "|dx|=600.0 vs half_extent_x=10000.0; |dy|=300.0 vs half_extent_y=10000.0",
+          "inside": true,
+          "method": "coordinate_comparison",
+          "tested_against": "resolved_planar_extent"
+        },
+        "index": 3,
+        "location_cm": [
+          600.0,
+          300.0,
+          100.0
+        ],
+        "nominal_arclength_cm": 1824.829,
+        "rotation_pyr": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "slid_cm": 0.0
+      }
+    ],
+    "provider_id": "route_placement_planner",
+    "refusal_reason": null,
+    "refused": false,
+    "report_type": "wf.core.route_placement_plan.v1",
+    "requested_count": 3,
+    "route_length_cm": 2433.105,
+    "schema_version": "wf.core.route_placement_plan.v1"
+  },
+  "project": null,
+  "proof_kind": "mechanism_proof",
+  "report_type": "wf.core.closed_loop_proof.v1",
+  "schema_version": "wf.core.closed_loop_proof.v1",
+  "stopped_at": "materialise",
+  "subject_map": "/Game/Maps/_wf_shield_plumbing",
+  "verdict": "plumbing_only"
+}

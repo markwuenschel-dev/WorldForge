@@ -1,0 +1,1994 @@
+{
+  "suite": "tactical_operator_smoke",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "index::scenario_views_present": {
+      "ok": true,
+      "detail": "scenario_views.json missing (run operator-tactical-index)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::npc_views_present": {
+      "ok": true,
+      "detail": "npc_views.json missing (run operator-tactical-index)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "count::scenario_views_24": {
+      "ok": true,
+      "detail": "expected 24 scenario views (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "count::npc_views_48": {
+      "ok": true,
+      "detail": "expected 48 NPC views (got 48)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_sentinel_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_sentinel_baseline_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_sentinel_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_sentinel_baseline_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_skirmisher_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_skirmisher_baseline_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_skirmisher_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_skirmisher_baseline_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_suppressor_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_suppressor_baseline_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_suppressor_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_suppressor_baseline_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_sentinel_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_sentinel_baseline_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_sentinel_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_sentinel_baseline_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_suppressor_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_suppressor_baseline_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_suppressor_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_suppressor_baseline_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "scenario view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2::trace_link_resolves": {
+      "ok": true,
+      "detail": "broken decision-trace link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_alpine_hub_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_baseline_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_baseline_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_baseline_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2_npc00::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2_npc00::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2_npc01::valid": {
+      "ok": true,
+      "detail": "npc view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/decisions/tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/save_load/tss_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "nv::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2_npc01::link_resolves::procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json": {
+      "ok": true,
+      "detail": "broken operator link: procedural/reports/tactical/budgets/tbr_tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 244,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "operator-tactical-smoke",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "da4362006bfca3a023a4b03edc83d38efbe6e628",
+    "timestamp": "2026-07-12T11:53:40.482495+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.tactical.operator_smoke.v1",
+    "report_id": "wf.tactical.operator_smoke.v1:c84b91068724",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 72,
+    "records_total": 72,
+    "records_passed": 72,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,834 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "factions::count_in_range": {
+      "ok": true,
+      "detail": "expected 3-4 faction definitions (got 4)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fd::outriders::contract": {
+      "ok": true,
+      "detail": "faction definition fails contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fd::outriders::id_matches_file": {
+      "ok": true,
+      "detail": "faction_id outriders != file name outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fd::salvagers::contract": {
+      "ok": true,
+      "detail": "faction definition fails contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fd::salvagers::id_matches_file": {
+      "ok": true,
+      "detail": "faction_id salvagers != file name salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fd::surveyors::contract": {
+      "ok": true,
+      "detail": "faction definition fails contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fd::surveyors::id_matches_file": {
+      "ok": true,
+      "detail": "faction_id surveyors != file name surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fd::wardens::contract": {
+      "ok": true,
+      "detail": "faction definition fails contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fd::wardens::id_matches_file": {
+      "ok": true,
+      "detail": "faction_id wardens != file name wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "factions::initial_state_present": {
+      "ok": true,
+      "detail": "initial_faction_state.json missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "factions::initial_covers_roster": {
+      "ok": true,
+      "detail": "initial states must cover exactly the roster (got ['outriders', 'salvagers', 'surveyors', 'wardens'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::outriders::contract": {
+      "ok": true,
+      "detail": "initial state fails contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::outriders::rel_resolves::salvagers": {
+      "ok": true,
+      "detail": "relationship target salvagers not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::outriders::rel_resolves::surveyors": {
+      "ok": true,
+      "detail": "relationship target surveyors not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::outriders::rel_resolves::wardens": {
+      "ok": true,
+      "detail": "relationship target wardens not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::salvagers::contract": {
+      "ok": true,
+      "detail": "initial state fails contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::salvagers::rel_resolves::outriders": {
+      "ok": true,
+      "detail": "relationship target outriders not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::salvagers::rel_resolves::surveyors": {
+      "ok": true,
+      "detail": "relationship target surveyors not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::salvagers::rel_resolves::wardens": {
+      "ok": true,
+      "detail": "relationship target wardens not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::surveyors::contract": {
+      "ok": true,
+      "detail": "initial state fails contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::surveyors::rel_resolves::outriders": {
+      "ok": true,
+      "detail": "relationship target outriders not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::surveyors::rel_resolves::salvagers": {
+      "ok": true,
+      "detail": "relationship target salvagers not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::surveyors::rel_resolves::wardens": {
+      "ok": true,
+      "detail": "relationship target wardens not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::wardens::contract": {
+      "ok": true,
+      "detail": "initial state fails contract: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::wardens::rel_resolves::outriders": {
+      "ok": true,
+      "detail": "relationship target outriders not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::wardens::rel_resolves::salvagers": {
+      "ok": true,
+      "detail": "relationship target salvagers not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "fs::wardens::rel_resolves::surveyors": {
+      "ok": true,
+      "detail": "relationship target surveyors not a distinct roster faction",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_baseline_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_baseline_s1::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_baseline_s1::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_baseline_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_baseline_s2::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_baseline_s2::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_high_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_high_s1::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_high_s1::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_high_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_high_s2::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_clear_hazard_high_s2::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_baseline_s1::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_baseline_s1::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_baseline_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_baseline_s2::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_baseline_s2::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_baseline_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_high_s1::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_high_s1::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_high_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_high_s2::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_high_s2::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_recover_resource_high_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_baseline_s1::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_baseline_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_baseline_s1::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_baseline_s2::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_baseline_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_baseline_s2::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_high_s1::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_high_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_high_s1::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_high_s2::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_high_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_alpine_snow_survey_landmark_high_s2::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_baseline_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_baseline_s1::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_baseline_s1::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_baseline_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_baseline_s2::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_baseline_s2::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_high_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_high_s1::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_high_s1::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_high_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_high_s2::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_clear_hazard_high_s2::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_baseline_s1::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_baseline_s1::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_baseline_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_baseline_s2::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_baseline_s2::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_baseline_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_high_s1::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_high_s1::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_high_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_high_s2::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_high_s2::target_resolves::outriders": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction outriders",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_recover_resource_high_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_baseline_s1::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_baseline_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_baseline_s1::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_baseline_s2::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_baseline_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_baseline_s2::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_high_s1::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_high_s1::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_high_s1::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_high_s2::target_resolves::surveyors": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction surveyors",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_high_s2::target_resolves::wardens": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction wardens",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "delta::qf_volcanic_ashlands_survey_landmark_high_s2::target_resolves::salvagers": {
+      "ok": true,
+      "detail": "quest delta rule targets unknown faction salvagers",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 99,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-generated-factions",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:11.280128+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.quest_faction.generated_faction_validation.v1",
+    "report_id": "wf.quest_faction.generated_faction_validation.v1:b2da0fea9010",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 4,
+    "records_total": 4,
+    "records_passed": 4,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

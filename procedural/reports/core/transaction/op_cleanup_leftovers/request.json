@@ -1,0 +1,82 @@
+{
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:wfmarker_001",
+        "/Game/Maps/_wf_test_lvl:wfmarker_002",
+        "/Game/Maps/_wf_test_lvl:wfmarker_003"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/_wf_test_lvl"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_cleanup"
+    }
+  ],
+  "evidence_refs": [
+    "manual_cleanup"
+  ],
+  "mutations": [
+    {
+      "before_state": {
+        "payload": {
+          "actor_path": "/Game/Maps/_wf_test_lvl:wfmarker_001"
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_wfmarker_001_del",
+      "operation": "delete",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_cleanup",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_001"
+    },
+    {
+      "before_state": {
+        "payload": {
+          "actor_path": "/Game/Maps/_wf_test_lvl:wfmarker_002"
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_wfmarker_002_del",
+      "operation": "delete",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_cleanup",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_002"
+    },
+    {
+      "before_state": {
+        "payload": {
+          "actor_path": "/Game/Maps/_wf_test_lvl:wfmarker_003"
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_wfmarker_003_del",
+      "operation": "delete",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_cleanup",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_003"
+    }
+  ],
+  "operation_id": "op_cleanup_leftovers"
+}

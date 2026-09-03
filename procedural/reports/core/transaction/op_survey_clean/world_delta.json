@@ -1,0 +1,98 @@
+{
+  "abort_reason": "",
+  "bound_enforcement": "satisfied",
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/ConsumerSlice:wf_survey_subject"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/ConsumerSlice"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_cleanup"
+    }
+  ],
+  "created_at": "2026-08-23T11:50:59Z",
+  "created_by": "worldforge.core",
+  "delta_id": "delta_ba95b0260ce74659",
+  "evidence_refs": [
+    "cleanup"
+  ],
+  "failure_codes": [],
+  "lock": {
+    "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+    "held": true,
+    "operation_id": "op_survey_clean",
+    "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+    "released": true
+  },
+  "mutations": [
+    {
+      "before_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            0.0,
+            150.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "before_state_declared": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            0.0,
+            150.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_sc_0",
+      "observed_after_apply": {
+        "state_kind": "absent"
+      },
+      "operation": "delete",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "applied",
+      "step_id": "step_cleanup",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wf_survey_subject",
+      "verification": "satisfied"
+    }
+  ],
+  "operation_id": "op_survey_clean",
+  "outcome": "committed",
+  "report_type": "wf.core.world_delta.v1",
+  "rollback_completeness": "unknown",
+  "schema_version": "wf.core.world_delta.v1",
+  "verification": "satisfied"
+}

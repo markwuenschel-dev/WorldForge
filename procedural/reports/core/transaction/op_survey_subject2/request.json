@@ -1,0 +1,56 @@
+{
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/ConsumerSlice:wf_survey_subject"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/ConsumerSlice"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_survey_subject"
+    }
+  ],
+  "evidence_refs": [
+    "scene_survey_setup"
+  ],
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            0.0,
+            150.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_survey_1",
+      "operation": "create",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_survey_subject",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wf_survey_subject"
+    }
+  ],
+  "operation_id": "op_survey_subject2"
+}

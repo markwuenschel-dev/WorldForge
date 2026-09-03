@@ -1,0 +1,376 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--radius: 0.5rem;
+	/* Light palette — NeoStack-tuned, off-white surfaces with cool neutrals.
+     The dark class below overrides these. */
+	--background: #ffffff;
+	--foreground: #1a1c20;
+	--card: #ffffff;
+	--card-foreground: #1a1c20;
+	--popover: #ffffff;
+	--popover-foreground: #1a1c20;
+	--primary: #1a1c20;
+	--primary-foreground: #ffffff;
+	--secondary: #f2f4f7;
+	--secondary-foreground: #1a1c20;
+	--muted: #f2f4f7;
+	--muted-foreground: #5c6470;
+	--accent: #eef0f4;
+	--accent-foreground: #1a1c20;
+	--destructive: #dc2626;
+	--border: #e2e5ea;
+	--input: #e2e5ea;
+	--ring: #b3bac4;
+	--sidebar: #f7f8fa;
+	--sidebar-foreground: #1a1c20;
+	--sidebar-primary: #1a1c20;
+	--sidebar-primary-foreground: #ffffff;
+	--sidebar-accent: #e8ebef;
+	--sidebar-accent-foreground: #1a1c20;
+	--sidebar-border: #e2e5ea;
+	--sidebar-ring: #b3bac4;
+	/* Accent (overridden at runtime by AppearanceController based on hue/intensity) */
+	--ue-accent: #2b8ceb;
+	--ue-accent-hover: #4da6f5;
+	--ue-accent-muted: #1a6fc2;
+	/* Elevated surfaces previously hardcoded as #222 / #1a1a1a / #1c1c1c */
+	--surface-bar: #f2f4f7;
+	--surface-popup: #ffffff;
+	--surface-sunken: #e8ebef;
+	--terminal-bg: #0e0f12;
+	--terminal-bar: #161821;
+	--ui-font-family:
+		'Geist', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--code-font-family:
+		'Geist Mono', ui-monospace, 'SF Mono', Menlo, Monaco, 'Cascadia Mono', 'Courier New', monospace;
+	--ui-font-size: 13px;
+	--code-font-size: 12px;
+}
+
+.dark {
+	/* UE5 editor-matched neutral grays — no blue tint */
+	--background: #242424;
+	--foreground: #c8c8c8;
+	--card: #2d2d2d;
+	--card-foreground: #c8c8c8;
+	--popover: #2d2d2d;
+	--popover-foreground: #c8c8c8;
+	--primary: #d9d9d9;
+	--primary-foreground: #242424;
+	--secondary: #363636;
+	--secondary-foreground: #c8c8c8;
+	--muted: #363636;
+	--muted-foreground: #808080;
+	--accent: #3a3a3a;
+	--accent-foreground: #d4d4d4;
+	--destructive: #ef4444;
+	--border: #3c3c3c;
+	--input: #1a1a1a;
+	--ring: #6888b0;
+	--sidebar: #1e1e1e;
+	--sidebar-foreground: #c8c8c8;
+	--sidebar-primary: #c8c8c8;
+	--sidebar-primary-foreground: #1e1e1e;
+	--sidebar-accent: #333333;
+	--sidebar-accent-foreground: #d4d4d4;
+	--sidebar-border: #3a3a3a;
+	--sidebar-ring: #6888b0;
+
+	/* UE-style accent blue (default — overridable in Appearance settings) */
+	--ue-accent: #2b8ceb;
+	--ue-accent-hover: #4da6f5;
+	--ue-accent-muted: #1a6fc2;
+
+	/* Elevated dark surfaces */
+	--surface-bar: #222222;
+	--surface-popup: #1a1a1a;
+	--surface-sunken: #1c1c1c;
+	--terminal-bg: #1a1a1a;
+	--terminal-bar: #222222;
+}
+
+/* High contrast variant — dark base, stronger borders and focus. */
+.theme-high-contrast {
+	--background: #000000;
+	--foreground: #ffffff;
+	--card: #0a0a0a;
+	--card-foreground: #ffffff;
+	--popover: #000000;
+	--popover-foreground: #ffffff;
+	--muted: #1a1a1a;
+	--muted-foreground: #c8c8c8;
+	--accent: #1a1a1a;
+	--accent-foreground: #ffffff;
+	--border: #ffffff;
+	--ring: #ffd400;
+	--sidebar: #000000;
+	--sidebar-accent: #1f1f1f;
+	--sidebar-border: #ffffff;
+	--surface-bar: #0a0a0a;
+	--surface-popup: #000000;
+	--surface-sunken: #0a0a0a;
+}
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background font-sans text-foreground antialiased;
+		font-size: var(--ui-font-size, 13px);
+		font-family: var(--ui-font-family);
+	}
+	/* Code blocks pick up the user-chosen mono family + size. The cascade
+   * still lets Tailwind utility classes override per-element when needed. */
+	pre,
+	code,
+	kbd,
+	samp {
+		font-family: var(--code-font-family);
+	}
+}
+
+/* Reduce Transparency — flatten the few translucent/blurred surfaces
+ * surfaced by the audit so the toggle is meaningful. */
+.no-translucency .backdrop-blur,
+.no-translucency .backdrop-blur-sm,
+.no-translucency .backdrop-blur-md,
+.no-translucency [class*='backdrop-blur-'] {
+	backdrop-filter: none !important;
+	-webkit-backdrop-filter: none !important;
+}
+.no-translucency .bg-card\/40,
+.no-translucency .bg-card\/60,
+.no-translucency .bg-black\/40,
+.no-translucency .bg-black\/55,
+.no-translucency .bg-black\/50 {
+	background-color: var(--card) !important;
+}
+
+/* Font Smoothing toggle (macOS) — default is antialiased. Off = subpixel. */
+.font-smoothing-off {
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: auto;
+}
+
+/* Shared focus ring utility for hand-rolled buttons (TopNav, Sidebar, header). */
+.focus-ring {
+	outline: none;
+}
+.focus-ring:focus-visible {
+	outline: 2px solid var(--ue-accent);
+	outline-offset: 2px;
+	border-radius: 4px;
+}
+
+/* Appearance: hue slider with full-spectrum gradient track + accent-tinted thumb. */
+.hue-slider {
+	-webkit-appearance: none;
+	appearance: none;
+	height: 12px;
+	border-radius: 6px;
+	background: var(--hue-gradient);
+	outline: none;
+	cursor: pointer;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
+.hue-slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	height: 18px;
+	width: 18px;
+	border-radius: 9999px;
+	background: #ffffff;
+	border: 3px solid var(--ue-accent);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	cursor: grab;
+	transition: transform 80ms ease;
+}
+.hue-slider::-webkit-slider-thumb:active {
+	cursor: grabbing;
+	transform: scale(1.08);
+}
+.hue-slider::-moz-range-thumb {
+	height: 18px;
+	width: 18px;
+	border-radius: 9999px;
+	background: #ffffff;
+	border: 3px solid var(--ue-accent);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+	cursor: grab;
+}
+.hue-slider:focus-visible {
+	box-shadow:
+		inset 0 0 0 1px rgba(0, 0, 0, 0.18),
+		0 0 0 3px color-mix(in srgb, var(--ue-accent) 30%, transparent);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: #474747;
+	border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #5c5c5c;
+}
+
+/* Keep the chat scrollbar gutter stable as rows stream in. */
+.chat-scroll-area {
+	scrollbar-gutter: stable;
+}
+
+.chat-sidebar {
+	width: 0;
+}
+
+.chat-sidebar.chat-sidebar-open {
+	width: 280px;
+}
+
+.sidebar-mobile-backdrop {
+	display: none;
+}
+
+@media (max-width: 720px) {
+	.chat-sidebar {
+		position: absolute;
+		inset-block: 0;
+		inset-inline-start: 0;
+		z-index: 40;
+		width: min(280px, 86vw);
+		max-width: 86vw;
+		transform: translateX(-100%);
+		box-shadow: 12px 0 36px rgb(0 0 0 / 0.35);
+	}
+
+	.chat-sidebar.chat-sidebar-open {
+		width: min(280px, 86vw);
+		transform: translateX(0);
+	}
+
+	.sidebar-mobile-backdrop {
+		display: block;
+	}
+}
+
+/* Generating / shimmer animations */
+.generating-shimmer {
+	background: linear-gradient(90deg, #636363 0%, #999999 50%, #636363 100%);
+	background-size: 200% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: shimmer 2s ease-in-out infinite;
+}
+
+.compacting-shimmer {
+	background: linear-gradient(90deg, #7a7a7a 0%, #b3b3b3 50%, #7a7a7a 100%);
+	background-size: 200% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: shimmer 2s ease-in-out infinite;
+}
+
+.generating-dots::after {
+	content: '';
+	animation: dots 1.5s steps(3, end) infinite;
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+@keyframes dots {
+	0% {
+		content: '';
+	}
+	33% {
+		content: '.';
+	}
+	66% {
+		content: '..';
+	}
+	100% {
+		content: '...';
+	}
+}
+
+/* tw-animate-css replacement — basic animation utilities */
+@keyframes in {
+	from {
+		opacity: var(--tw-enter-opacity, 1);
+		transform: translate3d(var(--tw-enter-translate-x, 0), var(--tw-enter-translate-y, 0), 0)
+			scale3d(var(--tw-enter-scale, 1), var(--tw-enter-scale, 1), var(--tw-enter-scale, 1))
+			rotate(var(--tw-enter-rotate, 0));
+	}
+}
+
+@keyframes out {
+	to {
+		opacity: var(--tw-exit-opacity, 1);
+		transform: translate3d(var(--tw-exit-translate-x, 0), var(--tw-exit-translate-y, 0), 0)
+			scale3d(var(--tw-exit-scale, 1), var(--tw-exit-scale, 1), var(--tw-exit-scale, 1))
+			rotate(var(--tw-exit-rotate, 0));
+	}
+}
+
+/* Stable message-level search target; no detached DOM Range objects. */
+.chat-search-current {
+	border-radius: 0.5rem;
+	outline: 2px solid rgb(234 179 8 / 0.7);
+	outline-offset: 4px;
+	background: rgb(234 179 8 / 0.08);
+}
+
+/* Deliberate wrapping for short interface copy; transcript and code bodies stay untouched. */
+.settings-shell h1,
+.settings-shell h2,
+.settings-shell h3,
+.studio-shell h1,
+.studio-shell h2,
+.studio-shell h3 {
+	text-wrap: balance;
+}
+
+.settings-shell p:not(.font-mono),
+.studio-shell p:not(.font-mono) {
+	text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto !important;
+	}
+
+	.animate-spin,
+	.animate-pulse,
+	.animate-ping,
+	.animate-shimmer,
+	.generating-shimmer,
+	.compacting-shimmer,
+	.generating-dots::after {
+		animation: none !important;
+	}
+
+	.animate-in,
+	.animate-out {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}

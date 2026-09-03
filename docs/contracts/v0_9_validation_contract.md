@@ -142,10 +142,12 @@ the tooling materializes by driving the editor. These use `ue_check(name, ok,
 detail, code=...)`, a **normal blocking check**: the artifact present and valid →
 `PASS`; missing → `FAIL`. There is no deferred verdict — the UE work is run, not
 postponed. The tooling drives the editor to produce the artifact (e.g.
-`make relocate-houdini-asset ...`, `make apply-state-scenario ...`,
-`make import-terrain ...`), then re-validation reports `PASS`. Human-authored master
-assets stay owner-owned and are protected from repair/destroy by the
-ownership/provenance model.
+`make relocate-houdini-asset ...`, `make import-terrain ...`), then re-validation
+reports `PASS`. Runtime state is
+different: a matching native owner must materialize it through a state-write lease;
+the editor-Python `make apply-state-scenario` helper reports unavailability rather
+than mutating it. Human-authored master assets stay owner-owned and are protected
+from repair/destroy by the ownership/provenance model.
 
 Some UE cross-checks are **optional** (e.g. the runtime-state MPC bridge readback,
 a terrain heightmap import, a generated-asset StaticMesh relocate). These are
