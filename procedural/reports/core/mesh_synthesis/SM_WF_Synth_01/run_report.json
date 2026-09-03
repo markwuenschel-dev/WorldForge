@@ -1,0 +1,87 @@
+{
+  "report_type": "wf.core.mesh_synthesis_run.v1",
+  "asset_path": "C:/Program Files/Git/Game/WorldForge/Generated/Meshes/SM_WF_Synth_01",
+  "spec_path": "procedural/reports/core/mesh_synthesis/SM_WF_Synth_01/spec.json",
+  "result_path": "procedural/reports/core/mesh_synthesis/SM_WF_Synth_01/far_side.json",
+  "editor_exit_code": 0,
+  "regraded": true,
+  "checks": [
+    {
+      "name": "result_schema",
+      "ok": true,
+      "detail": "far_side_schema must be wf.core.mesh_synthesis_result.v1, got 'wf.core.mesh_synthesis_result.v1'",
+      "code": null
+    },
+    {
+      "name": "result_has_no_error",
+      "ok": true,
+      "detail": "far side reported: None",
+      "code": null
+    },
+    {
+      "name": "result_has_no_failure_codes",
+      "ok": true,
+      "detail": "far side reported codes []",
+      "code": null
+    },
+    {
+      "name": "vertex_count_measured",
+      "ok": true,
+      "detail": "vertex_count is 6144; a created mesh has vertices, and 'created: true' with no count is a claim rather than a measurement",
+      "code": null
+    },
+    {
+      "name": "triangle_count_measured",
+      "ok": true,
+      "detail": "triangle_count is 2048",
+      "code": null
+    },
+    {
+      "name": "triangle_count_matches_plan",
+      "ok": true,
+      "detail": "plan asked for 2048 triangles, the asset on disk has 2048",
+      "code": null
+    },
+    {
+      "name": "vertex_count_within_build_bracket",
+      "ok": true,
+      "detail": "the asset on disk has 6144 render vertices; a build of a 1089-position, 2048-triangle description must land in [1089, 6144] -- below means positions were lost, above means vertices were invented",
+      "code": null
+    },
+    {
+      "name": "bounds_non_degenerate",
+      "ok": true,
+      "detail": "observed_bounds_cm is [1500.0, 1500.0, 155.829]; a mesh with a zero extent on any axis is degenerate, and this is re-observed from the asset rather than the spec",
+      "code": null
+    },
+    {
+      "name": "created_flag_agrees_with_measurement",
+      "ok": true,
+      "detail": "the far side's own 'created' flag (True) contradicts its measured vertex count (6144); a flag that disagrees with its own atoms is the circular-trust pattern validate_runtime_state was fixed for",
+      "code": null
+    }
+  ],
+  "failure_count": 0,
+  "status": "ok",
+  "far_side": {
+    "asset_path": "/Game/WorldForge/Generated/Meshes/SM_WF_Synth_01",
+    "created": true,
+    "error": null,
+    "failure_codes": [],
+    "far_side_schema": "wf.core.mesh_synthesis_result.v1",
+    "notes": [
+      "built description: 1089 vertices, 2048 triangles"
+    ],
+    "observed_bounds_cm": [
+      1500.0,
+      1500.0,
+      155.829
+    ],
+    "saved": true,
+    "spec_path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\mesh_synthesis\\SM_WF_Synth_01\\spec.json",
+    "traceback": null,
+    "triangle_count": 2048,
+    "vertex_count": 6144
+  },
+  "editor_seconds": 12.48
+}

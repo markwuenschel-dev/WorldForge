@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>quest qf_volcanic_ashlands_survey_landmark_high_s1</title><style>:root { color-scheme: light dark; --bg:#0e1116; --fg:#d7dde3; --muted:#8b97a5;
+  --card:#171c23; --line:#252c36; --accent:#5aa9ff; --pass:#3fb950; --fail:#f85149;
+  --blocked:#d29922; --absent:#6e7681; }
+@media (prefers-color-scheme: light) { :root { --bg:#f6f8fa; --fg:#1f2328;
+  --muted:#57606a; --card:#ffffff; --line:#d0d7de; --accent:#0969da; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--fg);
+  font:14px/1.5 ui-monospace,"SF Mono",Menlo,Consolas,monospace; }
+.wrap { max-width:1100px; margin:0 auto; padding:24px; }
+h1,h2,h3 { font-weight:600; line-height:1.25; }
+h1 { font-size:22px; margin:0 0 4px; } h2 { font-size:16px; margin:28px 0 10px;
+  border-bottom:1px solid var(--line); padding-bottom:6px; }
+a { color:var(--accent); text-decoration:none; } a:hover { text-decoration:underline; }
+.muted { color:var(--muted); } .sub { color:var(--muted); margin:0 0 18px; font-size:13px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:12px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:8px;
+  padding:14px 16px; }
+.card h3 { margin:0 0 8px; font-size:14px; }
+.kv { display:flex; justify-content:space-between; gap:12px; padding:2px 0;
+  border-bottom:1px dashed var(--line); }
+.kv:last-child { border-bottom:0; } .kv .k { color:var(--muted); }
+.badge { display:inline-block; padding:1px 8px; border-radius:999px; font-size:12px;
+  font-weight:600; }
+.b-pass{ background:rgba(63,185,80,.15); color:var(--pass); }
+.b-fail{ background:rgba(248,81,73,.15); color:var(--fail); }
+.b-blocked{ background:rgba(210,153,34,.15); color:var(--blocked); }
+.b-absent,.b-not_run{ background:rgba(110,118,129,.15); color:var(--absent); }
+table { width:100%; border-collapse:collapse; }
+.scroll { overflow-x:auto; }
+th,td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line);
+  white-space:nowrap; }
+th { color:var(--muted); font-weight:600; }
+code { background:var(--card); border:1px solid var(--line); border-radius:4px;
+  padding:1px 5px; font-size:12px; }
+.foot { margin-top:32px; color:var(--muted); font-size:12px;
+  border-top:1px solid var(--line); padding-top:12px; }</style></head><body><div class="wrap">
+<p class="muted"><a href="index.html">quests</a> &nbsp;/&nbsp; OperatorForge</p>
+<h1>quest qf_volcanic_ashlands_survey_landmark_high_s1</h1><p class="sub">v2.2 QuestForge + FactionStateForge</p>
+<div class="kv"><span class="k">archetype</span><span class="v"><span class="badge b-Survey">Survey</span></span></div><div class="kv"><span class="k">requesting faction</span><span class="v"><a href="../factions/surveyors.html">surveyors</a></span></div><div class="kv"><span class="k">affected factions</span><span class="v">wardens, salvagers</span></div><div class="kv"><span class="k">scenario</span><span class="v">vs_volcanic_ashlands_survey_landmark_high_s1</span></div><div class="kv"><span class="k">outcome</span><span class="v"><span class="badge b-success">success</span></span></div><div class="kv"><span class="k">save/load</span><span class="v"><span class="badge b-roundtrip_ok">roundtrip_ok</span></span></div><div class="kv"><span class="k">next-mission hooks</span><span class="v">unlock_followup_survey_volcanic_ashlands</span></div><h2>steps</h2><table><tr><th>step</th><th>status</th></tr><tr><td>qf_volcanic_ashlands_survey_landmark_high_s1_step1</td><td><span class="badge b-completed">completed</span></td></tr><tr><td>qf_volcanic_ashlands_survey_landmark_high_s1_step2</td><td><span class="badge b-completed">completed</span></td></tr><tr><td>qf_volcanic_ashlands_survey_landmark_high_s1_step3</td><td><span class="badge b-completed">completed</span></td></tr><tr><td>qf_volcanic_ashlands_survey_landmark_high_s1_step4</td><td><span class="badge b-completed">completed</span></td></tr></table><h2>faction deltas</h2><p>fx_qfrun_volcanic_ashlands_survey_landmark_high_s1_surveyors, fx_qfrun_volcanic_ashlands_survey_landmark_high_s1_wardens, fx_qfrun_volcanic_ashlands_survey_landmark_high_s1_salvagers</p><h2>consequence ledger</h2><div class="kv"><span class="k">ledger id</span><span class="v">ledger_volcanic_ashlands_survey_landmark_high_s1</span></div><div class="kv"><span class="k">pre faction hash</span><span class="v"><code>sha256:0604b8116bb31c0bbd41bcf3</code></span></div><div class="kv"><span class="k">post faction hash</span><span class="v"><code>sha256:90e196920f8ea8def5d6110d</code></span></div><div class="kv"><span class="k">hash changed</span><span class="v"><span class="badge b-yes">yes</span></span></div><div class="kv"><span class="k">applied deltas</span><span class="v">3</span></div><div class="kv"><span class="k">reward events</span><span class="v">rwt_survey_landmark_high</span></div><div class="kv"><span class="k">save/load</span><span class="v"><span class="badge b-roundtrip_ok">roundtrip_ok</span></span></div>
+<div class="foot">WorldForge v2.2 OperatorForge — static operator dashboard.
+git_sha <code>ace7d12f55f8</code>. Local/static; indexes existing evidence, does not
+make stale evidence true.</div>
+</div></body></html>

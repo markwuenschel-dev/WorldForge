@@ -117,6 +117,69 @@ def build_terrain(mi_path, report, terrain_forge=None):
     return actor, mi_path
 
 
+def measure_pcg_execution(actor, comp, report):
+    """Invoke generation and MEASURE what exists afterwards. Writes report["pcg_execution"].
+
+    Binding a graph is a wiring fact; this is the separate question of whether
+    anything came out. Two deliberate choices:
+
+    * The count is read from the WORLD, not from PCG's own bookkeeping. We sum
+      instance counts over the InstancedStaticMeshComponents that exist on the
+      actor after generation. A number PCG reports about itself is the same
+      class of evidence as a report a pipeline writes about its own cook.
+    * The UE 5.8 PCG Python surface is not assumed. Every call is tried
+      defensively, exactly as the graph binding above does, and ``method``
+      records which API actually worked -- so the report says HOW it knows. If
+      nothing works we record generated=false and say so; we never write a
+      count we did not obtain.
+    """
+    import datetime
+    method_parts = []
+    generated = False
+    for call in ("generate", "generate_local"):
+        try:
+            getattr(comp, call)(True)
+            generated = True
+            method_parts.append("invoke={}".format(call))
+            break
+        except Exception as e:  # noqa: BLE001
+            method_parts.append("invoke_failed={}({})".format(call, type(e).__name__))
+
+    point_count = None
+    instance_count = None
+    if generated:
+        try:
+            ism_cls = getattr(unreal, "InstancedStaticMeshComponent", None)
+            total = 0
+            found = 0
+            if ism_cls is not None:
+                for c in actor.get_components_by_class(ism_cls):
+                    found += 1
+                    try:
+                        total += int(c.get_instance_count())
+                    except Exception:
+                        try:
+                            total += int(c.get_editor_property("instance_count"))
+                        except Exception:
+                            pass
+            instance_count = total
+            point_count = total
+            method_parts.append("readback=ISM_instance_count(components={})".format(found))
+        except Exception as e:  # noqa: BLE001
+            method_parts.append("readback_failed={}".format(type(e).__name__))
+
+    report["pcg_execution"] = {
+        "generated": generated,
+        # None, never 0, when we could not measure. A fabricated zero would read
+        # as "we looked and saw none", which is a different fact.
+        "point_count": point_count,
+        "instance_count": instance_count,
+        "method": "; ".join(method_parts) or "no generation API available",
+        "measured_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    }
+    log("PCG execution measured: {}".format(report["pcg_execution"]))
+
+
 def build_pcg(pcg_path, da_path, report):
     """Spawn a PCG actor running the slice's PCG graph. Prefer a real PCGVolume with
     a PCGComponent bound to the graph; if PCG isn't available, fall back to a tagged
@@ -161,6 +224,13 @@ def build_pcg(pcg_path, da_path, report):
                         except Exception:
                             pass
                 report["pcg_graph_bound"] = bool(set_ok)
+                if set_ok:
+                    try:
+                        measure_pcg_execution(pcg_actor, comp, report)
+                    except Exception as e:  # noqa: BLE001
+                        report["warnings"].append(
+                            "PCG execution measurement failed ({}); slice will "
+                            "report WF204".format(e))
             kind = "PCGVolume"
     except Exception as e:  # noqa: BLE001
         report["warnings"].append("PCGVolume path failed ({}); using marker".format(e))

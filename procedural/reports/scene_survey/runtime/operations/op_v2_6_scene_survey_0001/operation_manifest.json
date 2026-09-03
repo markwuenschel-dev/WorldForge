@@ -1,0 +1,89 @@
+{
+  "captures": [],
+  "cleanup": {
+    "cleanup_verified": true,
+    "report_path": null,
+    "report_sha256": null,
+    "residual_actor_paths": [],
+    "temporary_placements": 0
+  },
+  "created_at_utc": "2026-08-23T13:08:32Z",
+  "delivery": {
+    "output_location": "procedural/reports/scene_survey/runtime",
+    "output_location_confined": true,
+    "output_location_relative_posix": "procedural/reports/scene_survey/runtime"
+  },
+  "derived_report": {
+    "bytes": 20571,
+    "path": "procedural/reports/scene_survey/runtime/operations/op_v2_6_scene_survey_0001/scene_survey_report.json",
+    "sha256": "sha256:e377136b0116ac470ac4a93d6df1c90504da0bc25a3dc9fe988995a217cc7b7b"
+  },
+  "manifest_digest": "sha256:6c51a49f6bb96a441c9c51b98c1f837142bbe2fde4e30c71d952d7d0cbc71379",
+  "manifest_version": 1,
+  "operation_id": "op_v2_6_scene_survey_0001",
+  "plugin": {
+    "name": "WorldForge",
+    "source_hash": "3fea6d295902ba2c0cd2089fdac62d00ea5955403226d0fd357b2a1f960b67e8",
+    "version": "0.1.0"
+  },
+  "raw_evidence": [
+    {
+      "bytes": 80958,
+      "path": "procedural/reports/scene_survey/runtime/operations/op_v2_6_scene_survey_0001/far_side_run1.json",
+      "role": "far_side_run",
+      "sha256": "sha256:dc2ba01fb517c59daa51a8d2a2ddbd18d696643325dada14cdff419c594ad430"
+    },
+    {
+      "bytes": 80958,
+      "path": "procedural/reports/scene_survey/runtime/operations/op_v2_6_scene_survey_0001/far_side_run2.json",
+      "role": "far_side_run",
+      "sha256": "sha256:dc2ba01fb517c59daa51a8d2a2ddbd18d696643325dada14cdff419c594ad430"
+    },
+    {
+      "bytes": 1175,
+      "path": "procedural/reports/scene_survey/runtime/scene_survey_response_op_v2_6_scene_survey_0001.json",
+      "role": "response",
+      "sha256": "sha256:8d09d8666ea8cdfdef64fe3d4762e8de5cb819a875dc9f6d5f60a8fb58b13c49"
+    }
+  ],
+  "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+  "request_hash_algorithm": "sha256",
+  "request_hash_excluded_fields": [
+    "operation_id",
+    "output_location",
+    "timeout_seconds"
+  ],
+  "request_hash_field_set_version": 1,
+  "request_hash_included_fields": [
+    "required_plugin",
+    "required_plugin_source_hash",
+    "required_plugin_version",
+    "requested_operation",
+    "source_commit",
+    "source_repository",
+    "subject",
+    "target_commit",
+    "target_engine",
+    "target_map",
+    "target_project",
+    "target_repository"
+  ],
+  "requested_operation": "scene_survey",
+  "schema_version": "wf.scene_survey.operation_manifest.v1",
+  "source": {
+    "commit": "HEAD",
+    "repository": "WorldForge"
+  },
+  "target": {
+    "commit": "0000000000000000000000000000000000000000",
+    "engine": "5.8",
+    "map": "/Game/Maps/ConsumerSlice",
+    "project": "CleanConsumer",
+    "repository": "CleanConsumerFixture",
+    "subject_digest": "sha256:cef0098ffe4eef531b05a3be1a6709f2e09a05815f240d7a38ede64363256102",
+    "subject_id": "consumer_slice_survey_subject",
+    "subject_kind": null,
+    "subject_map_asset_path": "/Game/Maps/ConsumerSlice"
+  },
+  "timeout_seconds": 900
+}

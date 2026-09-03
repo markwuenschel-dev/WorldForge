@@ -7,6 +7,7 @@ Manifest-driven texture import with --project-root support and report output.
 import argparse
 import json
 from pathlib import Path
+import _wf_stamp as _stamp
 import unreal
 
 COMPRESSION_MAP = {
@@ -93,6 +94,10 @@ def main():
     report_dir = root / "procedural/reports/materials" / manifest["recipe_id"]
     report_dir.mkdir(parents=True, exist_ok=True)
     report = {"status": "ok", "recipe_id": manifest["recipe_id"], "imported_textures": results, "errors": []}
+    # Bind this measurement to a revision and a moment. Without it the report
+    # records what the editor did and nothing says when, or against what build
+    # -- so evidence_ladder cannot promote the lane on it, correctly.
+    _stamp.stamp(report, root, "worldforge.import_textures")
     with open(report_dir / "import_result.json", "w", encoding="utf-8") as f:
         json.dump(report, f, indent=2)
 

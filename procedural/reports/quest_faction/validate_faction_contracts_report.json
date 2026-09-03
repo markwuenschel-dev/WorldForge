@@ -1,0 +1,114 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::FactionDefinition::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::FactionDefinition::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::FactionDefinition::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF781_FACTION_CONTRACT_INVALID (got ['WF781_FACTION_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::FactionState::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::FactionState::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::FactionState::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF784_FACTION_BOUNDS_INVALID (got ['WF784_FACTION_BOUNDS_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::FactionDelta::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::FactionDelta::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::FactionDelta::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF787_FACTION_DELTA_UNBOUNDED (got ['WF787_FACTION_DELTA_UNBOUNDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 9,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "faction-contracts",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:10.324165+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.quest_faction.faction_contract_spine.v1",
+    "report_id": "wf.quest_faction.faction_contract_spine.v1:65de0d122459",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 3,
+    "records_total": 3,
+    "records_passed": 3,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "suite": "quest_faction_report_integrity",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::clean_passes": {
+      "ok": true,
+      "detail": "clean synthetic report must pass",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_meta": {
+      "ok": true,
+      "detail": "tampered report (no_meta) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_unknown_sha": {
+      "ok": true,
+      "detail": "tampered report (unknown_sha) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_timestamp": {
+      "ok": true,
+      "detail": "tampered report (no_timestamp) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_bad_report_type": {
+      "ok": true,
+      "detail": "tampered report (bad_report_type) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_status": {
+      "ok": true,
+      "detail": "tampered report (no_status) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_checks": {
+      "ok": true,
+      "detail": "tampered report (no_checks) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::authoring\\faction_authoring_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::authoring\\quest_authoring_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::authoring\\validate_generated_factions_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::authoring\\validate_generated_quests_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::negatives\\quest_faction_fuzz_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::negatives\\quest_faction_negative_validators_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::negatives\\quest_faction_negatives_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::negatives\\quest_faction_torture_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::quest_faction_hygiene_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::quest_faction_report_integrity_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::runtime\\run_quest_faction_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::runtime\\validate_quest_faction_runtime_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::save_load\\validate_quest_faction_save_load_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::validate_faction_contracts_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::validate_quest_contracts_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::validate_quest_faction_contracts_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::non_vacuous": {
+      "ok": true,
+      "detail": "must scan >= 6 real reports (got 16) — run the gates first",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 24,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "quest-faction-report-integrity",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:13.031302+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.quest_faction.report_integrity.v1",
+    "report_id": "wf.quest_faction.report_integrity.v1:addda440c9b6",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 16,
+    "records_total": 16,
+    "records_passed": 16,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

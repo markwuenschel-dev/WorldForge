@@ -128,6 +128,12 @@ from wfcore.planning import synth as SY                   # noqa: E402
 from wfcore.providers import base as PB                   # noqa: E402
 from wfcore.providers import registry as PR               # noqa: E402
 from wfcore.providers import selection as PS              # noqa: E402
+from pipeline import route_placement_provider as RPP
+from pipeline import asset_lane_provider as ALP
+from pipeline import pcg_scatter_provider as PCGP
+from pipeline import landscape_provider as LSP
+from pipeline import terrain_mesh_provider as TMPV    # noqa: E402
+from pipeline import verify_caller_attestation as VA     # noqa: E402
 from wfcore.transaction import delta as TD                # noqa: E402
 
 REPORT_TYPE = "wf.core.consumer_flow_report.v1"
@@ -214,6 +220,44 @@ def import_consumer(consumer_id):
     return importlib.import_module(name)
 
 
+# Set by main() from --caller-repo. Module state rather than a threaded
+# parameter because BOTH flow entry points need it and neither owns the other;
+# None is the honest default and yields UNRESOLVED, never a pass.
+_CALLER_REPO = [None]
+
+
+def _attestation_stage(adapter_record):
+    """Resolve and PERSIST the caller's structured provenance attestation.
+
+    This exists because the strongest evidence a caller can offer was previously
+    thrown away twice: the repository and commit it named were never parsed, and
+    they never reached the artifact this runner writes. A verdict that cannot be
+    traced back to the claim it graded is not evidence, it is an opinion with a
+    schema.
+
+    The stage never fails a run for ABSENCE. A caller that attested nothing has
+    broken no promise -- and the adapters that attest nothing today live in
+    repositories WorldForge does not own and must not edit.
+    """
+    checks = VA.validate_caller_attestation(adapter_record,
+                                            repo_path=_CALLER_REPO[0])
+    st = _stage("caller_attestation", checks)
+    record = VA.build_attestation_record(adapter_record,
+                                         repo_path=_CALLER_REPO[0])
+    st.update({
+        "attestation_state": record["attestation_state"],
+        "resolution_state": record["resolution_state"],
+        "attestation_verdict": record["verdict"],
+        "declared_repository": record["declared_repository"],
+        "declared_commit_sha": record["declared_commit_sha"],
+        "resolved_against": record["resolved_against"],
+        "detail": ("what the caller claimed about its own origin, and whether "
+                   "anything was able to check it. 'absent' and 'resolved' are "
+                   "different answers and this record keeps them apart"),
+    })
+    return st
+
+
 def run_consumer(consumer_id):
     mod = import_consumer(consumer_id)
 
@@ -226,6 +270,7 @@ def run_consumer(consumer_id):
 
     stages = [
         _origination_gate(adapter_record),
+        _attestation_stage(adapter_record),
         _stage("adapter", ADP.validate_adapter(adapter_record, strict=True)),
         # The source TEXT is read and handed over, not the path: passing None
         # would be reported as NOT CHECKED, and a report quoting a never-read
@@ -397,7 +442,10 @@ def _build_registry():
     """
     reg = PR.CapabilityRegistry()
     checks = []
-    for decl in (_editor_sink_declaration(), _scene_observer_declaration()):
+    for decl in (_editor_sink_declaration(), _scene_observer_declaration(),
+                 RPP.declaration(), ALP.declaration(),
+                 PCGP.declaration(), LSP.declaration(),
+                 TMPV.declaration()):
         for (name, ok, detail, code) in reg.register(decl, strict=True):
             checks.append(("{}::{}".format(decl["provider_id"], name), ok,
                            detail, code))
@@ -953,6 +1001,7 @@ def run_preview(consumer_id):
                   "unless the adapter itself declares a caller origination",
     })
     stages.append(prov)
+    stages.append(_attestation_stage(adapter_record))
 
     # --- 2. desired state ---------------------------------------------------- #
     desired, gaps = _desired_world_from_request(request)
@@ -1176,6 +1225,11 @@ def main(argv=None):
     p.add_argument("--consumer", required=True,
                    help="consumer id -- a package under tools/consumers/")
     p.add_argument("--json", action="store_true")
+    p.add_argument("--caller-repo",
+                   help="the caller's own checkout, used to RESOLVE the "
+                        "repository/commit its adapter attests to. Omitting it "
+                        "records the attestation as unresolved -- which is an "
+                        "honest unknown, never a pass")
     p.add_argument("--preview", action="store_true",
                    help="produce the pre-mutation artifact bundle; mutate nothing")
     p.add_argument("--out", default=None, help="write the JSON report here")
@@ -1192,6 +1246,8 @@ def main(argv=None):
             return 2
         if d not in sys.path:
             sys.path.insert(0, d)
+
+    _CALLER_REPO[0] = args.caller_repo
 
     report = run_preview(args.consumer) if args.preview \
         else run_consumer(args.consumer)

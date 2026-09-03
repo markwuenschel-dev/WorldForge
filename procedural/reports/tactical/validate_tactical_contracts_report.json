@@ -1,0 +1,434 @@
+{
+  "pack": "worldforge_vertical_slice",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dogfood::TacticalBehaviorProfile::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalBehaviorProfile::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalBehaviorProfile::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF931_TACTICAL_PROFILE_INVALID (got ['WF931_TACTICAL_PROFILE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalRoleDefinition::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalRoleDefinition::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalRoleDefinition::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF932_TACTICAL_ROLE_INVALID (got ['WF932_TACTICAL_ROLE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalAffordanceMap::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalAffordanceMap::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalAffordanceMap::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF947_TACTICAL_COVER_REFERENCE_INVALID (got ['WF947_TACTICAL_COVER_REFERENCE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalNPCBinding::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalNPCBinding::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalNPCBinding::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF934_TACTICAL_NPC_BINDING_INVALID (got ['WF934_TACTICAL_NPC_BINDING_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalDecisionInput::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalDecisionInput::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalDecisionInput::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF937_TACTICAL_UNKNOWN_STIMULUS (got ['WF937_TACTICAL_UNKNOWN_STIMULUS'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalDecisionOption::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalDecisionOption::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalDecisionOption::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF951_TACTICAL_FLANK_ROUTE_MISSING (got ['WF951_TACTICAL_FLANK_ROUTE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalDecisionTrace::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalDecisionTrace::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalDecisionTrace::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF941_TACTICAL_SELECTED_INVALID_OPTION (got ['WF941_TACTICAL_SELECTED_INVALID_OPTION'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalStateDelta::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalStateDelta::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalStateDelta::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF944_TACTICAL_STATE_NOT_MUTATED (got ['WF944_TACTICAL_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalGroupState::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalGroupState::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalGroupState::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF946_TACTICAL_COORDINATION_INVALID (got ['WF946_TACTICAL_COORDINATION_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalRuntimeReport::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalRuntimeReport::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalRuntimeReport::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF961_TACTICAL_RUNTIME_REPORT_INVALID (got ['WF961_TACTICAL_RUNTIME_REPORT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalSaveState::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalSaveState::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalSaveState::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF957_TACTICAL_SAVE_LOAD_MISSING (got ['WF957_TACTICAL_SAVE_LOAD_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalBudgetReport::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalBudgetReport::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalBudgetReport::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF960_TACTICAL_BUDGET_EXCEEDED (got ['WF960_TACTICAL_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalEvidenceIndex::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalEvidenceIndex::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::TacticalEvidenceIndex::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF965_TACTICAL_PARTIAL_MATRIX (got ['WF965_TACTICAL_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::OperatorTacticalScenarioView::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::OperatorTacticalScenarioView::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::OperatorTacticalScenarioView::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF963_TACTICAL_OPERATOR_VIEW_INVALID (got ['WF963_TACTICAL_OPERATOR_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::OperatorTacticalNPCView::valid_example_passes": {
+      "ok": true,
+      "detail": "valid example rejected: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::OperatorTacticalNPCView::known_bad_rejected": {
+      "ok": true,
+      "detail": "known-bad example must be rejected",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::OperatorTacticalNPCView::rejected_for_owning_code": {
+      "ok": true,
+      "detail": "known-bad must be rejected for owning code WF944_TACTICAL_STATE_NOT_MUTATED (got ['WF944_TACTICAL_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::registry_nonempty": {
+      "ok": true,
+      "detail": "CONTRACTS registry must carry the 15 tactical contracts",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::groups_partition_registry": {
+      "ok": true,
+      "detail": "CONTRACT_GROUPS must partition CONTRACTS exactly",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::known_bad_owning_complete": {
+      "ok": true,
+      "detail": "KNOWN_BAD_OWNING_CODE must cover every contract",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::owns_failure_band": {
+      "ok": true,
+      "detail": "tactical milestone must own the WF931-974 failure band",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 49,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "tactical-contracts",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:04.947608+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.tactical.contract_spine.v1",
+    "report_id": "wf.tactical.contract_spine.v1:d9bdf128e290",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 15,
+    "records_total": 15,
+    "records_passed": 15,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

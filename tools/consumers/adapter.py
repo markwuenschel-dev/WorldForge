@@ -101,6 +101,58 @@ ORIGINATIONS = (ORIGINATION_WORLDFORGE_DEMO, ORIGINATION_CALLER)
 
 PROVENANCE_REQUIRED = ("origination", "authored_by", "statement")
 
+# --------------------------------------------------------------------------- #
+# STRUCTURED ATTESTATION -- the part of provenance a machine can go and check.
+#
+# ``authored_by`` and ``statement`` are prose. They are for the human who reads
+# the report, and they are the right shape for that job. What they are NOT is
+# evidence: a caller that names its repository and commit inside a sentence has
+# volunteered the single independently-resolvable fact in the whole record, and
+# a rail that only asserts "this string is non-empty" throws it away.
+#
+# These two fields are OPTIONAL, and that is deliberate rather than lax. Making
+# them required would invalidate every adapter written before they existed --
+# including adapters in repositories WorldForge does not own and must never
+# edit -- which would turn a strictly-better check into a breaking change
+# imposed on a caller. Optional-but-graded is the honest construction: an
+# adapter that supplies them can be checked, an adapter that does not is
+# reported as UNCHECKED, and the two never render identically.
+#
+# What is NOT here: resolution. Deciding whether a commit really exists means
+# reading a repository on disk, which is an environment fact and not a contract
+# fact. Core states the shape; tools/pipeline/verify_caller_attestation.py does
+# the resolving. Core stays pure and stdlib-only, and a caller cannot make its
+# own claim come true by asserting it harder.
+PROVENANCE_ATTESTATION_FIELDS = ("repository", "commit_sha")
+PROVENANCE_ALLOWED = PROVENANCE_REQUIRED + PROVENANCE_ATTESTATION_FIELDS
+
+# The attestation states, closed. ``ABSENT`` is not a failure and not a pass --
+# it is the honest third answer, and it is why this is a three-member set and
+# not a boolean.
+ATTESTATION_ABSENT = "absent"          # neither field supplied; nothing to check
+ATTESTATION_DECLARED = "declared"      # both supplied and well-formed, unresolved
+ATTESTATION_MALFORMED = "malformed"    # supplied but not checkable as given
+ATTESTATION_STATES = (ATTESTATION_ABSENT, ATTESTATION_DECLARED,
+                      ATTESTATION_MALFORMED)
+
+# A git object name: hex, and long enough to be worth resolving. Seven is git's
+# own default abbreviation; sixty-four admits sha256 object format. The range is
+# a SHAPE test only -- a well-formed sha that names nothing is still malformed
+# in the only sense that matters, and only resolution can say so.
+_SHA_MIN_LEN = 7
+_SHA_MAX_LEN = 64
+_HEX_DIGITS = frozenset("0123456789abcdef")
+
+
+def _is_commit_sha(value: Any) -> bool:
+    """Shape-only: a hex object name of a plausible length. Never resolution."""
+    if not isinstance(value, str):
+        return False
+    v = value.strip().lower()
+    if not (_SHA_MIN_LEN <= len(v) <= _SHA_MAX_LEN):
+        return False
+    return all(ch in _HEX_DIGITS for ch in v)
+
 # How live state can be read back. A CHANNEL the consumer offers, never a reader
 # Core implements: "none" is a legal and common answer, and it is materially
 # different from omitting the field, which would leave Core to assume a channel
@@ -276,6 +328,27 @@ def _rail_provenance(obj: Dict[str, Any], code: str) -> List[Check]:
     out += check_enum(prov, "origination", ORIGINATIONS, code, _P + "provenance.")
     out += check_str(prov, "authored_by", code, _P + "provenance.")
     out += check_str(prov, "statement", code, _P + "provenance.")
+
+    # Structured attestation. Supplying NEITHER field is legal and common, so
+    # this rail never fires on absence. Supplying one of the two, or supplying
+    # something no resolver could ever look up, IS a failure -- a half-written
+    # attestation is worse than none, because it reads like evidence in a report
+    # while being unresolvable in fact.
+    state = attestation_of(obj)
+    if state != ATTESTATION_ABSENT:
+        got = attestation_fields(obj)
+        out.append((_P + "provenance.attestation_is_resolvable_shape",
+                    state == ATTESTATION_DECLARED,
+                    "provenance supplies structured attestation, so BOTH {} must "
+                    "be present and well-formed: repository a non-empty string "
+                    "and commit_sha a {}-{} character hex object name. Got "
+                    "repository={!r} commit_sha={!r} (state={}). A partial "
+                    "attestation cannot be resolved by anything and must not sit "
+                    "in a report looking as though it could".format(
+                        list(PROVENANCE_ATTESTATION_FIELDS), _SHA_MIN_LEN,
+                        _SHA_MAX_LEN, got["repository"], got["commit_sha"],
+                        state),
+                    None if state == ATTESTATION_DECLARED else code))
 
     # A demonstration consumer must SAY so in prose as well as in the enum. The
     # enum is what machines read; the statement is what a human reads in a report
@@ -642,6 +715,42 @@ def caller_provenance_verdict(adapter: Dict[str, Any]) -> str:
     if origination is None:
         return tri.UNKNOWN
     return tri.from_bool(origination == ORIGINATION_CALLER, measured=True)
+
+
+def attestation_fields(adapter: Dict[str, Any]) -> Dict[str, Any]:
+    """The structured attestation as supplied, with missing fields as ``None``.
+
+    Returns what the adapter SAID, never a normalised or repaired version of it:
+    a caller that wrote a sha with trailing whitespace should see that fact in
+    the record rather than have Core quietly tidy it into something checkable.
+    """
+    prov = adapter.get("provenance") if isinstance(adapter, dict) else None
+    if not isinstance(prov, dict):
+        return {f: None for f in PROVENANCE_ATTESTATION_FIELDS}
+    return {f: prov.get(f) for f in PROVENANCE_ATTESTATION_FIELDS}
+
+
+def attestation_of(adapter: Dict[str, Any]) -> str:
+    """Which of the three attestation states this adapter is in.
+
+    Deliberately NOT a verdict about the caller. An adapter can be honestly
+    caller-originated and carry no structured attestation at all -- that is
+    ``ABSENT``, and it means "nobody has checked", which is a different sentence
+    from "this was checked and it held". Collapsing those two is the whole class
+    of defect this function exists to keep visible.
+    """
+    got = attestation_fields(adapter)
+    supplied = [f for f, v in got.items() if v is not None]
+    if not supplied:
+        return ATTESTATION_ABSENT
+    if len(supplied) != len(PROVENANCE_ATTESTATION_FIELDS):
+        return ATTESTATION_MALFORMED
+    repo = got["repository"]
+    if not (isinstance(repo, str) and repo.strip()):
+        return ATTESTATION_MALFORMED
+    if not _is_commit_sha(got["commit_sha"]):
+        return ATTESTATION_MALFORMED
+    return ATTESTATION_DECLARED
 
 
 def validate_run_provenance(adapter: Dict[str, Any],

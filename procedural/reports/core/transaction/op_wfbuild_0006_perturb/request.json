@@ -1,0 +1,78 @@
+{
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/ConsumerSlice:wfmarker_002"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/ConsumerSlice"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_perturb"
+    }
+  ],
+  "evidence_refs": [
+    "route_placement_plan",
+    "observed_world"
+  ],
+  "mutations": [
+    {
+      "before_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            200.0,
+            100.0
+          ],
+          "material": "/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial",
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            80000.0,
+            80000.0,
+            100.0
+          ],
+          "material": "/Engine/BasicShapes/BasicShapeMaterial.BasicShapeMaterial",
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "static_mesh": "/Engine/BasicShapes/Cube.Cube"
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_step_perturb_000",
+      "operation": "modify",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_perturb",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wfmarker_002"
+    }
+  ],
+  "operation_id": "op_wfbuild_0006_perturb"
+}

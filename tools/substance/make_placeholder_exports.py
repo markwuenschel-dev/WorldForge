@@ -36,6 +36,52 @@ from pathlib import Path
 
 import yaml
 
+# --- producer identity -----------------------------------------------------
+# The exports this module writes are BYTE-INDISTINGUISHABLE from a real
+# Substance render: same five files, same paths, same format. That was a
+# deliberate contract choice (see the module docstring) and it is exactly why
+# the manifest could not answer "was this rendered, or stood in for?". The
+# sidecar below is the answer, written by the tool that actually did the work.
+PRODUCER_NAME = "worldforge.make_placeholder_exports"
+PRODUCER_VERSION = "1.1.0"
+SIDECAR_NAME = "_synthesis.json"
+
+
+def write_synthesis_sidecar(export_dir: Path, mode: str, outputs: dict) -> Path:
+    """Record WHICH tool produced the exports sitting in export_dir.
+
+    Hashes the files as they exist ON DISK after the run, not what this run
+    happened to write -- a skipped file is still part of what the manifest will
+    claim, so it is still part of what the producer record must cover.
+    """
+    from datetime import datetime, timezone
+    recorded = {}
+    for tex_type, path in sorted(outputs.items()):
+        if not path.is_file():
+            continue
+        data = path.read_bytes()
+        recorded[tex_type] = {
+            "file": path.name,
+            "bytes": len(data),
+            "sha256": hashlib.sha256(data).hexdigest(),
+        }
+    sidecar = {
+        "schema_version": "1.0",
+        "producer": PRODUCER_NAME,
+        "producer_version": PRODUCER_VERSION,
+        "mode": mode,
+        # The load-bearing field. A real Substance render sets this false.
+        "is_stopgap": True,
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "outputs": recorded,
+    }
+    export_dir.mkdir(parents=True, exist_ok=True)
+    out = export_dir / SIDECAR_NAME
+    out.write_text(json.dumps(sidecar, indent=2, ensure_ascii=False) + chr(10),
+                   encoding="utf-8")
+    return out
+
+
 # --- solid-mode fallback (original behaviour) -------------------------------
 PLACEHOLDER_COLORS = {
     "base_color": (150, 110, 75),          # neutral desert rock
@@ -405,6 +451,17 @@ def main():
             write_rgb_png(out, out_size, out_size, rows)
             print(f"wrote {out.name}  {out_size}x{out_size} procedural")
         written += 1
+
+    export_dir = None
+    produced = {}
+    for tex_type, info in manifest["exports"].items():
+        path = _resolve(info["source_file"], root)
+        produced[tex_type] = path
+        export_dir = path.parent
+    if export_dir is not None:
+        sidecar = write_synthesis_sidecar(
+            export_dir, "solid" if args.solid else "procedural", produced)
+        print(f"producer recorded -> {sidecar}")
 
     print(f"done: {written} written, {skipped} skipped")
 

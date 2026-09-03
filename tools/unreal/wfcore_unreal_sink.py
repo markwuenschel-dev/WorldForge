@@ -159,12 +159,14 @@ ROUND_DIGITS = 3
 # --------------------------------------------------------------------------- #
 KIND_ACTOR_SPAWN = "actor_spawn"
 KIND_ACTOR_TRANSFORM = "actor_transform"
+KIND_ACTOR_DESTROY = "actor_destroy"
 
 # (target_kind, operation) -> kind. The ONE place the vocabulary is decided, so the
 # preflight refusal and the apply dispatch cannot disagree about what is supported.
 MUTATION_KINDS = {
     ("actor", "create"): KIND_ACTOR_SPAWN,
     ("actor", "modify"): KIND_ACTOR_TRANSFORM,
+    ("actor", "delete"): KIND_ACTOR_DESTROY,
 }
 
 # kind -> the compensating action that undoes it. A kind absent from this table has
@@ -174,6 +176,13 @@ MUTATION_KINDS = {
 COMPENSATIONS = {
     KIND_ACTOR_SPAWN: "destroy_spawned_actor",
     KIND_ACTOR_TRANSFORM: "restore_captured_transform",
+    # A delete is compensated by respawning from state captured off the LIVE
+    # actor immediately before it is destroyed -- never from the request, which
+    # says what was ASKED FOR rather than what was there. If that capture comes
+    # back incomplete the apply refuses: an undo that cannot put back what it
+    # removed is not an undo, and this sink may not delete what it cannot
+    # restore.
+    KIND_ACTOR_DESTROY: "respawn_from_captured_state",
 }
 
 _HERE = os.path.dirname(os.path.abspath(__file__))
@@ -395,17 +404,201 @@ def _round_triple(values):
     return None if any(v is None for v in out) else out
 
 
-def actor_payload(actor_class, location, rotation, scale):
+# Scalar property types only, and the restriction is the point. An arbitrary
+# object-valued property cannot be round-tripped through JSON, so intent and
+# observation could never be compared for it -- and a field that cannot be
+# compared is a field the sink could get wrong without anything noticing. Widen
+# this tuple only alongside a way to read the new type back.
+_SCALAR_TYPES = (bool, int, float, str)
+
+
+def _clean_properties(properties):
+    """(clean, rejected). Scalars only, sorted, never partially accepted."""
+    if not isinstance(properties, dict) or not properties:
+        return None, []
+    clean, rejected = {}, []
+    for k in sorted(properties):
+        v = properties[k]
+        if not isinstance(k, str) or not k.strip():
+            rejected.append((k, "property name must be a non-empty string"))
+        elif isinstance(v, _SCALAR_TYPES) and not isinstance(v, bytes):
+            clean[k.strip()] = v
+        else:
+            rejected.append((k, "value type {} is not round-trippable".format(
+                type(v).__name__)))
+    return (clean or None), rejected
+
+
+def normalize_asset_ref(ref):
+    """UE asset references in their long, object-path form.
+
+    ``/Game/X/Y`` and ``/Game/X/Y.Y`` name the same asset -- the short form is
+    shorthand for the same-named object inside that package. A caller naturally
+    writes the short one; ``get_path_name()`` always returns the long one. Left
+    alone, intent and observation disagree on a difference that is purely
+    notational and the delta rolls back a correct materialisation.
+
+    Distinct from the rotation case, which LOOKED like a notation problem and was
+    not: there the two values were genuinely different orientations because the
+    sink applied the wrong one. Here they genuinely denote the same asset, so
+    normalising is the fix rather than a way to hide one.
+
+    Idempotent: a reference that already carries an object name is returned as-is.
+    """
+    if not isinstance(ref, str):
+        return ref
+    r = ref.strip()
+    if not r or "." in r.rsplit("/", 1)[-1]:
+        return r
+    return "{}.{}".format(r, r.rsplit("/", 1)[-1])
+
+
+def actor_payload(actor_class, location, rotation, scale, static_mesh=None,
+                  material=None, properties=None):
     """The canonical actor payload -- the ONE shape both sides of the comparison use.
 
     Returns None when any component is unreadable, because a payload with a hole in
     it is not a restore point and must not be passed off as one.
+
+    ``static_mesh`` is OPTIONAL and the key is OMITTED when there is none. That
+    matters for more than tidiness: this payload is compared intent-against-
+    observation, so a key present on one side and absent on the other would fail
+    every comparison. Omitting it keeps an actor with no mesh producing exactly
+    the four-key payload it always did, leaving existing restore points and
+    negative fixtures untouched, while an actor that HAS a mesh carries it on
+    both sides.
+
+    Why it exists at all: a spawned StaticMeshActor with no mesh assigned has
+    zero-extent bounds. The scene-survey gate correctly refuses that as an
+    invalid world artifact -- it is an empty shell, not geometry -- and a build
+    that produced only empty shells was not producing a playable world.
     """
     cls = normalize_class_ref(actor_class)
-    loc, rot, scl = _round_triple(location), _round_triple(rotation), _round_triple(scale)
+    loc, rot, scl = (_round_triple(location), _round_triple(rotation),
+                     _round_triple(scale))
     if not cls or loc is None or rot is None or scl is None:
         return None
-    return {"actor_class": cls, "location": loc, "rotation": rot, "scale": scl}
+    out = {"actor_class": cls, "location": loc, "rotation": rot, "scale": scl}
+    if isinstance(static_mesh, str) and static_mesh.strip():
+        out["static_mesh"] = normalize_asset_ref(static_mesh)
+    if isinstance(material, str) and material.strip():
+        out["material"] = normalize_asset_ref(material)
+    props, _rejected = _clean_properties(properties)
+    if props:
+        out["properties"] = props
+    return out
+
+
+def _read_properties(actor, names):
+    """Read back exactly the properties that were ASKED for, guarded per name.
+
+    Only the requested names: enumerating everything an actor exposes would make
+    the observed payload depend on the engine version rather than on the request,
+    and intent could never match it. A name that cannot be read comes back absent
+    rather than None -- absent means "we could not observe this", and a None
+    would claim the property holds a null.
+    """
+    if not names:
+        return None
+    out = {}
+    for name in sorted(names):
+        try:
+            val = actor.get_editor_property(name)
+        except Exception:  # noqa: BLE001 -- unknown names raise; that is data
+            continue
+        if isinstance(val, _SCALAR_TYPES) and not isinstance(val, bytes):
+            out[name] = val
+    return out or None
+
+
+def _assign_properties(actor, properties):
+    """(ok, reason). All-or-nothing per mutation: a partial apply is a world
+    nobody described, so the first failure aborts and the caller is told which
+    name did it."""
+    for name in sorted(properties or {}):
+        try:
+            actor.set_editor_property(name, properties[name])
+        except Exception as exc:  # noqa: BLE001
+            return False, "set_editor_property({!r}): {}: {}".format(
+                name, type(exc).__name__, exc)
+    return True, ""
+
+
+def _read_material(actor):
+    """The material on slot 0, or None. Never raises, never guesses.
+
+    Slot 0 only, and that limit is declared rather than hidden: a multi-slot
+    actor would need a list, and reporting only the first while implying the
+    whole would make intent and observation disagree for a reason no reader
+    could see.
+    """
+    try:
+        comp = actor.static_mesh_component
+    except Exception:  # noqa: BLE001
+        return None
+    if comp is None:
+        return None
+    try:
+        mat = comp.get_material(0)
+    except Exception:  # noqa: BLE001
+        return None
+    if mat is None:
+        return None
+    try:
+        return mat.get_path_name()
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _assign_material(actor, path):
+    """(ok, reason). Loads and assigns to slot 0; a failure is reported."""
+    try:
+        mat = unreal.EditorAssetLibrary.load_asset(path)
+    except Exception as exc:  # noqa: BLE001
+        return False, "load_asset({!r}): {}: {}".format(path, type(exc).__name__, exc)
+    if mat is None:
+        return False, "load_asset({!r}) returned None".format(path)
+    try:
+        actor.static_mesh_component.set_material(0, mat)
+    except Exception as exc:  # noqa: BLE001
+        return False, "set_material(0): {}: {}".format(type(exc).__name__, exc)
+    return True, ""
+
+
+def _read_static_mesh(actor):
+    """The actor's mesh asset path, or None. Never raises, never guesses."""
+    try:
+        comp = actor.static_mesh_component
+    except Exception:  # noqa: BLE001 -- most actors have no such component
+        return None
+    if comp is None:
+        return None
+    try:
+        mesh = comp.static_mesh
+    except Exception:  # noqa: BLE001
+        return None
+    if mesh is None:
+        return None
+    try:
+        return mesh.get_path_name()
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _assign_static_mesh(actor, path):
+    """(ok, reason). Loads and assigns; a failure is reported, never swallowed."""
+    try:
+        mesh = unreal.EditorAssetLibrary.load_asset(path)
+    except Exception as exc:  # noqa: BLE001
+        return False, "load_asset({!r}): {}: {}".format(path, type(exc).__name__, exc)
+    if mesh is None:
+        return False, "load_asset({!r}) returned None".format(path)
+    try:
+        comp = actor.static_mesh_component
+        comp.set_editor_property("static_mesh", mesh)
+    except Exception as exc:  # noqa: BLE001
+        return False, "set static_mesh: {}: {}".format(type(exc).__name__, exc)
+    return True, ""
 
 
 # --------------------------------------------------------------------------- #
@@ -578,6 +771,16 @@ class UnrealMutationSink(object):
         self.expected_map = expected_map
         self._touched = []
         self._spawned = {}        # mutation_id -> actor handle
+        self._destroyed = {}      # mutation_id -> (captured spec, label)
+        # target_path -> property names the request named, so observation reads
+        # back exactly what was asked for and no more.
+        self._property_names = {}
+        # target_paths whose request named a material. A mesh ALWAYS has one --
+        # the engine substitutes WorldGridMaterial -- so reading it back
+        # unconditionally reports a field the intent never declared, and exact
+        # comparison then fails on a difference nobody asked about. Same rule as
+        # properties: observe what was requested, nothing else.
+        self._observe_material = set()
         self.notes = []           # per-call diagnostics, reported alongside the delta
         self.apply_calls = []
         self.undo_calls = []
@@ -719,7 +922,16 @@ class UnrealMutationSink(object):
             scl = _xyz(actor.get_actor_scale3d())
         except Exception:  # noqa: BLE001
             scl = None
-        payload = actor_payload(cls, loc, rot, scl)
+        # Which property names to read back is a question about the REQUEST,
+        # not about the actor, so it is threaded in from the mutation being
+        # observed rather than discovered here.
+        payload = actor_payload(cls, loc, rot, scl,
+                                static_mesh=_read_static_mesh(actor),
+                                material=(_read_material(actor)
+                                          if target_path in self._observe_material
+                                          else None),
+                                properties=_read_properties(
+                                    actor, self._property_names.get(target_path)))
         if payload is None:
             return D.unmeasured_state(
                 "actor {!r} is present but its transform could not be fully read "
@@ -744,9 +956,22 @@ class UnrealMutationSink(object):
                 "something this sink cannot undo".format(
                     mutation.get("target_kind"), mutation.get("operation")),
                 FC_NO_COMPENSATION)
+        self._remember_property_names(mutation)
         if kind == KIND_ACTOR_SPAWN:
             return self._apply_spawn(mutation)
+        if kind == KIND_ACTOR_DESTROY:
+            return self._apply_destroy(mutation)
         return self._apply_transform(mutation)
+
+    def _remember_property_names(self, mutation):
+        """Record which property names this mutation cares about, before apply."""
+        expected = mutation.get("expected_after_state") or {}
+        payload = expected.get("payload") if isinstance(expected, dict) else None
+        props = (payload or {}).get("properties")
+        if isinstance(props, dict) and props:
+            self._property_names[mutation.get("target_path")] = sorted(props)
+        if (payload or {}).get("material"):
+            self._observe_material.add(mutation.get("target_path"))
 
     def _spec_of(self, mutation):
         """The declared postcondition payload -- which IS the instruction.
@@ -763,12 +988,29 @@ class UnrealMutationSink(object):
                 "takes its instruction FROM the postcondition, so there is nothing "
                 "to apply".format(mutation.get("mutation_id")))
         spec = actor_payload(payload.get("actor_class"), payload.get("location"),
-                             payload.get("rotation"), payload.get("scale"))
+                             payload.get("rotation"), payload.get("scale"),
+                             static_mesh=payload.get("static_mesh"),
+                             material=payload.get("material"),
+                             properties=payload.get("properties"))
         if spec is None:
             raise self._fail(
                 "mutation {!r}'s payload {!r} is not a complete actor payload "
                 "(actor_class + finite location/rotation/scale)".format(
                     mutation.get("mutation_id"), payload))
+
+        # Write the normalised asset references back into the DECLARED
+        # postcondition. Normalising only what we observe is not enough: the
+        # delta compares the recorded expectation against the observation, and
+        # the expectation is the caller's payload verbatim. Left short-form, it
+        # disagrees with an engine that always reports the object path, and a
+        # correct materialisation rolls back on notation.
+        #
+        # This changes how the intent is WRITTEN, never what it asks for -- the
+        # two forms denote the same asset. Doing it here means one place sees
+        # both sides, so no provider has to remember.
+        for key in ("static_mesh", "material"):
+            if spec.get(key):
+                payload[key] = spec[key]
         return spec
 
     def _apply_spawn(self, mutation):
@@ -788,7 +1030,17 @@ class UnrealMutationSink(object):
             try:
                 actor = eas.spawn_actor_from_class(
                     cls, unreal.Vector(loc[0], loc[1], loc[2]),
-                    unreal.Rotator(rot[0], rot[1], rot[2]))
+                    # KEYWORDS, NOT POSITIONAL. unreal.Rotator's positional
+                    # order is (roll, pitch, yaw) -- probed against the engine,
+                    # Rotator(1,2,3) yields pitch=2 yaw=3 roll=1. This payload
+                    # orders rotation as [pitch, yaw, roll], so passing it
+                    # positionally silently applied roll=pitch, pitch=yaw,
+                    # yaw=roll. A requested pitch=-38 yaw=145 was applied as
+                    # pitch=145 yaw=0 roll=-38, which UE normalises to
+                    # [35, 180, 142] -- and verification correctly rejected it.
+                    # Every placement until an environment rig requested
+                    # [0, 0, 0], where the mistake is invisible.
+                    unreal.Rotator(pitch=rot[0], yaw=rot[1], roll=rot[2]))
             except Exception as exc:  # noqa: BLE001
                 raise self._fail("spawn_actor_from_class({}): {}: {}".format(
                     api, type(exc).__name__, exc))
@@ -813,9 +1065,159 @@ class UnrealMutationSink(object):
             except Exception as exc:  # noqa: BLE001
                 raise self._fail("set_actor_scale3d: {}: {}".format(
                     type(exc).__name__, exc))
+            # A requested mesh that could not be assigned FAILS the apply. The
+            # alternative -- spawning the actor anyway -- leaves a zero-extent
+            # shell standing where geometry was asked for, and the run would
+            # report a placement that is invisible in the world.
+            wanted_mesh = spec.get("static_mesh")
+            if wanted_mesh:
+                ok, why = _assign_static_mesh(actor, wanted_mesh)
+                if not ok:
+                    raise self._fail(
+                        "mutation {!r} asked for static_mesh {!r} and it could "
+                        "not be assigned ({}); refusing to leave a zero-extent "
+                        "actor standing in for requested geometry".format(
+                            mutation.get("mutation_id"), wanted_mesh, why))
+            wanted_props = spec.get("properties")
+            if wanted_props:
+                ok, why = _assign_properties(actor, wanted_props)
+                if not ok:
+                    raise self._fail(
+                        "mutation {!r} asked for properties {} and one could not "
+                        "be set ({}); a half-configured actor is a world nobody "
+                        "described".format(mutation.get("mutation_id"),
+                                           sorted(wanted_props), why))
+            wanted_mat = spec.get("material")
+            if wanted_mat:
+                ok, why = _assign_material(actor, wanted_mat)
+                if not ok:
+                    raise self._fail(
+                        "mutation {!r} asked for material {!r} and it could not "
+                        "be assigned ({}); an actor wearing the wrong surface is "
+                        "a silently wrong world, so this refuses rather than "
+                        "shipping it".format(
+                            mutation.get("mutation_id"), wanted_mat, why))
         self._note("apply", "spawned {} as {} via {}".format(
             spec["actor_class"], _actor_path(actor), api))
         self._maybe_save(map_pkg)
+
+    def _capture_actor_spec(self, actor):
+        """(spec, reason). The restore point, read off the live actor.
+
+        Returns ``None`` rather than a partial payload. A half-captured actor
+        would produce a compensation that puts back something *like* what was
+        removed, which is worse than refusing: the world would look restored and
+        the evidence would agree with it.
+        """
+        cls = _actor_class_name(actor)
+        loc = rot = scl = None
+        try:
+            loc = _xyz(actor.get_actor_location())
+        except Exception:  # noqa: BLE001
+            loc = None
+        try:
+            rot = _pyr(actor.get_actor_rotation())
+        except Exception:  # noqa: BLE001
+            rot = None
+        try:
+            scl = _xyz(actor.get_actor_scale3d())
+        except Exception:  # noqa: BLE001
+            scl = None
+        spec = actor_payload(cls, loc, rot, scl)
+        if spec is None:
+            return None, ("class={!r} location={!r} rotation={!r} scale={!r}"
+                          .format(cls, loc, rot, scl))
+        return spec, ""
+
+    def _apply_destroy(self, mutation):
+        map_pkg, label, err = parse_actor_address(mutation.get("target_path"))
+        if err:
+            raise self._fail(err)
+        actor, why = self._resolve_actor(label)
+        if actor is None:
+            raise self._fail(
+                why or "no actor carries the label {!r}; a delete has nothing to "
+                       "delete. That is a refusal and not a no-op: succeeding "
+                       "quietly would report a removal that never "
+                       "happened".format(label))
+
+        spec, reason = self._capture_actor_spec(actor)
+        if spec is None:
+            raise self._fail(
+                "actor {!r} is present but its state could not be fully captured "
+                "({}), so this delete has no restore point. Refusing BEFORE the "
+                "world is touched".format(label, reason), FC_NO_COMPENSATION)
+
+        eas, err = _actor_subsystem()
+        if eas is None:
+            raise self._fail(err or "EditorActorSubsystem is unavailable",
+                             FC_SINK_UNAVAILABLE)
+
+        # Registered BEFORE the destroy. Once the actor is gone the compensation
+        # must already hold everything it needs; capturing afterwards would mean
+        # reading a handle that no longer resolves.
+        self._destroyed[mutation.get("mutation_id")] = (spec, label)
+        with _transaction("WorldForge transaction: destroy {}".format(label)):
+            try:
+                eas.destroy_actor(actor)
+            except Exception as exc:  # noqa: BLE001
+                self._destroyed.pop(mutation.get("mutation_id"), None)
+                raise self._fail("destroy_actor({!r}): {}: {}".format(
+                    label, type(exc).__name__, exc))
+        self._record_touch("actor", mutation.get("target_path"))
+        try:
+            still_valid = unreal.SystemLibrary.is_valid(actor)
+        except Exception:  # noqa: BLE001
+            still_valid = None
+        self._note("apply",
+                   "destroyed {!r} (class {}); SystemLibrary.is_valid -> {!r}; "
+                   "restore point captured".format(
+                       label, spec["actor_class"], still_valid))
+        self._maybe_save(map_pkg)
+
+    def _compensate_destroy(self, mutation, label):
+        mutation_id = mutation.get("mutation_id")
+        held = self._destroyed.get(mutation_id)
+        if held is None:
+            self._note("undo", "mutation {!r} destroyed nothing; nothing to put "
+                               "back".format(mutation_id))
+            return
+        spec, captured_label = held
+        eas, err = _actor_subsystem()
+        if eas is None:
+            raise EX.MutationSinkError("{}: {}".format(
+                FC_SINK_UNAVAILABLE, err or "EditorActorSubsystem is unavailable"))
+        cls, api, err = resolve_actor_class(spec["actor_class"])
+        if cls is None:
+            raise EX.MutationSinkError("{}: {}".format(FC_APPLY_FAILED, err))
+        loc, rot = spec["location"], spec["rotation"]
+        with _transaction("WorldForge transaction: respawn {}".format(label)):
+            try:
+                actor = eas.spawn_actor_from_class(
+                    cls, unreal.Vector(loc[0], loc[1], loc[2]),
+                    unreal.Rotator(pitch=rot[0], yaw=rot[1],
+                                   roll=rot[2]))
+            except Exception as exc:  # noqa: BLE001
+                raise EX.MutationSinkError(
+                    "{}: respawn spawn_actor_from_class({}): {}: {}".format(
+                        FC_APPLY_FAILED, api, type(exc).__name__, exc))
+            if actor is None:
+                raise EX.MutationSinkError(
+                    "{}: respawn returned None; the deleted actor {!r} was NOT put "
+                    "back, and this rollback is incomplete".format(
+                        FC_APPLY_FAILED, captured_label))
+            try:
+                actor.set_actor_label(captured_label)
+                scl = spec["scale"]
+                actor.set_actor_scale3d(unreal.Vector(scl[0], scl[1], scl[2]))
+            except Exception as exc:  # noqa: BLE001
+                raise EX.MutationSinkError(
+                    "{}: respawned {!r} but could not restore its identity or "
+                    "scale: {}: {}".format(FC_APPLY_FAILED, captured_label,
+                                           type(exc).__name__, exc))
+        self._destroyed.pop(mutation_id, None)
+        self._note("undo", "respawned {!r} as {} at {}".format(
+            captured_label, spec["actor_class"], spec["location"]))
 
     def _apply_transform(self, mutation):
         spec = self._spec_of(mutation)
@@ -848,7 +1250,8 @@ class UnrealMutationSink(object):
         except Exception as exc:  # noqa: BLE001
             raise self._fail("set_actor_location: {}: {}".format(type(exc).__name__, exc))
         try:
-            actor.set_actor_rotation(unreal.Rotator(rot[0], rot[1], rot[2]), True)
+            actor.set_actor_rotation(
+                unreal.Rotator(pitch=rot[0], yaw=rot[1], roll=rot[2]), True)
         except Exception as exc:  # noqa: BLE001
             raise self._fail("set_actor_rotation: {}: {}".format(type(exc).__name__, exc))
         try:
@@ -891,6 +1294,8 @@ class UnrealMutationSink(object):
             raise EX.MutationSinkError("{}: {}".format(FC_APPLY_FAILED, err))
         if comp == "destroy_spawned_actor":
             self._compensate_spawn(mutation, label)
+        elif comp == "respawn_from_captured_state":
+            self._compensate_destroy(mutation, label)
         else:
             self._compensate_transform(mutation, label)
         if self.save_map:

@@ -76,3 +76,49 @@ than asserting there is none.
 
 Until then: Houdini is a **mounted plugin and a fixture generator**. Nothing more
 has been demonstrated, and nothing more should be reported.
+
+---
+
+## Addendum, 2026-09-03 — the second Houdini lane, and its self-authored evidence
+
+Everything above is scoped to the **wfcore provider layer** and remains accurate.
+It was, however, **silent about the older `procedural/` MeshForge lane** — and
+that silence is load-bearing, because that lane reported **222 green checks over
+six `houdini_generated` assets** while no Houdini process had ever run.
+
+**The mechanism.** `tools/pipeline/create_mesh_assets.py` writes the
+`cook_report.json` / `bake_report.json` / `import_report.json` files itself
+(`_write_houdini_reports`), with `status` hardcoded to `"ok"` and exactly the
+keys `houdini_contract.HOUDINI_REPORT_REQUIRED` demands. The four
+`validate_houdini_*` gates then grade those files. Gate and subject share an
+author, so the checks could not fail for any reason that matters. The intake
+docstring said the reports "come from a prior cook" — an intent that was never
+implemented, and plausible enough that the loop stayed invisible for the life of
+the lane.
+
+Two further tells, both now recorded: the declared
+`hda_path` `/Game/WorldForge/HDAs/worldforge_rock_generator` names a directory
+that does not exist, and the one project HDA
+(`Content/WorldForge/Houdini/HDAs/rock_generator.hda`) is byte-identical to
+SideFX's shipped `rock_generator.hda` sample.
+
+**What changed.** The two questions were separated rather than merged:
+
+| Question | Gate | State |
+|---|---|---|
+| is the declared report present, well-formed, status-ok? | `validate_houdini_{cook,bake}_reports.py` (WF233/234/235) | **unchanged, still green** — a real descriptor-integrity check that `test_negative_sources.py` and `source_lifecycle_torture.py` prove can go red |
+| does that report constitute evidence Houdini ran? | `validate_houdini_cook_evidence.py` (**WF239**) | **RED by design** — 18 failures, 6 assets x 3 stages |
+
+Conflating them is what hid the gap; separating them is the fix. The reports now
+carry `producer: "worldforge.create_mesh_assets"`, so the self-authorship is a
+fact **in the data** rather than an inference — a report that names its own
+author cannot be mistaken for an independent measurement.
+
+`validate_houdini_cook_evidence.py` imports `COOK_EVIDENCE_REQUIRED` verbatim
+from `validate_external_tool_providers.py` rather than declaring its own: one
+vocabulary across both lanes, so the two can never disagree about what a cook
+is. `inspect_houdini_intake.py` imports the same classifier — its dossier
+previously reported `total_problems: 0` over this evidence and now reports 18.
+
+**Honest limit:** a caller that writes a false `cook_evidence` block has it read
+as resolved. This closes the accidental lie, not the deliberate one.

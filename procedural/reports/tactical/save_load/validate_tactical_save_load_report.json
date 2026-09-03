@@ -1,0 +1,634 @@
+{
+  "suite": "tactical_save_load",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "count::bundles_24": {
+      "ok": true,
+      "detail": "need 24 decision bundles (run the runtime first); got 24",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_baseline_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_baseline_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_baseline_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_baseline_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_high_pressure_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_sentinel_high_pressure_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_baseline_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_baseline_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_baseline_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_baseline_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_skirmisher_high_pressure_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_baseline_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_baseline_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_baseline_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_baseline_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_high_pressure_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_alpine_hub_suppressor_high_pressure_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_baseline_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_baseline_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_baseline_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_baseline_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_sentinel_high_pressure_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_baseline_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_baseline_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_skirmisher_high_pressure_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_baseline_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_baseline_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_baseline_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_baseline_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_baseline_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_baseline_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s1::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2::valid": {
+      "ok": true,
+      "detail": "save state invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2::roundtrip": {
+      "ok": true,
+      "detail": "save/load did not round-trip (hashes differ)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "sl::tac_region_volcanic_chain_suppressor_high_pressure_tactical_s2::all_npcs_hashed": {
+      "ok": true,
+      "detail": "missing npc state hashes: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "count::save_states_24": {
+      "ok": true,
+      "detail": "must produce 24 save states (got 24)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 74,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-tactical-save-load",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "da4362006bfca3a023a4b03edc83d38efbe6e628",
+    "timestamp": "2026-07-12T11:53:40.048444+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.tactical.save_load.v1",
+    "report_id": "wf.tactical.save_load.v1:b8a911ac1318",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 24,
+    "records_total": 24,
+    "records_passed": 24,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

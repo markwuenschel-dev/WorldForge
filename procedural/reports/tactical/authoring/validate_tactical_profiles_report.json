@@ -1,0 +1,122 @@
+{
+  "suite": "tactical_profiles",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "count::roles_3": {
+      "ok": true,
+      "detail": "must have exactly 3 tactical roles (got 3)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "count::required_roles_present": {
+      "ok": true,
+      "detail": "roles must include sentinel/skirmisher/suppressor (got ['sentinel', 'skirmisher', 'suppressor'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "count::profiles_2": {
+      "ok": true,
+      "detail": "must have exactly 2 pressure profiles (got 2)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "role::sentinel::valid": {
+      "ok": true,
+      "detail": "role invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "role::skirmisher::valid": {
+      "ok": true,
+      "detail": "role invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "role::suppressor::valid": {
+      "ok": true,
+      "detail": "role invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "profile::tac_profile_baseline_tactical::valid": {
+      "ok": true,
+      "detail": "profile invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "profile::tac_profile_baseline_tactical::roles_resolve": {
+      "ok": true,
+      "detail": "profile roles_allowed reference unknown roles: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "profile::tac_profile_high_pressure_tactical::valid": {
+      "ok": true,
+      "detail": "profile invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "profile::tac_profile_high_pressure_tactical::roles_resolve": {
+      "ok": true,
+      "detail": "profile roles_allowed reference unknown roles: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 10,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "validate-tactical-profiles",
+    "pack": "worldforge_vertical_slice",
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:05.431107+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.tactical.profile_validation.v1",
+    "report_id": "wf.tactical.profile_validation.v1:e754cdda72a8",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 5,
+    "records_total": 5,
+    "records_passed": 5,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "abort_reason": "",
+  "bound_enforcement": "satisfied",
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:WF_TX_f18b559d"
+      ],
+      "allowed_packages": [],
+      "protected_paths": [],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_wfcore_unreal_sink_demo"
+    }
+  ],
+  "created_at": "2026-08-23T10:35:31Z",
+  "created_by": "worldforge.core",
+  "delta_id": "delta_e9e5e730aac74494",
+  "evidence_refs": [
+    "far_side_transaction_document"
+  ],
+  "failure_codes": [],
+  "lock": {
+    "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+    "held": true,
+    "operation_id": "op_e2e_boot_0001",
+    "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+    "released": true
+  },
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "before_state_declared": {
+        "state_kind": "absent"
+      },
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            0.0,
+            200.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_demo_spawn_0",
+      "observed_after_apply": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            0.0,
+            200.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "operation": "create",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "applied",
+      "step_id": "step_wfcore_unreal_sink_demo",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:WF_TX_f18b559d",
+      "verification": "satisfied"
+    }
+  ],
+  "operation_id": "op_e2e_boot_0001",
+  "outcome": "committed",
+  "report_type": "wf.core.world_delta.v1",
+  "rollback_completeness": "unknown",
+  "schema_version": "wf.core.world_delta.v1",
+  "verification": "satisfied"
+}

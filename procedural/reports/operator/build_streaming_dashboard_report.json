@@ -1,0 +1,74 @@
+{
+  "suite": "streaming_operator_dashboard",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "dash::region_views_present": {
+      "ok": true,
+      "detail": "region_views.json missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dash::tile_views_present": {
+      "ok": true,
+      "detail": "tile_views.json missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dash::region_pages": {
+      "ok": true,
+      "detail": "all region pages must be written",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dash::tile_pages": {
+      "ok": true,
+      "detail": "all tile pages must be written",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 4,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "operator-streaming-dashboard",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:08.744311+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.streaming.operator_dashboard.v1",
+    "report_id": "wf.streaming.operator_dashboard.v1:8db92c9ea73c",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 8,
+    "records_total": 8,
+    "records_passed": 8,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

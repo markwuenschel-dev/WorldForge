@@ -79,7 +79,35 @@ def main():
     unreal.log_error("[run-state-scenario] FAIL — {}: {}".format(run_id, authority_error))
 
 
+def _stamp(repo_root, report):
+    """When this ran, and at which revision. Written by the PRODUCER.
+
+    Without these two fields the report is ungradeable for freshness, and a
+    validator has no honest option but to accept a result of unknown age --
+    which is how a runtime-behaviour claim from months ago kept certifying a
+    gate. mtime cannot substitute: it moves when a file is copied and says
+    nothing about when the editor actually ran.
+    """
+    import datetime
+    import subprocess
+    report["timestamp"] = datetime.datetime.now(
+        datetime.timezone.utc).replace(microsecond=0).isoformat()
+    sha = None
+    try:
+        proc = subprocess.run(["git", "-C", str(repo_root), "rev-parse", "HEAD"],
+                              capture_output=True, text=True, timeout=20)
+        if proc.returncode == 0:
+            sha = proc.stdout.strip() or None
+    except Exception:  # noqa: BLE001 -- a missing git is not a reason to die
+        sha = None
+    # Recorded as an explicit unknown rather than omitted: a validator must be
+    # able to tell "we could not read the revision" from "nobody thought to".
+    report["git_sha"] = sha or "unknown"
+    return report
+
+
 def _write_report(repo_root, run_id, report):
+    _stamp(repo_root, report)
     out_dir = os.path.join(repo_root, "procedural", "reports", "scenarios", run_id)
     os.makedirs(out_dir, exist_ok=True)
     out_path = os.path.join(out_dir, "ue_state_scenario_report.json")

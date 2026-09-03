@@ -1,0 +1,158 @@
+{
+  "abort_reason": "mutation 'mut_wfmarker_001' failed to apply: WF1278_CORE_SINK_APPLY_FAILED: mutation 'mut_wfmarker_001''s payload {'actor_path': '/Game/Maps/_wf_test_lvl:wfmarker_001', 'location_cm': [-600.0, 100.0, 100.0], 'rotation_pyr': [0.0, 0.0, 0.0], 'scale': [1.0, 1.0, 1.0]} is not a complete actor payload (actor_class + finite location/rotation/scale)",
+  "bound_enforcement": "unknown",
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:wfmarker_001",
+        "/Game/Maps/_wf_test_lvl:wfmarker_002",
+        "/Game/Maps/_wf_test_lvl:wfmarker_003"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/_wf_test_lvl"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_closed_loop_place"
+    }
+  ],
+  "created_at": "2026-08-23T10:38:01Z",
+  "created_by": "worldforge.core",
+  "delta_id": "delta_4a9e89936e554962",
+  "detail": "rolled back and CONFIRMED: every undone target was re-observed and matches its captured before-state",
+  "evidence_refs": [
+    "route_placement_plan",
+    "observed_world"
+  ],
+  "failure_codes": [],
+  "lock": {
+    "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+    "held": true,
+    "operation_id": "op_loop_proof_0001",
+    "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+    "released": true
+  },
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "before_state_declared": {
+        "state_kind": "absent"
+      },
+      "detail": "WF1278_CORE_SINK_APPLY_FAILED: mutation 'mut_wfmarker_001''s payload {'actor_path': '/Game/Maps/_wf_test_lvl:wfmarker_001', 'location_cm': [-600.0, 100.0, 100.0], 'rotation_pyr': [0.0, 0.0, 0.0], 'scale': [1.0, 1.0, 1.0]} is not a complete actor payload (actor_class + finite location/rotation/scale)",
+      "expected_after_state": {
+        "payload": {
+          "actor_path": "/Game/Maps/_wf_test_lvl:wfmarker_001",
+          "location_cm": [
+            -600.0,
+            100.0,
+            100.0
+          ],
+          "rotation_pyr": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_wfmarker_001",
+      "observed_after_rollback": {
+        "state_kind": "absent"
+      },
+      "operation": "create",
+      "provider_id": "route_placement_planner",
+      "restoration": "satisfied",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "rolled_back",
+      "step_id": "step_closed_loop_place",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_001",
+      "undo_reported_ok": true
+    },
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "detail": "route placement 2 of 3 at [0.0, 200.0, 100.0] (slid 0.0cm to clear an exclusion)",
+      "expected_after_state": {
+        "payload": {
+          "actor_path": "/Game/Maps/_wf_test_lvl:wfmarker_002",
+          "location_cm": [
+            0.0,
+            200.0,
+            100.0
+          ],
+          "rotation_pyr": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_wfmarker_002",
+      "operation": "create",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_closed_loop_place",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_002"
+    },
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "detail": "route placement 3 of 3 at [600.0, 300.0, 100.0] (slid 0.0cm to clear an exclusion)",
+      "expected_after_state": {
+        "payload": {
+          "actor_path": "/Game/Maps/_wf_test_lvl:wfmarker_003",
+          "location_cm": [
+            600.0,
+            300.0,
+            100.0
+          ],
+          "rotation_pyr": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_wfmarker_003",
+      "operation": "create",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_closed_loop_place",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_003"
+    }
+  ],
+  "operation_id": "op_loop_proof_0001",
+  "outcome": "rolled_back",
+  "report_type": "wf.core.world_delta.v1",
+  "rollback_completeness": "satisfied",
+  "schema_version": "wf.core.world_delta.v1",
+  "verification": "unknown"
+}

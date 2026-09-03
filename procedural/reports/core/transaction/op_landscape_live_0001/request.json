@@ -1,0 +1,56 @@
+{
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:wfls_live_0001"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/_wf_test_lvl"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_ls_live"
+    }
+  ],
+  "evidence_refs": [
+    "landscape_plan"
+  ],
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "detail": "landscape 64x64 vertices (63 quads x 1 x 1); heightmap of 4096 uint16 samples is NOT carried by this request -- the sink payload has no key for it",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "Landscape",
+          "location": [
+            -6300.0,
+            -6300.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            200.0,
+            200.0,
+            100.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_wfls_live_0001",
+      "operation": "create",
+      "provider_id": "landscape_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_ls_live",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfls_live_0001"
+    }
+  ],
+  "operation_id": "op_landscape_live_0001"
+}

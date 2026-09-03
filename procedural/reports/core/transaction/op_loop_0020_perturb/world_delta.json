@@ -1,0 +1,135 @@
+{
+  "abort_reason": "",
+  "bound_enforcement": "satisfied",
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:wfmarker_002"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/_wf_test_lvl"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_perturb"
+    }
+  ],
+  "created_at": "2026-08-23T10:54:03Z",
+  "created_by": "worldforge.core",
+  "delta_id": "delta_13e928aba0954683",
+  "evidence_refs": [
+    "route_placement_plan",
+    "observed_world"
+  ],
+  "failure_codes": [],
+  "lock": {
+    "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+    "held": true,
+    "operation_id": "op_loop_0020_perturb",
+    "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+    "released": true
+  },
+  "mutations": [
+    {
+      "before_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            200.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "before_state_declared": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            200.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            80000.0,
+            80000.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_step_perturb_000",
+      "observed_after_apply": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            80000.0,
+            80000.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "operation": "modify",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "applied",
+      "step_id": "step_perturb",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_002",
+      "verification": "satisfied"
+    }
+  ],
+  "operation_id": "op_loop_0020_perturb",
+  "outcome": "committed",
+  "report_type": "wf.core.world_delta.v1",
+  "rollback_completeness": "unknown",
+  "schema_version": "wf.core.world_delta.v1",
+  "verification": "satisfied"
+}

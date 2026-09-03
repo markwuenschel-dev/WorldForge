@@ -1,0 +1,506 @@
+{
+  "checks": [
+    {
+      "name": "runtime_executed",
+      "verdict": "pass"
+    },
+    {
+      "name": "subject_resolved_by_caller",
+      "verdict": "pass"
+    },
+    {
+      "name": "subject_binding",
+      "verdict": "pass"
+    },
+    {
+      "name": "channels_corroborated",
+      "verdict": "pass"
+    },
+    {
+      "name": "support_samples_present",
+      "verdict": "pass"
+    },
+    {
+      "name": "actors_enumerated",
+      "verdict": "pass"
+    },
+    {
+      "name": "deterministic",
+      "verdict": "pass"
+    },
+    {
+      "name": "cleanup_verified",
+      "verdict": "pass"
+    },
+    {
+      "name": "contract_valid",
+      "verdict": "pass"
+    },
+    {
+      "name": "evidence_ownership",
+      "verdict": "pass"
+    },
+    {
+      "name": "camera_capture",
+      "verdict": "skip_not_applicable"
+    }
+  ],
+  "meta": {
+    "command": "run-scene-survey-probe",
+    "deep": false,
+    "failure_count": 0,
+    "git_sha": "24413ecbf27728a6582885118019095b25c9cf3f",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "pack": "worldforge_vertical_slice",
+    "record_count": 1,
+    "records_failed": 0,
+    "records_passed": 1,
+    "records_skipped": 0,
+    "records_total": 1,
+    "report_id": "wf.scene_survey.survey_report.v1:16144288784a",
+    "report_type": "wf.scene_survey.survey_report.v1",
+    "seeds": null,
+    "skipped_count": 0,
+    "status": "ok",
+    "strict": true,
+    "timestamp": "2026-08-23T13:08:32.759171+00:00",
+    "torture": false,
+    "validator_version": "v1.0x",
+    "warning_count": 0,
+    "worldforge_version": "v1.5"
+  },
+  "operation": {
+    "authoritative_report_path": "procedural/reports/scene_survey/runtime/operations/op_v2_6_scene_survey_0001/scene_survey_report.json",
+    "manifest_path": "procedural/reports/scene_survey/runtime/operations/op_v2_6_scene_survey_0001/operation_manifest.json",
+    "operation_id": "op_v2_6_scene_survey_0001",
+    "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+    "request_hash_field_set_version": 1,
+    "shared_mirror_path": "procedural/reports/scene_survey/runtime/scene_survey_report.json"
+  },
+  "status": "ok",
+  "subject": {
+    "anchor_location": null,
+    "anchor_mode": "actor_object_path",
+    "anchor_object_path": "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0",
+    "anchor_rotation": null,
+    "created_at": "2026-08-23T11:46:54+00:00",
+    "created_by": "cleanconsumer.fixture.caller",
+    "map_asset_path": "/Game/Maps/ConsumerSlice",
+    "report_type": "wf.scene_survey.survey_subject.v1",
+    "resolved_by": "caller",
+    "schema_version": "wf.scene_survey.survey_subject.v1",
+    "subject_id": "consumer_slice_survey_subject",
+    "subject_kind": "actor"
+  },
+  "survey": {
+    "acceptance_eligible": true,
+    "acceptance_ineligibility_reason": null,
+    "actor_bounds_valid": true,
+    "camera_capture_ok": false,
+    "captures_requested": [],
+    "cleanup_verified": true,
+    "created_at": "2026-07-19T00:00:00+00:00",
+    "created_by": "worldforge.v2.6",
+    "determinism_hash": "sha256:8194c24674a69afb218c3bd3b90ae2b3",
+    "edge_regions": null,
+    "evidence_paths": [
+      "procedural/reports/scene_survey/runtime/operations/op_v2_6_scene_survey_0001/far_side_run1.json",
+      "procedural/reports/scene_survey/runtime/operations/op_v2_6_scene_survey_0001/far_side_run2.json"
+    ],
+    "failure_codes": [
+      "WF1113_SCENE_SURVEY_EVIDENCE_RAW_MISSING",
+      "WF1091_SCENE_SURVEY_PROXY_DISABLE_UNVERIFIED"
+    ],
+    "map_asset_path": "/Game/Maps/ConsumerSlice",
+    "meta": {
+      "acceptance_components": {
+        "anchor_mode_observable": true,
+        "observed_actor_identity_valid": true,
+        "observed_actor_transform_valid": true,
+        "observed_world_identity_valid": true,
+        "survey_bound_to_observed_actor": true
+      },
+      "acceptance_failed_components": [],
+      "anchor_detail": "resolved the caller's exact object path",
+      "camera_pass": "no captures were requested by the caller (capture is opt-in)",
+      "channel_corroborated": true,
+      "channel_disagreements": [],
+      "determinism_consistent": true,
+      "engine_root": "D:\\UE_5.8",
+      "evidence": {
+        "actor_bounds_valid": {
+          "classification": "derived_from_observed",
+          "collection_ok": true,
+          "collector": "run_scene_survey_probe",
+          "derivation": "actor_bounds_valid",
+          "detail": "1 of 1 actor record(s) observed for actor_bounds",
+          "inputs": {
+            "actor_bounds_observed": true,
+            "actor_bounds_unobserved_count": 0,
+            "actors_checked": 1,
+            "actors_rejected": [],
+            "actors_unobserved": [],
+            "false_ids": [],
+            "predicate": "actor_bounds",
+            "reasons": [],
+            "records_decided": 1,
+            "records_total": 1,
+            "unobserved_ids": []
+          },
+          "raw_refs": [
+            "actor#/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0"
+          ],
+          "stage": "observe",
+          "value": true
+        },
+        "actor_count": {
+          "classification": "observed",
+          "collection_ok": true,
+          "collector": "scene_survey_far_side",
+          "detail": "USceneSurveyStatics.enumerate_survey_actors return value, read structurally from the far-side document (never from WF_SURVEY_ENUM log text)",
+          "raw_refs": [],
+          "stage": "observe",
+          "value": 8
+        },
+        "camera_capture_ok": {
+          "classification": "observed",
+          "collection_ok": true,
+          "collector": "scene_survey_far_side",
+          "detail": "no captures were requested (capture is opt-in); the far side reports camera_capture_ran=False",
+          "raw_refs": [],
+          "stage": "observe",
+          "value": false
+        },
+        "cleanup_verified": {
+          "classification": "derived_from_observed",
+          "collection_ok": true,
+          "collector": "run_scene_survey_probe",
+          "derivation": "cleanup_verified",
+          "detail": "pre@anchor_bind post@cleanup, with D, T and M measured on both, and a temporary-object ledger that ran cleanup over 0 declared object(s), 0 of them created",
+          "inputs": {
+            "actors_post": 1,
+            "actors_pre": 1,
+            "dirty_packages_equal": true,
+            "leaked_actors": [],
+            "ledger_cleanup_ran": true,
+            "ledger_conjunct": true,
+            "ledger_created_count": 0,
+            "ledger_created_object_ids": [],
+            "ledger_declared_object_ids": [],
+            "ledger_foreign_operation_placements": [],
+            "ledger_foreign_world_placements": [],
+            "ledger_misattributed_placements": [],
+            "ledger_objects_creation_undecided": [],
+            "ledger_objects_not_destroyed": [],
+            "ledger_objects_present_after_cleanup": [],
+            "ledger_ownership_tag": "worldforge.scene_survey/op_v2_6_scene_survey_0001",
+            "ledger_present": true,
+            "ledger_record_id": "document#temporary_object_ledger",
+            "ledger_unledgered_placements": [],
+            "map_identity_equal": true,
+            "map_identity_post": [
+              "/Game/Maps/ConsumerSlice",
+              "/Game/Maps/ConsumerSlice"
+            ],
+            "map_identity_pre": [
+              "/Game/Maps/ConsumerSlice",
+              "/Game/Maps/ConsumerSlice"
+            ],
+            "newly_dirty_packages": [],
+            "no_longer_dirty_packages": [],
+            "operation_owned_post": [],
+            "operation_owned_pre": [],
+            "persistent_package_hash_detail": "no UE Python api exposes a content hash of a persistent package; the content half of P_1 == P_0 is unsupported and is deliberately NOT folded into the conjunction (see the far side's PACKAGE_HASH_UNSUPPORTED_REASON)",
+            "persistent_package_hash_equal": null,
+            "persistent_package_hash_post": null,
+            "persistent_package_hash_pre": null,
+            "persistent_package_hash_supported": false,
+            "persistent_package_identity_equal": true,
+            "snapshot_conjuncts_ok": true,
+            "temporary_objects_equal": true,
+            "temporary_objects_leaked": [],
+            "temporary_objects_released": [],
+            "vanished_actors": []
+          },
+          "raw_refs": [
+            "inventory#pre",
+            "inventory#post",
+            "document#temporary_object_ledger"
+          ],
+          "stage": "cleanup",
+          "value": true
+        },
+        "edge_regions": {
+          "classification": "unsupported",
+          "collection_ok": false,
+          "collector": "scene_survey_far_side",
+          "detail": "the far side emits no per-class support breakdown: USceneSurveyStatics.sample_survey_support returns only a TOTAL (scene_survey_far_side.py:1273) and the raw_evidence bundle carries no per-sample records. The valid/unsupported/edge split exists only in the WF_SURVEY_SUPPORT log line, which is a diagnostic channel and may not supply a reported value. Unobserved, therefore unknown — not zero.",
+          "raw_refs": [],
+          "stage": "classify",
+          "value": null
+        },
+        "engine_root": {
+          "classification": "observed",
+          "collection_ok": true,
+          "collector": "bridge.paths",
+          "detail": "resolved via the bridge ladder (arg -> env -> registry)",
+          "raw_refs": [],
+          "stage": "preparation",
+          "value": "D:\\UE_5.8"
+        },
+        "overlap_count": {
+          "classification": "derived_from_observed",
+          "collection_ok": true,
+          "collector": "run_scene_survey_probe",
+          "derivation": "overlap_count",
+          "detail": "3 of 3 marker record(s) observed for overlap_free",
+          "inputs": {
+            "markers_total": 3,
+            "overlapping_ids": []
+          },
+          "raw_refs": [
+            "marker#marker_000",
+            "marker#marker_001",
+            "marker#marker_002"
+          ],
+          "stage": "classify",
+          "value": 0
+        },
+        "package_cleanliness_valid": {
+          "classification": "derived_from_observed",
+          "collection_ok": true,
+          "collector": "run_scene_survey_probe",
+          "derivation": "package_cleanliness_valid",
+          "detail": "2 of 2 inventory record(s) observed for package_cleanliness",
+          "inputs": {
+            "false_ids": [],
+            "package_cleanliness_observed": true,
+            "package_cleanliness_unobserved_count": 0,
+            "predicate": "package_cleanliness",
+            "records_decided": 2,
+            "records_total": 2,
+            "unobserved_ids": []
+          },
+          "raw_refs": [
+            "inventory#pre",
+            "inventory#post"
+          ],
+          "stage": "cleanup",
+          "value": true
+        },
+        "persistent_package_hash_stable": {
+          "classification": "unsupported",
+          "collection_ok": false,
+          "collector": "scene_survey_far_side",
+          "detail": "no UE Python api exposes a content hash or save-state digest of a persistent package: UPackage.is_dirty(), UPackage.get_file_size() and the package GUID are not reflected to Python, and the only package-level state Python can read is MEMBERSHIP of the editor's dirty-package sets (unreal.EditorLoadingAndSavingUtils.get_dirty_map_packages / get_dirty_content_packages), which is a boolean per package and not a digest. Hashing the .umap on disk would answer a different question — whether the file changed — and would still be blind to an in-memory mutation that was never saved, which is the mutation a survey is most likely to cause. P_1 == P_0 is therefore reported as UNSUPPORTED with value None; the observable identity half is reported separately as persistent_package_identity_equal.",
+          "raw_refs": [],
+          "stage": "cleanup",
+          "value": null
+        },
+        "player_clearance_valid": {
+          "classification": "derived_from_observed",
+          "collection_ok": true,
+          "collector": "run_scene_survey_probe",
+          "derivation": "player_clearance_valid",
+          "detail": "3 of 3 marker record(s) observed for capsule_clearance",
+          "inputs": {
+            "blocked_ids": [],
+            "capsule_clearance_observed": true,
+            "capsule_clearance_unobserved_count": 0,
+            "false_ids": [],
+            "markers_total": 3,
+            "predicate": "capsule_clearance",
+            "records_decided": 3,
+            "records_total": 3,
+            "unobserved_ids": []
+          },
+          "raw_refs": [
+            "marker#marker_000",
+            "marker#marker_001",
+            "marker#marker_002"
+          ],
+          "stage": "classify",
+          "value": true
+        },
+        "proxies_disabled": {
+          "classification": "not_requested",
+          "collection_ok": null,
+          "collector": "request",
+          "detail": "the caller did not request the debug-proxy toggle; MeshForge debug proxies spawn at game BeginPlay; a -nullrhi editor pass never reaches BeginPlay, so neither their presence nor their disablement is observable here (proxy raw record present=True)",
+          "raw_refs": [],
+          "stage": "observe",
+          "value": null
+        },
+        "proxy_owners": {
+          "classification": "unsupported",
+          "collection_ok": false,
+          "collector": "scene_survey_far_side._record_proxy_unobserved",
+          "detail": "MeshForge runtime proxies spawn at game BeginPlay; an editor -nullrhi load never reaches BeginPlay, so neither their presence nor their absence was observed in this pass",
+          "raw_refs": [],
+          "stage": "observe",
+          "value": null
+        },
+        "runtime_executed": {
+          "classification": "observed",
+          "collection_ok": true,
+          "collector": "run_scene_survey_probe",
+          "detail": "the editor subprocess returned exit code 0 AND the far side wrote a document carrying its own operation_id. A non-zero exit, a timeout (exit_code None) or an absent/unparseable document is NOT an execution.",
+          "raw_refs": [],
+          "stage": "boot",
+          "value": true
+        },
+        "support_samples_total": {
+          "classification": "observed",
+          "collection_ok": true,
+          "collector": "scene_survey_far_side",
+          "detail": "USceneSurveyStatics.sample_survey_support return value, read structurally from the far-side document (never from WF_SURVEY_SUPPORT log text)",
+          "raw_refs": [],
+          "stage": "classify",
+          "value": 3721
+        },
+        "support_samples_valid": {
+          "classification": "unsupported",
+          "collection_ok": false,
+          "collector": "scene_survey_far_side",
+          "detail": "the far side emits no per-class support breakdown: USceneSurveyStatics.sample_survey_support returns only a TOTAL (scene_survey_far_side.py:1273) and the raw_evidence bundle carries no per-sample records. The valid/unsupported/edge split exists only in the WF_SURVEY_SUPPORT log line, which is a diagnostic channel and may not supply a reported value. Unobserved, therefore unknown — not zero.",
+          "raw_refs": [],
+          "stage": "classify",
+          "value": null
+        },
+        "temporary_cleanup_valid": {
+          "classification": "failed",
+          "collection_ok": false,
+          "collector": "run_scene_survey_probe",
+          "detail": "no temporary_placement record(s) were collected — there is no population to evaluate temporary_cleanup over, and an all()/sum() over an empty list yields a confident answer about nothing",
+          "raw_refs": [],
+          "stage": "cleanup",
+          "value": null
+        },
+        "temporary_placements_accepted": {
+          "classification": "derived_from_observed",
+          "collection_ok": true,
+          "collector": "run_scene_survey_probe",
+          "derivation": "temporary_placements_accepted",
+          "detail": "accepted decided for all 3 marker(s)",
+          "inputs": {
+            "accepted_ids": [],
+            "markers_total": 3
+          },
+          "raw_refs": [
+            "marker#marker_000",
+            "marker#marker_001",
+            "marker#marker_002"
+          ],
+          "stage": "classify",
+          "value": 0
+        },
+        "temporary_placements_grounded": {
+          "classification": "derived_from_observed",
+          "collection_ok": true,
+          "collector": "run_scene_survey_probe",
+          "derivation": "temporary_placements_grounded",
+          "detail": "3 of 3 marker record(s) observed for ground_contact",
+          "inputs": {
+            "grounded_ids": [],
+            "markers_total": 3
+          },
+          "raw_refs": [
+            "marker#marker_000",
+            "marker#marker_001",
+            "marker#marker_002"
+          ],
+          "stage": "classify",
+          "value": 0
+        },
+        "temporary_placements_requested": {
+          "classification": "derived_from_observed",
+          "collection_ok": true,
+          "collector": "run_scene_survey_probe",
+          "derivation": "temporary_placements_requested",
+          "detail": "3 marker record(s)",
+          "inputs": {
+            "markers_total": 3
+          },
+          "raw_refs": [
+            "marker#marker_000",
+            "marker#marker_001",
+            "marker#marker_002"
+          ],
+          "stage": "classify",
+          "value": 3
+        },
+        "unsupported_regions": {
+          "classification": "unsupported",
+          "collection_ok": false,
+          "collector": "scene_survey_far_side",
+          "detail": "the far side emits no per-class support breakdown: USceneSurveyStatics.sample_survey_support returns only a TOTAL (scene_survey_far_side.py:1273) and the raw_evidence bundle carries no per-sample records. The valid/unsupported/edge split exists only in the WF_SURVEY_SUPPORT log line, which is a diagnostic channel and may not supply a reported value. Unobserved, therefore unknown — not zero.",
+          "raw_refs": [],
+          "stage": "classify",
+          "value": null
+        }
+      },
+      "evidence_record_failures": [],
+      "evidence_unknown_fields": [
+        "edge_regions",
+        "persistent_package_hash_stable",
+        "proxies_disabled",
+        "proxy_owners",
+        "support_samples_valid",
+        "temporary_cleanup_valid",
+        "unsupported_regions"
+      ],
+      "far_side_collection_errors": [],
+      "observed_engine_version": "5.8.0-55116800+++UE5+Release-5.8",
+      "per_run_hashes": [
+        "sha256:8194c24674a69afb218c3bd3b90ae2b3",
+        "sha256:8194c24674a69afb218c3bd3b90ae2b3"
+      ],
+      "proxy_pass": "MeshForge proxies spawn at game BeginPlay; needs a -game pass",
+      "raw_evidence_counts": {
+        "actor": 1,
+        "capture": 1,
+        "component": 1,
+        "document": 2,
+        "inventory": 2,
+        "marker": 3,
+        "overlap_query": 3,
+        "proxy": 1,
+        "temporary_placement": 0,
+        "trace": 15,
+        "world": 1
+      },
+      "raw_evidence_present": true,
+      "raw_evidence_schema": "wf.scene_survey.raw_evidence_bundle.v1",
+      "repeat": 2,
+      "runtime_executed": true,
+      "stdout_channel_role": "diagnostic_only",
+      "subject_binding_failures": [],
+      "subject_source": "env:WF_SURVEY_SUBJECT",
+      "uproject": "C:/Users/Nalakram/AppData/Local/Temp/claude/D--Unreal-Projects-WorldForge/d7887ad2-dd71-43c6-9871-e22fde8e06b1/scratchpad/CleanConsumer/CleanConsumer.uproject"
+    },
+    "observed_anchor_location": [
+      0.0,
+      0.0,
+      150.0
+    ],
+    "observed_anchor_object_path": "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0",
+    "operation_id": "op_v2_6_scene_survey_0001",
+    "overlap_count": 0,
+    "player_clearance_valid": true,
+    "proxies_disabled": null,
+    "proxy_owners": null,
+    "report_id": "scene_survey_report_op_v2_6_scene_survey_0001",
+    "report_type": "wf.scene_survey.survey_report.v1",
+    "runtime_executed": true,
+    "runtime_mode": "live_survey_runtime",
+    "schema_version": "wf.scene_survey.survey_report.v1",
+    "status": "blocked",
+    "subject_id": "consumer_slice_survey_subject",
+    "subject_resolved_by": "caller",
+    "support_samples_total": 3721,
+    "support_samples_valid": null,
+    "temporary_placements_grounded": 0,
+    "unsupported_regions": null
+  }
+}

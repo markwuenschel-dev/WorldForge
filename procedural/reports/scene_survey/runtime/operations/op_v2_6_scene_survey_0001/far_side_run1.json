@@ -1,0 +1,2124 @@
+{
+  "actor_count": 8,
+  "anchor_detail": "resolved the caller's exact object path",
+  "anchor_mode": "actor_object_path",
+  "camera_capture_ran": false,
+  "camera_capture_reason": "no captures were requested by the caller (capture is opt-in)",
+  "captures_requested": [],
+  "collection_errors": [],
+  "collection_status_vocabulary": [
+    "collected",
+    "partial",
+    "not_attempted",
+    "failed"
+  ],
+  "environment_inputs": {
+    "markers_requested": 3,
+    "parse_errors": [],
+    "radius_cm": 3000.0,
+    "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+    "request_hash_algorithm": "sha256",
+    "step_cm": 100.0
+  },
+  "error": null,
+  "evidence_class_vocabulary": [
+    "observed",
+    "derived_from_observed",
+    "caller_supplied",
+    "not_requested",
+    "unsupported",
+    "failed"
+  ],
+  "loaded": true,
+  "map": "/Game/Maps/ConsumerSlice",
+  "marker_accepted": 0,
+  "marker_total": 3,
+  "observed_anchor_location": [
+    0.0,
+    0.0,
+    150.0
+  ],
+  "observed_anchor_object_path": "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0",
+  "observed_engine_version": "5.8.0-55116800+++UE5+Release-5.8",
+  "observed_world_package": "/Game/Maps/ConsumerSlice",
+  "operation_id": "op_v2_6_scene_survey_0001",
+  "proxy_pass_ran": false,
+  "proxy_pass_reason": "MeshForge proxies spawn at game BeginPlay; needs a -game pass",
+  "raw_evidence": {
+    "actor": {
+      "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0": {
+        "actor_object_path": "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0",
+        "bounds_api": "Actor.get_actor_bounds(False, True)",
+        "bounds_axis_order": [
+          "x",
+          "y",
+          "z"
+        ],
+        "bounds_extent": [
+          50.0,
+          50.0,
+          50.0
+        ],
+        "bounds_max": [
+          50.0,
+          50.0,
+          200.0
+        ],
+        "bounds_min": [
+          -50.0,
+          -50.0,
+          100.0
+        ],
+        "bounds_origin": [
+          0.0,
+          0.0,
+          150.0
+        ],
+        "bounds_primary": "origin_extent",
+        "class_name": "StaticMeshActor",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._collect_actor_records",
+        "component_object_path": null,
+        "component_refs": [
+          "component#/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0.StaticMeshComponent0"
+        ],
+        "derived_fields": {
+          "bounds_max": {
+            "derivation": "bounds_max[a] = bounds_origin[a] + bounds_extent[a] for a in bounds_axis_order; None if either input is not a finite vec3",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "bounds_origin",
+              "bounds_extent"
+            ],
+            "source_api": "Actor.get_actor_bounds(False, True)"
+          },
+          "bounds_min": {
+            "derivation": "bounds_min[a] = bounds_origin[a] - bounds_extent[a] for a in bounds_axis_order; None if either input is not a finite vec3",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "bounds_origin",
+              "bounds_extent"
+            ],
+            "source_api": "Actor.get_actor_bounds(False, True)"
+          }
+        },
+        "distance_to_anchor_cm": 0.0,
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "location": [
+          0.0,
+          0.0,
+          150.0
+        ],
+        "measured_fields": [
+          "location",
+          "rotation",
+          "scale",
+          "bounds_origin",
+          "bounds_extent",
+          "bounds_min",
+          "bounds_max",
+          "distance_to_anchor_cm"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "path_name": "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0",
+        "record_id": "actor#/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0",
+        "record_ident": "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "actor",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "rotation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "scale": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "source_api": "Actor.get_actor_bounds(False, True)",
+        "stage": "observe",
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      }
+    },
+    "capture": {
+      "camera": {
+        "actor_object_path": null,
+        "capture_paths": null,
+        "captures_requested": [],
+        "collection_ok": false,
+        "collection_status": "not_attempted",
+        "collector": "scene_survey_far_side._record_capture_question",
+        "component_object_path": null,
+        "derived_fields": {},
+        "detail": "no captures were requested by the caller (capture is opt-in)",
+        "errors": [],
+        "evidence_class": "not_requested",
+        "failure_code": null,
+        "measured_fields": [
+          "value",
+          "capture_paths"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "record_id": "capture#camera",
+        "record_ident": "camera",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "capture",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": null,
+        "stage": "observe",
+        "value": null,
+        "world_identity": null
+      }
+    },
+    "component": {
+      "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0.StaticMeshComponent0": {
+        "actor_object_path": "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0",
+        "actor_ref": "actor#/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0",
+        "bounds_axis_order": [
+          "x",
+          "y",
+          "z"
+        ],
+        "bounds_extent": [
+          50.0,
+          50.0,
+          50.0
+        ],
+        "bounds_max": [
+          50.0,
+          50.0,
+          200.0
+        ],
+        "bounds_min": [
+          -50.0,
+          -50.0,
+          100.0
+        ],
+        "bounds_origin": [
+          0.0,
+          0.0,
+          150.0
+        ],
+        "bounds_primary": "origin_extent",
+        "bounds_sphere_radius": 86.6025390625,
+        "class_name": "StaticMeshComponent",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._collect_actor_records",
+        "collision_enabled": null,
+        "component_object_path": "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0.StaticMeshComponent0",
+        "derived_fields": {
+          "bounds_max": {
+            "derivation": "bounds_max[a] = bounds_origin[a] + bounds_extent[a] for a in bounds_axis_order; None if either input is not a finite vec3",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "bounds_origin",
+              "bounds_extent"
+            ],
+            "source_api": "unreal.SystemLibrary.get_component_bounds"
+          },
+          "bounds_min": {
+            "derivation": "bounds_min[a] = bounds_origin[a] - bounds_extent[a] for a in bounds_axis_order; None if either input is not a finite vec3",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "bounds_origin",
+              "bounds_extent"
+            ],
+            "source_api": "unreal.SystemLibrary.get_component_bounds"
+          }
+        },
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "measured_fields": [
+          "collision_enabled",
+          "bounds_origin",
+          "bounds_extent",
+          "bounds_sphere_radius",
+          "bounds_min",
+          "bounds_max"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "path_name": "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0.StaticMeshComponent0",
+        "record_id": "component#/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0.StaticMeshComponent0",
+        "record_ident": "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0.StaticMeshComponent0",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "component",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.Actor.get_components_by_class + unreal.SystemLibrary.get_component_bounds",
+        "stage": "observe",
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      }
+    },
+    "document": {
+      "ref_integrity": {
+        "actor_object_path": null,
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._record_ref_integrity",
+        "component_object_path": null,
+        "derived_fields": {},
+        "envelope_fields": [
+          "record_schema",
+          "operation_id",
+          "request_hash",
+          "request_hash_algorithm",
+          "record_id",
+          "record_type",
+          "record_ident",
+          "stage",
+          "collector",
+          "collection_status",
+          "evidence_class",
+          "source_api",
+          "world_identity",
+          "actor_object_path",
+          "component_object_path",
+          "failure_code",
+          "derived_fields",
+          "measured_fields"
+        ],
+        "envelope_incomplete_count": 0,
+        "envelope_incomplete_records": [],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "measured_fields": [
+          "record_ids_total",
+          "refs_checked",
+          "unresolved_refs",
+          "unresolved_ref_count",
+          "record_id_mismatches",
+          "record_id_mismatch_count",
+          "envelope_incomplete_records",
+          "envelope_incomplete_count"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "record_id": "document#ref_integrity",
+        "record_id_mismatch_count": 0,
+        "record_id_mismatches": [],
+        "record_ident": "ref_integrity",
+        "record_ids_total": 29,
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "document",
+        "records_total": 29,
+        "refs_checked": 20,
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": null,
+        "stage": "classify",
+        "unresolved_ref_count": 0,
+        "unresolved_refs": [],
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "temporary_object_ledger": {
+        "actor_object_path": null,
+        "cleanup_ran": true,
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._SpawnLedger.write_manifest",
+        "component_object_path": null,
+        "created_object_count": 0,
+        "created_object_ids": [],
+        "derived_fields": {},
+        "destruction_results": [
+          "not_attempted",
+          "destroyed",
+          "destroy_returned_false",
+          "error",
+          "unknown"
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "is_temporary_object_ledger": true,
+        "measured_fields": [],
+        "object_count": 0,
+        "object_ids": [],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "ownership_tag": "worldforge.scene_survey/op_v2_6_scene_survey_0001",
+        "package_identity": "/Game/Maps/ConsumerSlice",
+        "persistent_package_hash": null,
+        "persistent_package_hash_evidence_class": "unsupported",
+        "persistent_package_hash_supported": false,
+        "persistent_package_hash_unsupported_reason": "no UE Python api exposes a content hash or save-state digest of a persistent package: UPackage.is_dirty(), UPackage.get_file_size() and the package GUID are not reflected to Python, and the only package-level state Python can read is MEMBERSHIP of the editor's dirty-package sets (unreal.EditorLoadingAndSavingUtils.get_dirty_map_packages / get_dirty_content_packages), which is a boolean per package and not a digest. Hashing the .umap on disk would answer a different question \u2014 whether the file changed \u2014 and would still be blind to an in-memory mutation that was never saved, which is the mutation a survey is most likely to cause. P_1 == P_0 is therefore reported as UNSUPPORTED with value None; the observable identity half is reported separately as persistent_package_identity_equal.",
+        "presence_states": [
+          "never_created",
+          "absent",
+          "present",
+          "unknown"
+        ],
+        "record_id": "document#temporary_object_ledger",
+        "record_ident": "temporary_object_ledger",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "document",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.EditorActorSubsystem.spawn_actor_from_class + unreal.EditorActorSubsystem.destroy_actor + unreal.SystemLibrary.is_valid",
+        "spawn_call_sites_in_ledger": null,
+        "spawn_call_sites_in_module": null,
+        "spawn_entry_point": "scene_survey_far_side._SpawnLedger.spawn_transient",
+        "spawn_policy": "transient-only; this pass spawns nothing (marker clearance is trace-probed, never placed)",
+        "stage": "cleanup",
+        "still_owned_object_ids": [],
+        "temporary_object_refs": [],
+        "unledgered_spawn_call_sites": null,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      }
+    },
+    "inventory": {
+      "post": {
+        "actor_object_path": null,
+        "actor_path_count": 1,
+        "actor_paths": [
+          "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0"
+        ],
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._inventory",
+        "component_object_path": null,
+        "derived_fields": {
+          "dirty_packages": {
+            "derivation": "sorted(set(dirty_map_packages) | set(dirty_content_packages)); None if either engine set was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "dirty_map_packages",
+              "dirty_content_packages"
+            ],
+            "source_api": "unreal.EditorLoadingAndSavingUtils.get_dirty_map_packages/get_dirty_content_packages"
+          }
+        },
+        "dirtiness_api_note": "UPackage.is_dirty() is not exposed to Python; dirtiness is observable only as membership of the engine's dirty package sets",
+        "dirty_content_packages": [],
+        "dirty_map_packages": [],
+        "dirty_packages": [],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "map_identity": "/Game/Maps/ConsumerSlice",
+        "measured_fields": [
+          "actor_paths",
+          "actor_path_count",
+          "dirty_map_packages",
+          "dirty_content_packages",
+          "dirty_packages"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "operation_owned_actor_paths": [],
+        "ownership_tag": "worldforge.scene_survey/op_v2_6_scene_survey_0001",
+        "package_identity": "/Game/Maps/ConsumerSlice",
+        "persistent_package_hash": null,
+        "persistent_package_hash_evidence_class": "unsupported",
+        "persistent_package_hash_supported": false,
+        "persistent_package_hash_unsupported_reason": "no UE Python api exposes a content hash or save-state digest of a persistent package: UPackage.is_dirty(), UPackage.get_file_size() and the package GUID are not reflected to Python, and the only package-level state Python can read is MEMBERSHIP of the editor's dirty-package sets (unreal.EditorLoadingAndSavingUtils.get_dirty_map_packages / get_dirty_content_packages), which is a boolean per package and not a digest. Hashing the .umap on disk would answer a different question \u2014 whether the file changed \u2014 and would still be blind to an in-memory mutation that was never saved, which is the mutation a survey is most likely to cause. P_1 == P_0 is therefore reported as UNSUPPORTED with value None; the observable identity half is reported separately as persistent_package_identity_equal.",
+        "persistent_package_identity": "/Game/Maps/ConsumerSlice",
+        "record_id": "inventory#post",
+        "record_ident": "post",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "inventory",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.EditorActorSubsystem.get_all_level_actors + unreal.EditorLoadingAndSavingUtils.get_dirty_map_packages/get_dirty_content_packages",
+        "spawn_policy": "transient-only; this pass spawns nothing (marker clearance is trace-probed, never placed)",
+        "stage": "cleanup",
+        "temporary_object_count": 0,
+        "temporary_object_paths": [],
+        "temporary_object_refs": [],
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "pre": {
+        "actor_object_path": null,
+        "actor_path_count": 1,
+        "actor_paths": [
+          "/Game/Maps/ConsumerSlice.ConsumerSlice:PersistentLevel.StaticMeshActor_0"
+        ],
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._inventory",
+        "component_object_path": null,
+        "derived_fields": {
+          "dirty_packages": {
+            "derivation": "sorted(set(dirty_map_packages) | set(dirty_content_packages)); None if either engine set was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "dirty_map_packages",
+              "dirty_content_packages"
+            ],
+            "source_api": "unreal.EditorLoadingAndSavingUtils.get_dirty_map_packages/get_dirty_content_packages"
+          }
+        },
+        "dirtiness_api_note": "UPackage.is_dirty() is not exposed to Python; dirtiness is observable only as membership of the engine's dirty package sets",
+        "dirty_content_packages": [],
+        "dirty_map_packages": [],
+        "dirty_packages": [],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "map_identity": "/Game/Maps/ConsumerSlice",
+        "measured_fields": [
+          "actor_paths",
+          "actor_path_count",
+          "dirty_map_packages",
+          "dirty_content_packages",
+          "dirty_packages"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "operation_owned_actor_paths": [],
+        "ownership_tag": "worldforge.scene_survey/op_v2_6_scene_survey_0001",
+        "package_identity": "/Game/Maps/ConsumerSlice",
+        "persistent_package_hash": null,
+        "persistent_package_hash_evidence_class": "unsupported",
+        "persistent_package_hash_supported": false,
+        "persistent_package_hash_unsupported_reason": "no UE Python api exposes a content hash or save-state digest of a persistent package: UPackage.is_dirty(), UPackage.get_file_size() and the package GUID are not reflected to Python, and the only package-level state Python can read is MEMBERSHIP of the editor's dirty-package sets (unreal.EditorLoadingAndSavingUtils.get_dirty_map_packages / get_dirty_content_packages), which is a boolean per package and not a digest. Hashing the .umap on disk would answer a different question \u2014 whether the file changed \u2014 and would still be blind to an in-memory mutation that was never saved, which is the mutation a survey is most likely to cause. P_1 == P_0 is therefore reported as UNSUPPORTED with value None; the observable identity half is reported separately as persistent_package_identity_equal.",
+        "persistent_package_identity": "/Game/Maps/ConsumerSlice",
+        "record_id": "inventory#pre",
+        "record_ident": "pre",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "inventory",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.EditorActorSubsystem.get_all_level_actors + unreal.EditorLoadingAndSavingUtils.get_dirty_map_packages/get_dirty_content_packages",
+        "spawn_policy": "transient-only; this pass spawns nothing (marker clearance is trace-probed, never placed)",
+        "stage": "anchor_bind",
+        "temporary_object_count": 0,
+        "temporary_object_paths": [],
+        "temporary_object_refs": [],
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      }
+    },
+    "marker": {
+      "marker_000": {
+        "accepted": false,
+        "actor_object_path": null,
+        "capsule_center": [
+          100.0,
+          0.0,
+          240.0
+        ],
+        "capsule_clear": true,
+        "capsule_half_height": 88.0,
+        "capsule_overlap_actor_paths": [],
+        "capsule_overlap_component_paths": [],
+        "capsule_overlap_dynamic_actor_paths": [],
+        "capsule_overlap_static_actor_paths": [],
+        "capsule_radius": 34.0,
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._collect_marker_record",
+        "component_object_path": null,
+        "contact": false,
+        "derived_fields": {
+          "capsule_clear": {
+            "derivation": "capsule_clear = NOT overlap; None when overlap is None \u2014 an unmeasured capsule is not a clear one",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "overlap_query#marker_000::capsule"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_actors"
+          },
+          "footprint": {
+            "derivation": "footprint = all(trace(r).hit for r in footprint_trace_refs) AND grounded; None when any corner trace or the ground trace did not answer",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "trace#marker_000::footprint_0",
+              "trace#marker_000::footprint_1",
+              "trace#marker_000::footprint_2",
+              "trace#marker_000::footprint_3",
+              "trace#marker_000::ground"
+            ],
+            "source_api": "unreal.SystemLibrary.line_trace_single"
+          },
+          "grounded": {
+            "derivation": "grounded = trace(ground_trace_ref).hit; None when that trace did not answer \u2014 never coerced to False",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "trace#marker_000::ground"
+            ],
+            "source_api": "unreal.SystemLibrary.line_trace_single"
+          },
+          "overlap": {
+            "derivation": "overlap = len(capsule_overlap_actor_paths) > 0, over the union of the WorldStatic and WorldDynamic queries; None when either sub-query was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "overlap_query#marker_000::capsule"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_actors"
+          },
+          "required_footprint_area_cm2": {
+            "derivation": "required_footprint_area_cm2 = pi * capsule_radius^2 \u2014 the capsule's full cross-section, i.e. the area the predicate's denominator refers to",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "capsule_radius"
+            ],
+            "source_api": null
+          },
+          "supported_footprint_area_cm2": {
+            "derivation": "supported_footprint_area_cm2 = required_footprint_area_cm2 * (footprint_supported_sample_count / footprint_sample_count) \u2014 a 4-sample estimate on the offsets in footprint_sample_offsets_cm, not an integrated area",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "required_footprint_area_cm2",
+              "footprint_supported_sample_count",
+              "footprint_sample_count"
+            ],
+            "source_api": null
+          }
+        },
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "footprint": false,
+        "footprint_datum_source": "candidate_location_z",
+        "footprint_datum_z": null,
+        "footprint_sample_count": 4,
+        "footprint_sample_offsets_cm": [
+          [
+            34.0,
+            0.0
+          ],
+          [
+            -34.0,
+            0.0
+          ],
+          [
+            0.0,
+            34.0
+          ],
+          [
+            0.0,
+            -34.0
+          ]
+        ],
+        "footprint_sample_radius_cm": 34.0,
+        "footprint_supported_sample_count": 0,
+        "footprint_trace_hits": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "footprint_trace_refs": [
+          "trace#marker_000::footprint_0",
+          "trace#marker_000::footprint_1",
+          "trace#marker_000::footprint_2",
+          "trace#marker_000::footprint_3"
+        ],
+        "ground_delta_z_cm": null,
+        "ground_impact_point": null,
+        "ground_impact_z": null,
+        "ground_surface_normal": null,
+        "ground_surface_normal_dot_up": null,
+        "ground_surface_normal_unit": null,
+        "ground_trace_ref": "trace#marker_000::ground",
+        "grounded": false,
+        "grounding_thresholds": {
+          "cos_theta_max": null,
+          "note": "grounding thresholds are policy, not observations; the far side was supplied none and invents none. The deriving side supplies them.",
+          "tau_delta_z_cm": null,
+          "tau_supported_area_ratio": null
+        },
+        "index": 0,
+        "location": [
+          100.0,
+          0.0,
+          150.0
+        ],
+        "measured_fields": [
+          "probe_temp_marker_returned",
+          "accepted",
+          "contact",
+          "grounded",
+          "footprint",
+          "overlap",
+          "capsule_clear",
+          "ground_impact_z",
+          "ground_impact_point",
+          "ground_delta_z_cm",
+          "ground_surface_normal",
+          "ground_surface_normal_unit",
+          "ground_surface_normal_dot_up",
+          "footprint_supported_sample_count",
+          "supported_footprint_area_cm2",
+          "capsule_overlap_static_actor_paths",
+          "capsule_overlap_dynamic_actor_paths",
+          "capsule_overlap_actor_paths",
+          "capsule_overlap_component_paths"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "overlap": false,
+        "overlap_query_ref": "overlap_query#marker_000::capsule",
+        "probe_temp_marker_returned": false,
+        "record_id": "marker#marker_000",
+        "record_ident": "marker_000",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "marker",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "required_footprint_area_cm2": 3631.681107549801,
+        "source_api": "unreal.SystemLibrary.line_trace_single + unreal.SystemLibrary.capsule_overlap_actors",
+        "stage": "classify",
+        "supported_footprint_area_cm2": 0.0,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_001": {
+        "accepted": false,
+        "actor_object_path": null,
+        "capsule_center": [
+          200.0,
+          0.0,
+          240.0
+        ],
+        "capsule_clear": true,
+        "capsule_half_height": 88.0,
+        "capsule_overlap_actor_paths": [],
+        "capsule_overlap_component_paths": [],
+        "capsule_overlap_dynamic_actor_paths": [],
+        "capsule_overlap_static_actor_paths": [],
+        "capsule_radius": 34.0,
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._collect_marker_record",
+        "component_object_path": null,
+        "contact": false,
+        "derived_fields": {
+          "capsule_clear": {
+            "derivation": "capsule_clear = NOT overlap; None when overlap is None \u2014 an unmeasured capsule is not a clear one",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "overlap_query#marker_001::capsule"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_actors"
+          },
+          "footprint": {
+            "derivation": "footprint = all(trace(r).hit for r in footprint_trace_refs) AND grounded; None when any corner trace or the ground trace did not answer",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "trace#marker_001::footprint_0",
+              "trace#marker_001::footprint_1",
+              "trace#marker_001::footprint_2",
+              "trace#marker_001::footprint_3",
+              "trace#marker_001::ground"
+            ],
+            "source_api": "unreal.SystemLibrary.line_trace_single"
+          },
+          "grounded": {
+            "derivation": "grounded = trace(ground_trace_ref).hit; None when that trace did not answer \u2014 never coerced to False",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "trace#marker_001::ground"
+            ],
+            "source_api": "unreal.SystemLibrary.line_trace_single"
+          },
+          "overlap": {
+            "derivation": "overlap = len(capsule_overlap_actor_paths) > 0, over the union of the WorldStatic and WorldDynamic queries; None when either sub-query was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "overlap_query#marker_001::capsule"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_actors"
+          },
+          "required_footprint_area_cm2": {
+            "derivation": "required_footprint_area_cm2 = pi * capsule_radius^2 \u2014 the capsule's full cross-section, i.e. the area the predicate's denominator refers to",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "capsule_radius"
+            ],
+            "source_api": null
+          },
+          "supported_footprint_area_cm2": {
+            "derivation": "supported_footprint_area_cm2 = required_footprint_area_cm2 * (footprint_supported_sample_count / footprint_sample_count) \u2014 a 4-sample estimate on the offsets in footprint_sample_offsets_cm, not an integrated area",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "required_footprint_area_cm2",
+              "footprint_supported_sample_count",
+              "footprint_sample_count"
+            ],
+            "source_api": null
+          }
+        },
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "footprint": false,
+        "footprint_datum_source": "candidate_location_z",
+        "footprint_datum_z": null,
+        "footprint_sample_count": 4,
+        "footprint_sample_offsets_cm": [
+          [
+            34.0,
+            0.0
+          ],
+          [
+            -34.0,
+            0.0
+          ],
+          [
+            0.0,
+            34.0
+          ],
+          [
+            0.0,
+            -34.0
+          ]
+        ],
+        "footprint_sample_radius_cm": 34.0,
+        "footprint_supported_sample_count": 0,
+        "footprint_trace_hits": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "footprint_trace_refs": [
+          "trace#marker_001::footprint_0",
+          "trace#marker_001::footprint_1",
+          "trace#marker_001::footprint_2",
+          "trace#marker_001::footprint_3"
+        ],
+        "ground_delta_z_cm": null,
+        "ground_impact_point": null,
+        "ground_impact_z": null,
+        "ground_surface_normal": null,
+        "ground_surface_normal_dot_up": null,
+        "ground_surface_normal_unit": null,
+        "ground_trace_ref": "trace#marker_001::ground",
+        "grounded": false,
+        "grounding_thresholds": {
+          "cos_theta_max": null,
+          "note": "grounding thresholds are policy, not observations; the far side was supplied none and invents none. The deriving side supplies them.",
+          "tau_delta_z_cm": null,
+          "tau_supported_area_ratio": null
+        },
+        "index": 1,
+        "location": [
+          200.0,
+          0.0,
+          150.0
+        ],
+        "measured_fields": [
+          "probe_temp_marker_returned",
+          "accepted",
+          "contact",
+          "grounded",
+          "footprint",
+          "overlap",
+          "capsule_clear",
+          "ground_impact_z",
+          "ground_impact_point",
+          "ground_delta_z_cm",
+          "ground_surface_normal",
+          "ground_surface_normal_unit",
+          "ground_surface_normal_dot_up",
+          "footprint_supported_sample_count",
+          "supported_footprint_area_cm2",
+          "capsule_overlap_static_actor_paths",
+          "capsule_overlap_dynamic_actor_paths",
+          "capsule_overlap_actor_paths",
+          "capsule_overlap_component_paths"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "overlap": false,
+        "overlap_query_ref": "overlap_query#marker_001::capsule",
+        "probe_temp_marker_returned": false,
+        "record_id": "marker#marker_001",
+        "record_ident": "marker_001",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "marker",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "required_footprint_area_cm2": 3631.681107549801,
+        "source_api": "unreal.SystemLibrary.line_trace_single + unreal.SystemLibrary.capsule_overlap_actors",
+        "stage": "classify",
+        "supported_footprint_area_cm2": 0.0,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_002": {
+        "accepted": false,
+        "actor_object_path": null,
+        "capsule_center": [
+          300.0,
+          0.0,
+          240.0
+        ],
+        "capsule_clear": true,
+        "capsule_half_height": 88.0,
+        "capsule_overlap_actor_paths": [],
+        "capsule_overlap_component_paths": [],
+        "capsule_overlap_dynamic_actor_paths": [],
+        "capsule_overlap_static_actor_paths": [],
+        "capsule_radius": 34.0,
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._collect_marker_record",
+        "component_object_path": null,
+        "contact": false,
+        "derived_fields": {
+          "capsule_clear": {
+            "derivation": "capsule_clear = NOT overlap; None when overlap is None \u2014 an unmeasured capsule is not a clear one",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "overlap_query#marker_002::capsule"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_actors"
+          },
+          "footprint": {
+            "derivation": "footprint = all(trace(r).hit for r in footprint_trace_refs) AND grounded; None when any corner trace or the ground trace did not answer",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "trace#marker_002::footprint_0",
+              "trace#marker_002::footprint_1",
+              "trace#marker_002::footprint_2",
+              "trace#marker_002::footprint_3",
+              "trace#marker_002::ground"
+            ],
+            "source_api": "unreal.SystemLibrary.line_trace_single"
+          },
+          "grounded": {
+            "derivation": "grounded = trace(ground_trace_ref).hit; None when that trace did not answer \u2014 never coerced to False",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "trace#marker_002::ground"
+            ],
+            "source_api": "unreal.SystemLibrary.line_trace_single"
+          },
+          "overlap": {
+            "derivation": "overlap = len(capsule_overlap_actor_paths) > 0, over the union of the WorldStatic and WorldDynamic queries; None when either sub-query was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "overlap_query#marker_002::capsule"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_actors"
+          },
+          "required_footprint_area_cm2": {
+            "derivation": "required_footprint_area_cm2 = pi * capsule_radius^2 \u2014 the capsule's full cross-section, i.e. the area the predicate's denominator refers to",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "capsule_radius"
+            ],
+            "source_api": null
+          },
+          "supported_footprint_area_cm2": {
+            "derivation": "supported_footprint_area_cm2 = required_footprint_area_cm2 * (footprint_supported_sample_count / footprint_sample_count) \u2014 a 4-sample estimate on the offsets in footprint_sample_offsets_cm, not an integrated area",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "required_footprint_area_cm2",
+              "footprint_supported_sample_count",
+              "footprint_sample_count"
+            ],
+            "source_api": null
+          }
+        },
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "footprint": false,
+        "footprint_datum_source": "candidate_location_z",
+        "footprint_datum_z": null,
+        "footprint_sample_count": 4,
+        "footprint_sample_offsets_cm": [
+          [
+            34.0,
+            0.0
+          ],
+          [
+            -34.0,
+            0.0
+          ],
+          [
+            0.0,
+            34.0
+          ],
+          [
+            0.0,
+            -34.0
+          ]
+        ],
+        "footprint_sample_radius_cm": 34.0,
+        "footprint_supported_sample_count": 0,
+        "footprint_trace_hits": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "footprint_trace_refs": [
+          "trace#marker_002::footprint_0",
+          "trace#marker_002::footprint_1",
+          "trace#marker_002::footprint_2",
+          "trace#marker_002::footprint_3"
+        ],
+        "ground_delta_z_cm": null,
+        "ground_impact_point": null,
+        "ground_impact_z": null,
+        "ground_surface_normal": null,
+        "ground_surface_normal_dot_up": null,
+        "ground_surface_normal_unit": null,
+        "ground_trace_ref": "trace#marker_002::ground",
+        "grounded": false,
+        "grounding_thresholds": {
+          "cos_theta_max": null,
+          "note": "grounding thresholds are policy, not observations; the far side was supplied none and invents none. The deriving side supplies them.",
+          "tau_delta_z_cm": null,
+          "tau_supported_area_ratio": null
+        },
+        "index": 2,
+        "location": [
+          300.0,
+          0.0,
+          150.0
+        ],
+        "measured_fields": [
+          "probe_temp_marker_returned",
+          "accepted",
+          "contact",
+          "grounded",
+          "footprint",
+          "overlap",
+          "capsule_clear",
+          "ground_impact_z",
+          "ground_impact_point",
+          "ground_delta_z_cm",
+          "ground_surface_normal",
+          "ground_surface_normal_unit",
+          "ground_surface_normal_dot_up",
+          "footprint_supported_sample_count",
+          "supported_footprint_area_cm2",
+          "capsule_overlap_static_actor_paths",
+          "capsule_overlap_dynamic_actor_paths",
+          "capsule_overlap_actor_paths",
+          "capsule_overlap_component_paths"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "overlap": false,
+        "overlap_query_ref": "overlap_query#marker_002::capsule",
+        "probe_temp_marker_returned": false,
+        "record_id": "marker#marker_002",
+        "record_ident": "marker_002",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "marker",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "required_footprint_area_cm2": 3631.681107549801,
+        "source_api": "unreal.SystemLibrary.line_trace_single + unreal.SystemLibrary.capsule_overlap_actors",
+        "stage": "classify",
+        "supported_footprint_area_cm2": 0.0,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      }
+    },
+    "overlap_query": {
+      "marker_000::capsule": {
+        "actor_object_path": null,
+        "actor_paths": [],
+        "center": [
+          100.0,
+          0.0,
+          240.0
+        ],
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._collect_overlap_query",
+        "component_object_path": null,
+        "component_paths": [],
+        "derived_fields": {
+          "actor_paths": {
+            "derivation": "sorted(set(static_actor_paths) | set(dynamic_actor_paths)); None if either sub-query was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "static_actor_paths",
+              "dynamic_actor_paths"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_actors"
+          },
+          "component_paths": {
+            "derivation": "sorted(set(static_component_paths) | set(dynamic_component_paths)); None if either sub-query was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "static_component_paths",
+              "dynamic_component_paths"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_components"
+          }
+        },
+        "dynamic_actor_paths": [],
+        "dynamic_component_paths": [],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "half_height": 88.0,
+        "measured_fields": [
+          "static_actor_paths",
+          "dynamic_actor_paths",
+          "static_component_paths",
+          "dynamic_component_paths",
+          "actor_paths",
+          "component_paths"
+        ],
+        "object_type_meaning": {
+          "1": "WorldStatic",
+          "2": "WorldDynamic"
+        },
+        "object_type_queries": [
+          1,
+          2
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "radius": 34.0,
+        "record_id": "overlap_query#marker_000::capsule",
+        "record_ident": "marker_000::capsule",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "overlap_query",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.capsule_overlap_actors + unreal.SystemLibrary.capsule_overlap_components",
+        "stage": "classify",
+        "static_actor_paths": [],
+        "static_component_paths": [],
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_001::capsule": {
+        "actor_object_path": null,
+        "actor_paths": [],
+        "center": [
+          200.0,
+          0.0,
+          240.0
+        ],
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._collect_overlap_query",
+        "component_object_path": null,
+        "component_paths": [],
+        "derived_fields": {
+          "actor_paths": {
+            "derivation": "sorted(set(static_actor_paths) | set(dynamic_actor_paths)); None if either sub-query was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "static_actor_paths",
+              "dynamic_actor_paths"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_actors"
+          },
+          "component_paths": {
+            "derivation": "sorted(set(static_component_paths) | set(dynamic_component_paths)); None if either sub-query was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "static_component_paths",
+              "dynamic_component_paths"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_components"
+          }
+        },
+        "dynamic_actor_paths": [],
+        "dynamic_component_paths": [],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "half_height": 88.0,
+        "measured_fields": [
+          "static_actor_paths",
+          "dynamic_actor_paths",
+          "static_component_paths",
+          "dynamic_component_paths",
+          "actor_paths",
+          "component_paths"
+        ],
+        "object_type_meaning": {
+          "1": "WorldStatic",
+          "2": "WorldDynamic"
+        },
+        "object_type_queries": [
+          1,
+          2
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "radius": 34.0,
+        "record_id": "overlap_query#marker_001::capsule",
+        "record_ident": "marker_001::capsule",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "overlap_query",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.capsule_overlap_actors + unreal.SystemLibrary.capsule_overlap_components",
+        "stage": "classify",
+        "static_actor_paths": [],
+        "static_component_paths": [],
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_002::capsule": {
+        "actor_object_path": null,
+        "actor_paths": [],
+        "center": [
+          300.0,
+          0.0,
+          240.0
+        ],
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._collect_overlap_query",
+        "component_object_path": null,
+        "component_paths": [],
+        "derived_fields": {
+          "actor_paths": {
+            "derivation": "sorted(set(static_actor_paths) | set(dynamic_actor_paths)); None if either sub-query was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "static_actor_paths",
+              "dynamic_actor_paths"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_actors"
+          },
+          "component_paths": {
+            "derivation": "sorted(set(static_component_paths) | set(dynamic_component_paths)); None if either sub-query was unread",
+            "evidence_class": "derived_from_observed",
+            "inputs": [
+              "static_component_paths",
+              "dynamic_component_paths"
+            ],
+            "source_api": "unreal.SystemLibrary.capsule_overlap_components"
+          }
+        },
+        "dynamic_actor_paths": [],
+        "dynamic_component_paths": [],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "half_height": 88.0,
+        "measured_fields": [
+          "static_actor_paths",
+          "dynamic_actor_paths",
+          "static_component_paths",
+          "dynamic_component_paths",
+          "actor_paths",
+          "component_paths"
+        ],
+        "object_type_meaning": {
+          "1": "WorldStatic",
+          "2": "WorldDynamic"
+        },
+        "object_type_queries": [
+          1,
+          2
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "radius": 34.0,
+        "record_id": "overlap_query#marker_002::capsule",
+        "record_ident": "marker_002::capsule",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "overlap_query",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.capsule_overlap_actors + unreal.SystemLibrary.capsule_overlap_components",
+        "stage": "classify",
+        "static_actor_paths": [],
+        "static_component_paths": [],
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      }
+    },
+    "proxy": {
+      "runtime_proxies": {
+        "actor_object_path": null,
+        "collection_ok": false,
+        "collection_status": "not_attempted",
+        "collector": "scene_survey_far_side._record_proxy_unobserved",
+        "component_object_path": null,
+        "derived_fields": {},
+        "detail": "MeshForge runtime proxies spawn at game BeginPlay; an editor -nullrhi load never reaches BeginPlay, so neither their presence nor their absence was observed in this pass",
+        "errors": [],
+        "evidence_class": "unsupported",
+        "failure_code": null,
+        "measured_fields": [
+          "value",
+          "proxy_owner_paths"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "proxy_owner_paths": null,
+        "record_id": "proxy#runtime_proxies",
+        "record_ident": "runtime_proxies",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "proxy",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": null,
+        "stage": "observe",
+        "value": null,
+        "world_identity": null
+      }
+    },
+    "record_schema_version": "wf.scene_survey.raw_evidence_record.v1",
+    "schema_version": "wf.scene_survey.raw_evidence_bundle.v1",
+    "temporary_placement": {},
+    "trace": {
+      "marker_000::footprint_0": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          134.0,
+          0.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_000::footprint_0",
+        "record_ident": "marker_000::footprint_0",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          134.0,
+          0.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_000::footprint_1": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          66.0,
+          0.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_000::footprint_1",
+        "record_ident": "marker_000::footprint_1",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          66.0,
+          0.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_000::footprint_2": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          100.0,
+          34.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_000::footprint_2",
+        "record_ident": "marker_000::footprint_2",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          100.0,
+          34.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_000::footprint_3": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          100.0,
+          -34.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_000::footprint_3",
+        "record_ident": "marker_000::footprint_3",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          100.0,
+          -34.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_000::ground": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          100.0,
+          0.0,
+          -2850.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker ground contact",
+        "record_id": "trace#marker_000::ground",
+        "record_ident": "marker_000::ground",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          100.0,
+          0.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_001::footprint_0": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          234.0,
+          0.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_001::footprint_0",
+        "record_ident": "marker_001::footprint_0",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          234.0,
+          0.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_001::footprint_1": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          166.0,
+          0.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_001::footprint_1",
+        "record_ident": "marker_001::footprint_1",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          166.0,
+          0.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_001::footprint_2": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          200.0,
+          34.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_001::footprint_2",
+        "record_ident": "marker_001::footprint_2",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          200.0,
+          34.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_001::footprint_3": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          200.0,
+          -34.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_001::footprint_3",
+        "record_ident": "marker_001::footprint_3",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          200.0,
+          -34.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_001::ground": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          200.0,
+          0.0,
+          -2850.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker ground contact",
+        "record_id": "trace#marker_001::ground",
+        "record_ident": "marker_001::ground",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          200.0,
+          0.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_002::footprint_0": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          334.0,
+          0.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_002::footprint_0",
+        "record_ident": "marker_002::footprint_0",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          334.0,
+          0.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_002::footprint_1": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          266.0,
+          0.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_002::footprint_1",
+        "record_ident": "marker_002::footprint_1",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          266.0,
+          0.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_002::footprint_2": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          300.0,
+          34.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_002::footprint_2",
+        "record_ident": "marker_002::footprint_2",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          300.0,
+          34.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_002::footprint_3": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          300.0,
+          -34.0,
+          -50.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker footprint corner",
+        "record_id": "trace#marker_002::footprint_3",
+        "record_ident": "marker_002::footprint_3",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          300.0,
+          -34.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      },
+      "marker_002::ground": {
+        "actor_object_path": null,
+        "api": "unreal.SystemLibrary.line_trace_single",
+        "blocking_hit": null,
+        "channel": "TraceTypeQuery1(Visibility)",
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._line_trace",
+        "component_object_path": null,
+        "derived_fields": {},
+        "distance": null,
+        "end": [
+          300.0,
+          0.0,
+          -2850.0
+        ],
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "hit": false,
+        "hit_actor_path": null,
+        "hit_component_path": null,
+        "impact_normal": null,
+        "impact_point": null,
+        "location": null,
+        "measured_fields": [
+          "hit",
+          "blocking_hit",
+          "distance",
+          "location",
+          "impact_point",
+          "impact_normal",
+          "hit_actor_path",
+          "hit_component_path"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "purpose": "marker ground contact",
+        "record_id": "trace#marker_002::ground",
+        "record_ident": "marker_002::ground",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "trace",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.SystemLibrary.line_trace_single",
+        "stage": "observe",
+        "start": [
+          300.0,
+          0.0,
+          250.0
+        ],
+        "trace_complex": true,
+        "world_identity": "/Game/Maps/ConsumerSlice"
+      }
+    },
+    "world": {
+      "observed": {
+        "actor_object_path": null,
+        "collection_ok": true,
+        "collection_status": "collected",
+        "collector": "scene_survey_far_side._record_world",
+        "component_object_path": null,
+        "derived_fields": {},
+        "errors": [],
+        "evidence_class": "observed",
+        "failure_code": null,
+        "is_in_play_in_editor": false,
+        "is_package_external": false,
+        "measured_fields": [
+          "package_name",
+          "world_object_path",
+          "world_class_name",
+          "is_package_external",
+          "is_in_play_in_editor"
+        ],
+        "operation_id": "op_v2_6_scene_survey_0001",
+        "package_name": "/Game/Maps/ConsumerSlice",
+        "record_id": "world#observed",
+        "record_ident": "observed",
+        "record_schema": "wf.scene_survey.raw_evidence_record.v1",
+        "record_type": "world",
+        "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+        "request_hash_algorithm": "sha256",
+        "source_api": "unreal.World.get_package().get_name()",
+        "stage": "world_identity",
+        "world_class_name": "World",
+        "world_identity": "/Game/Maps/ConsumerSlice",
+        "world_object_path": "/Game/Maps/ConsumerSlice.ConsumerSlice"
+      }
+    }
+  },
+  "raw_evidence_record_schema": "wf.scene_survey.raw_evidence_record.v1",
+  "raw_evidence_schema": "wf.scene_survey.raw_evidence_bundle.v1",
+  "record_envelope_fields": [
+    "record_schema",
+    "operation_id",
+    "request_hash",
+    "request_hash_algorithm",
+    "record_id",
+    "record_type",
+    "record_ident",
+    "stage",
+    "collector",
+    "collection_status",
+    "evidence_class",
+    "source_api",
+    "world_identity",
+    "actor_object_path",
+    "component_object_path",
+    "failure_code",
+    "derived_fields",
+    "measured_fields"
+  ],
+  "request_hash": "sha256:e8bbb2993a2735f2a9654baf1189cca19a24de9698e83b1bd818d73257109269",
+  "request_hash_algorithm": "sha256",
+  "request_hash_evidence_class": "caller_supplied",
+  "request_hash_source": "env:WF_SURVEY_REQUEST_HASH",
+  "resolved_uproject": "C:/Users/Nalakram/AppData/Local/Temp/claude/D--Unreal-Projects-WorldForge/d7887ad2-dd71-43c6-9871-e22fde8e06b1/scratchpad/CleanConsumer/CleanConsumer.uproject",
+  "subject_id": "consumer_slice_survey_subject",
+  "subject_kind": "actor",
+  "subject_resolved": true,
+  "subject_resolved_by": "caller",
+  "subject_source": "env:WF_SURVEY_SUBJECT",
+  "support_total": 3721,
+  "survey_statics_available": true,
+  "traceback": null
+}

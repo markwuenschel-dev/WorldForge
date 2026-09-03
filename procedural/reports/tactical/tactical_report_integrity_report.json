@@ -1,0 +1,258 @@
+{
+  "suite": "tactical_report_integrity",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "index::valid": {
+      "ok": true,
+      "detail": "evidence index invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "index::all_paths_resolve": {
+      "ok": true,
+      "detail": "evidence index links do not resolve: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::clean_passes": {
+      "ok": true,
+      "detail": "clean synthetic report must pass",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_meta": {
+      "ok": true,
+      "detail": "tampered report (no_meta) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_unknown_sha": {
+      "ok": true,
+      "detail": "tampered report (unknown_sha) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_timestamp": {
+      "ok": true,
+      "detail": "tampered report (no_timestamp) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_bad_report_type": {
+      "ok": true,
+      "detail": "tampered report (bad_report_type) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_status": {
+      "ok": true,
+      "detail": "tampered report (no_status) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "dogfood::flags_no_checks": {
+      "ok": true,
+      "detail": "tampered report (no_checks) must be flagged",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::affordances\\affordance_authoring_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::affordances\\validate_tactical_affordances_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::authoring\\binding_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::authoring\\profile_authoring_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::authoring\\validate_tactical_bindings_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::authoring\\validate_tactical_profiles_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::budgets\\validate_tactical_budgets_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::negatives\\tactical_fuzz_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::negatives\\tactical_negative_validators_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::negatives\\tactical_negatives_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::negatives\\tactical_torture_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::runtime\\run_tactical_behavior_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::runtime\\validate_tactical_runtime_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::save_load\\validate_tactical_save_load_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::tactical_hygiene_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::tactical_report_integrity_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::validate_tactical_contracts_report.json": {
+      "ok": true,
+      "detail": "report integrity problems: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "integrity::non_vacuous": {
+      "ok": true,
+      "detail": "must scan >= 6 real reports (got 17)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 27,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "tactical-report-integrity",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "da4362006bfca3a023a4b03edc83d38efbe6e628",
+    "timestamp": "2026-07-12T11:53:40.938018+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.tactical.report_integrity.v1",
+    "report_id": "wf.tactical.report_integrity.v1:601933754338",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 17,
+    "records_total": 17,
+    "records_passed": 17,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

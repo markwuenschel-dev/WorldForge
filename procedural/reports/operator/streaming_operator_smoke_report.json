@@ -1,0 +1,538 @@
+{
+  "suite": "streaming_operator_smoke",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "smoke::region_views.json_present": {
+      "ok": true,
+      "detail": "region_views.json missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "smoke::tile_views.json_present": {
+      "ok": true,
+      "detail": "tile_views.json missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "smoke::2_region_views": {
+      "ok": true,
+      "detail": "expected 2 region views (got 2)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "smoke::6_tile_views": {
+      "ok": true,
+      "detail": "expected 6 tile views (got 6)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rv::region_alpine_hub::contract": {
+      "ok": true,
+      "detail": "region view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rv::region_alpine_hub::def_link": {
+      "ok": true,
+      "detail": "region definition link broken",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rv::region_alpine_hub::page": {
+      "ok": true,
+      "detail": "region page missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rv::region_alpine_hub::codes_well_formed": {
+      "ok": true,
+      "detail": "region view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rv::region_volcanic_chain::contract": {
+      "ok": true,
+      "detail": "region view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rv::region_volcanic_chain::def_link": {
+      "ok": true,
+      "detail": "region definition link broken",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rv::region_volcanic_chain::page": {
+      "ok": true,
+      "detail": "region page missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "rv::region_volcanic_chain::codes_well_formed": {
+      "ok": true,
+      "detail": "region view carries a malformed failure code",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_hub_entry::contract": {
+      "ok": true,
+      "detail": "tile view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_hub_entry::page": {
+      "ok": true,
+      "detail": "tile page missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_hub_entry::lifecycle_link": {
+      "ok": true,
+      "detail": "lifecycle link broken: procedural/reports/streaming/lifecycle/strun_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2__tile_alpine_hub_entry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_hub_entry::ownership_link": {
+      "ok": true,
+      "detail": "ownership link broken: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_hub_entry::pass_has_lifecycle": {
+      "ok": true,
+      "detail": "passing tile view must link >= 1 lifecycle report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_objective_a::contract": {
+      "ok": true,
+      "detail": "tile view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_objective_a::page": {
+      "ok": true,
+      "detail": "tile page missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_objective_a::lifecycle_link": {
+      "ok": true,
+      "detail": "lifecycle link broken: procedural/reports/streaming/lifecycle/strun_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2__tile_alpine_objective_a.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_objective_a::ownership_link": {
+      "ok": true,
+      "detail": "ownership link broken: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_objective_a::pass_has_lifecycle": {
+      "ok": true,
+      "detail": "passing tile view must link >= 1 lifecycle report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_objective_b::contract": {
+      "ok": true,
+      "detail": "tile view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_objective_b::page": {
+      "ok": true,
+      "detail": "tile page missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_alpine_objective_b::ownership_link": {
+      "ok": true,
+      "detail": "ownership link broken: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_entry::contract": {
+      "ok": true,
+      "detail": "tile view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_entry::page": {
+      "ok": true,
+      "detail": "tile page missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_entry::lifecycle_link": {
+      "ok": true,
+      "detail": "lifecycle link broken: procedural/reports/streaming/lifecycle/strun_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2__tile_volcanic_entry.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_entry::ownership_link": {
+      "ok": true,
+      "detail": "ownership link broken: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_entry::pass_has_lifecycle": {
+      "ok": true,
+      "detail": "passing tile view must link >= 1 lifecycle report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_exit::contract": {
+      "ok": true,
+      "detail": "tile view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_exit::page": {
+      "ok": true,
+      "detail": "tile page missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_exit::ownership_link": {
+      "ok": true,
+      "detail": "ownership link broken: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_objective::contract": {
+      "ok": true,
+      "detail": "tile view invalid: []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_objective::page": {
+      "ok": true,
+      "detail": "tile page missing",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_objective::lifecycle_link": {
+      "ok": true,
+      "detail": "lifecycle link broken: procedural/reports/streaming/lifecycle/strun_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2__tile_volcanic_objective.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_objective::ownership_link": {
+      "ok": true,
+      "detail": "ownership link broken: procedural/reports/operator/index/asset_ownership_views.json",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "tv::tile_volcanic_objective::pass_has_lifecycle": {
+      "ok": true,
+      "detail": "passing tile view must link >= 1 lifecycle report",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_clear_hazard_adjacent_tile_crossing_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_clear_hazard_hub_to_spoke_transition_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_recover_resource_adjacent_tile_crossing_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_recover_resource_adjacent_tile_crossing_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_recover_resource_hub_to_spoke_transition_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_recover_resource_hub_to_spoke_transition_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_survey_landmark_adjacent_tile_crossing_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_alpine_hub_survey_landmark_hub_to_spoke_transition_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_alpine_objective_a.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_clear_hazard_adjacent_tile_crossing_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_clear_hazard_hub_to_spoke_transition_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_recover_resource_adjacent_tile_crossing_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_recover_resource_hub_to_spoke_transition_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_survey_landmark_adjacent_tile_crossing_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s1::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "trace::strun_region_volcanic_chain_survey_landmark_hub_to_spoke_transition_s2::resolves": {
+      "ok": true,
+      "detail": "runtime operator_trace_path does not resolve: procedural/reports/operator/tiles/tile_volcanic_objective.html",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 62,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "operator-streaming-smoke",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:08.902137+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.streaming.operator_smoke.v1",
+    "report_id": "wf.streaming.operator_smoke.v1:9e3365535b81",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 2,
+    "records_total": 2,
+    "records_passed": 2,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

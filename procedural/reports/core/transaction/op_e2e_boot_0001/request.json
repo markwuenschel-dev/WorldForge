@@ -1,0 +1,54 @@
+{
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:WF_TX_f18b559d"
+      ],
+      "allowed_packages": [],
+      "protected_paths": [],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_wfcore_unreal_sink_demo"
+    }
+  ],
+  "evidence_refs": [
+    "far_side_transaction_document"
+  ],
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            0.0,
+            0.0,
+            200.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_demo_spawn_0",
+      "operation": "create",
+      "provider_id": "unreal_editor_mutation_sink",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_wfcore_unreal_sink_demo",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:WF_TX_f18b559d"
+    }
+  ],
+  "operation_id": "op_e2e_boot_0001"
+}

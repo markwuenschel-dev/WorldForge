@@ -1,0 +1,130 @@
+{
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/ConsumerSlice:wf_fog",
+        "/Game/Maps/ConsumerSlice:wf_skylight",
+        "/Game/Maps/ConsumerSlice:wf_sun"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/ConsumerSlice"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_environment_rig"
+    }
+  ],
+  "evidence_refs": [
+    "environment_rig_plan"
+  ],
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "detail": "environment rig element 'wf_sun'",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "DirectionalLight",
+          "location": [
+            0.0,
+            0.0,
+            1000.0
+          ],
+          "rotation": [
+            -38.0,
+            145.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_rig_wf_sun_000",
+      "operation": "create",
+      "provider_id": "environment_rig_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_environment_rig",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wf_sun"
+    },
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "detail": "environment rig element 'wf_skylight'",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "SkyLight",
+          "location": [
+            0.0,
+            0.0,
+            1200.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_rig_wf_skylight_001",
+      "operation": "create",
+      "provider_id": "environment_rig_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_environment_rig",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wf_skylight"
+    },
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "detail": "environment rig element 'wf_fog'",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "ExponentialHeightFog",
+          "location": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_rig_wf_fog_002",
+      "operation": "create",
+      "provider_id": "environment_rig_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_environment_rig",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/ConsumerSlice:wf_fog"
+    }
+  ],
+  "operation_id": "op_rig_live"
+}

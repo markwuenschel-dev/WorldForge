@@ -1,0 +1,89 @@
+{
+  "abort_reason": "post-observation CONTRADICTS the declared postcondition for at least one applied mutation; the world does not contain what this delta claims to have put there, so it is rolled back rather than reported",
+  "bound_enforcement": "satisfied",
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:wfls_live_0001"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/_wf_test_lvl"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_ls_live"
+    }
+  ],
+  "created_at": "2026-09-03T11:55:28Z",
+  "created_by": "worldforge.core",
+  "delta_id": "delta_00526853131f4b70",
+  "detail": "rolled back and CONFIRMED: every undone target was re-observed and matches its captured before-state",
+  "evidence_refs": [
+    "landscape_plan"
+  ],
+  "failure_codes": [
+    "WF1246_CORE_DELTA_INVALID"
+  ],
+  "lock": {
+    "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+    "held": true,
+    "operation_id": "op_landscape_live_0001",
+    "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+    "released": true
+  },
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "before_state_declared": {
+        "state_kind": "absent"
+      },
+      "detail": "landscape 64x64 vertices (63 quads x 1 x 1); heightmap of 4096 uint16 samples is NOT carried by this request -- the sink payload has no key for it",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "Landscape",
+          "location": [
+            -6300.0,
+            -6300.0,
+            0.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            200.0,
+            200.0,
+            100.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_wfls_live_0001",
+      "observed_after_apply": {
+        "state_kind": "absent"
+      },
+      "observed_after_rollback": {
+        "state_kind": "absent"
+      },
+      "operation": "create",
+      "provider_id": "landscape_planner",
+      "restoration": "satisfied",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "rolled_back",
+      "step_id": "step_ls_live",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfls_live_0001",
+      "undo_reported_ok": true,
+      "verification": "violated"
+    }
+  ],
+  "operation_id": "op_landscape_live_0001",
+  "outcome": "rolled_back",
+  "report_type": "wf.core.world_delta.v1",
+  "rollback_completeness": "satisfied",
+  "schema_version": "wf.core.world_delta.v1",
+  "verification": "violated"
+}

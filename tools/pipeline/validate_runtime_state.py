@@ -407,16 +407,116 @@ def main(argv=None):
     #    scenario validation already proves the state logic.
     ue_report = report_dir / "ue_state_scenario_report.json"
     if ue_report.is_file():
+        ue_rpt = None
         try:
             ue_rpt = json.loads(ue_report.read_text(encoding="utf-8"))
             ue_ok, ue_detail = validate_native_authority_evidence(ue_rpt, descriptor)
-        except Exception:
-            ue_ok, ue_detail = False, "ue_state_scenario_report.json unreadable"
+        except Exception as exc:  # noqa: BLE001
+            ue_ok = False
+            ue_detail = "ue_state_scenario_report.json unreadable: {}".format(exc)
+
+        # MERGE NOTE (main <- worldforge/wfcore-consumer-platform). Both sides
+        # hardened this gate against the same class of defect and they are not
+        # the same check, so both are kept -- but they are not equal in strength
+        # and the stronger one owns the verdict.
+        #
+        # main's validate_native_authority_evidence is FAIL-CLOSED by design:
+        # arbitrary Python can forge a description of a leased native write, so
+        # until a native-only in-process emitter is tied to
+        # SetStateValueWithLease and the same live readback, NO persisted JSON
+        # can make ue_state_applied pass. That supersedes this branch's version,
+        # which could pass once the atoms agreed -- a persisted file agreeing
+        # with itself says nothing about who wrote it.
+        #
+        # So ue_state_applied is main's answer, unchanged.
         rep.ue_check("ue_state_applied", ue_ok, ue_detail,
-                  code=FailureCode.UE_STATE_NOT_APPLIED)
+                     code=FailureCode.UE_STATE_NOT_APPLIED)
+
+        # The two rails below came from this branch and main has no equivalent.
+        # They are kept under DISTINCT names: they add information about a
+        # report that is already being rejected, and being separate means they
+        # can only ever add a failure -- never soften main's verdict.
+        if ue_rpt is not None:
+            # RE-DERIVED, never read off the far side's own verdict. The gate
+            # once graded ue_rpt["passed"], the boolean the bridge wrote about
+            # itself: a bridge that applied nothing and wrote passed=true read
+            # exactly like one that worked.
+            applied = ue_rpt.get("applied")
+            readback = ue_rpt.get("mpc_readback")
+            atoms_ok = isinstance(applied, dict) and isinstance(readback, dict)
+            derived_ok = False
+            if not atoms_ok:
+                rep.ue_check(
+                    "ue_state_atoms_present", False,
+                    "the bridge report carries no raw applied/mpc_readback pair "
+                    "(applied={!r} mpc_readback={!r}); with no atoms there is "
+                    "nothing to re-derive and its own 'passed' field is not "
+                    "evidence".format(type(applied).__name__,
+                                      type(readback).__name__),
+                    code=FailureCode.UE_STATE_NOT_APPLIED)
+            else:
+                # Key comparison is case/'_'-insensitive: the scenario names
+                # state keys in snake_case and the MPC parameter is PascalCase.
+                def _norm(k):
+                    return str(k).replace("_", "").lower()
+
+                rb = {_norm(k): v for k, v in readback.items()}
+                mismatched, unread = [], []
+                for k, want in applied.items():
+                    got = rb.get(_norm(k))
+                    if got is None:
+                        unread.append(k)
+                    elif isinstance(want, (int, float)) and isinstance(
+                            got, (int, float)):
+                        if abs(float(want) - float(got)) > 1e-6:
+                            mismatched.append((k, want, got))
+                    elif want != got:
+                        mismatched.append((k, want, got))
+                derived_ok = bool(applied) and not mismatched and not unread
+                rep.ue_check(
+                    "ue_state_atoms_agree", derived_ok,
+                    "re-derived from raw atoms: {} key(s) applied, "
+                    "mismatched={} never_read_back={}. NOTE this is a "
+                    "measurement of the file's internal consistency, not of "
+                    "write authority -- ue_state_applied owns that".format(
+                        len(applied), mismatched, unread),
+                    code=FailureCode.UE_STATE_NOT_APPLIED)
+
+                # A summary that contradicts its own atoms proves the report was
+                # written by something other than the run that produced them.
+                claimed = ue_rpt.get("passed")
+                if claimed is not None:
+                    rep.ue_check(
+                        "ue_report_summary_agrees_with_its_atoms",
+                        bool(claimed) == derived_ok,
+                        "the bridge report claims passed={!r} while its own "
+                        "applied/mpc_readback atoms re-derive to {!r}. A summary "
+                        "that disagrees with the measurements under it is not a "
+                        "rounding difference -- it means the two were not "
+                        "produced by the same run".format(claimed, derived_ok),
+                        code=FailureCode.UE_STATE_NOT_APPLIED)
+
+            # STALENESS. The bridge report must say WHEN it was produced and at
+            # WHICH revision, or it will keep certifying a runtime behaviour
+            # that may have changed months ago -- which is what was happening.
+            stamped = bool(ue_rpt.get("timestamp")) and bool(ue_rpt.get("git_sha"))
+            rep.ue_check(
+                "ue_report_is_stamped", stamped,
+                "the in-editor bridge report must declare meta 'timestamp' and "
+                "'git_sha' so its freshness can be graded (got timestamp={!r} "
+                "git_sha={!r}). File mtime is not a substitute: it moves when a "
+                "file is copied and says nothing about when the editor "
+                "ran".format(ue_rpt.get("timestamp"), ue_rpt.get("git_sha")),
+                code=FailureCode.UE_STATE_NOT_APPLIED)
     else:
+        # Absent is NOT a pass. It is recorded as a skip so a reader can see the
+        # question was asked, and the runtime-state claim is unproven until a
+        # native state owner actually produces it.
         rep.skip("ue_state_applied",
-                 "in-editor MPC bridge readback not run here; a native state owner must produce it")
+                 "in-editor MPC bridge readback not run here, so the live "
+                 "state-response claim is UNPROVEN (not failed, not passed); "
+                 "a native state owner must produce it -- see "
+                 "'make apply-state-scenario'")
 
     # -- Finalize + write ---------------------------------------------------
     rep.finalize()

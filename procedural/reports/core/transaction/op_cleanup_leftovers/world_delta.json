@@ -1,0 +1,124 @@
+{
+  "abort_reason": "mutation 'mut_wfmarker_001_del': actor '/Game/Maps/_wf_test_lvl:wfmarker_001' is not in the state the plan observed when it was authored; another writer changed it between planning and now, so this transaction is not isolated",
+  "bound_enforcement": "unknown",
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:wfmarker_001",
+        "/Game/Maps/_wf_test_lvl:wfmarker_002",
+        "/Game/Maps/_wf_test_lvl:wfmarker_003"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/_wf_test_lvl"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_cleanup"
+    }
+  ],
+  "created_at": "2026-08-23T10:45:25Z",
+  "created_by": "worldforge.core",
+  "delta_id": "delta_35637bb105b2414a",
+  "detail": "rolled back and CONFIRMED: every undone target was re-observed and matches its captured before-state",
+  "evidence_refs": [
+    "manual_cleanup"
+  ],
+  "failure_codes": [
+    "WF1250_CORE_TRANSACTION_NOT_ISOLATED"
+  ],
+  "lock": {
+    "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+    "held": true,
+    "operation_id": "op_cleanup_leftovers",
+    "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+    "released": true
+  },
+  "mutations": [
+    {
+      "before_state": {
+        "payload": {
+          "actor_class": "StaticMeshActor",
+          "location": [
+            -600.0,
+            100.0,
+            100.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "before_state_declared": {
+        "payload": {
+          "actor_path": "/Game/Maps/_wf_test_lvl:wfmarker_001"
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_wfmarker_001_del",
+      "operation": "delete",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_cleanup",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_001"
+    },
+    {
+      "before_state": {
+        "payload": {
+          "actor_path": "/Game/Maps/_wf_test_lvl:wfmarker_002"
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_wfmarker_002_del",
+      "operation": "delete",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_cleanup",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_002"
+    },
+    {
+      "before_state": {
+        "payload": {
+          "actor_path": "/Game/Maps/_wf_test_lvl:wfmarker_003"
+        },
+        "state_kind": "present"
+      },
+      "expected_after_state": {
+        "state_kind": "absent"
+      },
+      "mutation_id": "mut_wfmarker_003_del",
+      "operation": "delete",
+      "provider_id": "route_placement_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_cleanup",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfmarker_003"
+    }
+  ],
+  "operation_id": "op_cleanup_leftovers",
+  "outcome": "rolled_back",
+  "report_type": "wf.core.world_delta.v1",
+  "rollback_completeness": "satisfied",
+  "schema_version": "wf.core.world_delta.v1",
+  "verification": "unknown"
+}

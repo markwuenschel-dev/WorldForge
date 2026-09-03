@@ -1,112 +1,204 @@
 {
   "run_id": "Desert_Ash_IndustrialYard_01__activate_industrial_forge",
-  "target": "Desert_Ash_IndustrialYard_01",
+  "schema_version": "v0.9",
+  "strict": false,
   "checks": {
     "result_descriptor_exists": {
       "ok": true,
       "detail": "procedural\\generated\\scenarios\\Desert_Ash_IndustrialYard_01__activate_industrial_forge\\result.json",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "result_descriptor_parses": {
       "ok": true,
       "detail": "",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "registry_owns_run": {
       "ok": true,
       "detail": "not found in worldforge_scenario_registry.json",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "target_map_resolved": {
+      "ok": true,
+      "detail": "target='Desert_Ash_IndustrialYard_01' context_id='Desert_Ash_IndustrialYard_01'",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "scenario_definition_exists": {
       "ok": true,
       "detail": "procedural\\definitions\\scenarios\\activate_industrial_forge.yaml",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "scenario_definition_parses": {
+      "ok": true,
+      "detail": "",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "initial_state_read": {
       "ok": true,
       "detail": "before_state empty — no initial state was read",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "state_mutation_applied": {
       "ok": true,
-      "detail": "after == clamp(before + scenario delta)",
-      "warn_only": false
+      "detail": "scenario keys ['industrial_pressure']: industrial_pressure: 0.0 -> 0.75 == clamp(0.0 + 0.75)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "state_actually_changed": {
       "ok": true,
       "detail": "no state key changed value — scenario had no effect",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "state_within_bounds": {
       "ok": true,
       "detail": "out-of-bounds [0.0,1.0]: []",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "deltas_within_budget": {
       "ok": true,
       "detail": "deltas exceeding max_delta_per_key=1.0: []",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "state_aggregated": {
       "ok": true,
       "detail": "aggregate block present and consistent with after_state",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "mpc_bridge_expectation": {
       "ok": true,
       "detail": "curated keys map to MPC params with post-state values",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "poi_state_evidence_updated": {
       "ok": true,
       "detail": "POI evidence present and driven by post-state",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "state_save_file_exists": {
       "ok": true,
       "detail": "procedural/generated/scenarios/Desert_Ash_IndustrialYard_01__activate_industrial_forge/state_save.json",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "save_load_roundtrip": {
       "ok": true,
       "detail": "restored_state must equal saved_state",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "save_load_restores_poststate": {
       "ok": true,
       "detail": "restored persisted keys must equal post-scenario state",
-      "warn_only": false
-    },
-    "post_scenario_map_valid": {
-      "ok": true,
-      "detail": "run 'make validate-slice' for Desert_Ash_IndustrialYard_01 (UE) to confirm map validity",
-      "warn_only": true
-    },
-    "ue_state_applied": {
-      "ok": true,
-      "detail": "ue readback={'IndustrialPressure': 0.75}",
-      "warn_only": true
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
     },
     "provenance_exists": {
       "ok": true,
       "detail": "provenance block absent from result descriptor",
-      "warn_only": false
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "post_scenario_map_valid": {
+      "ok": true,
+      "detail": "validate-slice PASS for Desert_Ash_IndustrialYard_01",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ue_state_applied": {
+      "ok": false,
+      "detail": "native authority evidence is absent or malformed",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF082_UE_STATE_NOT_APPLIED",
+      "blocking": true
+    },
+    "ue_state_atoms_agree": {
+      "ok": true,
+      "detail": "re-derived from raw atoms: 1 key(s) applied, mismatched=[] never_read_back=[]. NOTE this is a measurement of the file's internal consistency, not of write authority -- ue_state_applied owns that",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ue_report_summary_agrees_with_its_atoms": {
+      "ok": true,
+      "detail": "the bridge report claims passed=True while its own applied/mpc_readback atoms re-derive to True. A summary that disagrees with the measurements under it is not a rounding difference -- it means the two were not produced by the same run",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "ue_report_is_stamped": {
+      "ok": false,
+      "detail": "the in-editor bridge report must declare meta 'timestamp' and 'git_sha' so its freshness can be graded (got timestamp=None git_sha=None). File mtime is not a substitute: it moves when a file is copied and says nothing about when the editor ran",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF082_UE_STATE_NOT_APPLIED",
+      "blocking": true
     }
   },
-  "failures": [],
-  "before_state": {
-    "industrial_pressure": 0.0
-  },
-  "after_state": {
-    "industrial_pressure": 0.75
-  },
-  "mpc_readback_expected": {
-    "IndustrialPressure": 0.75
-  },
-  "save_load_ok": true,
-  "affected_poi": [
-    "industrial_yard"
+  "failures": [
+    "ue_state_applied: native authority evidence is absent or malformed",
+    "ue_report_is_stamped: the in-editor bridge report must declare meta 'timestamp' and 'git_sha' so its freshness can be graded (got timestamp=None git_sha=None). File mtime is not a substitute: it moves when a file is copied and says nothing about when the editor ran"
   ],
-  "passed": true,
-  "status": "ok"
+  "counts": {
+    "PASS": 21,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 2,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail"
 }

@@ -1682,6 +1682,25 @@ def _run_survey(args):
         print("[scene-survey] FAIL — {} — could not build the operation manifest ({}): "
               "{}".format(manifest.code, manifest.reason, manifest.detail))
         return 2
+    # Seal the request beside its evidence BEFORE the manifest is published.
+    # Order matters: the manifest is the seal, so anything it should vouch for
+    # must already be on disk when it lands.
+    #
+    # The caller's file is copied BYTE FOR BYTE rather than re-serialised from
+    # the parsed object. Re-serialising would seal WorldForge's rendering of the
+    # request -- key order, spacing, dropped unknown fields -- and the manifest's
+    # request_hash was computed over the caller's document, not ours. Sealing a
+    # normalised lookalike would hash differently and quietly fail to bind.
+    _sreq = OP.sealed_request_path_for(REPO_ROOT, args.operation_id)
+    if getattr(_sreq, "ok", False) and args.request:
+        try:
+            _sp = Path(_sreq.value["absolute"])
+            _sp.parent.mkdir(parents=True, exist_ok=True)
+            _sp.write_bytes(Path(args.request).read_bytes())
+        except OSError as _exc:
+            print("[scene-survey] WARNING: could not seal the request beside its "
+                  "evidence ({}); the runtime gate will need --request".format(_exc))
+
     sealed = OP.publish_operation_manifest(REPO_ROOT, manifest.value, dest=manifest_path)
     if not sealed.ok:
         print("[scene-survey] FAIL — {} — could not publish the operation manifest ({}): "

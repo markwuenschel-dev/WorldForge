@@ -1,0 +1,338 @@
+{
+  "suite": "streaming_torture",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "torture::nonempty": {
+      "ok": true,
+      "detail": "torture battery must carry >= 14 modes (got 18)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::region_disconnected::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::region_disconnected::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF853_STREAMING_TILE_GRAPH_DISCONNECTED (got ['WF853_STREAMING_TILE_GRAPH_DISCONNECTED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::tile_self_neighbor::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::tile_self_neighbor::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF854_STREAMING_NEIGHBOR_NOT_RECIPROCAL (got ['WF854_STREAMING_NEIGHBOR_NOT_RECIPROCAL'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::anchor_link_broken::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::anchor_link_broken::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF856_STREAMING_ANCHOR_LINK_BROKEN (got ['WF856_STREAMING_ANCHOR_LINK_BROKEN'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::route_navmesh_overclaim::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::route_navmesh_overclaim::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF882_STREAMING_NAVMESH_OVERCLAIM (got ['WF882_STREAMING_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::route_failed_claims_pass::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::route_failed_claims_pass::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF858_STREAMING_ROUTE_UNREACHABLE (got ['WF858_STREAMING_ROUTE_UNREACHABLE', 'WF882_STREAMING_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_no_transition::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_no_transition::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF873_STREAMING_REQUIRED_TRANSITION_MISSING (got ['WF873_STREAMING_REQUIRED_TRANSITION_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_single_tile::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_single_tile::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF874_STREAMING_MISSION_NOT_COMPLETED (got ['WF874_STREAMING_MISSION_NOT_COMPLETED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_save_failed_clean::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_save_failed_clean::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF870_STREAMING_CROSS_TILE_SAVE_FAILED (got ['WF870_STREAMING_CROSS_TILE_SAVE_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_budget_exceeded_clean::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_budget_exceeded_clean::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF880_STREAMING_BUDGET_EXCEEDED (got ['WF880_STREAMING_BUDGET_EXCEEDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_ue_overclaim::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::runtime_ue_overclaim::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF882_STREAMING_NAVMESH_OVERCLAIM (got ['WF882_STREAMING_NAVMESH_OVERCLAIM'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::lifecycle_active_no_load::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::lifecycle_active_no_load::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF864_STREAMING_TILE_LOAD_MISSING (got ['WF864_STREAMING_TILE_LOAD_MISSING', 'WF865_STREAMING_TILE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::lifecycle_reload_state_lost::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::lifecycle_reload_state_lost::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF868_STREAMING_TILE_STATE_LOST (got ['WF868_STREAMING_TILE_STATE_LOST'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::save_no_tile_hashes::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::save_no_tile_hashes::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF869_STREAMING_CROSS_TILE_SAVE_MISSING (got ['WF869_STREAMING_CROSS_TILE_SAVE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::npc_pressure_escapes::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::npc_pressure_escapes::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF875_STREAMING_NPC_PRESSURE_MISSING (got ['WF875_STREAMING_NPC_PRESSURE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::budget_zero_tiles::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::budget_zero_tiles::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF863_STREAMING_BUDGET_PROFILE_INVALID (got ['WF863_STREAMING_BUDGET_PROFILE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::index_partial_matrix::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::index_partial_matrix::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF886_STREAMING_PARTIAL_MATRIX (got ['WF886_STREAMING_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::index_stale_sha::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::index_stale_sha::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF887_STREAMING_STALE_EVIDENCE (got ['WF887_STREAMING_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::tile_view_no_lifecycle::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::tile_view_no_lifecycle::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF864_STREAMING_TILE_LOAD_MISSING (got ['WF864_STREAMING_TILE_LOAD_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 37,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "streaming-torture",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:09.358022+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.streaming.torture.v1",
+    "report_id": "wf.streaming.torture.v1:8c690833c7fb",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 18,
+    "records_total": 18,
+    "records_passed": 18,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

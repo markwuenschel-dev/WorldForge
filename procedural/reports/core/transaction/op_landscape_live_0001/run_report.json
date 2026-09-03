@@ -1,0 +1,142 @@
+{
+  "accepted": false,
+  "command": [
+    "D:\\UE_5.8\\Engine\\Binaries\\Win64\\UnrealEditor-Cmd.exe",
+    "D:/Unreal Projects/WorldForge/WorldForge.uproject",
+    "-ExecutePythonScript=D:/Unreal Projects/WorldForge/tools/unreal/wfcore_unreal_sink.py",
+    "-unattended",
+    "-nopause",
+    "-nosplash",
+    "-nullrhi",
+    "-stdout"
+  ],
+  "editor_exit_code": 3,
+  "editor_seconds": 15.55,
+  "environment": {
+    "PYTHONUTF8": "1",
+    "WF_TX_MAP": "/Game/Maps/_wf_test_lvl",
+    "WF_TX_OBSERVE_AFTER": "1",
+    "WF_TX_OPERATION_ID": "op_landscape_live_0001",
+    "WF_TX_OUT": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_landscape_live_0001\\far_side.json",
+    "WF_TX_REPO_ROOT": "D:\\Unreal Projects\\WorldForge",
+    "WF_TX_REQUEST": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_landscape_live_0001\\request.json",
+    "WF_TX_SAVE_MAP": "0",
+    "WF_TX_TOOLS": "D:\\Unreal Projects\\WorldForge\\tools"
+  },
+  "expected_outcomes": [
+    "committed"
+  ],
+  "far_side_document": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_landscape_live_0001\\far_side.json",
+  "far_side_error": null,
+  "far_side_failure_codes": [
+    "WF1246_CORE_DELTA_INVALID"
+  ],
+  "far_side_traceback": null,
+  "journal_path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_landscape_live_0001\\world_delta.json",
+  "lock": {
+    "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+    "held": true,
+    "operation_id": "op_landscape_live_0001",
+    "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+    "released": true
+  },
+  "map_loaded": true,
+  "map_requested": "/Game/Maps/_wf_test_lvl",
+  "near_side_findings": {
+    "delta_present": true,
+    "failure_codes": [
+      "WF1246_CORE_DELTA_INVALID"
+    ],
+    "mutation_statuses": {
+      "mut_wfls_live_0001": "rolled_back"
+    },
+    "outcome": "rolled_back",
+    "rederived_rollback_completeness": "satisfied",
+    "rederived_verification": "violated",
+    "reported_rollback_completeness": "satisfied",
+    "reported_verification": "violated",
+    "rollback_agrees": true,
+    "rollback_fold_ranged_over_something": true,
+    "validation_failures": [],
+    "verification_agrees": true,
+    "verification_fold_ranged_over_something": true
+  },
+  "not_accepted_because": [
+    "the editor exited 3",
+    "outcome 'rolled_back' is not in the accepted set ['committed']"
+  ],
+  "operation_id": "op_landscape_live_0001",
+  "report_type": "wf.core.unreal_sink_run_report.v1",
+  "request": {
+    "bounds": [
+      {
+        "allowed_actors": [
+          "/Game/Maps/_wf_test_lvl:wfls_live_0001"
+        ],
+        "allowed_packages": [
+          "/Game/Maps/_wf_test_lvl"
+        ],
+        "schema_version": "wf.core.mutation_bound.v1",
+        "step_id": "step_ls_live"
+      }
+    ],
+    "evidence_refs": [
+      "landscape_plan"
+    ],
+    "mutations": [
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "detail": "landscape 64x64 vertices (63 quads x 1 x 1); heightmap of 4096 uint16 samples is NOT carried by this request -- the sink payload has no key for it",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "Landscape",
+            "location": [
+              -6300.0,
+              -6300.0,
+              0.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              200.0,
+              200.0,
+              100.0
+            ]
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfls_live_0001",
+        "operation": "create",
+        "provider_id": "landscape_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "planned",
+        "step_id": "step_ls_live",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/_wf_test_lvl:wfls_live_0001"
+      }
+    ],
+    "operation_id": "op_landscape_live_0001"
+  },
+  "schema_version": "wf.core.unreal_sink_run_report.v1",
+  "sink_notes": [
+    {
+      "detail": "spawned Landscape as /Game/Maps/_wf_test_lvl._wf_test_lvl:PersistentLevel.LandscapePlaceholder_0 via getattr(unreal, 'Landscape')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "destroyed 'wfls_live_0001'; SystemLibrary.is_valid -> False",
+      "failure_code": null,
+      "where": "undo"
+    }
+  ],
+  "sink_refusals": [],
+  "stdout_tail": "ontrolRig/Content/Python/init_unreal.py... took 11.281 ms (total: 66.815 ms)\r\n[2026.09.03-11.55.27:887][  1]LogAssetRegistry: Display: Starting OnFilesLoaded.Broadcast\r\n[2026.09.03-11.55.27:900][  1]LogPlacementMode: Display: The Asset Registry is done with its initial scan, the list of placeable classes has been updated.\r\n[2026.09.03-11.55.27:926][  1]LogAssetRegistry: Display: Completed OnFilesLoaded.Broadcast: 0.038s\r\n[2026.09.03-11.55.28:076][  2]LogAudio: Display: Audio Device unregistered from world 'Untitled'.\r\n[2026.09.03-11.55.28:128][  2]LogStreaming: Display: FlushAsyncLoading(362): 1 QueuedPackages, 0 AsyncPackages\r\n[2026.09.03-11.55.28:131][  2]LogAudio: Display: Audio Device (ID: 1) registered with world '_wf_test_lvl'.\r\n[2026.09.03-11.55.28:298][  2]LogUtils: Error: DestroyActors. An actor to destroy is not part of the world editor.\r\n[2026.09.03-11.55.28:324][  3]LogStreaming: Display: FlushAsyncLoading(): 0 QueuedPackages, 0 AsyncPackages\r\n[2026.09.03-11.55.28:339][  3]LogToolsetRegistry: Display: Unregistering Toolset ToolsetRegistry.AgentSkillToolset\r\n[2026.09.03-11.55.28:372][  3]LogAnalytics: Display: [UEEditor.Rocket.Release] AnalyticsET::EndSession\r\n[2026.09.03-11.55.28:374][  3]LogAudio: Display: Beginning Audio Device Manager Shutdown (Module: AudioMixerWasapi)...\r\n[2026.09.03-11.55.28:374][  3]LogAudio: Display: Destroying 1 Remaining Audio Device(s)...\r\n[2026.09.03-11.55.28:374][  3]LogAudio: Display: Audio Device unregistered from world '_wf_test_lvl'.\r\n[2026.09.03-11.55.28:374][  3]LogAudio: Display: Shutting down audio device while 1 references to it are still alive. For more information, compile with INSTRUMENT_AUDIODEVICE_HANDLES.\r\n[2026.09.03-11.55.28:374][  3]LogAudioMixer: Display: FAudioMixerWasapi::StopAudioStream() InstanceID=1, StreamState=4\r\n[2026.09.03-11.55.28:384][  3]LogAudioMixerWasapi: Display: FWasapiServiceWatcher stopped.\r\n[2026.09.03-11.55.28:391][  3]LogAudio: Display: Audio Device Manager Shutdown\r\n[2026.09.03-11.55.28:602][  3]LogAssetRegistry: Display: Asset registry cache written as 121.7 MiB to ../../../../Unreal Projects/WorldForge/Intermediate/CachedAssetRegistry/CachedAssetRegistry_*.ref\r\n[2026.09.03-11.55.28:602][  3]LogAssetRegistry: Display: CleanupOrphanedCacheFiles (PostWrite): 1 .ref files found, 1 referenced binaries\r\n[2026.09.03-11.55.28:602][  3]LogAssetRegistry: Display:   CachedAssetRegistry_0_544EE8B74F426ACA509F80958BFBFC57.bin: deleted (orphaned, unreferenced by any .ref)\r\n[2026.09.03-11.55.28:602][  3]LogAssetRegistry: Display: CleanupOrphanedCacheFiles: 2 total binaries, 1 referenced (kept), 0 old-style pre-migration (kept), 1 orphans deleted, 0 orphans locked (kept)\r\n[2026.09.03-11.55.29:260][  3]LogAssetRegistry: Display: CleanupOrphanedCacheFiles (PostWrite): 1 .ref files found, 1 referenced binaries\r\n[2026.09.03-11.55.29:260][  3]LogAssetRegistry: Display: CleanupOrphanedCacheFiles: 1 total binaries, 1 referenced (kept), 0 old-style pre-migration (kept), 0 orphans deleted, 0 orphans locked (kept)\r\n[2026.09.03-11.55.29:260][  3]LogOutputDevice: Warning: \r\n\r\nScript Stack (0 frames) :\r\n\r\n[2026.09.03-11.55.29:267][  3]LogWindows: Error: appError called: Assertion failed: CurrentApplication.IsValid() [File:D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Slate\\Public\\Framework\\Application\\SlateApplication.h] [Line: 321] \r\n\r\n\r\n[2026.09.03-11.55.31:996][  3]LogWindows: Error: === Critical error: ===\r\n[2026.09.03-11.55.31:996][  3]LogWindows: Error: \r\n[2026.09.03-11.55.31:996][  3]LogWindows: Error: Assertion failed: CurrentApplication.IsValid() [File:D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Slate\\Public\\Framework\\Application\\SlateApplication.h] [Line: 321] \r\n[2026.09.03-11.55.31:996][  3]LogWindows: Error: \r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: \r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: \r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ffbeeeabf38 UnrealEditor-Core.dll!FDebug::CheckVerifyFailedImpl2() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Core\\Private\\Misc\\AssertionMacros.cpp:797]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x000001bdf59db604 UnrealEditor-LandscapeEditor.dll!FSlateApplication::Get() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Slate\\Public\\Framework\\Application\\SlateApplication.h:321]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x000001bdf5a800fd UnrealEditor-LandscapeEditor.dll!FEdModeLandscape::Exit() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Editor\\LandscapeEditor\\Private\\LandscapeEdMode.cpp:667]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ffbec826cbc UnrealEditor-UnrealEd.dll!ULegacyEdModeWrapper::Exit() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Editor\\UnrealEd\\Private\\Tools\\LegacyEdMode.cpp:316]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ffbebd5eb19 UnrealEditor-UnrealEd.dll!FEditorModeTools::ExitAllModesPendingDeactivate() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Editor\\UnrealEd\\Private\\EditorModeManager.cpp:658]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ffbebd3f672 UnrealEditor-UnrealEd.dll!FEditorModeTools::~FEditorModeTools() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Editor\\UnrealEd\\Private\\EditorModeManager.cpp:114]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ffbeb624145 UnrealEditor-UnrealEd.dll!SharedPointerInternals::FSharedReferencer<1>::operator=() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Core\\Public\\Templates\\SharedPointerInternals.h:660]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ffbec7bc96c UnrealEditor-UnrealEd.dll!UE::Core::Private::Tuple::TTupleBase<TIntegerSequence<unsigned int> >::ApplyAfter<`EditorInit'::`2'::<lambda_1> &>() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Core\\Public\\Templates\\Tuple.h:264]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ffbec821c11 UnrealEditor-UnrealEd.dll!TBaseFunctorDelegateInstance<void __cdecl(void),FDefaultDelegateUserPolicy,`EditorInit'::`2'::<lambda_1> >::ExecuteIfSafe() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Core\\Public\\Delegates\\DelegateInstancesImpl.h:806]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ff69c2f4a71 UnrealEditor-Cmd.exe!TMulticastDelegate<void __cdecl(void),FDefaultDelegateUserPolicy>::Broadcast() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Core\\Public\\Delegates\\DelegateSignatureImpl.inl:1135]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ff69c2f3c27 UnrealEditor-Cmd.exe!FEngineLoop::AppPreExit() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Launch\\Private\\LaunchEngineLoop.cpp:6940]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ff69c2f93fd UnrealEditor-Cmd.exe!FEngineLoop::Exit() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Launch\\Private\\LaunchEngineLoop.cpp:5125]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ff69c2fc557 UnrealEditor-Cmd.exe!GuardedMain() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Launch\\Private\\Launch.cpp:204]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ff69c2fc5ba UnrealEditor-Cmd.exe!GuardedMainWrapper() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Launch\\Private\\Windows\\LaunchWindows.cpp:123]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ff69c301256 UnrealEditor-Cmd.exe!LaunchWindowsStartup() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Launch\\Private\\Windows\\LaunchWindows.cpp:277]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ff69c315c74 UnrealEditor-Cmd.exe!WinMain() [D:\\build\\++UE5\\Sync\\Engine\\Source\\Runtime\\Launch\\Private\\Windows\\LaunchWindows.cpp:338]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ff69c31838a UnrealEditor-Cmd.exe!__scrt_common_main_seh() [D:\\a\\_work\\1\\s\\src\\vctools\\crt\\vcstartup\\src\\startup\\exe_common.inl:288]\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: [Callstack] 0x00007ffcb051ccb7 KERNEL32.DLL!UnknownFunction []\r\n[2026.09.03-11.55.31:998][  3]LogWindows: Error: \r\n",
+  "world_package_observed": "/Game/Maps/_wf_test_lvl"
+}

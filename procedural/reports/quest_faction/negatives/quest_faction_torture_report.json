@@ -1,0 +1,322 @@
+{
+  "suite": "quest_faction_torture",
+  "schema_version": "v0.9",
+  "strict": true,
+  "checks": {
+    "torture::nonempty": {
+      "ok": true,
+      "detail": "torture battery must carry >= 12 modes (got 17)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::quest_completed_no_evidence::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::quest_completed_no_evidence::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF778_QUEST_OUTCOME_EVIDENCE_MISSING (got ['WF778_QUEST_OUTCOME_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::outcome_success_no_deltas::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::outcome_success_no_deltas::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF788_FACTION_STATE_NOT_MUTATED (got ['WF788_FACTION_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::ledger_hash_unchanged::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::ledger_hash_unchanged::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF788_FACTION_STATE_NOT_MUTATED (got ['WF788_FACTION_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::report_clean_roundtrip_failed::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::report_clean_roundtrip_failed::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF792_QUEST_FACTION_SAVE_LOAD_FAILED (got ['WF792_QUEST_FACTION_SAVE_LOAD_FAILED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::report_clean_no_ledger::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::report_clean_no_ledger::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF790_CONSEQUENCE_LEDGER_MISSING (got ['WF790_CONSEQUENCE_LEDGER_MISSING', 'WF794_QUEST_FACTION_RUNTIME_REPORT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::report_clean_abandoned::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::report_clean_abandoned::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF778_QUEST_OUTCOME_EVIDENCE_MISSING (got ['WF778_QUEST_OUTCOME_EVIDENCE_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::report_clean_no_mutation::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::report_clean_no_mutation::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF788_FACTION_STATE_NOT_MUTATED (got ['WF788_FACTION_STATE_NOT_MUTATED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::delta_unbounded::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::delta_unbounded::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF787_FACTION_DELTA_UNBOUNDED (got ['WF787_FACTION_DELTA_UNBOUNDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::delta_not_bounded_flag::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::delta_not_bounded_flag::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF787_FACTION_DELTA_UNBOUNDED (got ['WF787_FACTION_DELTA_UNBOUNDED'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::unknown_faction_class::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::unknown_faction_class::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF781_FACTION_CONTRACT_INVALID (got ['WF781_FACTION_CONTRACT_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::faction_state_out_of_bounds::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::faction_state_out_of_bounds::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF784_FACTION_BOUNDS_INVALID (got ['WF784_FACTION_BOUNDS_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::quest_active_and_completed::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::quest_active_and_completed::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF782_FACTION_STATE_INVALID (got ['WF782_FACTION_STATE_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_matrix_claims_complete::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::partial_matrix_claims_complete::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF795_QUEST_FACTION_PARTIAL_MATRIX (got ['WF795_QUEST_FACTION_PARTIAL_MATRIX'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::stale_git_sha::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::stale_git_sha::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF796_QUEST_FACTION_STALE_EVIDENCE (got ['WF796_QUEST_FACTION_STALE_EVIDENCE'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::operator_view_broken_ledger::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::operator_view_broken_ledger::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF790_CONSEQUENCE_LEDGER_MISSING (got ['WF790_CONSEQUENCE_LEDGER_MISSING'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::faction_view_history_no_state::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::faction_view_history_no_state::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF782_FACTION_STATE_INVALID (got ['WF782_FACTION_STATE_INVALID', 'WF797_QUEST_FACTION_OPERATOR_VIEW_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::malformed_next_hook::caught": {
+      "ok": true,
+      "detail": "hostile state was ACCEPTED (fake green)",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "torture::malformed_next_hook::owning_code": {
+      "ok": true,
+      "detail": "must be caught for WF780_QUEST_NEXT_MISSION_HOOK_INVALID (got ['WF780_QUEST_NEXT_MISSION_HOOK_INVALID'])",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [],
+  "counts": {
+    "PASS": 35,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 0,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": true,
+  "status": "ok",
+  "meta": {
+    "command": "quest-faction-torture",
+    "pack": null,
+    "strict": true,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "ace7d12f55f8043c8bef43bd63a1cc4203d0ce75",
+    "timestamp": "2026-07-30T20:34:12.838639+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": "wf.quest_faction.torture.v1",
+    "report_id": "wf.quest_faction.torture.v1:1ef8aee3becf",
+    "status": "ok",
+    "failure_count": 0,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 17,
+    "records_total": 17,
+    "records_passed": 17,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}

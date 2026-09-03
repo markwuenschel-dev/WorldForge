@@ -429,6 +429,25 @@ def _select_input(rep, args, now=None, repo_root=None, resolution=None):
                       "--request {} is unreadable/unparseable: {}".format(rpath, exc),
                       code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
 
+    # No --request from the invoker? Fall back to the copy sealed beside the
+    # evidence. This is what lets the shield grade a bound operation without
+    # holding the caller's file, and the check below records WHICH source was
+    # used so "the invoker supplied it" and "we read the sealed copy" never
+    # render identically.
+    request_source = "argument" if isinstance(ctx["request"], dict) else None
+    if not isinstance(ctx["request"], dict):
+        sealed = OP.sealed_request_path_for(repo_root, args.operation_id)
+        spath = Path(sealed.value["absolute"]) if getattr(sealed, "ok", False) else None
+        if spath is not None and spath.is_file():
+            try:
+                ctx["request"] = json.loads(spath.read_text(encoding="utf-8"))
+                request_source = "sealed_beside_evidence"
+            except (OSError, ValueError) as exc:
+                rep.check("identity::sealed_request_loadable", False,
+                          "a request is sealed at {} but could not be read: {}"
+                          .format(spath, exc),
+                          code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
+
     have_pair = isinstance(ctx["manifest"], dict) and isinstance(ctx["request"], dict)
     if have_pair:
         vres = OP.verify_operation_evidence(
@@ -436,8 +455,9 @@ def _select_input(rep, args, now=None, repo_root=None, resolution=None):
             max_age_seconds=args.max_age_seconds, now=now, check_files=True)
         rep.check("identity::request_hash_bound", bool(vres.ok),
                   "the manifest must bind this evidence to THIS request by hash, "
-                  "with every referenced artifact re-digested: {} [{}/{}]".format(
-                      vres.detail, vres.code, vres.reason),
+                  "with every referenced artifact re-digested: {} [{}/{}] "
+                  "(request source: {})".format(
+                      vres.detail, vres.code, vres.reason, request_source),
                   code=C.SCENE_SURVEY_OPERATION_ID_MISMATCH)
     else:
         rep.check("identity::request_hash_bound", False,
@@ -1344,15 +1364,66 @@ def _dogfood(rep):
                   "an envelope with no meta.timestamp must FAIL: mtime alone is "
                   "launderable by a rewrite",
                   code=C.SCENE_SURVEY_STALE_EVIDENCE)
+        # Two INDEPENDENT rails, two fixtures. They were previously asserted
+        # against one eight-day-old envelope, which coupled them to the wall
+        # clock: ``declared_after_producers`` only fires when a PRODUCER_FILES
+        # mtime EXCEEDS the declared time, so once the v2.6 producers aged past
+        # eight days the predates half became vacuous and the check went red
+        # naming a property it was no longer testing. A red that misnames itself
+        # is the defect this module exists to prevent.
         stale_env = {"meta": {"timestamp": _iso(-8 * 86400), "git_sha": git_sha()}}
         stale_named = _ran(_validate_declared_freshness, stale_env, _Args())
         rep.check("dogfood::declared_stale_rejected",
-                  "freshness::declared_within_max_age" in stale_named
-                  and "freshness::declared_after_producers" in stale_named,
-                  "an eight-day-old DECLARED build time must FAIL both the max-age "
-                  "and the predates-producers rails even when the file was touched "
-                  "one second ago — this is the exact defect being repaired (got "
-                  "{})".format(stale_named), code=C.SCENE_SURVEY_STALE_EVIDENCE)
+                  "freshness::declared_within_max_age" in stale_named,
+                  "an eight-day-old DECLARED build time must FAIL the max-age rail "
+                  "even when the file was touched one second ago — mtime is not the "
+                  "clock this rail reads (got {})".format(stale_named),
+                  code=C.SCENE_SURVEY_STALE_EVIDENCE)
+
+        # The predates-producers rail, anchored to the producers themselves so it
+        # is exercised whenever this runs rather than only while the producers
+        # happen to be younger than the max-age window.
+        _producer_mtimes = [f.stat().st_mtime for f in PRODUCER_FILES if f.is_file()]
+        rep.check("dogfood::producers_present_for_predating_rail",
+                  bool(_producer_mtimes),
+                  "the predates-producers rail is UNTESTABLE with no producer file "
+                  "on disk: it fires only on a producer mtime, so an empty "
+                  "PRODUCER_FILES would make the check below vacuously green. "
+                  "Looked for: {}".format(
+                      [f.relative_to(REPO_ROOT).as_posix() for f in PRODUCER_FILES]),
+                  code=C.SCENE_SURVEY_STALE_EVIDENCE)
+        if _producer_mtimes:
+            _newest = max(_producer_mtimes)
+
+            def _iso_at(epoch):
+                return datetime.datetime.fromtimestamp(
+                    epoch, datetime.timezone.utc).isoformat()
+
+            # NEGATIVE: declared one second before the newest producer.
+            predating_env = {"meta": {"timestamp": _iso_at(_newest - 1.0),
+                                      "git_sha": git_sha()}}
+            predating_named = _ran(_validate_declared_freshness, predating_env,
+                                   _Args(max_age_seconds=None))
+            rep.check("dogfood::declared_predating_producers_rejected",
+                      "freshness::declared_after_producers" in predating_named,
+                      "a report DECLARING it was built one second before the newest "
+                      "producing file must FAIL the predates rail — it cannot be "
+                      "evidence about code that changed after it (got {})".format(
+                          predating_named), code=C.SCENE_SURVEY_STALE_EVIDENCE)
+
+            # POSITIVE control: declared one hour after the newest producer. A
+            # rail that fires unconditionally would pass the negative above and
+            # is caught only here.
+            postdating_env = {"meta": {"timestamp": _iso_at(_newest + 3600.0),
+                                       "git_sha": git_sha()}}
+            postdating_named = _ran(_validate_declared_freshness, postdating_env,
+                                    _Args(max_age_seconds=None))
+            rep.check("dogfood::declared_postdating_producers_accepted",
+                      "freshness::declared_after_producers" not in postdating_named,
+                      "a report declaring it was built AFTER every producer must not "
+                      "trip the predates rail — without this control a rail that "
+                      "always fires would look correct (got {})".format(
+                          postdating_named), code=C.SCENE_SURVEY_STALE_EVIDENCE)
         rep.check("dogfood::wrong_git_sha_rejected",
                   "freshness::git_sha_matches_head" in _ran(
                       _validate_declared_freshness,

@@ -84,6 +84,11 @@ CAP_MATERIAL_AUTHORING = "material_authoring"      # author/derive material asse
 CAP_ASSET_INGEST = "asset_ingest"                  # import external artifacts
 CAP_SCENE_OBSERVATION = "scene_observation"        # measure the world, mutate nothing
 CAP_SCRIPTED_TOOL_BRIDGE = "scripted_tool_bridge"  # drive tooling via a script channel
+# Lighting, fog, atmosphere and the rest of the environment envelope. Added as a
+# visible contract change rather than smuggling rigs in under procedural_scatter:
+# an environment rig is not a scatter, and mislabelling it would make provider
+# selection choose the wrong thing for the right-sounding reason.
+CAP_ENVIRONMENT_AUTHORING = "environment_authoring"
 
 CAPABILITIES = (
     CAP_EDITOR_AUTHORING,
@@ -96,6 +101,7 @@ CAPABILITIES = (
     CAP_ASSET_INGEST,
     CAP_SCENE_OBSERVATION,
     CAP_SCRIPTED_TOOL_BRIDGE,
+    CAP_ENVIRONMENT_AUTHORING,
 )
 
 # --------------------------------------------------------------------------- #

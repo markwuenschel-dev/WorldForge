@@ -1,0 +1,211 @@
+{
+  "pack": "materials",
+  "schema_version": "v0.9",
+  "strict": false,
+  "checks": {
+    "terrain_rock_desert_01::declares_generative_source": {
+      "ok": true,
+      "detail": "manifest declares none of ['substance_graph_path']; nothing identifies what produced its outputs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_rock_desert_01::substance_graph_path_exists": {
+      "ok": true,
+      "detail": "declared generative source not found: procedural/substance/graphs/terrain_rock_strata.sbs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_rock_desert_01::substance_graph_path_non_empty": {
+      "ok": false,
+      "detail": "declared generative source procedural/substance/graphs/terrain_rock_strata.sbs is 0 bytes. Its digest is the digest of nothing, so every artifact claiming to be generated FROM it is unsupported. This is not a missing file: the file is present and the provenance block hashed it faithfully, which is exactly what made the gap invisible.",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF022_PROVENANCE_SOURCE_EMPTY",
+      "blocking": true
+    },
+    "terrain_rock_desert_01::no_generative_input_hashed_nothing": {
+      "ok": false,
+      "detail": "provenance.inputs records the empty-string digest for declared generative source(s) ['procedural/substance/graphs/terrain_rock_strata.sbs']. The hash is real; the thing it hashed is not.",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF022_PROVENANCE_SOURCE_EMPTY",
+      "blocking": true
+    },
+    "terrain_rock_desert_01::producer_complete": {
+      "ok": true,
+      "detail": "synthesis block missing []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_rock_desert_ash_01::declares_generative_source": {
+      "ok": true,
+      "detail": "manifest declares none of ['substance_graph_path']; nothing identifies what produced its outputs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_rock_desert_ash_01::substance_graph_path_exists": {
+      "ok": true,
+      "detail": "declared generative source not found: procedural/substance/graphs/terrain_rock_strata.sbs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_rock_desert_ash_01::substance_graph_path_non_empty": {
+      "ok": false,
+      "detail": "declared generative source procedural/substance/graphs/terrain_rock_strata.sbs is 0 bytes. Its digest is the digest of nothing, so every artifact claiming to be generated FROM it is unsupported. This is not a missing file: the file is present and the provenance block hashed it faithfully, which is exactly what made the gap invisible.",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF022_PROVENANCE_SOURCE_EMPTY",
+      "blocking": true
+    },
+    "terrain_rock_desert_ash_01::no_generative_input_hashed_nothing": {
+      "ok": false,
+      "detail": "provenance.inputs records the empty-string digest for declared generative source(s) ['procedural/substance/graphs/terrain_rock_strata.sbs']. The hash is real; the thing it hashed is not.",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF022_PROVENANCE_SOURCE_EMPTY",
+      "blocking": true
+    },
+    "terrain_rock_desert_ash_01::producer_complete": {
+      "ok": true,
+      "detail": "synthesis block missing []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_rock_desert_cracked_01::declares_generative_source": {
+      "ok": true,
+      "detail": "manifest declares none of ['substance_graph_path']; nothing identifies what produced its outputs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_rock_desert_cracked_01::substance_graph_path_exists": {
+      "ok": true,
+      "detail": "declared generative source not found: procedural/substance/graphs/terrain_rock_strata.sbs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_rock_desert_cracked_01::substance_graph_path_non_empty": {
+      "ok": false,
+      "detail": "declared generative source procedural/substance/graphs/terrain_rock_strata.sbs is 0 bytes. Its digest is the digest of nothing, so every artifact claiming to be generated FROM it is unsupported. This is not a missing file: the file is present and the provenance block hashed it faithfully, which is exactly what made the gap invisible.",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF022_PROVENANCE_SOURCE_EMPTY",
+      "blocking": true
+    },
+    "terrain_rock_desert_cracked_01::no_generative_input_hashed_nothing": {
+      "ok": false,
+      "detail": "provenance.inputs records the empty-string digest for declared generative source(s) ['procedural/substance/graphs/terrain_rock_strata.sbs']. The hash is real; the thing it hashed is not.",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF022_PROVENANCE_SOURCE_EMPTY",
+      "blocking": true
+    },
+    "terrain_rock_desert_cracked_01::producer_complete": {
+      "ok": true,
+      "detail": "synthesis block missing []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_sand_desert_01::declares_generative_source": {
+      "ok": true,
+      "detail": "manifest declares none of ['substance_graph_path']; nothing identifies what produced its outputs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_sand_desert_01::substance_graph_path_exists": {
+      "ok": true,
+      "detail": "declared generative source not found: procedural/substance/graphs/terrain_rock_strata.sbs",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    },
+    "terrain_sand_desert_01::substance_graph_path_non_empty": {
+      "ok": false,
+      "detail": "declared generative source procedural/substance/graphs/terrain_rock_strata.sbs is 0 bytes. Its digest is the digest of nothing, so every artifact claiming to be generated FROM it is unsupported. This is not a missing file: the file is present and the provenance block hashed it faithfully, which is exactly what made the gap invisible.",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF022_PROVENANCE_SOURCE_EMPTY",
+      "blocking": true
+    },
+    "terrain_sand_desert_01::no_generative_input_hashed_nothing": {
+      "ok": false,
+      "detail": "provenance.inputs records the empty-string digest for declared generative source(s) ['procedural/substance/graphs/terrain_rock_strata.sbs']. The hash is real; the thing it hashed is not.",
+      "warn_only": false,
+      "verdict": "FAIL",
+      "code": "WF022_PROVENANCE_SOURCE_EMPTY",
+      "blocking": true
+    },
+    "terrain_sand_desert_01::producer_complete": {
+      "ok": true,
+      "detail": "synthesis block missing []",
+      "warn_only": false,
+      "verdict": "PASS",
+      "code": null,
+      "blocking": false
+    }
+  },
+  "failures": [
+    "terrain_rock_desert_01::substance_graph_path_non_empty: declared generative source procedural/substance/graphs/terrain_rock_strata.sbs is 0 bytes. Its digest is the digest of nothing, so every artifact claiming to be generated FROM it is unsupported. This is not a missing file: the file is present and the provenance block hashed it faithfully, which is exactly what made the gap invisible.",
+    "terrain_rock_desert_01::no_generative_input_hashed_nothing: provenance.inputs records the empty-string digest for declared generative source(s) ['procedural/substance/graphs/terrain_rock_strata.sbs']. The hash is real; the thing it hashed is not.",
+    "terrain_rock_desert_ash_01::substance_graph_path_non_empty: declared generative source procedural/substance/graphs/terrain_rock_strata.sbs is 0 bytes. Its digest is the digest of nothing, so every artifact claiming to be generated FROM it is unsupported. This is not a missing file: the file is present and the provenance block hashed it faithfully, which is exactly what made the gap invisible.",
+    "terrain_rock_desert_ash_01::no_generative_input_hashed_nothing: provenance.inputs records the empty-string digest for declared generative source(s) ['procedural/substance/graphs/terrain_rock_strata.sbs']. The hash is real; the thing it hashed is not.",
+    "terrain_rock_desert_cracked_01::substance_graph_path_non_empty: declared generative source procedural/substance/graphs/terrain_rock_strata.sbs is 0 bytes. Its digest is the digest of nothing, so every artifact claiming to be generated FROM it is unsupported. This is not a missing file: the file is present and the provenance block hashed it faithfully, which is exactly what made the gap invisible.",
+    "terrain_rock_desert_cracked_01::no_generative_input_hashed_nothing: provenance.inputs records the empty-string digest for declared generative source(s) ['procedural/substance/graphs/terrain_rock_strata.sbs']. The hash is real; the thing it hashed is not.",
+    "terrain_sand_desert_01::substance_graph_path_non_empty: declared generative source procedural/substance/graphs/terrain_rock_strata.sbs is 0 bytes. Its digest is the digest of nothing, so every artifact claiming to be generated FROM it is unsupported. This is not a missing file: the file is present and the provenance block hashed it faithfully, which is exactly what made the gap invisible.",
+    "terrain_sand_desert_01::no_generative_input_hashed_nothing: provenance.inputs records the empty-string digest for declared generative source(s) ['procedural/substance/graphs/terrain_rock_strata.sbs']. The hash is real; the thing it hashed is not."
+  ],
+  "counts": {
+    "PASS": 12,
+    "WARN": 0,
+    "WARN_ONLY": 0,
+    "FAIL": 8,
+    "SKIP_NOT_APPLICABLE": 0
+  },
+  "passed": false,
+  "status": "fail",
+  "meta": {
+    "command": "validate-generative-sources",
+    "pack": "materials",
+    "strict": false,
+    "deep": false,
+    "torture": false,
+    "seeds": null,
+    "git_sha": "879563f1894608ecbd54c0ae1bb764b251749d79",
+    "timestamp": "2026-09-03T12:09:44.760342+00:00",
+    "input_spec_hash": null,
+    "output_manifest_hash": null,
+    "validator_version": "v1.0x",
+    "worldforge_version": "v1.5",
+    "report_type": null,
+    "report_id": "validate-generative-sources:82639446bbbe",
+    "status": "fail",
+    "failure_count": 8,
+    "warning_count": 0,
+    "skipped_count": 0,
+    "record_count": 4,
+    "records_total": 4,
+    "records_passed": 4,
+    "records_failed": 0,
+    "records_skipped": 0
+  }
+}
