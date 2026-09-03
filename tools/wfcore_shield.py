@@ -163,6 +163,31 @@ def main(argv=None) -> int:
     # above -- it is a pipeline module, not a wfcore.* package suite.
     results.append(_run("test_route_placement_provider",
                         [py, "pipeline/test_route_placement_provider.py"]))
+    # The adapted procedural/ asset lanes behind the Core seam: the two
+    # refusals, and proof that each of the four declaration rails can fire.
+    results.append(_run("test_asset_lane_provider",
+                        [py, "pipeline/test_asset_lane_provider.py"]))
+    # PCG scatter as a bounded, rollback-capable mutation: the yield rail that
+    # refuses a plan which cannot say how it will be measured, and the proof
+    # that the sink takes this provider's request without modification.
+    results.append(_run("test_pcg_scatter_provider",
+                        [py, "pipeline/test_pcg_scatter_provider.py"]))
+    # The landscape lane: the engine's own section/component sizing invariant
+    # enforced at plan time, and the heightfield imported from the mesh lane so
+    # the two cannot disagree about what the terrain is.
+    results.append(_run("test_landscape_provider",
+                        [py, "pipeline/test_landscape_provider.py"]))
+    # The ladder that grades every other rail. It had no suite at all until a
+    # failed landscape run was read as proof of success -- its docstring
+    # promised a check its code never made.
+    results.append(_run("test_evidence_ladder",
+                        [py, "pipeline/test_evidence_ladder.py"]))
+    # The suite terrain_mesh_provider's determinism_evidence already claimed
+    # existed, plus the grader for the far side that turns its plan into a real
+    # StaticMesh. WF1233 checks that the evidence field is non-empty, not that
+    # what it NAMES exists -- so the claim shipped with nothing behind it.
+    results.append(_run("test_terrain_mesh_provider",
+                        [py, "pipeline/test_terrain_mesh_provider.py"]))
     # The observation reader: the three-state separation, and the rails that
     # stop a caller-declared mapping from stating a value it did not measure.
     results.append(_run("test_observation_intake",

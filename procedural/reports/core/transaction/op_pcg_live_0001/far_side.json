@@ -1,0 +1,141 @@
+{
+  "compensations": {
+    "actor_destroy": "respawn_from_captured_state",
+    "actor_spawn": "destroy_spawned_actor",
+    "actor_transform": "restore_captured_transform"
+  },
+  "core_import_error": null,
+  "delta": {
+    "abort_reason": "",
+    "bound_enforcement": "satisfied",
+    "bounds": [
+      {
+        "allowed_actors": [
+          "/Game/Maps/_wf_test_lvl:wfpcg_live_0001"
+        ],
+        "allowed_packages": [
+          "/Game/Maps/_wf_test_lvl"
+        ],
+        "schema_version": "wf.core.mutation_bound.v1",
+        "step_id": "step_pcg_live"
+      }
+    ],
+    "created_at": "2026-09-03T11:49:23Z",
+    "created_by": "worldforge.core",
+    "delta_id": "delta_89ab9d1729d54f06",
+    "evidence_refs": [
+      "pcg_scatter_plan"
+    ],
+    "failure_codes": [],
+    "journal_path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\op_pcg_live_0001\\world_delta.json",
+    "lock": {
+      "detail": "acquired procedural/reports/core/transaction/.core_transaction.lock",
+      "held": true,
+      "operation_id": "op_pcg_live_0001",
+      "path": "D:\\Unreal Projects\\WorldForge\\procedural\\reports\\core\\transaction\\.core_transaction.lock",
+      "released": true
+    },
+    "mutations": [
+      {
+        "before_state": {
+          "state_kind": "absent"
+        },
+        "before_state_declared": {
+          "state_kind": "absent"
+        },
+        "detail": "PCG volume bound to /Game/Procedural/PCG/PCG_FoliageScatter; yield measured via pcg.live_probe.point_count",
+        "expected_after_state": {
+          "payload": {
+            "actor_class": "PCGVolume",
+            "location": [
+              0.0,
+              0.0,
+              400.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              40.0,
+              40.0,
+              4.0
+            ]
+          },
+          "state_kind": "present"
+        },
+        "mutation_id": "mut_wfpcg_live_0001",
+        "observed_after_apply": {
+          "payload": {
+            "actor_class": "PCGVolume",
+            "location": [
+              0.0,
+              0.0,
+              400.0
+            ],
+            "rotation": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "scale": [
+              40.0,
+              40.0,
+              4.0
+            ]
+          },
+          "state_kind": "present"
+        },
+        "operation": "create",
+        "provider_id": "pcg_scatter_planner",
+        "rollback_mode": "compensating",
+        "schema_version": "wf.core.mutation.v1",
+        "status": "applied",
+        "step_id": "step_pcg_live",
+        "target_kind": "actor",
+        "target_path": "/Game/Maps/_wf_test_lvl:wfpcg_live_0001",
+        "verification": "satisfied"
+      }
+    ],
+    "operation_id": "op_pcg_live_0001",
+    "outcome": "committed",
+    "report_type": "wf.core.world_delta.v1",
+    "rollback_completeness": "unknown",
+    "schema_version": "wf.core.world_delta.v1",
+    "verification": "satisfied"
+  },
+  "env_parse_errors": [],
+  "error": null,
+  "failure_codes": [],
+  "far_side_schema": "wf.core.unreal_sink_far_side.v1",
+  "map_load_api": "unreal.LevelEditorSubsystem.load_level",
+  "map_loaded": true,
+  "map_requested": "/Game/Maps/_wf_test_lvl",
+  "observe_after": true,
+  "operation_id": "op_pcg_live_0001",
+  "repo_root": "D:\\Unreal Projects\\WorldForge",
+  "request_source": "file",
+  "save_map": false,
+  "sink_notes": [
+    {
+      "detail": "spawned PCGVolume as /Game/Maps/_wf_test_lvl._wf_test_lvl:PersistentLevel.PCGVolume_0 via getattr(unreal, 'PCGVolume')",
+      "failure_code": null,
+      "where": "apply"
+    },
+    {
+      "detail": "/Game/Maps/_wf_test_lvl:wfpcg_live_0001 -> PCGVolume at /Game/Maps/_wf_test_lvl._wf_test_lvl:PersistentLevel.PCGVolume_0",
+      "failure_code": null,
+      "where": "observe"
+    }
+  ],
+  "sink_refusals": [],
+  "sink_saves": [],
+  "supported_kinds": {
+    "actor|create": "actor_spawn",
+    "actor|delete": "actor_destroy",
+    "actor|modify": "actor_transform"
+  },
+  "traceback": null,
+  "world_package_observed": "/Game/Maps/_wf_test_lvl"
+}

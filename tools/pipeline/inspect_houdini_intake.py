@@ -260,9 +260,18 @@ DIAGNOSE_BUCKETS = (
     ("final-path", FailureCode.MESH_FINAL_PATH_FAILURE),
     ("registry", FailureCode.HOUDINI_OUTPUT_REGISTRY_FAILURE),
     ("provenance", FailureCode.HOUDINI_OUTPUT_PROVENANCE_FAILURE),
+    # Who WROTE the report. Presence and status say nothing about authorship,
+    # and this dossier previously reported total_problems=0 over reports the
+    # pipeline had written itself. Same classifier as the gate -- imported, not
+    # reimplemented, so the dossier and the gate can never disagree.
+    ("evidence", FailureCode.HOUDINI_COOK_EVIDENCE_SELF_AUTHORED),
 )
 
 _REPORT_BUCKET = {"cook_report": "cook", "bake_report": "bake", "import_report": "import"}
+
+# ONE authorship classifier, shared with validate_houdini_cook_evidence.py. A
+# second copy here is exactly how a dossier comes to disagree with its gate.
+from validate_houdini_cook_evidence import classify as _cook_evidence_state
 
 
 def _classify_houdini(asset_id, entry):
@@ -297,6 +306,10 @@ def _classify_houdini(asset_id, entry):
             problems.append((bucket, "%s status is failed" % key))
         elif not HC.report_ok(report):
             problems.append((bucket, "%s status not ok: %r" % (key, report.get("status"))))
+        if report is not None:
+            state, detail = _cook_evidence_state(report)
+            if state != "resolved":
+                problems.append(("evidence", "%s is %s: %s" % (key, state, detail)))
 
     # final path must be owned and not a Houdini Temp/Bake leak.
     fp = d.get("final_asset_path") or entry.get("final_asset_path")

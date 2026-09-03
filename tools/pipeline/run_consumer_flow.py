@@ -128,7 +128,11 @@ from wfcore.planning import synth as SY                   # noqa: E402
 from wfcore.providers import base as PB                   # noqa: E402
 from wfcore.providers import registry as PR               # noqa: E402
 from wfcore.providers import selection as PS              # noqa: E402
-from pipeline import route_placement_provider as RPP    # noqa: E402
+from pipeline import route_placement_provider as RPP
+from pipeline import asset_lane_provider as ALP
+from pipeline import pcg_scatter_provider as PCGP
+from pipeline import landscape_provider as LSP
+from pipeline import terrain_mesh_provider as TMPV    # noqa: E402
 from pipeline import verify_caller_attestation as VA     # noqa: E402
 from wfcore.transaction import delta as TD                # noqa: E402
 
@@ -439,7 +443,9 @@ def _build_registry():
     reg = PR.CapabilityRegistry()
     checks = []
     for decl in (_editor_sink_declaration(), _scene_observer_declaration(),
-                 RPP.declaration()):
+                 RPP.declaration(), ALP.declaration(),
+                 PCGP.declaration(), LSP.declaration(),
+                 TMPV.declaration()):
         for (name, ok, detail, code) in reg.register(decl, strict=True):
             checks.append(("{}::{}".format(decl["provider_id"], name), ok,
                            detail, code))

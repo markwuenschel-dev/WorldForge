@@ -7,6 +7,7 @@ Manifest-driven with --project-root and basic report output.
 import argparse
 import json
 from pathlib import Path
+import _wf_stamp as _stamp
 import unreal
 
 
@@ -71,6 +72,7 @@ def main():
         manifest = json.load(f)
 
     result = create_or_update(manifest, root)
+    _stamp.stamp(result, root, "worldforge.create_material_instances")
 
     report_dir = root / "procedural/reports/materials" / manifest["recipe_id"]
     report_dir.mkdir(parents=True, exist_ok=True)

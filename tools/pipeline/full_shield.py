@@ -195,6 +195,23 @@ def build_registry():
     G.append(gate("validate-regression-matrix", "Validate regression matrix", "regression",
                   FailureCode.REGRESSION_FAILURE, "validate_regression_matrix.py",
                   lambda c: _s(c["strict"])))
+    # 32b — generative-source integrity. A declared generative source may not
+    # be EMPTY (its digest would be the digest of nothing, recorded as
+    # faithfully as a real one), and a generated output must name the tool
+    # that produced it (a stopgap and a real render write identical files to
+    # identical paths). Takes no --pack: it grades every material manifest.
+    G.append(gate("validate-generative-sources", "Validate generative sources", "spec",
+                  FailureCode.PROVENANCE_SOURCE_EMPTY, "validate_generative_sources.py",
+                  lambda c: _s(c["strict"]),
+                  report="procedural/reports/materials/validate_generative_sources/validate_generative_sources_report.json"))
+    # 32c — PCG execution. Binding a graph is a wiring fact; this gate wants a
+    # MEASURED generation result. 121 slices report pcg_graph_bound=true and
+    # none report what the graph produced, so this is RED until the slice
+    # builder's measurement has actually run in an editor.
+    G.append(gate("validate-pcg-execution", "Validate PCG execution is measured", "generate",
+                  FailureCode.PCG_EXECUTION_UNMEASURED, "validate_pcg_execution.py",
+                  lambda c: _s(c["strict"]),
+                  report="procedural/reports/slices/validate_pcg_execution/validate_pcg_execution_report.json"))
     # 33 — final report integrity (Agent 1) — re-run after everything
     G.append(gate("final-report-integrity", "Final report integrity check", "final",
                   FailureCode.REPORT_INTEGRITY_FAILURE, "validate_report_integrity.py",
@@ -338,6 +355,14 @@ def build_source_gates(houdini_mode, megascans_on):
              FailureCode.HOUDINI_BAKE_FAILURE, "validate_houdini_bake_reports.py"),
             ("validate-houdini-generated-assets", "Validate Houdini generated assets",
              FailureCode.HOUDINI_OUTPUT_REGISTRY_FAILURE, "validate_houdini_generated_assets.py"),
+            # Asks the question the four above do not: WHO WROTE the report
+            # being graded? The pipeline writes its own cook/bake/import
+            # reports, so those gates and their subject share an author.
+            # This one refuses self-authored cook evidence (WF239) and is
+            # RED by design until a real Houdini process leaves evidence.
+            ("validate-houdini-cook-evidence", "Validate Houdini cook evidence is independent",
+             FailureCode.HOUDINI_COOK_EVIDENCE_SELF_AUTHORED,
+             "validate_houdini_cook_evidence.py"),
         ]
         for gid, label, code, script in houdini_gates:
             command = script.replace(".py", "")

@@ -43,6 +43,23 @@ class FailureCode:
     # -- provenance (020) ----------------------------------------------------
     PROVENANCE_MISSING = "WF020_PROVENANCE_MISSING"
     PROVENANCE_INCOMPLETE = "WF021_PROVENANCE_INCOMPLETE"
+    # A declared GENERATIVE source -- the graph/HDA/recipe an output claims to
+    # have been produced FROM -- exists but is empty. Its digest is then the
+    # digest of nothing (sha256 of b"" = e3b0c442...b855), which a provenance
+    # block records exactly as faithfully as it records a real one. This is an
+    # absence wearing a measurement's shape, and it is NOT WF030/WF031: those
+    # describe the generated OUTPUT, this describes the SOURCE it came from.
+    # An inert empty file (.gitkeep) is not a generative source and never trips
+    # this -- the role is what makes emptiness a lie.
+    PROVENANCE_SOURCE_EMPTY = "WF022_PROVENANCE_SOURCE_EMPTY"
+    # A generated output that does not record WHICH tool produced it. When a
+    # stopgap generator and the real external tool write the same five files to
+    # the same paths in the same format, the artifacts are indistinguishable and
+    # the manifest cannot answer "was this rendered, or stood in for?". Naming
+    # the producer is what keeps a stopgap from silently wearing a render's
+    # provenance. Distinct from WF020/WF021, which are about the provenance
+    # block being absent or short of required keys, not about it being ambiguous.
+    GENERATED_OUTPUT_PRODUCER_UNDECLARED = "WF023_GENERATED_OUTPUT_PRODUCER_UNDECLARED"
 
     # -- generated artifacts (030) ------------------------------------------
     ARTIFACT_MISSING = "WF030_ARTIFACT_MISSING"
@@ -185,6 +202,15 @@ class FailureCode:
     BIOME_BUDGET_FAILURE = "WF201_BIOME_BUDGET_FAILURE"
     BIOME_PACKAGE_FAILURE = "WF202_BIOME_PACKAGE_FAILURE"
     BIOME_FUZZ_FAILURE = "WF203_BIOME_FUZZ_FAILURE"
+    # A PCG graph was BOUND to a component and nothing ever measured whether it
+    # produced anything. Binding is a wiring fact -- a tag on an actor and a
+    # graph reference on a component. Execution is a count of points or
+    # instances that exist afterwards. validate_slice.py checked only the tags,
+    # and the tags are written by create_slice_map.py, so the writer and the
+    # reader were the same pipeline: 121 slices report pcg_graph_bound=true and
+    # zero report anything PCG produced. Cleared by a measured generation
+    # result read back from the component, never by a tag or a bound flag.
+    PCG_EXECUTION_UNMEASURED = "WF204_PCG_EXECUTION_UNMEASURED"
 
     # ======================================================================
     # v1.2 MeshForge Intake — generated mesh asset taxonomy (210–239)
@@ -231,6 +257,18 @@ class FailureCode:
     HOUDINI_OUTPUT_REGISTRY_FAILURE = "WF236_HOUDINI_OUTPUT_REGISTRY_FAILURE"
     HOUDINI_OUTPUT_PROVENANCE_FAILURE = "WF237_HOUDINI_OUTPUT_PROVENANCE_FAILURE"
     HOUDINI_OUTPUT_PACKAGE_FAILURE = "WF238_HOUDINI_OUTPUT_PACKAGE_FAILURE"
+    # A cook/bake/import report offered as proof that Houdini ran, which the
+    # WorldForge pipeline WROTE ITSELF. create_mesh_assets._write_houdini_reports
+    # emits exactly the keys HOUDINI_REPORT_REQUIRED demands, with status "ok"
+    # hardcoded, and the four validators then grade those files -- so the gate
+    # and the thing under test have the same author. This is NOT WF233: that
+    # code means the declared cook report is missing, malformed or failed, which
+    # is a real and still-useful descriptor check. This code means the report is
+    # perfectly well-formed and proves nothing, because no external process ever
+    # produced it. Cleared only by evidence a Houdini process leaves behind and
+    # a metadata stamp cannot fake -- see COOK_EVIDENCE_REQUIRED in
+    # validate_external_tool_providers.py, whose vocabulary this reuses.
+    HOUDINI_COOK_EVIDENCE_SELF_AUTHORED = "WF239_HOUDINI_COOK_EVIDENCE_SELF_AUTHORED"
 
     # ======================================================================
     # v1.2 addendum — Megascans / external-asset taxonomy (240–255)
@@ -1414,6 +1452,46 @@ class FailureCode:
     # adapter that promises nothing has broken no promise, and grading silence
     # as a failure would punish exactly the honest adapters.
     CORE_CALLER_ATTESTATION_UNRESOLVED = "WF1291_CORE_CALLER_ATTESTATION_UNRESOLVED"
+    # -- generated landscape (1274) --
+    # A landscape plan whose grid does not satisfy the engine's own sizing
+    # invariant. An Unreal landscape is not free-form: vertices per side must
+    # be (section_size * sections_per_component * component_count) + 1, and
+    # section_size must be one of the supported quad counts. A grid that
+    # violates this is not a smaller landscape, it is one the engine will
+    # reject or silently reshape -- so it is refused at plan time, where the
+    # number is still checkable, rather than discovered after an editor boot.
+    CORE_LANDSCAPE_GRID_INVALID = "WF1274_CORE_LANDSCAPE_GRID_INVALID"
+
+    # -- generated PCG scatter (1273) --
+    # A PCG plan that cannot state how its yield will be MEASURED. Binding a
+    # graph to a volume is a wiring fact and says nothing about whether the
+    # graph ran; 121 slices in this repository record pcg_graph_bound=true
+    # and not one records what the graph produced (WF204 grades that on the
+    # procedural/ side). A generated PCG plan must therefore name the
+    # observation that will answer 'how many', or it is a plan whose success
+    # condition cannot be checked -- which is the same as having none.
+    CORE_PCG_YIELD_UNMEASURABLE = "WF1273_CORE_PCG_YIELD_UNMEASURABLE"
+
+    # -- adapted asset lane (1271-1272) --
+    # The procedural/ asset lanes (textures, materials, meshes) are ADAPTED
+    # behind the Core provider seam rather than reimplemented, because an
+    # asset something else references cannot be un-created honestly -- so
+    # they are deliberately NOT sink mutations and carry rollback=none.
+    # That makes refusal the only safety mechanism available to them, which
+    # is why these two codes exist and why both refuse rather than warn.
+
+    # A catalog entry names a final_asset_path that is not on disk. The
+    # catalog is a claim about what exists; the filesystem is the fact. An
+    # inventory that cannot resolve is not a smaller inventory, it is an
+    # unreliable one, and offering capability over it would let Core select
+    # a provider for work whose inputs are already missing.
+    CORE_ASSET_LANE_ARTIFACT_ABSENT = "WF1271_CORE_ASSET_LANE_ARTIFACT_ABSENT"
+    # A catalog entry exists and resolves, but its own lane never graded it
+    # green (validation_status). Core does not re-grade the adapted lane --
+    # that would be a second authority over the same artifact -- it refuses
+    # to offer capability over anything the owning lane has not passed.
+    CORE_ASSET_LANE_ENTRY_UNVALIDATED = "WF1272_CORE_ASSET_LANE_ENTRY_UNVALIDATED"
+
     # -- generated placement (1292-1295) --
     # A placement was asked for against an anchor whose location was never
     # measured. The refusal is the product: defaulting to an origin or a

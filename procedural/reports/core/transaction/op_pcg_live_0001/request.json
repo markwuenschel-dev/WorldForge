@@ -1,0 +1,56 @@
+{
+  "bounds": [
+    {
+      "allowed_actors": [
+        "/Game/Maps/_wf_test_lvl:wfpcg_live_0001"
+      ],
+      "allowed_packages": [
+        "/Game/Maps/_wf_test_lvl"
+      ],
+      "schema_version": "wf.core.mutation_bound.v1",
+      "step_id": "step_pcg_live"
+    }
+  ],
+  "evidence_refs": [
+    "pcg_scatter_plan"
+  ],
+  "mutations": [
+    {
+      "before_state": {
+        "state_kind": "absent"
+      },
+      "detail": "PCG volume bound to /Game/Procedural/PCG/PCG_FoliageScatter; yield measured via pcg.live_probe.point_count",
+      "expected_after_state": {
+        "payload": {
+          "actor_class": "PCGVolume",
+          "location": [
+            0.0,
+            0.0,
+            400.0
+          ],
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            40.0,
+            40.0,
+            4.0
+          ]
+        },
+        "state_kind": "present"
+      },
+      "mutation_id": "mut_wfpcg_live_0001",
+      "operation": "create",
+      "provider_id": "pcg_scatter_planner",
+      "rollback_mode": "compensating",
+      "schema_version": "wf.core.mutation.v1",
+      "status": "planned",
+      "step_id": "step_pcg_live",
+      "target_kind": "actor",
+      "target_path": "/Game/Maps/_wf_test_lvl:wfpcg_live_0001"
+    }
+  ],
+  "operation_id": "op_pcg_live_0001"
+}

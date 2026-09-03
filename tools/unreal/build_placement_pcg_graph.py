@@ -4,9 +4,20 @@ build_placement_pcg_graph.py (UE5 Python)
 
 Builds the human-owned PCG template PlacementForge feeds (forge_design_decisions
 D13): Input -> Surface Sampler -> Static Mesh Spawner -> Output. The scatter
-DENSITY is exposed via the Surface Sampler's points_per_squared_meter, which the
-state driver (apply_placement_state.py) sets live from
-WorldStateSubsystem.GetStateValue — proving the placement-reacts-to-world-state chain.
+DENSITY is exposed via the Surface Sampler's points_per_squared_meter.
+
+CORRECTED 2026-09-03. This docstring previously said that density is set live
+from WorldStateSubsystem.GetStateValue by a state driver named
+apply_placement_state.py, and called that "proving the
+placement-reacts-to-world-state chain". No such file exists anywhere in this
+repository, and never has. The chain it described is UNBUILT: the density
+parameter is exposed here and nothing reads world state to drive it.
+
+The claim mattered because it was the only thing anyone had written down about
+how placement was supposed to react to state, and it read as a description of
+working code. Density remains exposed and settable; what does not exist is the
+driver. Until one does, D13's pull-based state-aware scatter is a design, not a
+behaviour.
 
 Idempotent: if the graph exists it clears non-IO nodes and rebuilds (never deletes
 the asset — deleting a live PCG asset corrupts it in memory).

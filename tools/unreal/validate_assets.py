@@ -14,6 +14,7 @@ import argparse
 import json
 from pathlib import Path
 
+import _wf_stamp as _stamp
 import unreal
 
 MAX_TEXTURE_SIZE = 2048
@@ -197,6 +198,7 @@ def main():
         manifest = json.load(f)
 
     result = validate(manifest, root)
+    _stamp.stamp(result, root, "worldforge.validate_assets")
 
     report_dir = root / "procedural/reports/materials" / manifest["recipe_id"]
     report_dir.mkdir(parents=True, exist_ok=True)

@@ -19,6 +19,39 @@ import yaml
 
 from provenance import build_provenance
 
+# The export lane writes this sidecar naming the tool that produced the PNGs.
+# Without it a stopgap render and a real Substance render are byte-
+# indistinguishable at these paths, and the manifest cannot tell them apart.
+# Absent => no synthesis block => validate_generative_sources reports WF023.
+SYNTHESIS_SIDECAR = "_synthesis.json"
+
+
+def read_synthesis(repo_root, manifest_exports):
+    """Read the producer sidecar sitting beside the exports, if the lane wrote one.
+
+    Returns None when absent -- deliberately NOT a default block. A fabricated
+    "unknown producer" entry would satisfy the shape of the question while
+    answering none of it, which is the failure mode this whole field exists to
+    close.
+    """
+    for info in manifest_exports.values():
+        sidecar = (repo_root / info["source_file"]).parent / SYNTHESIS_SIDECAR
+        if sidecar.is_file():
+            try:
+                data = json.loads(sidecar.read_text(encoding="utf-8"))
+            except Exception:
+                return None
+            return {
+                "producer": data.get("producer"),
+                "producer_version": data.get("producer_version"),
+                "mode": data.get("mode"),
+                "is_stopgap": data.get("is_stopgap"),
+                "recorded_at_utc": data.get("generated_at_utc"),
+                "sidecar": sidecar.relative_to(repo_root).as_posix(),
+            }
+        break
+    return None
+
 GENERATOR_NAME = "worldforge-generate-manifest"
 GENERATOR_VERSION = "1.0.0"
 
@@ -104,6 +137,8 @@ def main():
         "source_recipe": recipe_path.relative_to(REPO_ROOT).as_posix(),
         "substance_graph_path": (Path("procedural/substance/graphs") / recipe["graph"]).as_posix(),
         "provenance": provenance,
+        # Stamped after exports are resolved, from the export lane's sidecar.
+        "synthesis": None,
         "exports": {},
         "ue": {
             "parent_material": ue.get("parent_material"),
@@ -135,6 +170,15 @@ def main():
 
         param_name = TEXTURE_PARAMETER_NAMES.get(tex_type, f"{tex_type}Texture")
         manifest["material_parameters"]["textures"][param_name] = ue_asset_path
+
+    # Who actually produced the PNGs this manifest points at. Read from the
+    # export lane's sidecar; left None when the lane recorded nothing, so the
+    # gap is visible in the manifest instead of being papered over.
+    manifest["synthesis"] = read_synthesis(REPO_ROOT, manifest["exports"])
+    if manifest["synthesis"] is None:
+        print("WARNING: no export producer sidecar found; manifest records "
+              "synthesis=null and validate_generative_sources will report "
+              "WF023 for this recipe", file=sys.stderr)
 
     manifests_dir = REPO_ROOT / "procedural" / "manifests" / "materials"
     manifests_dir.mkdir(parents=True, exist_ok=True)

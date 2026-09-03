@@ -110,8 +110,32 @@ def _in_shield(name):
         name in _read("tools/pipeline/v2_6_shield.py")
 
 
+# Outcomes that mean the live run did NOT establish the capability. A document
+# recording one of these is evidence of a FAILURE, and counting it as runtime
+# proof is the precise inversion this ladder exists to prevent.
+_FAILED_OUTCOMES = ("rolled_back", "rejected", "refused", "indeterminate",
+                    "partial_commit")
+
+# Verdicts spelled as ``status`` rather than ``outcome`` -- the procedural/ lane
+# and the wfcore lane name the same idea differently, and a check that knows
+# only one vocabulary reads the other's failures as silence.
+_FAILED_STATUSES = ("fail", "failed", "error", "red")
+
+
 def _runtime_evidence(globs):
-    """A live-editor artifact that exists AND says it came from a live run."""
+    """A live-editor artifact that exists AND says it came from a SUCCESSFUL run.
+
+    FIXED 2026-09-03. The second half of that sentence was in this docstring and
+    not in the code: the check was ``isinstance(doc, dict)``, so any parseable
+    JSON at the path counted. A landscape run that spawned the wrong class,
+    failed verification with WF1246 and was rolled back produced a far_side.json
+    -- and this function read it as proof the capability was runtime_qualified.
+
+    The rule now: absence of a verdict field is NOT failure (artifact types
+    differ, and a scene-survey report carries none of these keys), but the
+    PRESENCE of a failure signal is decisive. Silence stays silence; a recorded
+    failure can no longer be read as a success.
+    """
     for rel in globs:
         full = os.path.join(_REPO, rel)
         if not os.path.isfile(full):
@@ -121,8 +145,35 @@ def _runtime_evidence(globs):
                 doc = json.load(fh)
         except (OSError, ValueError):
             continue
-        if isinstance(doc, dict):
-            return True, rel
+        if not isinstance(doc, dict):
+            continue
+        if doc.get("failure_codes"):
+            continue
+        if doc.get("error"):
+            continue
+        outcome = doc.get("outcome")
+        if isinstance(outcome, str) and outcome.lower() in _FAILED_OUTCOMES:
+            continue
+        # The material lane reports a verdict as ``status``, not ``outcome``.
+        # Missing this would have let asset_validation_result.json with
+        # status="failed" promote the lane -- the same defect, one field over.
+        status = doc.get("status")
+        if isinstance(status, str) and status.lower() in _FAILED_STATUSES:
+            continue
+        verification = doc.get("verification")
+        if isinstance(verification, str) and verification.lower() == "violated":
+            continue
+        # a nested delta carries the same verdict for transaction documents
+        delta = doc.get("delta")
+        if isinstance(delta, dict):
+            if delta.get("failure_codes"):
+                continue
+            d_out = delta.get("outcome")
+            if isinstance(d_out, str) and d_out.lower() in _FAILED_OUTCOMES:
+                continue
+            if str(delta.get("verification", "")).lower() == "violated":
+                continue
+        return True, rel
     return False, None
 
 
@@ -165,6 +216,61 @@ CAPABILITIES = [
      "ceiling": "shield_integrated",
      "ceiling_reason": "hashes and validates documents; it never touches an editor",
      "runtime": []},
+    {"id": "mesh_synthesis",
+     "module": "tools/pipeline/run_mesh_synthesis.py",
+     "suite": "tools/pipeline/test_terrain_mesh_provider.py",
+     "shield_name": "test_terrain_mesh_provider",
+     # The far side existed and had no near-side driver, so nothing had ever
+     # produced a mesh. SM_WF_Synth_01 is a real StaticMesh built in a live 5.8
+     # editor (rc=0, 12.48s): 2048 triangles matching the plan exactly, bounds
+     # re-observed from the asset on disk, 21,501 bytes committed to Content/.
+     "runtime": ["procedural/reports/core/mesh_synthesis/SM_WF_Synth_01/"
+                 "far_side.json"]},
+    {"id": "landscape_provider",
+     "module": "tools/pipeline/landscape_provider.py",
+     "suite": "tools/pipeline/test_landscape_provider.py",
+     "shield_name": "test_landscape_provider",
+     "blocked_note":
+         "not merely unrun. UE 5.8 exposes NO landscape creation API to Python "
+         "-- no LandscapeSubsystem, no LandscapeEditorSubsystem, no module-level "
+         "create function -- established by probing the live engine, report at "
+         "procedural/reports/core/landscape_probe/. Spawning the class as an "
+         "actor yields a LandscapePlaceholder, which op_landscape_live_0001 "
+         "proved and verification correctly refused (WF1246). The capability "
+         "terrain_shaping is NOT unserved: terrain_mesh_planner also declares "
+         "it and is runtime_qualified. Building a real ALandscape needs the "
+         "editor's Landscape mode or C++, i.e. the D19 substrate milestone",
+     "runtime": ["procedural/reports/core/transaction/op_landscape_live_0001/"
+                 "far_side.json"]},
+    {"id": "pcg_scatter_provider",
+     "module": "tools/pipeline/pcg_scatter_provider.py",
+     "suite": "tools/pipeline/test_pcg_scatter_provider.py",
+     "shield_name": "test_pcg_scatter_provider",
+     "runtime": ["procedural/reports/core/transaction/op_pcg_live_0001/"
+                 "far_side.json"],
+     # No ceiling: a PCG volume is an actor the sink materialises, so this lane
+     # CAN reach runtime_qualified -- and now has. op_pcg_live_0001 is a real
+     # editor boot (exit 0, 10.65s) in which the sink spawned a PCGVolume from
+     # this provider's request and re-observed it. See the honest limit in the
+     # provider docstring: that run proves the MUTATION path, not that a graph
+     # scattered anything -- the sink payload has no key to bind a graph with.
+     },
+    {"id": "asset_lane_adapter",
+     "module": "tools/pipeline/asset_lane_provider.py",
+     "suite": "tools/pipeline/test_asset_lane_provider.py",
+     "shield_name": "test_asset_lane_provider",
+     # CEILING LIFTED 2026-09-03. It was not a property of the capability, only
+     # of its evidence: the lane's editor reports carried no git_sha and no
+     # timestamp, so nothing bound a measurement to a build. tools/unreal/
+     # _wf_stamp.py now stamps them, and terrain_rock_desert_ash_01 was rebuilt
+     # in a live 5.8 editor (rc=0, 19s) producing asset_validation_result.json
+     # with status=ok, ran_in_editor=true and the HEAD sha.
+     #
+     # This entry names the adapted LANE, not just the resolver module. The
+     # resolver is filesystem logic; the production it declares capability over
+     # is what ran in the editor, and that is what the evidence records.
+     "runtime": ["procedural/reports/materials/terrain_rock_desert_ash_01/"
+                 "asset_validation_result.json"]},
     {"id": "closed_loop", "module": "tools/pipeline/run_closed_loop_proof.py",
      "suite": "tools/pipeline/test_closed_loop.py",
      "shield_name": "closed_loop_plumbing",
@@ -238,6 +344,11 @@ def assess(run_suites=True, external_proof=False):
                      "rung_index": RUNG_INDEX.get(rung, -1),
                      "ceiling": ceiling,
                      "ceiling_reason": cap.get("ceiling_reason"),
+                     # Why a capability is stuck, when it is NOT at a ceiling.
+                     # "blocked" with no reason reads as "nobody tried", which
+                     # is the wrong conclusion for a lane blocked on something
+                     # specific and established.
+                     "blocked_note": cap.get("blocked_note"),
                      "at_ceiling": at_ceiling,
                      "reasons": reasons})
 
@@ -282,6 +393,8 @@ def main(argv=None):
         nxt = RUNGS[r["rung_index"] + 1] if 0 <= r["rung_index"] < 5 else None
         if nxt and nxt in r["reasons"]:
             print("      blocked from {}: {}".format(nxt, r["reasons"][nxt][:110]))
+        if r.get("blocked_note"):
+            print("      WHY: {}".format(r["blocked_note"]))
     print("")
     print("  externally proven anywhere: {}".format(
         "yes" if rep["any_externally_proven"] else "NO"))

@@ -1,0 +1,243 @@
+{
+  "conclusion": {
+    "heightmap_import_exists_but_needs_an_existing_landscape": [
+      "landscape_import_heightmap_from_render_target",
+      "landscape_import_weightmap_from_render_target"
+    ],
+    "implication": "a real ALandscape cannot be constructed from Python in UE 5.8; the transaction sink therefore cannot materialise one, and op_landscape_live_0001 failing with a LandscapePlaceholder was the engine behaving correctly.",
+    "landscape_creation_exposed_to_python": false,
+    "reason": "no LandscapeSubsystem and no LandscapeEditorSubsystem exist in the Python bindings, and no module-level create/new/import landscape function is present. LandscapePlaceholder, which is what actor spawning yields, carries none of the landscape heightmap methods."
+  },
+  "editor_util": {
+    "unreal_module_landscape_names": [
+      "HoudiniLandscapeOutputBakeType",
+      "LandmassLandscapeInfo",
+      "Landscape",
+      "LandscapeBlueprintBrush",
+      "LandscapeBlueprintBrushBase",
+      "LandscapeBlueprintCustomBrush",
+      "LandscapeBrushParameters",
+      "LandscapeComponent",
+      "LandscapeCullingPrecision",
+      "LandscapeCustomizedCoordType",
+      "LandscapeEditLayer",
+      "LandscapeEditLayerBase",
+      "LandscapeEditLayerPersistent",
+      "LandscapeEditLayerProcedural",
+      "LandscapeEditLayerSplines",
+      "LandscapeGizmoActiveActor",
+      "LandscapeGizmoActor",
+      "LandscapeGizmoRenderComponent",
+      "LandscapeGrassName",
+      "LandscapeGrassType",
+      "LandscapeGrassTypeFactory",
+      "LandscapeHLODMeshSourceLODPolicy",
+      "LandscapeHLODTextureSizePolicy",
+      "LandscapeHeightfieldCollisionComponent",
+      "LandscapeLODStreamingProxy_DEPRECATED",
+      "LandscapeLayerBlendType",
+      "LandscapeLayerInfoObject",
+      "LandscapeMaterialInstanceConstant",
+      "LandscapeMeshCollisionComponent_DEPRECATED",
+      "LandscapeMeshProxyActor",
+      "LandscapeMeshProxyComponent",
+      "LandscapeNaniteComponent",
+      "LandscapePerLODMaterialOverride",
+      "LandscapePlaceholder",
+      "LandscapeProxy",
+      "LandscapeSplineActor",
+      "LandscapeSplineControlPoint",
+      "LandscapeSplineMeshEntry",
+      "LandscapeSplineMeshesActor",
+      "LandscapeSplineSegment",
+      "LandscapeSplineSegmentConnection",
+      "LandscapeSplinesComponent",
+      "LandscapeStreamingProxy",
+      "LandscapeTargetLayerBlendMethod",
+      "LandscapeTargetLayerSettings",
+      "LandscapeToolTargetType",
+      "MaterialExpressionLandscapeGrassOutput",
+      "MaterialExpressionLandscapeLayerBlend",
+      "MaterialExpressionLandscapeLayerCoords",
+      "MaterialExpressionLandscapeLayerSample",
+      "MaterialExpressionLandscapeLayerSwitch",
+      "MaterialExpressionLandscapeLayerWeight",
+      "MaterialExpressionLandscapePhysicalMaterialOutput",
+      "MaterialExpressionLandscapeVisibilityMask",
+      "PCGGenerateLandscapeTexturesSettings",
+      "PCGGetLandscapeSettings",
+      "PCGLandscapeCache",
+      "PCGLandscapeCacheSerializationContents",
+      "PCGLandscapeCacheSerializationMode",
+      "PCGLandscapeData",
+      "PCGLandscapeDataProps",
+      "PCGLandscapeLayerWeight",
+      "PCGLandscapeSplineData",
+      "PCGWaitLandscapeReadySettings",
+      "PCGWorldQuerySelectLandscapeHits",
+      "WaterLandscapeBrush"
+    ]
+  },
+  "engine_version": "5.8.0-55116800+++UE5+Release-5.8",
+  "error": null,
+  "git_sha": "879563f1894608ecbd54c0ae1bb764b251749d79",
+  "notes": [],
+  "produced_by": "worldforge._probe_landscape_api",
+  "ran_in_editor": true,
+  "report_schema": "wf.core.landscape_api_probe.v1",
+  "subsystems": {
+    "EditorActorSubsystem": {
+      "candidate_methods": [],
+      "exists": true,
+      "landscape_ish_members": [],
+      "resolved": true,
+      "via": "get_editor_subsystem"
+    },
+    "LandscapeEditorSubsystem": {
+      "exists": false
+    },
+    "LandscapeSubsystem": {
+      "exists": false
+    },
+    "LevelEditorSubsystem": {
+      "candidate_methods": [],
+      "exists": true,
+      "landscape_ish_members": [],
+      "resolved": true,
+      "via": "get_editor_subsystem"
+    }
+  },
+  "timestamp": "2026-09-03T12:08:14.335488+00:00",
+  "traceback": null,
+  "types": {
+    "EditorActorSubsystem": {
+      "candidate_methods": [],
+      "exists": true,
+      "landscape_ish_members": [],
+      "member_count": 58,
+      "repr": "<class 'EditorActorSubsystem'>"
+    },
+    "Landscape": {
+      "candidate_methods": [],
+      "exists": true,
+      "landscape_ish_members": [
+        "create_input_component",
+        "create_pcg_data_from_actor",
+        "data_layers",
+        "delete_unused_layers",
+        "force_layers_full_update",
+        "get_edit_layer_by_name_bp",
+        "get_edit_layers_bp",
+        "get_landscape_actor",
+        "get_target_layer_names",
+        "landscape_export_heightmap_to_render_target",
+        "landscape_import_heightmap_from_render_target",
+        "landscape_import_weightmap_from_render_target",
+        "landscape_material",
+        "render_heightmap",
+        "set_landscape_material_scalar_parameter_value",
+        "set_landscape_material_texture_parameter_value",
+        "set_landscape_material_vector_parameter_value"
+      ],
+      "member_count": 266,
+      "repr": "<class 'Landscape'>"
+    },
+    "LandscapeComponent": {
+      "candidate_methods": [],
+      "exists": true,
+      "landscape_ish_members": [
+        "always_create_physics_state",
+        "create_and_set_material_instance_dynamic",
+        "create_and_set_material_instance_dynamic_from_material",
+        "create_dynamic_material_instance",
+        "editor_get_paint_layer_weight_at_location",
+        "editor_get_paint_layer_weight_by_name_at_location"
+      ],
+      "member_count": 401,
+      "repr": "<class 'LandscapeComponent'>"
+    },
+    "LandscapeEditorObject": {
+      "exists": false
+    },
+    "LandscapeEditorSubsystem": {
+      "exists": false
+    },
+    "LandscapeImportLayerInfo": {
+      "exists": false
+    },
+    "LandscapeInfo": {
+      "exists": false
+    },
+    "LandscapeLayerInfoObject": {
+      "candidate_methods": [],
+      "exists": true,
+      "landscape_ish_members": [],
+      "member_count": 23,
+      "repr": "<class 'LandscapeLayerInfoObject'>"
+    },
+    "LandscapePlaceholder": {
+      "candidate_methods": [],
+      "exists": true,
+      "landscape_ish_members": [
+        "create_input_component",
+        "create_pcg_data_from_actor",
+        "data_layers"
+      ],
+      "member_count": 219,
+      "repr": "<class 'LandscapePlaceholder'>"
+    },
+    "LandscapeProxy": {
+      "candidate_methods": [],
+      "exists": true,
+      "landscape_ish_members": [
+        "create_input_component",
+        "create_pcg_data_from_actor",
+        "data_layers",
+        "delete_unused_layers",
+        "get_landscape_actor",
+        "landscape_export_heightmap_to_render_target",
+        "landscape_import_heightmap_from_render_target",
+        "landscape_import_weightmap_from_render_target",
+        "landscape_material",
+        "set_landscape_material_scalar_parameter_value",
+        "set_landscape_material_texture_parameter_value",
+        "set_landscape_material_vector_parameter_value"
+      ],
+      "member_count": 257,
+      "repr": "<class 'LandscapeProxy'>"
+    },
+    "LandscapeStreamingProxy": {
+      "candidate_methods": [],
+      "exists": true,
+      "landscape_ish_members": [
+        "create_input_component",
+        "create_pcg_data_from_actor",
+        "data_layers",
+        "delete_unused_layers",
+        "get_landscape_actor",
+        "landscape_export_heightmap_to_render_target",
+        "landscape_import_heightmap_from_render_target",
+        "landscape_import_weightmap_from_render_target",
+        "landscape_material",
+        "set_landscape_material_scalar_parameter_value",
+        "set_landscape_material_texture_parameter_value",
+        "set_landscape_material_vector_parameter_value"
+      ],
+      "member_count": 257,
+      "repr": "<class 'LandscapeStreamingProxy'>"
+    },
+    "LandscapeSubsystem": {
+      "exists": false
+    },
+    "LevelEditorSubsystem": {
+      "candidate_methods": [],
+      "exists": true,
+      "landscape_ish_members": [],
+      "member_count": 59,
+      "repr": "<class 'LevelEditorSubsystem'>"
+    },
+    "NewLandscapeParameters": {
+      "exists": false
+    }
+  }
+}

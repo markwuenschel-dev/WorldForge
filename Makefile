@@ -28,6 +28,7 @@ export VISUAL
 export SOURCE
 
 .PHONY: help validate-recipe render-substance generate-manifest placeholder-exports \
+        validate-generative-sources validate-pcg-execution \
         import-textures create-master create-world-state-mpc wire-terrain-soot create-material create-data-asset \
         validate-assets diagnose pre-ue-audit validate-and-manifest preview build clean \
         validate-placement generate-placement-manifest create-placement-data-asset \
@@ -68,7 +69,7 @@ export SOURCE
         validate-mesh-package mesh-negative-validators mesh-lifecycle-torture \
         inspect-mesh-catalog inspect-mesh-asset diagnose-mesh-catalog diff-mesh-catalog \
         validate-houdini-intake validate-houdini-cook-reports validate-houdini-bake-reports \
-        validate-houdini-generated-assets inspect-houdini-intake diagnose-houdini-intake \
+        validate-houdini-generated-assets validate-houdini-cook-evidence inspect-houdini-intake diagnose-houdini-intake \
         scan-external-asset-library validate-external-asset-catalog validate-megascans-catalog \
         validate-megascans-bindings validate-megascans-pcg-eligibility validate-megascans-biome-compatibility \
         validate-external-asset-ownership validate-third-party-package-policy validate-source-ownership-separation \
@@ -191,6 +192,16 @@ generate-manifest:
 
 placeholder-exports:
 	$(PYTHON) tools/substance/make_placeholder_exports.py --recipe $(RECIPE)
+
+# A declared generative source may not be empty, and a generated output must
+# name the tool that produced it. Grades every material manifest, not one recipe.
+validate-generative-sources:
+	$(PYTHON) tools/pipeline/validate_generative_sources.py $(if $(STRICT),--strict,)
+
+# Binding a PCG graph is not running one. Requires a measured generation
+# result on the slice report, never a tag the same pipeline wrote.
+validate-pcg-execution:
+	$(PYTHON) tools/pipeline/validate_pcg_execution.py $(if $(STRICT),--strict,)
 
 pre-ue-audit:
 	@echo "=== Pre-UE Audit ==="
@@ -708,6 +719,11 @@ validate-houdini-bake-reports:
 	$(PYTHON) tools/pipeline/validate_houdini_bake_reports.py --pack $(PACK) $(if $(STRICT),--strict,)
 validate-houdini-generated-assets:
 	$(PYTHON) tools/pipeline/validate_houdini_generated_assets.py --pack $(PACK) $(if $(STRICT),--strict,)
+
+# Asks who WROTE the cook report the gates above grade. Red by design until
+# a real Houdini process leaves evidence a metadata stamp cannot fake.
+validate-houdini-cook-evidence:
+	$(PYTHON) tools/pipeline/validate_houdini_cook_evidence.py --pack $(PACK) $(if $(STRICT),--strict,)
 inspect-houdini-intake:
 	$(PYTHON) tools/pipeline/inspect_houdini_intake.py --pack $(PACK)
 diagnose-houdini-intake:

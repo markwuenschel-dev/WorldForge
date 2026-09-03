@@ -210,12 +210,22 @@ def _source_hash(family, variant, source_type, params):
 
 
 def _houdini_intake_block(family, variant, hda_ownership_class, source_hash, asset_id):
-    """Build the houdini_intake block + report references (addendum §5).
+    """Build the houdini_intake block + report references.
 
-    metadata_only mode: cook/bake/import reports come from a prior cook (Houdini
-    Engine is not on every runner). The reports are real files, status-ok, and
-    stamped cook_mode=metadata_only so nothing is hidden. The HDA is NOT
-    generated-owned — hda_ownership_class is project_owned or third_party_owned.
+    HONESTY NOTE (corrected): the cook/bake/import reports referenced here do
+    NOT come from a prior cook. They are written by _write_houdini_reports
+    below, in this same run, with status hardcoded to "ok" -- and the four
+    validate_houdini_* gates then grade those files. Gate and subject share an
+    author. The earlier wording ("reports come from a prior cook") described an
+    intent that was never implemented, and because the wording was plausible
+    the loop stayed invisible for the life of the lane.
+
+    What these reports ARE: a declaration of intended intake shape. That is a
+    legitimate thing to validate for structure -- and it is NOT evidence that
+    Houdini ran. validate_houdini_cook_evidence.py draws that line (WF239).
+
+    The HDA is NOT generated-owned - hda_ownership_class is project_owned or
+    third_party_owned.
     """
     rpt_dir = "procedural/reports/mesh_assets/{}".format(asset_id)
     params = {"family": family, "variant": variant, "seed": 12, "resolution": "high"}
@@ -242,6 +252,11 @@ def _houdini_intake_block(family, variant, hda_ownership_class, source_hash, ass
     }
 
 
+# Identifies THIS module as the author of any report it writes. Read by
+# validate_houdini_cook_evidence.py to refuse self-authored cook evidence.
+PRODUCER_ID = "worldforge.create_mesh_assets"
+
+
 def _write_houdini_reports(repo_root, asset_id, intake):
     """Write the cook/bake/import report files the houdini validators check."""
     rpt_dir = Path(repo_root) / "procedural" / "reports" / "mesh_assets" / asset_id
@@ -255,6 +270,12 @@ def _write_houdini_reports(repo_root, asset_id, intake):
                 "stage": stage, "status": "ok", "hda_id": intake["hda_id"],
                 "parameter_hash": intake["parameter_hash"],
                 "cook_mode": "metadata_only", "generated_at_utc": now,
+                # Self-identification. Without this the file is indistinguishable
+                # from one a real cook left behind, which is precisely how it
+                # came to be graded as cook evidence. A report that names its
+                # own author cannot be mistaken for an independent measurement.
+                "producer": PRODUCER_ID,
+                "cook_evidence": None,
             }, fh, indent=2, ensure_ascii=False)
             fh.write("\n")
 
